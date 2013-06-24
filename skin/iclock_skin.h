@@ -12,7 +12,7 @@ enum FSkinInfo {
   SI_AUTHOR,      // skin author
   SI_EMAIL,       // author's e-mail
   SI_COMMENT,     // skin description
-  SI_TYPE         // skin type ('bitmap/vector')
+  SI_TYPE         // skin type ('raster/vector')
 };
 // skin info type
 typedef QMap<FSkinInfo, QString> TSkinInfo;
