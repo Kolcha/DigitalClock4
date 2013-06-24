@@ -10,19 +10,21 @@ public:
   virtual ~BaseSkin();
 
   const TSkinInfo& GetInfo() const;
+  QPixmap* GetImage(const QString& s, qreal zoom, bool cache);
 
 protected:
-  void ClearCache();
+  virtual QPixmap* ResizeImage(const QString& s, qreal zoom) = 0;
   QMap<QString, QString> image_files_;
-  QMap<QString, QPixmap*> image_cache_;
-  qreal cached_zoom_;
 
 private:
+  void ClearCache();
   void GenImgKeys();
   void LoadConfig();
+  QString skin_root_;
   TSkinInfo info_;
   QStringList image_keys_;
-  QString skin_root_;
+  qreal cached_zoom_;
+  QMap<QString, QPixmap*> image_cache_;
 };
 
 #endif // BASE_SKIN_H

@@ -8,10 +8,10 @@ public:
   RasterSkin(const QString& skin_root);
   ~RasterSkin();
 
-  QPixmap* GetImage(const QString& s, qreal zoom, bool cache);
+protected:
+  QPixmap* ResizeImage(const QString& s, qreal zoom);
 
 private:
-  QPixmap* ResizeImage(const QString& s, qreal zoom);
   QMap<QString, QPixmap*> orig_images_;
 };
 

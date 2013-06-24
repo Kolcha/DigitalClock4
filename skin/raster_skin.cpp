@@ -13,22 +13,6 @@ RasterSkin::~RasterSkin() {
   }
 }
 
-QPixmap* RasterSkin::GetImage(const QString& s, qreal zoom, bool cache) {
-  QPixmap* result = 0;
-  if (zoom == cached_zoom_) {
-    result = image_cache_[s];
-    if (!result) result = ResizeImage(s, zoom);
-  } else {
-    result = ResizeImage(s, zoom);
-    if (cache) {
-      ClearCache();
-      cached_zoom_ = zoom;
-    }
-  }
-  if (cache) image_cache_[s] = result;
-  return result;
-}
-
 QPixmap* RasterSkin::ResizeImage(const QString& s, qreal zoom) {
   QPixmap* result = new QPixmap();
   QPixmap* original = orig_images_[s];

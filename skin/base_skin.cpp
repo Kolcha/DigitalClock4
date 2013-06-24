@@ -3,7 +3,7 @@
 #include "base_skin.h"
 
 BaseSkin::BaseSkin(const QString &skin_root)
-  : cached_zoom_(1.0), skin_root_(skin_root) {
+  : skin_root_(skin_root), cached_zoom_(1.0) {
   GenImgKeys();
   for (auto& key : image_keys_) {
     image_cache_[key] = 0;
@@ -17,6 +17,22 @@ BaseSkin::~BaseSkin() {
 
 const TSkinInfo& BaseSkin::GetInfo() const {
   return info_;
+}
+
+QPixmap* BaseSkin::GetImage(const QString& s, qreal zoom, bool cache) {
+  QPixmap* result = 0;
+  if (zoom == cached_zoom_) {
+    result = image_cache_[s];
+    if (!result) result = ResizeImage(s, zoom);
+  } else {
+    result = ResizeImage(s, zoom);
+    if (cache) {
+      ClearCache();
+      cached_zoom_ = zoom;
+    }
+  }
+  if (cache) image_cache_[s] = result;
+  return result;
 }
 
 void BaseSkin::ClearCache() {
