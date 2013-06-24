@@ -22,7 +22,7 @@ public:
   virtual ~IClockSkin() {}
 
   virtual const TSkinInfo& GetInfo() const = 0;
-  virtual QPixmap* GetImage(const QString& s, qreal zoom, bool cache) = 0;
+  virtual QPixmap* GetImage(QChar ch, qreal zoom, bool cache) = 0;
 };
 
 IClockSkin* CreateSkin(const QString& skin_root);

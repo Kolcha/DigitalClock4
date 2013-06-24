@@ -19,7 +19,9 @@ const TSkinInfo& BaseSkin::GetInfo() const {
   return info_;
 }
 
-QPixmap* BaseSkin::GetImage(const QString& s, qreal zoom, bool cache) {
+QPixmap* BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
+  QString s;
+  CharToKey(ch, s);
   QPixmap* result = 0;
   if (zoom == cached_zoom_) {
     result = image_cache_[s];
@@ -62,5 +64,19 @@ void BaseSkin::LoadConfig() {
   // load image files
   for (auto& key : image_keys_) {
     image_files_[key] = config.value("files/" + key, "").toString();
+  }
+}
+
+void BaseSkin::CharToKey(QChar ch, QString& s) {
+  switch (ch.toLatin1()) {
+    case ':':
+      s = QString("s1");
+      break;
+    case ' ':
+      s = QString("s2");
+      break;
+    default:
+      s = QString(ch);
+      break;
   }
 }

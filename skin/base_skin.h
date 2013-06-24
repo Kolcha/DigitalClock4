@@ -10,7 +10,7 @@ public:
   virtual ~BaseSkin();
 
   const TSkinInfo& GetInfo() const;
-  QPixmap* GetImage(const QString& s, qreal zoom, bool cache);
+  QPixmap* GetImage(QChar ch, qreal zoom, bool cache);
 
 protected:
   virtual QPixmap* ResizeImage(const QString& s, qreal zoom) = 0;
@@ -20,6 +20,7 @@ private:
   void ClearCache();
   void GenImgKeys();
   void LoadConfig();
+  void CharToKey(QChar ch, QString& s);
   QString skin_root_;
   TSkinInfo info_;
   QStringList image_keys_;
