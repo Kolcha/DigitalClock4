@@ -17,12 +17,14 @@ SOURCES += main.cpp\
     skin/base_skin.cpp \
     skin/raster_skin.cpp \
     skin/vector_skin.cpp \
-    skin/skin_factory.cpp
+    skin/skin_factory.cpp \
+    skin/skin_drawer.cpp
 
 HEADERS  += widget.h \
     skin/iclock_skin.h \
     skin/base_skin.h \
     skin/raster_skin.h \
-    skin/vector_skin.h
+    skin/vector_skin.h \
+    skin/skin_drawer.h
 
 FORMS    += widget.ui
