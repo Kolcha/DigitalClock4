@@ -1,8 +1,9 @@
+#include <QDir>
 #include <QSettings>
 #include "base_skin.h"
 
 BaseSkin::BaseSkin(const QString &skin_root)
-  : skin_root_(skin_root) {   // TODO: check last separator
+  : skin_root_(skin_root) {
   GenImgKeys();
   for (auto& key : image_keys_) {
     image_cache_[key] = 0;
@@ -30,7 +31,7 @@ void BaseSkin::GenImgKeys() {
 }
 
 void BaseSkin::LoadConfig() {
-  QSettings config(skin_root_ + "skin.ini", QSettings::IniFormat);
+  QSettings config(QDir(skin_root_).filePath("skin.ini"), QSettings::IniFormat);
   // load info
   info_[SI_NAME] = config.value("info/name", "unknown").toString();
   info_[SI_VERSION] = config.value("info/version", "unknown").toString();
