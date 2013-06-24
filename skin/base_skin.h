@@ -12,8 +12,10 @@ public:
   const TSkinInfo& GetInfo() const;
 
 protected:
-  QStringList image_files_;
+  void ClearCache();
+  QMap<QString, QString> image_files_;
   QMap<QString, QPixmap*> image_cache_;
+  qreal cached_zoom_;
 
 private:
   void GenImgKeys();

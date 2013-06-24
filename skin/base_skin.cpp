@@ -3,7 +3,7 @@
 #include "base_skin.h"
 
 BaseSkin::BaseSkin(const QString &skin_root)
-  : skin_root_(skin_root) {
+  : cached_zoom_(1.0), skin_root_(skin_root) {
   GenImgKeys();
   for (auto& key : image_keys_) {
     image_cache_[key] = 0;
@@ -12,14 +12,18 @@ BaseSkin::BaseSkin(const QString &skin_root)
 }
 
 BaseSkin::~BaseSkin() {
-  for (auto& key : image_keys_) {
-    delete image_cache_[key];
-    image_cache_[key] = 0;
-  }
+  ClearCache();
 }
 
 const TSkinInfo& BaseSkin::GetInfo() const {
   return info_;
+}
+
+void BaseSkin::ClearCache() {
+  for (auto& key : image_keys_) {
+    delete image_cache_[key];
+    image_cache_[key] = 0;
+  }
 }
 
 void BaseSkin::GenImgKeys() {
@@ -41,6 +45,6 @@ void BaseSkin::LoadConfig() {
   info_[SI_TYPE] = config.value("info/type", "unknown").toString();
   // load image files
   for (auto& key : image_keys_) {
-    image_files_.append(config.value("files/" + key, "").toString());
+    image_files_[key] = config.value("files/" + key, "").toString();
   }
 }
