@@ -19,6 +19,7 @@ public slots:
   void SetColor(const QColor& new_color);
   void SetTexture(const QString& filename);
   void SetTexturePerElement(bool set);
+  void SetPreviewMode(bool set);
 
 private:
   void Redraw();
@@ -28,6 +29,7 @@ private:
   qreal zoom_;
   QPixmap* texture_;
   bool txd_per_elem_;
+  bool preview_mode_;
 };
 
 #endif // SKIN_DRAWER_H
