@@ -16,7 +16,8 @@ SOURCES += main.cpp\
         widget.cpp \
     skin/base_skin.cpp \
     skin/raster_skin.cpp \
-    skin/vector_skin.cpp
+    skin/vector_skin.cpp \
+    skin/skin_factory.cpp
 
 HEADERS  += widget.h \
     skin/iclock_skin.h \

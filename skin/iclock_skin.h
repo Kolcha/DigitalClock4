@@ -25,4 +25,6 @@ public:
   virtual QPixmap* GetImage(const QString& s, qreal zoom, bool cache) = 0;
 };
 
+IClockSkin* CreateSkin(const QString& skin_root);
+
 #endif // ICLOCK_SKIN_H
