@@ -9,17 +9,25 @@ public:
   explicit SkinDrawer(QObject *parent = 0);
   ~SkinDrawer();
 
-  QPixmap* DrawString(const QString& str);
+signals:
+  void DrawingFinished(QPixmap* result);
 
 public slots:
   void LoadSkin(const QString& skin_root);
+  void SetString(const QString& str);
   void SetZoom(qreal new_zoom);
-  void SetColor(QColor new_color);
+  void SetColor(const QColor& new_color);
   void SetTexture(const QString& filename);
   void SetTexturePerElement(bool set);
 
 private:
+  void Redraw();
+  QPixmap* result_;
   IClockSkin* skin_;
+  QString str_;
+  qreal zoom_;
+  QPixmap* texture_;
+  bool txd_per_elem_;
 };
 
 #endif // SKIN_DRAWER_H
