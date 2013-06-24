@@ -15,6 +15,7 @@ TEMPLATE = app
 SOURCES += main.cpp\
         widget.cpp
 
-HEADERS  += widget.h
+HEADERS  += widget.h \
+    skin/iclock_skin.h
 
 FORMS    += widget.ui
