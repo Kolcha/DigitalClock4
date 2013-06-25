@@ -5,7 +5,6 @@
 
 SkinDrawer::SkinDrawer(QObject *parent)
   : QObject(parent), texture_(8, 8) {
-  result_ = 0;
   skin_ = 0;
   zoom_ = 1.0;
   txd_per_elem_ = false;
@@ -13,7 +12,6 @@ SkinDrawer::SkinDrawer(QObject *parent)
 }
 
 SkinDrawer::~SkinDrawer() {
-  delete result_;
   delete skin_;
 }
 
@@ -54,7 +52,7 @@ void SkinDrawer::SetPreviewMode(bool set) {
 }
 
 void SkinDrawer::Redraw() {
-  QList<QPixmap*> elements;
+  QList<QImage> elements;
   // get images for all symbols
   for (auto i = str_.begin(); i != str_.end(); ++i) {
     elements.push_back(skin_->GetImage(*i, zoom_, !preview_mode_));
@@ -63,38 +61,43 @@ void SkinDrawer::Redraw() {
   int result_w = 0;
   int result_h = 0;
   for (auto& elem : elements) {
-    result_w += elem->width();
-    result_h = qMax(result_h, elem->height());
+    result_w += elem.width();
+    result_h = qMax(result_h, elem.height());
   }
   // leave some space between images
   int space = 4;
   result_w += space * (str_.length() - 1);
 
   // create result image
-  delete result_;
-  result_ = new QPixmap(result_w, result_h);
-  QPixmap result_mask(result_->size());
+  result_ = QImage(result_w, result_h, QImage::Format_ARGB32_Premultiplied);
+  QPainter painter(&result_);
+  painter.setCompositionMode(QPainter::CompositionMode_Source);
+  painter.fillRect(result_.rect(), Qt::transparent);
+  painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
 
   if (txd_per_elem_) {
-    for (auto& elem : elements) {
-      //
-    }
-  } else {
-    // create alpha mask from all images
-    result_mask.fill(Qt::black);
-    QPainter mask_painter(&result_mask);
     int x = 0;
     for (auto& elem : elements) {
-      mask_painter.drawPixmap(x, 0, *elem);
-      x += elem->width() + space;
+      // draw mask
+      painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+      painter.drawImage(x, 0, elem);
+      // draw texture
+      painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+      painter.drawTiledPixmap(elem.rect(), texture_, QPoint(x, 0));
+      x += elem.width() + space;
     }
-    mask_painter.end();
+  } else {
+    // draw mask
+    int x = 0;
+    for (auto& elem : elements) {
+      painter.drawImage(x, 0, elem);
+      x += elem.width() + space;
+    }
     // draw texture
-    QPainter result_painter(result_);
-    result_painter.drawTiledPixmap(result_->rect(), texture_);
-    result_painter.end();
-    // apply alpha mask
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    painter.drawTiledPixmap(result_.rect(), texture_);
   }
+  painter.end();
 
   emit DrawingFinished(result_);
 }

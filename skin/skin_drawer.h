@@ -1,6 +1,7 @@
 #ifndef SKIN_DRAWER_H
 #define SKIN_DRAWER_H
 
+#include <QPixmap>
 #include "iclock_skin.h"
 
 class SkinDrawer : public QObject {
@@ -10,7 +11,7 @@ public:
   ~SkinDrawer();
 
 signals:
-  void DrawingFinished(QPixmap* result);
+  void DrawingFinished(const QImage& result);
 
 public slots:
   void LoadSkin(const QString& skin_root);
@@ -23,7 +24,7 @@ public slots:
 
 private:
   void Redraw();
-  QPixmap* result_;
+  QImage result_;
   IClockSkin* skin_;
   QString str_;
   qreal zoom_;
