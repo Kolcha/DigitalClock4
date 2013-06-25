@@ -4,11 +4,10 @@
 #include "skin_drawer.h"
 
 SkinDrawer::SkinDrawer(QObject *parent)
-  : QObject(parent) {
+  : QObject(parent), texture_(8, 8) {
   result_ = 0;
   skin_ = 0;
   zoom_ = 1.0;
-  texture_ = new QPixmap(8, 8);
   txd_per_elem_ = false;
   preview_mode_ = false;
 }
@@ -16,7 +15,6 @@ SkinDrawer::SkinDrawer(QObject *parent)
 SkinDrawer::~SkinDrawer() {
   delete result_;
   delete skin_;
-  delete texture_;
 }
 
 void SkinDrawer::LoadSkin(const QString& skin_root) {
@@ -36,13 +34,13 @@ void SkinDrawer::SetZoom(qreal new_zoom) {
 
 void SkinDrawer::SetColor(const QColor& new_color) {
   if (!new_color.isValid()) return;
-  texture_->fill(new_color);
+  texture_.fill(new_color);
   Redraw();
 }
 
 void SkinDrawer::SetTexture(const QString& filename) {
   if (!QFile::exists(filename)) return;
-  texture_->load(filename);
+  texture_.load(filename);
   Redraw();
 }
 
@@ -93,7 +91,7 @@ void SkinDrawer::Redraw() {
     mask_painter.end();
     // draw texture
     QPainter result_painter(result_);
-    result_painter.drawTiledPixmap(result_->rect(), *texture_);
+    result_painter.drawTiledPixmap(result_->rect(), texture_);
     result_painter.end();
     // apply alpha mask
   }

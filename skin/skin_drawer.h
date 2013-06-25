@@ -27,7 +27,7 @@ private:
   IClockSkin* skin_;
   QString str_;
   qreal zoom_;
-  QPixmap* texture_;
+  QPixmap texture_;
   bool txd_per_elem_;
   bool preview_mode_;
 };
