@@ -3,7 +3,7 @@
 
 #include <QMap>
 #include <QString>
-#include <QPixmap>
+#include <QImage>
 
 // skin info fields
 enum FSkinInfo {
@@ -22,7 +22,7 @@ public:
   virtual ~IClockSkin() {}
 
   virtual const TSkinInfo& GetInfo() const = 0;
-  virtual QPixmap* GetImage(QChar ch, qreal zoom, bool cache) = 0;
+  virtual const QImage& GetImage(QChar ch, qreal zoom, bool cache) = 0;
 };
 
 IClockSkin* CreateSkin(const QString& skin_root);
