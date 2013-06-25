@@ -9,7 +9,10 @@ public:
   ~VectorSkin();
 
 protected:
-  QPixmap* ResizeImage(const QString& s, qreal zoom);
+  const QImage& ResizeImage(const QString& s, qreal zoom);
+
+private:
+  QImage result_;
 };
 
 #endif // VECTOR_SKIN_H

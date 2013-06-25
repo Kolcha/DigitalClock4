@@ -9,10 +9,11 @@ public:
   ~RasterSkin();
 
 protected:
-  QPixmap* ResizeImage(const QString& s, qreal zoom);
+  const QImage& ResizeImage(const QString& s, qreal zoom);
 
 private:
-  QMap<QString, QPixmap*> orig_images_;
+  QMap<QString, QImage> orig_images_;
+  QImage result_;
 };
 
 #endif // RASTER_SKIN_H

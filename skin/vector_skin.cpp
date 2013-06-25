@@ -9,11 +9,14 @@ VectorSkin::VectorSkin(const QString& skin_root)
 VectorSkin::~VectorSkin() {
 }
 
-QPixmap* VectorSkin::ResizeImage(const QString& s, qreal zoom) {
+const QImage& VectorSkin::ResizeImage(const QString& s, qreal zoom) {
   QSvgRenderer renderer(image_files_[s]);
-  QPixmap* result = new QPixmap(renderer.defaultSize() * zoom);
-  result->fill(Qt::black);
-  QPainter painter(result);
+  result_ = QImage(renderer.defaultSize() * zoom,
+                   QImage::Format_ARGB32_Premultiplied);
+  QPainter painter(&result_);
+  painter.setCompositionMode(QPainter::CompositionMode_Source);
+  painter.fillRect(result_.rect(), Qt::transparent);
+  painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
   renderer.render(&painter);
-  return result;
+  return result_;
 }
