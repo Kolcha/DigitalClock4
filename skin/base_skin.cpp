@@ -3,57 +3,8 @@
 #include "base_skin.h"
 
 BaseSkin::BaseSkin(const QString &skin_root)
-  : skin_root_(skin_root), cached_zoom_(1.0) {
-  GenImgKeys();
-  for (auto& key : image_keys_) {
-    image_cache_[key] = 0;
-  }
-  LoadConfig();
-}
-
-BaseSkin::~BaseSkin() {
-  ClearCache();
-}
-
-const TSkinInfo& BaseSkin::GetInfo() const {
-  return info_;
-}
-
-QPixmap* BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
-  QString s;
-  CharToKey(ch, s);
-  QPixmap* result = 0;
-  if (zoom == cached_zoom_) {
-    result = image_cache_[s];
-    if (!result) result = ResizeImage(s, zoom);
-  } else {
-    result = ResizeImage(s, zoom);
-    if (cache) {
-      ClearCache();
-      cached_zoom_ = zoom;
-    }
-  }
-  if (cache) image_cache_[s] = result;
-  return result;
-}
-
-void BaseSkin::ClearCache() {
-  for (auto& key : image_keys_) {
-    delete image_cache_[key];
-    image_cache_[key] = 0;
-  }
-}
-
-void BaseSkin::GenImgKeys() {
-  for (qint8 i = 1; i < 10; ++i) {
-    image_keys_.append(QString::number(i));
-  }
-  image_keys_.push_back(QString("s1"));
-  image_keys_.push_back(QString("s2"));
-}
-
-void BaseSkin::LoadConfig() {
-  QSettings config(QDir(skin_root_).filePath("skin.ini"), QSettings::IniFormat);
+  : cached_zoom_(1.0) {
+  QSettings config(QDir(skin_root).filePath("skin.ini"), QSettings::IniFormat);
   // load info
   info_[SI_NAME] = config.value("info/name", "unknown").toString();
   info_[SI_VERSION] = config.value("info/version", "unknown").toString();
@@ -62,9 +13,37 @@ void BaseSkin::LoadConfig() {
   info_[SI_COMMENT] = config.value("info/comment", "unknown").toString();
   info_[SI_TYPE] = config.value("info/type", "unknown").toString();
   // load image files
-  for (auto& key : image_keys_) {
+  for (int i = 1; i < 10; ++i) {
+    QString key = QString::number(i);
     image_files_[key] = config.value("files/" + key, "").toString();
   }
+  image_files_[QString("s1")] = config.value("files/s1", "").toString();
+  image_files_[QString("s2")] = config.value("files/s2", "").toString();
+}
+
+BaseSkin::~BaseSkin() {
+}
+
+const TSkinInfo& BaseSkin::GetInfo() const {
+  return info_;
+}
+
+const QImage& BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
+  QString s;
+  CharToKey(ch, s);
+  QImage& result = QImage();
+  if (zoom == cached_zoom_) {
+    result = image_cache_[s];
+    if (result.isNull()) result = ResizeImage(s, zoom);
+  } else {
+    result = ResizeImage(s, zoom);
+    if (cache) {
+      image_cache_.clear();
+      cached_zoom_ = zoom;
+    }
+  }
+  if (cache) image_cache_[s] = result.copy(QRect());
+  return result;
 }
 
 void BaseSkin::CharToKey(QChar ch, QString& s) {
