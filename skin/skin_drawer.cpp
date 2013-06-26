@@ -18,6 +18,7 @@ SkinDrawer::~SkinDrawer() {
 void SkinDrawer::LoadSkin(const QDir& skin_root) {
   delete skin_;
   skin_ = CreateSkin(skin_root);
+  Redraw();
 }
 
 void SkinDrawer::SetString(const QString& str) {
