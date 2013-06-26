@@ -12,7 +12,6 @@ protected:
 
 private:
   QMap<QString, QImage> orig_images_;
-  QImage result_;
 };
 
 #endif // RASTER_SKIN_H

@@ -14,6 +14,7 @@ public:
 protected:
   virtual const QImage& ResizeImage(const QString& s, qreal zoom) = 0;
   QMap<QString, QString> image_files_;
+  QImage result_;
 
 private:
   void CharToKey(QChar ch, QString& s);

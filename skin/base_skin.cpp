@@ -29,19 +29,19 @@ const TSkinInfo& BaseSkin::GetInfo() const {
 const QImage& BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
   QString s;
   CharToKey(ch, s);
-  QImage& result = QImage();
+  result_ = QImage();
   if (zoom == cached_zoom_) {
-    result = image_cache_[s];
-    if (result.isNull()) result = ResizeImage(s, zoom);
+    result_ = image_cache_[s];
+    if (result_.isNull()) result_ = ResizeImage(s, zoom);
   } else {
-    result = ResizeImage(s, zoom);
+    result_ = ResizeImage(s, zoom);
     if (cache) {
       image_cache_.clear();
       cached_zoom_ = zoom;
     }
   }
-  if (cache) image_cache_[s] = result;
-  return result;
+  if (cache) image_cache_[s] = result_;
+  return result_;
 }
 
 void BaseSkin::CharToKey(QChar ch, QString& s) {
