@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     skin/skin_factory.cpp \
     skin/skin_drawer.cpp \
     core/skin_manager.cpp \
-    core/clock_settings.cpp
+    core/clock_settings.cpp \
+    gui/digital_clock.cpp
 
 HEADERS  += widget.h \
     skin/iclock_skin.h \
@@ -29,6 +30,7 @@ HEADERS  += widget.h \
     skin/vector_skin.h \
     skin/skin_drawer.h \
     core/skin_manager.h \
-    core/clock_settings.h
+    core/clock_settings.h \
+    gui/digital_clock.h
 
 FORMS    += widget.ui
