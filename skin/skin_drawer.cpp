@@ -53,8 +53,9 @@ void SkinDrawer::SetPreviewMode(bool set) {
 }
 
 void SkinDrawer::Redraw() {
-  QList<QImage> elements;
+  if (str_.isEmpty() || !skin_) return;
   // get images for all symbols
+  QList<QImage> elements;
   for (auto i = str_.begin(); i != str_.end(); ++i) {
     elements.push_back(skin_->GetImage(*i, zoom_, !preview_mode_));
   }

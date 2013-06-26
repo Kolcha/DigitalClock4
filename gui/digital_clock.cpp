@@ -30,5 +30,4 @@ void DigitalClock::TimeoutHandler() {
   time[2] = sep_state_ ? ':' : ' ';
   sep_state_ = !sep_state_;
   emit ImageNeeded(time);
-  setWindowTitle(time);
 }
