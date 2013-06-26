@@ -13,7 +13,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        widget.cpp \
     skin/base_skin.cpp \
     skin/raster_skin.cpp \
     skin/vector_skin.cpp \
@@ -23,7 +22,7 @@ SOURCES += main.cpp\
     core/clock_settings.cpp \
     gui/digital_clock.cpp
 
-HEADERS  += widget.h \
+HEADERS  += \
     skin/iclock_skin.h \
     skin/base_skin.h \
     skin/raster_skin.h \
@@ -33,4 +32,4 @@ HEADERS  += widget.h \
     core/clock_settings.h \
     gui/digital_clock.h
 
-FORMS    += widget.ui
+FORMS    +=
