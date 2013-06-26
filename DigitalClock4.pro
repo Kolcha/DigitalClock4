@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     skin/skin_drawer.cpp \
     core/skin_manager.cpp \
     core/clock_settings.cpp \
-    gui/digital_clock.cpp
+    gui/digital_clock.cpp \
+    gui/main_window.cpp
 
 HEADERS  += \
     skin/iclock_skin.h \
@@ -31,6 +32,7 @@ HEADERS  += \
     core/skin_manager.h \
     core/clock_settings.h \
     gui/digital_clock.h \
-    core/settings_keys.h
+    core/settings_keys.h \
+    gui/main_window.h
 
 FORMS    +=
