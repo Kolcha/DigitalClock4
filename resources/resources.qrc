@@ -14,4 +14,7 @@
         <file alias="s2.png">comic/s2.png</file>
         <file alias="skin.ini">comic/skin.ini</file>
     </qresource>
+    <qresource prefix="/images">
+        <file alias="clock_24.png">images/clock.png</file>
+    </qresource>
 </RCC>
