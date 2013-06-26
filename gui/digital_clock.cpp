@@ -9,9 +9,6 @@ DigitalClock::DigitalClock(QWidget *parent)
   main_layout->addWidget(display_);
   setLayout(main_layout);
 
-  setWindowFlags(Qt::FramelessWindowHint);
-  setAttribute(Qt::WA_TranslucentBackground);
-
   timer_.setTimerType(Qt::PreciseTimer);
   timer_.setInterval(500);
   connect(&timer_, SIGNAL(timeout()), this, SLOT(TimeoutHandler()));
@@ -29,14 +26,6 @@ void DigitalClock::DrawImage(const QImage& image) {
   display_->setPixmap(QPixmap::fromImage(image));
 }
 
-void DigitalClock::SetStaysOnTop(bool set) {
-  SetWindowFlag(Qt::WindowStaysOnTopHint, set);
-}
-
-void DigitalClock::SetTransparentForMouse(bool set) {
-  SetWindowFlag(Qt::WindowTransparentForInput, set);
-}
-
 void DigitalClock::SetSeparatorFlash(bool set) {
   sep_flashes_ = set;
   sep_visible_ = !set;
@@ -49,12 +38,4 @@ void DigitalClock::TimeoutHandler() {
     sep_visible_ = !sep_visible_;
   }
   emit ImageNeeded(time);
-}
-
-void DigitalClock::SetWindowFlag(Qt::WindowFlags flag, bool set) {
-  hide();
-  Qt::WindowFlags flags = windowFlags();
-  set ? flags |= flag : flags &= ~flag;
-  setWindowFlags(flags);
-  show();
 }

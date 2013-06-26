@@ -10,6 +10,7 @@ enum Options {
   OPT_STAY_ON_TOP,
   OPT_TRANSP_FOR_INPUT,
   OPT_SEPARATOR_FLASH,
+  OPT_POSITION,
   // skin settings
   OPT_SKIN_NAME,
   OPT_ZOOM,
@@ -25,6 +26,7 @@ inline void GetOptionsKeys(QMap<Options, QString>& opt_map) {
   opt_map[OPT_STAY_ON_TOP] = "clock/stay_on_top";
   opt_map[OPT_TRANSP_FOR_INPUT] = "clock/transp_for_input";
   opt_map[OPT_SEPARATOR_FLASH] = "clock/separator_flash";
+  opt_map[OPT_POSITION] = "clock/position";
   // skin settings
   opt_map[OPT_SKIN_NAME] = "skin/name";
   opt_map[OPT_ZOOM] = "skin/zoom";
