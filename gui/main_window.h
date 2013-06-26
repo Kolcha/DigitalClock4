@@ -5,6 +5,7 @@
 #include "../core/skin_manager.h"
 #include "../skin/skin_drawer.h"
 #include "digital_clock.h"
+#include "tray_control.h"
 
 class MainWindow : public QWidget {
   Q_OBJECT
@@ -28,6 +29,7 @@ private:
   SkinDrawer drawer_;
   DigitalClock* d_clock_;
   QPoint drag_position_;
+  TrayControl* tray_control_;
 };
 
 #endif // MAIN_WINDOW_H
