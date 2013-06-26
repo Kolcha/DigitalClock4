@@ -1,7 +1,13 @@
+#include <QHBoxLayout>
 #include "main_window.h"
 
 MainWindow::MainWindow(QWidget *parent)
   : QWidget(parent) {
+  d_clock_ = new DigitalClock();
+  QHBoxLayout* main_layout = new QHBoxLayout();
+  main_layout->addWidget(d_clock_);
+  setLayout(main_layout);
+
   setWindowFlags(Qt::FramelessWindowHint);
   setAttribute(Qt::WA_TranslucentBackground);
 }
