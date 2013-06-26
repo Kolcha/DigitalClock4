@@ -1,1 +1,17 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/default_skin">
+        <file alias="0.png">comic/0.png</file>
+        <file alias="1.png">comic/1.png</file>
+        <file alias="2.png">comic/2.png</file>
+        <file alias="3.png">comic/3.png</file>
+        <file alias="4.png">comic/4.png</file>
+        <file alias="5.png">comic/5.png</file>
+        <file alias="6.png">comic/6.png</file>
+        <file alias="7.png">comic/7.png</file>
+        <file alias="8.png">comic/8.png</file>
+        <file alias="9.png">comic/9.png</file>
+        <file alias="s1.png">comic/s1.png</file>
+        <file alias="s2.png">comic/s2.png</file>
+        <file alias="skin.ini">comic/skin.ini</file>
+    </qresource>
+</RCC>

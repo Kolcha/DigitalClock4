@@ -13,7 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
   setAttribute(Qt::WA_TranslucentBackground);
 
   ConnectAll();
-  skin_manager_.AddSkinDir(QDir(QDir::currentPath() + "/skins"));
+//  skin_manager_.AddSkinDir(QDir(QDir::currentPath() + "/skins"));
+  skin_manager_.AddSkinDir(QDir(":/"));
   skin_manager_.ListSkins();
   settings_.Load();
 }
