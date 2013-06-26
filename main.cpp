@@ -1,4 +1,4 @@
-#include "widget.h"
+#include "gui/digital_clock.h"
 #include <QApplication>
 
 int main(int argc, char *argv[]) {
@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
     a.setApplicationName("Digital Clock 4");
     a.setApplicationVersion("4.1.4");
     a.setOrganizationName("Nick Korotysh");
-    Widget w;
+    DigitalClock w;
     w.show();
 
     return a.exec();
