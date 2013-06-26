@@ -10,12 +10,11 @@ class MainWindow : public QWidget {
   Q_OBJECT
 public:
   explicit MainWindow(QWidget *parent = 0);
+  ~MainWindow();
 
 signals:
 
 public slots:
-  void SetStaysOnTop(bool set);
-  void SetTransparentForInput(bool set);
   void SettingsListener(Options opt, const QVariant& value);
 
 private:
