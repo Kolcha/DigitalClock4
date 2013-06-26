@@ -7,9 +7,6 @@ RasterSkin::RasterSkin(const QString& skin_root)
   }
 }
 
-RasterSkin::~RasterSkin() {
-}
-
 const QImage& RasterSkin::ResizeImage(const QString& s, qreal zoom) {
   const QImage& original = orig_images_[s];
   result_ = original.scaled(original.size() * zoom,

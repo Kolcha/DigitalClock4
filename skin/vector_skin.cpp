@@ -6,9 +6,6 @@ VectorSkin::VectorSkin(const QString& skin_root)
   : BaseSkin(skin_root) {
 }
 
-VectorSkin::~VectorSkin() {
-}
-
 const QImage& VectorSkin::ResizeImage(const QString& s, qreal zoom) {
   QSvgRenderer renderer(image_files_[s]);
   result_ = QImage(renderer.defaultSize() * zoom,

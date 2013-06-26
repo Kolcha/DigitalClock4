@@ -5,7 +5,7 @@
 
 class BaseSkin : public IClockSkin {
 public:
-  BaseSkin(const QString& skin_root);
+  explicit BaseSkin(const QString& skin_root);
   virtual ~BaseSkin();
 
   const TSkinInfo& GetInfo() const;
