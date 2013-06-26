@@ -16,14 +16,19 @@ signals:
 
 public slots:
   void DrawImage(const QImage& image);
+  void SetStaysOnTop(bool set);
+  void SetTransparentForMouse(bool set);
+  void SetSeparatorFlash(bool set);
 
 private slots:
   void TimeoutHandler();
 
 private:
+  void SetWindowFlag(Qt::WindowFlags flag, bool set);
   QLabel* display_;
   QTimer timer_;
-  bool sep_state_;
+  bool sep_visible_;
+  bool sep_flashes_;
 };
 
 #endif // DIGITAL_CLOCK_H
