@@ -18,6 +18,11 @@ signals:
   void TextureChanged(const QString& filename);
   void TexturePerElementChanged(bool set);
 
+  void OpacityChanged(qreal opacity);
+  void StayOnTopChanged(bool set);
+  void TransparentForInputChanged(bool set);
+  void SeparatorFlashChanged(bool set);
+
 public slots:
   void Load();
   void Save();
@@ -27,6 +32,11 @@ public slots:
   void SetColor(const QColor& color);
   void SetTexture(const QString& filename);
   void SetTexturePerElement(bool set);
+
+  void SetOpacity(qreal opacity);
+  void SetStayOnTop(bool set);
+  void SetTransparentForInput(bool set);
+  void SetSeparatorFlash(bool set);
 
 private:
   void EmitSignals();
