@@ -30,6 +30,7 @@ HEADERS  += \
     skin/skin_drawer.h \
     core/skin_manager.h \
     core/clock_settings.h \
-    gui/digital_clock.h
+    gui/digital_clock.h \
+    core/settings_keys.h
 
 FORMS    +=
