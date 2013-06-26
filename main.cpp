@@ -1,5 +1,6 @@
 #include "gui/main_window.h"
 #include <QApplication>
+#include <QIcon>
 
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
@@ -9,6 +10,7 @@ int main(int argc, char *argv[]) {
   a.setOrganizationName("Nick Korotysh");
 
   MainWindow w;
+  w.setWindowIcon(QIcon(":/images/clock_24.png"));
   w.show();
 
   return a.exec();
