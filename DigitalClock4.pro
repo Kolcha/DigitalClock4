@@ -36,3 +36,6 @@ HEADERS  += \
     gui/main_window.h
 
 FORMS    +=
+
+RESOURCES += \
+    resources/resources.qrc
