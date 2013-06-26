@@ -33,6 +33,6 @@ void TrayControl::CreateTrayIcon() {
   tray_icon_ = new QSystemTrayIcon(this);
   tray_icon_->setContextMenu(tray_menu_);
   tray_icon_->setIcon(QIcon(":/images/clock_24.png"));
-  tray_icon_->setToolTip(qApp->applicationDisplayName());
+  tray_icon_->setToolTip(qApp->applicationDisplayName() + " " + qApp->applicationVersion());
   tray_icon_->show();
 }

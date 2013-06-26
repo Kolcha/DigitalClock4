@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
-  a.setApplicationDisplayName("Digital Clock 4");
+  a.setApplicationDisplayName("Digital Clock");
   a.setApplicationName("Digital Clock 4");
   a.setApplicationVersion("4.1.4");
   a.setOrganizationName("Nick Korotysh");
