@@ -25,9 +25,5 @@ int main(int argc, char *argv[]) {
   sd.SetString("88:88");
   w.show();
 
-  w.SetStaysOnTop(true);
-  w.SetTransparentForMouse(true);
-  w.setWindowOpacity(0.75);
-
   return a.exec();
 }

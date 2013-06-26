@@ -11,7 +11,11 @@ public:
 signals:
 
 public slots:
+  void SetStaysOnTop(bool set);
+  void SetTransparentForInput(bool set);
 
+private:
+  void SetWindowFlag(Qt::WindowFlags flag, bool set);
 };
 
 #endif // MAIN_WINDOW_H
