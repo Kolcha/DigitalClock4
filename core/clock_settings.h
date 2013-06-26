@@ -1,10 +1,8 @@
 #ifndef CLOCK_SETTINGS_H
 #define CLOCK_SETTINGS_H
 
-#include <QMap>
-#include <QString>
-#include <QColor>
 #include <QSettings>
+#include "settings_keys.h"
 
 class ClockSettings : public QObject {
   Q_OBJECT
@@ -12,35 +10,16 @@ public:
   explicit ClockSettings(QObject *parent = 0);
 
 signals:
-  void SkinNameChanged(const QString& skin_name);
-  void ZoomChanged(qreal zoom);
-  void ColorChanged(const QColor& color);
-  void TextureChanged(const QString& filename);
-  void TexturePerElementChanged(bool set);
-
-  void OpacityChanged(qreal opacity);
-  void StayOnTopChanged(bool set);
-  void TransparentForInputChanged(bool set);
-  void SeparatorFlashChanged(bool set);
+  void OptionChanged(Options opt, const QVariant& value);
 
 public slots:
   void Load();
   void Save();
-
-  void SetSkinName(const QString& skin_name);
-  void SetZoom(qreal zoom);
-  void SetColor(const QColor& color);
-  void SetTexture(const QString& filename);
-  void SetTexturePerElement(bool set);
-
-  void SetOpacity(qreal opacity);
-  void SetStayOnTop(bool set);
-  void SetTransparentForInput(bool set);
-  void SetSeparatorFlash(bool set);
+  void SetOption(Options opt, const QVariant& value);
 
 private:
-  void EmitSignals();
-  QMap<QString, QVariant> values_;
+  QMap<Options, QString> keys_;
+  QMap<Options, QVariant> values_;
   QSettings settings_;
 };
 
