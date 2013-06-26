@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
   setWindowFlags(Qt::FramelessWindowHint);
   setAttribute(Qt::WA_TranslucentBackground);
 
+  tray_control_ = new TrayControl(this);
+
   ConnectAll();
   skin_manager_.AddSkinDir(QDir(":/"));
   skin_manager_.AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
