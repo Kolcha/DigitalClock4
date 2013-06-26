@@ -1,4 +1,5 @@
 #include <QHBoxLayout>
+#include <QMouseEvent>
 #include "main_window.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -17,9 +18,25 @@ MainWindow::MainWindow(QWidget *parent)
   settings_.Load();
 }
 
-MainWindow::~MainWindow() {
-  settings_.SetOption(OPT_POSITION, pos());
-  settings_.Save();
+void MainWindow::mouseMoveEvent(QMouseEvent* event) {
+  if (event->buttons() & Qt::LeftButton) {
+    move(event->globalPos() - drag_position_);
+    event->accept();
+  }
+}
+
+void MainWindow::mousePressEvent(QMouseEvent* event) {
+  if (event->button() == Qt::LeftButton) {
+    drag_position_ = event->globalPos() - frameGeometry().topLeft();
+    event->accept();
+  }
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent* event) {
+  if (event->button() == Qt::LeftButton) {
+    settings_.SetOption(OPT_POSITION, pos());
+    settings_.Save();
+  }
 }
 
 void MainWindow::SettingsListener(Options opt, const QVariant& value) {

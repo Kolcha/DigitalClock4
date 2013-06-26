@@ -10,11 +10,13 @@ class MainWindow : public QWidget {
   Q_OBJECT
 public:
   explicit MainWindow(QWidget *parent = 0);
-  ~MainWindow();
 
-signals:
+protected:
+  void mouseMoveEvent(QMouseEvent* event);
+  void mousePressEvent(QMouseEvent* event);
+  void mouseReleaseEvent(QMouseEvent* event);
 
-public slots:
+private slots:
   void SettingsListener(Options opt, const QVariant& value);
 
 private:
@@ -25,6 +27,7 @@ private:
   SkinManager skin_manager_;
   SkinDrawer drawer_;
   DigitalClock* d_clock_;
+  QPoint drag_position_;
 };
 
 #endif // MAIN_WINDOW_H
