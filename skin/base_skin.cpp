@@ -10,7 +10,6 @@ BaseSkin::BaseSkin(const QDir& skin_root)
   info_[SI_AUTHOR] = config.value("info/author", "unknown").toString();
   info_[SI_EMAIL] = config.value("info/e-mail", "unknown").toString();
   info_[SI_COMMENT] = config.value("info/comment", "unknown").toString();
-  info_[SI_TYPE] = config.value("info/type", "unknown").toString();
   // load image files
   for (int i = 0; i < 10; ++i) {
     QString key = QString::number(i);
