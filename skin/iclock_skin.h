@@ -1,6 +1,7 @@
 #ifndef ICLOCK_SKIN_H
 #define ICLOCK_SKIN_H
 
+#include <QDir>
 #include <QMap>
 #include <QString>
 #include <QImage>
@@ -25,6 +26,6 @@ public:
   virtual const QImage& GetImage(QChar ch, qreal zoom, bool cache) = 0;
 };
 
-IClockSkin* CreateSkin(const QString& skin_root);
+IClockSkin* CreateSkin(const QDir& skin_root);
 
 #endif // ICLOCK_SKIN_H

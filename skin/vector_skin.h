@@ -5,7 +5,7 @@
 
 class VectorSkin : public BaseSkin {
 public:
-  explicit VectorSkin(const QString& skin_root);
+  explicit VectorSkin(const QDir& skin_root);
 
 protected:
   const QImage& ResizeImage(const QString& s, qreal zoom);

@@ -5,7 +5,7 @@
 
 class RasterSkin : public BaseSkin {
 public:
-  explicit RasterSkin(const QString& skin_root);
+  explicit RasterSkin(const QDir& skin_root);
 
 protected:
   const QImage& ResizeImage(const QString& s, qreal zoom);

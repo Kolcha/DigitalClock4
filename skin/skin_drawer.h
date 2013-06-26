@@ -14,7 +14,7 @@ signals:
   void DrawingFinished(const QImage& result);
 
 public slots:
-  void LoadSkin(const QString& skin_root);
+  void LoadSkin(const QDir& skin_root);
   void SetString(const QString& str);
   void SetZoom(qreal new_zoom);
   void SetColor(const QColor& new_color);

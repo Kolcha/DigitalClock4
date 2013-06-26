@@ -1,10 +1,9 @@
-#include <QDir>
 #include <QSettings>
 #include "base_skin.h"
 
-BaseSkin::BaseSkin(const QString &skin_root)
+BaseSkin::BaseSkin(const QDir& skin_root)
   : cached_zoom_(1.0) {
-  QSettings config(QDir(skin_root).filePath("skin.ini"), QSettings::IniFormat);
+  QSettings config(skin_root.filePath("skin.ini"), QSettings::IniFormat);
   // load info
   info_[SI_NAME] = config.value("info/name", "unknown").toString();
   info_[SI_VERSION] = config.value("info/version", "unknown").toString();
@@ -15,10 +14,10 @@ BaseSkin::BaseSkin(const QString &skin_root)
   // load image files
   for (int i = 1; i < 10; ++i) {
     QString key = QString::number(i);
-    image_files_[key] = config.value("files/" + key, "").toString();
+    image_files_[key] = skin_root.filePath(config.value("files/" + key, "").toString());
   }
-  image_files_[QString("s1")] = config.value("files/s1", "").toString();
-  image_files_[QString("s2")] = config.value("files/s2", "").toString();
+  image_files_[QString("s1")] = skin_root.filePath(config.value("files/s1", "").toString());
+  image_files_[QString("s2")] = skin_root.filePath(config.value("files/s2", "").toString());
 }
 
 BaseSkin::~BaseSkin() {
@@ -42,7 +41,7 @@ const QImage& BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
       cached_zoom_ = zoom;
     }
   }
-  if (cache) image_cache_[s] = result.copy(QRect());
+  if (cache) image_cache_[s] = result;
   return result;
 }
 

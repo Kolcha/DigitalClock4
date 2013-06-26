@@ -15,7 +15,7 @@ SkinDrawer::~SkinDrawer() {
   delete skin_;
 }
 
-void SkinDrawer::LoadSkin(const QString& skin_root) {
+void SkinDrawer::LoadSkin(const QDir& skin_root) {
   delete skin_;
   skin_ = CreateSkin(skin_root);
 }
