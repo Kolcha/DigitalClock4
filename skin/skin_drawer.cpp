@@ -18,6 +18,8 @@ SkinDrawer::~SkinDrawer() {
 void SkinDrawer::LoadSkin(const QDir& skin_root) {
   delete skin_;
   skin_ = CreateSkin(skin_root);
+  if (!skin_) return;
+  emit LoadedSkinInfo(skin_->GetInfo());
   Redraw();
 }
 
@@ -39,6 +41,10 @@ void SkinDrawer::SetColor(const QColor& new_color) {
 
 void SkinDrawer::SetTexture(const QString& filename) {
   if (!QFile::exists(filename)) return;
+  if (!use_txd_) {
+    txd_file_ = filename;
+    return;
+  }
   texture_.load(filename);
   Redraw();
 }
@@ -53,6 +59,11 @@ void SkinDrawer::SetTextureDrawMode(SkinDrawer::DrawMode mode) {
   Redraw();
 }
 
+void SkinDrawer::SetUseTexture(bool set) {
+  use_txd_ = set;
+  SetTexture(txd_file_);
+}
+
 void SkinDrawer::SetPreviewMode(bool set) {
   preview_mode_ = set;
 }
@@ -60,7 +71,7 @@ void SkinDrawer::SetPreviewMode(bool set) {
 void SkinDrawer::Redraw() {
   if (str_.isEmpty() || !skin_) return;
   // get images for all symbols
-  QList<QPixmap*> elements;
+  QList<QPixmapPtr> elements;
   for (auto i = str_.begin(); i != str_.end(); ++i) {
     elements.push_back(skin_->GetImage(*i, zoom_, !preview_mode_));
   }
@@ -99,11 +110,6 @@ void SkinDrawer::Redraw() {
   painter.end();
 
   emit DrawingFinished(result);
-  if (preview_mode_) {
-    for (auto& elem : elements) {
-      delete elem;
-    }
-  }
 }
 
 void SkinDrawer::DrawTexture(QPainter& painter, const QRect& rect) {

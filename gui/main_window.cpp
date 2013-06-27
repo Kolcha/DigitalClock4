@@ -53,7 +53,7 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
     case OPT_OPACITY:
     {
       qreal opacity = value.toReal();
-      setWindowOpacity(opacity > 0.1 ? opacity : 0.75);
+      setWindowOpacity(opacity > 0.045 ? opacity : 0.75);
       break;
     }
 
@@ -83,7 +83,7 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
     case OPT_ZOOM:
     {
       qreal zoom = value.toReal();
-      drawer_->SetZoom((zoom > 0.1) && (zoom <= 4) ? zoom : 1.25);
+      drawer_->SetZoom((zoom > 0.1) && (zoom < 4.1) ? zoom : 1.25);
       break;
     }
 
@@ -105,7 +105,44 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
     case OPT_TEXTURE_DRAW_MODE:
       drawer_->SetTextureDrawMode((SkinDrawer::DrawMode)value.toInt());
       break;
+
+    case OPT_USE_TEXTURE:
+      drawer_->SetUseTexture(value.toBool());
+      break;
   }
+}
+
+void MainWindow::ShowSettingsDialog() {
+  // create settings dialog and connect all need signals
+  // (settings dialog will be deleted automatically)
+  settings_dlg_ = new SettingsDialog();
+  connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
+          settings_dlg_, SLOT(SetSkinList(QStringList)));
+  skin_manager_->ListSkins();
+  connect(drawer_, SIGNAL(LoadedSkinInfo(TSkinInfo)),
+          settings_dlg_, SLOT(DisplaySkinInfo(TSkinInfo)));
+
+  // reload settings to emit signals needed to init settings dialog controls
+  // with current values
+  connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
+          settings_dlg_, SLOT(SettingsListener(Options,QVariant)));
+  settings_->Load();
+  settings_dlg_->show();
+  // disable settings listener for settings dialog
+  disconnect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
+             settings_dlg_, SLOT(SettingsListener(Options,QVariant)));
+  // connect main logic signals: change/save/discard settings
+  connect(settings_dlg_, SIGNAL(OptionChanged(Options,QVariant)),
+          settings_, SLOT(SetOption(Options,QVariant)));
+  connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(settings_dlg_, SIGNAL(rejected()), settings_, SLOT(Load()));
+
+  connect(settings_dlg_, SIGNAL(destroyed()), this, SLOT(DisablePreviewMode()));
+  drawer_->SetPreviewMode(true);
+}
+
+void MainWindow::DisablePreviewMode() {
+  drawer_->SetPreviewMode(false);
 }
 
 void MainWindow::ConnectAll() {
@@ -114,6 +151,7 @@ void MainWindow::ConnectAll() {
   connect(skin_manager_, SIGNAL(SkinFound(QDir)), drawer_, SLOT(LoadSkin(QDir)));
   connect(drawer_, SIGNAL(DrawingFinished(QPixmap)), d_clock_, SLOT(DrawImage(QPixmap)));
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
+  connect(tray_control_, SIGNAL(ShowSettingsDlg()), this, SLOT(ShowSettingsDialog()));
 }
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {

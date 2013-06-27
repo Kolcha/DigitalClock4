@@ -14,6 +14,7 @@ void SkinManager::DelSkinDir(const QDir& dir) {
 }
 
 void SkinManager::ListSkins() {
+  skins_.clear();
   for (auto& s_dir : skin_dirs_) {
     QStringList f_dirs = s_dir.entryList(QStringList("*"), QDir::NoDotAndDotDot | QDir::AllDirs);
     for (auto& f_dir : f_dirs) {

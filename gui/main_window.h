@@ -6,6 +6,7 @@
 #include "../skin/skin_drawer.h"
 #include "digital_clock.h"
 #include "tray_control.h"
+#include "settings_dialog.h"
 
 class MainWindow : public QWidget {
   Q_OBJECT
@@ -19,6 +20,8 @@ protected:
 
 private slots:
   void SettingsListener(Options opt, const QVariant& value);
+  void ShowSettingsDialog();
+  void DisablePreviewMode();
 
 private:
   void ConnectAll();
@@ -29,6 +32,7 @@ private:
   SkinDrawer* drawer_;
   DigitalClock* d_clock_;
   TrayControl* tray_control_;
+  SettingsDialog* settings_dlg_;
   QPoint drag_position_;
 };
 

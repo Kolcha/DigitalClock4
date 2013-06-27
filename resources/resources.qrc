@@ -16,9 +16,9 @@
     </qresource>
     <qresource prefix="/images">
         <file alias="clock_24.png">images/clock.png</file>
-        <file alias="menu_about.png">images/bubble.png</file>
-        <file alias="menu_quit.png">images/cross.png</file>
-        <file alias="menu_settings.png">images/settings.png</file>
         <file alias="menu_about_qt.png">images/bubble-qt.png</file>
+        <file alias="about.svg">images/bubble-24.svg</file>
+        <file alias="quit.svg">images/cross-24.svg</file>
+        <file alias="settings.svg">images/settings-24.svg</file>
     </qresource>
 </RCC>
