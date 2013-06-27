@@ -58,7 +58,7 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
     case OPT_OPACITY:
     {
       qreal opacity = value.toReal();
-      setWindowOpacity(opacity > 0.1 ? opacity : 0.75);
+      setWindowOpacity(opacity > 0.045 ? opacity : 0.75);
       break;
     }
 
@@ -88,7 +88,7 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
     case OPT_ZOOM:
     {
       qreal zoom = value.toReal();
-      drawer_->SetZoom((zoom > 0.1) && (zoom <= 4) ? zoom : 1.25);
+      drawer_->SetZoom((zoom > 0.1) && (zoom < 4.1) ? zoom : 1.25);
       break;
     }
 

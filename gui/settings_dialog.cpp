@@ -1,3 +1,6 @@
+#include <QColorDialog>
+#include <QFileDialog>
+#include <QFileInfo>
 #include "../skin/skin_drawer.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
@@ -16,7 +19,7 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
     case OPT_OPACITY:
     {
       qreal opacity = value.toReal();
-      ui->opacity_slider->setValue(int(opacity > 0.1 ? opacity * 100 : 75));
+      ui->opacity_slider->setValue(int(opacity > 0.045 ? opacity * 100 : 75));
       break;
     }
 
@@ -42,21 +45,21 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
     case OPT_ZOOM:
     {
       qreal zoom = value.toReal();
-      ui->zoom_slider->setValue(int((zoom > 0.1) && (zoom <= 4) ? zoom * 100 : 125));
+      ui->zoom_slider->setValue(int((zoom > 0.1) && (zoom < 4.1) ? zoom * 100 : 125));
       break;
     }
 
     case OPT_COLOR:
     {
-//      QColor color = value.value<QColor>();
-//      ui->type_color->setChecked(color.isValid());
+      QColor color = value.value<QColor>();
+      last_color_ = color.isValid() ? color : Qt::blue;
       break;
     }
 
     case OPT_TEXTURE:
     {
-//      QString texture = value.toString();
-//      ui->type_image->setChecked(!texture.isEmpty());
+      QString texture = value.toString();
+      last_txd_path_ = texture.isEmpty() ? "textures" : QFileInfo(texture).absolutePath();
       break;
     }
 
@@ -119,4 +122,46 @@ void SettingsDialog::on_opacity_slider_valueChanged(int value) {
 
 void SettingsDialog::on_zoom_slider_valueChanged(int value) {
   emit OptionChanged(OPT_ZOOM, value / 100.);
+}
+
+void SettingsDialog::on_txd_per_elem_toggled(bool checked) {
+  emit OptionChanged(OPT_TEXTURE_PER_ELEMENT, checked);
+}
+
+void SettingsDialog::on_mode_stretch_toggled(bool checked) {
+  if (checked) emit OptionChanged(OPT_TEXTURE_DRAW_MODE, SkinDrawer::DM_STRETCH);
+}
+
+void SettingsDialog::on_mode_tile_toggled(bool checked) {
+  if (checked) emit OptionChanged(OPT_TEXTURE_DRAW_MODE, SkinDrawer::DM_TILE);
+}
+
+void SettingsDialog::on_sel_color_btn_clicked() {
+  QColor color = QColorDialog::getColor(last_color_, this);
+  if (color.isValid()) {
+    emit OptionChanged(OPT_COLOR, color);
+    emit OptionChanged(OPT_USE_TEXTURE, false);
+    last_color_ = color;
+  }
+}
+
+void SettingsDialog::on_sel_image_btn_clicked() {
+  QString texture = QFileDialog::getOpenFileName(this, tr("Open texture file"),
+                    last_txd_path_,
+                    tr("Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)"));
+  if (!texture.isEmpty()) {
+    emit OptionChanged(OPT_TEXTURE, texture);
+    emit OptionChanged(OPT_USE_TEXTURE, true);
+    last_txd_path_ = QFileInfo(texture).absolutePath();
+  }
+}
+
+void SettingsDialog::on_type_color_toggled(bool checked) {
+  if (!checked) return;
+  emit OptionChanged(OPT_USE_TEXTURE, false);
+  emit OptionChanged(OPT_COLOR, last_color_);
+}
+
+void SettingsDialog::on_type_image_toggled(bool checked) {
+  emit OptionChanged(OPT_USE_TEXTURE, checked);
 }

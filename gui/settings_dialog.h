@@ -31,9 +31,18 @@ private slots:
   void on_sep_flash_toggled(bool checked);
   void on_opacity_slider_valueChanged(int value);
   void on_zoom_slider_valueChanged(int value);
+  void on_txd_per_elem_toggled(bool checked);
+  void on_mode_stretch_toggled(bool checked);
+  void on_mode_tile_toggled(bool checked);
+  void on_sel_color_btn_clicked();
+  void on_sel_image_btn_clicked();
+  void on_type_color_toggled(bool checked);
+  void on_type_image_toggled(bool checked);
 
 private:
   Ui::SettingsDialog* ui;
+  QColor last_color_;
+  QString last_txd_path_;
 };
 
 #endif // SETTINGS_DIALOG_H
