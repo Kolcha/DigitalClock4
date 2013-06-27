@@ -34,8 +34,8 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
 
     case OPT_SKIN_NAME:
     {
-//      QString skin_name = value.toString();
-//      skin_manager_->FindSkin(skin_name.isEmpty() ? "Comic Sans" : skin_name);
+      QString skin_name = value.toString();
+      ui->skin_box->setCurrentText(skin_name.isEmpty() ? "Comic Sans" : skin_name);
       break;
     }
 
@@ -86,6 +86,10 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
   }
 }
 
+void SettingsDialog::SetSkinList(const QStringList& skins) {
+  ui->skin_box->addItems(skins);
+}
+
 void SettingsDialog::changeEvent(QEvent* e) {
   QDialog::changeEvent(e);
   switch (e->type()) {
@@ -95,4 +99,24 @@ void SettingsDialog::changeEvent(QEvent* e) {
     default:
       break;
   }
+}
+
+void SettingsDialog::on_stay_on_top_toggled(bool checked) {
+  emit OptionChanged(OPT_STAY_ON_TOP, checked);
+}
+
+void SettingsDialog::on_transp_for_input_toggled(bool checked) {
+  emit OptionChanged(OPT_TRANSP_FOR_INPUT, checked);
+}
+
+void SettingsDialog::on_sep_flash_toggled(bool checked) {
+  emit OptionChanged(OPT_SEPARATOR_FLASH, checked);
+}
+
+void SettingsDialog::on_opacity_slider_valueChanged(int value) {
+  emit OptionChanged(OPT_OPACITY, value / 100.);
+}
+
+void SettingsDialog::on_zoom_slider_valueChanged(int value) {
+  emit OptionChanged(OPT_ZOOM, value / 100.);
 }

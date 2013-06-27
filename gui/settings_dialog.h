@@ -20,9 +20,17 @@ signals:
 
 public slots:
   void SettingsListener(Options opt, const QVariant& value);
+  void SetSkinList(const QStringList& skins);
 
 protected:
   void changeEvent(QEvent* e);
+
+private slots:
+  void on_stay_on_top_toggled(bool checked);
+  void on_transp_for_input_toggled(bool checked);
+  void on_sep_flash_toggled(bool checked);
+  void on_opacity_slider_valueChanged(int value);
+  void on_zoom_slider_valueChanged(int value);
 
 private:
   Ui::SettingsDialog* ui;

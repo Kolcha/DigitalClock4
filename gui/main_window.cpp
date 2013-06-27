@@ -141,6 +141,8 @@ void MainWindow::ConnectAll() {
 
   connect(tray_control_, SIGNAL(ShowSettingsDlg()), this, SLOT(ShowSettingsDialog()));
 
+  connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
+          settings_dlg_, SLOT(SetSkinList(QStringList)));
   connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(settings_dlg_, SIGNAL(rejected()), settings_, SLOT(Load()));
 }
