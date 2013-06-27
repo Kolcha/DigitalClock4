@@ -48,6 +48,11 @@ void SkinDrawer::SetTexturePerElement(bool set) {
   Redraw();
 }
 
+void SkinDrawer::SetTextureDrawMode(SkinDrawer::DrawMode mode) {
+  txd_draw_mode_ = mode;
+  Redraw();
+}
+
 void SkinDrawer::SetPreviewMode(bool set) {
   preview_mode_ = set;
 }
@@ -83,16 +88,13 @@ void SkinDrawer::Redraw() {
     painter.drawPixmap(x, 0, *elem);
     if (txd_per_elem_) {
       // draw texture
-      painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-      painter.drawTiledPixmap(x, 0, elem->width(), elem->height(), texture_);
-      painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+      DrawTexture(painter, QRect(x, 0, elem->width(), elem->height()));
     }
     x += elem->width() + space;
   }
   if (!txd_per_elem_) {
     // draw texture
-    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-    painter.drawTiledPixmap(result->rect(), texture_);
+    DrawTexture(painter, result->rect());
   }
   painter.end();
 
@@ -103,4 +105,19 @@ void SkinDrawer::Redraw() {
       delete elem;
     }
   }
+}
+
+void SkinDrawer::DrawTexture(QPainter& painter, const QRect& rect) {
+  QPainter::CompositionMode old_mode = painter.compositionMode();
+  painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+  switch (txd_draw_mode_) {
+    case DM_STRETCH:
+      painter.drawPixmap(rect, texture_, texture_.rect());
+      break;
+
+    case DM_TILE:
+      painter.drawTiledPixmap(rect, texture_);
+      break;
+  }
+  painter.setCompositionMode(old_mode);
 }

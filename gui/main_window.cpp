@@ -101,6 +101,10 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
     case OPT_TEXTURE_PER_ELEMENT:
       drawer_->SetTexturePerElement(value.toBool());
       break;
+
+    case OPT_TEXTURE_DRAW_MODE:
+      drawer_->SetTextureDrawMode((SkinDrawer::DrawMode)value.toInt());
+      break;
   }
 }
 

@@ -10,6 +10,8 @@ public:
   explicit SkinDrawer(QObject* parent = 0);
   ~SkinDrawer();
 
+  enum DrawMode {DM_STRETCH, DM_TILE};
+
 signals:
   void DrawingFinished(const QPixmap* result);
 
@@ -20,15 +22,18 @@ public slots:
   void SetColor(const QColor& new_color);
   void SetTexture(const QString& filename);
   void SetTexturePerElement(bool set);
+  void SetTextureDrawMode(DrawMode mode);
   void SetPreviewMode(bool set);
 
 private:
   void Redraw();
+  void DrawTexture(QPainter& painter, const QRect& rect);
   IClockSkin* skin_;
   QString str_;
   qreal zoom_;
   QPixmap texture_;
   bool txd_per_elem_;
+  DrawMode txd_draw_mode_;
   bool preview_mode_;
 };
 
