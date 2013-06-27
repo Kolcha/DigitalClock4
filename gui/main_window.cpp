@@ -10,7 +10,8 @@ MainWindow::MainWindow(QWidget* parent)
   main_layout->addWidget(d_clock_);
   setLayout(main_layout);
 
-  setWindowFlags(Qt::FramelessWindowHint);
+  setWindowIcon(QIcon(":/images/clock_24.png"));
+  setWindowFlags(Qt::FramelessWindowHint | Qt::Tool);
   setAttribute(Qt::WA_TranslucentBackground);
 
   tray_control_ = new TrayControl(this);
