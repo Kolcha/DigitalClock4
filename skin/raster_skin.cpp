@@ -3,7 +3,7 @@
 RasterSkin::RasterSkin(const QDir& skin_root)
   : BaseSkin(skin_root) {
   for (auto iter = image_files_.begin(); iter != image_files_.end(); ++iter) {
-    orig_images_[iter.key()] = new QImage(iter.value());
+    orig_images_[iter.key()] = new QPixmap(iter.value());
   }
 }
 
@@ -14,9 +14,9 @@ RasterSkin::~RasterSkin() {
   }
 }
 
-QImage* RasterSkin::ResizeImage(const QString& s, qreal zoom) {
-  QImage* original = orig_images_[s];
-  QImage* result = new QImage();
+QPixmap* RasterSkin::ResizeImage(const QString& s, qreal zoom) {
+  QPixmap* original = orig_images_[s];
+  QPixmap* result = new QPixmap();
   *result = original->scaled(original->size() * zoom,
                              Qt::KeepAspectRatio, Qt::SmoothTransformation);
   return result;

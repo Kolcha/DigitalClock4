@@ -22,8 +22,8 @@ DigitalClock::~DigitalClock() {
   timer_->stop();
 }
 
-void DigitalClock::DrawImage(const QImage* image) {
-  display_->setPixmap(QPixmap::fromImage(*image));
+void DigitalClock::DrawImage(const QPixmap* image) {
+  display_->setPixmap(*image);
 }
 
 void DigitalClock::SetSeparatorFlash(bool set) {

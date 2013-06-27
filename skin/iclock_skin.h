@@ -4,7 +4,7 @@
 #include <QDir>
 #include <QMap>
 #include <QString>
-#include <QImage>
+#include <QPixmap>
 
 // skin info fields
 enum FSkinInfo {
@@ -22,7 +22,7 @@ public:
   virtual ~IClockSkin() {}
 
   virtual const TSkinInfo& GetInfo() const = 0;
-  virtual QImage* GetImage(QChar ch, qreal zoom, bool cache) = 0;
+  virtual QPixmap* GetImage(QChar ch, qreal zoom, bool cache) = 0;
 };
 
 IClockSkin* CreateSkin(const QDir& skin_root);

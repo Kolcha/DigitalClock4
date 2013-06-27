@@ -8,7 +8,7 @@ public:
   explicit VectorSkin(const QDir& skin_root);
 
 protected:
-  QImage* ResizeImage(const QString& s, qreal zoom);
+  QPixmap* ResizeImage(const QString& s, qreal zoom);
 };
 
 #endif // VECTOR_SKIN_H

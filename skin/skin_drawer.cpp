@@ -55,7 +55,7 @@ void SkinDrawer::SetPreviewMode(bool set) {
 void SkinDrawer::Redraw() {
   if (str_.isEmpty() || !skin_) return;
   // get images for all symbols
-  QList<QImage*> elements;
+  QList<QPixmap*> elements;
   for (auto i = str_.begin(); i != str_.end(); ++i) {
     elements.push_back(skin_->GetImage(*i, zoom_, !preview_mode_));
   }
@@ -71,7 +71,7 @@ void SkinDrawer::Redraw() {
   result_w += space * (str_.length() - 1);
 
   // create result image
-  QImage* result = new QImage(result_w, result_h, QImage::Format_ARGB32_Premultiplied);
+  QPixmap* result = new QPixmap(result_w, result_h);
   QPainter painter(result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
   painter.fillRect(result->rect(), Qt::transparent);
@@ -80,7 +80,7 @@ void SkinDrawer::Redraw() {
   int x = 0;
   for (auto& elem : elements) {
     // draw mask
-    painter.drawImage(x, 0, *elem);
+    painter.drawPixmap(x, 0, *elem);
     if (txd_per_elem_) {
       // draw texture
       painter.setCompositionMode(QPainter::CompositionMode_SourceIn);

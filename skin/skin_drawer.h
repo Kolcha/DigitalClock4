@@ -11,7 +11,7 @@ public:
   ~SkinDrawer();
 
 signals:
-  void DrawingFinished(const QImage* result);
+  void DrawingFinished(const QPixmap* result);
 
 public slots:
   void LoadSkin(const QDir& skin_root);

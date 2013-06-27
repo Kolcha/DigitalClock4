@@ -108,8 +108,8 @@ void MainWindow::ConnectAll() {
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
           this, SLOT(SettingsListener(Options,QVariant)));
   connect(skin_manager_, SIGNAL(SkinFound(QDir)), drawer_, SLOT(LoadSkin(QDir)));
-  connect(drawer_, SIGNAL(DrawingFinished(const QImage*)),
-          d_clock_, SLOT(DrawImage(const QImage*)));
+  connect(drawer_, SIGNAL(DrawingFinished(const QPixmap*)),
+          d_clock_, SLOT(DrawImage(const QPixmap*)));
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
 }
 

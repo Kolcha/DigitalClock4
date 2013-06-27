@@ -30,10 +30,10 @@ const TSkinInfo& BaseSkin::GetInfo() const {
   return info_;
 }
 
-QImage* BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
+QPixmap* BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
   QString s;
   CharToKey(ch, s);
-  QImage* result = 0;
+  QPixmap* result = 0;
   if (zoom == cached_zoom_) {
     result = image_cache_[s];
     if (!result) result = ResizeImage(s, zoom);
