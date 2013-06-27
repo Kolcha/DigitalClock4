@@ -84,7 +84,7 @@ void SkinDrawer::Redraw() {
     if (txd_per_elem_) {
       // draw texture
       painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-      painter.drawTiledPixmap(elem->rect(), texture_, QPoint(x, 0));
+      painter.drawTiledPixmap(x, 0, elem->width(), elem->height(), texture_);
       painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
     }
     x += elem->width() + space;
