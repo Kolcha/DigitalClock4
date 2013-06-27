@@ -10,7 +10,6 @@ DigitalClock::DigitalClock(QWidget* parent)
   setLayout(main_layout);
 
   timer_ = new QTimer(this);
-  timer_->setTimerType(Qt::PreciseTimer);
   timer_->setInterval(500);
   connect(timer_, SIGNAL(timeout()), this, SLOT(TimeoutHandler()));
   timer_->start();

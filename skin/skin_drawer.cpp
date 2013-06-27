@@ -77,24 +77,19 @@ void SkinDrawer::Redraw() {
   painter.fillRect(result->rect(), Qt::transparent);
   painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
 
-  if (txd_per_elem_) {
-    int x = 0;
-    for (auto& elem : elements) {
-      // draw mask
-      painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-      painter.drawImage(x, 0, *elem);
+  int x = 0;
+  for (auto& elem : elements) {
+    // draw mask
+    painter.drawImage(x, 0, *elem);
+    if (txd_per_elem_) {
       // draw texture
       painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
       painter.drawTiledPixmap(elem->rect(), texture_, QPoint(x, 0));
-      x += elem->width() + space;
+      painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
     }
-  } else {
-    // draw mask
-    int x = 0;
-    for (auto& elem : elements) {
-      painter.drawImage(x, 0, *elem);
-      x += elem->width() + space;
-    }
+    x += elem->width() + space;
+  }
+  if (!txd_per_elem_) {
     // draw texture
     painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
     painter.drawTiledPixmap(result->rect(), texture_);
@@ -102,4 +97,10 @@ void SkinDrawer::Redraw() {
   painter.end();
 
   emit DrawingFinished(result);
+  delete result;
+  if (preview_mode_) {
+    for (auto& elem : elements) {
+      delete elem;
+    }
+  }
 }
