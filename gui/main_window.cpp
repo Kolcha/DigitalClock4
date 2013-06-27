@@ -19,17 +19,12 @@ MainWindow::MainWindow(QWidget* parent)
   settings_ = new ClockSettings(this);
   skin_manager_ = new SkinManager(this);
   drawer_ = new SkinDrawer(this);
-  settings_dlg_ = new SettingsDialog();
 
   ConnectAll();
   skin_manager_->AddSkinDir(QDir(":/"));
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
   settings_->Load();
-}
-
-MainWindow::~MainWindow() {
-  delete settings_dlg_;
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent* event) {
@@ -118,18 +113,36 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
 }
 
 void MainWindow::ShowSettingsDialog() {
-  disconnect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
-             this, SLOT(SettingsListener(Options,QVariant)));
+  // create settings dialog and connect all need signals
+  // (settings dialog will be deleted automatically)
+  settings_dlg_ = new SettingsDialog();
+  connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
+          settings_dlg_, SLOT(SetSkinList(QStringList)));
+  skin_manager_->ListSkins();
+  connect(drawer_, SIGNAL(LoadedSkinInfo(TSkinInfo)),
+          settings_dlg_, SLOT(DisplaySkinInfo(TSkinInfo)));
+
+  // reload settings to emit signals needed to init settings dialog controls
+  // with current values
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
           settings_dlg_, SLOT(SettingsListener(Options,QVariant)));
   settings_->Load();
   settings_dlg_->show();
-  connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
-          this, SLOT(SettingsListener(Options,QVariant)));
+  // disable settings listener for settings dialog
   disconnect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
              settings_dlg_, SLOT(SettingsListener(Options,QVariant)));
+  // connect main logic signals: change/save/discard settings
   connect(settings_dlg_, SIGNAL(OptionChanged(Options,QVariant)),
           settings_, SLOT(SetOption(Options,QVariant)));
+  connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(settings_dlg_, SIGNAL(rejected()), settings_, SLOT(Load()));
+
+  connect(settings_dlg_, SIGNAL(destroyed()), this, SLOT(DisablePreviewMode()));
+  drawer_->SetPreviewMode(true);
+}
+
+void MainWindow::DisablePreviewMode() {
+  drawer_->SetPreviewMode(false);
 }
 
 void MainWindow::ConnectAll() {
@@ -138,15 +151,7 @@ void MainWindow::ConnectAll() {
   connect(skin_manager_, SIGNAL(SkinFound(QDir)), drawer_, SLOT(LoadSkin(QDir)));
   connect(drawer_, SIGNAL(DrawingFinished(QPixmap)), d_clock_, SLOT(DrawImage(QPixmap)));
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
-
   connect(tray_control_, SIGNAL(ShowSettingsDlg()), this, SLOT(ShowSettingsDialog()));
-
-  connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
-          settings_dlg_, SLOT(SetSkinList(QStringList)));
-  connect(drawer_, SIGNAL(LoadedSkinInfo(TSkinInfo)),
-          settings_dlg_, SLOT(DisplaySkinInfo(TSkinInfo)));
-  connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
-  connect(settings_dlg_, SIGNAL(rejected()), settings_, SLOT(Load()));
 }
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {
