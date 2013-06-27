@@ -71,7 +71,7 @@ void SkinDrawer::SetPreviewMode(bool set) {
 void SkinDrawer::Redraw() {
   if (str_.isEmpty() || !skin_) return;
   // get images for all symbols
-  QList<QPixmap*> elements;
+  QList<QPixmapPtr> elements;
   for (auto i = str_.begin(); i != str_.end(); ++i) {
     elements.push_back(skin_->GetImage(*i, zoom_, !preview_mode_));
   }
@@ -110,11 +110,6 @@ void SkinDrawer::Redraw() {
   painter.end();
 
   emit DrawingFinished(result);
-  if (preview_mode_) {
-    for (auto& elem : elements) {
-      delete elem;
-    }
-  }
 }
 
 void SkinDrawer::DrawTexture(QPainter& painter, const QRect& rect) {
