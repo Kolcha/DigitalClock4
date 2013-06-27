@@ -76,10 +76,10 @@ void SkinDrawer::Redraw() {
   result_w += space * (str_.length() - 1);
 
   // create result image
-  QPixmap* result = new QPixmap(result_w, result_h);
-  QPainter painter(result);
+  QPixmap result(result_w, result_h);
+  QPainter painter(&result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
-  painter.fillRect(result->rect(), Qt::transparent);
+  painter.fillRect(result.rect(), Qt::transparent);
   painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
 
   int x = 0;
@@ -94,12 +94,11 @@ void SkinDrawer::Redraw() {
   }
   if (!txd_per_elem_) {
     // draw texture
-    DrawTexture(painter, result->rect());
+    DrawTexture(painter, result.rect());
   }
   painter.end();
 
   emit DrawingFinished(result);
-  delete result;
   if (preview_mode_) {
     for (auto& elem : elements) {
       delete elem;

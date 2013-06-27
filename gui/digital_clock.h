@@ -14,7 +14,7 @@ signals:
   void ImageNeeded(const QString& text);
 
 public slots:
-  void DrawImage(const QPixmap* image);
+  void DrawImage(const QPixmap& image);
   void SetSeparatorFlash(bool set);
 
 private slots:
