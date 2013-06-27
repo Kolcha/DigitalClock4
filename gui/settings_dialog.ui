@@ -309,6 +309,22 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>stay_on_top</tabstop>
+  <tabstop>transp_for_input</tabstop>
+  <tabstop>sep_flash</tabstop>
+  <tabstop>opacity_slider</tabstop>
+  <tabstop>zoom_slider</tabstop>
+  <tabstop>skin_box</tabstop>
+  <tabstop>txd_per_elem</tabstop>
+  <tabstop>type_color</tabstop>
+  <tabstop>sel_color_btn</tabstop>
+  <tabstop>type_image</tabstop>
+  <tabstop>sel_image_btn</tabstop>
+  <tabstop>mode_stretch</tabstop>
+  <tabstop>mode_tile</tabstop>
+  <tabstop>buttonBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -318,8 +334,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>187</x>
+     <y>395</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -334,12 +350,108 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>255</x>
+     <y>395</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoom_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>zoom_value</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>295</x>
+     <y>76</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>377</x>
+     <y>79</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>opacity_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>opacity_value</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>337</x>
+     <y>46</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>385</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>type_color</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sel_color_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>80</x>
+     <y>326</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>182</x>
+     <y>328</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>type_image</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sel_image_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>355</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>191</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>type_image</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mode_group</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>239</x>
+     <y>375</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>type_image</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>txd_per_elem</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>49</x>
+     <y>281</y>
     </hint>
    </hints>
   </connection>
