@@ -7,14 +7,14 @@
 class DigitalClock : public QWidget {
   Q_OBJECT
 public:
-  explicit DigitalClock(QWidget *parent = 0);
+  explicit DigitalClock(QWidget* parent = 0);
   ~DigitalClock();
 
 signals:
   void ImageNeeded(const QString& text);
 
 public slots:
-  void DrawImage(const QImage& image);
+  void DrawImage(const QImage* image);
   void SetSeparatorFlash(bool set);
 
 private slots:
@@ -22,7 +22,7 @@ private slots:
 
 private:
   QLabel* display_;
-  QTimer timer_;
+  QTimer* timer_;
   bool sep_visible_;
   bool sep_flashes_;
 };

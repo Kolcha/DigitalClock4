@@ -6,12 +6,13 @@
 class RasterSkin : public BaseSkin {
 public:
   explicit RasterSkin(const QDir& skin_root);
+  ~RasterSkin();
 
 protected:
-  const QImage& ResizeImage(const QString& s, qreal zoom);
+  QImage* ResizeImage(const QString& s, qreal zoom);
 
 private:
-  QMap<QString, QImage> orig_images_;
+  QMap<QString, QImage*> orig_images_;
 };
 
 #endif // RASTER_SKIN_H

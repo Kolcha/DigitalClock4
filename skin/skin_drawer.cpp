@@ -3,7 +3,7 @@
 #include <QPainter>
 #include "skin_drawer.h"
 
-SkinDrawer::SkinDrawer(QObject *parent)
+SkinDrawer::SkinDrawer(QObject* parent)
   : QObject(parent), texture_(8, 8) {
   skin_ = 0;
   zoom_ = 1.0;
@@ -55,7 +55,7 @@ void SkinDrawer::SetPreviewMode(bool set) {
 void SkinDrawer::Redraw() {
   if (str_.isEmpty() || !skin_) return;
   // get images for all symbols
-  QList<QImage> elements;
+  QList<QImage*> elements;
   for (auto i = str_.begin(); i != str_.end(); ++i) {
     elements.push_back(skin_->GetImage(*i, zoom_, !preview_mode_));
   }
@@ -63,18 +63,18 @@ void SkinDrawer::Redraw() {
   int result_w = 0;
   int result_h = 0;
   for (auto& elem : elements) {
-    result_w += elem.width();
-    result_h = qMax(result_h, elem.height());
+    result_w += elem->width();
+    result_h = qMax(result_h, elem->height());
   }
   // leave some space between images
   int space = 4;
   result_w += space * (str_.length() - 1);
 
   // create result image
-  result_ = QImage(result_w, result_h, QImage::Format_ARGB32_Premultiplied);
-  QPainter painter(&result_);
+  QImage* result = new QImage(result_w, result_h, QImage::Format_ARGB32_Premultiplied);
+  QPainter painter(result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
-  painter.fillRect(result_.rect(), Qt::transparent);
+  painter.fillRect(result->rect(), Qt::transparent);
   painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
 
   if (txd_per_elem_) {
@@ -82,24 +82,24 @@ void SkinDrawer::Redraw() {
     for (auto& elem : elements) {
       // draw mask
       painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-      painter.drawImage(x, 0, elem);
+      painter.drawImage(x, 0, *elem);
       // draw texture
       painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-      painter.drawTiledPixmap(elem.rect(), texture_, QPoint(x, 0));
-      x += elem.width() + space;
+      painter.drawTiledPixmap(elem->rect(), texture_, QPoint(x, 0));
+      x += elem->width() + space;
     }
   } else {
     // draw mask
     int x = 0;
     for (auto& elem : elements) {
-      painter.drawImage(x, 0, elem);
-      x += elem.width() + space;
+      painter.drawImage(x, 0, *elem);
+      x += elem->width() + space;
     }
     // draw texture
     painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-    painter.drawTiledPixmap(result_.rect(), texture_);
+    painter.drawTiledPixmap(result->rect(), texture_);
   }
   painter.end();
 
-  emit DrawingFinished(result_);
+  emit DrawingFinished(result);
 }

@@ -7,11 +7,11 @@
 class SkinDrawer : public QObject {
   Q_OBJECT
 public:
-  explicit SkinDrawer(QObject *parent = 0);
+  explicit SkinDrawer(QObject* parent = 0);
   ~SkinDrawer();
 
 signals:
-  void DrawingFinished(const QImage& result);
+  void DrawingFinished(const QImage* result);
 
 public slots:
   void LoadSkin(const QDir& skin_root);
@@ -24,7 +24,6 @@ public slots:
 
 private:
   void Redraw();
-  QImage result_;
   IClockSkin* skin_;
   QString str_;
   qreal zoom_;

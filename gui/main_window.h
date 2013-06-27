@@ -10,7 +10,7 @@
 class MainWindow : public QWidget {
   Q_OBJECT
 public:
-  explicit MainWindow(QWidget *parent = 0);
+  explicit MainWindow(QWidget* parent = 0);
 
 protected:
   void mouseMoveEvent(QMouseEvent* event);
@@ -24,12 +24,12 @@ private:
   void ConnectAll();
   void SetWindowFlag(Qt::WindowFlags flag, bool set);
 
-  ClockSettings settings_;
-  SkinManager skin_manager_;
-  SkinDrawer drawer_;
+  ClockSettings* settings_;
+  SkinManager* skin_manager_;
+  SkinDrawer* drawer_;
   DigitalClock* d_clock_;
-  QPoint drag_position_;
   TrayControl* tray_control_;
+  QPoint drag_position_;
 };
 
 #endif // MAIN_WINDOW_H

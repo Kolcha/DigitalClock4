@@ -7,13 +7,11 @@
 class TrayControl : public QObject {
   Q_OBJECT
 public:
-  explicit TrayControl(QObject *parent = 0);
+  explicit TrayControl(QObject* parent = 0);
 
 signals:
   void ShowSettingsDlg();
   void ShowAboutDlg();
-
-public slots:
 
 private:
   void CreateActions();

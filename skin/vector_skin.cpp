@@ -6,13 +6,13 @@ VectorSkin::VectorSkin(const QDir& skin_root)
   : BaseSkin(skin_root) {
 }
 
-const QImage& VectorSkin::ResizeImage(const QString& s, qreal zoom) {
+QImage* VectorSkin::ResizeImage(const QString& s, qreal zoom) {
   QSvgRenderer renderer(image_files_[s]);
-  result_ = QImage(renderer.defaultSize() * zoom, QImage::Format_ARGB32_Premultiplied);
-  QPainter painter(&result_);
+  QImage* result = new QImage(renderer.defaultSize() * zoom, QImage::Format_ARGB32_Premultiplied);
+  QPainter painter(result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
-  painter.fillRect(result_.rect(), Qt::transparent);
+  painter.fillRect(result->rect(), Qt::transparent);
   painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
   renderer.render(&painter);
-  return result_;
+  return result;
 }

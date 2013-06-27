@@ -1,7 +1,7 @@
 #include <QApplication>
 #include "tray_control.h"
 
-TrayControl::TrayControl(QObject *parent)
+TrayControl::TrayControl(QObject* parent)
   : QObject(parent) {
   CreateActions();
   CreateTrayIcon();

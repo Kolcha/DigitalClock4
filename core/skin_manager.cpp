@@ -1,7 +1,7 @@
 #include "../skin/iclock_skin.h"
 #include "skin_manager.h"
 
-SkinManager::SkinManager(QObject *parent)
+SkinManager::SkinManager(QObject* parent)
   : QObject(parent) {
 }
 
