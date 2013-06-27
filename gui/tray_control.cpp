@@ -8,16 +8,16 @@ TrayControl::TrayControl(QObject* parent)
 }
 
 void TrayControl::CreateActions() {
-  settings_action_ = new QAction(tr("&Settings"), this);
+  settings_action_ = new QAction(QIcon(":/images/menu_settings.png"), tr("&Settings"), this);
   connect(settings_action_, SIGNAL(triggered()), this, SIGNAL(ShowSettingsDlg()));
 
-  about_action_ = new QAction(tr("&About"), this);
+  about_action_ = new QAction(QIcon(":/images/menu_about.png"), tr("&About"), this);
   connect(about_action_, SIGNAL(triggered()), this, SIGNAL(ShowAboutDlg()));
 
-  about_qt_action_ = new QAction(tr("About &Qt"), this);
+  about_qt_action_ = new QAction(QIcon(":/images/menu_about_qt.png"), tr("About &Qt"), this);
   connect(about_qt_action_, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
-  exit_action_ = new QAction(tr("&Exit"), this);
+  exit_action_ = new QAction(QIcon(":/images/menu_quit.png"), tr("&Quit"), this);
   connect(exit_action_, SIGNAL(triggered()), qApp, SLOT(quit()));
 }
 
