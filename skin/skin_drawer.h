@@ -14,6 +14,7 @@ public:
 
 signals:
   void DrawingFinished(const QPixmap& result);
+  void LoadedSkinInfo(const TSkinInfo& info);
 
 public slots:
   void LoadSkin(const QDir& skin_root);

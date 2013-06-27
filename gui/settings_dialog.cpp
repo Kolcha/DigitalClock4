@@ -93,6 +93,28 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
   ui->skin_box->addItems(skins);
 }
 
+void SettingsDialog::DisplaySkinInfo(const TSkinInfo& info) {
+  for (auto i = info.begin(); i != info.end(); ++i) {
+    switch (i.key()) {
+      case SI_VERSION:
+        ui->version_value->setText(i.value());
+        break;
+
+      case SI_AUTHOR:
+        ui->author_value->setText(i.value());
+        break;
+
+      case SI_EMAIL:
+        ui->email_value->setText(i.value());
+        break;
+
+      case SI_COMMENT:
+        ui->comment_label->setText(i.value());
+        break;
+    }
+  }
+}
+
 void SettingsDialog::changeEvent(QEvent* e) {
   QDialog::changeEvent(e);
   switch (e->type()) {
@@ -164,4 +186,8 @@ void SettingsDialog::on_type_color_toggled(bool checked) {
 
 void SettingsDialog::on_type_image_toggled(bool checked) {
   emit OptionChanged(OPT_USE_TEXTURE, checked);
+}
+
+void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
+  emit OptionChanged(OPT_SKIN_NAME, arg1);
 }

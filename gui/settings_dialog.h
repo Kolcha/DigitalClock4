@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "../core/settings_keys.h"
+#include "../skin/iclock_skin.h"
 
 namespace Ui {
 class SettingsDialog;
@@ -21,6 +22,7 @@ signals:
 public slots:
   void SettingsListener(Options opt, const QVariant& value);
   void SetSkinList(const QStringList& skins);
+  void DisplaySkinInfo(const TSkinInfo& info);
 
 protected:
   void changeEvent(QEvent* e);
@@ -38,6 +40,7 @@ private slots:
   void on_sel_image_btn_clicked();
   void on_type_color_toggled(bool checked);
   void on_type_image_toggled(bool checked);
+  void on_skin_box_currentIndexChanged(const QString& arg1);
 
 private:
   Ui::SettingsDialog* ui;

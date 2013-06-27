@@ -18,6 +18,8 @@ SkinDrawer::~SkinDrawer() {
 void SkinDrawer::LoadSkin(const QDir& skin_root) {
   delete skin_;
   skin_ = CreateSkin(skin_root);
+  if (!skin_) return;
+  emit LoadedSkinInfo(skin_->GetInfo());
   Redraw();
 }
 

@@ -143,6 +143,8 @@ void MainWindow::ConnectAll() {
 
   connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
           settings_dlg_, SLOT(SetSkinList(QStringList)));
+  connect(drawer_, SIGNAL(LoadedSkinInfo(TSkinInfo)),
+          settings_dlg_, SLOT(DisplaySkinInfo(TSkinInfo)));
   connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(settings_dlg_, SIGNAL(rejected()), settings_, SLOT(Load()));
 }
