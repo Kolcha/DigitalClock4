@@ -23,6 +23,7 @@ public slots:
   void SetTexture(const QString& filename);
   void SetTexturePerElement(bool set);
   void SetTextureDrawMode(DrawMode mode);
+  void SetUseTexture(bool set);
   void SetPreviewMode(bool set);
 
 private:
@@ -33,8 +34,10 @@ private:
   qreal zoom_;
   QPixmap texture_;
   bool txd_per_elem_;
+  bool use_txd_;
   DrawMode txd_draw_mode_;
   bool preview_mode_;
+  QString txd_file_;
 };
 
 #endif // SKIN_DRAWER_H

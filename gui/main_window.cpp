@@ -28,6 +28,10 @@ MainWindow::MainWindow(QWidget* parent)
   settings_->Load();
 }
 
+MainWindow::~MainWindow() {
+  delete settings_dlg_;
+}
+
 void MainWindow::mouseMoveEvent(QMouseEvent* event) {
   if (event->buttons() & Qt::LeftButton) {
     move(event->globalPos() - drag_position_);
@@ -106,7 +110,26 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
     case OPT_TEXTURE_DRAW_MODE:
       drawer_->SetTextureDrawMode((SkinDrawer::DrawMode)value.toInt());
       break;
+
+    case OPT_USE_TEXTURE:
+      drawer_->SetUseTexture(value.toBool());
+      break;
   }
+}
+
+void MainWindow::ShowSettingsDialog() {
+  disconnect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
+             this, SLOT(SettingsListener(Options,QVariant)));
+  connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
+          settings_dlg_, SLOT(SettingsListener(Options,QVariant)));
+  settings_->Load();
+  settings_dlg_->show();
+  connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
+          this, SLOT(SettingsListener(Options,QVariant)));
+  disconnect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
+             settings_dlg_, SLOT(SettingsListener(Options,QVariant)));
+  connect(settings_dlg_, SIGNAL(OptionChanged(Options,QVariant)),
+          settings_, SLOT(SetOption(Options,QVariant)));
 }
 
 void MainWindow::ConnectAll() {
@@ -116,7 +139,8 @@ void MainWindow::ConnectAll() {
   connect(drawer_, SIGNAL(DrawingFinished(QPixmap)), d_clock_, SLOT(DrawImage(QPixmap)));
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
 
-  connect(tray_control_, SIGNAL(ShowSettingsDlg()), settings_dlg_, SLOT(show()));
+  connect(tray_control_, SIGNAL(ShowSettingsDlg()), this, SLOT(ShowSettingsDialog()));
+
   connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(settings_dlg_, SIGNAL(rejected()), settings_, SLOT(Load()));
 }

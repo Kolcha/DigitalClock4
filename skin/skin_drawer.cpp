@@ -39,6 +39,10 @@ void SkinDrawer::SetColor(const QColor& new_color) {
 
 void SkinDrawer::SetTexture(const QString& filename) {
   if (!QFile::exists(filename)) return;
+  if (!use_txd_) {
+    txd_file_ = filename;
+    return;
+  }
   texture_.load(filename);
   Redraw();
 }
@@ -51,6 +55,11 @@ void SkinDrawer::SetTexturePerElement(bool set) {
 void SkinDrawer::SetTextureDrawMode(SkinDrawer::DrawMode mode) {
   txd_draw_mode_ = mode;
   Redraw();
+}
+
+void SkinDrawer::SetUseTexture(bool set) {
+  use_txd_ = set;
+  SetTexture(txd_file_);
 }
 
 void SkinDrawer::SetPreviewMode(bool set) {

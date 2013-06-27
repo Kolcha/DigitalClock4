@@ -12,6 +12,7 @@ class MainWindow : public QWidget {
   Q_OBJECT
 public:
   explicit MainWindow(QWidget* parent = 0);
+  ~MainWindow();
 
 protected:
   void mouseMoveEvent(QMouseEvent* event);
@@ -20,6 +21,7 @@ protected:
 
 private slots:
   void SettingsListener(Options opt, const QVariant& value);
+  void ShowSettingsDialog();
 
 private:
   void ConnectAll();

@@ -240,6 +240,9 @@
            <property name="text">
             <string>custom image</string>
            </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item row="1" column="1">
@@ -257,6 +260,9 @@
          </item>
          <item row="0" column="1">
           <widget class="QPushButton" name="sel_color_btn">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="maximumSize">
             <size>
              <width>24</width>
@@ -288,6 +294,9 @@
           <widget class="QRadioButton" name="mode_tile">
            <property name="text">
             <string>tile</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
