@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget* parent)
   settings_ = new ClockSettings(this);
   skin_manager_ = new SkinManager(this);
   drawer_ = new SkinDrawer(this);
+  settings_dlg_ = new SettingsDialog();
 
   ConnectAll();
   skin_manager_->AddSkinDir(QDir(":/"));
@@ -114,6 +115,10 @@ void MainWindow::ConnectAll() {
   connect(skin_manager_, SIGNAL(SkinFound(QDir)), drawer_, SLOT(LoadSkin(QDir)));
   connect(drawer_, SIGNAL(DrawingFinished(QPixmap)), d_clock_, SLOT(DrawImage(QPixmap)));
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
+
+  connect(tray_control_, SIGNAL(ShowSettingsDlg()), settings_dlg_, SLOT(show()));
+  connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(settings_dlg_, SIGNAL(rejected()), settings_, SLOT(Load()));
 }
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {
