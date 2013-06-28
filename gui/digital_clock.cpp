@@ -1,14 +1,8 @@
-#include <QHBoxLayout>
 #include <QTime>
 #include "digital_clock.h"
 
 DigitalClock::DigitalClock(QWidget* parent)
-  : QWidget(parent) {
-  display_ = new QLabel(this);
-  QHBoxLayout* main_layout = new QHBoxLayout(this);
-  main_layout->addWidget(display_);
-  setLayout(main_layout);
-
+  : QLabel(parent) {
   timer_ = new QTimer(this);
   timer_->setInterval(500);
   connect(timer_, SIGNAL(timeout()), this, SLOT(TimeoutHandler()));
@@ -22,8 +16,8 @@ DigitalClock::~DigitalClock() {
   timer_->stop();
 }
 
-void DigitalClock::DrawImage(const QPixmap& image) {
-  display_->setPixmap(image);
+void DigitalClock::DrawImage(const QImage& image) {
+  setPixmap(QPixmap::fromImage(image));
 }
 
 void DigitalClock::SetSeparatorFlash(bool set) {

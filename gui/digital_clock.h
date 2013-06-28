@@ -4,7 +4,7 @@
 #include <QLabel>
 #include <QTimer>
 
-class DigitalClock : public QWidget {
+class DigitalClock : public QLabel {
   Q_OBJECT
 public:
   explicit DigitalClock(QWidget* parent = 0);
@@ -21,7 +21,6 @@ private slots:
   void TimeoutHandler();
 
 private:
-  QLabel* display_;
   QTimer* timer_;
   bool sep_visible_;
   bool sep_flashes_;
