@@ -13,7 +13,7 @@ public:
   enum DrawMode {DM_STRETCH, DM_TILE};
 
 signals:
-  void DrawingFinished(const QPixmap& result);
+  void DrawingFinished(const QImage& result);
   void LoadedSkinInfo(const TSkinInfo& info);
 
 public slots:

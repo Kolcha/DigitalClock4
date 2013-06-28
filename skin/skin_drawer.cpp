@@ -87,7 +87,7 @@ void SkinDrawer::Redraw() {
   result_w += space * (str_.length() - 1);
 
   // create result image
-  QPixmap result(result_w, result_h);
+  QImage result(result_w, result_h, QImage::Format_ARGB32_Premultiplied);
   QPainter painter(&result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
   painter.fillRect(result.rect(), Qt::transparent);
