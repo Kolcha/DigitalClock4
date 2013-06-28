@@ -39,6 +39,7 @@ private:
   DrawMode txd_draw_mode_;
   bool preview_mode_;
   QString txd_file_;
+  QColor color_;
 };
 
 #endif // SKIN_DRAWER_H
