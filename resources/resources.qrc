@@ -1,18 +1,18 @@
 <RCC>
     <qresource prefix="/default_skin">
-        <file alias="0.png">comic/0.png</file>
-        <file alias="1.png">comic/1.png</file>
-        <file alias="2.png">comic/2.png</file>
-        <file alias="3.png">comic/3.png</file>
-        <file alias="4.png">comic/4.png</file>
-        <file alias="5.png">comic/5.png</file>
-        <file alias="6.png">comic/6.png</file>
-        <file alias="7.png">comic/7.png</file>
-        <file alias="8.png">comic/8.png</file>
-        <file alias="9.png">comic/9.png</file>
-        <file alias="s1.png">comic/s1.png</file>
-        <file alias="s2.png">comic/s2.png</file>
-        <file alias="skin.ini">comic/skin.ini</file>
+        <file>electronic/0.svg</file>
+        <file>electronic/1.svg</file>
+        <file>electronic/2.svg</file>
+        <file>electronic/3.svg</file>
+        <file>electronic/4.svg</file>
+        <file>electronic/5.svg</file>
+        <file>electronic/6.svg</file>
+        <file>electronic/7.svg</file>
+        <file>electronic/8.svg</file>
+        <file>electronic/9.svg</file>
+        <file>electronic/s1.svg</file>
+        <file>electronic/s2.svg</file>
+        <file>electronic/skin.ini</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="about.svg">images/bubble-24.svg</file>

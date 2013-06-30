@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget* parent)
   drawer_ = new SkinDrawer(this);
 
   ConnectAll();
-  skin_manager_->AddSkinDir(QDir(":/"));
+  skin_manager_->AddSkinDir(QDir(":/default_skin"));
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
   settings_->Load();
@@ -75,7 +75,7 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
     case OPT_SKIN_NAME:
     {
       QString skin_name = value.toString();
-      skin_manager_->FindSkin(skin_name.isEmpty() ? "Comic Sans" : skin_name);
+      skin_manager_->FindSkin(skin_name.isEmpty() ? "Electronic (default)" : skin_name);
       break;
     }
 
