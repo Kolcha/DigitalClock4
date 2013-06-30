@@ -17,6 +17,7 @@ protected:
   void mouseMoveEvent(QMouseEvent* event);
   void mousePressEvent(QMouseEvent* event);
   void mouseReleaseEvent(QMouseEvent* event);
+  void showEvent(QShowEvent* event);
 
 private slots:
   void SettingsListener(Options opt, const QVariant& value);
@@ -34,6 +35,8 @@ private:
   TrayControl* tray_control_;
   SettingsDialog* settings_dlg_;
   QPoint drag_position_;
+  bool on_show_;
+  bool edit_settings_;
 };
 
 #endif // MAIN_WINDOW_H

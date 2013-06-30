@@ -23,7 +23,6 @@ MainWindow::MainWindow(QWidget* parent)
   skin_manager_->AddSkinDir(QDir(":/default_skin"));
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
-  settings_->Load();
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent* event) {
@@ -47,14 +46,18 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event) {
   }
 }
 
+void MainWindow::showEvent(QShowEvent* event) {
+  on_show_ = true;
+  if (!edit_settings_) settings_->Load();
+  event->accept();
+  on_show_ = false;
+}
+
 void MainWindow::SettingsListener(Options opt, const QVariant& value) {
   switch (opt) {
     case OPT_OPACITY:
-    {
-      qreal opacity = value.toReal();
-      setWindowOpacity(opacity > 0.045 ? opacity : 0.75);
+      setWindowOpacity(value.toReal());
       break;
-    }
 
     case OPT_STAY_ON_TOP:
       SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
@@ -73,25 +76,16 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       break;
 
     case OPT_SKIN_NAME:
-    {
-      QString skin_name = value.toString();
-      skin_manager_->FindSkin(skin_name.isEmpty() ? "Electronic (default)" : skin_name);
+      skin_manager_->FindSkin(value.toString());
       break;
-    }
 
     case OPT_ZOOM:
-    {
-      qreal zoom = value.toReal();
-      drawer_->SetZoom((zoom > 0.1) && (zoom < 4.1) ? zoom : 1.25);
+      drawer_->SetZoom(value.toReal());
       break;
-    }
 
     case OPT_COLOR:
-    {
-      QColor color = value.value<QColor>();
-      drawer_->SetColor(color.isValid() ? color : Qt::blue);
+      drawer_->SetColor(value.value<QColor>());
       break;
-    }
 
     case OPT_TEXTURE:
       drawer_->SetTexture(value.toString());
@@ -115,6 +109,7 @@ void MainWindow::ShowSettingsDialog() {
   // create settings dialog and connect all need signals
   // (settings dialog will be deleted automatically)
   settings_dlg_ = new SettingsDialog();
+  edit_settings_ = true;
   connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
           settings_dlg_, SLOT(SetSkinList(QStringList)));
   skin_manager_->ListSkins();
@@ -141,6 +136,7 @@ void MainWindow::ShowSettingsDialog() {
 }
 
 void MainWindow::DisablePreviewMode() {
+  edit_settings_ = false;
   drawer_->SetPreviewMode(false);
 }
 
@@ -154,7 +150,7 @@ void MainWindow::ConnectAll() {
 }
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {
-  hide();
+  if (on_show_) return;
   Qt::WindowFlags flags = windowFlags();
   set ? flags |= flag : flags &= ~flag;
   setWindowFlags(flags);
