@@ -14,7 +14,7 @@ void TrayControl::CreateActions() {
   about_action_ = new QAction(QIcon(":/images/about.svg"), tr("&About"), this);
   connect(about_action_, SIGNAL(triggered()), this, SIGNAL(ShowAboutDlg()));
 
-  about_qt_action_ = new QAction(QIcon(":/images/menu_about_qt.png"), tr("About &Qt"), this);
+  about_qt_action_ = new QAction(QIcon(":/images/about_qt.svg"), tr("About &Qt"), this);
   connect(about_qt_action_, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
   exit_action_ = new QAction(QIcon(":/images/quit.svg"), tr("&Quit"), this);
@@ -32,7 +32,7 @@ void TrayControl::CreateTrayIcon() {
 
   tray_icon_ = new QSystemTrayIcon(this);
   tray_icon_->setContextMenu(tray_menu_);
-  tray_icon_->setIcon(QIcon(":/images/clock_24.png"));
+  tray_icon_->setIcon(QIcon(":/images/clock.svg"));
   tray_icon_->setToolTip(qApp->applicationDisplayName() + " " + qApp->applicationVersion());
   tray_icon_->show();
 }

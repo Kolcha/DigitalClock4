@@ -15,10 +15,10 @@
         <file alias="skin.ini">comic/skin.ini</file>
     </qresource>
     <qresource prefix="/images">
-        <file alias="clock_24.png">images/clock.png</file>
-        <file alias="menu_about_qt.png">images/bubble-qt.png</file>
         <file alias="about.svg">images/bubble-24.svg</file>
         <file alias="quit.svg">images/cross-24.svg</file>
         <file alias="settings.svg">images/settings-24.svg</file>
+        <file alias="clock.svg">images/time-24.svg</file>
+        <file alias="about_qt.svg">images/bubble-qt-24.svg</file>
     </qresource>
 </RCC>

@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
   a.setApplicationName("Digital Clock 4");
   a.setApplicationVersion("4.1.4");
   a.setOrganizationName("Nick Korotysh");
-  a.setWindowIcon(QIcon(":/images/clock_24.png"));
+  a.setWindowIcon(QIcon(":/images/clock.svg"));
 
   MainWindow w;
   w.show();
