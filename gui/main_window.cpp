@@ -20,11 +20,17 @@ MainWindow::MainWindow(QWidget* parent)
   settings_ = new ClockSettings(this);
   skin_manager_ = new SkinManager(this);
   drawer_ = new SkinDrawer(this);
+  settings_timer_ = new QTimer(this);
+  settings_timer_->setSingleShot(true);
 
   ConnectAll();
   skin_manager_->AddSkinDir(QDir(":/default_skin"));
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
+  settings_timer_->start(100);
+
+  QSettings settings;
+  move(settings.value(OPT_POSITION_KEY, QPoint(50, 20)).toPoint());
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent* event) {
@@ -46,15 +52,6 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event) {
     QSettings settings;
     settings.setValue(OPT_POSITION_KEY, pos());
   }
-}
-
-void MainWindow::showEvent(QShowEvent* event) {
-  on_show_ = true;
-  if (!edit_settings_) settings_->Load();
-  QSettings settings;
-  move(settings.value(OPT_POSITION_KEY, QPoint(50, 20)).toPoint());
-  event->accept();
-  on_show_ = false;
 }
 
 void MainWindow::SettingsListener(Options opt, const QVariant& value) {
@@ -109,7 +106,6 @@ void MainWindow::ShowSettingsDialog() {
   // create settings dialog and connect all need signals
   // (settings dialog will be deleted automatically)
   settings_dlg_ = new SettingsDialog();
-  edit_settings_ = true;
   connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
           settings_dlg_, SLOT(SetSkinList(QStringList)));
   skin_manager_->ListSkins();
@@ -136,11 +132,11 @@ void MainWindow::ShowSettingsDialog() {
 }
 
 void MainWindow::EndSettingsEdit() {
-  edit_settings_ = false;
   drawer_->SetPreviewMode(false);
 }
 
 void MainWindow::ConnectAll() {
+  connect(settings_timer_, SIGNAL(timeout()), settings_, SLOT(Load()));
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
           this, SLOT(SettingsListener(Options,QVariant)));
   connect(skin_manager_, SIGNAL(SkinFound(QDir)), drawer_, SLOT(LoadSkin(QDir)));
@@ -150,7 +146,6 @@ void MainWindow::ConnectAll() {
 }
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {
-  if (on_show_) return;
   Qt::WindowFlags flags = windowFlags();
   set ? flags |= flag : flags &= ~flag;
   setWindowFlags(flags);
