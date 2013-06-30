@@ -33,24 +33,22 @@ void SkinDrawer::SetZoom(qreal new_zoom) {
   Redraw();
 }
 
-void SkinDrawer::SetColor(const QColor& new_color) {
-  if (!new_color.isValid()) return;
-  if (use_txd_) {
-    color_ = new_color;
-    return;
-  }
+bool SkinDrawer::SetColor(const QColor& new_color) {
+  if (!new_color.isValid()) return false;
+  color_ = new_color;
+  if (use_txd_) return false;
   texture_.fill(new_color);
   Redraw();
+  return true;
 }
 
-void SkinDrawer::SetTexture(const QString& filename) {
-  if (!QFile::exists(filename)) return;
-  if (!use_txd_) {
-    txd_file_ = filename;
-    return;
-  }
+bool SkinDrawer::SetTexture(const QString& filename) {
+  if (!QFile::exists(filename)) return false;
+  txd_file_ = filename;
+  if (!use_txd_) return false;
   texture_.load(filename);
   Redraw();
+  return true;
 }
 
 void SkinDrawer::SetTexturePerElement(bool set) {
@@ -65,8 +63,7 @@ void SkinDrawer::SetTextureDrawMode(SkinDrawer::DrawMode mode) {
 
 void SkinDrawer::SetUseTexture(bool set) {
   use_txd_ = set;
-  if (set) SetTexture(txd_file_);
-  else SetColor(color_);
+  if (!set || !SetTexture(txd_file_)) SetColor(color_);
 }
 
 void SkinDrawer::SetPreviewMode(bool set) {
