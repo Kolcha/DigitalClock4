@@ -131,11 +131,11 @@ void MainWindow::ShowSettingsDialog() {
   connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(settings_dlg_, SIGNAL(rejected()), settings_, SLOT(Load()));
 
-  connect(settings_dlg_, SIGNAL(destroyed()), this, SLOT(DisablePreviewMode()));
+  connect(settings_dlg_, SIGNAL(destroyed()), this, SLOT(EndSettingsEdit()));
   drawer_->SetPreviewMode(true);
 }
 
-void MainWindow::DisablePreviewMode() {
+void MainWindow::EndSettingsEdit() {
   edit_settings_ = false;
   drawer_->SetPreviewMode(false);
 }

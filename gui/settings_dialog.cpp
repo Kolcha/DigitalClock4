@@ -19,11 +19,8 @@ SettingsDialog::~SettingsDialog() {
 void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
   switch (opt) {
     case OPT_OPACITY:
-    {
-      qreal opacity = value.toReal();
-      ui->opacity_slider->setValue(int(opacity > 0.045 ? opacity * 100 : 75));
+      ui->opacity_slider->setValue(int(value.toReal() * 100));
       break;
-    }
 
     case OPT_STAY_ON_TOP:
       ui->stay_on_top->setChecked(value.toBool());
@@ -38,25 +35,16 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       break;
 
     case OPT_SKIN_NAME:
-    {
-      QString skin_name = value.toString();
-      ui->skin_box->setCurrentText(skin_name.isEmpty() ? "Electronic (default)" : skin_name);
+      ui->skin_box->setCurrentText(value.toString());
       break;
-    }
 
     case OPT_ZOOM:
-    {
-      qreal zoom = value.toReal();
-      ui->zoom_slider->setValue(int((zoom > 0.1) && (zoom < 4.1) ? zoom * 100 : 125));
+      ui->zoom_slider->setValue(int(value.toReal() * 100));
       break;
-    }
 
     case OPT_COLOR:
-    {
-      QColor color = value.value<QColor>();
-      last_color_ = color.isValid() ? color : Qt::blue;
+      last_color_ = value.value<QColor>();
       break;
-    }
 
     case OPT_TEXTURE:
     {
@@ -72,15 +60,8 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
     case OPT_TEXTURE_DRAW_MODE:
     {
       SkinDrawer::DrawMode mode = (SkinDrawer::DrawMode)value.toInt();
-      switch (mode) {
-        case SkinDrawer::DM_STRETCH:
-          ui->mode_stretch->setChecked(true);
-          break;
-
-        case SkinDrawer::DM_TILE:
-          ui->mode_tile->setChecked(true);
-          break;
-      }
+      ui->mode_stretch->setChecked(mode == SkinDrawer::DM_STRETCH);
+      ui->mode_tile->setChecked(mode == SkinDrawer::DM_TILE);
       break;
     }
 

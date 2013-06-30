@@ -22,7 +22,7 @@ protected:
 private slots:
   void SettingsListener(Options opt, const QVariant& value);
   void ShowSettingsDialog();
-  void DisablePreviewMode();
+  void EndSettingsEdit();
 
 private:
   void ConnectAll();
