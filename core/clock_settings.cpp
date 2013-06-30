@@ -7,7 +7,7 @@ ClockSettings::ClockSettings(QObject* parent)
 
 void ClockSettings::Load() {
   for (auto i = keys_.begin(); i != keys_.end(); ++i) {
-    QVariant value = settings_.value(i.value());
+    QVariant value = settings_.value(i.value(), GetDefaultValue(i.key()));
     values_[i.key()] = value;
     emit OptionChanged(i.key(), value);
   }

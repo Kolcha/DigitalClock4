@@ -1,7 +1,10 @@
 #include <QHBoxLayout>
 #include <QMouseEvent>
 #include <QCoreApplication>
+#include "settings_dialog.h"
 #include "main_window.h"
+
+#define OPT_POSITION_KEY          "clock/position"
 
 MainWindow::MainWindow(QWidget* parent)
   : QWidget(parent) {
@@ -10,6 +13,7 @@ MainWindow::MainWindow(QWidget* parent)
   main_layout->addWidget(d_clock_);
   setLayout(main_layout);
 
+  setWindowTitle("Clock");
   setWindowFlags(Qt::FramelessWindowHint | Qt::Tool);
   setAttribute(Qt::WA_TranslucentBackground);
 
@@ -18,12 +22,17 @@ MainWindow::MainWindow(QWidget* parent)
   settings_ = new ClockSettings(this);
   skin_manager_ = new SkinManager(this);
   drawer_ = new SkinDrawer(this);
+  settings_timer_ = new QTimer(this);
+  settings_timer_->setSingleShot(true);
 
   ConnectAll();
   skin_manager_->AddSkinDir(QDir(":/default_skin"));
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
-  settings_->Load();
+  settings_timer_->start(100);
+
+  QSettings settings;
+  move(settings.value(OPT_POSITION_KEY, QPoint(50, 20)).toPoint());
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent* event) {
@@ -42,19 +51,16 @@ void MainWindow::mousePressEvent(QMouseEvent* event) {
 
 void MainWindow::mouseReleaseEvent(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
-    settings_->SetOption(OPT_POSITION, pos());
-    settings_->Save();
+    QSettings settings;
+    settings.setValue(OPT_POSITION_KEY, pos());
   }
 }
 
 void MainWindow::SettingsListener(Options opt, const QVariant& value) {
   switch (opt) {
     case OPT_OPACITY:
-    {
-      qreal opacity = value.toReal();
-      setWindowOpacity(opacity > 0.045 ? opacity : 0.75);
+      setWindowOpacity(value.toReal());
       break;
-    }
 
     case OPT_STAY_ON_TOP:
       SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
@@ -68,30 +74,17 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       d_clock_->SetSeparatorFlash(value.toBool());
       break;
 
-    case OPT_POSITION:
-      move(value.toPoint());
-      break;
-
     case OPT_SKIN_NAME:
-    {
-      QString skin_name = value.toString();
-      skin_manager_->FindSkin(skin_name.isEmpty() ? "Electronic (default)" : skin_name);
+      skin_manager_->FindSkin(value.toString());
       break;
-    }
 
     case OPT_ZOOM:
-    {
-      qreal zoom = value.toReal();
-      drawer_->SetZoom((zoom > 0.1) && (zoom < 4.1) ? zoom : 1.25);
+      drawer_->SetZoom(value.toReal());
       break;
-    }
 
     case OPT_COLOR:
-    {
-      QColor color = value.value<QColor>();
-      drawer_->SetColor(color.isValid() ? color : Qt::blue);
+      drawer_->SetColor(value.value<QColor>());
       break;
-    }
 
     case OPT_TEXTURE:
       drawer_->SetTexture(value.toString());
@@ -114,37 +107,38 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
 void MainWindow::ShowSettingsDialog() {
   // create settings dialog and connect all need signals
   // (settings dialog will be deleted automatically)
-  settings_dlg_ = new SettingsDialog();
+  SettingsDialog* settings_dlg = new SettingsDialog();
   connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
-          settings_dlg_, SLOT(SetSkinList(QStringList)));
+          settings_dlg, SLOT(SetSkinList(QStringList)));
   skin_manager_->ListSkins();
   connect(drawer_, SIGNAL(LoadedSkinInfo(TSkinInfo)),
-          settings_dlg_, SLOT(DisplaySkinInfo(TSkinInfo)));
+          settings_dlg, SLOT(DisplaySkinInfo(TSkinInfo)));
 
   // reload settings to emit signals needed to init settings dialog controls
   // with current values
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
-          settings_dlg_, SLOT(SettingsListener(Options,QVariant)));
+          settings_dlg, SLOT(SettingsListener(Options,QVariant)));
   settings_->Load();
-  settings_dlg_->show();
+  settings_dlg->show();
   // disable settings listener for settings dialog
   disconnect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
-             settings_dlg_, SLOT(SettingsListener(Options,QVariant)));
+             settings_dlg, SLOT(SettingsListener(Options,QVariant)));
   // connect main logic signals: change/save/discard settings
-  connect(settings_dlg_, SIGNAL(OptionChanged(Options,QVariant)),
+  connect(settings_dlg, SIGNAL(OptionChanged(Options,QVariant)),
           settings_, SLOT(SetOption(Options,QVariant)));
-  connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
-  connect(settings_dlg_, SIGNAL(rejected()), settings_, SLOT(Load()));
+  connect(settings_dlg, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(settings_dlg, SIGNAL(rejected()), settings_, SLOT(Load()));
 
-  connect(settings_dlg_, SIGNAL(destroyed()), this, SLOT(DisablePreviewMode()));
+  connect(settings_dlg, SIGNAL(destroyed()), this, SLOT(EndSettingsEdit()));
   drawer_->SetPreviewMode(true);
 }
 
-void MainWindow::DisablePreviewMode() {
+void MainWindow::EndSettingsEdit() {
   drawer_->SetPreviewMode(false);
 }
 
 void MainWindow::ConnectAll() {
+  connect(settings_timer_, SIGNAL(timeout()), settings_, SLOT(Load()));
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
           this, SLOT(SettingsListener(Options,QVariant)));
   connect(skin_manager_, SIGNAL(SkinFound(QDir)), drawer_, SLOT(LoadSkin(QDir)));
@@ -154,7 +148,6 @@ void MainWindow::ConnectAll() {
 }
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {
-  hide();
   Qt::WindowFlags flags = windowFlags();
   set ? flags |= flag : flags &= ~flag;
   setWindowFlags(flags);

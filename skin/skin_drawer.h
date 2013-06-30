@@ -20,8 +20,8 @@ public slots:
   void LoadSkin(const QDir& skin_root);
   void SetString(const QString& str);
   void SetZoom(qreal new_zoom);
-  void SetColor(const QColor& new_color);
-  void SetTexture(const QString& filename);
+  bool SetColor(const QColor& new_color);
+  bool SetTexture(const QString& filename);
   void SetTexturePerElement(bool set);
   void SetTextureDrawMode(DrawMode mode);
   void SetUseTexture(bool set);
