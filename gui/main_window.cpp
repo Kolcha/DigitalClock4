@@ -1,6 +1,7 @@
 #include <QHBoxLayout>
 #include <QMouseEvent>
 #include <QCoreApplication>
+#include "settings_dialog.h"
 #include "main_window.h"
 
 #define OPT_POSITION_KEY          "clock/position"
@@ -105,29 +106,29 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
 void MainWindow::ShowSettingsDialog() {
   // create settings dialog and connect all need signals
   // (settings dialog will be deleted automatically)
-  settings_dlg_ = new SettingsDialog();
+  SettingsDialog* settings_dlg = new SettingsDialog();
   connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
-          settings_dlg_, SLOT(SetSkinList(QStringList)));
+          settings_dlg, SLOT(SetSkinList(QStringList)));
   skin_manager_->ListSkins();
   connect(drawer_, SIGNAL(LoadedSkinInfo(TSkinInfo)),
-          settings_dlg_, SLOT(DisplaySkinInfo(TSkinInfo)));
+          settings_dlg, SLOT(DisplaySkinInfo(TSkinInfo)));
 
   // reload settings to emit signals needed to init settings dialog controls
   // with current values
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
-          settings_dlg_, SLOT(SettingsListener(Options,QVariant)));
+          settings_dlg, SLOT(SettingsListener(Options,QVariant)));
   settings_->Load();
-  settings_dlg_->show();
+  settings_dlg->show();
   // disable settings listener for settings dialog
   disconnect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
-             settings_dlg_, SLOT(SettingsListener(Options,QVariant)));
+             settings_dlg, SLOT(SettingsListener(Options,QVariant)));
   // connect main logic signals: change/save/discard settings
-  connect(settings_dlg_, SIGNAL(OptionChanged(Options,QVariant)),
+  connect(settings_dlg, SIGNAL(OptionChanged(Options,QVariant)),
           settings_, SLOT(SetOption(Options,QVariant)));
-  connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
-  connect(settings_dlg_, SIGNAL(rejected()), settings_, SLOT(Load()));
+  connect(settings_dlg, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(settings_dlg, SIGNAL(rejected()), settings_, SLOT(Load()));
 
-  connect(settings_dlg_, SIGNAL(destroyed()), this, SLOT(EndSettingsEdit()));
+  connect(settings_dlg, SIGNAL(destroyed()), this, SLOT(EndSettingsEdit()));
   drawer_->SetPreviewMode(true);
 }
 
