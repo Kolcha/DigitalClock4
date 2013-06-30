@@ -40,7 +40,7 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
     case OPT_SKIN_NAME:
     {
       QString skin_name = value.toString();
-      ui->skin_box->setCurrentText(skin_name.isEmpty() ? "Comic Sans" : skin_name);
+      ui->skin_box->setCurrentText(skin_name.isEmpty() ? "Electronic (default)" : skin_name);
       break;
     }
 
