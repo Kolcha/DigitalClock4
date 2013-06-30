@@ -3,6 +3,8 @@
 #include <QCoreApplication>
 #include "main_window.h"
 
+#define OPT_POSITION_KEY          "clock/position"
+
 MainWindow::MainWindow(QWidget* parent)
   : QWidget(parent) {
   d_clock_ = new DigitalClock(this);
@@ -41,14 +43,16 @@ void MainWindow::mousePressEvent(QMouseEvent* event) {
 
 void MainWindow::mouseReleaseEvent(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
-    settings_->SetOption(OPT_POSITION, pos());
-    settings_->Save();
+    QSettings settings;
+    settings.setValue(OPT_POSITION_KEY, pos());
   }
 }
 
 void MainWindow::showEvent(QShowEvent* event) {
   on_show_ = true;
   if (!edit_settings_) settings_->Load();
+  QSettings settings;
+  move(settings.value(OPT_POSITION_KEY, QPoint(50, 20)).toPoint());
   event->accept();
   on_show_ = false;
 }
@@ -69,10 +73,6 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
 
     case OPT_SEPARATOR_FLASH:
       d_clock_->SetSeparatorFlash(value.toBool());
-      break;
-
-    case OPT_POSITION:
-      move(value.toPoint());
       break;
 
     case OPT_SKIN_NAME:
