@@ -18,6 +18,7 @@ DigitalClock::~DigitalClock() {
 
 void DigitalClock::DrawImage(const QImage& image) {
   setPixmap(QPixmap::fromImage(image));
+  parentWidget()->adjustSize();
 }
 
 void DigitalClock::SetSeparatorFlash(bool set) {
