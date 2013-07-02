@@ -1,4 +1,5 @@
 #include <QTime>
+#include <QLocale>
 #include "digital_clock.h"
 
 DigitalClock::DigitalClock(QWidget* parent)
@@ -27,9 +28,11 @@ void DigitalClock::SetSeparatorFlash(bool set) {
 }
 
 void DigitalClock::TimeoutHandler() {
-  QString time = QTime::currentTime().toString("hh:mm");
+  QString time = QLocale::system().toString(QTime::currentTime());
+  int sep_pos = time.indexOf(':');
+  time = time.mid(0, time.lastIndexOf(':'));
   if (sep_flashes_) {
-    time[2] = sep_visible_ ? ':' : ' ';
+    time[sep_pos] = sep_visible_ ? ':' : ' ';
     sep_visible_ = !sep_visible_;
   }
   emit ImageNeeded(time);
