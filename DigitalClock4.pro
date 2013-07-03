@@ -47,3 +47,5 @@ FORMS    += \
 
 RESOURCES += \
     resources/resources.qrc
+
+win32:RC_FILE = resources/resources.rc
