@@ -21,6 +21,7 @@ private slots:
   void SettingsListener(Options opt, const QVariant& value);
   void ShowSettingsDialog();
   void EndSettingsEdit();
+  void ShowAboutDialog();
 
 private:
   void ConnectAll();

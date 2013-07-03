@@ -2,6 +2,7 @@
 #include <QMouseEvent>
 #include <QCoreApplication>
 #include "settings_dialog.h"
+#include "about_dialog.h"
 #include "main_window.h"
 
 #define OPT_POSITION_KEY          "clock/position"
@@ -137,6 +138,11 @@ void MainWindow::EndSettingsEdit() {
   drawer_->SetPreviewMode(false);
 }
 
+void MainWindow::ShowAboutDialog() {
+  AboutDialog* about_dlg = new AboutDialog();
+  about_dlg->show();
+}
+
 void MainWindow::ConnectAll() {
   connect(settings_timer_, SIGNAL(timeout()), settings_, SLOT(Load()));
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
@@ -145,6 +151,7 @@ void MainWindow::ConnectAll() {
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), d_clock_, SLOT(DrawImage(QImage)));
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(tray_control_, SIGNAL(ShowSettingsDlg()), this, SLOT(ShowSettingsDialog()));
+  connect(tray_control_, SIGNAL(ShowAboutDlg()), this, SLOT(ShowAboutDialog()));
 }
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {

@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     gui/digital_clock.cpp \
     gui/main_window.cpp \
     gui/tray_control.cpp \
-    gui/settings_dialog.cpp
+    gui/settings_dialog.cpp \
+    gui/about_dialog.cpp
 
 HEADERS  += \
     skin/iclock_skin.h \
@@ -37,10 +38,12 @@ HEADERS  += \
     core/settings_keys.h \
     gui/main_window.h \
     gui/tray_control.h \
-    gui/settings_dialog.h
+    gui/settings_dialog.h \
+    gui/about_dialog.h
 
 FORMS    += \
-    gui/settings_dialog.ui
+    gui/settings_dialog.ui \
+    gui/about_dialog.ui
 
 RESOURCES += \
     resources/resources.qrc
