@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="text/ecmascript" width="32" baseProfile="tiny" zoomAndPan="magnify" contentStyleType="text/css" viewBox="0 0 32 55" height="55" preserveAspectRatio="xMidYMid meet" version="1.0">
+    <rect width="32" fill="none" height="55"/>
+    <radialGradient gradientTransform="matrix(3.5276 0 0 3.9793 -13.902 -83.4198)" gradientUnits="userSpaceOnUse" xlink:type="simple" r="4.4896" xlink:actuate="onLoad" cx="8.6182" id="XMLID_2_" cy="28" xlink:show="other">
+        <stop stop-color="#fff3f3" offset="0"/>
+        <stop stop-color="#dcdcdc" offset="1"/>
+    </radialGradient>
+    <path fill="url(#XMLID_2_)" d="M 14.185 19.793 L 23.5 19.793 L 23.5 19.867 L 23.5 46.342 C 23.5 47.018997 23.319 47.696 22.957 48.374 C 22.596 49.051 22.125 49.653 21.547 50.186 C 20.968 50.769 20.226002 51.215 19.321 51.531 C 18.417 51.845 17.457 52.0 16.445 52.0 L 15.686999 52.0 L 9.5 52.0 L 9.5 48.892 L 16.216 48.892 L 16.431 48.892 C 17.01 48.892 17.551 48.663 18.056 48.199997 C 18.561 47.741997 18.814 47.125996 18.814 46.35 L 18.814 22.964 L 9.61 22.964 L 9.61 4.0 L 10.478 4.0 L 23.5 4.0 L 23.5 7.047 L 14.185 7.047 L 14.185 19.793 z " stroke-width="0.25" stroke="#ffffff"/>
+</svg>
