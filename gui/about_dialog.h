@@ -15,6 +15,8 @@ public:
   ~AboutDialog();
 
 private:
+  void DrawLogo();
+  void ShowInfo();
   Ui::AboutDialog *ui;
 };
 
