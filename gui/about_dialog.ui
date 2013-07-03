@@ -6,16 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>141</width>
+    <width>226</width>
     <height>123</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>About</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="info_layout">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QLabel" name="logo_label">
        <property name="text">
@@ -24,36 +27,71 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="text_layout">
-       <item>
-        <widget class="QLabel" name="program_label">
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="name_label">
+         <property name="text">
+          <string>name:</string>
          </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="name_value">
          <property name="text">
           <string>TextLabel</string>
          </property>
         </widget>
        </item>
-       <item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="version_label">
+         <property name="text">
+          <string>version:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="version_value">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
         <widget class="QLabel" name="qt_label">
          <property name="text">
-          <string>TextLabel</string>
+          <string>Qt version:</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QLabel" name="author_label">
+       <item row="2" column="1">
+        <widget class="QLabel" name="qt_value">
          <property name="text">
           <string>TextLabel</string>
          </property>
         </widget>
        </item>
-       <item>
+       <item row="3" column="0">
         <widget class="QLabel" name="rights_label">
+         <property name="text">
+          <string>Copyright:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="rights_value">
          <property name="text">
           <string>TextLabel</string>
          </property>

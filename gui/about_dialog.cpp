@@ -1,6 +1,5 @@
 #include <QSvgRenderer>
 #include <QPainter>
-#include <QImage>
 #include <QCoreApplication>
 #include "about_dialog.h"
 #include "ui_about_dialog.h"
@@ -13,6 +12,8 @@ AboutDialog::AboutDialog(QWidget *parent)
 
   DrawLogo();
   ShowInfo();
+
+  setFixedSize(sizeHint());
 }
 
 AboutDialog::~AboutDialog() {
@@ -32,9 +33,8 @@ void AboutDialog::DrawLogo() {
 }
 
 void AboutDialog::ShowInfo() {
-  ui->program_label->setText(
-        QCoreApplication::applicationName() + " " + QCoreApplication::applicationVersion());
-  ui->qt_label->setText(QString("Qt ") + QString(QT_VERSION_STR));
-  ui->author_label->setText(QCoreApplication::organizationName());
-  ui->rights_label->setText("© Copyright 2013");
+  ui->name_value->setText(QCoreApplication::applicationName());
+  ui->version_value->setText(QCoreApplication::applicationVersion());
+  ui->qt_value->setText(QT_VERSION_STR);
+  ui->rights_value->setText("© 2013 " + QCoreApplication::organizationName());
 }
