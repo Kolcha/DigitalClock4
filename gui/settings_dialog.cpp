@@ -79,6 +79,10 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
 void SettingsDialog::DisplaySkinInfo(const TSkinInfo& info) {
   for (auto i = info.begin(); i != info.end(); ++i) {
     switch (i.key()) {
+      case SI_NAME:
+        ui->skin_box->setCurrentText(i.value());
+        break;
+
       case SI_VERSION:
         ui->version_value->setText(i.value());
         break;
