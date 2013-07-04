@@ -35,10 +35,8 @@ MainWindow::MainWindow(QWidget* parent)
 
   // apply custom window flags if needed
   Qt::WindowFlags flags = windowFlags();
-  if (settings_->GetOption(OPT_STAY_ON_TOP).toBool())
-    flags |= Qt::WindowStaysOnTopHint;
-  if (settings_->GetOption(OPT_TRANSP_FOR_INPUT).toBool())
-    flags |= Qt::WindowTransparentForInput;
+  if (settings_->GetOption(OPT_STAY_ON_TOP).toBool()) flags |= Qt::WindowStaysOnTopHint;
+  if (settings_->GetOption(OPT_TRANSP_FOR_INPUT).toBool()) flags |= Qt::WindowTransparentForInput;
   setWindowFlags(flags);
   // load last position
   QSettings settings;
