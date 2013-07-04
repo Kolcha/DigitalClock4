@@ -7,6 +7,10 @@ TrayControl::TrayControl(QObject* parent)
   CreateTrayIcon();
 }
 
+QMenu*TrayControl::GetMenu() {
+  return tray_menu_;
+}
+
 void TrayControl::CreateActions() {
   settings_action_ = new QAction(QIcon(":/images/settings.svg"), tr("&Settings"), this);
   connect(settings_action_, SIGNAL(triggered()), this, SIGNAL(ShowSettingsDlg()));

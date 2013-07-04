@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget* parent)
   setWindowTitle("Clock");
   setWindowFlags(Qt::FramelessWindowHint | Qt::Tool);
   setAttribute(Qt::WA_TranslucentBackground);
+  setContextMenuPolicy(Qt::CustomContextMenu);
 
   tray_control_ = new TrayControl(this);
 
@@ -143,6 +144,10 @@ void MainWindow::ShowAboutDialog() {
   about_dlg->show();
 }
 
+void MainWindow::DisplayMenu(const QPoint& pos) {
+  tray_control_->GetMenu()->exec(mapToParent(pos));
+}
+
 void MainWindow::ConnectAll() {
   connect(settings_timer_, SIGNAL(timeout()), settings_, SLOT(Load()));
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
@@ -152,6 +157,7 @@ void MainWindow::ConnectAll() {
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(tray_control_, SIGNAL(ShowSettingsDlg()), this, SLOT(ShowSettingsDialog()));
   connect(tray_control_, SIGNAL(ShowAboutDlg()), this, SLOT(ShowAboutDialog()));
+  connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(DisplayMenu(QPoint)));
 }
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {

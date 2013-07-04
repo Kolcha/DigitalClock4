@@ -22,6 +22,7 @@ private slots:
   void ShowSettingsDialog();
   void EndSettingsEdit();
   void ShowAboutDialog();
+  void DisplayMenu(const QPoint& pos);
 
 private:
   void ConnectAll();
