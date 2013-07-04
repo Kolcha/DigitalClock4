@@ -49,3 +49,4 @@ RESOURCES += \
     resources/resources.qrc
 
 win32:RC_FILE = resources/resources.rc
+unix:QMAKE_CXXFLAGS += -std=c++11
