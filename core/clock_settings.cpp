@@ -5,6 +5,10 @@ ClockSettings::ClockSettings(QObject* parent)
   GetOptionsKeys(keys_);
 }
 
+QVariant ClockSettings::GetOption(Options opt) {
+  return settings_.value(keys_[opt], GetDefaultValue(opt));
+}
+
 void ClockSettings::Load() {
   for (auto i = keys_.begin(); i != keys_.end(); ++i) {
     QVariant value = settings_.value(i.value(), GetDefaultValue(i.key()));
