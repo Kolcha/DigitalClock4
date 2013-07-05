@@ -8,6 +8,7 @@ class ClockSettings : public QObject {
   Q_OBJECT
 public:
   explicit ClockSettings(QObject* parent = 0);
+  QVariant GetOption(Options opt);
 
 signals:
   void OptionChanged(Options opt, const QVariant& value);

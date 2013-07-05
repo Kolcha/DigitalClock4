@@ -8,6 +8,7 @@ class TrayControl : public QObject {
   Q_OBJECT
 public:
   explicit TrayControl(QObject* parent = 0);
+  QMenu* GetMenu();
 
 signals:
   void ShowSettingsDlg();

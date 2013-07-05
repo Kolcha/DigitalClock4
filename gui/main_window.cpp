@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget* parent)
   setWindowTitle("Clock");
   setWindowFlags(Qt::FramelessWindowHint | Qt::Tool);
   setAttribute(Qt::WA_TranslucentBackground);
+  setContextMenuPolicy(Qt::CustomContextMenu);
 
   tray_control_ = new TrayControl(this);
 
@@ -32,6 +33,12 @@ MainWindow::MainWindow(QWidget* parent)
   skin_manager_->ListSkins();
   settings_timer_->start(100);
 
+  // apply custom window flags if needed
+  Qt::WindowFlags flags = windowFlags();
+  if (settings_->GetOption(OPT_STAY_ON_TOP).toBool()) flags |= Qt::WindowStaysOnTopHint;
+  if (settings_->GetOption(OPT_TRANSP_FOR_INPUT).toBool()) flags |= Qt::WindowTransparentForInput;
+  setWindowFlags(flags);
+  // load last position
   QSettings settings;
   move(settings.value(OPT_POSITION_KEY, QPoint(50, 20)).toPoint());
 }
@@ -64,11 +71,11 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       break;
 
     case OPT_STAY_ON_TOP:
-      SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
+//      SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
       break;
 
     case OPT_TRANSP_FOR_INPUT:
-      SetWindowFlag(Qt::WindowTransparentForInput, value.toBool());
+//      SetWindowFlag(Qt::WindowTransparentForInput, value.toBool());
       break;
 
     case OPT_SEPARATOR_FLASH:
@@ -143,6 +150,10 @@ void MainWindow::ShowAboutDialog() {
   about_dlg->show();
 }
 
+void MainWindow::DisplayMenu(const QPoint& pos) {
+  tray_control_->GetMenu()->exec(mapToParent(pos));
+}
+
 void MainWindow::ConnectAll() {
   connect(settings_timer_, SIGNAL(timeout()), settings_, SLOT(Load()));
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
@@ -152,6 +163,7 @@ void MainWindow::ConnectAll() {
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(tray_control_, SIGNAL(ShowSettingsDlg()), this, SLOT(ShowSettingsDialog()));
   connect(tray_control_, SIGNAL(ShowAboutDlg()), this, SLOT(ShowAboutDialog()));
+  connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(DisplayMenu(QPoint)));
 }
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {
