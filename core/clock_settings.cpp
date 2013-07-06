@@ -3,17 +3,18 @@
 ClockSettings::ClockSettings(QObject* parent)
   : QObject(parent) {
   GetOptionsKeys(keys_);
+  track_change_ = false;
 }
 
-QVariant ClockSettings::GetOption(Options opt) {
-  return settings_.value(keys_[opt], GetDefaultValue(opt));
+const QVariant& ClockSettings::GetOption(Options opt) {
+  return values_[opt];
 }
 
 void ClockSettings::Load() {
   for (auto i = keys_.begin(); i != keys_.end(); ++i) {
     QVariant value = settings_.value(i.value(), GetDefaultValue(i.key()));
     values_[i.key()] = value;
-    emit OptionChanged(i.key(), value);
+    if (track_change_) emit OptionChanged(i.key(), value);
   }
 }
 
@@ -25,5 +26,9 @@ void ClockSettings::Save() {
 
 void ClockSettings::SetOption(Options opt, const QVariant& value) {
   values_[opt] = value;
-  emit OptionChanged(opt, value);
+  if (track_change_) emit OptionChanged(opt, value);
+}
+
+void ClockSettings::TrackChanges(bool set) {
+  track_change_ = set;
 }

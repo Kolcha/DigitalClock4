@@ -11,11 +11,13 @@ class MainWindow : public QWidget {
   Q_OBJECT
 public:
   explicit MainWindow(QWidget* parent = 0);
+  void Init();
 
 protected:
   void mouseMoveEvent(QMouseEvent* event);
   void mousePressEvent(QMouseEvent* event);
   void mouseReleaseEvent(QMouseEvent* event);
+  void showEvent(QShowEvent* event);
 
 private slots:
   void SettingsListener(Options opt, const QVariant& value);
@@ -34,7 +36,6 @@ private:
   DigitalClock* d_clock_;
   TrayControl* tray_control_;
   QPoint drag_position_;
-  QTimer* settings_timer_;
 };
 
 #endif // MAIN_WINDOW_H

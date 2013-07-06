@@ -9,29 +9,45 @@
 
 MainWindow::MainWindow(QWidget* parent)
   : QWidget(parent) {
+  // create objects
+  settings_ = new ClockSettings(this);
+  skin_manager_ = new SkinManager(this);
+  drawer_ = new SkinDrawer(this);
   d_clock_ = new DigitalClock(this);
+  tray_control_ = new TrayControl(this);
+
+  // add clock widget
   QHBoxLayout* main_layout = new QHBoxLayout(this);
   main_layout->addWidget(d_clock_);
   setLayout(main_layout);
 
+  // set window properties
   setWindowTitle("Clock");
   setWindowFlags(Qt::FramelessWindowHint | Qt::Tool);
   setAttribute(Qt::WA_TranslucentBackground);
   setContextMenuPolicy(Qt::CustomContextMenu);
+}
 
-  tray_control_ = new TrayControl(this);
-
-  settings_ = new ClockSettings(this);
-  skin_manager_ = new SkinManager(this);
-  drawer_ = new SkinDrawer(this);
-  settings_timer_ = new QTimer(this);
-  settings_timer_->setSingleShot(true);
-
+void MainWindow::Init() {
+  // connect signals
   ConnectAll();
+  // init skin manager
   skin_manager_->AddSkinDir(QDir(":/default_skin"));
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
-  settings_timer_->start(100);
+
+  // load application settings
+  settings_->Load();
+  d_clock_->SetSeparatorFlash(settings_->GetOption(OPT_SEPARATOR_FLASH).toBool());
+  skin_manager_->FindSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
+  drawer_->SetZoom(settings_->GetOption(OPT_ZOOM).toReal());
+  drawer_->SetColor(settings_->GetOption(OPT_COLOR).value<QColor>());
+  drawer_->SetTexture(settings_->GetOption(OPT_TEXTURE).toString());
+  drawer_->SetTexturePerElement(settings_->GetOption(OPT_TEXTURE_PER_ELEMENT).toBool());
+  drawer_->SetTextureDrawMode((SkinDrawer::DrawMode)
+                              (settings_->GetOption(OPT_TEXTURE_DRAW_MODE).toInt()));
+  drawer_->SetUseTexture(settings_->GetOption(OPT_USE_TEXTURE).toBool());
+  drawer_->SetString("88:88");
 
   // apply custom window flags if needed
   Qt::WindowFlags flags = windowFlags();
@@ -64,6 +80,11 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event) {
   }
 }
 
+void MainWindow::showEvent(QShowEvent* event) {
+  setWindowOpacity(settings_->GetOption(OPT_OPACITY).toReal());
+  event->accept();
+}
+
 void MainWindow::SettingsListener(Options opt, const QVariant& value) {
   switch (opt) {
     case OPT_OPACITY:
@@ -71,11 +92,11 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       break;
 
     case OPT_STAY_ON_TOP:
-//      SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
+      SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
       break;
 
     case OPT_TRANSP_FOR_INPUT:
-//      SetWindowFlag(Qt::WindowTransparentForInput, value.toBool());
+      SetWindowFlag(Qt::WindowTransparentForInput, value.toBool());
       break;
 
     case OPT_SEPARATOR_FLASH:
@@ -126,6 +147,7 @@ void MainWindow::ShowSettingsDialog() {
   // with current values
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
           settings_dlg, SLOT(SettingsListener(Options,QVariant)));
+  settings_->TrackChanges(true);
   settings_->Load();
   settings_dlg->show();
   // disable settings listener for settings dialog
@@ -143,6 +165,7 @@ void MainWindow::ShowSettingsDialog() {
 
 void MainWindow::EndSettingsEdit() {
   drawer_->SetPreviewMode(false);
+  settings_->TrackChanges(false);
 }
 
 void MainWindow::ShowAboutDialog() {
@@ -155,7 +178,6 @@ void MainWindow::DisplayMenu(const QPoint& pos) {
 }
 
 void MainWindow::ConnectAll() {
-  connect(settings_timer_, SIGNAL(timeout()), settings_, SLOT(Load()));
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
           this, SLOT(SettingsListener(Options,QVariant)));
   connect(skin_manager_, SIGNAL(SkinFound(QDir)), drawer_, SLOT(LoadSkin(QDir)));
