@@ -10,6 +10,7 @@ int main(int argc, char *argv[]) {
   a.setWindowIcon(QIcon(":/images/about_qt.svg"));
 
   MainWindow w;
+  w.Init();
   w.show();
 
   return a.exec();

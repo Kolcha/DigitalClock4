@@ -9,28 +9,45 @@
 
 MainWindow::MainWindow(QWidget* parent)
   : QWidget(parent) {
+  // create objects
+  settings_ = new ClockSettings(this);
+  skin_manager_ = new SkinManager(this);
+  drawer_ = new SkinDrawer(this);
   d_clock_ = new DigitalClock(this);
+  tray_control_ = new TrayControl(this);
+
+  // add clock widget
   QHBoxLayout* main_layout = new QHBoxLayout(this);
   main_layout->addWidget(d_clock_);
   setLayout(main_layout);
 
+  // set window properties
   setWindowTitle("Clock");
   setWindowFlags(Qt::FramelessWindowHint | Qt::Tool);
   setAttribute(Qt::WA_TranslucentBackground);
   setContextMenuPolicy(Qt::CustomContextMenu);
+}
 
-  tray_control_ = new TrayControl(this);
-
-  settings_ = new ClockSettings(this);
-  skin_manager_ = new SkinManager(this);
-  drawer_ = new SkinDrawer(this);
-
+void MainWindow::Init() {
+  // connect signals
   ConnectAll();
+  // init skin manager
   skin_manager_->AddSkinDir(QDir(":/default_skin"));
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
 
+  // load application settings
   settings_->Load();
+  d_clock_->SetSeparatorFlash(settings_->GetOption(OPT_SEPARATOR_FLASH).toBool());
+  skin_manager_->FindSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
+  drawer_->SetZoom(settings_->GetOption(OPT_ZOOM).toReal());
+  drawer_->SetColor(settings_->GetOption(OPT_COLOR).value<QColor>());
+  drawer_->SetTexture(settings_->GetOption(OPT_TEXTURE).toString());
+  drawer_->SetTexturePerElement(settings_->GetOption(OPT_TEXTURE_PER_ELEMENT).toBool());
+  drawer_->SetTextureDrawMode((SkinDrawer::DrawMode)
+                              (settings_->GetOption(OPT_TEXTURE_DRAW_MODE).toInt()));
+  drawer_->SetUseTexture(settings_->GetOption(OPT_USE_TEXTURE).toBool());
+  drawer_->SetString("88:88");
 
   // apply custom window flags if needed
   Qt::WindowFlags flags = windowFlags();
@@ -65,15 +82,6 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event) {
 
 void MainWindow::showEvent(QShowEvent* event) {
   setWindowOpacity(settings_->GetOption(OPT_OPACITY).toReal());
-  d_clock_->SetSeparatorFlash(settings_->GetOption(OPT_SEPARATOR_FLASH).toBool());
-  skin_manager_->FindSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
-  drawer_->SetZoom(settings_->GetOption(OPT_ZOOM).toReal());
-  drawer_->SetColor(settings_->GetOption(OPT_COLOR).value<QColor>());
-  drawer_->SetTexture(settings_->GetOption(OPT_TEXTURE).toString());
-  drawer_->SetTexturePerElement(settings_->GetOption(OPT_TEXTURE_PER_ELEMENT).toBool());
-  drawer_->SetTextureDrawMode((SkinDrawer::DrawMode)
-                              (settings_->GetOption(OPT_TEXTURE_DRAW_MODE).toInt()));
-  drawer_->SetUseTexture(settings_->GetOption(OPT_USE_TEXTURE).toBool());
   event->accept();
 }
 
