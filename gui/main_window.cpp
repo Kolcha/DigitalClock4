@@ -24,14 +24,11 @@ MainWindow::MainWindow(QWidget* parent)
   settings_ = new ClockSettings(this);
   skin_manager_ = new SkinManager(this);
   drawer_ = new SkinDrawer(this);
-  settings_timer_ = new QTimer(this);
-  settings_timer_->setSingleShot(true);
 
   ConnectAll();
   skin_manager_->AddSkinDir(QDir(":/default_skin"));
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
-  settings_timer_->start(100);
 
   // apply custom window flags if needed
   Qt::WindowFlags flags = windowFlags();
@@ -155,7 +152,6 @@ void MainWindow::DisplayMenu(const QPoint& pos) {
 }
 
 void MainWindow::ConnectAll() {
-  connect(settings_timer_, SIGNAL(timeout()), settings_, SLOT(Load()));
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
           this, SLOT(SettingsListener(Options,QVariant)));
   connect(skin_manager_, SIGNAL(SkinFound(QDir)), drawer_, SLOT(LoadSkin(QDir)));

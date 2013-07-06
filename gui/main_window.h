@@ -34,7 +34,6 @@ private:
   DigitalClock* d_clock_;
   TrayControl* tray_control_;
   QPoint drag_position_;
-  QTimer* settings_timer_;
 };
 
 #endif // MAIN_WINDOW_H
