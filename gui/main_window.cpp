@@ -30,6 +30,8 @@ MainWindow::MainWindow(QWidget* parent)
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
 
+  settings_->Load();
+
   // apply custom window flags if needed
   Qt::WindowFlags flags = windowFlags();
   if (settings_->GetOption(OPT_STAY_ON_TOP).toBool()) flags |= Qt::WindowStaysOnTopHint;
@@ -61,6 +63,20 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event) {
   }
 }
 
+void MainWindow::showEvent(QShowEvent* event) {
+  setWindowOpacity(settings_->GetOption(OPT_OPACITY).toReal());
+  d_clock_->SetSeparatorFlash(settings_->GetOption(OPT_SEPARATOR_FLASH).toBool());
+  skin_manager_->FindSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
+  drawer_->SetZoom(settings_->GetOption(OPT_ZOOM).toReal());
+  drawer_->SetColor(settings_->GetOption(OPT_COLOR).value<QColor>());
+  drawer_->SetTexture(settings_->GetOption(OPT_TEXTURE).toString());
+  drawer_->SetTexturePerElement(settings_->GetOption(OPT_TEXTURE_PER_ELEMENT).toBool());
+  drawer_->SetTextureDrawMode((SkinDrawer::DrawMode)
+                              (settings_->GetOption(OPT_TEXTURE_DRAW_MODE).toInt()));
+  drawer_->SetUseTexture(settings_->GetOption(OPT_USE_TEXTURE).toBool());
+  event->accept();
+}
+
 void MainWindow::SettingsListener(Options opt, const QVariant& value) {
   switch (opt) {
     case OPT_OPACITY:
@@ -68,11 +84,11 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       break;
 
     case OPT_STAY_ON_TOP:
-//      SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
+      SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
       break;
 
     case OPT_TRANSP_FOR_INPUT:
-//      SetWindowFlag(Qt::WindowTransparentForInput, value.toBool());
+      SetWindowFlag(Qt::WindowTransparentForInput, value.toBool());
       break;
 
     case OPT_SEPARATOR_FLASH:
@@ -123,6 +139,7 @@ void MainWindow::ShowSettingsDialog() {
   // with current values
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
           settings_dlg, SLOT(SettingsListener(Options,QVariant)));
+  settings_->TrackChanges(true);
   settings_->Load();
   settings_dlg->show();
   // disable settings listener for settings dialog
@@ -140,6 +157,7 @@ void MainWindow::ShowSettingsDialog() {
 
 void MainWindow::EndSettingsEdit() {
   drawer_->SetPreviewMode(false);
+  settings_->TrackChanges(false);
 }
 
 void MainWindow::ShowAboutDialog() {
