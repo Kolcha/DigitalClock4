@@ -12,9 +12,13 @@ int main(int argc, char *argv[]) {
   a.setWindowIcon(QIcon(":/images/about_qt.svg"));
 
   QString path = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-  QTranslator qtTranslator;
-  qtTranslator.load("qt_" + QLocale::system().name(), path);
-  a.installTranslator(&qtTranslator);
+  QTranslator qt_translator;
+  qt_translator.load("qt_" + QLocale::system().name(), path);
+  a.installTranslator(&qt_translator);
+
+  QTranslator app_translator;
+  app_translator.load("digital_clock_" + QLocale::system().name(), path);
+  a.installTranslator(&app_translator);
 
   MainWindow w;
   w.Init();

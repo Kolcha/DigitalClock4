@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="en_US">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="gui/about_dialog.ui" line="14"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>about program</translatorcomment>
+        <translation>About</translation>
     </message>
     <message>
         <location filename="gui/about_dialog.ui" line="25"/>
@@ -15,32 +16,37 @@
         <location filename="gui/about_dialog.ui" line="82"/>
         <location filename="gui/about_dialog.ui" line="96"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="gui/about_dialog.ui" line="47"/>
         <source>name:</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>program name</translatorcomment>
+        <translation>name:</translation>
     </message>
     <message>
         <location filename="gui/about_dialog.ui" line="61"/>
         <source>version:</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>program version</translatorcomment>
+        <translation>version:</translation>
     </message>
     <message>
         <location filename="gui/about_dialog.ui" line="75"/>
         <source>Qt version:</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Qt library version</translatorcomment>
+        <translation>Qt version:</translation>
     </message>
     <message>
         <location filename="gui/about_dialog.ui" line="89"/>
         <source>Copyright:</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>legal copyright</translatorcomment>
+        <translation>Copyright:</translation>
     </message>
     <message>
         <location filename="gui/about_dialog.ui" line="125"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>close dialog</translatorcomment>
+        <translation>Close</translation>
     </message>
 </context>
 <context>
@@ -48,137 +54,163 @@
     <message>
         <location filename="gui/settings_dialog.ui" line="14"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>settings dialog title</translatorcomment>
+        <translation>Settings</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="20"/>
         <source>Clock</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>clock settings group</translatorcomment>
+        <translation>Clock</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="28"/>
         <source>stay on top</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>clock stays on top</translatorcomment>
+        <translation>stay on top</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="35"/>
         <source>transparent for input</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>click goes throw clock</translatorcomment>
+        <translation>transparent for input</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="42"/>
         <source>separator flashes</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>clock separator flashes</translatorcomment>
+        <translation>separator flashes</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="69"/>
         <source>opacity</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>clock opacity</translatorcomment>
+        <translation>opacity</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="95"/>
         <location filename="gui/settings_dialog.ui" line="132"/>
         <source>100</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>100</translatorcomment>
+        <translation>100</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="102"/>
         <location filename="gui/settings_dialog.ui" line="139"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>% sign</translatorcomment>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="109"/>
         <source>zoom</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>clock zoom</translatorcomment>
+        <translation>zoom</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="151"/>
         <source>Skin</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>skin settings group</translatorcomment>
+        <translation>Skin</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="160"/>
         <source>&lt;no comment&gt;</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>default comment value</translatorcomment>
+        <translation>&lt;no comment&gt;</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="170"/>
         <source>Version :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>skin version</translatorcomment>
+        <translation>Version :</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="177"/>
         <location filename="gui/settings_dialog.ui" line="191"/>
         <location filename="gui/settings_dialog.ui" line="205"/>
         <source>unknown</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>default value</translatorcomment>
+        <translation>unknown</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="184"/>
         <source>Author :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>skin author</translatorcomment>
+        <translation>Author :</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="198"/>
         <source>E-mail :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>skin authour&apos;s e-mail</translatorcomment>
+        <translation>E-mail :</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="215"/>
         <source>Texture</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>texture settings group</translatorcomment>
+        <translation>Texture</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="221"/>
         <source>texture per element</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>use texture per element (digit)</translatorcomment>
+        <translation>texture per element</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="228"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>texture type group settings</translatorcomment>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="234"/>
         <source>solid color</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>use solid color as texture</translatorcomment>
+        <translation>solid color</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="241"/>
         <source>custom image</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>use custom image as texture</translatorcomment>
+        <translation>custom image</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="257"/>
         <location filename="gui/settings_dialog.ui" line="273"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>...</translatorcomment>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="283"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>texture draw mode settings</translatorcomment>
+        <translation>Mode</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="289"/>
         <source>stretch</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>stretch texture image</translatorcomment>
+        <translation>stretch</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="296"/>
         <source>tile</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>tile texture image</translatorcomment>
+        <translation>tile</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.cpp" line="158"/>
         <source>Open texture file</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>find and select texture file</translatorcomment>
+        <translation>Open texture file</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.cpp" line="160"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>image formats</translatorcomment>
+        <translation>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
 </context>
 <context>
@@ -186,22 +218,26 @@
     <message>
         <location filename="gui/tray_control.cpp" line="15"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>settings dialog</translatorcomment>
+        <translation>&amp;Settings</translation>
     </message>
     <message>
         <location filename="gui/tray_control.cpp" line="18"/>
         <source>&amp;About</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>about dialog</translatorcomment>
+        <translation>&amp;About</translation>
     </message>
     <message>
         <location filename="gui/tray_control.cpp" line="21"/>
         <source>About &amp;Qt</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>show info about Qt libraries</translatorcomment>
+        <translation>Abou&amp;t Qt</translation>
     </message>
     <message>
         <location filename="gui/tray_control.cpp" line="24"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>quit application</translatorcomment>
+        <translation>&amp;Quit</translation>
     </message>
 </context>
 </TS>
