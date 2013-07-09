@@ -1,3 +1,5 @@
 syntax: glob
 *.user
 *.qm
+*.msi
+installer/*-cache
