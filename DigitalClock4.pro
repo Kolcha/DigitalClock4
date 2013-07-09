@@ -49,7 +49,8 @@ RESOURCES += \
     resources/resources.qrc
 
 TRANSLATIONS += \
-    languages/digital_clock_en.ts
+    languages/digital_clock_en.ts \
+    languages/digital_clock_ru.ts
 
 win32:RC_FILE = resources/resources.rc
 unix:QMAKE_CXXFLAGS += -std=c++11
