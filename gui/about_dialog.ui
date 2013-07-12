@@ -184,6 +184,9 @@
           <property name="text">
            <string>Z275611204281</string>
           </property>
+          <property name="textInteractionFlags">
+           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+          </property>
          </widget>
         </item>
         <item row="1" column="0">
@@ -211,6 +214,9 @@
           <property name="text">
            <string>E241249077263</string>
           </property>
+          <property name="textInteractionFlags">
+           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+          </property>
          </widget>
         </item>
         <item row="2" column="0">
@@ -237,6 +243,9 @@
          <widget class="QLabel" name="label_18">
           <property name="text">
            <string>R263617824302</string>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
           </property>
          </widget>
         </item>
