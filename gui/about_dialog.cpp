@@ -45,7 +45,7 @@ void AboutDialog::TimoutHandler() {
 void AboutDialog::DrawLogo() {
   // resize and render svg logo
   QSvgRenderer renderer(QString(":/images/clock_logo.svg"));
-  QImage result(128, 128, QImage::Format_ARGB32_Premultiplied);
+  QImage result(64, 64, QImage::Format_ARGB32_Premultiplied);
   QPainter painter(&result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
   painter.fillRect(result.rect(), Qt::transparent);
@@ -57,12 +57,12 @@ void AboutDialog::DrawLogo() {
   painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
   painter.drawTiledPixmap(result.rect(), color_txd);
   painter.end();
-  ui->logo_label->setPixmap(QPixmap::fromImage(result));
+//  ui->logo_label->setPixmap(QPixmap::fromImage(result));
 }
 
 void AboutDialog::ShowInfo() {
   ui->name_value->setText(QCoreApplication::applicationName());
-  ui->version_value->setText(QCoreApplication::applicationVersion());
-  ui->qt_value->setText(QT_VERSION_STR);
+  ui->version_value->setText(tr("version: ") + QCoreApplication::applicationVersion());
+//  ui->qt_value->setText(QT_VERSION_STR);
   ui->rights_value->setText("© 2013 " + QCoreApplication::organizationName());
 }
