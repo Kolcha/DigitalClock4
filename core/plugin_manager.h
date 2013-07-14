@@ -16,18 +16,19 @@ public:
 
 signals:
   void SearchFinished(const QStringList& skins);
+  void InfoGot(const TPluginInfo& info);
 
 public slots:
   void AddPluginsDir(const QDir& dir);
   void DelPluginsDir(const QDir& dir);
   void ListAvailable();
-  void LoadPlugins(const QStringList& files);
+  void LoadPlugins(const QStringList& names);
   void EnablePlugin(const QString& name, bool enable);
   void GetPluginInfo(const QString& name);
 
 private:
-  void LoadPlugin(const QString& file);
-  void UnloadPlugin(const QString& file);
+  void LoadPlugin(const QString& name);
+  void UnloadPlugin(const QString& name);
 
   QList<QDir> plugins_dirs_;
   QMap<QString, QString> available_;

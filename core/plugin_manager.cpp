@@ -1,3 +1,4 @@
+#include <QFile>
 #include "plugin_manager.h"
 
 PluginManager::PluginManager(QObject *parent)
@@ -31,36 +32,40 @@ void PluginManager::ListAvailable() {
   emit SearchFinished(available_.keys());
 }
 
-void PluginManager::LoadPlugins(const QStringList& files) {
-  for (auto& file : files) {
-    LoadPlugin(file);
-  }
+void PluginManager::LoadPlugins(const QStringList& names) {
+  for (auto& name : names) LoadPlugin(name);
 }
 
 void PluginManager::EnablePlugin(const QString& name, bool enable) {
-  QString file = available_[name];
-  enable ? LoadPlugin(file) : UnloadPlugin(file);
+  enable ? LoadPlugin(name) : UnloadPlugin(name);
 }
 
 void PluginManager::GetPluginInfo(const QString& name) {
+  QString file = available_[name];
+  QPluginLoader loader(file);
+  IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
+  emit InfoGot(plugin->GetInfo());
+  loader.unload();
 }
 
-void PluginManager::LoadPlugin(const QString& file) {
+void PluginManager::LoadPlugin(const QString& name) {
+  QString file = available_[name];
+  if (!QFile::exists(file)) return;
   QPluginLoader* loader = new QPluginLoader(file, this);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
     plugin->Init(data_);
     plugin->Start();
-    loaded_[file] = loader;
+    loaded_[name] = loader;
   }
 }
 
-void PluginManager::UnloadPlugin(const QString& file) {
-  QPluginLoader* loader = loaded_[file];
+void PluginManager::UnloadPlugin(const QString& name) {
+  QPluginLoader* loader = loaded_[name];
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
     plugin->Stop();
     loader->unload();
-    loaded_.remove(file);
+    loaded_.remove(name);
   }
 }
