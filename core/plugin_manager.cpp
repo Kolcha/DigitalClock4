@@ -21,7 +21,11 @@ void PluginManager::ListAvailable() {
   for (auto& dir : plugins_dirs_) {
     QStringList files = dir.entryList(QDir::Files);
     for (auto& file : files) {
-      available_[file] = dir.filePath(file);
+      QString abs_path = dir.filePath(file);
+      QPluginLoader loader(abs_path);
+      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
+      if (plugin) available_[plugin->GetInfo()[PI_NAME]] = abs_path;
+      loader.unload();
     }
   }
   emit SearchFinished(available_.keys());
@@ -36,6 +40,9 @@ void PluginManager::LoadPlugins(const QStringList& files) {
 void PluginManager::EnablePlugin(const QString& name, bool enable) {
   QString file = available_[name];
   enable ? LoadPlugin(file) : UnloadPlugin(file);
+}
+
+void PluginManager::GetPluginInfo(const QString& name) {
 }
 
 void PluginManager::LoadPlugin(const QString& file) {

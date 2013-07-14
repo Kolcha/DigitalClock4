@@ -23,6 +23,7 @@ public slots:
   void ListAvailable();
   void LoadPlugins(const QStringList& files);
   void EnablePlugin(const QString& name, bool enable);
+  void GetPluginInfo(const QString& name);
 
 private:
   void LoadPlugin(const QString& file);
