@@ -9,6 +9,7 @@ class TrayControl : public QObject {
 public:
   explicit TrayControl(QObject* parent = 0);
   QMenu* GetMenu();
+  QSystemTrayIcon* GetTrayIcon();
 
 signals:
   void ShowSettingsDlg();
