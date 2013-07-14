@@ -39,7 +39,8 @@ HEADERS  += \
     gui/main_window.h \
     gui/tray_control.h \
     gui/settings_dialog.h \
-    gui/about_dialog.h
+    gui/about_dialog.h \
+    core/iclock_plugin.h
 
 FORMS    += \
     gui/settings_dialog.ui \
