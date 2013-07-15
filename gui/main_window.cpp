@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget* parent)
   : QWidget(parent) {
   // create objects
   settings_ = new ClockSettings(this);
+  plugin_manager_ = new PluginManager(this);
   skin_manager_ = new SkinManager(this);
   drawer_ = new SkinDrawer(this);
   d_clock_ = new DigitalClock(this);
@@ -35,6 +36,15 @@ void MainWindow::Init() {
   skin_manager_->AddSkinDir(QDir(":/default_skin"));
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
+  // init plugin manager
+  plugin_manager_->AddPluginsDir(QDir(QCoreApplication::applicationDirPath() + "/plugins"));
+  plugin_manager_->ListAvailable();
+  TPluginData plugin_data;
+  plugin_data.clock = d_clock_;
+  plugin_data.settings = settings_;
+  plugin_data.tray = tray_control_;
+  plugin_data.window = this;
+  plugin_manager_->SetInitData(plugin_data);
 
   // load application settings
   settings_->Load();
@@ -48,6 +58,8 @@ void MainWindow::Init() {
                               (settings_->GetOption(OPT_TEXTURE_DRAW_MODE).toInt()));
   drawer_->SetUseTexture(settings_->GetOption(OPT_USE_TEXTURE).toBool());
   drawer_->SetString("88:88");
+
+  plugin_manager_->LoadPlugins(settings_->GetOption(OPT_PLUGINS).toStringList());
 
   // apply custom window flags if needed
   Qt::WindowFlags flags = windowFlags();
