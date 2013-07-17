@@ -25,7 +25,9 @@ void PluginManager::ListAvailable() {
       QString abs_path = dir.filePath(file);
       QPluginLoader loader(abs_path);
       IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
-      if (plugin) available_[plugin->GetInfo()[PI_NAME]] = abs_path;
+      TPluginInfo info;
+      plugin->GetInfo(&info);
+      if (plugin) available_[info[PI_NAME]] = abs_path;
       loader.unload();
     }
   }
@@ -44,7 +46,9 @@ void PluginManager::GetPluginInfo(const QString& name) {
   QString file = available_[name];
   QPluginLoader loader(file);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
-  emit InfoGot(plugin->GetInfo());
+  TPluginInfo info;
+  plugin->GetInfo(&info);
+  emit InfoGot(info);
   loader.unload();
 }
 
@@ -54,7 +58,7 @@ void PluginManager::LoadPlugin(const QString& name) {
   QPluginLoader* loader = new QPluginLoader(file, this);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
-    plugin->Init(data_);
+//    plugin->Init(data_);
     plugin->Start();
     loaded_[name] = loader;
   }
