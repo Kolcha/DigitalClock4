@@ -16,7 +16,6 @@ signals:
 public slots:
   void DrawImage(const QImage& image);
   void SetSeparatorFlash(bool set);
-  void SetTimeFormat(const QString& format);
 
 private slots:
   void TimeoutHandler();
@@ -25,7 +24,6 @@ private:
   QTimer* timer_;
   bool sep_visible_;
   bool sep_flashes_;
-  QString time_format_;
 };
 
 #endif // DIGITAL_CLOCK_H

@@ -11,10 +11,6 @@ QMenu*TrayControl::GetMenu() {
   return tray_menu_;
 }
 
-QSystemTrayIcon*TrayControl::GetTrayIcon() {
-  return tray_icon_;
-}
-
 void TrayControl::CreateActions() {
   settings_action_ = new QAction(QIcon(":/images/settings.svg"), tr("&Settings"), this);
   connect(settings_action_, SIGNAL(triggered()), this, SIGNAL(ShowSettingsDlg()));

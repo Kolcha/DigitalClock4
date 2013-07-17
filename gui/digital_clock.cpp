@@ -27,13 +27,8 @@ void DigitalClock::SetSeparatorFlash(bool set) {
   sep_visible_ = !set;
 }
 
-void DigitalClock::SetTimeFormat(const QString& format) {
-  time_format_ = format;
-}
-
 void DigitalClock::TimeoutHandler() {
-  if (time_format_.isEmpty()) time_format_ = QLocale::system().timeFormat();
-  QString time = QTime::currentTime().toString(time_format_);
+  QString time = QLocale::system().toString(QTime::currentTime());
   int sep_pos = time.indexOf(':');
   time = time.mid(0, time.lastIndexOf(':'));
   if (sep_flashes_) {
