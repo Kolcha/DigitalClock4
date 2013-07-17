@@ -27,10 +27,12 @@ void PluginManager::ListAvailable() {
       QString abs_path = dir.filePath(file);
       QPluginLoader loader(abs_path);
       IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
-      TPluginInfo info;
-      plugin->GetInfo(&info);
-      if (plugin) available_[info[PI_NAME]] = abs_path;
-      loader.unload();
+      if (plugin) {
+        TPluginInfo info;
+        plugin->GetInfo(&info);
+        if (plugin) available_[info[PI_NAME]] = abs_path;
+        loader.unload();
+      }
     }
   }
   emit SearchFinished(available_.keys());

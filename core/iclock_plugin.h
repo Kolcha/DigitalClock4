@@ -46,6 +46,10 @@ public slots:
   virtual void SettingsListener(Options option, const QVariant& new_value) = 0;
 };
 
+/*! Plugin interface IID */
+#define PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.plugin-interface"
+Q_DECLARE_INTERFACE(IClockPlugin, PLUGIN_INTERFACE_IID)
+
 
 /*!
  * @brief Settings plugin interface.
