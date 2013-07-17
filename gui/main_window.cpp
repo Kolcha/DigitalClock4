@@ -1,4 +1,4 @@
-#include <QHBoxLayout>
+#include <QGridLayout>
 #include <QMouseEvent>
 #include <QCoreApplication>
 #include "settings_dialog.h"
@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget* parent)
   tray_control_ = new TrayControl(this);
 
   // add clock widget
-  QHBoxLayout* main_layout = new QHBoxLayout(this);
+  QGridLayout* main_layout = new QGridLayout(this);
   main_layout->addWidget(d_clock_);
   setLayout(main_layout);
 
