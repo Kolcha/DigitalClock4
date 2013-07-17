@@ -1,6 +1,8 @@
 #ifndef ICLOCK_PLUGIN_H
 #define ICLOCK_PLUGIN_H
 
+#include <QMap>
+#include <QString>
 #include <QtPlugin>
 
 class ClockSettings;
