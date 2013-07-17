@@ -1,28 +1,30 @@
 #ifndef SPECTRUM_CLOCK_H
 #define SPECTRUM_CLOCK_H
 
-#include <QColor>
-#include "core/iclock_plugin.h"
+#include <QTimer>
+#include "iclock_plugin.h"
 
-class SpectrumClock : public QObject, public IClockPlugin {
+class SpectrumClock : public ISettingsPlugin {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID PLUGIN_INTERFACE_IID FILE "spectrum_clock.json")
-  Q_INTERFACES(IClockPlugin)
+  Q_PLUGIN_METADATA(IID SETTINGS_PLUGIN_INTERFACE_IID FILE "spectrum_clock.json")
+  Q_INTERFACES(IClockPlugin ISettingsPlugin)
 
 public:
   SpectrumClock();
-  void Init(const TPluginData& data);
-  void Config();
+  void Init(const QMap<Options, QVariant>& current_settings);
+  void Configure() {}
   void Start();
   void Stop();
-  const TPluginInfo& GetInfo() const;
+  void GetInfo(TPluginInfo* info);
+
+public slots:
+  void SettingsListener(Options, const QVariant&) {}
 
 private slots:
-  void TimeoutHandler(const QString&);
+  void TimeoutHandler();
 
 private:
-  TPluginInfo info_;
-  TPluginData data_;
+  QTimer timer_;
   QColor old_color_;
   QColor cur_color_;
 };
