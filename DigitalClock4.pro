@@ -24,8 +24,7 @@ SOURCES += main.cpp\
     gui/main_window.cpp \
     gui/tray_control.cpp \
     gui/settings_dialog.cpp \
-    gui/about_dialog.cpp \
-    core/plugin_manager.cpp
+    gui/about_dialog.cpp
 
 HEADERS  += \
     skin/iclock_skin.h \
@@ -41,8 +40,7 @@ HEADERS  += \
     gui/tray_control.h \
     gui/settings_dialog.h \
     gui/about_dialog.h \
-    core/iclock_plugin.h \
-    core/plugin_manager.h
+    core/iclock_plugin.h
 
 FORMS    += \
     gui/settings_dialog.ui \

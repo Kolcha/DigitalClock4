@@ -1,28 +1,28 @@
-1	ICON	1372595747_103169.ico
+1	ICON	1372595747_103170.ico
 1	VERSIONINFO
-FILEVERSION	4,1,4,77
-PRODUCTVERSION	4,1,4,77
+FILEVERSION	4,1,4,70
+PRODUCTVERSION	4,1,4,70
 FILEOS		0x4
 FILETYPE	0x1
 {
 BLOCK "StringFileInfo"
 {
-        BLOCK "040904b0"
-        {
-                VALUE "Comments", "Beautiful clock"
-                VALUE "CompanyName", "Nick Korotysh"
-                VALUE "FileDescription", "Digital Clock 4"
-                VALUE "FileVersion", "4.1.4.77"
-                VALUE "InternalName", "DigitalClock4.exe"
-                VALUE "LegalCopyright", "Copyright (C) 2013 Nick Korotysh"
-                VALUE "OriginalFilename", "DigitalClock4.exe"
-                VALUE "ProductName", "Digital Clock"
-                VALUE "ProductVersion", "4.1.4"
-        }
+	BLOCK "040904b0"
+	{
+		VALUE "Comments", "Beautiful clock"
+		VALUE "CompanyName", "Nick Korotysh"
+		VALUE "FileDescription", "Digital Clock 4"
+		VALUE "FileVersion", "4.1.4.70"
+		VALUE "InternalName", "DigitalClock4.exe"
+		VALUE "LegalCopyright", "Copyright (C) 2013 Nick Korotysh"
+		VALUE "OriginalFilename", "DigitalClock4.exe"
+		VALUE "ProductName", "Digital Clock"
+		VALUE "ProductVersion", "4.1.4"
+	}
 }
 
 BLOCK "VarFileInfo"
 {
-        VALUE "Translation", 0x0409 0x04B0
+	VALUE "Translation", 0x0409 0x04B0
 }
 }
