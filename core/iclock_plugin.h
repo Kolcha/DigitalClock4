@@ -2,29 +2,44 @@
 #define ICLOCK_PLUGIN_H
 
 #include <QtPlugin>
+#include "settings_keys.h"
 
-class ClockSettings;
-class DigitalClock;
-class MainWindow;
-class TrayControl;
-
-struct TPluginData {
-  ClockSettings* settings;
-  DigitalClock* clock;
-  MainWindow* window;
-  TrayControl* tray;
+// plugin info fields
+enum FPluginInfo {
+  PI_NAME,        // plugin name
+  PI_VERSION,     // plugin version
+  PI_AUTHOR,      // plugin author
+  PI_EMAIL,       // author's e-mail
+  PI_COMMENT      // plugin description
 };
+// plugin info type
+typedef QMap<FPluginInfo, QString> TPluginInfo;
 
-class IClockPlugin {
+
+class IClockPlugin : public QObject {
+  Q_OBJECT
+
 public:
   virtual ~IClockPlugin() {}
-
-  virtual void Init(const TPluginData& data) = 0;
   virtual void Start() = 0;
   virtual void Stop() = 0;
+  virtual void Configure() = 0;
+  virtual void GetInfo(TPluginInfo* info) = 0;
 };
 
-#define PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.plugin"
-Q_DECLARE_INTERFACE(IClockPlugin, PLUGIN_INTERFACE_IID)
+
+class ISettingsPlugin : public IClockPlugin {
+  Q_OBJECT
+
+public:
+  virtual ~ISettingsPlugin() {}
+  virtual void Init(const QMap<Options, QVariant>& current_settings) = 0;
+
+signals:
+  void OptionChanged(Options option, const QVariant& value);
+};
+
+#define SETTINGS_PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.settings-plugin"
+Q_DECLARE_INTERFACE(ISettingsPlugin, SETTINGS_PLUGIN_INTERFACE_IID)
 
 #endif // ICLOCK_PLUGIN_H
