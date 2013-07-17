@@ -1,4 +1,6 @@
 #include <QFile>
+#include "clock_settings.h"
+#include "../gui/main_window.h"
 #include "plugin_manager.h"
 
 PluginManager::PluginManager(QObject *parent)
@@ -25,8 +27,12 @@ void PluginManager::ListAvailable() {
       QString abs_path = dir.filePath(file);
       QPluginLoader loader(abs_path);
       IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
-      if (plugin) available_[plugin->GetInfo()[PI_NAME]] = abs_path;
-      loader.unload();
+      if (plugin) {
+        TPluginInfo info;
+        plugin->GetInfo(&info);
+        if (plugin) available_[info[PI_NAME]] = abs_path;
+        loader.unload();
+      }
     }
   }
   emit SearchFinished(available_.keys());
@@ -44,7 +50,9 @@ void PluginManager::GetPluginInfo(const QString& name) {
   QString file = available_[name];
   QPluginLoader loader(file);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
-  emit InfoGot(plugin->GetInfo());
+  TPluginInfo info;
+  plugin->GetInfo(&info);
+  emit InfoGot(info);
   loader.unload();
 }
 
@@ -54,7 +62,7 @@ void PluginManager::LoadPlugin(const QString& name) {
   QPluginLoader* loader = new QPluginLoader(file, this);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
-    plugin->Init(data_);
+    InitPlugin(plugin);
     plugin->Start();
     loaded_[name] = loader;
   }
@@ -67,5 +75,14 @@ void PluginManager::UnloadPlugin(const QString& name) {
     plugin->Stop();
     loader->unload();
     loaded_.remove(name);
+  }
+}
+
+void PluginManager::InitPlugin(IClockPlugin* plugin) {
+  ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
+  if (sp) {
+    sp->Init(data_.settings->GetSettings());
+    connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
+            data_.window, SLOT(SettingsListener(Options,QVariant)));
   }
 }
