@@ -25,6 +25,9 @@ public:
   virtual void Stop() = 0;
   virtual void Configure() = 0;
   virtual void GetInfo(TPluginInfo* info) = 0;
+
+public slots:
+  virtual void SettingsListener(Options option, const QVariant& new_value) = 0;
 };
 
 
