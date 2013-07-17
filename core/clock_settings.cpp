@@ -10,6 +10,10 @@ const QVariant& ClockSettings::GetOption(Options opt) {
   return values_[opt];
 }
 
+const QMap<Options, QVariant>&ClockSettings::GetSettings() {
+  return values_;
+}
+
 void ClockSettings::Load() {
   for (auto i = keys_.begin(); i != keys_.end(); ++i) {
     QVariant value = settings_.value(i.value(), GetDefaultValue(i.key()));

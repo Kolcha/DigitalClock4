@@ -97,6 +97,13 @@ private:
    * @param name - plugin name to unload
    */
   void UnloadPlugin(const QString& name);
+  /*!
+   * @brief Init given plugin.
+   *
+   * Function determine plugin type and init it with appropriate data.
+   * @param plugin - plugin to init
+   */
+  void InitPlugin(IClockPlugin* plugin);
 
   QList<QDir> plugins_dirs_;
   QMap<QString, QString> available_;
