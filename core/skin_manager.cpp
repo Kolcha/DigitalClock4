@@ -16,7 +16,7 @@ void SkinManager::DelSkinDir(const QDir& dir) {
 void SkinManager::ListSkins() {
   skins_.clear();
   for (auto& s_dir : skin_dirs_) {
-    QStringList f_dirs = s_dir.entryList(QStringList("*"), QDir::NoDotAndDotDot | QDir::AllDirs);
+    QStringList f_dirs = s_dir.entryList(QDir::NoDotAndDotDot | QDir::AllDirs);
     for (auto& f_dir : f_dirs) {
       QDir skin_root(s_dir.filePath(f_dir));
       IClockSkin* tmp = CreateSkin(skin_root);
