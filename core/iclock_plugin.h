@@ -44,6 +44,15 @@ public slots:
    * @param new_value - new option value as QVariant
    */
   virtual void SettingsListener(Options option, const QVariant& new_value) = 0;
+  /*!
+   * @brief Current time update listener.
+   *
+   * This slot will be called every 0.5 sec when clock updates current time.
+   * It can be used as timer. Clock provides current time value as QString.
+   * @param current_time - current time value
+   * @note time format varies depend on system locale settings or plugins
+   */
+  virtual void TimeUpdateListener(const QString& current_time) = 0;
 };
 
 /*! Plugin interface IID */
