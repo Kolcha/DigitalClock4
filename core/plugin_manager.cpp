@@ -90,4 +90,9 @@ void PluginManager::InitPlugin(IClockPlugin* plugin) {
     connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
             data_.window, SLOT(SettingsListener(Options,QVariant)));
   }
+  // init tray plugins
+  ITrayPlugin* tp = qobject_cast<ITrayPlugin*>(plugin);
+  if (tp) {
+    tp->Init(data_.tray->GetTrayIcon(), data_.tray->GetMenu());
+  }
 }

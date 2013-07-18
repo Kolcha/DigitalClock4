@@ -55,9 +55,9 @@ public slots:
   virtual void TimeUpdateListener(const QString& current_time) = 0;
 };
 
-/*! Plugin interface IID */
-#define PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.plugin-interface"
-Q_DECLARE_INTERFACE(IClockPlugin, PLUGIN_INTERFACE_IID)
+/*! Clock plugin interface IID */
+#define CLOCK_PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.clock-plugin"
+Q_DECLARE_INTERFACE(IClockPlugin, CLOCK_PLUGIN_INTERFACE_IID)
 
 
 /*!
@@ -87,8 +87,36 @@ signals:
   void OptionChanged(Options option, const QVariant& value);
 };
 
-/*! Settings interface IID */
+/*! Settings plugin interface IID */
 #define SETTINGS_PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.settings-plugin"
 Q_DECLARE_INTERFACE(ISettingsPlugin, SETTINGS_PLUGIN_INTERFACE_IID)
+
+
+class QSystemTrayIcon;
+class QMenu;
+
+/*!
+ * @brief Tray plugin interface.
+ *
+ * Tray plugin can access to the clock tray icon in system tray. It can change clock
+ * tray icon and modify tray menu (right click clock popup menu will modified too).
+ */
+class ITrayPlugin : public IClockPlugin {
+  Q_OBJECT
+
+public:
+  /*! Virtual destructor. */
+  virtual ~ITrayPlugin() {}
+  /*!
+   * Init plugin.
+   * @param tray_icon - pointer to clock QSystemTrayIcon object
+   * @param tray_menu - pointer to clock tray menu
+   */
+  virtual void Init(QSystemTrayIcon* tray_icon, QMenu* tray_menu) = 0;
+};
+
+/*! Tray plugin interface IID */
+#define TRAY_PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.tray-plugin"
+Q_DECLARE_INTERFACE(ITrayPlugin, TRAY_PLUGIN_INTERFACE_IID)
 
 #endif // ICLOCK_PLUGIN_H
