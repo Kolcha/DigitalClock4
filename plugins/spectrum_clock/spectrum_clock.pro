@@ -16,3 +16,5 @@ SOURCES += spectrum_clock.cpp
 HEADERS += spectrum_clock.h \
     ../../core/iclock_plugin.h
 OTHER_FILES += spectrum_clock.json
+
+win32:RC_FILE = spectrum_clock.rc

@@ -1,0 +1,27 @@
+1	VERSIONINFO
+FILEVERSION	2,0,0,7
+PRODUCTVERSION	2,0,0,7
+FILEOS		0x4
+FILETYPE	0x2
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "Comments", "Spectrum clock"
+		VALUE "CompanyName", "Nick Korotysh"
+		VALUE "FileDescription", "Digital Clock Plugin"
+		VALUE "FileVersion", "2.0.0.7"
+		VALUE "InternalName", "spectrum_clock.dll"
+		VALUE "LegalCopyright", "Copyright (C) 2013 Nick Korotysh"
+		VALUE "OriginalFilename", "spectrum_clock.dll"
+		VALUE "ProductName", "Digital Clock"
+		VALUE "ProductVersion", "4.1.4"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409 0x04B0
+}
+}

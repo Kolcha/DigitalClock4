@@ -1,10 +1,5 @@
 #include "spectrum_clock.h"
 
-SpectrumClock::SpectrumClock() {
-  timer_.setInterval(500);
-  connect(&timer_, SIGNAL(timeout()), this, SLOT(TimeoutHandler()));
-}
-
 void SpectrumClock::Init(const QMap<Options, QVariant>& current_settings) {
   old_color_ = current_settings[OPT_COLOR].value<QColor>();
   cur_color_ = Qt::red;
@@ -12,11 +7,9 @@ void SpectrumClock::Init(const QMap<Options, QVariant>& current_settings) {
 
 void SpectrumClock::Start() {
   emit OptionChanged(OPT_COLOR, cur_color_);
-  timer_.start();
 }
 
 void SpectrumClock::Stop() {
-  timer_.stop();
   emit OptionChanged(OPT_COLOR, old_color_);
 }
 
@@ -28,7 +21,7 @@ void SpectrumClock::GetInfo(TPluginInfo* info) {
   info->insert(PI_COMMENT, "Clock change color during time.");
 }
 
-void SpectrumClock::TimeoutHandler() {
+void SpectrumClock::TimeUpdateListener(const QString&) {
   int r = cur_color_.red();
   int g = cur_color_.green();
   int b = cur_color_.blue();

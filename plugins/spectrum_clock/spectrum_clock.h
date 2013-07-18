@@ -1,7 +1,6 @@
 #ifndef SPECTRUM_CLOCK_H
 #define SPECTRUM_CLOCK_H
 
-#include <QTimer>
 #include "iclock_plugin.h"
 
 class SpectrumClock : public ISettingsPlugin {
@@ -10,7 +9,6 @@ class SpectrumClock : public ISettingsPlugin {
   Q_INTERFACES(IClockPlugin ISettingsPlugin)
 
 public:
-  SpectrumClock();
   void Init(const QMap<Options, QVariant>& current_settings);
   void Configure() {}
   void Start();
@@ -19,12 +17,9 @@ public:
 
 public slots:
   void SettingsListener(Options, const QVariant&) {}
-
-private slots:
-  void TimeoutHandler();
+  void TimeUpdateListener(const QString&);
 
 private:
-  QTimer timer_;
   QColor old_color_;
   QColor cur_color_;
 };
