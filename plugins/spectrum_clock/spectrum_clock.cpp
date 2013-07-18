@@ -15,6 +15,7 @@ void SpectrumClock::Stop() {
 
 void SpectrumClock::GetInfo(TPluginInfo* info) {
   info->insert(PI_NAME, "Spectrum clock");
+  info->insert(PI_TYPE, "settings");
   info->insert(PI_VERSION, "2.0");
   info->insert(PI_AUTHOR, "Nick Korotysh");
   info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
