@@ -119,4 +119,28 @@ public:
 #define TRAY_PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.tray-plugin"
 Q_DECLARE_INTERFACE(ITrayPlugin, TRAY_PLUGIN_INTERFACE_IID)
 
+
+/*!
+ * @brief Widget plugin interface.
+ *
+ * Widget plugin can access and manipulate with main clock window. It can change
+ * window position or add some widgets to this window for example.
+ */
+class IWidgetPlugin : public IClockPlugin {
+  Q_OBJECT
+
+public:
+  /*! Virtual destructor. */
+  virtual ~IWidgetPlugin() {}
+  /*!
+   * Init plugin.
+   * @param main_wnd - pointer to clock main window
+   */
+  virtual void Init(QWidget* main_wnd) = 0;
+};
+
+/*! Widget plugin interface IID */
+#define WIDGET_PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.widget-plugin"
+Q_DECLARE_INTERFACE(IWidgetPlugin, WIDGET_PLUGIN_INTERFACE_IID)
+
 #endif // ICLOCK_PLUGIN_H
