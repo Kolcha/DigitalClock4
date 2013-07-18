@@ -7,6 +7,7 @@
 /*! plugin info fields */
 enum FPluginInfo {
   PI_NAME,        /*!< plugin name */
+  PI_TYPE,        /*!< plugin type (base, settings, tray, widget) */
   PI_VERSION,     /*!< plugin version */
   PI_AUTHOR,      /*!< plugin author */
   PI_EMAIL,       /*!< author's e-mail */
