@@ -1,5 +1,4 @@
 #include <QFile>
-#include "clock_settings.h"
 #include "../gui/main_window.h"
 #include "plugin_manager.h"
 
@@ -79,10 +78,26 @@ void PluginManager::UnloadPlugin(const QString& name) {
 }
 
 void PluginManager::InitPlugin(IClockPlugin* plugin) {
+  // connect slots which are common for all plugins
+  connect(data_.settings, SIGNAL(OptionChanged(Options,QVariant)),
+          plugin, SLOT(SettingsListener(Options,QVariant)));
+  connect(data_.clock, SIGNAL(ImageNeeded(QString)),
+          plugin, SLOT(TimeUpdateListener(QString)));
+  // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
   if (sp) {
     sp->Init(data_.settings->GetSettings());
     connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
             data_.window, SLOT(SettingsListener(Options,QVariant)));
+  }
+  // init tray plugins
+  ITrayPlugin* tp = qobject_cast<ITrayPlugin*>(plugin);
+  if (tp) {
+    tp->Init(data_.tray->GetTrayIcon(), data_.tray->GetMenu());
+  }
+  // init widget plugins
+  IWidgetPlugin* wp = qobject_cast<IWidgetPlugin*>(plugin);
+  if (wp) {
+    wp->Init(data_.window);
   }
 }
