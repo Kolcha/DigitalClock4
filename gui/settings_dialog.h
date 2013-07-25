@@ -2,6 +2,7 @@
 #define SETTINGS_DIALOG_H
 
 #include <QDialog>
+#include <QListWidgetItem>
 #include "../core/settings_keys.h"
 #include "../skin/iclock_skin.h"
 
@@ -18,6 +19,7 @@ public:
 
 signals:
   void OptionChanged(Options opt, const QVariant& value);
+  void PluginEnabled(const QString& name, bool enabled);
 
 public slots:
   void SettingsListener(Options opt, const QVariant& value);
@@ -42,6 +44,7 @@ private slots:
   void on_type_color_toggled(bool checked);
   void on_type_image_toggled(bool checked);
   void on_skin_box_currentIndexChanged(const QString& arg1);
+  void on_plugins_list_itemChanged(QListWidgetItem* item);
 
 private:
   Ui::SettingsDialog* ui;

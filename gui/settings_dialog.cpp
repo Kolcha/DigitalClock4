@@ -187,3 +187,7 @@ void SettingsDialog::on_type_image_toggled(bool checked) {
 void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
   emit OptionChanged(OPT_SKIN_NAME, arg1);
 }
+
+void SettingsDialog::on_plugins_list_itemChanged(QListWidgetItem* item) {
+  emit PluginEnabled(item->text(), item->checkState() == Qt::Checked);
+}
