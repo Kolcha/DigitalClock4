@@ -23,6 +23,7 @@ public slots:
   void SettingsListener(Options opt, const QVariant& value);
   void SetSkinList(const QStringList& skins);
   void DisplaySkinInfo(const TSkinInfo& info);
+  void SetPluginsList(const QStringList& plugins);
 
 protected:
   void changeEvent(QEvent* e);

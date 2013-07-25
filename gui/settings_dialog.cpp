@@ -102,6 +102,15 @@ void SettingsDialog::DisplaySkinInfo(const TSkinInfo& info) {
   }
 }
 
+void SettingsDialog::SetPluginsList(const QStringList& plugins) {
+  for (auto& plugin : plugins) {
+    QListWidgetItem* item = new QListWidgetItem(plugin);
+    item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsUserCheckable | Qt::ItemIsSelectable);
+    item->setCheckState(Qt::Unchecked);
+    ui->plugins_list->addItem(item);
+  }
+}
+
 void SettingsDialog::changeEvent(QEvent* e) {
   QDialog::changeEvent(e);
   switch (e->type()) {
