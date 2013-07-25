@@ -59,7 +59,8 @@ void MainWindow::Init() {
   drawer_->SetUseTexture(settings_->GetOption(OPT_USE_TEXTURE).toBool());
   drawer_->SetString("88:88");
 
-  plugin_manager_->LoadPlugins(settings_->GetOption(OPT_PLUGINS).toStringList());
+  active_plugins_ = settings_->GetOption(OPT_PLUGINS).toStringList();
+  plugin_manager_->LoadPlugins(active_plugins_);
 
   // apply custom window flags if needed
   Qt::WindowFlags flags = windowFlags();
@@ -142,6 +143,19 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
     case OPT_USE_TEXTURE:
       drawer_->SetUseTexture(value.toBool());
       break;
+
+    case OPT_PLUGINS:
+    {
+      QStringList new_plugins = value.toStringList();
+      for (auto& plugin : active_plugins_) {
+        if (!new_plugins.contains(plugin)) plugin_manager_->EnablePlugin(plugin, false);
+      }
+      for (auto& plugin : new_plugins) {
+        if (!active_plugins_.contains(plugin)) plugin_manager_->EnablePlugin(plugin, true);
+      }
+      active_plugins_ = new_plugins;
+      break;
+    }
   }
 }
 
@@ -175,8 +189,6 @@ void MainWindow::ShowSettingsDialog() {
   // connect main logic signals: change/save/discard settings
   connect(settings_dlg, SIGNAL(OptionChanged(Options,QVariant)),
           settings_, SLOT(SetOption(Options,QVariant)));
-  connect(settings_dlg, SIGNAL(PluginEnabled(QString,bool)),
-          plugin_manager_, SLOT(EnablePlugin(QString,bool)));
   connect(settings_dlg, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(settings_dlg, SIGNAL(rejected()), settings_, SLOT(Load()));
 

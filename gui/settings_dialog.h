@@ -20,7 +20,6 @@ public:
 
 signals:
   void OptionChanged(Options opt, const QVariant& value);
-  void PluginEnabled(const QString& name, bool enabled);
   void PluginInfoRequest(const QString& name);
 
 public slots:
@@ -54,6 +53,7 @@ private:
   Ui::SettingsDialog* ui;
   QColor last_color_;
   QString last_txd_path_;
+  QStringList active_plugins_;
 };
 
 #endif // SETTINGS_DIALOG_H

@@ -69,6 +69,13 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       ui->type_color->setChecked(!value.toBool());
       ui->type_image->setChecked(value.toBool());
       break;
+
+    case  OPT_PLUGINS:
+      for (auto& plugin : value.toStringList()) {
+        QList<QListWidgetItem*> items = ui->plugins_list->findItems(plugin, Qt::MatchExactly);
+        if (!items.isEmpty()) items.first()->setCheckState(Qt::Checked);
+      }
+      break;
   }
 }
 
@@ -197,7 +204,12 @@ void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
 }
 
 void SettingsDialog::on_plugins_list_itemChanged(QListWidgetItem* item) {
-  emit PluginEnabled(item->text(), item->checkState() == Qt::Checked);
+  if (item->checkState() == Qt::Checked)
+    active_plugins_.append(item->text());
+  else
+    active_plugins_.removeOne(item->text());
+  emit PluginInfoRequest(item->text());
+  emit OptionChanged(OPT_PLUGINS, active_plugins_);
 }
 
 void SettingsDialog::on_plugins_list_currentTextChanged(const QString& current_text) {
