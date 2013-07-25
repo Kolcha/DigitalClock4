@@ -111,6 +111,14 @@ void SettingsDialog::SetPluginsList(const QStringList& plugins) {
   }
 }
 
+void SettingsDialog::DisplayPluginInfo(const TPluginInfo& info) {
+  ui->p_type_value->setText(info[PI_TYPE]);
+  ui->p_version_value->setText(info[PI_VERSION]);
+  ui->p_author_value->setText(info[PI_AUTHOR]);
+  ui->p_e_mail_value->setText(info[PI_EMAIL]);
+  ui->p_comment->setText(info[PI_COMMENT]);
+}
+
 void SettingsDialog::changeEvent(QEvent* e) {
   QDialog::changeEvent(e);
   switch (e->type()) {
@@ -190,4 +198,8 @@ void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
 
 void SettingsDialog::on_plugins_list_itemChanged(QListWidgetItem* item) {
   emit PluginEnabled(item->text(), item->checkState() == Qt::Checked);
+}
+
+void SettingsDialog::on_plugins_list_currentTextChanged(const QString& current_text) {
+  emit PluginInfoRequest(current_text);
 }

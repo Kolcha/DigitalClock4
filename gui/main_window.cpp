@@ -156,6 +156,10 @@ void MainWindow::ShowSettingsDialog() {
           settings_dlg, SLOT(DisplaySkinInfo(TSkinInfo)));
   connect(plugin_manager_, SIGNAL(SearchFinished(QStringList)),
           settings_dlg, SLOT(SetPluginsList(QStringList)));
+  connect(settings_dlg, SIGNAL(PluginInfoRequest(QString)),
+          plugin_manager_, SLOT(GetPluginInfo(QString)));
+  connect(plugin_manager_, SIGNAL(InfoGot(TPluginInfo)),
+          settings_dlg, SLOT(DisplayPluginInfo(TPluginInfo)));
   plugin_manager_->ListAvailable();
 
   // reload settings to emit signals needed to init settings dialog controls
