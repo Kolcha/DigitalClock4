@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="hour_signal.wav">hour_signal.wav</file>
+    </qresource>
+</RCC>

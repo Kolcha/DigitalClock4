@@ -18,3 +18,6 @@ HEADERS += hour_signal.h \
 OTHER_FILES += hour_signal.json
 
 win32:RC_FILE = hour_signal.rc
+
+RESOURCES += \
+    hour_signal.qrc
