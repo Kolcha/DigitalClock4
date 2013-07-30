@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core multimedia
 INCLUDEPATH += ../../core
 
 TARGET = hour_signal

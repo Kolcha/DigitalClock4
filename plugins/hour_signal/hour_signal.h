@@ -9,6 +9,7 @@ class HourSignal : public IClockPlugin {
   Q_INTERFACES(IClockPlugin)
 
 public:
+  HourSignal() : last_hour_(-1) {}
   void Configure() {}
   void Start() {}
   void Stop() {}
@@ -17,6 +18,9 @@ public:
 public slots:
   void SettingsListener(Options, const QVariant&) {}
   void TimeUpdateListener(const QString& current_time);
+
+private:
+  int last_hour_;
 };
 
 #endif // HOUR_SIGNAL_H
