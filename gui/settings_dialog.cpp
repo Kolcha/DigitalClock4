@@ -10,7 +10,6 @@ SettingsDialog::SettingsDialog(QWidget* parent)
   ui->setupUi(this);
   setAttribute(Qt::WA_DeleteOnClose);
   setWindowIcon(QIcon(":/images/settings.svg"));
-  setFixedSize(sizeHint());
 }
 
 SettingsDialog::~SettingsDialog() {
@@ -70,6 +69,13 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       ui->type_color->setChecked(!value.toBool());
       ui->type_image->setChecked(value.toBool());
       break;
+
+    case  OPT_PLUGINS:
+      for (auto& plugin : value.toStringList()) {
+        QList<QListWidgetItem*> items = ui->plugins_list->findItems(plugin, Qt::MatchExactly);
+        if (!items.isEmpty()) items.first()->setCheckState(Qt::Checked);
+      }
+      break;
   }
 }
 
@@ -101,6 +107,23 @@ void SettingsDialog::DisplaySkinInfo(const TSkinInfo& info) {
         break;
     }
   }
+}
+
+void SettingsDialog::SetPluginsList(const QStringList& plugins) {
+  for (auto& plugin : plugins) {
+    QListWidgetItem* item = new QListWidgetItem(plugin);
+    item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsUserCheckable | Qt::ItemIsSelectable);
+    item->setCheckState(Qt::Unchecked);
+    ui->plugins_list->addItem(item);
+  }
+}
+
+void SettingsDialog::DisplayPluginInfo(const TPluginInfo& info) {
+  ui->p_type_value->setText(info[PI_TYPE]);
+  ui->p_version_value->setText(info[PI_VERSION]);
+  ui->p_author_value->setText(info[PI_AUTHOR]);
+  ui->p_e_mail_value->setText(info[PI_EMAIL]);
+  ui->p_comment->setText(info[PI_COMMENT]);
 }
 
 void SettingsDialog::changeEvent(QEvent* e) {
@@ -178,4 +201,17 @@ void SettingsDialog::on_type_image_toggled(bool checked) {
 
 void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
   emit OptionChanged(OPT_SKIN_NAME, arg1);
+}
+
+void SettingsDialog::on_plugins_list_itemChanged(QListWidgetItem* item) {
+  if (item->checkState() == Qt::Checked)
+    active_plugins_.append(item->text());
+  else
+    active_plugins_.removeOne(item->text());
+  emit PluginInfoRequest(item->text());
+  emit OptionChanged(OPT_PLUGINS, active_plugins_);
+}
+
+void SettingsDialog::on_plugins_list_currentTextChanged(const QString& current_text) {
+  emit PluginInfoRequest(current_text);
 }

@@ -38,6 +38,7 @@ private:
   DigitalClock* d_clock_;
   TrayControl* tray_control_;
   QPoint drag_position_;
+  QStringList active_plugins_;
 };
 
 #endif // MAIN_WINDOW_H
