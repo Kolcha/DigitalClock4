@@ -12,6 +12,6 @@ void HourSignal::GetInfo(TPluginInfo* info) {
 
 void HourSignal::TimeUpdateListener(const QString& current_time) {
   int current_hour = current_time.mid(0, current_time.indexOf(QRegExp("[ :]"))).toInt();
-  if (current_hour != last_hour_) QSound::play(":/hour_signal.wav");
+  if (current_hour != last_hour_ && last_hour_ != -1) QSound::play(":/hour_signal.wav");
   last_hour_ = current_hour;
 }
