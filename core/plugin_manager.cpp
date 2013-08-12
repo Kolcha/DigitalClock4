@@ -20,6 +20,7 @@ void PluginManager::DelPluginsDir(const QDir& dir) {
 
 void PluginManager::ListAvailable() {
   available_.clear();
+  QList<QPair<QString, bool> > plugins;
   for (auto& dir : plugins_dirs_) {
     QStringList files = dir.entryList(QDir::Files);
     for (auto& file : files) {
@@ -29,12 +30,15 @@ void PluginManager::ListAvailable() {
       if (plugin) {
         TPluginInfo info;
         plugin->GetInfo(&info);
-        if (plugin) available_[info[PI_NAME]] = abs_path;
+        if (plugin) {
+          available_[info[PI_NAME]] = abs_path;
+          plugins.append(qMakePair(info[PI_NAME], QVariant(info[PI_CONFIG]).toBool()));
+        }
         loader.unload();
       }
     }
   }
-  emit SearchFinished(available_.keys());
+  emit SearchFinished(plugins);
 }
 
 void PluginManager::LoadPlugins(const QStringList& names) {
