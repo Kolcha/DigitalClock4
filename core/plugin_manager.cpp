@@ -108,7 +108,7 @@ void PluginManager::InitPlugin(IClockPlugin* plugin) {
   // init tray plugins
   ITrayPlugin* tp = qobject_cast<ITrayPlugin*>(plugin);
   if (tp) {
-    tp->Init(data_.tray->GetTrayIcon(), data_.tray->GetMenu());
+    tp->Init(data_.tray);
   }
   // init widget plugins
   IWidgetPlugin* wp = qobject_cast<IWidgetPlugin*>(plugin);

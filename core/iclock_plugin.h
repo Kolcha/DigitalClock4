@@ -112,9 +112,8 @@ public:
   /*!
    * Init plugin.
    * @param tray_icon - pointer to clock QSystemTrayIcon object
-   * @param tray_menu - pointer to clock tray menu
    */
-  virtual void Init(QSystemTrayIcon* tray_icon, QMenu* tray_menu) = 0;
+  virtual void Init(QSystemTrayIcon* tray_icon) = 0;
 };
 
 /*! Tray plugin interface IID */
