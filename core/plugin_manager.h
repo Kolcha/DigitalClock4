@@ -85,6 +85,11 @@ public slots:
    * @param name - plugins name to get info
    */
   void GetPluginInfo(const QString& name);
+  /*!
+   * Call plugin settings dialog if available.
+   * @param name - plugins name to configure
+   */
+  void ConfigurePlugin(const QString& name);
 
 private:
   /*!

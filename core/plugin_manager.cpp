@@ -59,6 +59,17 @@ void PluginManager::GetPluginInfo(const QString& name) {
   loader.unload();
 }
 
+void PluginManager::ConfigurePlugin(const QString& name) {
+  QString file = available_[name];
+  if (!QFile::exists(file)) return;
+  QPluginLoader* loader = new QPluginLoader(file, this);
+  IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
+  if (plugin) {
+    plugin->Configure();
+  }
+  // TODO: unload plugin on settings dialog destroy
+}
+
 void PluginManager::LoadPlugin(const QString& name) {
   QString file = available_[name];
   if (!QFile::exists(file)) return;

@@ -189,6 +189,8 @@ void MainWindow::ShowSettingsDialog() {
   // connect main logic signals: change/save/discard settings
   connect(settings_dlg, SIGNAL(OptionChanged(Options,QVariant)),
           settings_, SLOT(SetOption(Options,QVariant)));
+  connect(settings_dlg, SIGNAL(PluginConfigureRequest(QString)),
+          plugin_manager_, SLOT(ConfigurePlugin(QString)));
   connect(settings_dlg, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(settings_dlg, SIGNAL(rejected()), settings_, SLOT(Load()));
 
