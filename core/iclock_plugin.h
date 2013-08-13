@@ -11,7 +11,8 @@ enum FPluginInfo {
   PI_VERSION,     /*!< plugin version */
   PI_AUTHOR,      /*!< plugin author */
   PI_EMAIL,       /*!< author's e-mail */
-  PI_COMMENT      /*!< plugin description */
+  PI_COMMENT,     /*!< plugin description */
+  PI_CONFIG       /*!< plugin is configurable (true/false) */
 };
 /*! plugin info type */
 typedef QMap<FPluginInfo, QString> TPluginInfo;

@@ -2,6 +2,7 @@
 #include <QFileDialog>
 #include <QFileInfo>
 #include "../skin/skin_drawer.h"
+#include "plugin_list_item.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
@@ -71,9 +72,15 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       break;
 
     case  OPT_PLUGINS:
-      for (auto& plugin : value.toStringList()) {
-        QList<QListWidgetItem*> items = ui->plugins_list->findItems(plugin, Qt::MatchExactly);
-        if (!items.isEmpty()) items.first()->setCheckState(Qt::Checked);
+      for (int i = 0; i < ui->plugins_list->count(); i++) {
+        PluginListItem* item = static_cast<PluginListItem*>(
+              ui->plugins_list->itemWidget(ui->plugins_list->item(i)));
+        for (auto& plugin : value.toStringList()) {
+          if (plugin == item->GetText()) {
+            item->SetChecked(true);
+            break;
+          }
+        }
       }
       break;
   }
@@ -109,12 +116,16 @@ void SettingsDialog::DisplaySkinInfo(const TSkinInfo& info) {
   }
 }
 
-void SettingsDialog::SetPluginsList(const QStringList& plugins) {
+void SettingsDialog::SetPluginsList(const QList<QPair<QString, bool> >& plugins) {
   for (auto& plugin : plugins) {
-    QListWidgetItem* item = new QListWidgetItem(plugin);
-    item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsUserCheckable | Qt::ItemIsSelectable);
-    item->setCheckState(Qt::Unchecked);
+    QListWidgetItem* item = new QListWidgetItem();
+    PluginListItem* widget = new PluginListItem(plugin.first, false, plugin.second);
+    item->setData(Qt::UserRole, plugin.first);
+    item->setSizeHint(widget->sizeHint());
     ui->plugins_list->addItem(item);
+    ui->plugins_list->setItemWidget(item, widget);
+    connect(widget, SIGNAL(StateChanged(QString,bool)), this, SLOT(ChangePluginState(QString,bool)));
+    connect(widget, SIGNAL(ConfigureRequest(QString)), this, SIGNAL(PluginConfigureRequest(QString)));
   }
 }
 
@@ -135,6 +146,15 @@ void SettingsDialog::changeEvent(QEvent* e) {
     default:
       break;
   }
+}
+
+void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
+  if (activated)
+    active_plugins_.append(name);
+  else
+    active_plugins_.removeOne(name);
+  emit PluginInfoRequest(name);
+  emit OptionChanged(OPT_PLUGINS, active_plugins_);
 }
 
 void SettingsDialog::on_stay_on_top_toggled(bool checked) {
@@ -203,15 +223,7 @@ void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
   emit OptionChanged(OPT_SKIN_NAME, arg1);
 }
 
-void SettingsDialog::on_plugins_list_itemChanged(QListWidgetItem* item) {
-  if (item->checkState() == Qt::Checked)
-    active_plugins_.append(item->text());
-  else
-    active_plugins_.removeOne(item->text());
-  emit PluginInfoRequest(item->text());
-  emit OptionChanged(OPT_PLUGINS, active_plugins_);
-}
-
-void SettingsDialog::on_plugins_list_currentTextChanged(const QString& current_text) {
-  emit PluginInfoRequest(current_text);
+void SettingsDialog::on_plugins_list_currentItemChanged(
+    QListWidgetItem* current, QListWidgetItem*) {
+  emit PluginInfoRequest(current->data(Qt::UserRole).toString());
 }
