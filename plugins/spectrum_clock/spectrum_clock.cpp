@@ -20,6 +20,7 @@ void SpectrumClock::GetInfo(TPluginInfo* info) {
   info->insert(PI_AUTHOR, "Nick Korotysh");
   info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
   info->insert(PI_COMMENT, "Clock change color during time.");
+  info->insert(PI_CONFIG, "false");
 }
 
 void SpectrumClock::TimeUpdateListener(const QString&) {

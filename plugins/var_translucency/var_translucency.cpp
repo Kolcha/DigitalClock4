@@ -21,6 +21,7 @@ void VarTranslucency::GetInfo(TPluginInfo* info) {
   info->insert(PI_AUTHOR, "Nick Korotysh");
   info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
   info->insert(PI_COMMENT, "Clock change opacity level during time.");
+  info->insert(PI_CONFIG, "false");
 }
 
 void VarTranslucency::TimeUpdateListener(const QString&) {

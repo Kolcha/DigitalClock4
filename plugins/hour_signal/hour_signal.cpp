@@ -8,6 +8,7 @@ void HourSignal::GetInfo(TPluginInfo* info) {
   info->insert(PI_AUTHOR, "Nick Korotysh");
   info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
   info->insert(PI_COMMENT, "Plays short signal every hour.");
+  info->insert(PI_CONFIG, "false");
 }
 
 void HourSignal::TimeUpdateListener(const QString& current_time) {
