@@ -21,18 +21,20 @@ public:
 signals:
   void OptionChanged(Options opt, const QVariant& value);
   void PluginInfoRequest(const QString& name);
+  void PluginConfigureRequest(const QString& text);
 
 public slots:
   void SettingsListener(Options opt, const QVariant& value);
   void SetSkinList(const QStringList& skins);
   void DisplaySkinInfo(const TSkinInfo& info);
-  void SetPluginsList(const QStringList& plugins);
+  void SetPluginsList(const QList<QPair<QString,bool> >& plugins);
   void DisplayPluginInfo(const TPluginInfo& info);
 
 protected:
   void changeEvent(QEvent* e);
 
 private slots:
+  void ChangePluginState(const QString& name, bool activated);
   void on_stay_on_top_toggled(bool checked);
   void on_transp_for_input_toggled(bool checked);
   void on_sep_flash_toggled(bool checked);
@@ -46,8 +48,7 @@ private slots:
   void on_type_color_toggled(bool checked);
   void on_type_image_toggled(bool checked);
   void on_skin_box_currentIndexChanged(const QString& arg1);
-  void on_plugins_list_itemChanged(QListWidgetItem* item);
-  void on_plugins_list_currentTextChanged(const QString& current_text);
+  void on_plugins_list_currentItemChanged(QListWidgetItem* current, QListWidgetItem*);
 
 private:
   Ui::SettingsDialog* ui;

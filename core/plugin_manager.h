@@ -4,7 +4,7 @@
 #include <QMap>
 #include <QDir>
 #include <QString>
-#include <QStringList>
+#include <QList>
 #include <QPluginLoader>
 #include "iclock_plugin.h"
 
@@ -45,9 +45,9 @@ public:
 signals:
   /*!
    * Signal to notify that plugins search was finished.
-   * @param plugins - list of found plugins
+   * @param plugins - list of found plugins (pair: plugin name - is configurable)
    */
-  void SearchFinished(const QStringList& plugins);
+  void SearchFinished(const QList<QPair<QString, bool> >& plugins);
   /*!
    * Signal to notify that info about plugin was got.
    * @param info - plugin info. @see TPluginInfo
@@ -85,6 +85,11 @@ public slots:
    * @param name - plugins name to get info
    */
   void GetPluginInfo(const QString& name);
+  /*!
+   * Call plugin settings dialog if available.
+   * @param name - plugins name to configure
+   */
+  void ConfigurePlugin(const QString& name);
 
 private:
   /*!

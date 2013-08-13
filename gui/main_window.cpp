@@ -168,8 +168,8 @@ void MainWindow::ShowSettingsDialog() {
   skin_manager_->ListSkins();
   connect(drawer_, SIGNAL(LoadedSkinInfo(TSkinInfo)),
           settings_dlg, SLOT(DisplaySkinInfo(TSkinInfo)));
-  connect(plugin_manager_, SIGNAL(SearchFinished(QStringList)),
-          settings_dlg, SLOT(SetPluginsList(QStringList)));
+  connect(plugin_manager_, SIGNAL(SearchFinished(QList<QPair<QString,bool> >)),
+          settings_dlg, SLOT(SetPluginsList(QList<QPair<QString,bool> >)));
   connect(settings_dlg, SIGNAL(PluginInfoRequest(QString)),
           plugin_manager_, SLOT(GetPluginInfo(QString)));
   connect(plugin_manager_, SIGNAL(InfoGot(TPluginInfo)),
@@ -189,6 +189,8 @@ void MainWindow::ShowSettingsDialog() {
   // connect main logic signals: change/save/discard settings
   connect(settings_dlg, SIGNAL(OptionChanged(Options,QVariant)),
           settings_, SLOT(SetOption(Options,QVariant)));
+  connect(settings_dlg, SIGNAL(PluginConfigureRequest(QString)),
+          plugin_manager_, SLOT(ConfigurePlugin(QString)));
   connect(settings_dlg, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(settings_dlg, SIGNAL(rejected()), settings_, SLOT(Load()));
 
