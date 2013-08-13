@@ -1,6 +1,7 @@
 #ifndef MANAGER_H
 #define MANAGER_H
 
+#include <QIcon>
 #include "iclock_plugin.h"
 
 class Manager : public ITrayPlugin {
@@ -9,7 +10,7 @@ class Manager : public ITrayPlugin {
   Q_INTERFACES(IClockPlugin ITrayPlugin)
 
 public:
-  void Init(QSystemTrayIcon* tray_icon, QMenu* tray_menu);
+  void Init(QSystemTrayIcon* tray_icon);
   void Configure();
   void Start();
   void Stop();
@@ -18,6 +19,10 @@ public:
 public slots:
   void SettingsListener(Options, const QVariant&) {}
   void TimeUpdateListener(const QString&);
+
+private:
+  QSystemTrayIcon* tray_icon_;
+  QIcon old_icon_;
 };
 
 #endif // MANAGER_H

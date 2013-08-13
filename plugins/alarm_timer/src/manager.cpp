@@ -1,9 +1,10 @@
 #include <QSystemTrayIcon>
-#include <QMenu>
 #include "../gui/settings_dlg.h"
 #include "manager.h"
 
-void Manager::Init(QSystemTrayIcon* tray_icon, QMenu* tray_menu) {
+void Manager::Init(QSystemTrayIcon* tray_icon) {
+  tray_icon_ = tray_icon;
+  old_icon_ = tray_icon->icon();
 }
 
 void Manager::Configure() {
@@ -12,9 +13,13 @@ void Manager::Configure() {
 }
 
 void Manager::Start() {
+  tray_icon_->setIcon(QIcon(":/alarm_clock.svg"));
+  // add new menu items
 }
 
 void Manager::Stop() {
+  tray_icon_->setIcon(old_icon_);
+  // delete added menu items
 }
 
 void Manager::GetInfo(TPluginInfo* info) {
