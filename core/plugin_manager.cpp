@@ -84,6 +84,7 @@ void PluginManager::LoadPlugin(const QString& name) {
 
 void PluginManager::UnloadPlugin(const QString& name) {
   QPluginLoader* loader = loaded_[name];
+  if (!loader) return;
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
     plugin->Stop();
