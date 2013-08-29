@@ -11,14 +11,12 @@ TARGET = alarm
 TEMPLATE = lib
 CONFIG += plugin
 
-SOURCES += src/manager.cpp \
-    gui/settings_dlg.cpp \
-    alarm.cpp
+SOURCES += alarm.cpp \
+    gui/settings_dlg.cpp
 
-HEADERS += src/manager.h \
+HEADERS += alarm.h \
     ../../core/iclock_plugin.h \
-    gui/settings_dlg.h \
-    alarm.h
+    gui/settings_dlg.h
 OTHER_FILES += alarm.json
 
 win32:RC_FILE = alarm.rc
