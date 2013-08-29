@@ -12,10 +12,12 @@
 #include <QTime>
 
 // alarm plugin settings default values
+#define DEFAULT_SIGNAL        QString("default")
+
 inline void InitDefaults(QSettings::SettingsMap* defaults) {
   defaults->insert(OPT_ENABLED, false);
   defaults->insert(OPT_TIME, QTime());
-  defaults->insert(OPT_SIGNAL, QString("default"));
+  defaults->insert(OPT_SIGNAL, DEFAULT_SIGNAL);
   defaults->insert(OPT_SHOW_NOTIFY, false);
   defaults->insert(OPT_NOTIFY_TEXT, QString());
 }

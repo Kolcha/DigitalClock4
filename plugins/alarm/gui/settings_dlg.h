@@ -14,6 +14,12 @@ public:
   explicit SettingsDlg(QWidget* parent = 0);
   ~SettingsDlg();
 
+public slots:
+  void SettingsListener(const QString& key, const QVariant& value);
+
+signals:
+  void OptionChanged(const QString&, const QVariant&);
+
 private:
   Ui::SettingsDlg* ui;
 };

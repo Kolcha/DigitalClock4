@@ -17,8 +17,19 @@ void Alarm::Init(QSystemTrayIcon* tray_icon) {
 }
 
 void Alarm::Configure() {
-  SettingsDlg* dlg = new SettingsDlg();
-  dlg->show();
+  SettingsDlg* dialog = new SettingsDlg();
+  // load current settings to dialog
+  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
+        dialog, SLOT(SettingsListener(QString,QVariant)));
+  settings_->TrackChanges(true);
+  settings_->Load();
+  settings_->TrackChanges(false);
+  // connect main signals/slots
+  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
+          settings_, SLOT(SetOption(QString,QVariant)));
+  connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
+  dialog->show();
 }
 
 void Alarm::Start() {
