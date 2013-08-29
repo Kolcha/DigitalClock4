@@ -3,6 +3,7 @@
 
 #include <QIcon>
 #include "iclock_plugin.h"
+#include "plugin_settings.h"
 
 class Alarm : public ITrayPlugin {
   Q_OBJECT
@@ -10,6 +11,7 @@ class Alarm : public ITrayPlugin {
   Q_INTERFACES(IClockPlugin ITrayPlugin)
 
 public:
+  Alarm();
   void Init(QSystemTrayIcon* tray_icon);
   void Configure();
   void Start();
@@ -23,6 +25,7 @@ public slots:
 private:
   QSystemTrayIcon* tray_icon_;
   QIcon old_icon_;
+  PluginSettings* settings_;
 };
 
 #endif // ALARM_H

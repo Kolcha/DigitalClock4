@@ -2,6 +2,10 @@
 #include "gui/settings_dlg.h"
 #include "alarm.h"
 
+Alarm::Alarm() {
+  settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
+}
+
 void Alarm::Init(QSystemTrayIcon* tray_icon) {
   tray_icon_ = tray_icon;
   old_icon_ = tray_icon->icon();
@@ -13,6 +17,7 @@ void Alarm::Configure() {
 }
 
 void Alarm::Start() {
+  settings_->Load();
   tray_icon_->setIcon(QIcon(":/alarm_clock.svg"));
   // add new menu items
 }
