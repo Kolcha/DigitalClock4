@@ -1,5 +1,6 @@
 #include <QSystemTrayIcon>
 #include "gui/settings_dlg.h"
+#include "alarm_settings.h"
 #include "alarm.h"
 
 Alarm::Alarm() {
@@ -9,6 +10,10 @@ Alarm::Alarm() {
 void Alarm::Init(QSystemTrayIcon* tray_icon) {
   tray_icon_ = tray_icon;
   old_icon_ = tray_icon->icon();
+
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
 }
 
 void Alarm::Configure() {
