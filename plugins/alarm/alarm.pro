@@ -7,7 +7,7 @@
 QT       += core gui widgets
 INCLUDEPATH += ../../core
 
-TARGET = alarm_timer
+TARGET = alarm
 TEMPLATE = lib
 CONFIG += plugin
 
@@ -17,12 +17,12 @@ SOURCES += src/manager.cpp \
 HEADERS += src/manager.h \
     ../../core/iclock_plugin.h \
     gui/settings_dlg.h
-OTHER_FILES += alarm_timer.json
+OTHER_FILES += alarm.json
 
-win32:RC_FILE = alarm_timer.rc
+win32:RC_FILE = alarm.rc
 
 FORMS += \
     gui/settings_dlg.ui
 
 RESOURCES += \
-    alarm_timer.qrc
+    alarm.qrc
