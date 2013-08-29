@@ -65,6 +65,7 @@ void PluginManager::ConfigurePlugin(const QString& name) {
   QPluginLoader* loader = new QPluginLoader(file, this);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
+    InitPlugin(plugin);
     plugin->Configure();
   }
   // TODO: unload plugin on settings dialog destroy
