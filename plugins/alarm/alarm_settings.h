@@ -1,6 +1,7 @@
 #ifndef ALARM_SETTINGS_H
 #define ALARM_SETTINGS_H
 
+// alarm plugin settings keys
 #define OPT_ENABLED           "alarm_plugin/enabled"
 #define OPT_TIME              "alarm_plugin/time"
 #define OPT_SIGNAL            "alarm_plugin/signal"
@@ -9,6 +10,8 @@
 
 #include <QSettings>
 #include <QTime>
+
+// alarm plugin settings default values
 inline void InitDefaults(QSettings::SettingsMap* defaults) {
   defaults->insert(OPT_ENABLED, false);
   defaults->insert(OPT_TIME, QTime());
