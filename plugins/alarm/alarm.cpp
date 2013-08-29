@@ -28,7 +28,7 @@ void Alarm::GetInfo(TPluginInfo* info) {
   info->insert(PI_VERSION, "2.0");
   info->insert(PI_AUTHOR, "Nick Korotysh");
   info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
-  info->insert(PI_COMMENT, "Set alarm or/and timer.");
+  info->insert(PI_COMMENT, "Set alarm.");
   info->insert(PI_CONFIG, "true");
 }
 
