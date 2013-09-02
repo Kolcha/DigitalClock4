@@ -68,7 +68,7 @@ void PluginManager::ConfigurePlugin(const QString& name) {
     InitPlugin(plugin);
     plugin->Configure();
   }
-  // TODO: unload plugin on settings dialog destroy
+  loader->deleteLater();
 }
 
 void PluginManager::LoadPlugin(const QString& name) {
