@@ -10,12 +10,12 @@ class SpectrumClock : public ISettingsPlugin {
 
 public:
   void Init(const QMap<Options, QVariant>& current_settings);
-  void Configure() {}
-  void Start();
-  void Stop();
   void GetInfo(TPluginInfo* info);
 
 public slots:
+  void Start();
+  void Stop();
+  void Configure() { emit configured(); }
   void SettingsListener(Options, const QVariant&) {}
   void TimeUpdateListener(const QString&);
 

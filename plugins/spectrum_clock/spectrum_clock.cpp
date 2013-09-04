@@ -5,14 +5,6 @@ void SpectrumClock::Init(const QMap<Options, QVariant>& current_settings) {
   cur_color_ = Qt::red;
 }
 
-void SpectrumClock::Start() {
-  emit OptionChanged(OPT_COLOR, cur_color_);
-}
-
-void SpectrumClock::Stop() {
-  emit OptionChanged(OPT_COLOR, old_color_);
-}
-
 void SpectrumClock::GetInfo(TPluginInfo* info) {
   info->insert(PI_NAME, "Spectrum clock");
   info->insert(PI_TYPE, "settings");
@@ -21,6 +13,16 @@ void SpectrumClock::GetInfo(TPluginInfo* info) {
   info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
   info->insert(PI_COMMENT, "Clock change color during time.");
   info->insert(PI_CONFIG, "false");
+}
+
+void SpectrumClock::Start() {
+  emit OptionChanged(OPT_COLOR, cur_color_);
+  emit started();
+}
+
+void SpectrumClock::Stop() {
+  emit OptionChanged(OPT_COLOR, old_color_);
+  emit stopped();
 }
 
 void SpectrumClock::TimeUpdateListener(const QString&) {

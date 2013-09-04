@@ -68,7 +68,7 @@ void PluginManager::ConfigurePlugin(const QString& name) {
     InitPlugin(plugin);
     plugin->Configure();
   }
-  loader->deleteLater();
+  connect(plugin, SIGNAL(configured()), loader, SLOT(deleteLater()));
 }
 
 void PluginManager::LoadPlugin(const QString& name) {

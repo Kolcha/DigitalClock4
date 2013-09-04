@@ -14,17 +14,14 @@ class Alarm : public ITrayPlugin {
 public:
   Alarm();
   void Init(QSystemTrayIcon* tray_icon);
-  void Configure();
-  void Start();
-  void Stop();
   void GetInfo(TPluginInfo* info);
 
 public slots:
+  void Start();
+  void Stop();
+  void Configure();
   void SettingsListener(Options, const QVariant&) {}
   void TimeUpdateListener(const QString&);
-
-private slots:
-  void SelfConfigure();
 
 private:
   QSystemTrayIcon* tray_icon_;

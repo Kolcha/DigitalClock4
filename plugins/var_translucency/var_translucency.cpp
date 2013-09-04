@@ -6,14 +6,6 @@ void VarTranslucency::Init(const QMap<Options, QVariant>& current_settings) {
   op_stap_ = -0.01;
 }
 
-void VarTranslucency::Start() {
-  emit OptionChanged(OPT_OPACITY, cur_opacity_);
-}
-
-void VarTranslucency::Stop() {
-  emit OptionChanged(OPT_OPACITY, old_opacity_);
-}
-
 void VarTranslucency::GetInfo(TPluginInfo* info) {
   info->insert(PI_NAME, "Variable translucency");
   info->insert(PI_TYPE, "settings");
@@ -22,6 +14,16 @@ void VarTranslucency::GetInfo(TPluginInfo* info) {
   info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
   info->insert(PI_COMMENT, "Clock change opacity level during time.");
   info->insert(PI_CONFIG, "false");
+}
+
+void VarTranslucency::Start() {
+  emit OptionChanged(OPT_OPACITY, cur_opacity_);
+  emit started();
+}
+
+void VarTranslucency::Stop() {
+  emit OptionChanged(OPT_OPACITY, old_opacity_);
+  emit stopped();
 }
 
 void VarTranslucency::TimeUpdateListener(const QString&) {

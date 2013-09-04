@@ -39,18 +39,14 @@ public:
   }
 
 public slots:
-  /*!
-   * Load settings.
-   */
+  /*! Load settings. */
   void Load() {
     for (auto iter = settings_map_.begin(); iter != settings_map_.end(); ++iter) {
       settings_map_[iter.key()] = settings_.value(iter.key(), iter.value());
       if (track_changes_) emit OptionChanged(iter.key(), iter.value());
     }
   }
-  /*!
-   * Save settings.
-   */
+  /*! Save settings. */
   void Save() {
     for (auto iter = settings_map_.begin(); iter != settings_map_.end(); ++iter) {
       settings_.setValue(iter.key(), iter.value());

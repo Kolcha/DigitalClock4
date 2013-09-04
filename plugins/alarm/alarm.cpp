@@ -19,20 +19,14 @@ void Alarm::Init(QSystemTrayIcon* tray_icon) {
   settings_->SetDefaultValues(defaults);
 }
 
-void Alarm::Configure() {
-  SettingsDlg* dialog = new SettingsDlg();
-  // load current settings to dialog
-  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
-        dialog, SLOT(SettingsListener(QString,QVariant)));
-  settings_->TrackChanges(true);
-  settings_->Load();
-  settings_->TrackChanges(false);
-  // connect main signals/slots
-  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
-          settings_, SLOT(SetOption(QString,QVariant)));
-  connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
-  connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
-  dialog->show();
+void Alarm::GetInfo(TPluginInfo* info) {
+  info->insert(PI_NAME, "Alarm");
+  info->insert(PI_TYPE, "tray");
+  info->insert(PI_VERSION, "2.0");
+  info->insert(PI_AUTHOR, "Nick Korotysh");
+  info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
+  info->insert(PI_COMMENT, "Set alarm.");
+  info->insert(PI_CONFIG, "true");
 }
 
 void Alarm::Start() {
@@ -47,22 +41,31 @@ void Alarm::Start() {
                                "settings to choose another.").arg(QDir::toNativeSeparators(mediafile)),
                             QSystemTrayIcon::Critical
                             );
-    connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(SelfConfigure()));
+    connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(Configure()));
   }
+  emit started();
 }
 
 void Alarm::Stop() {
   tray_icon_->setIcon(old_icon_);
+  emit stopped();
 }
 
-void Alarm::GetInfo(TPluginInfo* info) {
-  info->insert(PI_NAME, "Alarm");
-  info->insert(PI_TYPE, "tray");
-  info->insert(PI_VERSION, "2.0");
-  info->insert(PI_AUTHOR, "Nick Korotysh");
-  info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
-  info->insert(PI_COMMENT, "Set alarm.");
-  info->insert(PI_CONFIG, "true");
+void Alarm::Configure() {
+  SettingsDlg* dialog = new SettingsDlg();
+  // load current settings to dialog
+  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
+        dialog, SLOT(SettingsListener(QString,QVariant)));
+  settings_->TrackChanges(true);
+  settings_->Load();
+  settings_->TrackChanges(false);
+  // connect main signals/slots
+  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
+          settings_, SLOT(SetOption(QString,QVariant)));
+  connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
+  dialog->show();
+  connect(dialog, SIGNAL(destroyed()), this, SIGNAL(configured()));
 }
 
 void Alarm::TimeUpdateListener(const QString&) {
@@ -79,8 +82,4 @@ void Alarm::TimeUpdateListener(const QString&) {
                             player_->duration());
     connect(tray_icon_, SIGNAL(messageClicked()), player_, SLOT(stop()));
   }
-}
-
-void Alarm::SelfConfigure() {
-  Configure();
 }
