@@ -2,9 +2,9 @@
 #define ALARM_H
 
 #include <QIcon>
+#include <QMediaPlayer>
 #include "iclock_plugin.h"
 #include "plugin_settings.h"
-#include "alarm_thread.h"
 
 class Alarm : public ITrayPlugin {
   Q_OBJECT
@@ -27,7 +27,7 @@ private:
   QSystemTrayIcon* tray_icon_;
   QIcon old_icon_;
   PluginSettings* settings_;
-  AlarmThread* alarm_thread_;
+  QMediaPlayer* player_;
 };
 
 #endif // ALARM_H

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += core gui widgets multimedia
 INCLUDEPATH += ../../core
 
 TARGET = alarm
@@ -13,15 +13,13 @@ CONFIG += plugin
 
 SOURCES += alarm.cpp \
     gui/settings_dlg.cpp \
-    plugin_settings.cpp \
-    alarm_thread.cpp
+    plugin_settings.cpp
 
 HEADERS += alarm.h \
     ../../core/iclock_plugin.h \
     gui/settings_dlg.h \
     plugin_settings.h \
-    alarm_settings.h \
-    alarm_thread.h
+    alarm_settings.h
 OTHER_FILES += alarm.json
 
 win32:RC_FILE = alarm.rc

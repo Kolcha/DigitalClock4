@@ -5,7 +5,7 @@
 
 Alarm::Alarm() {
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
-  alarm_thread_ = new AlarmThread(this);
+  player_ = new QMediaPlayer(this);
 }
 
 void Alarm::Init(QSystemTrayIcon* tray_icon) {
@@ -40,7 +40,7 @@ void Alarm::Start() {
 }
 
 void Alarm::Stop() {
-  if (alarm_thread_->isRunning()) alarm_thread_->terminate();
+  if (player_->state() == QMediaPlayer::PlayingState) player_->stop();
   tray_icon_->setIcon(old_icon_);
   // delete added menu items
 }
@@ -58,6 +58,8 @@ void Alarm::GetInfo(TPluginInfo* info) {
 void Alarm::TimeUpdateListener(const QString&) {
   QString alarm_time = settings_->GetOption(OPT_TIME).value<QTime>().toString();
   QString curr_time = QTime::currentTime().toString();
-  if (alarm_time != curr_time || alarm_thread_->isRunning()) return;
-  alarm_thread_->start(QThread::LowPriority);
+  if (alarm_time != curr_time ||
+      player_->state() == QMediaPlayer::PlayingState) return;
+  player_->setMedia(QUrl::fromLocalFile("C:/ADB/test.mp3"));
+  player_->play();
 }
