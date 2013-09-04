@@ -1,21 +1,20 @@
-1	ICON	1372595747_103169.ico
 1	VERSIONINFO
-FILEVERSION	4,1,4,126
-PRODUCTVERSION	4,1,4,126
+FILEVERSION	2,0,0,11
+PRODUCTVERSION	2,0,0,11
 FILEOS		0x4
-FILETYPE	0x1
+FILETYPE	0x2
 {
 BLOCK "StringFileInfo"
 {
 	BLOCK "040904b0"
 	{
-		VALUE "Comments", "Beautiful clock"
+		VALUE "Comments", "Spectrum clock"
 		VALUE "CompanyName", "Nick Korotysh"
-		VALUE "FileDescription", "Digital Clock 4"
-		VALUE "FileVersion", "4.1.4.126"
-		VALUE "InternalName", "DigitalClock4.exe"
+		VALUE "FileDescription", "Digital Clock Plugin"
+		VALUE "FileVersion", "2.0.0.11"
+		VALUE "InternalName", "spectrum_clock.dll"
 		VALUE "LegalCopyright", "Copyright (C) 2013 Nick Korotysh"
-		VALUE "OriginalFilename", "DigitalClock4.exe"
+		VALUE "OriginalFilename", "spectrum_clock.dll"
 		VALUE "ProductName", "Digital Clock"
 		VALUE "ProductVersion", "4.1.4"
 	}

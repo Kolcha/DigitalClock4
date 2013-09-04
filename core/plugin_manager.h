@@ -18,7 +18,7 @@ struct TPluginData {
   ClockSettings* settings;   /*!< clock settings object */
   DigitalClock* clock;       /*!< clock widget */
   MainWindow* window;        /*!< main window instance */
-  TrayControl* tray;         /*!< tray control object */
+  QSystemTrayIcon* tray;     /*!< tray icon object */
 };
 
 

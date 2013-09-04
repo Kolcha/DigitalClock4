@@ -65,9 +65,10 @@ void PluginManager::ConfigurePlugin(const QString& name) {
   QPluginLoader* loader = new QPluginLoader(file, this);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
+    InitPlugin(plugin);
     plugin->Configure();
   }
-  // TODO: unload plugin on settings dialog destroy
+  connect(plugin, SIGNAL(configured()), loader, SLOT(deleteLater()));
 }
 
 void PluginManager::LoadPlugin(const QString& name) {
@@ -84,6 +85,7 @@ void PluginManager::LoadPlugin(const QString& name) {
 
 void PluginManager::UnloadPlugin(const QString& name) {
   QPluginLoader* loader = loaded_[name];
+  if (!loader) return;
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
     plugin->Stop();
@@ -108,7 +110,7 @@ void PluginManager::InitPlugin(IClockPlugin* plugin) {
   // init tray plugins
   ITrayPlugin* tp = qobject_cast<ITrayPlugin*>(plugin);
   if (tp) {
-    tp->Init(data_.tray->GetTrayIcon(), data_.tray->GetMenu());
+    tp->Init(data_.tray);
   }
   // init widget plugins
   IWidgetPlugin* wp = qobject_cast<IWidgetPlugin*>(plugin);

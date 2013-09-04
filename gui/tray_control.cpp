@@ -7,10 +7,6 @@ TrayControl::TrayControl(QObject* parent)
   CreateTrayIcon();
 }
 
-QMenu*TrayControl::GetMenu() {
-  return tray_menu_;
-}
-
 QSystemTrayIcon*TrayControl::GetTrayIcon() {
   return tray_icon_;
 }
@@ -30,16 +26,16 @@ void TrayControl::CreateActions() {
 }
 
 void TrayControl::CreateTrayIcon() {
-  tray_menu_ = new QMenu();
-  tray_menu_->addAction(settings_action_);
-  tray_menu_->addSeparator();
-  tray_menu_->addAction(about_action_);
-  tray_menu_->addAction(about_qt_action_);
-  tray_menu_->addSeparator();
-  tray_menu_->addAction(exit_action_);
+  QMenu* tray_menu = new QMenu();
+  tray_menu->addAction(settings_action_);
+  tray_menu->addSeparator();
+  tray_menu->addAction(about_action_);
+  tray_menu->addAction(about_qt_action_);
+  tray_menu->addSeparator();
+  tray_menu->addAction(exit_action_);
 
   tray_icon_ = new QSystemTrayIcon(this);
-  tray_icon_->setContextMenu(tray_menu_);
+  tray_icon_->setContextMenu(tray_menu);
   tray_icon_->setIcon(QIcon(":/images/clock.svg"));
   tray_icon_->setToolTip(qApp->applicationDisplayName() + " " + qApp->applicationVersion());
   tray_icon_->show();

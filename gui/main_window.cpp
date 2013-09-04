@@ -42,7 +42,7 @@ void MainWindow::Init() {
   TPluginData plugin_data;
   plugin_data.clock = d_clock_;
   plugin_data.settings = settings_;
-  plugin_data.tray = tray_control_;
+  plugin_data.tray = tray_control_->GetTrayIcon();
   plugin_data.window = this;
   plugin_manager_->SetInitData(plugin_data);
 
@@ -209,7 +209,7 @@ void MainWindow::ShowAboutDialog() {
 }
 
 void MainWindow::DisplayMenu(const QPoint& pos) {
-  tray_control_->GetMenu()->exec(mapToParent(pos));
+  tray_control_->GetTrayIcon()->contextMenu()->exec(mapToParent(pos));
 }
 
 void MainWindow::ConnectAll() {

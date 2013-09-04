@@ -8,7 +8,6 @@ class TrayControl : public QObject {
   Q_OBJECT
 public:
   explicit TrayControl(QObject* parent = 0);
-  QMenu* GetMenu();
   QSystemTrayIcon* GetTrayIcon();
 
 signals:
@@ -22,7 +21,6 @@ private:
   QAction* about_action_;
   QAction* about_qt_action_;
   QAction* exit_action_;
-  QMenu* tray_menu_;
   QSystemTrayIcon* tray_icon_;
 };
 

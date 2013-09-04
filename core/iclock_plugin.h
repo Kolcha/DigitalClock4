@@ -25,12 +25,6 @@ class IClockPlugin : public QObject {
 public:
   /*! Virtual destructor. */
   virtual ~IClockPlugin() {}
-  /*! Start plugin activity. */
-  virtual void Start() = 0;
-  /*! Stop plugin activity. */
-  virtual void Stop() = 0;
-  /*! Call plugin settings dialog if it exists. */
-  virtual void Configure() = 0;
   /*!
    * Get plugin info. @see TPluginInfo
    * @param info - variable to store plugin info
@@ -38,6 +32,12 @@ public:
   virtual void GetInfo(TPluginInfo* info) = 0;
 
 public slots:
+  /*! Start plugin activity. */
+  virtual void Start() = 0;
+  /*! Stop plugin activity. */
+  virtual void Stop() = 0;
+  /*! Call plugin settings dialog if it exists. */
+  virtual void Configure() = 0;
   /*!
    * @brief Clock settings changes listener.
    *
@@ -55,6 +55,14 @@ public slots:
    * @note time format varies depend on system locale settings or plugins
    */
   virtual void TimeUpdateListener(const QString& current_time) = 0;
+
+signals:
+  /*! This signal is emitted when plugin started. */
+  void started();
+  /*! This signal is emitted when plugin stopped. */
+  void stopped();
+  /*! This signal is emitted when plugin configured. */
+  void configured();
 };
 
 /*! Clock plugin interface IID */
@@ -112,9 +120,8 @@ public:
   /*!
    * Init plugin.
    * @param tray_icon - pointer to clock QSystemTrayIcon object
-   * @param tray_menu - pointer to clock tray menu
    */
-  virtual void Init(QSystemTrayIcon* tray_icon, QMenu* tray_menu) = 0;
+  virtual void Init(QSystemTrayIcon* tray_icon) = 0;
 };
 
 /*! Tray plugin interface IID */

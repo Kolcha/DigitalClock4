@@ -3,4 +3,5 @@ syntax: glob
 *.qm
 *.msi
 *.orig
+build*/*
 installer/*-cache
