@@ -13,13 +13,15 @@ CONFIG += plugin
 
 SOURCES += alarm.cpp \
     gui/settings_dlg.cpp \
-    plugin_settings.cpp
+    plugin_settings.cpp \
+    alarm_thread.cpp
 
 HEADERS += alarm.h \
     ../../core/iclock_plugin.h \
     gui/settings_dlg.h \
     plugin_settings.h \
-    alarm_settings.h
+    alarm_settings.h \
+    alarm_thread.h
 OTHER_FILES += alarm.json
 
 win32:RC_FILE = alarm.rc
