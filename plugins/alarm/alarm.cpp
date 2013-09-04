@@ -40,7 +40,6 @@ void Alarm::Start() {
 }
 
 void Alarm::Stop() {
-  if (player_->state() == QMediaPlayer::PlayingState) player_->stop();
   tray_icon_->setIcon(old_icon_);
   // delete added menu items
 }
@@ -60,6 +59,6 @@ void Alarm::TimeUpdateListener(const QString&) {
   QString curr_time = QTime::currentTime().toString();
   if (alarm_time != curr_time ||
       player_->state() == QMediaPlayer::PlayingState) return;
-  player_->setMedia(QUrl::fromLocalFile("C:/ADB/test.mp3"));
+  player_->setMedia(QUrl::fromLocalFile(settings_->GetOption(OPT_SIGNAL).toString()));
   player_->play();
 }
