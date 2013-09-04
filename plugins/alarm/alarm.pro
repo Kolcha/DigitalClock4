@@ -5,7 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui widgets multimedia
-INCLUDEPATH += ../../core
+INCLUDEPATH += ../../core \
+    ..
 
 TARGET = alarm
 TEMPLATE = lib
@@ -16,8 +17,8 @@ SOURCES += alarm.cpp \
 
 HEADERS += alarm.h \
     ../../core/iclock_plugin.h \
+    ../plugin_settings.h \
     gui/settings_dlg.h \
-    plugin_settings.h \
     alarm_settings.h
 OTHER_FILES += alarm.json
 
