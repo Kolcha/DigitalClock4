@@ -23,6 +23,9 @@ public slots:
   void SettingsListener(Options, const QVariant&) {}
   void TimeUpdateListener(const QString&);
 
+private slots:
+  void SelfConfigure();
+
 private:
   QSystemTrayIcon* tray_icon_;
   QIcon old_icon_;

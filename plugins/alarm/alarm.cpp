@@ -1,4 +1,6 @@
 #include <QSystemTrayIcon>
+#include <QFile>
+#include <QDir>
 #include "gui/settings_dlg.h"
 #include "alarm_settings.h"
 #include "alarm.h"
@@ -36,12 +38,21 @@ void Alarm::Configure() {
 void Alarm::Start() {
   settings_->Load();
   tray_icon_->setIcon(QIcon(":/alarm_clock.svg"));
-  // add new menu items
+
+  // check is signal mediafile is exists
+  QString mediafile = settings_->GetOption(OPT_SIGNAL).toString();
+  if (!QFile::exists(mediafile)) {
+    tray_icon_->showMessage(tr("Digital Clock Alarm"),
+                            tr("File %1 doesn't exists. Click this message or go to plugin"
+                               "settings to choose another.").arg(QDir::toNativeSeparators(mediafile)),
+                            QSystemTrayIcon::Critical
+                            );
+    connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(SelfConfigure()));
+  }
 }
 
 void Alarm::Stop() {
   tray_icon_->setIcon(old_icon_);
-  // delete added menu items
 }
 
 void Alarm::GetInfo(TPluginInfo* info) {
@@ -68,4 +79,8 @@ void Alarm::TimeUpdateListener(const QString&) {
                             player_->duration());
     connect(tray_icon_, SIGNAL(messageClicked()), player_, SLOT(stop()));
   }
+}
+
+void Alarm::SelfConfigure() {
+  Configure();
 }
