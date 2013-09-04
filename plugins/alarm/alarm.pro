@@ -12,8 +12,7 @@ TEMPLATE = lib
 CONFIG += plugin
 
 SOURCES += alarm.cpp \
-    gui/settings_dlg.cpp \
-    plugin_settings.cpp
+    gui/settings_dlg.cpp
 
 HEADERS += alarm.h \
     ../../core/iclock_plugin.h \
