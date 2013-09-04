@@ -12,7 +12,7 @@
     <ROW Property="ProductCode" Value="1033:{8A4FAE5E-8C42-47C5-8AD4-004097E28C16} 1049:{984CD20B-27D2-4A16-A189-08C9C5A61509} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Digital Clock"/>
-    <ROW Property="ProductVersion" Value="4.1.4" Type="32"/>
+    <ROW Property="ProductVersion" Value="4.2.0" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{54C23BD0-34F4-46B5-B31B-FB1A8B53E25F}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -36,6 +36,7 @@
     <ROW Directory="heartssimple_Dir" Directory_Parent="skins_Dir" DefaultDir="hearts~2|hearts-simple"/>
     <ROW Directory="iconengines_Dir" Directory_Parent="plugins_Dir" DefaultDir="iconen~1|iconengines"/>
     <ROW Directory="imageformats_Dir" Directory_Parent="plugins_Dir" DefaultDir="imagef~1|imageformats"/>
+    <ROW Directory="mediaservice_Dir" Directory_Parent="plugins_Dir" DefaultDir="medias~1|mediaservice"/>
     <ROW Directory="platforms_Dir" Directory_Parent="plugins_Dir" DefaultDir="platfo~1|platforms"/>
     <ROW Directory="plugins_Dir" Directory_Parent="APPDIR" DefaultDir="plugins"/>
     <ROW Directory="qsn_cp_clock_digital_new_Dir" Directory_Parent="skins_Dir" DefaultDir="qsn_cp~1|qsn_cp_clock_digital_new"/>
@@ -49,18 +50,25 @@
     <ROW Component="ProductInformation" ComponentId="{CE52DE32-2589-47F3-9921-5EDCF082D559}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
     <ROW Component="Qt5Core.dll" ComponentId="{9CD99636-23F3-46FC-85EC-3FBB466BD2A9}" Directory_="APPDIR" Attributes="256" KeyPath="Qt5Core.dll"/>
     <ROW Component="Qt5Gui.dll" ComponentId="{5D1CE5A2-409F-4CBE-9892-97B7106D095E}" Directory_="APPDIR" Attributes="256" KeyPath="Qt5Gui.dll"/>
+    <ROW Component="Qt5Multimedia.dll" ComponentId="{62035779-6307-4B3C-A8C7-779BF53CEEEA}" Directory_="APPDIR" Attributes="256" KeyPath="Qt5Multimedia.dll"/>
+    <ROW Component="Qt5Network.dll" ComponentId="{D1840DE6-7917-4426-9C4D-BDF55054D633}" Directory_="APPDIR" Attributes="256" KeyPath="Qt5Network.dll"/>
     <ROW Component="Qt5Svg.dll" ComponentId="{AE533E12-6EF5-4BD8-97F6-BBCFC5644DAC}" Directory_="APPDIR" Attributes="256" KeyPath="Qt5Svg.dll"/>
     <ROW Component="Qt5Widgets.dll" ComponentId="{1CB898A9-8357-44D8-B074-B165F6E12FE0}" Directory_="APPDIR" Attributes="256" KeyPath="Qt5Widgets.dll"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{0FEF1E90-F842-4C3B-83DC-44193B33BB67}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="alarm.dll" ComponentId="{DD50C311-3DE6-46FF-8F54-B445EF74CD69}" Directory_="plugins_Dir" Attributes="256" KeyPath="alarm.dll"/>
     <ROW Component="biclock_item0.svg" ComponentId="{323B5B25-E526-46C1-A365-FB9D85FEA228}" Directory_="binclock_Dir" Attributes="0" KeyPath="biclock_item0.svg" Type="0"/>
     <ROW Component="color" ComponentId="{258FB349-D2D7-4373-AB12-901BFAB84817}" Directory_="APPDIR" Attributes="4" KeyPath="color"/>
+    <ROW Component="enabled" ComponentId="{5BDF261D-8018-49EE-89BE-6E0BB0AD5ACA}" Directory_="APPDIR" Attributes="4" KeyPath="enabled"/>
+    <ROW Component="hour_signal.dll" ComponentId="{36101BBC-EE4A-4E7B-834E-61437D33E6C9}" Directory_="plugins_Dir" Attributes="256" KeyPath="hour_signal.dll"/>
     <ROW Component="icudt51.dll" ComponentId="{BCE9C1BA-02FB-4E2A-8EC6-A1429F75C11E}" Directory_="APPDIR" Attributes="256" KeyPath="icudt51.dll"/>
     <ROW Component="icuin51.dll" ComponentId="{09059577-3A2C-4F46-B4BF-0684693AEDEB}" Directory_="APPDIR" Attributes="256" KeyPath="icuin51.dll"/>
     <ROW Component="icuuc51.dll" ComponentId="{4E1259BE-4925-4B34-AD83-D0A69AF1B50E}" Directory_="APPDIR" Attributes="256" KeyPath="icuuc51.dll"/>
     <ROW Component="libEGL.dll" ComponentId="{26E81252-349B-4995-9106-B9A1793B5BC7}" Directory_="APPDIR" Attributes="256" KeyPath="libEGL.dll"/>
     <ROW Component="libGLESv2.dll" ComponentId="{B12AFF05-1BA1-4DAC-8EEA-C1E5111A0AE2}" Directory_="APPDIR" Attributes="256" KeyPath="libGLESv2.dll"/>
     <ROW Component="name" ComponentId="{C13D1B06-547E-4648-BD0D-3FF847E61A6B}" Directory_="APPDIR" Attributes="4" KeyPath="name"/>
+    <ROW Component="notify_text" ComponentId="{37CB6DD2-D70B-4656-A460-DEC14E330738}" Directory_="APPDIR" Attributes="4" KeyPath="notify_text"/>
     <ROW Component="opacity" ComponentId="{032C3B1B-C3C5-4274-8234-2243332EF382}" Directory_="APPDIR" Attributes="4" KeyPath="opacity"/>
+    <ROW Component="plugins" ComponentId="{1E891BE3-AC6A-47B9-AE25-A81850E205E4}" Directory_="APPDIR" Attributes="4" KeyPath="plugins"/>
     <ROW Component="png" ComponentId="{DBDD0368-7D62-4CAA-A272-7620E40513F1}" Directory_="comic_Dir" Attributes="0" KeyPath="png" Type="0"/>
     <ROW Component="png_1" ComponentId="{9FFE7700-4227-40A9-B841-72583AAC9283}" Directory_="electronicitalic_Dir" Attributes="0" KeyPath="png_10" Type="0"/>
     <ROW Component="position" ComponentId="{6EF3A2A0-89AD-435C-BB27-A607CCC98C35}" Directory_="APPDIR" Attributes="4" KeyPath="position"/>
@@ -79,6 +87,9 @@
     <ROW Component="qwbmp.dll" ComponentId="{5C87D349-D89D-479E-AE34-CC9CF0702489}" Directory_="imageformats_Dir" Attributes="256" KeyPath="qwbmp.dll"/>
     <ROW Component="qwindows.dll" ComponentId="{3C15D7FC-D3B5-43B0-B58B-B946FE38B299}" Directory_="platforms_Dir" Attributes="256" KeyPath="qwindows.dll"/>
     <ROW Component="separator_flash" ComponentId="{6E2DDB17-57B4-4E2D-BF18-860A1C88DC18}" Directory_="APPDIR" Attributes="4" KeyPath="separator_flash"/>
+    <ROW Component="show_notify" ComponentId="{674951C4-CD3C-40D8-AB78-C4C73299AB3A}" Directory_="APPDIR" Attributes="4" KeyPath="show_notify"/>
+    <ROW Component="signal" ComponentId="{35F8844C-2FD6-4D58-AA41-C41ED29F81C3}" Directory_="APPDIR" Attributes="4" KeyPath="signal"/>
+    <ROW Component="spectrum_clock.dll" ComponentId="{1D480443-9FA2-40D9-92FE-2475F5CCEE25}" Directory_="plugins_Dir" Attributes="256" KeyPath="spectrum_clock.dll"/>
     <ROW Component="stay_on_top" ComponentId="{E52146CE-C454-4F9A-885E-84903EBBC29D}" Directory_="APPDIR" Attributes="4" KeyPath="stay_on_top"/>
     <ROW Component="svg" ComponentId="{562B419C-FAA1-41D2-8AD3-2A0F1B0257BC}" Directory_="comicv_Dir" Attributes="0" KeyPath="svg" Type="0"/>
     <ROW Component="svg_1" ComponentId="{95AC181E-6FAA-49F1-AB31-58240E6FF1E0}" Directory_="heartsempty_Dir" Attributes="0" KeyPath="svg_10" Type="0"/>
@@ -87,21 +98,27 @@
     <ROW Component="texture_001_128.jpg" ComponentId="{70E026FA-C7E6-4DED-AD67-6458DEA775B1}" Directory_="textures_Dir" Attributes="0" KeyPath="texture_001_128.jpg" Type="0"/>
     <ROW Component="texture_draw_mode" ComponentId="{17464B6D-C02C-4FD7-A6B4-3104E48198B6}" Directory_="APPDIR" Attributes="4" KeyPath="texture_draw_mode"/>
     <ROW Component="texture_per_element" ComponentId="{788A9830-08FF-41DE-A00E-F79BAD6D25F4}" Directory_="APPDIR" Attributes="4" KeyPath="texture_per_element"/>
+    <ROW Component="time" ComponentId="{042E8702-FFE7-43F1-821E-D390043DB70D}" Directory_="APPDIR" Attributes="4" KeyPath="time"/>
     <ROW Component="transp_for_input" ComponentId="{CA3595AC-33A2-46D5-8E86-B8E839A3A752}" Directory_="APPDIR" Attributes="4" KeyPath="transp_for_input"/>
     <ROW Component="use_texture" ComponentId="{7EAD91F4-EDF2-4FF9-985E-BE77F9980685}" Directory_="APPDIR" Attributes="4" KeyPath="use_texture"/>
+    <ROW Component="var_translucency.dll" ComponentId="{3CF50036-462F-4D9C-B119-12C1446303F1}" Directory_="plugins_Dir" Attributes="256" KeyPath="var_translucency.dll"/>
+    <ROW Component="wmfengine.dll" ComponentId="{67582F6E-067C-4AAD-BFC2-0A38AD29780A}" Directory_="mediaservice_Dir" Attributes="256" KeyPath="wmfengine.dll"/>
     <ROW Component="zoom" ComponentId="{ACDE1E5F-3589-41A4-9411-41212A1C76C1}" Directory_="APPDIR" Attributes="4" KeyPath="zoom"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="EF36CDD6CE40CFA978040EA5CBA799" Title="Visual C++ Redistributable for Visual Studio 2012 x64" Description="Visual C++ Redistributable for Visual Studio 2012 x64" Display="3" Level="1" Attributes="0" Components="EF36CDD6CE40CFA978040EA5CBA799"/>
-    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="DigitalClock4.exe ProductInformation Qt5Core.dll Qt5Gui.dll Qt5Svg.dll Qt5Widgets.dll SHORTCUTDIR biclock_item0.svg color icudt51.dll icuin51.dll icuuc51.dll libEGL.dll libGLESv2.dll name opacity png png_1 position qgif.dll qico.dll qjpeg.dll qmng.dll qsn_cp_clock_digital_new_eight.svg qsvg.dll qsvgicon.dll qt.conf qtaccessiblewidgets.dll qtbase_cs.qm qtga.dll qtiff.dll qwbmp.dll qwindows.dll separator_flash stay_on_top svg svg_1 svg_2 texture texture_001_128.jpg texture_draw_mode texture_per_element transp_for_input use_texture zoom"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="DigitalClock4.exe ProductInformation Qt5Core.dll Qt5Gui.dll Qt5Multimedia.dll Qt5Network.dll Qt5Svg.dll Qt5Widgets.dll SHORTCUTDIR alarm.dll biclock_item0.svg color enabled hour_signal.dll icudt51.dll icuin51.dll icuuc51.dll libEGL.dll libGLESv2.dll name notify_text opacity plugins png png_1 position qgif.dll qico.dll qjpeg.dll qmng.dll qsn_cp_clock_digital_new_eight.svg qsvg.dll qsvgicon.dll qt.conf qtaccessiblewidgets.dll qtbase_cs.qm qtga.dll qtiff.dll qwbmp.dll qwindows.dll separator_flash show_notify signal spectrum_clock.dll stay_on_top svg svg_1 svg_2 texture texture_001_128.jpg texture_draw_mode texture_per_element time transp_for_input use_texture var_translucency.dll wmfengine.dll zoom"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
     <ROW File="DigitalClock4.exe" Component_="DigitalClock4.exe" FileName="Digita~1.exe|DigitalClock4.exe" Attributes="0" SourcePath="..\..\build-DigitalClock4-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\release\DigitalClock4.exe" SelfReg="false" NextFile="biclock_item0.svg" DigSign="true"/>
     <ROW File="Qt5Core.dll" Component_="Qt5Core.dll" FileName="Qt5Core.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Core.dll" SelfReg="false" NextFile="Qt5Gui.dll"/>
     <ROW File="Qt5Gui.dll" Component_="Qt5Gui.dll" FileName="Qt5Gui.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Gui.dll" SelfReg="false" NextFile="Qt5Svg.dll"/>
+    <ROW File="Qt5Multimedia.dll" Component_="Qt5Multimedia.dll" FileName="Qt5Mul~1.dll|Qt5Multimedia.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Multimedia.dll" SelfReg="false" NextFile="Qt5Network.dll"/>
+    <ROW File="Qt5Network.dll" Component_="Qt5Network.dll" FileName="Qt5Net~1.dll|Qt5Network.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Network.dll" SelfReg="false"/>
     <ROW File="Qt5Svg.dll" Component_="Qt5Svg.dll" FileName="Qt5Svg.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Svg.dll" SelfReg="false" NextFile="digital_clock_ru.qm"/>
     <ROW File="Qt5Widgets.dll" Component_="Qt5Widgets.dll" FileName="Qt5Wid~1.dll|Qt5Widgets.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Widgets.dll" SelfReg="false" NextFile="qtaccessiblewidgets.dll"/>
+    <ROW File="alarm.dll" Component_="alarm.dll" FileName="alarm.dll" Attributes="0" SourcePath="..\..\build-DigitalClock4-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\release\plugins\alarm.dll" SelfReg="false" NextFile="hour_signal.dll"/>
     <ROW File="biclock_item0.svg" Component_="biclock_item0.svg" FileName="bicloc~1.svg|biclock_item-0.svg" Attributes="0" SourcePath="..\data\skins\bin-clock\biclock_item-0.svg" SelfReg="false" NextFile="biclock_item1.svg"/>
     <ROW File="biclock_item1.svg" Component_="biclock_item0.svg" FileName="bicloc~2.svg|biclock_item-1.svg" Attributes="0" SourcePath="..\data\skins\bin-clock\biclock_item-1.svg" SelfReg="false" NextFile="biclock_item2.svg"/>
     <ROW File="biclock_item2.svg" Component_="biclock_item0.svg" FileName="bicloc~3.svg|biclock_item-2.svg" Attributes="0" SourcePath="..\data\skins\bin-clock\biclock_item-2.svg" SelfReg="false" NextFile="biclock_item3.svg"/>
@@ -116,6 +133,7 @@
     <ROW File="biclock_items2.svg" Component_="biclock_item0.svg" FileName="biclo~12.svg|biclock_item-s2.svg" Attributes="0" SourcePath="..\data\skins\bin-clock\biclock_item-s2.svg" SelfReg="false" NextFile="png"/>
     <ROW File="digital_clock_en.qm" Component_="qtbase_cs.qm" FileName="digita~2.qm|digital_clock_en.qm" Attributes="0" SourcePath="..\languages\digital_clock_en.qm" SelfReg="false" NextFile="texture_001_128.jpg"/>
     <ROW File="digital_clock_ru.qm" Component_="qtbase_cs.qm" FileName="digita~1.qm|digital_clock_ru.qm" Attributes="0" SourcePath="..\languages\digital_clock_ru.qm" SelfReg="false" NextFile="digital_clock_en.qm"/>
+    <ROW File="hour_signal.dll" Component_="hour_signal.dll" FileName="hour_s~1.dll|hour_signal.dll" Attributes="0" SourcePath="..\..\build-DigitalClock4-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\release\plugins\hour_signal.dll" SelfReg="false" NextFile="spectrum_clock.dll"/>
     <ROW File="icudt51.dll" Component_="icudt51.dll" FileName="icudt51.dll" Attributes="0" SourcePath="..\..\Qt files x64\icudt51.dll" SelfReg="false" NextFile="icuin51.dll"/>
     <ROW File="icuin51.dll" Component_="icuin51.dll" FileName="icuin51.dll" Attributes="0" SourcePath="..\..\Qt files x64\icuin51.dll" SelfReg="false" NextFile="icuuc51.dll"/>
     <ROW File="icuuc51.dll" Component_="icuuc51.dll" FileName="icuuc51.dll" Attributes="0" SourcePath="..\..\Qt files x64\icuuc51.dll" SelfReg="false" NextFile="libEGL.dll"/>
@@ -227,6 +245,7 @@
     <ROW File="s2.svg_1" Component_="svg_1" FileName="s2.svg" Attributes="0" SourcePath="..\data\skins\hearts-empty\s2.svg" SelfReg="false" NextFile="svg_20"/>
     <ROW File="s2.svg_2" Component_="svg_2" FileName="s2.svg" Attributes="0" SourcePath="..\data\skins\hearts-simple\s2.svg" SelfReg="false" NextFile="qsn_cp_clock_digital_new_eight.svg"/>
     <ROW File="s2.svg_3" Component_="qsn_cp_clock_digital_new_eight.svg" FileName="s2.svg" Attributes="0" SourcePath="..\data\skins\qsn_cp_clock_digital_new\s2.svg" SelfReg="false" NextFile="Qt5Widgets.dll"/>
+    <ROW File="spectrum_clock.dll" Component_="spectrum_clock.dll" FileName="spectr~1.dll|spectrum_clock.dll" Attributes="0" SourcePath="..\..\build-DigitalClock4-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\release\plugins\spectrum_clock.dll" SelfReg="false" NextFile="var_translucency.dll"/>
     <ROW File="svg" Component_="svg" FileName="0.svg" Attributes="0" SourcePath="..\data\skins\comic-v\0.svg" SelfReg="false" NextFile="svg_1"/>
     <ROW File="svg_1" Component_="svg" FileName="1.svg" Attributes="0" SourcePath="..\data\skins\comic-v\1.svg" SelfReg="false" NextFile="svg_2"/>
     <ROW File="svg_10" Component_="svg_1" FileName="0.svg" Attributes="0" SourcePath="..\data\skins\hearts-empty\0.svg" SelfReg="false" NextFile="svg_11"/>
@@ -461,7 +480,9 @@
     <ROW File="texture_202_128.jpg" Component_="texture_001_128.jpg" FileName="text~202.jpg|texture_202_128.jpg" Attributes="0" SourcePath="..\..\textures\texture_202_128.jpg" SelfReg="false" NextFile="texture_203_128.jpg"/>
     <ROW File="texture_203_128.jpg" Component_="texture_001_128.jpg" FileName="text~203.jpg|texture_203_128.jpg" Attributes="0" SourcePath="..\..\textures\texture_203_128.jpg" SelfReg="false" NextFile="texture_204_128.jpg"/>
     <ROW File="texture_204_128.jpg" Component_="texture_001_128.jpg" FileName="text~204.jpg|texture_204_128.jpg" Attributes="0" SourcePath="..\..\textures\texture_204_128.jpg" SelfReg="false" NextFile="texture_205_128.jpg"/>
-    <ROW File="texture_205_128.jpg" Component_="texture_001_128.jpg" FileName="text~205.jpg|texture_205_128.jpg" Attributes="0" SourcePath="..\..\textures\texture_205_128.jpg" SelfReg="false"/>
+    <ROW File="texture_205_128.jpg" Component_="texture_001_128.jpg" FileName="text~205.jpg|texture_205_128.jpg" Attributes="0" SourcePath="..\..\textures\texture_205_128.jpg" SelfReg="false" NextFile="alarm.dll"/>
+    <ROW File="var_translucency.dll" Component_="var_translucency.dll" FileName="var_tr~1.dll|var_translucency.dll" Attributes="0" SourcePath="..\..\build-DigitalClock4-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\release\plugins\var_translucency.dll" SelfReg="false" NextFile="wmfengine.dll"/>
+    <ROW File="wmfengine.dll" Component_="wmfengine.dll" FileName="wmfeng~1.dll|wmfengine.dll" Attributes="0" SourcePath="..\..\Qt files x64\plugins\mediaservice\wmfengine.dll" SelfReg="false" NextFile="Qt5Multimedia.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
     <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFileName="digital_clock_4-x64" Languages="en;ru" LangOpt="1" InstallationType="4" UseLargeSchema="true" MsiPackageType="x64"/>
@@ -705,14 +726,20 @@
     <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
     <ROW Registry="color" Root="1" Key="Software\[Manufacturer]\[ProductName]\skin" Name="color" Value="#x4000560061007200690061006e007400280000000000000043000100ff00ff000000000000000000ff00ff00000000002900" Component_="color"/>
+    <ROW Registry="enabled" Root="1" Key="Software\[Manufacturer]\[ProductName]\alarm_plugin" Name="enabled" Value="false" Component_="enabled"/>
     <ROW Registry="name" Root="1" Key="Software\[Manufacturer]\[ProductName]\skin" Name="name" Value="Electronic (default)" Component_="name"/>
+    <ROW Registry="notify_text" Root="1" Key="Software\[Manufacturer]\[ProductName]\alarm_plugin" Name="notify_text" Component_="notify_text"/>
     <ROW Registry="opacity" Root="1" Key="Software\[Manufacturer]\[ProductName]\clock" Name="opacity" Value="0.75" Component_="opacity"/>
+    <ROW Registry="plugins" Root="1" Key="Software\[Manufacturer]\[ProductName]\clock" Name="plugins" Value="Every hour signal[~]" Component_="plugins"/>
     <ROW Registry="position" Root="1" Key="Software\[Manufacturer]\[ProductName]\clock" Name="position" Value="@Point(50 20)" Component_="position"/>
     <ROW Registry="separator_flash" Root="1" Key="Software\[Manufacturer]\[ProductName]\clock" Name="separator_flash" Value="true" Component_="separator_flash"/>
+    <ROW Registry="show_notify" Root="1" Key="Software\[Manufacturer]\[ProductName]\alarm_plugin" Name="show_notify" Value="false" Component_="show_notify"/>
+    <ROW Registry="signal" Root="1" Key="Software\[Manufacturer]\[ProductName]\alarm_plugin" Name="signal" Component_="signal"/>
     <ROW Registry="stay_on_top" Root="1" Key="Software\[Manufacturer]\[ProductName]\clock" Name="stay_on_top" Value="false" Component_="stay_on_top"/>
     <ROW Registry="texture" Root="1" Key="Software\[Manufacturer]\[ProductName]\skin" Name="texture" Component_="texture"/>
     <ROW Registry="texture_draw_mode" Root="1" Key="Software\[Manufacturer]\[ProductName]\skin" Name="texture_draw_mode" Value="#0" Component_="texture_draw_mode"/>
     <ROW Registry="texture_per_element" Root="1" Key="Software\[Manufacturer]\[ProductName]\skin" Name="texture_per_element" Value="false" Component_="texture_per_element"/>
+    <ROW Registry="time" Root="1" Key="Software\[Manufacturer]\[ProductName]\alarm_plugin" Name="time" Value="#x4000560061007200690061006e00740028000000000000000f00ff00ff00ff00ff002900" Component_="time"/>
     <ROW Registry="transp_for_input" Root="1" Key="Software\[Manufacturer]\[ProductName]\clock" Name="transp_for_input" Value="false" Component_="transp_for_input"/>
     <ROW Registry="use_texture" Root="1" Key="Software\[Manufacturer]\[ProductName]\skin" Name="use_texture" Value="false" Component_="use_texture"/>
     <ROW Registry="zoom" Root="1" Key="Software\[Manufacturer]\[ProductName]\skin" Name="zoom" Value="1.25" Component_="zoom"/>
