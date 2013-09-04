@@ -61,4 +61,11 @@ void Alarm::TimeUpdateListener(const QString&) {
       player_->state() == QMediaPlayer::PlayingState) return;
   player_->setMedia(QUrl::fromLocalFile(settings_->GetOption(OPT_SIGNAL).toString()));
   player_->play();
+  if (settings_->GetOption(OPT_SHOW_NOTIFY).toBool()) {
+    tray_icon_->showMessage(tr("Digital Clock Alarm"),
+                            settings_->GetOption(OPT_NOTIFY_TEXT).toString(),
+                            QSystemTrayIcon::Information,
+                            player_->duration());
+    connect(tray_icon_, SIGNAL(messageClicked()), player_, SLOT(stop()));
+  }
 }
