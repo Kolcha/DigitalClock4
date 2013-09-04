@@ -1,4 +1,5 @@
 #include <QFileInfo>
+#include <QDir>
 #include <QFileDialog>
 #include "../alarm_settings.h"
 #include "settings_dlg.h"
@@ -24,8 +25,12 @@ void SettingsDlg::SettingsListener(const QString& key, const QVariant& value) {
   }
   if (key == OPT_SIGNAL) {
     QString file = value.toString();
-    last_file_path_ = file.isEmpty() ? "." : QFileInfo(file).absolutePath();
-    ui->signal_label->setText(QFileInfo(file).baseName());
+    QFileInfo info(file);
+    last_file_path_ = file.isEmpty() ? "." : info.absolutePath();
+    if (info.exists()) {
+      ui->signal_label->setText(info.baseName());
+      ui->signal_label->setToolTip(QDir::toNativeSeparators(file));
+    }
   }
   if (key == OPT_SHOW_NOTIFY) {
     ui->notification_enabled->setChecked(value.toBool());
@@ -48,6 +53,8 @@ void SettingsDlg::on_browse_btn_clicked() {
                        last_file_path_,
                        tr("MP3 Files (*.mp3)"));
   if (!sound_file.isEmpty()) {
+    ui->signal_label->setText(QFileInfo(sound_file).baseName());
+    ui->signal_label->setToolTip(QDir::toNativeSeparators(sound_file));
     emit OptionChanged(OPT_SIGNAL, sound_file);
     last_file_path_ = QFileInfo(sound_file).absolutePath();
   }
