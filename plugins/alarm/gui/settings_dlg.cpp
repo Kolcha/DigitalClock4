@@ -24,9 +24,8 @@ void SettingsDlg::SettingsListener(const QString& key, const QVariant& value) {
   }
   if (key == OPT_SIGNAL) {
     QString file = value.toString();
-    ui->default_signal->setChecked(file == DEFAULT_SIGNAL);
-    ui->custom_signal->setChecked(file != DEFAULT_SIGNAL);
-    last_file_path_ = (file == DEFAULT_SIGNAL) ? "." : QFileInfo(file).absolutePath();
+    last_file_path_ = file.isEmpty() ? "." : QFileInfo(file).absolutePath();
+    ui->signal_label->setText(QFileInfo(file).baseName());
   }
   if (key == OPT_SHOW_NOTIFY) {
     ui->notification_enabled->setChecked(value.toBool());
@@ -47,7 +46,7 @@ void SettingsDlg::on_alarm_enabled_toggled(bool checked) {
 void SettingsDlg::on_browse_btn_clicked() {
   QString sound_file = QFileDialog::getOpenFileName(this, tr("Select sound file"),
                        last_file_path_,
-                       tr("Sounds (*.wav *.mp3)"));
+                       tr("MP3 Files (*.mp3)"));
   if (!sound_file.isEmpty()) {
     emit OptionChanged(OPT_SIGNAL, sound_file);
     last_file_path_ = QFileInfo(sound_file).absolutePath();
@@ -60,8 +59,4 @@ void SettingsDlg::on_notification_enabled_toggled(bool checked) {
 
 void SettingsDlg::on_message_edit_textChanged() {
   emit OptionChanged(OPT_NOTIFY_TEXT, ui->message_edit->toPlainText());
-}
-
-void SettingsDlg::on_default_signal_clicked() {
-  emit OptionChanged(OPT_SIGNAL, DEFAULT_SIGNAL);
 }

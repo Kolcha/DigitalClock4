@@ -26,7 +26,6 @@ private slots:
   void on_browse_btn_clicked();
   void on_notification_enabled_toggled(bool checked);
   void on_message_edit_textChanged();
-  void on_default_signal_clicked();
 
 private:
   Ui::SettingsDlg* ui;
