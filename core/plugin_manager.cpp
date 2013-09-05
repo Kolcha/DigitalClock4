@@ -60,15 +60,20 @@ void PluginManager::GetPluginInfo(const QString& name) {
 }
 
 void PluginManager::ConfigurePlugin(const QString& name) {
-  QString file = available_[name];
-  if (!QFile::exists(file)) return;
-  QPluginLoader* loader = new QPluginLoader(file, this);
-  IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
-  if (plugin) {
-    InitPlugin(plugin);
-    plugin->Configure();
+  if (loaded_.contains(name)) {
+    IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loaded_[name]->instance());
+    if (plugin) plugin->Configure();
+  } else {
+    QString file = available_[name];
+    if (!QFile::exists(file)) return;
+    QPluginLoader* loader = new QPluginLoader(file);
+    IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
+    if (plugin) {
+      connect(plugin, SIGNAL(configured()), loader, SLOT(deleteLater()));
+      InitPlugin(plugin);
+      plugin->Configure();
+    }
   }
-  connect(plugin, SIGNAL(configured()), loader, SLOT(deleteLater()));
 }
 
 void PluginManager::LoadPlugin(const QString& name) {
