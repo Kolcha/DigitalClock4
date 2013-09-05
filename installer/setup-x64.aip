@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="10.3" version="10.3" Modules="professional" RootPath="." Language="en" Id="{9FAC43FB-F8A7-4F8D-99F5-B93FD59AD74A}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="10.3" version="10.5" Modules="professional" RootPath="." Language="en" Id="{9FAC43FB-F8A7-4F8D-99F5-B93FD59AD74A}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="[|ProductName] [|ProductVersion] x64 installer" ValueLocId="*"/>
     <ROW Property="ARPCONTACT" Value="nick.korotysh@gmail.com"/>
@@ -17,10 +18,12 @@
     <ROW Property="UpgradeCode" Value="{54C23BD0-34F4-46B5-B31B-FB1A8B53E25F}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
     <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
-    <ROW Property="WindowsTypeNT" MultiBuildValue="DefaultBuild:Windows NT/2000/XP/Vista/Windows 7/Windows 8 x86" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT" MultiBuildValue="DefaultBuild:Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT64" MultiBuildValue="DefaultBuild:Windows XP x64, Windows XP x64 Service Pack 1, Windows XP x64 Service Pack 2, Windows Server 2003 x64, Windows Server 2003 x64 Service Pack 1, Windows Server 2003 x64 Service Pack 2" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT64Display" MultiBuildValue="DefaultBuild:Windows XP x64, Windows Server 2003 x64" ValueLocId="-"/>
-    <ROW Property="WindowsTypeNTDisplay" MultiBuildValue="DefaultBuild:Windows NT/2000/XP/Vista/Windows 7/Windows 8 x86" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNTDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86" ValueLocId="-"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
@@ -118,7 +121,7 @@
     <ROW File="Qt5Network.dll" Component_="Qt5Network.dll" FileName="Qt5Net~1.dll|Qt5Network.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Network.dll" SelfReg="false"/>
     <ROW File="Qt5Svg.dll" Component_="Qt5Svg.dll" FileName="Qt5Svg.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Svg.dll" SelfReg="false" NextFile="digital_clock_ru.qm"/>
     <ROW File="Qt5Widgets.dll" Component_="Qt5Widgets.dll" FileName="Qt5Wid~1.dll|Qt5Widgets.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Widgets.dll" SelfReg="false" NextFile="qtaccessiblewidgets.dll"/>
-    <ROW File="alarm.dll" Component_="alarm.dll" FileName="alarm.dll" Attributes="0" SourcePath="..\..\build-DigitalClock4-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\release\plugins\alarm.dll" SelfReg="false" NextFile="hour_signal.dll"/>
+    <ROW File="alarm.dll" Component_="alarm.dll" FileName="alarm.dll" Attributes="0" SourcePath="..\build-plugins-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\alarm\release\alarm.dll" SelfReg="false" NextFile="hour_signal.dll"/>
     <ROW File="biclock_item0.svg" Component_="biclock_item0.svg" FileName="bicloc~1.svg|biclock_item-0.svg" Attributes="0" SourcePath="..\data\skins\bin-clock\biclock_item-0.svg" SelfReg="false" NextFile="biclock_item1.svg"/>
     <ROW File="biclock_item1.svg" Component_="biclock_item0.svg" FileName="bicloc~2.svg|biclock_item-1.svg" Attributes="0" SourcePath="..\data\skins\bin-clock\biclock_item-1.svg" SelfReg="false" NextFile="biclock_item2.svg"/>
     <ROW File="biclock_item2.svg" Component_="biclock_item0.svg" FileName="bicloc~3.svg|biclock_item-2.svg" Attributes="0" SourcePath="..\data\skins\bin-clock\biclock_item-2.svg" SelfReg="false" NextFile="biclock_item3.svg"/>
@@ -133,7 +136,7 @@
     <ROW File="biclock_items2.svg" Component_="biclock_item0.svg" FileName="biclo~12.svg|biclock_item-s2.svg" Attributes="0" SourcePath="..\data\skins\bin-clock\biclock_item-s2.svg" SelfReg="false" NextFile="png"/>
     <ROW File="digital_clock_en.qm" Component_="qtbase_cs.qm" FileName="digita~2.qm|digital_clock_en.qm" Attributes="0" SourcePath="..\languages\digital_clock_en.qm" SelfReg="false" NextFile="texture_001_128.jpg"/>
     <ROW File="digital_clock_ru.qm" Component_="qtbase_cs.qm" FileName="digita~1.qm|digital_clock_ru.qm" Attributes="0" SourcePath="..\languages\digital_clock_ru.qm" SelfReg="false" NextFile="digital_clock_en.qm"/>
-    <ROW File="hour_signal.dll" Component_="hour_signal.dll" FileName="hour_s~1.dll|hour_signal.dll" Attributes="0" SourcePath="..\..\build-DigitalClock4-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\release\plugins\hour_signal.dll" SelfReg="false" NextFile="spectrum_clock.dll"/>
+    <ROW File="hour_signal.dll" Component_="hour_signal.dll" FileName="hour_s~1.dll|hour_signal.dll" Attributes="0" SourcePath="..\build-plugins-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\hour_signal\release\hour_signal.dll" SelfReg="false" NextFile="spectrum_clock.dll"/>
     <ROW File="icudt51.dll" Component_="icudt51.dll" FileName="icudt51.dll" Attributes="0" SourcePath="..\..\Qt files x64\icudt51.dll" SelfReg="false" NextFile="icuin51.dll"/>
     <ROW File="icuin51.dll" Component_="icuin51.dll" FileName="icuin51.dll" Attributes="0" SourcePath="..\..\Qt files x64\icuin51.dll" SelfReg="false" NextFile="icuuc51.dll"/>
     <ROW File="icuuc51.dll" Component_="icuuc51.dll" FileName="icuuc51.dll" Attributes="0" SourcePath="..\..\Qt files x64\icuuc51.dll" SelfReg="false" NextFile="libEGL.dll"/>
@@ -245,7 +248,7 @@
     <ROW File="s2.svg_1" Component_="svg_1" FileName="s2.svg" Attributes="0" SourcePath="..\data\skins\hearts-empty\s2.svg" SelfReg="false" NextFile="svg_20"/>
     <ROW File="s2.svg_2" Component_="svg_2" FileName="s2.svg" Attributes="0" SourcePath="..\data\skins\hearts-simple\s2.svg" SelfReg="false" NextFile="qsn_cp_clock_digital_new_eight.svg"/>
     <ROW File="s2.svg_3" Component_="qsn_cp_clock_digital_new_eight.svg" FileName="s2.svg" Attributes="0" SourcePath="..\data\skins\qsn_cp_clock_digital_new\s2.svg" SelfReg="false" NextFile="Qt5Widgets.dll"/>
-    <ROW File="spectrum_clock.dll" Component_="spectrum_clock.dll" FileName="spectr~1.dll|spectrum_clock.dll" Attributes="0" SourcePath="..\..\build-DigitalClock4-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\release\plugins\spectrum_clock.dll" SelfReg="false" NextFile="var_translucency.dll"/>
+    <ROW File="spectrum_clock.dll" Component_="spectrum_clock.dll" FileName="spectr~1.dll|spectrum_clock.dll" Attributes="0" SourcePath="..\build-plugins-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\spectrum_clock\release\spectrum_clock.dll" SelfReg="false" NextFile="var_translucency.dll"/>
     <ROW File="svg" Component_="svg" FileName="0.svg" Attributes="0" SourcePath="..\data\skins\comic-v\0.svg" SelfReg="false" NextFile="svg_1"/>
     <ROW File="svg_1" Component_="svg" FileName="1.svg" Attributes="0" SourcePath="..\data\skins\comic-v\1.svg" SelfReg="false" NextFile="svg_2"/>
     <ROW File="svg_10" Component_="svg_1" FileName="0.svg" Attributes="0" SourcePath="..\data\skins\hearts-empty\0.svg" SelfReg="false" NextFile="svg_11"/>
@@ -481,7 +484,7 @@
     <ROW File="texture_203_128.jpg" Component_="texture_001_128.jpg" FileName="text~203.jpg|texture_203_128.jpg" Attributes="0" SourcePath="..\..\textures\texture_203_128.jpg" SelfReg="false" NextFile="texture_204_128.jpg"/>
     <ROW File="texture_204_128.jpg" Component_="texture_001_128.jpg" FileName="text~204.jpg|texture_204_128.jpg" Attributes="0" SourcePath="..\..\textures\texture_204_128.jpg" SelfReg="false" NextFile="texture_205_128.jpg"/>
     <ROW File="texture_205_128.jpg" Component_="texture_001_128.jpg" FileName="text~205.jpg|texture_205_128.jpg" Attributes="0" SourcePath="..\..\textures\texture_205_128.jpg" SelfReg="false" NextFile="alarm.dll"/>
-    <ROW File="var_translucency.dll" Component_="var_translucency.dll" FileName="var_tr~1.dll|var_translucency.dll" Attributes="0" SourcePath="..\..\build-DigitalClock4-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\release\plugins\var_translucency.dll" SelfReg="false" NextFile="wmfengine.dll"/>
+    <ROW File="var_translucency.dll" Component_="var_translucency.dll" FileName="var_tr~1.dll|var_translucency.dll" Attributes="0" SourcePath="..\build-plugins-Desktop_Qt_5_1_0_MSVC2012_64bit-Release\var_translucency\release\var_translucency.dll" SelfReg="false" NextFile="wmfengine.dll"/>
     <ROW File="wmfengine.dll" Component_="wmfengine.dll" FileName="wmfeng~1.dll|wmfengine.dll" Attributes="0" SourcePath="..\..\Qt files x64\plugins\mediaservice\wmfengine.dll" SelfReg="false" NextFile="Qt5Multimedia.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
@@ -518,9 +521,6 @@
     <ROW Name="Prereq.dll" SourcePath="&lt;AI_CUSTACTS&gt;Prereq.dll"/>
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
   </COMPONENT>
-  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
-    <ATTRIBUTE name="FixedSizeBitmaps" value="2"/>
-  </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
@@ -556,6 +556,7 @@
     <ROW Action="AI_CleanPrereq" Type="65" Source="Prereq.dll" Target="CleanPrereq" WithoutSeq="true"/>
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
     <ROW Action="AI_DownloadPrereq" Type="1" Source="Prereq.dll" Target="DownloadPrereq"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
     <ROW Action="AI_ExtractPrereq" Type="65" Source="Prereq.dll" Target="ExtractPrereq"/>
     <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
     <ROW Action="AI_InstallPostPrerequisite" Type="1" Source="Prereq.dll" Target="InstallPostPrereq"/>
@@ -707,18 +708,20 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
-    <ROW Action="AI_ResolveLocalizedCredentials" Sequence="51"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_ResolveLocalizedCredentials" Sequence="52"/>
     <ROW Action="ExecuteAction" Sequence="1299" SeqType="0" MsiKey="ExecuteAction"/>
     <ROW Action="AI_DownloadPrereq" Sequence="1296"/>
     <ROW Action="AI_ExtractPrereq" Sequence="1297"/>
     <ROW Action="AI_InstallPrerequisite" Sequence="1298"/>
     <ROW Action="AI_InstallPostPrerequisite" Sequence="1300"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
+    <ROW Action="AI_DpiContentScale" Sequence="51"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="( Version9X OR ( NOT VersionNT64 ) OR ( VersionNT64 AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &gt;= 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 2)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &gt;= 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 2)))) ) )" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT64Display]" DescriptionLocId="AI.LaunchCondition.NoSpecificNT64" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="( Version9X OR VersionNT64 )" Description="[ProductName] cannot be installed on [WindowsTypeNTDisplay]" DescriptionLocId="AI.LaunchCondition.NoNT" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT40Display]" DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]" DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
@@ -760,6 +763,6 @@
     <ATTRIBUTE name="PrereqsOrder" value="EF36CDD6CE40CFA978040EA5CBA799"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">
-    <ROW SearchKey="EF36CDD6CE40CFA978040EA5CBA799_VC_2012_SEARCH" Prereq="EF36CDD6CE40CFA978040EA5CBA799" SearchType="2" SearchString="HKLM\Software\Microsoft\DevDiv\vc\Servicing\11.0\RuntimeMinimum\Version" VerMin="11.0" Order="1" Property="AI_VC_2012_PREREQSEARCH_PROP"/>
+    <ROW SearchKey="EF36CDD6CE40CFA978040EA5CBA799_VC_2012_SEARCH" Prereq="EF36CDD6CE40CFA978040EA5CBA799" SearchType="2" SearchString="HKLM\Software\Microsoft\DevDiv\vc\Servicing\11.0\RuntimeMinimum\Version" VerMin="11.0" Order="1" Property="AI_VC_2012_PREREQSEARCH_PROP" Platform="1"/>
   </COMPONENT>
 </DOCUMENT>
