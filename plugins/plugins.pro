@@ -4,6 +4,7 @@ SUBDIRS += \
     spectrum_clock \
     var_translucency \
     hour_signal \
-    alarm
+    alarm \
+    am_pm
 
 unix:QMAKE_CXXFLAGS += -std=c++11
