@@ -5,11 +5,11 @@
 #-------------------------------------------------
 
 QT       += core gui
-INCLUDEPATH += skin_draw
+INCLUDEPATH += ../skin_draw
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = DigitalClock4
+TARGET = digital_clock
 TEMPLATE = app
 
 
