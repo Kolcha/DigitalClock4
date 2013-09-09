@@ -4,7 +4,7 @@
 #include <QMap>
 #include <QString>
 #include <QVariant>
-#include <QPoint>
+#include <QFont>
 #include <QColor>
 #include <QStringList>
 
@@ -16,7 +16,10 @@ enum Options {
   OPT_SEPARATOR_FLASH,
   OPT_PLUGINS,
   // skin settings
+  OPT_USE_SKIN,
   OPT_SKIN_NAME,
+  OPT_USE_FONT,
+  OPT_FONT,
   OPT_ZOOM,
   OPT_COLOR,
   OPT_TEXTURE,
@@ -34,7 +37,10 @@ inline void GetOptionsKeys(QMap<Options, QString>& opt_map) {
   opt_map[OPT_SEPARATOR_FLASH] = "clock/separator_flash";
   opt_map[OPT_PLUGINS] = "clock/plugins";
   // skin settings
+  opt_map[OPT_USE_SKIN] = "skin/use_skin";
   opt_map[OPT_SKIN_NAME] = "skin/name";
+  opt_map[OPT_USE_FONT] = "skin/use_font";
+  opt_map[OPT_FONT] = "skin/font";
   opt_map[OPT_ZOOM] = "skin/zoom";
   opt_map[OPT_COLOR] = "skin/color";
   opt_map[OPT_TEXTURE] = "skin/texture";
@@ -52,7 +58,10 @@ inline QVariant GetDefaultValue(Options opt) {
     case OPT_SEPARATOR_FLASH:       return true;
     case OPT_PLUGINS:               return QStringList("Test plugin");
     // skin settings
+    case OPT_USE_SKIN:              return true;
     case OPT_SKIN_NAME:             return QString("Electronic (default)");
+    case OPT_USE_FONT:              return false;
+    case OPT_FONT:                  return QFont();
     case OPT_ZOOM:                  return 1.25;
     case OPT_COLOR:                 return QVariant::fromValue<QColor>(Qt::blue);
     case OPT_TEXTURE:               return QString();
