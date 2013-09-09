@@ -1,3 +1,5 @@
+#include <QTime>
+#include <QLocale>
 #include "am_pm.h"
 
 void ShowAMPM::Init(QWidget* main_wnd) {
@@ -16,7 +18,6 @@ void ShowAMPM::GetInfo(TPluginInfo* info) {
 
 void ShowAMPM::Start() {
   am_pm_label_ = new QLabel();
-  am_pm_label_->setText("am/pm");
   main_layout_->addWidget(am_pm_label_, 0, 1);
 }
 
@@ -30,4 +31,6 @@ void ShowAMPM::SettingsListener(Options option, const QVariant& value) {
 }
 
 void ShowAMPM::TimeUpdateListener(const QString&) {
+  qDebug() << QLocale::system().timeFormat();
+  am_pm_label_->setText(QTime::currentTime().toString("ap"));
 }
