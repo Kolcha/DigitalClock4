@@ -1,7 +1,7 @@
 #include <QColorDialog>
 #include <QFileDialog>
 #include <QFileInfo>
-#include "../skin/skin_drawer.h"
+#include "skin_drawer.h"
 #include "plugin_list_item.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"

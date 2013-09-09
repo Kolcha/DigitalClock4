@@ -1,4 +1,4 @@
-#include "../skin/iclock_skin.h"
+#include "iclock_skin.h"
 #include "skin_manager.h"
 
 SkinManager::SkinManager(QObject* parent)

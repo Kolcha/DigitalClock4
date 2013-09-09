@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui svg
+QT       += core gui
+INCLUDEPATH += skin_draw
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,11 +14,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    skin/base_skin.cpp \
-    skin/raster_skin.cpp \
-    skin/vector_skin.cpp \
-    skin/skin_factory.cpp \
-    skin/skin_drawer.cpp \
     core/skin_manager.cpp \
     core/clock_settings.cpp \
     gui/digital_clock.cpp \
@@ -29,11 +25,6 @@ SOURCES += main.cpp\
     gui/plugin_list_item.cpp
 
 HEADERS  += \
-    skin/iclock_skin.h \
-    skin/base_skin.h \
-    skin/raster_skin.h \
-    skin/vector_skin.h \
-    skin/skin_drawer.h \
     core/skin_manager.h \
     core/clock_settings.h \
     gui/digital_clock.h \
@@ -59,3 +50,8 @@ TRANSLATIONS += \
 
 win32:RC_FILE = resources/resources.rc
 unix:QMAKE_CXXFLAGS += -std=c++11
+
+win32 {
+  Debug:LIBS += debug/skin_draw.lib
+  Release:LIBS += release/skin_draw.lib
+}

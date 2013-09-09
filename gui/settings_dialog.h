@@ -5,7 +5,7 @@
 #include <QListWidgetItem>
 #include "../core/settings_keys.h"
 #include "../core/iclock_plugin.h"
-#include "../skin/iclock_skin.h"
+#include "iclock_skin.h"
 
 namespace Ui {
 class SettingsDialog;
