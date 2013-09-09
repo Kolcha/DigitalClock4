@@ -1,0 +1,27 @@
+1	VERSIONINFO
+FILEVERSION	1,0,0,8
+PRODUCTVERSION	1,0,0,8
+FILEOS		0x4
+FILETYPE	0x2
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "Comments", "Digital Clock skin drawing library"
+		VALUE "CompanyName", "Nick Korotysh"
+		VALUE "FileDescription", "Skin drawing library"
+		VALUE "FileVersion", "1.0.0.8"
+		VALUE "InternalName", "skin_draw.dll"
+		VALUE "LegalCopyright", "Copyright (C) 2013 Nick Korotysh"
+		VALUE "OriginalFilename", "skin_draw.dll"
+		VALUE "ProductName", "Digital Clock"
+		VALUE "ProductVersion", "4.2.0"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409 0x04B0
+}
+}

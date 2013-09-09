@@ -24,11 +24,4 @@ HEADERS += skin_drawer.h\
     iclock_skin.h \
     base_skin.h
 
-unix:!symbian {
-    maemo5 {
-        target.path = /opt/usr/lib
-    } else {
-        target.path = /usr/lib
-    }
-    INSTALLS += target
-}
+win32:RC_FILE = skin_draw.rc
