@@ -5,6 +5,7 @@
 
 #include <QDir>
 #include <QMap>
+#include <QFont>
 #include <QString>
 #include <QPixmap>
 #include <QSharedPointer>
@@ -31,5 +32,6 @@ public:
 };
 
 SKIN_DRAWSHARED_EXPORT IClockSkin* CreateSkin(const QDir& skin_root);
+SKIN_DRAWSHARED_EXPORT IClockSkin* CreateSkin(const QFont& font);
 
 #endif // ICLOCK_SKIN_H

@@ -5,7 +5,7 @@
 
 class BaseSkin : public IClockSkin {
 public:
-  explicit BaseSkin(const QDir& skin_root);
+  explicit BaseSkin();
   virtual ~BaseSkin();
 
   const TSkinInfo& GetInfo() const;
@@ -13,11 +13,10 @@ public:
 
 protected:
   virtual QPixmapPtr ResizeImage(const QString& s, qreal zoom) = 0;
-  QMap<QString, QString> image_files_;
+  TSkinInfo info_;
 
 private:
   void CharToKey(QChar ch, QString& s);
-  TSkinInfo info_;
   qreal cached_zoom_;
   QMap<QString, QPixmapPtr> image_cache_;
 };
