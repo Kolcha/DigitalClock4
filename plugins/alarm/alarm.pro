@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui widgets multimedia
-INCLUDEPATH += ../../core \
+INCLUDEPATH += ../../digital_clock/core \
     ..
 
 TARGET = alarm
@@ -16,7 +16,7 @@ SOURCES += alarm.cpp \
     gui/settings_dlg.cpp
 
 HEADERS += alarm.h \
-    ../../core/iclock_plugin.h \
+    ../../digital_clock/core/iclock_plugin.h \
     ../plugin_settings.h \
     gui/settings_dlg.h \
     alarm_settings.h
