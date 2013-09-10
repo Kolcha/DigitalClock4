@@ -9,6 +9,9 @@ public:
 
 protected:
   QPixmapPtr ResizeImage(const QString& s, qreal zoom);
+
+private:
+  QMap<QString, QString> image_files_;
 };
 
 #endif // VECTOR_SKIN_H

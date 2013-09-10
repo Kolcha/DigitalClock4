@@ -1,10 +1,12 @@
 #ifndef SKIN_DRAWER_H
 #define SKIN_DRAWER_H
 
+#include "skin_draw_global.h"
+
 #include <QPixmap>
 #include "iclock_skin.h"
 
-class SkinDrawer : public QObject {
+class SKIN_DRAWSHARED_EXPORT SkinDrawer : public QObject {
   Q_OBJECT
 public:
   explicit SkinDrawer(QObject* parent = 0);
@@ -18,6 +20,7 @@ signals:
 
 public slots:
   void LoadSkin(const QDir& skin_root);
+  void LoadSkin(const QFont& font);
   void SetString(const QString& str);
   void SetZoom(qreal new_zoom);
   bool SetColor(const QColor& new_color);

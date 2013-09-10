@@ -1,0 +1,28 @@
+1	ICON	1372595747_103169.ico
+1	VERSIONINFO
+FILEVERSION	4,2,0,153
+PRODUCTVERSION	4,2,0,153
+FILEOS		0x4
+FILETYPE	0x1
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "Comments", "Beautiful clock"
+		VALUE "CompanyName", "Nick Korotysh"
+		VALUE "FileDescription", "Digital Clock 4"
+		VALUE "FileVersion", "4.2.0.153"
+		VALUE "InternalName", "DigitalClock4.exe"
+		VALUE "LegalCopyright", "Copyright (C) 2013 Nick Korotysh"
+		VALUE "OriginalFilename", "DigitalClock4.exe"
+		VALUE "ProductName", "Digital Clock"
+		VALUE "ProductVersion", "4.2.0"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409 0x04B0
+}
+}

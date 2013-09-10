@@ -19,7 +19,19 @@ void SkinDrawer::LoadSkin(const QDir& skin_root) {
   delete skin_;
   skin_ = CreateSkin(skin_root);
   if (!skin_) return;
-  emit LoadedSkinInfo(skin_->GetInfo());
+  TSkinInfo info;
+  skin_->GetInfo(&info);
+  emit LoadedSkinInfo(info);
+  Redraw();
+}
+
+void SkinDrawer::LoadSkin(const QFont& font) {
+  delete skin_;
+  skin_ = CreateSkin(font);
+  if (!skin_) return;
+  TSkinInfo info;
+  skin_->GetInfo(&info);
+  emit LoadedSkinInfo(info);
   Redraw();
 }
 

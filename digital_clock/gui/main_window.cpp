@@ -49,7 +49,10 @@ void MainWindow::Init() {
   // load application settings
   settings_->Load();
   d_clock_->SetSeparatorFlash(settings_->GetOption(OPT_SEPARATOR_FLASH).toBool());
-  skin_manager_->FindSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
+  if (settings_->GetOption(OPT_USE_SKIN).toBool())
+    skin_manager_->FindSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
+  if (settings_->GetOption(OPT_USE_FONT).toBool())
+    drawer_->LoadSkin(settings_->GetOption(OPT_FONT).value<QFont>());
   drawer_->SetZoom(settings_->GetOption(OPT_ZOOM).toReal());
   drawer_->SetColor(settings_->GetOption(OPT_COLOR).value<QColor>());
   drawer_->SetTexture(settings_->GetOption(OPT_TEXTURE).toString());
@@ -116,8 +119,24 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       d_clock_->SetSeparatorFlash(value.toBool());
       break;
 
+    case OPT_USE_SKIN:
+      if (value.toBool())
+        skin_manager_->FindSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
+      break;
+
     case OPT_SKIN_NAME:
-      skin_manager_->FindSkin(value.toString());
+      if (settings_->GetOption(OPT_USE_SKIN).toBool())
+        skin_manager_->FindSkin(value.toString());
+      break;
+
+    case OPT_USE_FONT:
+      if (value.toBool())
+        drawer_->LoadSkin(settings_->GetOption(OPT_FONT).value<QFont>());
+      break;
+
+    case OPT_FONT:
+      if (settings_->GetOption(OPT_USE_FONT).toBool())
+        drawer_->LoadSkin(value.value<QFont>());
       break;
 
     case OPT_ZOOM:

@@ -1,8 +1,11 @@
 #ifndef ICLOCK_SKIN_H
 #define ICLOCK_SKIN_H
 
+#include "skin_draw_global.h"
+
 #include <QDir>
 #include <QMap>
+#include <QFont>
 #include <QString>
 #include <QPixmap>
 #include <QSharedPointer>
@@ -24,10 +27,11 @@ class IClockSkin {
 public:
   virtual ~IClockSkin() {}
 
-  virtual const TSkinInfo& GetInfo() const = 0;
+  virtual void GetInfo(TSkinInfo* info) = 0;
   virtual QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache) = 0;
 };
 
-IClockSkin* CreateSkin(const QDir& skin_root);
+SKIN_DRAWSHARED_EXPORT IClockSkin* CreateSkin(const QDir& skin_root);
+SKIN_DRAWSHARED_EXPORT IClockSkin* CreateSkin(const QFont& font);
 
 #endif // ICLOCK_SKIN_H
