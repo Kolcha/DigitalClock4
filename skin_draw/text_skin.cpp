@@ -12,10 +12,11 @@ TextSkin::TextSkin(const QFont& font) : font_(font) {
 }
 
 QPixmapPtr TextSkin::ResizeImage(const QString& s, qreal zoom) {
+  QString ls = s == " " ? ":" : s;
   QFont new_font(font_);
   new_font.setPointSizeF(font_.pointSizeF() * zoom);
   QFontMetrics fm(new_font);
-  QPixmapPtr result(new QPixmap(fm.width(s), fm.height()));
+  QPixmapPtr result(new QPixmap(fm.width(ls), fm.height()));
   QPainter painter(result.data());
   painter.setFont(new_font);
   painter.setCompositionMode(QPainter::CompositionMode_Source);

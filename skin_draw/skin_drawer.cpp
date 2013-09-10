@@ -16,30 +16,22 @@ SkinDrawer::~SkinDrawer() {
 }
 
 void SkinDrawer::LoadSkin(const QDir& skin_root) {
-  static QDir last_root;
-  if (skin_root != last_root) {
-    delete skin_;
-    skin_ = CreateSkin(skin_root);
-  }
+  delete skin_;
+  skin_ = CreateSkin(skin_root);
   if (!skin_) return;
   TSkinInfo info;
   skin_->GetInfo(&info);
   emit LoadedSkinInfo(info);
-  last_root = skin_root;
   Redraw();
 }
 
 void SkinDrawer::LoadSkin(const QFont& font) {
-  static QFont last_font;
-  if (font != last_font) {
-    delete skin_;
-    skin_ = CreateSkin(font);
-  }
+  delete skin_;
+  skin_ = CreateSkin(font);
   if (!skin_) return;
   TSkinInfo info;
   skin_->GetInfo(&info);
   emit LoadedSkinInfo(info);
-  last_font = font;
   Redraw();
 }
 
