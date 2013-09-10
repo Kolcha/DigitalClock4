@@ -8,7 +8,7 @@ public:
   explicit BaseSkin();
   virtual ~BaseSkin();
 
-  const TSkinInfo& GetInfo() const;
+  void GetInfo(TSkinInfo* info);
   QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache);
 
 protected:

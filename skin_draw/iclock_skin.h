@@ -27,7 +27,7 @@ class IClockSkin {
 public:
   virtual ~IClockSkin() {}
 
-  virtual const TSkinInfo& GetInfo() const = 0;
+  virtual void GetInfo(TSkinInfo* info) = 0;
   virtual QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache) = 0;
 };
 

@@ -6,8 +6,10 @@ BaseSkin::BaseSkin() : cached_zoom_(1.0) {
 BaseSkin::~BaseSkin() {
 }
 
-const TSkinInfo& BaseSkin::GetInfo() const {
-  return info_;
+void BaseSkin::GetInfo(TSkinInfo* info) {
+  for (auto i = info_.begin(); i != info_.end(); ++i) {
+    info->insert(i.key(), i.value());
+  }
 }
 
 QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {

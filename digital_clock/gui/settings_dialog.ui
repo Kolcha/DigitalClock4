@@ -174,16 +174,6 @@
           <item row="1" column="0" colspan="2">
            <widget class="QComboBox" name="skin_box"/>
           </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="comment_label">
-            <property name="text">
-             <string>&lt;no comment&gt;</string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
           <item row="3" column="0">
            <widget class="QLabel" name="version_label">
             <property name="text">
@@ -265,6 +255,22 @@
              </widget>
             </item>
            </layout>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <widget class="QLabel" name="comment_label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>&lt;no comment&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

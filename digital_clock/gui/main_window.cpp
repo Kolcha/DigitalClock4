@@ -125,7 +125,8 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       break;
 
     case OPT_SKIN_NAME:
-      skin_manager_->FindSkin(value.toString());
+      if (settings_->GetOption(OPT_USE_SKIN).toBool())
+        skin_manager_->FindSkin(value.toString());
       break;
 
     case OPT_USE_FONT:

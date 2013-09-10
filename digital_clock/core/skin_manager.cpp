@@ -21,7 +21,9 @@ void SkinManager::ListSkins() {
       QDir skin_root(s_dir.filePath(f_dir));
       IClockSkin* tmp = CreateSkin(skin_root);
       if (!tmp) continue;
-      skins_[tmp->GetInfo()[SI_NAME]] = skin_root;
+      TSkinInfo info;
+      tmp->GetInfo(&info);
+      skins_[info[SI_NAME]] = skin_root;
       delete tmp;
     }
   }
