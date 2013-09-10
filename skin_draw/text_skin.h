@@ -9,6 +9,7 @@ public:
 
 protected:
   QPixmapPtr ResizeImage(const QString& s, qreal zoom);
+  void CharToKey(QChar ch, QString& s);
 
 private:
   QFont font_;

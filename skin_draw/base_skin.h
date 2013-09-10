@@ -13,10 +13,10 @@ public:
 
 protected:
   virtual QPixmapPtr ResizeImage(const QString& s, qreal zoom) = 0;
+  virtual void CharToKey(QChar ch, QString& s);
   TSkinInfo info_;
 
 private:
-  void CharToKey(QChar ch, QString& s);
   qreal cached_zoom_;
   QMap<QString, QPixmapPtr> image_cache_;
 };

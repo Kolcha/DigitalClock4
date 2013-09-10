@@ -134,7 +134,8 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       break;
 
     case OPT_FONT:
-      drawer_->LoadSkin(value.value<QFont>());
+      if (settings_->GetOption(OPT_USE_FONT).toBool())
+        drawer_->LoadSkin(value.value<QFont>());
       break;
 
     case OPT_ZOOM:

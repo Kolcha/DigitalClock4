@@ -8,7 +8,7 @@ TextSkin::TextSkin(const QFont& font) : font_(font) {
   info_[SI_VERSION] = "1.0";
   info_[SI_AUTHOR] = "Nick Korotysh";
   info_[SI_EMAIL] = "nick.korotysh@gmail.com";
-  info_[SI_COMMENT] = "Allows use any font as skin.";
+  info_[SI_COMMENT] = "Text Skin. Allows use any font as skin.";
 }
 
 QPixmapPtr TextSkin::ResizeImage(const QString& s, qreal zoom) {
@@ -23,4 +23,8 @@ QPixmapPtr TextSkin::ResizeImage(const QString& s, qreal zoom) {
   painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
   painter.drawText(result->rect(), Qt::AlignCenter, s);
   return result;
+}
+
+void TextSkin::CharToKey(QChar ch, QString& s) {
+  s = QString(ch);
 }
