@@ -20,6 +20,7 @@ signals:
 
 public slots:
   void LoadSkin(const QDir& skin_root);
+  void LoadSkin(const QFont& font);
   void SetString(const QString& str);
   void SetZoom(qreal new_zoom);
   bool SetColor(const QColor& new_color);

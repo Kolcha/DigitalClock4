@@ -23,6 +23,14 @@ void SkinDrawer::LoadSkin(const QDir& skin_root) {
   Redraw();
 }
 
+void SkinDrawer::LoadSkin(const QFont& font) {
+  delete skin_;
+  skin_ = CreateSkin(font);
+  if (!skin_) return;
+  emit LoadedSkinInfo(skin_->GetInfo());
+  Redraw();
+}
+
 void SkinDrawer::SetString(const QString& str) {
   str_ = str;
   Redraw();
