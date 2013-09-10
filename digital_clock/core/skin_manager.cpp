@@ -1,4 +1,4 @@
-#include "../skin/iclock_skin.h"
+#include "iclock_skin.h"
 #include "skin_manager.h"
 
 SkinManager::SkinManager(QObject* parent)
@@ -21,7 +21,9 @@ void SkinManager::ListSkins() {
       QDir skin_root(s_dir.filePath(f_dir));
       IClockSkin* tmp = CreateSkin(skin_root);
       if (!tmp) continue;
-      skins_[tmp->GetInfo()[SI_NAME]] = skin_root;
+      TSkinInfo info;
+      tmp->GetInfo(&info);
+      skins_[info[SI_NAME]] = skin_root;
       delete tmp;
     }
   }

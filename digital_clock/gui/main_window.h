@@ -4,7 +4,7 @@
 #include "../core/clock_settings.h"
 #include "../core/plugin_manager.h"
 #include "../core/skin_manager.h"
-#include "../skin/skin_drawer.h"
+#include "skin_drawer.h"
 #include "digital_clock.h"
 #include "tray_control.h"
 

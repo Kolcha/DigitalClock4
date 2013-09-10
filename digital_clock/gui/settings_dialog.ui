@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>388</width>
-    <height>472</height>
+    <height>526</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Settings</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+  <layout class="QGridLayout" name="gridLayout_6">
+   <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
       <number>0</number>
@@ -23,8 +23,8 @@
       <attribute name="title">
        <string>Appearance</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
         <widget class="QGroupBox" name="clock_group">
          <property name="title">
           <string>Clock</string>
@@ -155,17 +155,115 @@
          </layout>
         </widget>
        </item>
-       <item>
+       <item row="1" column="0">
         <widget class="QGroupBox" name="skin_group">
          <property name="title">
           <string>Skin</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0" colspan="2">
-           <widget class="QComboBox" name="skin_box"/>
+           <widget class="QRadioButton" name="use_skin">
+            <property name="text">
+             <string>use skin</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item row="1" column="0" colspan="2">
+           <widget class="QComboBox" name="skin_box"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="version_label">
+            <property name="text">
+             <string>Version :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="version_value">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="author_label">
+            <property name="text">
+             <string>Author :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLabel" name="author_value">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="email_label">
+            <property name="text">
+             <string>E-mail :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLabel" name="email_value">
+            <property name="text">
+             <string>unknown</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0" colspan="2">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QRadioButton" name="use_font">
+              <property name="text">
+               <string>use font</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="sel_font_btn">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>24</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0" colspan="2">
            <widget class="QLabel" name="comment_label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string>&lt;no comment&gt;</string>
             </property>
@@ -174,52 +272,10 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="version_label">
-            <property name="text">
-             <string>Version :</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLabel" name="version_value">
-            <property name="text">
-             <string>unknown</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="author_label">
-            <property name="text">
-             <string>Author :</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLabel" name="author_value">
-            <property name="text">
-             <string>unknown</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="email_label">
-            <property name="text">
-             <string>E-mail :</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLabel" name="email_value">
-            <property name="text">
-             <string>unknown</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
        </item>
-       <item>
+       <item row="2" column="0">
         <widget class="QGroupBox" name="texture_group">
          <property name="title">
           <string>Texture</string>
@@ -397,7 +453,7 @@
      </widget>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -421,8 +477,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>187</x>
-     <y>395</y>
+     <x>196</x>
+     <y>516</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -437,12 +493,108 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>255</x>
-     <y>395</y>
+     <x>264</x>
+     <y>516</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>opacity_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>opacity_value</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>293</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoom_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>zoom_value</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>293</x>
+     <y>107</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>329</x>
+     <y>111</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>type_color</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sel_color_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>94</x>
+     <y>415</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>414</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>type_image</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sel_image_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>120</x>
+     <y>442</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>169</x>
+     <y>442</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_skin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>skin_box</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>348</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_font</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sel_font_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>343</x>
+     <y>304</y>
     </hint>
    </hints>
   </connection>

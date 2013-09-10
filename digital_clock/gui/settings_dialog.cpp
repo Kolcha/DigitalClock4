@@ -1,7 +1,8 @@
 #include <QColorDialog>
 #include <QFileDialog>
+#include <QFontDialog>
 #include <QFileInfo>
-#include "../skin/skin_drawer.h"
+#include "skin_drawer.h"
 #include "plugin_list_item.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
@@ -35,8 +36,22 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       ui->sep_flash->setChecked(value.toBool());
       break;
 
+    case OPT_USE_SKIN:
+      ui->use_skin->setChecked(value.toBool());
+      ui->use_font->setChecked(!value.toBool());
+      break;
+
     case OPT_SKIN_NAME:
       ui->skin_box->setCurrentText(value.toString());
+      break;
+
+    case OPT_USE_FONT:
+      ui->use_font->setChecked(value.toBool());
+      ui->use_skin->setChecked(!value.toBool());
+      break;
+
+    case OPT_FONT:
+      last_font_ = value.value<QFont>();
       break;
 
     case OPT_ZOOM:
@@ -226,4 +241,21 @@ void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
 void SettingsDialog::on_plugins_list_currentItemChanged(
     QListWidgetItem* current, QListWidgetItem*) {
   emit PluginInfoRequest(current->data(Qt::UserRole).toString());
+}
+
+void SettingsDialog::on_use_skin_toggled(bool checked) {
+  emit OptionChanged(OPT_USE_SKIN, checked);
+}
+
+void SettingsDialog::on_use_font_toggled(bool checked) {
+  emit OptionChanged(OPT_USE_FONT, checked);
+}
+
+void SettingsDialog::on_sel_font_btn_clicked() {
+  bool ok = false;
+  QFont font = QFontDialog::getFont(&ok, last_font_, this);
+  if (ok) {
+    emit OptionChanged(OPT_FONT, font);
+    last_font_ = font;
+  }
 }
