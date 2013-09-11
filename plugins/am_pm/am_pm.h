@@ -4,6 +4,7 @@
 #include <QLabel>
 #include <QGridLayout>
 #include "iclock_plugin.h"
+#include "skin_drawer.h"
 
 class ShowAMPM : public IWidgetPlugin {
   Q_OBJECT
@@ -11,6 +12,7 @@ class ShowAMPM : public IWidgetPlugin {
   Q_INTERFACES(IClockPlugin IWidgetPlugin)
 
 public:
+  ShowAMPM();
   void Init(QWidget* main_wnd);
   void GetInfo(TPluginInfo* info);
 
@@ -21,9 +23,15 @@ public slots:
   void SettingsListener(Options option, const QVariant& value);
   void TimeUpdateListener(const QString&);
 
+private slots:
+  void SetImage(const QImage& img);
+
 private:
   QGridLayout* main_layout_;
+  QWidget* main_widget_;
   QLabel* am_pm_label_;
+  SkinDrawer* drawer_;
+  QFont font_;
 };
 
 #endif // AM_PM_H
