@@ -1,5 +1,5 @@
 #include <QSettings>
-//#include <QLocale>
+#include <QLocale>
 #include <QFontMetrics>
 #include <QTime>
 #include "settings_keys.h"
@@ -56,7 +56,7 @@ void ShowAMPM::Stop() {
   delete am_pm_label_;
   emit stopped();
 }
-#include <QDebug>
+
 void ShowAMPM::SettingsListener(Options option, const QVariant& value) {
   switch (option) {
     case OPT_COLOR:
@@ -87,7 +87,10 @@ void ShowAMPM::SettingsListener(Options option, const QVariant& value) {
 }
 
 void ShowAMPM::TimeUpdateListener(const QString&) {
-//  qDebug() << QLocale::system().timeFormat();
+  if (!QLocale::system().timeFormat().contains('A', Qt::CaseInsensitive)) {
+    drawer_->SetString(QString());
+    return;
+  }
   QFontMetrics fm(font_);
   drawer_->SetZoom(0.35 * main_widget_->height() / fm.height());
   drawer_->SetString(QTime::currentTime().toString("AP"));
