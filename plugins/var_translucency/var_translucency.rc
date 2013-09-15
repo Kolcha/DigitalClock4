@@ -16,7 +16,7 @@ BLOCK "StringFileInfo"
 		VALUE "LegalCopyright", "Copyright (C) 2013 Nick Korotysh"
 		VALUE "OriginalFilename", "var_translucency.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.2.0"
+		VALUE "ProductVersion", "4.2.1"
 	}
 }
 
