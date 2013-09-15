@@ -182,8 +182,20 @@
         <translation>Стиль</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="170"/>
-        <location filename="../gui/settings_dialog.ui" line="332"/>
+        <location filename="../gui/settings_dialog.ui" line="167"/>
+        <source>use skin</source>
+        <translatorcomment>использовать стиль а не текст</translatorcomment>
+        <translation>использовать стиль</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="224"/>
+        <source>use font</source>
+        <translatorcomment>выбрать шрифт текста, не использовать стиль</translatorcomment>
+        <translation>использовать шрифт</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="268"/>
+        <location filename="../gui/settings_dialog.ui" line="388"/>
         <source>&lt;no comment&gt;</source>
         <translatorcomment>значение по умолчанию для сведений</translatorcomment>
         <translation>&lt;нет сведений&gt;</translation>
@@ -198,10 +210,10 @@
         <location filename="../gui/settings_dialog.ui" line="187"/>
         <location filename="../gui/settings_dialog.ui" line="201"/>
         <location filename="../gui/settings_dialog.ui" line="215"/>
-        <location filename="../gui/settings_dialog.ui" line="348"/>
-        <location filename="../gui/settings_dialog.ui" line="362"/>
-        <location filename="../gui/settings_dialog.ui" line="376"/>
-        <location filename="../gui/settings_dialog.ui" line="390"/>
+        <location filename="../gui/settings_dialog.ui" line="404"/>
+        <location filename="../gui/settings_dialog.ui" line="418"/>
+        <location filename="../gui/settings_dialog.ui" line="432"/>
+        <location filename="../gui/settings_dialog.ui" line="446"/>
         <source>unknown</source>
         <translatorcomment>значение по умолчанию</translatorcomment>
         <translation>неизвестно</translation>
@@ -219,97 +231,98 @@
         <translation>E-mail :</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="225"/>
+        <location filename="../gui/settings_dialog.ui" line="281"/>
         <source>Texture</source>
         <translatorcomment>группа настроек тектуры</translatorcomment>
         <translation>Текстура</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="231"/>
+        <location filename="../gui/settings_dialog.ui" line="287"/>
         <source>texture per element</source>
         <translatorcomment>использовать текстуру для каждого элемента (цифры) отдельно</translatorcomment>
         <translation>текстура для каждого элемента</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="238"/>
+        <location filename="../gui/settings_dialog.ui" line="294"/>
         <source>Type</source>
         <translatorcomment>тип текстуры</translatorcomment>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="244"/>
+        <location filename="../gui/settings_dialog.ui" line="300"/>
         <source>solid color</source>
         <translatorcomment>сплошной цвет как текстура</translatorcomment>
         <translation>сплошной цвет</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="251"/>
+        <location filename="../gui/settings_dialog.ui" line="307"/>
         <source>custom image</source>
         <translatorcomment>использовать картинку как текстуру</translatorcomment>
         <translation>изображение</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="267"/>
-        <location filename="../gui/settings_dialog.ui" line="283"/>
+        <location filename="../gui/settings_dialog.ui" line="253"/>
+        <location filename="../gui/settings_dialog.ui" line="323"/>
+        <location filename="../gui/settings_dialog.ui" line="339"/>
         <source>...</source>
         <translatorcomment>...</translatorcomment>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="293"/>
+        <location filename="../gui/settings_dialog.ui" line="349"/>
         <source>Mode</source>
         <translatorcomment>режим отрисовки текстуры</translatorcomment>
         <translation>Режим</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="299"/>
+        <location filename="../gui/settings_dialog.ui" line="355"/>
         <source>stretch</source>
         <translatorcomment>растянуть текстуру</translatorcomment>
         <translation>растянуть</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="306"/>
+        <location filename="../gui/settings_dialog.ui" line="362"/>
         <source>tile</source>
         <translatorcomment>замостить текстуру</translatorcomment>
         <translation>замостить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="323"/>
+        <location filename="../gui/settings_dialog.ui" line="379"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="341"/>
+        <location filename="../gui/settings_dialog.ui" line="397"/>
         <source>Type:</source>
         <translatorcomment>тип плагина</translatorcomment>
         <translation>Тип:</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="355"/>
+        <location filename="../gui/settings_dialog.ui" line="411"/>
         <source>Version:</source>
         <translatorcomment>версия плагина</translatorcomment>
         <translation>Версия:</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="369"/>
+        <location filename="../gui/settings_dialog.ui" line="425"/>
         <source>Author:</source>
         <translatorcomment>автор плагина</translatorcomment>
         <translation>Автор:</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="383"/>
+        <location filename="../gui/settings_dialog.ui" line="439"/>
         <source>E-mail:</source>
         <translatorcomment>e-mail автора</translatorcomment>
         <translation>E-mail:</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="202"/>
+        <location filename="../gui/settings_dialog.cpp" line="217"/>
         <source>Open texture file</source>
         <translatorcomment>найти и выбрать файл текстуры</translatorcomment>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="204"/>
+        <location filename="../gui/settings_dialog.cpp" line="219"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translatorcomment>форматы картинок</translatorcomment>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
