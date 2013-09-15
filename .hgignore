@@ -5,3 +5,4 @@ syntax: glob
 *.orig
 build*/*
 installer/*-cache
+desktop.ini
