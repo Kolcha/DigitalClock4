@@ -83,6 +83,10 @@ void ShowAMPM::SettingsListener(Options option, const QVariant& value) {
       font_ = value.value<QFont>();
       drawer_->LoadSkin(font_);
       break;
+
+    case OPT_ZOOM:
+      SetNewZoom();
+      break;
   }
 }
 
@@ -91,12 +95,16 @@ void ShowAMPM::TimeUpdateListener(const QString&) {
     drawer_->SetString(QString());
     return;
   }
-  QFontMetrics fm(font_);
-  drawer_->SetZoom(0.35 * main_widget_->height() / fm.height());
+  SetNewZoom();
   drawer_->SetString(QTime::currentTime().toString("AP"));
 }
 
 void ShowAMPM::SetImage(const QImage& img) {
   if (!am_pm_label_) return;
   am_pm_label_->setPixmap(QPixmap::fromImage(img));
+}
+
+void ShowAMPM::SetNewZoom() {
+  QFontMetrics fm(font_);
+  drawer_->SetZoom(0.35 * main_widget_->height() / fm.height());
 }

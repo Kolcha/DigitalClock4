@@ -27,6 +27,8 @@ private slots:
   void SetImage(const QImage& img);
 
 private:
+  void SetNewZoom();
+
   QGridLayout* main_layout_;
   QWidget* main_widget_;
   QLabel* am_pm_label_;
