@@ -22,7 +22,7 @@ void Alarm::Init(QSystemTrayIcon* tray_icon) {
 void Alarm::GetInfo(TPluginInfo* info) {
   info->insert(PI_NAME, "Alarm");
   info->insert(PI_TYPE, "tray");
-  info->insert(PI_VERSION, "2.0");
+  info->insert(PI_VERSION, "2.1");
   info->insert(PI_AUTHOR, "Nick Korotysh");
   info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
   info->insert(PI_COMMENT, "Set alarm.");
@@ -36,7 +36,7 @@ void Alarm::Start() {
   SignalType st = (SignalType)(settings_->GetOption(OPT_SIGNAL_TYPE).toInt());
   if (st == ST_STREAM) {
     // if stream url is invalid force use file
-    if (!QUrl(settings_->GetOption(OPT_STREAM_URL).toString()).isValid()) {
+    if (!QUrl(settings_->GetOption(OPT_STREAM_URL).toString(), QUrl::StrictMode).isValid()) {
       st = ST_FILE;
       settings_->SetOption(OPT_SIGNAL_TYPE, (int)ST_FILE);
       tray_icon_->showMessage(tr("Digital Clock Alarm"),
@@ -104,8 +104,7 @@ void Alarm::TimeUpdateListener(const QString&) {
   if (settings_->GetOption(OPT_SHOW_NOTIFY).toBool()) {
     tray_icon_->showMessage(tr("Digital Clock Alarm"),
                             settings_->GetOption(OPT_NOTIFY_TEXT).toString(),
-                            QSystemTrayIcon::Information,
-                            player_->duration());
+                            QSystemTrayIcon::Information, 30000);
     connect(tray_icon_, SIGNAL(messageClicked()), player_, SLOT(stop()));
   }
 }
