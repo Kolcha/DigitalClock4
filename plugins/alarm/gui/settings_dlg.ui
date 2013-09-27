@@ -39,7 +39,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
-       <widget class="QRadioButton" name="radioButton">
+       <widget class="QRadioButton" name="st_file">
         <property name="text">
          <string>file</string>
         </property>
@@ -78,14 +78,14 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QRadioButton" name="radioButton_2">
+       <widget class="QRadioButton" name="st_stream">
         <property name="text">
          <string>stream</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="stream_url_edit">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -201,7 +201,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>radioButton</sender>
+   <sender>st_file</sender>
    <signal>toggled(bool)</signal>
    <receiver>signal_label</receiver>
    <slot>setEnabled(bool)</slot>
@@ -217,7 +217,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>radioButton</sender>
+   <sender>st_file</sender>
    <signal>toggled(bool)</signal>
    <receiver>browse_btn</receiver>
    <slot>setEnabled(bool)</slot>
@@ -233,9 +233,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>radioButton_2</sender>
+   <sender>st_stream</sender>
    <signal>toggled(bool)</signal>
-   <receiver>lineEdit</receiver>
+   <receiver>stream_url_edit</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
