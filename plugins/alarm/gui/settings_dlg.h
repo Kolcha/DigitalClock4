@@ -26,6 +26,9 @@ private slots:
   void on_browse_btn_clicked();
   void on_notification_enabled_toggled(bool checked);
   void on_message_edit_textChanged();
+  void on_st_file_clicked();
+  void on_st_stream_clicked();
+  void on_stream_url_edit_textEdited(const QString &arg1);
 
 private:
   Ui::SettingsDlg* ui;

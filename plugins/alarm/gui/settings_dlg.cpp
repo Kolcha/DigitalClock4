@@ -23,7 +23,12 @@ void SettingsDlg::SettingsListener(const QString& key, const QVariant& value) {
   if (key == OPT_TIME) {
     ui->time_edit->setTime(value.value<QTime>());
   }
-  if (key == OPT_SIGNAL) {
+  if (key == OPT_SIGNAL_TYPE) {
+    SignalType st = (SignalType)value.toInt();
+    ui->st_file->setChecked(st == ST_FILE);
+    ui->st_stream->setChecked(st == ST_STREAM);
+  }
+  if (key == OPT_FILENAME) {
     QString file = value.toString();
     QFileInfo info(file);
     last_file_path_ = file.isEmpty() ? "." : info.absolutePath();
@@ -31,6 +36,11 @@ void SettingsDlg::SettingsListener(const QString& key, const QVariant& value) {
       ui->signal_label->setText(info.baseName());
       ui->signal_label->setToolTip(QDir::toNativeSeparators(file));
     }
+  }
+  if (key == OPT_STREAM_URL) {
+    QString stream = value.toString();
+    ui->stream_url_edit->setText(stream);
+    ui->stream_url_edit->setToolTip(stream);
   }
   if (key == OPT_SHOW_NOTIFY) {
     ui->notification_enabled->setChecked(value.toBool());
@@ -55,7 +65,7 @@ void SettingsDlg::on_browse_btn_clicked() {
   if (!sound_file.isEmpty()) {
     ui->signal_label->setText(QFileInfo(sound_file).baseName());
     ui->signal_label->setToolTip(QDir::toNativeSeparators(sound_file));
-    emit OptionChanged(OPT_SIGNAL, sound_file);
+    emit OptionChanged(OPT_FILENAME, sound_file);
     last_file_path_ = QFileInfo(sound_file).absolutePath();
   }
 }
@@ -66,4 +76,16 @@ void SettingsDlg::on_notification_enabled_toggled(bool checked) {
 
 void SettingsDlg::on_message_edit_textChanged() {
   emit OptionChanged(OPT_NOTIFY_TEXT, ui->message_edit->toPlainText());
+}
+
+void SettingsDlg::on_st_file_clicked() {
+  emit OptionChanged(OPT_SIGNAL_TYPE, (int)ST_FILE);
+}
+
+void SettingsDlg::on_st_stream_clicked() {
+  emit OptionChanged(OPT_SIGNAL_TYPE, (int)ST_STREAM);
+}
+
+void SettingsDlg::on_stream_url_edit_textEdited(const QString& arg1) {
+  emit OptionChanged(OPT_STREAM_URL, arg1);
 }

@@ -34,7 +34,7 @@ void Alarm::Start() {
   tray_icon_->setIcon(QIcon(":/alarm_clock.svg"));
 
   // check is signal mediafile is exists
-  QString mediafile = settings_->GetOption(OPT_SIGNAL).toString();
+  QString mediafile = settings_->GetOption(OPT_FILENAME).toString();
   if (!QFile::exists(mediafile)) {
     tray_icon_->showMessage(tr("Digital Clock Alarm"),
                             tr("File %1 doesn't exists. Click this message or go to plugin"
@@ -73,7 +73,7 @@ void Alarm::TimeUpdateListener(const QString&) {
   QString curr_time = QTime::currentTime().toString();
   if (alarm_time != curr_time ||
       player_->state() == QMediaPlayer::PlayingState) return;
-  player_->setMedia(QUrl::fromLocalFile(settings_->GetOption(OPT_SIGNAL).toString()));
+  player_->setMedia(QUrl::fromLocalFile(settings_->GetOption(OPT_FILENAME).toString()));
   player_->play();
   if (settings_->GetOption(OPT_SHOW_NOTIFY).toBool()) {
     tray_icon_->showMessage(tr("Digital Clock Alarm"),
