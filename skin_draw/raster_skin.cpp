@@ -20,6 +20,8 @@ RasterSkin::RasterSkin(const QDir& skin_root) {
 
 QPixmapPtr RasterSkin::ResizeImage(const QString& s, qreal zoom) {
   QPixmap& original = orig_images_[s];
+  if (original.isNull()) return QPixmapPtr();
+
   QPixmapPtr result(new QPixmap());
   *result = original.scaled(original.size() * zoom, Qt::KeepAspectRatio, Qt::SmoothTransformation);
   return result;

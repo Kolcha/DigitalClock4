@@ -21,7 +21,10 @@ VectorSkin::VectorSkin(const QDir& skin_root) {
 }
 
 QPixmapPtr VectorSkin::ResizeImage(const QString& s, qreal zoom) {
-  QSvgRenderer renderer(image_files_[s]);
+  QString& img_file = image_files_[s];
+  if (!QFile::exists(img_file)) return QPixmapPtr();
+
+  QSvgRenderer renderer(img_file);
   QPixmapPtr result(new QPixmap(renderer.defaultSize() * zoom));
   QPainter painter(result.data());
   painter.setCompositionMode(QPainter::CompositionMode_Source);
