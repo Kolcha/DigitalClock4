@@ -260,3 +260,7 @@ void SettingsDialog::on_sel_font_btn_clicked() {
     last_font_ = font;
   }
 }
+
+void SettingsDialog::on_display_am_pm_toggled(bool checked) {
+  emit OptionChanged(OPT_DISPLAY_AM_PM, checked);
+}
