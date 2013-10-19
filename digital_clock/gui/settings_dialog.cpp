@@ -36,6 +36,10 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       ui->sep_flash->setChecked(value.toBool());
       break;
 
+    case OPT_DISPLAY_AM_PM:
+      ui->display_am_pm->setChecked(value.toBool());
+      break;
+
     case OPT_USE_SKIN:
       ui->use_skin->setChecked(value.toBool());
       ui->use_font->setChecked(!value.toBool());
