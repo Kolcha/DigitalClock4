@@ -18,6 +18,8 @@ VectorSkin::VectorSkin(const QDir& skin_root) {
   }
   image_files_[QString("s1")] = skin_root.filePath(config.value("files/s1").toString());
   image_files_[QString("s2")] = skin_root.filePath(config.value("files/s2").toString());
+  image_files_[QString("am")] = skin_root.filePath(config.value("files/am").toString());
+  image_files_[QString("pm")] = skin_root.filePath(config.value("files/pm").toString());
 }
 
 QPixmapPtr VectorSkin::ResizeImage(const QString& s, qreal zoom) {

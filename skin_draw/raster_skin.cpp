@@ -16,6 +16,8 @@ RasterSkin::RasterSkin(const QDir& skin_root) {
   }
   orig_images_[QString("s1")] = QPixmap(skin_root.filePath(config.value("files/s1").toString()));
   orig_images_[QString("s2")] = QPixmap(skin_root.filePath(config.value("files/s2").toString()));
+  orig_images_[QString("am")] = QPixmap(skin_root.filePath(config.value("files/am").toString()));
+  orig_images_[QString("pm")] = QPixmap(skin_root.filePath(config.value("files/pm").toString()));
 }
 
 QPixmapPtr RasterSkin::ResizeImage(const QString& s, qreal zoom) {
