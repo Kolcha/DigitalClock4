@@ -106,6 +106,7 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
 }
 
 void SettingsDialog::DisplaySkinInfo(const TSkinInfo& info) {
+  if (info[SI_NAME] == "Text Skin") return;
   for (auto i = info.begin(); i != info.end(); ++i) {
     switch (i.key()) {
       case SI_NAME:
@@ -125,7 +126,7 @@ void SettingsDialog::DisplaySkinInfo(const TSkinInfo& info) {
         break;
 
       case SI_COMMENT:
-        ui->comment_label->setText(i.value());
+        ui->skin_box->setToolTip(i.value());
         break;
     }
   }
