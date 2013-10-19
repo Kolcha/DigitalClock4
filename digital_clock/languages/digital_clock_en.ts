@@ -176,153 +176,158 @@
         <translation>zoom</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="161"/>
+        <location filename="../gui/settings_dialog.ui" line="158"/>
+        <source>display AM/PM (if time format and skin supports it)</source>
+        <translatorcomment>show AM/PM symbols</translatorcomment>
+        <translation>display AM/PM (if time format and skin supports it)</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="168"/>
         <source>Skin</source>
         <translatorcomment>skin settings group</translatorcomment>
         <translation>Skin</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="167"/>
+        <location filename="../gui/settings_dialog.ui" line="176"/>
         <source>use skin</source>
         <translatorcomment>use skin instead of text</translatorcomment>
         <translation>use skin</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="224"/>
+        <location filename="../gui/settings_dialog.ui" line="246"/>
         <source>use font</source>
         <translatorcomment>choose text font, don&apos;t use skin</translatorcomment>
         <translation>use font</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="268"/>
-        <location filename="../gui/settings_dialog.ui" line="388"/>
+        <location filename="../gui/settings_dialog.ui" line="394"/>
         <source>&lt;no comment&gt;</source>
         <translatorcomment>default comment value</translatorcomment>
         <translation>&lt;no comment&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="180"/>
+        <location filename="../gui/settings_dialog.ui" line="200"/>
         <source>Version :</source>
         <translatorcomment>skin version</translatorcomment>
         <translation>Version :</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="187"/>
-        <location filename="../gui/settings_dialog.ui" line="201"/>
-        <location filename="../gui/settings_dialog.ui" line="215"/>
-        <location filename="../gui/settings_dialog.ui" line="404"/>
-        <location filename="../gui/settings_dialog.ui" line="418"/>
-        <location filename="../gui/settings_dialog.ui" line="432"/>
-        <location filename="../gui/settings_dialog.ui" line="446"/>
+        <location filename="../gui/settings_dialog.ui" line="207"/>
+        <location filename="../gui/settings_dialog.ui" line="214"/>
+        <location filename="../gui/settings_dialog.ui" line="235"/>
+        <location filename="../gui/settings_dialog.ui" line="410"/>
+        <location filename="../gui/settings_dialog.ui" line="424"/>
+        <location filename="../gui/settings_dialog.ui" line="438"/>
+        <location filename="../gui/settings_dialog.ui" line="452"/>
         <source>unknown</source>
         <translatorcomment>default value</translatorcomment>
         <translation>unknown</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="194"/>
+        <location filename="../gui/settings_dialog.ui" line="228"/>
         <source>Author :</source>
         <translatorcomment>skin author</translatorcomment>
         <translation>Author :</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="208"/>
+        <location filename="../gui/settings_dialog.ui" line="221"/>
         <source>E-mail :</source>
         <translatorcomment>skin authour&apos;s e-mail</translatorcomment>
         <translation>E-mail :</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="281"/>
+        <location filename="../gui/settings_dialog.ui" line="287"/>
         <source>Texture</source>
         <translatorcomment>texture settings group</translatorcomment>
         <translation>Texture</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="287"/>
+        <location filename="../gui/settings_dialog.ui" line="293"/>
         <source>texture per element</source>
         <translatorcomment>use texture per element (digit)</translatorcomment>
         <translation>texture per element</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="294"/>
+        <location filename="../gui/settings_dialog.ui" line="300"/>
         <source>Type</source>
         <translatorcomment>texture type group settings</translatorcomment>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="300"/>
+        <location filename="../gui/settings_dialog.ui" line="306"/>
         <source>solid color</source>
         <translatorcomment>use solid color as texture</translatorcomment>
         <translation>solid color</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="307"/>
+        <location filename="../gui/settings_dialog.ui" line="313"/>
         <source>custom image</source>
         <translatorcomment>use custom image as texture</translatorcomment>
         <translation>custom image</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="253"/>
-        <location filename="../gui/settings_dialog.ui" line="323"/>
-        <location filename="../gui/settings_dialog.ui" line="339"/>
+        <location filename="../gui/settings_dialog.ui" line="275"/>
+        <location filename="../gui/settings_dialog.ui" line="329"/>
+        <location filename="../gui/settings_dialog.ui" line="345"/>
         <source>...</source>
         <translatorcomment>...</translatorcomment>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="349"/>
+        <location filename="../gui/settings_dialog.ui" line="355"/>
         <source>Mode</source>
         <translatorcomment>texture draw mode settings</translatorcomment>
         <translation>Mode</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="355"/>
+        <location filename="../gui/settings_dialog.ui" line="361"/>
         <source>stretch</source>
         <translatorcomment>stretch texture image</translatorcomment>
         <translation>stretch</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="362"/>
+        <location filename="../gui/settings_dialog.ui" line="368"/>
         <source>tile</source>
         <translatorcomment>tile texture image</translatorcomment>
         <translation>tile</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="379"/>
+        <location filename="../gui/settings_dialog.ui" line="385"/>
         <source>Plugins</source>
         <translation>Plugins</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="397"/>
+        <location filename="../gui/settings_dialog.ui" line="403"/>
         <source>Type:</source>
         <translatorcomment>plugins type</translatorcomment>
         <translation>Type:</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="411"/>
+        <location filename="../gui/settings_dialog.ui" line="417"/>
         <source>Version:</source>
         <translatorcomment>plugin version</translatorcomment>
         <translation>Version:</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="425"/>
+        <location filename="../gui/settings_dialog.ui" line="431"/>
         <source>Author:</source>
         <translatorcomment>plugins author</translatorcomment>
         <translation>Author:</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="439"/>
+        <location filename="../gui/settings_dialog.ui" line="445"/>
         <source>E-mail:</source>
         <translatorcomment>author&apos;s e-mail</translatorcomment>
         <translation>E-mail:</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="217"/>
+        <location filename="../gui/settings_dialog.cpp" line="222"/>
         <source>Open texture file</source>
         <translatorcomment>find and select texture file</translatorcomment>
         <translation>Open texture file</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="219"/>
+        <location filename="../gui/settings_dialog.cpp" line="224"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translatorcomment>image formats</translatorcomment>
         <translation>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
