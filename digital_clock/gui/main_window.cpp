@@ -119,6 +119,10 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       d_clock_->SetSeparatorFlash(value.toBool());
       break;
 
+    case OPT_DISPLAY_AM_PM:
+      d_clock_->SetDisplayAMPM(value.toBool());
+      break;
+
     case OPT_USE_SKIN:
       if (value.toBool())
         skin_manager_->FindSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
