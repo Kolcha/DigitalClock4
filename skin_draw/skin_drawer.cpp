@@ -93,6 +93,7 @@ void SkinDrawer::Redraw() {
   int result_w = 0;
   int result_h = 0;
   for (auto& elem : elements) {
+    if (!elem) continue;
     result_w += elem->width();
     result_h = qMax(result_h, elem->height());
   }
@@ -110,6 +111,7 @@ void SkinDrawer::Redraw() {
   int x = 0;
   for (auto& elem : elements) {
     // draw mask
+    if (!elem) continue;
     painter.drawPixmap(x, 0, *elem);
     if (txd_per_elem_) {
       // draw texture

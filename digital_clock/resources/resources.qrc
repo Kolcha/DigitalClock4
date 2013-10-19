@@ -13,6 +13,8 @@
         <file>electronic/s1.svg</file>
         <file>electronic/s2.svg</file>
         <file>electronic/skin.ini</file>
+        <file>electronic/am.svg</file>
+        <file>electronic/pm.svg</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="about.svg">images/bubble-24.svg</file>

@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>388</width>
-    <height>526</height>
+    <width>533</width>
+    <height>381</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Settings</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_6">
+  <layout class="QGridLayout" name="gridLayout_7">
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
@@ -23,14 +23,14 @@
       <attribute name="title">
        <string>Appearance</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_5">
-       <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0" colspan="2">
         <widget class="QGroupBox" name="clock_group">
          <property name="title">
           <string>Clock</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
            <layout class="QVBoxLayout" name="checkbox_layout">
             <item>
              <widget class="QCheckBox" name="stay_on_top">
@@ -55,7 +55,7 @@
             </item>
            </layout>
           </item>
-          <item>
+          <item row="0" column="1">
            <spacer name="horizontalSpacer">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -71,7 +71,7 @@
             </property>
            </spacer>
           </item>
-          <item>
+          <item row="0" column="2">
            <layout class="QGridLayout" name="sliders_layout">
             <item row="0" column="0">
              <widget class="QLabel" name="opacity_label">
@@ -152,6 +152,13 @@
             </item>
            </layout>
           </item>
+          <item row="1" column="0" colspan="3">
+           <widget class="QCheckBox" name="display_am_pm">
+            <property name="text">
+             <string>display AM/PM (if time format and skin supports it)</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -160,63 +167,78 @@
          <property name="title">
           <string>Skin</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0" colspan="2">
-           <widget class="QRadioButton" name="use_skin">
-            <property name="text">
-             <string>use skin</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QRadioButton" name="use_skin">
+              <property name="text">
+               <string>use skin</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="skin_box">
+              <property name="minimumSize">
+               <size>
+                <width>155</width>
+                <height>0</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
-          <item row="1" column="0" colspan="2">
-           <widget class="QComboBox" name="skin_box"/>
+          <item>
+           <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,1">
+            <item row="0" column="0">
+             <widget class="QLabel" name="version_label">
+              <property name="text">
+               <string>Version :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="version_value">
+              <property name="text">
+               <string>unknown</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="author_value">
+              <property name="text">
+               <string>unknown</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="email_label">
+              <property name="text">
+               <string>E-mail :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="author_label">
+              <property name="text">
+               <string>Author :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="email_value">
+              <property name="text">
+               <string>unknown</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="version_label">
-            <property name="text">
-             <string>Version :</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLabel" name="version_value">
-            <property name="text">
-             <string>unknown</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="author_label">
-            <property name="text">
-             <string>Author :</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLabel" name="author_value">
-            <property name="text">
-             <string>unknown</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="email_label">
-            <property name="text">
-             <string>E-mail :</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QLabel" name="email_value">
-            <property name="text">
-             <string>unknown</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0" colspan="2">
+          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
              <widget class="QRadioButton" name="use_font">
@@ -256,26 +278,10 @@
             </item>
            </layout>
           </item>
-          <item row="2" column="0" colspan="2">
-           <widget class="QLabel" name="comment_label">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>&lt;no comment&gt;</string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="1" column="1">
         <widget class="QGroupBox" name="texture_group">
          <property name="title">
           <string>Texture</string>
@@ -477,8 +483,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>196</x>
-     <y>516</y>
+     <x>205</x>
+     <y>371</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -493,8 +499,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>264</x>
-     <y>516</y>
+     <x>273</x>
+     <y>371</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -513,8 +519,8 @@
      <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>330</x>
-     <y>80</y>
+     <x>482</x>
+     <y>95</y>
     </hint>
    </hints>
   </connection>
@@ -525,12 +531,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>293</x>
-     <y>107</y>
+     <x>458</x>
+     <y>133</y>
     </hint>
     <hint type="destinationlabel">
-     <x>329</x>
-     <y>111</y>
+     <x>482</x>
+     <y>133</y>
     </hint>
    </hints>
   </connection>
@@ -541,12 +547,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>415</y>
+     <x>375</x>
+     <y>274</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
-     <y>414</y>
+     <x>407</x>
+     <y>277</y>
     </hint>
    </hints>
   </connection>
@@ -557,12 +563,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>120</x>
-     <y>442</y>
+     <x>377</x>
+     <y>304</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>442</y>
+     <x>407</x>
+     <y>307</y>
     </hint>
    </hints>
   </connection>
@@ -573,12 +579,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>348</x>
-     <y>177</y>
+     <x>91</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
-     <x>349</x>
-     <y>200</y>
+     <x>252</x>
+     <y>228</y>
     </hint>
    </hints>
   </connection>
@@ -593,8 +599,104 @@
      <y>302</y>
     </hint>
     <hint type="destinationlabel">
-     <x>343</x>
-     <y>304</y>
+     <x>252</x>
+     <y>318</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_skin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>version_label</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>37</x>
+     <y>218</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>36</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_skin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>author_label</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>52</x>
+     <y>218</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>48</x>
+     <y>264</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_skin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>email_label</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>61</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>61</x>
+     <y>283</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_skin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>version_value</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>85</x>
+     <y>221</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>103</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_skin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>author_value</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>78</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>92</x>
+     <y>265</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_skin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>email_value</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>73</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>89</x>
+     <y>283</y>
     </hint>
    </hints>
   </connection>

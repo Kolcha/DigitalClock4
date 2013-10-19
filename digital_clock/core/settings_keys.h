@@ -14,6 +14,7 @@ enum Options {
   OPT_STAY_ON_TOP,
   OPT_TRANSP_FOR_INPUT,
   OPT_SEPARATOR_FLASH,
+  OPT_DISPLAY_AM_PM,
   OPT_PLUGINS,
   // skin settings
   OPT_USE_SKIN,
@@ -35,6 +36,7 @@ inline void GetOptionsKeys(QMap<Options, QString>& opt_map) {
   opt_map[OPT_STAY_ON_TOP] = "clock/stay_on_top";
   opt_map[OPT_TRANSP_FOR_INPUT] = "clock/transp_for_input";
   opt_map[OPT_SEPARATOR_FLASH] = "clock/separator_flash";
+  opt_map[OPT_DISPLAY_AM_PM] = "clock/display_am_pm";
   opt_map[OPT_PLUGINS] = "clock/plugins";
   // skin settings
   opt_map[OPT_USE_SKIN] = "skin/use_skin";
@@ -56,6 +58,7 @@ inline QVariant GetDefaultValue(Options opt) {
     case OPT_STAY_ON_TOP:           return false;
     case OPT_TRANSP_FOR_INPUT:      return false;
     case OPT_SEPARATOR_FLASH:       return true;
+    case OPT_DISPLAY_AM_PM:         return false;
     case OPT_PLUGINS:               return QStringList("Test plugin");
     // skin settings
     case OPT_USE_SKIN:              return true;

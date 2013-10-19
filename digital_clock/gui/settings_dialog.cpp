@@ -36,6 +36,10 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       ui->sep_flash->setChecked(value.toBool());
       break;
 
+    case OPT_DISPLAY_AM_PM:
+      ui->display_am_pm->setChecked(value.toBool());
+      break;
+
     case OPT_USE_SKIN:
       ui->use_skin->setChecked(value.toBool());
       ui->use_font->setChecked(!value.toBool());
@@ -106,6 +110,7 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
 }
 
 void SettingsDialog::DisplaySkinInfo(const TSkinInfo& info) {
+  if (info[SI_NAME] == "Text Skin") return;
   for (auto i = info.begin(); i != info.end(); ++i) {
     switch (i.key()) {
       case SI_NAME:
@@ -125,7 +130,7 @@ void SettingsDialog::DisplaySkinInfo(const TSkinInfo& info) {
         break;
 
       case SI_COMMENT:
-        ui->comment_label->setText(i.value());
+        ui->skin_box->setToolTip(i.value());
         break;
     }
   }
@@ -258,4 +263,8 @@ void SettingsDialog::on_sel_font_btn_clicked() {
     emit OptionChanged(OPT_FONT, font);
     last_font_ = font;
   }
+}
+
+void SettingsDialog::on_display_am_pm_toggled(bool checked) {
+  emit OptionChanged(OPT_DISPLAY_AM_PM, checked);
 }
