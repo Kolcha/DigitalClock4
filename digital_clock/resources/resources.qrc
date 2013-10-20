@@ -21,7 +21,6 @@
         <file alias="quit.svg">images/cross-24.svg</file>
         <file alias="settings.svg">images/settings-24.svg</file>
         <file alias="clock.svg">images/time-24.svg</file>
-        <file alias="about_qt.svg">images/bubble-qt-24.svg</file>
         <file alias="award.gif">images/softpedia_clean_award_f.gif</file>
     </qresource>
 </RCC>
