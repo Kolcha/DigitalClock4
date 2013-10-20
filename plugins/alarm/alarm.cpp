@@ -67,6 +67,7 @@ void Alarm::Start() {
 
 void Alarm::Stop() {
   tray_icon_->setIcon(old_icon_);
+  settings_->SetOption(OPT_ENABLED, false);
   icon_changed_ = false;
   if (player_) {
     if (player_->state() == QMediaPlayer::PlayingState) player_->stop();
