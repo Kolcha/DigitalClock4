@@ -20,6 +20,9 @@ public slots:
 signals:
   void OptionChanged(const QString&, const QVariant&);
 
+protected:
+  void showEvent(QShowEvent* e);
+
 private slots:
   void on_time_edit_timeChanged(const QTime& time);
   void on_alarm_enabled_toggled(bool checked);
