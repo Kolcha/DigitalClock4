@@ -186,7 +186,7 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
 void MainWindow::ShowSettingsDialog() {
   // create settings dialog and connect all need signals
   // (settings dialog will be deleted automatically)
-  SettingsDialog* settings_dlg = new SettingsDialog();
+  SettingsDialog* settings_dlg = new SettingsDialog(this);
   connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
           settings_dlg, SLOT(SetSkinList(QStringList)));
   skin_manager_->ListSkins();
@@ -228,7 +228,7 @@ void MainWindow::EndSettingsEdit() {
 }
 
 void MainWindow::ShowAboutDialog() {
-  AboutDialog* about_dlg = new AboutDialog();
+  AboutDialog* about_dlg = new AboutDialog(this);
   about_dlg->show();
 }
 
