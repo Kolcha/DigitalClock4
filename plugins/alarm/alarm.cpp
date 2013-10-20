@@ -24,7 +24,7 @@ void Alarm::Init(QSystemTrayIcon* tray_icon, QWidget* parent) {
 void Alarm::GetInfo(TPluginInfo* info) {
   info->insert(PI_NAME, "Alarm");
   info->insert(PI_TYPE, "tray");
-  info->insert(PI_VERSION, "2.1");
+  info->insert(PI_VERSION, "2.1.1");
   info->insert(PI_AUTHOR, "Nick Korotysh");
   info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
   info->insert(PI_COMMENT, "Set alarm.");
@@ -67,9 +67,13 @@ void Alarm::Start() {
 
 void Alarm::Stop() {
   tray_icon_->setIcon(old_icon_);
+  settings_->SetOption(OPT_ENABLED, false);
   icon_changed_ = false;
-  if (player_->state() == QMediaPlayer::PlayingState) player_->stop();
-  delete player_;
+  if (player_) {
+    if (player_->state() == QMediaPlayer::PlayingState) player_->stop();
+    delete player_;
+    player_ = 0;
+  }
 }
 
 void Alarm::Configure() {

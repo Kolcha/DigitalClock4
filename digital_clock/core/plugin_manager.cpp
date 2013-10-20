@@ -69,7 +69,7 @@ void PluginManager::ConfigurePlugin(const QString& name) {
     QPluginLoader* loader = new QPluginLoader(file, this);
     IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
     if (plugin) {
-      InitPlugin(plugin);
+      InitPlugin(plugin, false);
       plugin->Configure();
     }
   }
@@ -81,7 +81,7 @@ void PluginManager::LoadPlugin(const QString& name) {
   QPluginLoader* loader = new QPluginLoader(file, this);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
-    InitPlugin(plugin);
+    InitPlugin(plugin, true);
     plugin->Start();
     loaded_[name] = loader;
   }
@@ -98,18 +98,22 @@ void PluginManager::UnloadPlugin(const QString& name) {
   }
 }
 
-void PluginManager::InitPlugin(IClockPlugin* plugin) {
+void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
   // connect slots which are common for all plugins
-  connect(data_.settings, SIGNAL(OptionChanged(Options,QVariant)),
-          plugin, SLOT(SettingsListener(Options,QVariant)));
-  connect(data_.clock, SIGNAL(ImageNeeded(QString)),
-          plugin, SLOT(TimeUpdateListener(QString)));
+  if (connected) {
+    connect(data_.settings, SIGNAL(OptionChanged(Options,QVariant)),
+            plugin, SLOT(SettingsListener(Options,QVariant)));
+    connect(data_.clock, SIGNAL(ImageNeeded(QString)),
+            plugin, SLOT(TimeUpdateListener(QString)));
+  }
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
   if (sp) {
     sp->Init(data_.settings->GetSettings(), data_.window);
-    connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
-            data_.window, SLOT(SettingsListener(Options,QVariant)));
+    if (connected) {
+      connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
+              data_.window, SLOT(SettingsListener(Options,QVariant)));
+    }
   }
   // init tray plugins
   ITrayPlugin* tp = qobject_cast<ITrayPlugin*>(plugin);
