@@ -107,8 +107,9 @@ private:
    *
    * Function determine plugin type and init it with appropriate data.
    * @param plugin - plugin to init
+   * @param conneced - connect signal/slots
    */
-  void InitPlugin(IClockPlugin* plugin);
+  void InitPlugin(IClockPlugin* plugin, bool connected);
 
   QList<QDir> plugins_dirs_;
   QMap<QString, QString> available_;

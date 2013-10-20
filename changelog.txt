@@ -1,0 +1,32 @@
+Whats new in 4.2.2:
+-------------------
+Core:
+ - improved skin draw engine
+ - made skin draw engine more safe
+ - build with Qt 5.1.1
+
+Features:
+ - added 'display AM/PM' option
+ - fixed installer to make upgrades possible
+
+GUI:
+ - redesign settings dialog
+ - removed "About Qt" menu item
+ - customized about dialog
+ - dialog windows are displayed at screen center
+
+Plugins:
+ - removed AM/PM plugin
+ - "Alarm" plugin can play streams
+ - fixed bug: crash on "Alarm" plugin unload when it plays signal
+ - added "Tray color" plugin
+
+Whats new in 4.2.1:
+-------------------
+ - added text mode (clock can use any font instead of skin)
+ - added Display AP/PM plugin
+
+Whats new in 4.2.0:
+-------------------
+ - added plugin system
+ - added 4 plugins: Alarm, Every hour signal, Any color clock, Variable translucency
