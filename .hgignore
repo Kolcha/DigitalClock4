@@ -3,6 +3,7 @@ syntax: glob
 *.qm
 *.msi
 *.orig
+*.ba*
 build*/*
 installer/*-cache
 desktop.ini
