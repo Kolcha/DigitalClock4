@@ -7,7 +7,8 @@
 
 Alarm::Alarm() {
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
-  player_ = new QMediaPlayer(this);
+  icon_changed_ = false;
+  player_ = 0;
 }
 
 void Alarm::Init(QSystemTrayIcon* tray_icon, QWidget* parent) {
@@ -32,7 +33,10 @@ void Alarm::GetInfo(TPluginInfo* info) {
 
 void Alarm::Start() {
   settings_->Load();
+  if (!settings_->GetOption(OPT_ENABLED).toBool()) return;
+
   tray_icon_->setIcon(QIcon(":/alarm_clock.svg"));
+  icon_changed_ = true;
 
   SignalType st = (SignalType)(settings_->GetOption(OPT_SIGNAL_TYPE).toInt());
   if (st == ST_STREAM) {
@@ -58,10 +62,14 @@ void Alarm::Start() {
       connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(Configure()));
     }
   }
+  player_ = new QMediaPlayer();
 }
 
 void Alarm::Stop() {
   tray_icon_->setIcon(old_icon_);
+  icon_changed_ = false;
+  if (player_->state() == QMediaPlayer::PlayingState) player_->stop();
+  delete player_;
 }
 
 void Alarm::Configure() {
@@ -81,6 +89,13 @@ void Alarm::Configure() {
 }
 
 void Alarm::TimeUpdateListener(const QString&) {
+  if (settings_->GetOption(OPT_ENABLED).toBool()) {
+    if (!icon_changed_) Start();
+  } else {
+    if (icon_changed_) Stop();
+    return;
+  }
+
   QString alarm_time = settings_->GetOption(OPT_TIME).value<QTime>().toString();
   QString curr_time = QTime::currentTime().toString();
   if (alarm_time != curr_time ||

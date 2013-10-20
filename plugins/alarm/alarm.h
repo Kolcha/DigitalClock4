@@ -29,6 +29,7 @@ private:
   QIcon old_icon_;
   PluginSettings* settings_;
   QMediaPlayer* player_;
+  bool icon_changed_;
 };
 
 #endif // ALARM_H
