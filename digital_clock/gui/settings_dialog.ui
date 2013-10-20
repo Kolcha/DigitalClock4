@@ -169,7 +169,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout">
+           <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
             <item>
              <widget class="QRadioButton" name="use_skin">
               <property name="text">
