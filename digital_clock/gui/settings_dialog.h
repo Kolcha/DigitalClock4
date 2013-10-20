@@ -32,6 +32,7 @@ public slots:
 
 protected:
   void changeEvent(QEvent* e);
+  void showEvent(QShowEvent* e);
 
 private slots:
   void ChangePluginState(const QString& name, bool activated);

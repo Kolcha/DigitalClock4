@@ -19,7 +19,6 @@ private:
   void CreateTrayIcon();
   QAction* settings_action_;
   QAction* about_action_;
-  QAction* about_qt_action_;
   QAction* exit_action_;
   QSystemTrayIcon* tray_icon_;
 };
