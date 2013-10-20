@@ -1,6 +1,6 @@
 #include "var_translucency.h"
 
-void VarTranslucency::Init(const QMap<Options, QVariant>& current_settings) {
+void VarTranslucency::Init(const QMap<Options, QVariant>& current_settings, QWidget*) {
   old_opacity_ = current_settings[OPT_OPACITY].toReal();
   cur_opacity_ = 1.0;
   op_stap_ = -0.01;
@@ -18,12 +18,10 @@ void VarTranslucency::GetInfo(TPluginInfo* info) {
 
 void VarTranslucency::Start() {
   emit OptionChanged(OPT_OPACITY, cur_opacity_);
-  emit started();
 }
 
 void VarTranslucency::Stop() {
   emit OptionChanged(OPT_OPACITY, old_opacity_);
-  emit stopped();
 }
 
 void VarTranslucency::TimeUpdateListener(const QString&) {

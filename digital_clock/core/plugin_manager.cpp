@@ -66,10 +66,9 @@ void PluginManager::ConfigurePlugin(const QString& name) {
   } else {
     QString file = available_[name];
     if (!QFile::exists(file)) return;
-    QPluginLoader* loader = new QPluginLoader(file);
+    QPluginLoader* loader = new QPluginLoader(file, this);
     IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
     if (plugin) {
-      connect(plugin, SIGNAL(configured()), loader, SLOT(deleteLater()));
       InitPlugin(plugin);
       plugin->Configure();
     }
@@ -108,14 +107,14 @@ void PluginManager::InitPlugin(IClockPlugin* plugin) {
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
   if (sp) {
-    sp->Init(data_.settings->GetSettings());
+    sp->Init(data_.settings->GetSettings(), data_.window);
     connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
             data_.window, SLOT(SettingsListener(Options,QVariant)));
   }
   // init tray plugins
   ITrayPlugin* tp = qobject_cast<ITrayPlugin*>(plugin);
   if (tp) {
-    tp->Init(data_.tray);
+    tp->Init(data_.tray, data_.window);
   }
   // init widget plugins
   IWidgetPlugin* wp = qobject_cast<IWidgetPlugin*>(plugin);

@@ -13,7 +13,7 @@ class Alarm : public ITrayPlugin {
 
 public:
   Alarm();
-  void Init(QSystemTrayIcon* tray_icon);
+  void Init(QSystemTrayIcon* tray_icon, QWidget* parent);
   void GetInfo(TPluginInfo* info);
 
 public slots:
@@ -25,6 +25,7 @@ public slots:
 
 private:
   QSystemTrayIcon* tray_icon_;
+  QWidget* parent_;
   QIcon old_icon_;
   PluginSettings* settings_;
   QMediaPlayer* player_;

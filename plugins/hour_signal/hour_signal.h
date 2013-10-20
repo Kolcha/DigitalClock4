@@ -13,9 +13,9 @@ public:
   void GetInfo(TPluginInfo* info);
 
 public slots:
-  void Start() { emit started(); }
-  void Stop() { emit stopped(); }
-  void Configure() { emit configured(); }
+  void Start() {}
+  void Stop() {}
+  void Configure() {}
   void SettingsListener(Options, const QVariant&) {}
   void TimeUpdateListener(const QString& current_time);
 

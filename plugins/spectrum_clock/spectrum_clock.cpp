@@ -1,6 +1,6 @@
 #include "spectrum_clock.h"
 
-void SpectrumClock::Init(const QMap<Options, QVariant>& current_settings) {
+void SpectrumClock::Init(const QMap<Options, QVariant>& current_settings, QWidget*) {
   old_color_ = current_settings[OPT_COLOR].value<QColor>();
   cur_color_ = Qt::red;
 }
@@ -17,12 +17,10 @@ void SpectrumClock::GetInfo(TPluginInfo* info) {
 
 void SpectrumClock::Start() {
   emit OptionChanged(OPT_COLOR, cur_color_);
-  emit started();
 }
 
 void SpectrumClock::Stop() {
   emit OptionChanged(OPT_COLOR, old_color_);
-  emit stopped();
 }
 
 void SpectrumClock::TimeUpdateListener(const QString&) {

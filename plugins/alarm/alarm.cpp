@@ -10,8 +10,9 @@ Alarm::Alarm() {
   player_ = new QMediaPlayer(this);
 }
 
-void Alarm::Init(QSystemTrayIcon* tray_icon) {
+void Alarm::Init(QSystemTrayIcon* tray_icon, QWidget* parent) {
   tray_icon_ = tray_icon;
+  parent_ = parent;
   old_icon_ = tray_icon->icon();
 
   QSettings::SettingsMap defaults;
@@ -57,16 +58,14 @@ void Alarm::Start() {
       connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(Configure()));
     }
   }
-  emit started();
 }
 
 void Alarm::Stop() {
   tray_icon_->setIcon(old_icon_);
-  emit stopped();
 }
 
 void Alarm::Configure() {
-  SettingsDlg* dialog = new SettingsDlg();
+  SettingsDlg* dialog = new SettingsDlg(parent_);
   // load current settings to dialog
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
         dialog, SLOT(SettingsListener(QString,QVariant)));
@@ -79,7 +78,6 @@ void Alarm::Configure() {
   connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
   dialog->show();
-  connect(dialog, SIGNAL(destroyed()), this, SIGNAL(configured()));
 }
 
 void Alarm::TimeUpdateListener(const QString&) {
