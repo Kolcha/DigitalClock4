@@ -1,18 +1,16 @@
-#ifndef ALARM_H
-#define ALARM_H
+#ifndef TRAY_COLOR_H
+#define TRAY_COLOR_H
 
-#include <QIcon>
-#include <QMediaPlayer>
 #include "iclock_plugin.h"
 #include "plugin_settings.h"
 
-class Alarm : public ITrayPlugin {
+class TrayColor : public ITrayPlugin {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID TRAY_PLUGIN_INTERFACE_IID FILE "alarm.json")
+  Q_PLUGIN_METADATA(IID TRAY_PLUGIN_INTERFACE_IID FILE "tray_color.json")
   Q_INTERFACES(IClockPlugin ITrayPlugin)
 
 public:
-  Alarm();
+  TrayColor();
   void Init(QSystemTrayIcon* tray_icon, QWidget* parent);
   void GetInfo(TPluginInfo* info);
 
@@ -21,15 +19,16 @@ public slots:
   void Stop();
   void Configure();
   void SettingsListener(Options, const QVariant&) {}
-  void TimeUpdateListener(const QString&);
+  void TimeUpdateListener(const QString&) {}
 
 private:
+  void RedrawTrayIcon(const QColor& color);
+
   QSystemTrayIcon* tray_icon_;
   QWidget* parent_;
-  QIcon old_icon_;
   PluginSettings* settings_;
-  QMediaPlayer* player_;
-  bool icon_changed_;
+
+  bool is_enabled_;
 };
 
-#endif // ALARM_H
+#endif // TRAY_COLOR_H

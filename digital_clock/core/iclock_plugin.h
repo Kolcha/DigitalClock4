@@ -55,14 +55,6 @@ public slots:
    * @note time format varies depend on system locale settings or plugins
    */
   virtual void TimeUpdateListener(const QString& current_time) = 0;
-
-signals:
-  /*! This signal is emitted when plugin started. */
-  void started();
-  /*! This signal is emitted when plugin stopped. */
-  void stopped();
-  /*! This signal is emitted when plugin configured. */
-  void configured();
 };
 
 /*! Clock plugin interface IID */
@@ -85,8 +77,9 @@ public:
   /*!
    * Init plugin.
    * @param current_settings - map with all current clock settings
+   * @param parent - parent widget (main window)
    */
-  virtual void Init(const QMap<Options, QVariant>& current_settings) = 0;
+  virtual void Init(const QMap<Options, QVariant>& current_settings, QWidget* parent) = 0;
 
 signals:
   /*!
@@ -120,8 +113,9 @@ public:
   /*!
    * Init plugin.
    * @param tray_icon - pointer to clock QSystemTrayIcon object
+   * @param parent - parent widget (main window)
    */
-  virtual void Init(QSystemTrayIcon* tray_icon) = 0;
+  virtual void Init(QSystemTrayIcon* tray_icon, QWidget* parent) = 0;
 };
 
 /*! Tray plugin interface IID */
