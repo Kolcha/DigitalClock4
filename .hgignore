@@ -2,7 +2,6 @@ syntax: glob
 *.user
 *.qm
 *.msi
-*.exe
 *.orig
 build*/*
 installer/*-cache
