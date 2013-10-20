@@ -18,10 +18,15 @@ VectorSkin::VectorSkin(const QDir& skin_root) {
   }
   image_files_[QString("s1")] = skin_root.filePath(config.value("files/s1").toString());
   image_files_[QString("s2")] = skin_root.filePath(config.value("files/s2").toString());
+  image_files_[QString("am")] = skin_root.filePath(config.value("files/am").toString());
+  image_files_[QString("pm")] = skin_root.filePath(config.value("files/pm").toString());
 }
 
 QPixmapPtr VectorSkin::ResizeImage(const QString& s, qreal zoom) {
-  QSvgRenderer renderer(image_files_[s]);
+  QString& img_file = image_files_[s];
+  if (!QFile::exists(img_file)) return QPixmapPtr();
+
+  QSvgRenderer renderer(img_file);
   QPixmapPtr result(new QPixmap(renderer.defaultSize() * zoom));
   QPainter painter(result.data());
   painter.setCompositionMode(QPainter::CompositionMode_Source);

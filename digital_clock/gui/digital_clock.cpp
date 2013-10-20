@@ -11,6 +11,7 @@ DigitalClock::DigitalClock(QWidget* parent)
 
   sep_visible_ = false;
   sep_flashes_ = true;
+  display_am_pm_ = false;
 }
 
 DigitalClock::~DigitalClock() {
@@ -27,18 +28,26 @@ void DigitalClock::SetSeparatorFlash(bool set) {
   sep_visible_ = !set;
 }
 
+void DigitalClock::SetDisplayAMPM(bool set) {
+  display_am_pm_ = set;
+}
+
 void DigitalClock::SetTimeFormat(const QString& format) {
   time_format_ = format;
 }
 
 void DigitalClock::TimeoutHandler() {
   if (time_format_.isEmpty()) time_format_ = QLocale::system().timeFormat();
-  QString time = QTime::currentTime().toString(time_format_);
-  int sep_pos = time.indexOf(':');
-  time = time.mid(0, time.lastIndexOf(':'));
+  QTime cur_time = QTime::currentTime();
+  QString str_time = cur_time.toString(time_format_);
+  int sep_pos = str_time.indexOf(':');
+  str_time = str_time.mid(0, str_time.lastIndexOf(':'));
+  if (display_am_pm_ && time_format_.contains('A', Qt::CaseInsensitive)) {
+    str_time += cur_time.toString("AP");
+  }
   if (sep_flashes_) {
-    time[sep_pos] = sep_visible_ ? ':' : ' ';
+    str_time[sep_pos] = sep_visible_ ? ':' : ' ';
     sep_visible_ = !sep_visible_;
   }
-  emit ImageNeeded(time);
+  emit ImageNeeded(str_time);
 }

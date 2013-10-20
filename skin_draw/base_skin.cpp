@@ -41,6 +41,14 @@ void BaseSkin::CharToKey(QChar ch, QString& s) {
     case ' ':
       s = QString("s2");
       break;
+    case 'a':
+    case 'A':
+      s = QString("am");
+      break;
+    case 'p':
+    case 'P':
+      s = QString("pm");
+      break;
     default:
       s = QString(ch);
       break;

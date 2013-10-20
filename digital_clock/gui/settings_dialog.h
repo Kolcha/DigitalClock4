@@ -32,6 +32,7 @@ public slots:
 
 protected:
   void changeEvent(QEvent* e);
+  void showEvent(QShowEvent* e);
 
 private slots:
   void ChangePluginState(const QString& name, bool activated);
@@ -52,6 +53,7 @@ private slots:
   void on_use_skin_toggled(bool checked);
   void on_use_font_toggled(bool checked);
   void on_sel_font_btn_clicked();
+  void on_display_am_pm_toggled(bool checked);
 
 private:
   Ui::SettingsDialog* ui;
