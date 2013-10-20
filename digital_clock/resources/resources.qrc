@@ -24,7 +24,6 @@
         <file alias="award.gif">images/softpedia_clean_award_f.gif</file>
     </qresource>
     <qresource prefix="/about_dialog">
-        <file>about_dialog/qt-logo-24.png</file>
         <file>about_dialog/wme-16.png</file>
         <file>about_dialog/wmr-16.png</file>
         <file>about_dialog/wmz-16.png</file>

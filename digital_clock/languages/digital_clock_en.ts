@@ -25,93 +25,93 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="86"/>
+        <location filename="../gui/about_dialog.ui" line="68"/>
         <source>Qt</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="122"/>
+        <location filename="../gui/about_dialog.ui" line="102"/>
         <source>Links</source>
         <translatorcomment>links to internet resources</translatorcomment>
         <translation>Links</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="128"/>
+        <location filename="../gui/about_dialog.ui" line="108"/>
         <source>information:</source>
         <translatorcomment>information about program and download link</translatorcomment>
         <translation>information:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="135"/>
+        <location filename="../gui/about_dialog.ui" line="115"/>
         <source>&lt;a href=&quot;http://www.softpedia.com/get/Desktop-Enhancements/Clocks-Time-Management/Korotysh-Digital-Clock.shtml&quot;&gt;www.softpedia.com&lt;/a&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="148"/>
+        <location filename="../gui/about_dialog.ui" line="128"/>
         <source>source code:</source>
         <translatorcomment>program sources</translatorcomment>
         <translation>source code:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="155"/>
+        <location filename="../gui/about_dialog.ui" line="135"/>
         <source>&lt;a href=&quot;http://sourceforge.net/projects/digitalclock4/&quot;&gt;sourceforge.net&lt;/a&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="168"/>
+        <location filename="../gui/about_dialog.ui" line="148"/>
         <source>e-mail:</source>
         <translatorcomment>authors e-mail</translatorcomment>
         <translation>e-mail:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="175"/>
+        <location filename="../gui/about_dialog.ui" line="155"/>
         <source>&lt;a href=&quot;mailto:nick.korotysh@gmail.com&quot;&gt;nick.korotysh@gmail.com&lt;/a&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="191"/>
+        <location filename="../gui/about_dialog.ui" line="171"/>
         <source>Donate</source>
         <translatorcomment>donation information</translatorcomment>
         <translation>Donate</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="213"/>
+        <location filename="../gui/about_dialog.ui" line="193"/>
         <source>WMZ:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="233"/>
+        <location filename="../gui/about_dialog.ui" line="213"/>
         <source>Z275611204281</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="259"/>
+        <location filename="../gui/about_dialog.ui" line="239"/>
         <source>WME:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="279"/>
+        <location filename="../gui/about_dialog.ui" line="259"/>
         <source>E241249077263</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="305"/>
+        <location filename="../gui/about_dialog.ui" line="285"/>
         <source>WMR:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="325"/>
+        <location filename="../gui/about_dialog.ui" line="305"/>
         <source>R263617824302</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="355"/>
+        <location filename="../gui/about_dialog.ui" line="335"/>
         <source>Close</source>
         <translatorcomment>close dialog</translatorcomment>
         <translation>Close</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="12"/>
+        <location filename="../gui/about_dialog.cpp" line="29"/>
         <source>version: </source>
         <translatorcomment>program version</translatorcomment>
         <translation>version: </translation>
