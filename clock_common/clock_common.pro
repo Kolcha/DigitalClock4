@@ -4,14 +4,16 @@
 #
 #-------------------------------------------------
 
-QT       -= gui
+QT       += core gui
 
 TARGET = clock_common
 TEMPLATE = lib
 
 DEFINES += CLOCK_COMMON_LIBRARY
 
-SOURCES +=
+SOURCES += \
+    settings_keys.cpp \
+    plugin_settings.cpp
 
 HEADERS += \
     settings_keys.h \

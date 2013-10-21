@@ -94,9 +94,7 @@ signals:
 #define SETTINGS_PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.settings-plugin"
 Q_DECLARE_INTERFACE(ISettingsPlugin, SETTINGS_PLUGIN_INTERFACE_IID)
 
-
 class QSystemTrayIcon;
-class QMenu;
 
 /*!
  * @brief Tray plugin interface.

@@ -19,58 +19,37 @@ public:
    * @param app_name - application name (same as for QSettings)
    * @param parent - parent object
    */
-  PluginSettings(const QString& org_name, const QString& app_name, QObject* parent = 0)
-    : QObject(parent), settings_(org_name, app_name), track_changes_(false) {}
+  PluginSettings(const QString& org_name, const QString& app_name, QObject* parent = 0);
 
   /*!
    * Init all options with default values.
    * @param values - map<QString, QVariant> with option names and their values
    */
-  void SetDefaultValues(const QSettings::SettingsMap& values) {
-    settings_map_ = values;
-  }
+  void SetDefaultValues(const QSettings::SettingsMap& values);
   /*!
    * Get option value.
    * @param key - option name
    * @return option value as QVariant object
    */
-  const QVariant& GetOption(const QString& key) const {
-    return settings_map_.find(key).value();
-  }
+  const QVariant& GetOption(const QString& key) const;
 
 public slots:
   /*! Load settings. */
-  void Load() {
-    for (auto iter = settings_map_.begin(); iter != settings_map_.end(); ++iter) {
-      settings_map_[iter.key()] = settings_.value(iter.key(), iter.value());
-      if (track_changes_) emit OptionChanged(iter.key(), iter.value());
-    }
-  }
+  void Load();
   /*! Save settings. */
-  void Save() {
-    for (auto iter = settings_map_.begin(); iter != settings_map_.end(); ++iter) {
-      settings_.setValue(iter.key(), iter.value());
-    }
-  }
-
+  void Save();
   /*!
    * Set option value.
    * @param key - option name
    * @param value - option value
    */
-  void SetOption(const QString& key, const QVariant& value) {
-    settings_map_[key] = value;
-    if (track_changes_) emit OptionChanged(key, value);
-  }
-
+  void SetOption(const QString& key, const QVariant& value);
   /*!
    * Set 'track changes' flag. If it is set then signal OptionChanged() will emitted
    * when any option is changed.
    * @param is_track - true to enable tracking, false to disable
    */
-  void TrackChanges(bool is_track) {
-    track_changes_ = is_track;
-  }
+  void TrackChanges(bool is_track);
 
 signals:
   /*!
