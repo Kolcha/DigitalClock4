@@ -1,6 +1,7 @@
 #ifndef PLUGIN_SETTINGS_H
 #define PLUGIN_SETTINGS_H
 
+#include "clock_common_global.h"
 #include <QSettings>
 
 /*!
@@ -9,7 +10,7 @@
  * PluginSettings class provides logic to Save/Load clock plugin settings.
  * This class is based on QSettings class.
  */
-class PluginSettings : public QObject {
+class CLOCK_COMMON_EXPORT PluginSettings : public QObject {
   Q_OBJECT
 
 public:

@@ -1,6 +1,9 @@
 #ifndef SETTINGS_KEYS_H
 #define SETTINGS_KEYS_H
 
+#include "clock_common_global.h"
+#include <QVariant>
+
 // TODO: add options description
 enum Options {
   // clock settings
@@ -22,5 +25,7 @@ enum Options {
   OPT_TEXTURE_DRAW_MODE,
   OPT_USE_TEXTURE
 };
+
+CLOCK_COMMON_EXPORT QVariant GetDefaultValue(Options opt);
 
 #endif // SETTINGS_KEYS_H

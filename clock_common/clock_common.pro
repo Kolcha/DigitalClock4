@@ -18,6 +18,7 @@ SOURCES += \
 HEADERS += \
     settings_keys.h \
     iclock_plugin.h \
-    plugin_settings.h
+    plugin_settings.h \
+    clock_common_global.h
 
 win32:RC_FILE = clock_common.rc
