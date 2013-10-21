@@ -1,0 +1,27 @@
+1	VERSIONINFO
+FILEVERSION	1,0,0,1
+PRODUCTVERSION	4,2,2,1
+FILEOS		0x4
+FILETYPE	0x2
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "Comments", "Digital Clock common library"
+		VALUE "CompanyName", "Nick Korotysh"
+		VALUE "FileDescription", "Common clock library"
+		VALUE "FileVersion", "1.0.0.1"
+		VALUE "InternalName", "clock_common.dll"
+		VALUE "LegalCopyright", "Copyright (C) 2013 Nick Korotysh"
+		VALUE "OriginalFilename", "clock_common.dll"
+		VALUE "ProductName", "Digital Clock"
+		VALUE "ProductVersion", "4.2.2.1"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409 0x04B0
+}
+}

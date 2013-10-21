@@ -19,3 +19,5 @@ HEADERS += \
     settings_keys.h \
     iclock_plugin.h \
     plugin_settings.h
+
+win32:RC_FILE = clock_common.rc
