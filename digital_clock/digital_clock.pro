@@ -5,7 +5,6 @@
 #-------------------------------------------------
 
 QT       += core gui
-INCLUDEPATH += ../skin_draw
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -49,9 +48,10 @@ TRANSLATIONS += \
     languages/digital_clock_ru.ts
 
 win32:RC_FILE = resources/resources.rc
-unix:QMAKE_CXXFLAGS += -std=c++11
 
-win32 {
-  Debug:LIBS += debug/skin_draw.lib
-  Release:LIBS += release/skin_draw.lib
-}
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../skin_draw/release/ -lskin_draw
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../skin_draw/debug/ -lskin_draw
+else:unix: LIBS += -L$$OUT_PWD/../skin_draw/ -lskin_draw
+
+INCLUDEPATH += $$PWD/../skin_draw
+DEPENDPATH += $$PWD/../skin_draw

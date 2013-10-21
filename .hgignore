@@ -4,6 +4,5 @@ syntax: glob
 *.msi
 *.orig
 *.ba*
-build*/*
 installer/*-cache
 desktop.ini
