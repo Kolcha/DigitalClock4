@@ -47,9 +47,18 @@ TRANSLATIONS += \
 
 win32:RC_FILE = resources/resources.rc
 
+# add skin_draw library
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../skin_draw/release/ -lskin_draw
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../skin_draw/debug/ -lskin_draw
 else:unix: LIBS += -L$$OUT_PWD/../skin_draw/ -lskin_draw
 
 INCLUDEPATH += $$PWD/../skin_draw
 DEPENDPATH += $$PWD/../skin_draw
+
+# add clock_common library
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../clock_common/release/ -lclock_common
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../clock_common/debug/ -lclock_common
+else:unix: LIBS += -L$$OUT_PWD/../clock_common/ -lclock_common
+
+INCLUDEPATH += $$PWD/../clock_common
+DEPENDPATH += $$PWD/../clock_common

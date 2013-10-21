@@ -3,14 +3,14 @@
 
 #include <QDialog>
 #include <QListWidgetItem>
-#include "../core/settings_keys.h"
-#include "../core/iclock_plugin.h"
+#include "settings_keys.h"
+#include "iclock_plugin.h"
 #include "iclock_skin.h"
 
 namespace Ui {
 class SettingsDialog;
 }
-
+// TODO: inherit from CenteredDialog
 class SettingsDialog : public QDialog {
   Q_OBJECT
 

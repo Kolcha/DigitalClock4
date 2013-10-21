@@ -1,8 +1,10 @@
 #ifndef PLUGIN_LIST_ITEM_H
 #define PLUGIN_LIST_ITEM_H
 
-#include <QCheckBox>
-#include <QToolButton>
+#include <QWidget>
+
+class QCheckBox;
+class QToolButton;
 
 /*! @brief Plugins list item widget.
  *
@@ -90,6 +92,7 @@ private:
    * Init widget.
    */
   void Init();
+
   QCheckBox* chk_;
   QToolButton* btn_;
 };

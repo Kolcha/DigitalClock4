@@ -6,7 +6,7 @@
 namespace Ui {
 class AboutDialog;
 }
-
+// TODO: inherit from CenteredDialog
 class AboutDialog : public QDialog {
   Q_OBJECT
 
