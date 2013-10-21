@@ -1,6 +1,7 @@
 #ifndef SPECTRUM_CLOCK_H
 #define SPECTRUM_CLOCK_H
 
+#include <QColor>
 #include "iclock_plugin.h"
 
 class SpectrumClock : public ISettingsPlugin {
