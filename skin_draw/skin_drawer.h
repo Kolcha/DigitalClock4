@@ -5,7 +5,9 @@
 
 #include <QPixmap>
 #include "iclock_skin.h"
-
+// TODO: add comments
+// TODO: variable spacing
+// TODO: add ApplySkin(Skin* skin) instead of LoadSkin()
 class SKIN_DRAWSHARED_EXPORT SkinDrawer : public QObject {
   Q_OBJECT
 public:
