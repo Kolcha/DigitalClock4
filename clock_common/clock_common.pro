@@ -13,4 +13,7 @@ DEFINES += CLOCK_COMMON_LIBRARY
 
 SOURCES +=
 
-HEADERS +=
+HEADERS += \
+    settings_keys.h \
+    iclock_plugin.h \
+    plugin_settings.h

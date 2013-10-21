@@ -27,12 +27,10 @@ HEADERS  += \
     core/skin_manager.h \
     core/clock_settings.h \
     gui/digital_clock.h \
-    core/settings_keys.h \
     gui/main_window.h \
     gui/tray_control.h \
     gui/settings_dialog.h \
     gui/about_dialog.h \
-    core/iclock_plugin.h \
     core/plugin_manager.h \
     gui/plugin_list_item.h
 
