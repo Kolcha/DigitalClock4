@@ -1,13 +1,13 @@
 #ifndef SETTINGS_DLG_H
 #define SETTINGS_DLG_H
 
-#include <QDialog>
+#include "centered_dialog.h"
 
 namespace Ui {
 class SettingsDlg;
 }
 
-class SettingsDlg : public QDialog {
+class SettingsDlg : public CenteredDialog {
   Q_OBJECT
 
 public:
@@ -19,9 +19,6 @@ public slots:
 
 signals:
   void OptionChanged(const QString&, const QVariant&);
-
-protected:
-  void showEvent(QShowEvent* e);
 
 private slots:
   void on_time_edit_timeChanged(const QTime& time);

@@ -5,8 +5,6 @@
 #-------------------------------------------------
 
 QT       += core gui widgets multimedia
-INCLUDEPATH += ../../digital_clock/core \
-    ..
 
 TARGET = alarm
 TEMPLATE = lib
@@ -16,8 +14,6 @@ SOURCES += alarm.cpp \
     gui/settings_dlg.cpp
 
 HEADERS += alarm.h \
-    ../../digital_clock/core/iclock_plugin.h \
-    ../plugin_settings.h \
     gui/settings_dlg.h \
     alarm_settings.h
 OTHER_FILES += alarm.json
@@ -29,3 +25,10 @@ FORMS += \
 
 RESOURCES += \
     alarm.qrc
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../clock_common/release/ -lclock_common
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../clock_common/debug/ -lclock_common
+else:unix: LIBS += -L$$OUT_PWD/../../clock_common/ -lclock_common
+
+INCLUDEPATH += $$PWD/../../clock_common
+DEPENDPATH += $$PWD/../../clock_common

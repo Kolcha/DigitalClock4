@@ -1,3 +1,5 @@
+#include <QCheckBox>
+#include <QToolButton>
 #include <QHBoxLayout>
 #include "plugin_list_item.h"
 

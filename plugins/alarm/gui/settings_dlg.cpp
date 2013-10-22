@@ -1,4 +1,3 @@
-#include <QDesktopWidget>
 #include <QFileInfo>
 #include <QDir>
 #include <QFileDialog>
@@ -7,9 +6,8 @@
 #include "ui_settings_dlg.h"
 
 SettingsDlg::SettingsDlg(QWidget* parent)
-  : QDialog(parent), ui(new Ui::SettingsDlg) {
+  : CenteredDialog(parent), ui(new Ui::SettingsDlg) {
   ui->setupUi(this);
-  setAttribute(Qt::WA_DeleteOnClose);
   setWindowIcon(QIcon(":/settings.svg"));
 }
 
@@ -49,24 +47,6 @@ void SettingsDlg::SettingsListener(const QString& key, const QVariant& value) {
   if (key == OPT_NOTIFY_TEXT) {
     ui->message_edit->setPlainText(value.toString());
   }
-}
-
-void SettingsDlg::showEvent(QShowEvent* e) {
-  e->accept();
-
-  int scrn = 0;
-  const QWidget *w = window();
-
-  if (w)
-    scrn = QApplication::desktop()->screenNumber(w);
-  else if (QApplication::desktop()->isVirtualDesktop())
-    scrn = QApplication::desktop()->screenNumber(QCursor::pos());
-  else
-    scrn = QApplication::desktop()->screenNumber(this);
-
-  QRect desk(QApplication::desktop()->availableGeometry(scrn));
-  move((desk.width() - frameGeometry().width()) / 2,
-       (desk.height() - frameGeometry().height()) / 2);
 }
 
 void SettingsDlg::on_time_edit_timeChanged(const QTime& time) {

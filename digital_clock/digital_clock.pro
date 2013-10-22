@@ -27,12 +27,10 @@ HEADERS  += \
     core/skin_manager.h \
     core/clock_settings.h \
     gui/digital_clock.h \
-    core/settings_keys.h \
     gui/main_window.h \
     gui/tray_control.h \
     gui/settings_dialog.h \
     gui/about_dialog.h \
-    core/iclock_plugin.h \
     core/plugin_manager.h \
     gui/plugin_list_item.h
 
@@ -49,9 +47,18 @@ TRANSLATIONS += \
 
 win32:RC_FILE = resources/resources.rc
 
+# add skin_draw library
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../skin_draw/release/ -lskin_draw
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../skin_draw/debug/ -lskin_draw
 else:unix: LIBS += -L$$OUT_PWD/../skin_draw/ -lskin_draw
 
 INCLUDEPATH += $$PWD/../skin_draw
 DEPENDPATH += $$PWD/../skin_draw
+
+# add clock_common library
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../clock_common/release/ -lclock_common
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../clock_common/debug/ -lclock_common
+else:unix: LIBS += -L$$OUT_PWD/../clock_common/ -lclock_common
+
+INCLUDEPATH += $$PWD/../clock_common
+DEPENDPATH += $$PWD/../clock_common

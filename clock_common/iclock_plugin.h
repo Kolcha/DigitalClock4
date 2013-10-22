@@ -19,7 +19,7 @@ typedef QMap<FPluginInfo, QString> TPluginInfo;
 
 
 /*! Common plugins interface. */
-class IClockPlugin : public QObject {
+class CLOCK_COMMON_EXPORT IClockPlugin : public QObject {
   Q_OBJECT
 
 public:
@@ -68,7 +68,7 @@ Q_DECLARE_INTERFACE(IClockPlugin, CLOCK_PLUGIN_INTERFACE_IID)
  * Settings plugin can change any clock options. It must emit signal OptionChaged everytime
  * when it changes settings to notify clock. All changes will be applied immediately.
  */
-class ISettingsPlugin : public IClockPlugin {
+class CLOCK_COMMON_EXPORT ISettingsPlugin : public IClockPlugin {
   Q_OBJECT
 
 public:
@@ -94,9 +94,7 @@ signals:
 #define SETTINGS_PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.settings-plugin"
 Q_DECLARE_INTERFACE(ISettingsPlugin, SETTINGS_PLUGIN_INTERFACE_IID)
 
-
 class QSystemTrayIcon;
-class QMenu;
 
 /*!
  * @brief Tray plugin interface.
@@ -104,7 +102,7 @@ class QMenu;
  * Tray plugin can access to the clock tray icon in system tray. It can change clock
  * tray icon and modify tray menu (right click clock popup menu will modified too).
  */
-class ITrayPlugin : public IClockPlugin {
+class CLOCK_COMMON_EXPORT ITrayPlugin : public IClockPlugin {
   Q_OBJECT
 
 public:
@@ -129,7 +127,7 @@ Q_DECLARE_INTERFACE(ITrayPlugin, TRAY_PLUGIN_INTERFACE_IID)
  * Widget plugin can access and manipulate with main clock window. It can change
  * window position or add some widgets to this window for example.
  */
-class IWidgetPlugin : public IClockPlugin {
+class CLOCK_COMMON_EXPORT IWidgetPlugin : public IClockPlugin {
   Q_OBJECT
 
 public:

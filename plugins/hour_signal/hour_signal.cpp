@@ -1,4 +1,5 @@
 #include <QSound>
+#include <QRegExp>
 #include "hour_signal.h"
 
 void HourSignal::GetInfo(TPluginInfo* info) {
@@ -10,7 +11,7 @@ void HourSignal::GetInfo(TPluginInfo* info) {
   info->insert(PI_COMMENT, "Plays short signal every hour.");
   info->insert(PI_CONFIG, "false");
 }
-
+// TODO: fix get time logic [any time format feature]
 void HourSignal::TimeUpdateListener(const QString& current_time) {
   int current_hour = current_time.mid(0, current_time.indexOf(QRegExp("[ :]"))).toInt();
   if (current_hour != last_hour_ && last_hour_ != -1) QSound::play(":/hour_signal.wav");
