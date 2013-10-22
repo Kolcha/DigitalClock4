@@ -1,17 +1,17 @@
 #ifndef SETTINGS_DIALOG_H
 #define SETTINGS_DIALOG_H
 
-#include <QDialog>
 #include <QListWidgetItem>
 #include "settings_keys.h"
 #include "iclock_plugin.h"
 #include "iclock_skin.h"
+#include "centered_dialog.h"
 
 namespace Ui {
 class SettingsDialog;
 }
-// TODO: inherit from CenteredDialog
-class SettingsDialog : public QDialog {
+
+class SettingsDialog : public CenteredDialog {
   Q_OBJECT
 
 public:
@@ -32,7 +32,6 @@ public slots:
 
 protected:
   void changeEvent(QEvent* e);
-  void showEvent(QShowEvent* e);
 
 private slots:
   void ChangePluginState(const QString& name, bool activated);

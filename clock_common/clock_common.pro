@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui widgets
 
 TARGET = clock_common
 TEMPLATE = lib
@@ -13,12 +13,14 @@ DEFINES += CLOCK_COMMON_LIBRARY
 
 SOURCES += \
     settings_keys.cpp \
-    plugin_settings.cpp
+    plugin_settings.cpp \
+    centered_dialog.cpp
 
 HEADERS += \
     settings_keys.h \
     iclock_plugin.h \
     plugin_settings.h \
-    clock_common_global.h
+    clock_common_global.h \
+    centered_dialog.h
 
 win32:RC_FILE = clock_common.rc

@@ -1,21 +1,18 @@
 #ifndef ABOUT_DIALOG_H
 #define ABOUT_DIALOG_H
 
-#include <QDialog>
+#include "centered_dialog.h"
 
 namespace Ui {
 class AboutDialog;
 }
-// TODO: inherit from CenteredDialog
-class AboutDialog : public QDialog {
+
+class AboutDialog : public CenteredDialog {
   Q_OBJECT
 
 public:
-  explicit AboutDialog(QWidget *parent = 0);
+  explicit AboutDialog(QWidget* parent = 0);
   ~AboutDialog();
-
-protected:
-  void showEvent(QShowEvent* e);
 
 private:
   Ui::AboutDialog *ui;

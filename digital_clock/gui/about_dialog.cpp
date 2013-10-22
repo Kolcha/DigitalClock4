@@ -1,5 +1,3 @@
-#include <QShowEvent>
-#include <QDesktopWidget>
 #include "about_dialog.h"
 #include "ui_about_dialog.h"
 
@@ -20,8 +18,8 @@ static QString compilerString() {
     return QLatin1String("<unknown compiler>");
 }
 
-AboutDialog::AboutDialog(QWidget *parent)
-  : QDialog(parent), ui(new Ui::AboutDialog) {
+AboutDialog::AboutDialog(QWidget* parent)
+  : CenteredDialog(parent), ui(new Ui::AboutDialog) {
   ui->setupUi(this);
   setAttribute(Qt::WA_DeleteOnClose);
   setWindowIcon(QIcon(":/images/about.svg"));
@@ -36,22 +34,4 @@ AboutDialog::AboutDialog(QWidget *parent)
 
 AboutDialog::~AboutDialog() {
   delete ui;
-}
-
-void AboutDialog::showEvent(QShowEvent* e) {
-  e->accept();
-
-  int scrn = 0;
-  const QWidget *w = window();
-
-  if (w)
-    scrn = QApplication::desktop()->screenNumber(w);
-  else if (QApplication::desktop()->isVirtualDesktop())
-    scrn = QApplication::desktop()->screenNumber(QCursor::pos());
-  else
-    scrn = QApplication::desktop()->screenNumber(this);
-
-  QRect desk(QApplication::desktop()->availableGeometry(scrn));
-  move((desk.width() - frameGeometry().width()) / 2,
-       (desk.height() - frameGeometry().height()) / 2);
 }
