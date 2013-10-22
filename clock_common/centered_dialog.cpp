@@ -5,7 +5,7 @@
 
 CenteredDialog::CenteredDialog(QWidget* parent)
   : QDialog(parent) {
-  // TODO: try add setAttribute(Qt::WA_DeleteOnClose);
+  setAttribute(Qt::WA_DeleteOnClose);
 }
 
 CenteredDialog::~CenteredDialog() {

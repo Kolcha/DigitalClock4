@@ -10,7 +10,6 @@
 SettingsDialog::SettingsDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDialog) {
   ui->setupUi(this);
-  setAttribute(Qt::WA_DeleteOnClose);
   setWindowIcon(QIcon(":/images/settings.svg"));
 }
 

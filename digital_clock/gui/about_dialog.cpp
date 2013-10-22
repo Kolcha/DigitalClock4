@@ -21,7 +21,6 @@ static QString compilerString() {
 AboutDialog::AboutDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::AboutDialog) {
   ui->setupUi(this);
-  setAttribute(Qt::WA_DeleteOnClose);
   setWindowIcon(QIcon(":/images/about.svg"));
 
   ui->name_value->setText(QCoreApplication::applicationName());

@@ -8,6 +8,7 @@
  * @brief The CenteredDialog class.
  *
  * CenteredDialog class provides screen centered dialog.
+ *@note This dialog is self deleting: attribute WA_DeleteOnClose is set by default.
  */
 class CLOCK_COMMON_EXPORT CenteredDialog : public QDialog {
   Q_OBJECT
