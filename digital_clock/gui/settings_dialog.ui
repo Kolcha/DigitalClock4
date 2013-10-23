@@ -297,13 +297,6 @@
           <string>Texture</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="txd_per_elem">
-            <property name="text">
-             <string>texture per element</string>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0">
            <widget class="QGroupBox" name="txd_type_group">
             <property name="title">
@@ -383,6 +376,13 @@
               </widget>
              </item>
             </layout>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QCheckBox" name="txd_per_elem">
+            <property name="text">
+             <string>texture per element</string>
+            </property>
            </widget>
           </item>
          </layout>
