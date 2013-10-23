@@ -253,51 +253,51 @@
         <translation>Texture</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="303"/>
+        <location filename="../gui/settings_dialog.ui" line="384"/>
         <source>texture per element</source>
         <translatorcomment>use texture per element (digit)</translatorcomment>
         <translation>texture per element</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="310"/>
+        <location filename="../gui/settings_dialog.ui" line="303"/>
         <source>Type</source>
         <translatorcomment>texture type group settings</translatorcomment>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="316"/>
+        <location filename="../gui/settings_dialog.ui" line="309"/>
         <source>solid color</source>
         <translatorcomment>use solid color as texture</translatorcomment>
         <translation>solid color</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="323"/>
+        <location filename="../gui/settings_dialog.ui" line="316"/>
         <source>custom image</source>
         <translatorcomment>use custom image as texture</translatorcomment>
         <translation>custom image</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="285"/>
-        <location filename="../gui/settings_dialog.ui" line="339"/>
-        <location filename="../gui/settings_dialog.ui" line="355"/>
+        <location filename="../gui/settings_dialog.ui" line="332"/>
+        <location filename="../gui/settings_dialog.ui" line="348"/>
         <source>...</source>
         <translatorcomment>...</translatorcomment>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="365"/>
+        <location filename="../gui/settings_dialog.ui" line="358"/>
         <source>Mode</source>
         <translatorcomment>texture draw mode settings</translatorcomment>
         <translation>Mode</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="371"/>
+        <location filename="../gui/settings_dialog.ui" line="364"/>
         <source>stretch</source>
         <translatorcomment>stretch texture image</translatorcomment>
         <translation>stretch</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="378"/>
+        <location filename="../gui/settings_dialog.ui" line="371"/>
         <source>tile</source>
         <translatorcomment>tile texture image</translatorcomment>
         <translation>tile</translation>
