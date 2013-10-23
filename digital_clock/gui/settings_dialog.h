@@ -35,6 +35,8 @@ protected:
 
 private slots:
   void ChangePluginState(const QString& name, bool activated);
+  void SaveState();
+  void LoadState();
   void on_stay_on_top_toggled(bool checked);
   void on_transp_for_input_toggled(bool checked);
   void on_sep_flash_toggled(bool checked);
@@ -53,6 +55,7 @@ private slots:
   void on_use_font_toggled(bool checked);
   void on_sel_font_btn_clicked();
   void on_display_am_pm_toggled(bool checked);
+  void on_use_customization_toggled(bool checked);
 
 private:
   Ui::SettingsDialog* ui;
@@ -60,6 +63,7 @@ private:
   QString last_txd_path_;
   QStringList active_plugins_;
   QFont last_font_;
+  int last_customization_;
 };
 
 #endif // SETTINGS_DIALOG_H

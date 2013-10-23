@@ -2,15 +2,23 @@
 #include <QFileDialog>
 #include <QFontDialog>
 #include <QFileInfo>
+#include <QSettings>
 #include "skin_drawer.h"
 #include "plugin_list_item.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
+#define OPT_LAST_CUSTOMIZATION_KEY   "settings_dialog/last_cutomization"
+
 SettingsDialog::SettingsDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDialog) {
   ui->setupUi(this);
   setWindowIcon(QIcon(":/images/settings.svg"));
+
+  connect(this, SIGNAL(accepted()), this, SLOT(SaveState()));
+  connect(this, SIGNAL(rejected()), this, SLOT(LoadState()));
+
+  LoadState();
 }
 
 SettingsDialog::~SettingsDialog() {
@@ -84,10 +92,19 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       break;
     }
 
-    case OPT_USE_TEXTURE:
-      ui->type_color->setChecked(!value.toBool());
-      ui->type_image->setChecked(value.toBool());
+    case OPT_CUSTOMIZATION:
+    {
+      SkinDrawer::CustomizationType type = (SkinDrawer::CustomizationType)value.toInt();
+      ui->use_customization->setChecked(type != SkinDrawer::CT_NONE);
+      if (type != SkinDrawer::CT_NONE) {
+        ui->type_color->setChecked(type == SkinDrawer::CT_COLOR);
+        ui->type_image->setChecked(type == SkinDrawer::CT_TEXTURE);
+      } else {
+        ui->type_color->setChecked(last_customization_ == (int)SkinDrawer::CT_COLOR);
+        ui->type_image->setChecked(last_customization_ == (int)SkinDrawer::CT_TEXTURE);
+      }
       break;
+    }
 
     case  OPT_PLUGINS:
       for (int i = 0; i < ui->plugins_list->count(); i++) {
@@ -176,6 +193,17 @@ void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
   emit OptionChanged(OPT_PLUGINS, active_plugins_);
 }
 
+void SettingsDialog::SaveState() {
+  QSettings settings;
+  settings.setValue(OPT_LAST_CUSTOMIZATION_KEY, last_customization_);
+}
+
+void SettingsDialog::LoadState() {
+  QSettings settings;
+  last_customization_ = settings.value(OPT_LAST_CUSTOMIZATION_KEY,
+                                       GetDefaultValue(OPT_CUSTOMIZATION)).toInt();
+}
+
 void SettingsDialog::on_stay_on_top_toggled(bool checked) {
   emit OptionChanged(OPT_STAY_ON_TOP, checked);
 }
@@ -212,8 +240,9 @@ void SettingsDialog::on_sel_color_btn_clicked() {
   QColor color = QColorDialog::getColor(last_color_, this);
   if (color.isValid()) {
     emit OptionChanged(OPT_COLOR, color);
-    emit OptionChanged(OPT_USE_TEXTURE, false);
+    emit OptionChanged(OPT_CUSTOMIZATION, SkinDrawer::CT_COLOR);
     last_color_ = color;
+    last_customization_ = SkinDrawer::CT_COLOR;
   }
 }
 
@@ -223,19 +252,22 @@ void SettingsDialog::on_sel_image_btn_clicked() {
                     tr("Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)"));
   if (!texture.isEmpty()) {
     emit OptionChanged(OPT_TEXTURE, texture);
-    emit OptionChanged(OPT_USE_TEXTURE, true);
+    emit OptionChanged(OPT_CUSTOMIZATION, SkinDrawer::CT_TEXTURE);
     last_txd_path_ = QFileInfo(texture).absolutePath();
+    last_customization_ = SkinDrawer::CT_TEXTURE;
   }
 }
 
 void SettingsDialog::on_type_color_toggled(bool checked) {
   if (!checked) return;
-  emit OptionChanged(OPT_USE_TEXTURE, false);
+  emit OptionChanged(OPT_CUSTOMIZATION, SkinDrawer::CT_COLOR);
   emit OptionChanged(OPT_COLOR, last_color_);
 }
 
 void SettingsDialog::on_type_image_toggled(bool checked) {
-  emit OptionChanged(OPT_USE_TEXTURE, checked);
+  SkinDrawer::CustomizationType current = checked ? SkinDrawer::CT_TEXTURE : SkinDrawer::CT_COLOR;
+  emit OptionChanged(OPT_CUSTOMIZATION, current);
+  last_customization_ = (int)current;
 }
 
 void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
@@ -266,4 +298,8 @@ void SettingsDialog::on_sel_font_btn_clicked() {
 
 void SettingsDialog::on_display_am_pm_toggled(bool checked) {
   emit OptionChanged(OPT_DISPLAY_AM_PM, checked);
+}
+
+void SettingsDialog::on_use_customization_toggled(bool checked) {
+  emit OptionChanged(OPT_CUSTOMIZATION, checked ? last_customization_ : SkinDrawer::CT_NONE);
 }

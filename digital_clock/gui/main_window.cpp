@@ -60,7 +60,8 @@ void MainWindow::Init() {
   drawer_->SetTexturePerElement(settings_->GetOption(OPT_TEXTURE_PER_ELEMENT).toBool());
   drawer_->SetTextureDrawMode((SkinDrawer::DrawMode)
                               (settings_->GetOption(OPT_TEXTURE_DRAW_MODE).toInt()));
-  drawer_->SetUseTexture(settings_->GetOption(OPT_USE_TEXTURE).toBool());
+  drawer_->SetCustomizationType((SkinDrawer::CustomizationType)
+                                (settings_->GetOption(OPT_CUSTOMIZATION).toInt()));
   drawer_->SetString("88:88");
 
   active_plugins_ = settings_->GetOption(OPT_PLUGINS).toStringList();
@@ -164,8 +165,8 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       drawer_->SetTextureDrawMode((SkinDrawer::DrawMode)value.toInt());
       break;
 
-    case OPT_USE_TEXTURE:
-      drawer_->SetUseTexture(value.toBool());
+    case OPT_CUSTOMIZATION:
+      drawer_->SetCustomizationType((SkinDrawer::CustomizationType)value.toInt());
       break;
 
     case OPT_PLUGINS:
