@@ -90,7 +90,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="../resources/resources.qrc">:/images/award.gif</pixmap>
+      <pixmap resource="../digital_clock.qrc">:/about_dialog/award.gif</pixmap>
      </property>
     </widget>
    </item>
@@ -183,7 +183,7 @@
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="../resources/resources.qrc">:/about_dialog/about_dialog/wmz-16.png</pixmap>
+           <pixmap resource="../digital_clock.qrc">:/about_dialog/wmz.png</pixmap>
           </property>
          </widget>
         </item>
@@ -229,7 +229,7 @@
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="../resources/resources.qrc">:/about_dialog/about_dialog/wme-16.png</pixmap>
+           <pixmap resource="../digital_clock.qrc">:/about_dialog/wme.png</pixmap>
           </property>
          </widget>
         </item>
@@ -275,7 +275,7 @@
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap resource="../resources/resources.qrc">:/about_dialog/about_dialog/wmr-16.png</pixmap>
+           <pixmap resource="../digital_clock.qrc">:/about_dialog/wmr.png</pixmap>
           </property>
          </widget>
         </item>
@@ -354,7 +354,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../resources/resources.qrc"/>
+  <include location="../digital_clock.qrc"/>
  </resources>
  <connections>
   <connection>

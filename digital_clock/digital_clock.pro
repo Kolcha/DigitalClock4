@@ -39,13 +39,13 @@ FORMS    += \
     gui/about_dialog.ui
 
 RESOURCES += \
-    resources/resources.qrc
+    digital_clock.qrc
 
 TRANSLATIONS += \
     languages/digital_clock_en.ts \
     languages/digital_clock_ru.ts
 
-win32:RC_FILE = resources/resources.rc
+win32:RC_FILE = digital_clock.rc
 
 # add skin_draw library
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../skin_draw/release/ -lskin_draw

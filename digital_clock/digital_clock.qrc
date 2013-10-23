@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/default_skin">
+        <file alias="electronic/0.svg">resources/electronic/0.svg</file>
+        <file alias="electronic/1.svg">resources/electronic/1.svg</file>
+        <file alias="electronic/2.svg">resources/electronic/2.svg</file>
+        <file alias="electronic/3.svg">resources/electronic/3.svg</file>
+        <file alias="electronic/4.svg">resources/electronic/4.svg</file>
+        <file alias="electronic/5.svg">resources/electronic/5.svg</file>
+        <file alias="electronic/6.svg">resources/electronic/6.svg</file>
+        <file alias="electronic/7.svg">resources/electronic/7.svg</file>
+        <file alias="electronic/8.svg">resources/electronic/8.svg</file>
+        <file alias="electronic/9.svg">resources/electronic/9.svg</file>
+        <file alias="electronic/am.svg">resources/electronic/am.svg</file>
+        <file alias="electronic/pm.svg">resources/electronic/pm.svg</file>
+        <file alias="electronic/s1.svg">resources/electronic/s1.svg</file>
+        <file alias="electronic/s2.svg">resources/electronic/s2.svg</file>
+        <file alias="electronic/skin.ini">resources/electronic/skin.ini</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file alias="about.svg">resources/images/bubble-24.svg</file>
+        <file alias="quit.svg">resources/images/cross-24.svg</file>
+        <file alias="settings.svg">resources/images/settings-24.svg</file>
+        <file alias="clock.svg">resources/images/time-24.svg</file>
+    </qresource>
+    <qresource prefix="/about_dialog">
+        <file alias="award.gif">resources/about_dialog/softpedia_clean_award_f.gif</file>
+        <file alias="wme.png">resources/about_dialog/wme-16.png</file>
+        <file alias="wmr.png">resources/about_dialog/wmr-16.png</file>
+        <file alias="wmz.png">resources/about_dialog/wmz-16.png</file>
+    </qresource>
+</RCC>
