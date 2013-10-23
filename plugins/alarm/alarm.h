@@ -2,9 +2,12 @@
 #define ALARM_H
 
 #include <QIcon>
+#include <QPointer>
 #include <QMediaPlayer>
 #include "iclock_plugin.h"
 #include "plugin_settings.h"
+
+class SettingsDlg;
 
 class Alarm : public ITrayPlugin {
   Q_OBJECT
@@ -28,7 +31,8 @@ private:
   QWidget* parent_;
   QIcon old_icon_;
   PluginSettings* settings_;
-  QMediaPlayer* player_;
+  QPointer<QMediaPlayer> player_;
+  QPointer<SettingsDlg> dialog_;
   bool icon_changed_;
 };
 

@@ -1,12 +1,16 @@
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H
 
+#include <QPointer>
 #include "../core/clock_settings.h"
 #include "../core/plugin_manager.h"
 #include "../core/skin_manager.h"
 #include "skin_drawer.h"
 #include "digital_clock.h"
 #include "tray_control.h"
+
+class SettingsDialog;
+class AboutDialog;
 
 class MainWindow : public QWidget {
   Q_OBJECT
@@ -39,6 +43,8 @@ private:
   TrayControl* tray_control_;
   QPoint drag_position_;
   QStringList active_plugins_;
+  QPointer<SettingsDialog> settings_dlg_;
+  QPointer<AboutDialog> about_dlg_;
 };
 
 #endif // MAIN_WINDOW_H

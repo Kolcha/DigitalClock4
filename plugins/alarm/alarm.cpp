@@ -8,7 +8,6 @@
 Alarm::Alarm() {
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   icon_changed_ = false;
-  player_ = 0;
 }
 
 void Alarm::Init(QSystemTrayIcon* tray_icon, QWidget* parent) {
@@ -72,24 +71,27 @@ void Alarm::Stop() {
   if (player_) {
     if (player_->state() == QMediaPlayer::PlayingState) player_->stop();
     delete player_;
-    player_ = 0;
   }
 }
 
 void Alarm::Configure() {
-  SettingsDlg* dialog = new SettingsDlg(parent_);
-  // load current settings to dialog
-  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
-        dialog, SLOT(SettingsListener(QString,QVariant)));
-  settings_->TrackChanges(true);
-  settings_->Load();
-  settings_->TrackChanges(false);
-  // connect main signals/slots
-  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
-          settings_, SLOT(SetOption(QString,QVariant)));
-  connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
-  connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
-  dialog->show();
+  if (dialog_) {
+    dialog_->activateWindow();
+  } else {
+    dialog_ = new SettingsDlg(parent_);
+    // load current settings to dialog
+    connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
+          dialog_, SLOT(SettingsListener(QString,QVariant)));
+    settings_->TrackChanges(true);
+    settings_->Load();
+    settings_->TrackChanges(false);
+    // connect main signals/slots
+    connect(dialog_, SIGNAL(OptionChanged(QString,QVariant)),
+            settings_, SLOT(SetOption(QString,QVariant)));
+    connect(dialog_, SIGNAL(accepted()), settings_, SLOT(Save()));
+    connect(dialog_, SIGNAL(rejected()), settings_, SLOT(Load()));
+    dialog_->show();
+  }
 }
 
 void Alarm::TimeUpdateListener(const QString&) {
