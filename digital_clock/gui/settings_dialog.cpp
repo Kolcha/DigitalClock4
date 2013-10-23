@@ -16,7 +16,6 @@ SettingsDialog::SettingsDialog(QWidget* parent)
   setWindowIcon(QIcon(":/images/settings.svg"));
 
   connect(this, SIGNAL(accepted()), this, SLOT(SaveState()));
-  connect(this, SIGNAL(rejected()), this, SLOT(LoadState()));
 
   LoadState();
 }
@@ -285,6 +284,7 @@ void SettingsDialog::on_use_skin_toggled(bool checked) {
 
 void SettingsDialog::on_use_font_toggled(bool checked) {
   emit OptionChanged(OPT_USE_FONT, checked);
+  if (checked) ui->use_customization->setChecked(true);
 }
 
 void SettingsDialog::on_sel_font_btn_clicked() {

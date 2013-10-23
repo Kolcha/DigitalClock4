@@ -164,6 +164,9 @@
             <property name="text">
              <string>use skin customization (change color or apply texture)</string>
             </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
          </layout>
@@ -736,22 +739,6 @@
     <hint type="destinationlabel">
      <x>37</x>
      <y>163</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>use_font</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>texture_group</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>80</x>
-     <y>311</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>288</x>
-     <y>332</y>
     </hint>
    </hints>
   </connection>
