@@ -24,7 +24,7 @@ enum Options {
   OPT_TEXTURE,                  /*!< path to texture file, QString, path to image file */
   OPT_TEXTURE_PER_ELEMENT,      /*!< apply texture per element flag, bool, true/false */
   OPT_TEXTURE_DRAW_MODE,        /*!< texture draw mode, @see DrawMode, DM_STRETCH/DM_TILE */
-  OPT_USE_TEXTURE               /*!< use texture instead of solid color flag, bool, true/false */
+  OPT_CUSTOMIZATION             /*!< customization type, int, CT_NONE, CT_COLOR, CT_TEXTURE */
 };
 
 /*! Get default value for specified option.

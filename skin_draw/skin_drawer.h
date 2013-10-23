@@ -15,6 +15,7 @@ public:
   ~SkinDrawer();
 
   enum DrawMode {DM_STRETCH, DM_TILE};
+  enum CustomizationType {CT_NONE, CT_COLOR, CT_TEXTURE};
 
 signals:
   void DrawingFinished(const QImage& result);
@@ -29,7 +30,7 @@ public slots:
   bool SetTexture(const QString& filename);
   void SetTexturePerElement(bool set);
   void SetTextureDrawMode(DrawMode mode);
-  void SetUseTexture(bool set);
+  void SetCustomizationType(CustomizationType type);
   void SetPreviewMode(bool set);
 
 private:
@@ -40,11 +41,11 @@ private:
   qreal zoom_;
   QPixmap texture_;
   bool txd_per_elem_;
-  bool use_txd_;
   DrawMode txd_draw_mode_;
   bool preview_mode_;
   QString txd_file_;
   QColor color_;
+  CustomizationType cust_type_;
 };
 
 #endif // SKIN_DRAWER_H

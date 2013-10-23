@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>533</width>
-    <height>381</height>
+    <height>387</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -159,6 +159,16 @@
             </property>
            </widget>
           </item>
+          <item row="2" column="0" colspan="3">
+           <widget class="QCheckBox" name="use_customization">
+            <property name="text">
+             <string>use skin customization (change color or apply texture)</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -287,13 +297,6 @@
           <string>Texture</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="txd_per_elem">
-            <property name="text">
-             <string>texture per element</string>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0">
            <widget class="QGroupBox" name="txd_type_group">
             <property name="title">
@@ -373,6 +376,13 @@
               </widget>
              </item>
             </layout>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QCheckBox" name="txd_per_elem">
+            <property name="text">
+             <string>texture per element</string>
+            </property>
            </widget>
           </item>
          </layout>
@@ -520,7 +530,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>482</x>
-     <y>95</y>
+     <y>89</y>
     </hint>
    </hints>
   </connection>
@@ -532,11 +542,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>458</x>
-     <y>133</y>
+     <y>121</y>
     </hint>
     <hint type="destinationlabel">
      <x>482</x>
-     <y>133</y>
+     <y>121</y>
     </hint>
    </hints>
   </connection>
@@ -595,8 +605,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>81</x>
-     <y>302</y>
+     <x>93</x>
+     <y>321</y>
     </hint>
     <hint type="destinationlabel">
      <x>252</x>
@@ -615,8 +625,8 @@
      <y>218</y>
     </hint>
     <hint type="destinationlabel">
-     <x>36</x>
-     <y>242</y>
+     <x>58</x>
+     <y>255</y>
     </hint>
    </hints>
   </connection>
@@ -643,8 +653,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>61</x>
-     <y>215</y>
+     <x>83</x>
+     <y>232</y>
     </hint>
     <hint type="destinationlabel">
      <x>61</x>
@@ -675,8 +685,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>78</x>
-     <y>213</y>
+     <x>91</x>
+     <y>232</y>
     </hint>
     <hint type="destinationlabel">
      <x>92</x>
@@ -697,6 +707,38 @@
     <hint type="destinationlabel">
      <x>89</x>
      <y>283</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_customization</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>texture_group</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>293</x>
+     <y>169</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>297</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_font</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>use_customization</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>35</x>
+     <y>310</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>37</x>
+     <y>163</y>
     </hint>
    </hints>
   </connection>

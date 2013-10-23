@@ -18,7 +18,7 @@ void GetOptionsKeys(QMap<Options, QString>& opt_map) {
   opt_map[OPT_TEXTURE]              = "skin/texture";
   opt_map[OPT_TEXTURE_PER_ELEMENT]  = "skin/texture_per_element";
   opt_map[OPT_TEXTURE_DRAW_MODE]    = "skin/texture_draw_mode";
-  opt_map[OPT_USE_TEXTURE]          = "skin/use_texture";
+  opt_map[OPT_CUSTOMIZATION]        = "skin/customization";
 }
 
 ClockSettings::ClockSettings(QObject* parent)

@@ -9,6 +9,7 @@ SkinDrawer::SkinDrawer(QObject* parent)
   zoom_ = 1.0;
   txd_per_elem_ = false;
   preview_mode_ = false;
+  cust_type_ = CT_COLOR;
 }
 
 SkinDrawer::~SkinDrawer() {
@@ -48,7 +49,7 @@ void SkinDrawer::SetZoom(qreal new_zoom) {
 bool SkinDrawer::SetColor(const QColor& new_color) {
   if (!new_color.isValid()) return false;
   color_ = new_color;
-  if (use_txd_) return false;
+  if (cust_type_ != CT_COLOR) return false;
   texture_.fill(new_color);
   Redraw();
   return true;
@@ -57,7 +58,7 @@ bool SkinDrawer::SetColor(const QColor& new_color) {
 bool SkinDrawer::SetTexture(const QString& filename) {
   if (!QFile::exists(filename)) return false;
   txd_file_ = filename;
-  if (!use_txd_) return false;
+  if (cust_type_ != CT_TEXTURE) return false;
   texture_.load(filename);
   Redraw();
   return true;
@@ -73,9 +74,21 @@ void SkinDrawer::SetTextureDrawMode(SkinDrawer::DrawMode mode) {
   Redraw();
 }
 
-void SkinDrawer::SetUseTexture(bool set) {
-  use_txd_ = set;
-  if (!set || !SetTexture(txd_file_)) SetColor(color_);
+void SkinDrawer::SetCustomizationType(CustomizationType type) {
+  cust_type_ = type;
+  switch (type) {
+    case CT_NONE:
+      Redraw();
+      break;
+
+    case CT_COLOR:
+      if (!SetColor(color_)) SetCustomizationType(CT_NONE);
+      break;
+
+    case CT_TEXTURE:
+      if (!SetTexture(txd_file_)) SetCustomizationType(CT_COLOR);
+      break;
+  }
 }
 
 void SkinDrawer::SetPreviewMode(bool set) {
@@ -113,13 +126,13 @@ void SkinDrawer::Redraw() {
     // draw mask
     if (!elem) continue;
     painter.drawPixmap(x, 0, *elem);
-    if (txd_per_elem_) {
+    if (txd_per_elem_ && cust_type_ != CT_NONE) {
       // draw texture
       DrawTexture(painter, QRect(x, 0, elem->width(), elem->height()));
     }
     x += elem->width() + space;
   }
-  if (!txd_per_elem_) {
+  if (!txd_per_elem_ && cust_type_ != CT_NONE) {
     // draw texture
     DrawTexture(painter, result.rect());
   }

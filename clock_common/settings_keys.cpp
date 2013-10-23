@@ -22,7 +22,7 @@ QVariant GetDefaultValue(Options opt) {
     case OPT_TEXTURE:               return QString();
     case OPT_TEXTURE_PER_ELEMENT:   return false;
     case OPT_TEXTURE_DRAW_MODE:     return 0;
-    case OPT_USE_TEXTURE:           return false;
+    case OPT_CUSTOMIZATION:         return 1;
     default:                        return QVariant();
   }
 }
