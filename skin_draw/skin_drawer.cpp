@@ -5,34 +5,15 @@
 
 SkinDrawer::SkinDrawer(QObject* parent)
   : QObject(parent), texture_(8, 8) {
-  skin_ = 0;
   zoom_ = 1.0;
   txd_per_elem_ = false;
   preview_mode_ = false;
   cust_type_ = CT_COLOR;
+  space_ = 4;
 }
 
-SkinDrawer::~SkinDrawer() {
-  delete skin_;
-}
-
-void SkinDrawer::LoadSkin(const QDir& skin_root) {
-  delete skin_;
-  skin_ = CreateSkin(skin_root);
-  if (!skin_) return;
-  TSkinInfo info;
-  skin_->GetInfo(&info);
-  emit LoadedSkinInfo(info);
-  Redraw();
-}
-
-void SkinDrawer::LoadSkin(const QFont& font) {
-  delete skin_;
-  skin_ = CreateSkin(font);
-  if (!skin_) return;
-  TSkinInfo info;
-  skin_->GetInfo(&info);
-  emit LoadedSkinInfo(info);
+void SkinDrawer::ApplySkin(ClockSkinPtr skin) {
+  skin_ = skin;
   Redraw();
 }
 
@@ -91,6 +72,11 @@ void SkinDrawer::SetCustomizationType(CustomizationType type) {
   }
 }
 
+void SkinDrawer::SetSpace(int new_space) {
+  space_ = new_space;
+  Redraw();
+}
+
 void SkinDrawer::SetPreviewMode(bool set) {
   preview_mode_ = set;
 }
@@ -111,8 +97,7 @@ void SkinDrawer::Redraw() {
     result_h = qMax(result_h, elem->height());
   }
   // leave some space between images
-  int space = 4;
-  result_w += space * (str_.length() - 1);
+  result_w += space_ * (str_.length() - 1);
 
   // create result image
   QImage result(result_w, result_h, QImage::Format_ARGB32_Premultiplied);
@@ -130,7 +115,7 @@ void SkinDrawer::Redraw() {
       // draw texture
       DrawTexture(painter, QRect(x, 0, elem->width(), elem->height()));
     }
-    x += elem->width() + space;
+    x += elem->width() + space_;
   }
   if (!txd_per_elem_ && cust_type_ != CT_NONE) {
     // draw texture

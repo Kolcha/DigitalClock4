@@ -10,6 +10,7 @@
 #include <QPixmap>
 #include <QSharedPointer>
 
+// TODO: add comments
 // skin info fields
 enum FSkinInfo {
   SI_NAME,        // skin name
@@ -31,7 +32,10 @@ public:
   virtual QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache) = 0;
 };
 
-SKIN_DRAWSHARED_EXPORT IClockSkin* CreateSkin(const QDir& skin_root);
-SKIN_DRAWSHARED_EXPORT IClockSkin* CreateSkin(const QFont& font);
+typedef QSharedPointer<IClockSkin> ClockSkinPtr;
+
+// TODO: move other file
+SKIN_DRAWSHARED_EXPORT ClockSkinPtr CreateSkin(const QDir& skin_root);
+SKIN_DRAWSHARED_EXPORT ClockSkinPtr CreateSkin(const QFont& font);
 
 #endif // ICLOCK_SKIN_H
