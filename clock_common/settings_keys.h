@@ -15,9 +15,7 @@ enum Options {
   OPT_DISPLAY_AM_PM,            /*!< display AM/PM symbol, bool, true/false */
   OPT_PLUGINS,                  /*!< plugins to load, QStringList, list of plugin names */
   // skin settings
-  OPT_USE_SKIN,                 /*!< use skin instead of font, bool, true/false */
   OPT_SKIN_NAME,                /*!< skin name to use, QString, skin name */
-  OPT_USE_FONT,                 /*!< use font instead of skin, bool, true/false */
   OPT_FONT,                     /*!< font to use, QFont, any available font */
   OPT_ZOOM,                     /*!< clock zoom, qreal, > 0 */
   OPT_COLOR,                    /*!< clock color (if texture is not used), QColor, any color */

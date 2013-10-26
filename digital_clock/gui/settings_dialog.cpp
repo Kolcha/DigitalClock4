@@ -46,18 +46,10 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       ui->display_am_pm->setChecked(value.toBool());
       break;
 
-    case OPT_USE_SKIN:
-      ui->use_skin->setChecked(value.toBool());
-      ui->use_font->setChecked(!value.toBool());
-      break;
-
     case OPT_SKIN_NAME:
       ui->skin_box->setCurrentText(value.toString());
-      break;
-
-    case OPT_USE_FONT:
-      ui->use_font->setChecked(value.toBool());
-      ui->use_skin->setChecked(!value.toBool());
+      ui->use_skin->setChecked(value.toString() != "Text Skin");
+      ui->use_font->setChecked(value.toString() == "Text Skin");
       break;
 
     case OPT_FONT:
@@ -279,12 +271,15 @@ void SettingsDialog::on_plugins_list_currentItemChanged(
 }
 
 void SettingsDialog::on_use_skin_toggled(bool checked) {
-  emit OptionChanged(OPT_USE_SKIN, checked);
+  if (checked)
+    emit OptionChanged(OPT_SKIN_NAME, ui->skin_box->currentText());
 }
 
 void SettingsDialog::on_use_font_toggled(bool checked) {
-  emit OptionChanged(OPT_USE_FONT, checked);
-  if (checked) ui->use_customization->setChecked(true);
+  if (checked) {
+    emit OptionChanged(OPT_SKIN_NAME, "Text Skin");
+    ui->use_customization->setChecked(true);
+  }
 }
 
 void SettingsDialog::on_sel_font_btn_clicked() {

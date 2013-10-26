@@ -13,9 +13,7 @@ QVariant GetDefaultValue(Options opt) {
     case OPT_DISPLAY_AM_PM:         return false;
     case OPT_PLUGINS:               return QStringList("Test plugin");
     // skin settings
-    case OPT_USE_SKIN:              return true;
     case OPT_SKIN_NAME:             return QString("Electronic (default)");
-    case OPT_USE_FONT:              return false;
     case OPT_FONT:                  return QFont();
     case OPT_ZOOM:                  return 1.25;
     case OPT_COLOR:                 return QVariant::fromValue<QColor>(Qt::blue);

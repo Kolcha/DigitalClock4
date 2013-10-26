@@ -46,6 +46,7 @@ void SkinManager::ListSkins() {
 }
 
 void SkinManager::LoadSkin(const QString& skin_name) {
+  loaded_skin_ = skin_name;
   ISkin::ClockSkinPtr skin;
   if (skin_name == "Text Skin") {
     skin = CreateSkin(font_);
@@ -61,5 +62,6 @@ void SkinManager::LoadSkin(const QString& skin_name) {
 
 void SkinManager::SetFont(const QFont& font) {
   font_ = font;
-  LoadSkin("Text Skin");
+  // update text skin if needed
+  if (loaded_skin_ == "Text Skin") LoadSkin("Text Skin");
 }

@@ -27,6 +27,7 @@ private:
   QList<QDir> skin_dirs_;
   QMap<QString, QDir> skins_;
   QFont font_;
+  QString loaded_skin_;
 };
 
 #endif // SKIN_MANAGER_H

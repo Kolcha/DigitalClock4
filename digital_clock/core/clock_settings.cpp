@@ -9,9 +9,7 @@ void GetOptionsKeys(QMap<Options, QString>& opt_map) {
   opt_map[OPT_DISPLAY_AM_PM]        = "clock/display_am_pm";
   opt_map[OPT_PLUGINS]              = "clock/plugins";
   // skin settings
-  opt_map[OPT_USE_SKIN]             = "skin/use_skin";
   opt_map[OPT_SKIN_NAME]            = "skin/name";
-  opt_map[OPT_USE_FONT]             = "skin/use_font";
   opt_map[OPT_FONT]                 = "skin/font";
   opt_map[OPT_ZOOM]                 = "skin/zoom";
   opt_map[OPT_COLOR]                = "skin/color";
