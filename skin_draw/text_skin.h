@@ -16,10 +16,6 @@ public:
    * @param font - font to use
    */
   explicit TextSkin(const QFont& font);
-  /*!
-   * Load skins data (such as info or images).
-   */
-  virtual void LoadData();
 
 protected:
   /*!

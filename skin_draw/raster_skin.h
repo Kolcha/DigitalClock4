@@ -21,7 +21,7 @@ protected:
    * @return pointer to resized image
    */
   QPixmapPtr ResizeImage(QChar ch, qreal zoom);
-  /// Map with original images. This must be filled in LoadData() method.
+  /// map with original images
   QMap<QChar, QPixmap> orig_images_;
 };
 

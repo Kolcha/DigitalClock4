@@ -44,11 +44,6 @@ public:
    * @return pointer to result image
    */
   virtual QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache) = 0;
-  /*!
-   * Load skins data (such as info or images).
-   * @note skin type specific method
-   */
-  virtual void LoadData() = 0;
 };
 
 #endif // ICLOCK_SKIN_H

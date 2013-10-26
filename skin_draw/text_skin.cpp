@@ -3,9 +3,6 @@
 #include "text_skin.h"
 
 TextSkin::TextSkin(const QFont& font) : font_(font) {
-}
-
-void TextSkin::LoadData() {
   // set skin info
   info_[SI_NAME] = "Text Skin";
   info_[SI_VERSION] = "1.0";
