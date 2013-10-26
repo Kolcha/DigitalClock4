@@ -9,7 +9,7 @@
  *
  * TextSkin class implements logic to create skin object from any font.
  */
-class TextSkin : public BaseSkin {
+class SKIN_DRAWSHARED_EXPORT TextSkin : public BaseSkin {
 public:
   /*!
    * Constructor.

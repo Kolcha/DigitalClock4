@@ -12,7 +12,7 @@
  *  - if try to request image with different zoom than cache has and try to add it to cache,
  * cache will be cleared and current skin zoom will be updated
  */
-class BaseSkin : public IClockSkin {
+class SKIN_DRAWSHARED_EXPORT BaseSkin : public IClockSkin {
 public:
   /*! Constructor. */
   BaseSkin();

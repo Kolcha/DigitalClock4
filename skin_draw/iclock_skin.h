@@ -5,13 +5,14 @@
 #include <QString>
 #include <QPixmap>
 #include <QSharedPointer>
+#include "skin_draw_global.h"
 
 /*!
  * @brief The IClockSkin class.
  *
  * Clock skin interface.
  */
-class IClockSkin {
+class SKIN_DRAWSHARED_EXPORT IClockSkin {
 public:
   /*! Virtual destructor. */
   virtual ~IClockSkin() {}

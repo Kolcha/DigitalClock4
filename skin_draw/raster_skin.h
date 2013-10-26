@@ -8,7 +8,7 @@
  *
  * RasterSkin class implements resize logic for raster images.
  */
-class RasterSkin : public BaseSkin {
+class SKIN_DRAWSHARED_EXPORT RasterSkin : public BaseSkin {
 public:
   /*! Virtual destructor. */
   virtual ~RasterSkin();

@@ -8,7 +8,7 @@
  *
  * VectorSkin class implements resize logic for vector images. Only SVG is supported.
  */
-class VectorSkin : public BaseSkin {
+class SKIN_DRAWSHARED_EXPORT VectorSkin : public BaseSkin {
 public:
   /*! Virtual destructor. */
   virtual ~VectorSkin();
