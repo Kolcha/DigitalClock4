@@ -53,8 +53,13 @@ void SkinManager::LoadSkin(const QString& skin_name) {
     skin = CreateSkin(skins_[skin_name]);
   }
   emit SkinLoaded(skin);
+  // get skin info
+  IClockSkin::TSkinInfo info;
+  if (skin) info = skin->GetInfo();
+  emit SkinInfoLoaded(info);
 }
 
 void SkinManager::SetFont(const QFont& font) {
   font_ = font;
+  LoadSkin("Text Skin");
 }

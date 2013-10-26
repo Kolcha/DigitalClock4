@@ -51,9 +51,11 @@ void MainWindow::Init() {
   d_clock_->SetSeparatorFlash(settings_->GetOption(OPT_SEPARATOR_FLASH).toBool());
   d_clock_->SetDisplayAMPM(settings_->GetOption(OPT_DISPLAY_AM_PM).toBool());
   if (settings_->GetOption(OPT_USE_SKIN).toBool())
-    skin_manager_->FindSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
-  if (settings_->GetOption(OPT_USE_FONT).toBool())
-    drawer_->LoadSkin(settings_->GetOption(OPT_FONT).value<QFont>());
+    skin_manager_->LoadSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
+  if (settings_->GetOption(OPT_USE_FONT).toBool()) {
+    skin_manager_->SetFont(settings_->GetOption(OPT_FONT).value<QFont>());
+    skin_manager_->LoadSkin("Text Skin");
+  }
   drawer_->SetZoom(settings_->GetOption(OPT_ZOOM).toReal());
   drawer_->SetColor(settings_->GetOption(OPT_COLOR).value<QColor>());
   drawer_->SetTexture(settings_->GetOption(OPT_TEXTURE).toString());
@@ -127,22 +129,26 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
 
     case OPT_USE_SKIN:
       if (value.toBool())
-        skin_manager_->FindSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
+        skin_manager_->LoadSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
       break;
 
     case OPT_SKIN_NAME:
       if (settings_->GetOption(OPT_USE_SKIN).toBool())
-        skin_manager_->FindSkin(value.toString());
+        skin_manager_->LoadSkin(value.toString());
       break;
 
     case OPT_USE_FONT:
-      if (value.toBool())
-        drawer_->LoadSkin(settings_->GetOption(OPT_FONT).value<QFont>());
+      if (value.toBool()) {
+        skin_manager_->SetFont(settings_->GetOption(OPT_FONT).value<QFont>());
+        skin_manager_->LoadSkin("Text Skin");
+      }
       break;
 
     case OPT_FONT:
-      if (settings_->GetOption(OPT_USE_FONT).toBool())
-        drawer_->LoadSkin(value.value<QFont>());
+      if (settings_->GetOption(OPT_USE_FONT).toBool()) {
+        skin_manager_->SetFont(value.value<QFont>());
+        skin_manager_->LoadSkin("Text Skin");
+      }
       break;
 
     case OPT_ZOOM:
@@ -194,8 +200,8 @@ void MainWindow::ShowSettingsDialog() {
     connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
             settings_dlg_, SLOT(SetSkinList(QStringList)));
     skin_manager_->ListSkins();
-    connect(drawer_, SIGNAL(LoadedSkinInfo(TSkinInfo)),
-            settings_dlg_, SLOT(DisplaySkinInfo(TSkinInfo)));
+    connect(skin_manager_, SIGNAL(SkinInfoLoaded(IClockSkin::TSkinInfo)),
+            settings_dlg_, SLOT(DisplaySkinInfo(IClockSkin::TSkinInfo)));
     connect(plugin_manager_, SIGNAL(SearchFinished(QList<QPair<QString,bool> >)),
             settings_dlg_, SLOT(SetPluginsList(QList<QPair<QString,bool> >)));
     connect(settings_dlg_, SIGNAL(PluginInfoRequest(QString)),
@@ -248,7 +254,8 @@ void MainWindow::DisplayMenu(const QPoint& pos) {
 void MainWindow::ConnectAll() {
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
           this, SLOT(SettingsListener(Options,QVariant)));
-  connect(skin_manager_, SIGNAL(SkinFound(QDir)), drawer_, SLOT(LoadSkin(QDir)));
+  connect(skin_manager_, SIGNAL(SkinLoaded(IClockSkin::ClockSkinPtr)),
+          drawer_, SLOT(ApplySkin(IClockSkin::ClockSkinPtr)));
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), d_clock_, SLOT(DrawImage(QImage)));
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(tray_control_, SIGNAL(ShowSettingsDlg()), this, SLOT(ShowSettingsDialog()));

@@ -13,7 +13,7 @@ ClockRasterSkin::ClockRasterSkin(const QDir& skin_root) {
   for (int i = 0; i < 10; ++i) {
     QString key = QString::number(i);
     orig_images_[key[0]] = QPixmap(skin_root.filePath(
-                                     config.value("files/" + key, , "invalid").toString()));
+                                     config.value("files/" + key, "invalid").toString()));
   }
   orig_images_[':'] = QPixmap(skin_root.filePath(config.value("files/s1", "invalid").toString()));
   orig_images_[' '] = QPixmap(skin_root.filePath(config.value("files/s2", "invalid").toString()));
