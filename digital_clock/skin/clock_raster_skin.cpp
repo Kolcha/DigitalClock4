@@ -19,4 +19,6 @@ ClockRasterSkin::ClockRasterSkin(const QDir& skin_root) {
   orig_images_[' '] = QPixmap(skin_root.filePath(config.value("files/s2", "invalid").toString()));
   orig_images_['a'] = QPixmap(skin_root.filePath(config.value("files/am", "invalid").toString()));
   orig_images_['p'] = QPixmap(skin_root.filePath(config.value("files/pm", "invalid").toString()));
+  orig_images_['A'] = orig_images_['a'];
+  orig_images_['P'] = orig_images_['p'];
 }

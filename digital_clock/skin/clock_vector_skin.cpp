@@ -18,4 +18,6 @@ ClockVectorSkin::ClockVectorSkin(const QDir& skin_root) {
   image_files_[' '] = skin_root.filePath(config.value("files/s2", "invalid").toString());
   image_files_['a'] = skin_root.filePath(config.value("files/am", "invalid").toString());
   image_files_['p'] = skin_root.filePath(config.value("files/pm", "invalid").toString());
+  image_files_['A'] = image_files_['a'];
+  image_files_['P'] = image_files_['p'];
 }
