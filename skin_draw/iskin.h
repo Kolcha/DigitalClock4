@@ -1,5 +1,5 @@
-#ifndef ICLOCK_SKIN_H
-#define ICLOCK_SKIN_H
+#ifndef ISKIN_H
+#define ISKIN_H
 
 #include <QMap>
 #include <QString>
@@ -8,14 +8,14 @@
 #include "skin_draw_global.h"
 
 /*!
- * @brief The IClockSkin class.
+ * @brief The ISkin class.
  *
- * Clock skin interface.
+ * Skin interface.
  */
-class SKIN_DRAWSHARED_EXPORT IClockSkin {
+class SKIN_DRAWSHARED_EXPORT ISkin {
 public:
   /*! Virtual destructor. */
-  virtual ~IClockSkin() {}
+  virtual ~ISkin() {}
 
   /*! skin info fields */
   enum FSkinInfo {
@@ -28,7 +28,7 @@ public:
   /// skin info type
   typedef QMap<FSkinInfo, QString> TSkinInfo;
   /// clock skin pointer type
-  typedef QSharedPointer<IClockSkin> ClockSkinPtr;
+  typedef QSharedPointer<ISkin> ClockSkinPtr;
   /// QPixmap shared pointer type
   typedef QSharedPointer<QPixmap> QPixmapPtr;
 
@@ -47,4 +47,4 @@ public:
   virtual QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache) = 0;
 };
 
-#endif // ICLOCK_SKIN_H
+#endif // ISKIN_H

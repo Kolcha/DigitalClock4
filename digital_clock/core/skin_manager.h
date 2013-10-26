@@ -4,7 +4,7 @@
 #include <QDir>
 #include <QString>
 #include <QFont>
-#include "iclock_skin.h"
+#include "iskin.h"
 
 class SkinManager : public QObject {
   Q_OBJECT
@@ -13,8 +13,8 @@ public:
 
 signals:
   void SearchFinished(const QStringList& skins);
-  void SkinLoaded(IClockSkin::ClockSkinPtr skin);
-  void SkinInfoLoaded(const IClockSkin::TSkinInfo& info);
+  void SkinLoaded(ISkin::ClockSkinPtr skin);
+  void SkinInfoLoaded(const ISkin::TSkinInfo& info);
 
 public slots:
   void AddSkinDir(const QDir& dir);

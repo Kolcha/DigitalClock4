@@ -6,11 +6,11 @@ BaseSkin::BaseSkin() : cached_zoom_(1.0) {
 BaseSkin::~BaseSkin() {
 }
 
-const IClockSkin::TSkinInfo& BaseSkin::GetInfo() const {
+const ISkin::TSkinInfo& BaseSkin::GetInfo() const {
   return info_;
 }
 
-IClockSkin::QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
+ISkin::QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
   QPixmapPtr result;
   if (zoom == cached_zoom_) {
     result = image_cache_[ch];

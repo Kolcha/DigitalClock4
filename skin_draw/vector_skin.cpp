@@ -6,7 +6,7 @@
 VectorSkin::~VectorSkin() {
 }
 
-IClockSkin::QPixmapPtr VectorSkin::ResizeImage(QChar ch, qreal zoom) {
+ISkin::QPixmapPtr VectorSkin::ResizeImage(QChar ch, qreal zoom) {
   QString& img_file = image_files_[ch];
   if (!QFile::exists(img_file)) return QPixmapPtr();
 

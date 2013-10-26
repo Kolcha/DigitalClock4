@@ -1,7 +1,7 @@
 #ifndef BASE_SKIN_H
 #define BASE_SKIN_H
 
-#include "iclock_skin.h"
+#include "iskin.h"
 
 /*!
  * @brief The BaseSkin class.
@@ -12,7 +12,7 @@
  *  - if try to request image with different zoom than cache has and try to add it to cache,
  * cache will be cleared and current skin zoom will be updated
  */
-class SKIN_DRAWSHARED_EXPORT BaseSkin : public IClockSkin {
+class SKIN_DRAWSHARED_EXPORT BaseSkin : public ISkin {
 public:
   /*! Constructor. */
   BaseSkin();

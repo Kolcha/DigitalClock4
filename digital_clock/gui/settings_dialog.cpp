@@ -124,27 +124,27 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
   ui->skin_box->addItems(skins);
 }
 
-void SettingsDialog::DisplaySkinInfo(const IClockSkin::TSkinInfo& info) {
-  if (info[IClockSkin::SI_NAME] == "Text Skin") return;
+void SettingsDialog::DisplaySkinInfo(const ISkin::TSkinInfo& info) {
+  if (info[ISkin::SI_NAME] == "Text Skin") return;
   for (auto i = info.begin(); i != info.end(); ++i) {
     switch (i.key()) {
-      case IClockSkin::SI_NAME:
+      case ISkin::SI_NAME:
         ui->skin_box->setCurrentText(i.value());
         break;
 
-      case IClockSkin::SI_VERSION:
+      case ISkin::SI_VERSION:
         ui->version_value->setText(i.value());
         break;
 
-      case IClockSkin::SI_AUTHOR:
+      case ISkin::SI_AUTHOR:
         ui->author_value->setText(i.value());
         break;
 
-      case IClockSkin::SI_EMAIL:
+      case ISkin::SI_EMAIL:
         ui->email_value->setText(i.value());
         break;
 
-      case IClockSkin::SI_COMMENT:
+      case ISkin::SI_COMMENT:
         ui->skin_box->setToolTip(i.value());
         break;
     }
