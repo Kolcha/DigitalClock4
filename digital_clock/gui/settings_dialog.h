@@ -4,7 +4,7 @@
 #include <QListWidgetItem>
 #include "settings_keys.h"
 #include "iclock_plugin.h"
-#include "iclock_skin.h"
+#include "iskin.h"
 #include "centered_dialog.h"
 
 namespace Ui {
@@ -26,7 +26,7 @@ signals:
 public slots:
   void SettingsListener(Options opt, const QVariant& value);
   void SetSkinList(const QStringList& skins);
-  void DisplaySkinInfo(const TSkinInfo& info);
+  void DisplaySkinInfo(const ISkin::TSkinInfo& info);
   void SetPluginsList(const QList<QPair<QString,bool> >& plugins);
   void DisplayPluginInfo(const TPluginInfo& info);
 

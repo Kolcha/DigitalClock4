@@ -3,15 +3,26 @@
 
 #include "base_skin.h"
 
-class VectorSkin : public BaseSkin {
+/*!
+ * @brief The VectorSkin class.
+ *
+ * VectorSkin class implements resize logic for vector images. Only SVG is supported.
+ */
+class SKIN_DRAWSHARED_EXPORT VectorSkin : public BaseSkin {
 public:
-  explicit VectorSkin(const QDir& skin_root);
+  /*! Virtual destructor. */
+  virtual ~VectorSkin();
 
 protected:
-  QPixmapPtr ResizeImage(const QString& s, qreal zoom);
-
-private:
-  QMap<QString, QString> image_files_;
+  /*!
+   * Resize image for given character.
+   * @param ch - requested charater
+   * @param zoom - requested zoom
+   * @return pointer to resized image
+   */
+  QPixmapPtr ResizeImage(QChar ch, qreal zoom);
+  /// map with paths to original images
+  QMap<QChar, QString> image_files_;
 };
 
 #endif // VECTOR_SKIN_H
