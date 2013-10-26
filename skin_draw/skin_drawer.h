@@ -2,8 +2,6 @@
 #define SKIN_DRAWER_H
 
 #include "skin_draw_global.h"
-
-#include <QPixmap>
 #include "iclock_skin.h"
 
 /*!
@@ -42,7 +40,7 @@ public slots:
    * Apply skin for text.
    * @param skin - skin to apply
    */
-  void ApplySkin(ClockSkinPtr skin);
+  void ApplySkin(IClockSkin::ClockSkinPtr skin);
   /*!
    * Set string to draw.
    * @param str - string to draw
@@ -116,7 +114,7 @@ private:
    */
   void DrawTexture(QPainter& painter, const QRect& rect);
 
-  ClockSkinPtr skin_;
+  IClockSkin::ClockSkinPtr skin_;
   QString str_;
   qreal zoom_;
   QPixmap texture_;

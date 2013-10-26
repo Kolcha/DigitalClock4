@@ -13,7 +13,6 @@ DEFINES += SKIN_DRAW_LIBRARY
 
 SOURCES += skin_drawer.cpp \
     vector_skin.cpp \
-    skin_factory.cpp \
     raster_skin.cpp \
     base_skin.cpp \
     text_skin.cpp

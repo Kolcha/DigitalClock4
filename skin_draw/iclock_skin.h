@@ -35,7 +35,7 @@ public:
    * Get skin info.
    * @return skin info
    */
-  virtual const TSkinInfo& GetInfo(TSkinInfo* info) const = 0;
+  virtual const TSkinInfo& GetInfo() const = 0;
   /*!
    * Get image for specified symbol.
    * @param ch - symbol for which need to get image
@@ -44,6 +44,11 @@ public:
    * @return pointer to result image
    */
   virtual QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache) = 0;
+  /*!
+   * Load skins data (such as info or images).
+   * @note skin type specific method
+   */
+  virtual void LoadData() = 0;
 };
 
 #endif // ICLOCK_SKIN_H

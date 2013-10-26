@@ -12,7 +12,7 @@ SkinDrawer::SkinDrawer(QObject* parent)
   space_ = 4;
 }
 
-void SkinDrawer::ApplySkin(ClockSkinPtr skin) {
+void SkinDrawer::ApplySkin(IClockSkin::ClockSkinPtr skin) {
   skin_ = skin;
   Redraw();
 }
@@ -84,7 +84,7 @@ void SkinDrawer::SetPreviewMode(bool set) {
 void SkinDrawer::Redraw() {
   if (str_.isEmpty() || !skin_) return;
   // get images for all symbols
-  QList<QPixmapPtr> elements;
+  QList<IClockSkin::QPixmapPtr> elements;
   for (auto i = str_.begin(); i != str_.end(); ++i) {
     elements.push_back(skin_->GetImage(*i, zoom_, !preview_mode_));
   }
