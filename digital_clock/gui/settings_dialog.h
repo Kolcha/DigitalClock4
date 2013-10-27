@@ -55,6 +55,8 @@ private slots:
   void on_use_font_toggled(bool checked);
   void on_sel_font_btn_clicked();
   void on_use_customization_toggled(bool checked);
+  void on_apply_btn_clicked();
+  void on_system_format_clicked();
 
 private:
   Ui::SettingsDialog* ui;

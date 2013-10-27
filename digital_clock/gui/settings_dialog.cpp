@@ -9,6 +9,7 @@
 #include "ui_settings_dialog.h"
 
 #define OPT_LAST_CUSTOMIZATION_KEY   "settings_dialog/last_cutomization"
+#define OPT_LAST_TIME_FORMAT_KEY     "settings_dialog/last_time_format"
 
 SettingsDialog::SettingsDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDialog) {
@@ -41,6 +42,16 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
     case OPT_SEPARATOR_FLASH:
       ui->sep_flash->setChecked(value.toBool());
       break;
+
+    case OPT_TIME_FORMAT:
+    {
+      QString format = value.toString();
+      bool is_system = (format == QLocale::system().timeFormat());
+      if (!is_system) ui->format_box->setCurrentText(format);
+      ui->system_format->setChecked(is_system);
+      ui->custom_format->setChecked(!is_system);
+      break;
+    }
 
     case OPT_SKIN_NAME:
       ui->skin_box->setCurrentText(value.toString());
@@ -183,12 +194,15 @@ void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
 void SettingsDialog::SaveState() {
   QSettings settings;
   settings.setValue(OPT_LAST_CUSTOMIZATION_KEY, last_customization_);
+  settings.setValue(OPT_LAST_TIME_FORMAT_KEY, ui->format_box->currentText());
 }
 
 void SettingsDialog::LoadState() {
   QSettings settings;
   last_customization_ = settings.value(OPT_LAST_CUSTOMIZATION_KEY,
                                        GetDefaultValue(OPT_CUSTOMIZATION)).toInt();
+  ui->format_box->setCurrentText(settings.value(OPT_LAST_TIME_FORMAT_KEY,
+                                                GetDefaultValue(OPT_TIME_FORMAT)).toString());
 }
 
 void SettingsDialog::on_stay_on_top_toggled(bool checked) {
@@ -289,4 +303,12 @@ void SettingsDialog::on_sel_font_btn_clicked() {
 
 void SettingsDialog::on_use_customization_toggled(bool checked) {
   emit OptionChanged(OPT_CUSTOMIZATION, checked ? last_customization_ : SkinDrawer::CT_NONE);
+}
+
+void SettingsDialog::on_apply_btn_clicked() {
+  emit OptionChanged(OPT_TIME_FORMAT, ui->format_box->currentText());
+}
+
+void SettingsDialog::on_system_format_clicked() {
+  emit OptionChanged(OPT_TIME_FORMAT, QLocale::system().timeFormat());
 }
