@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="text/ecmascript" width="32" baseProfile="tiny" zoomAndPan="magnify" contentStyleType="text/css" viewBox="0 0 32 55" height="55" preserveAspectRatio="xMidYMid meet" version="1.0">
-    <rect width="32" fill="none" height="55"/>
-    <radialGradient gradientTransform="matrix(3.584 0 0 3.9793 -42.636 -83.4198)" gradientUnits="userSpaceOnUse" xlink:type="simple" r="4.4828" xlink:actuate="onLoad" cx="16.5" id="XMLID_2_" cy="28" xlink:show="other">
-        <stop stop-color="#fff3f3" offset="0"/>
-        <stop stop-color="#dcdcdc" offset="1"/>
-    </radialGradient>
-    <path fill="url(#XMLID_2_)" d="M 23.5 4.0 L 23.5 4.074 L 23.5 52.0 L 18.852 52.0 L 18.852 36.316 L 16.542002 36.316 C 16.469002 36.316 15.919002 36.242 14.890001 36.099003 C 13.865002 35.951004 12.800001 35.493004 11.702002 34.717003 C 11.628001 34.622 11.555001 34.56 11.481002 34.536003 C 11.408002 34.513004 11.371002 34.474003 11.371002 34.427 C 10.270002 33.409 9.647002 32.127003 9.500002 30.578005 L 9.500002 4.0 L 14.260002 4.0 L 14.260002 30.569 C 14.260002 31.247 14.460002 31.816 14.862002 32.275 C 15.261003 32.737003 15.755002 33.014 16.338003 33.111 L 16.556004 33.111 L 18.852003 33.111 L 18.852003 4.062 L 18.852003 4.0 L 23.5 4.0 z " stroke-width="0.25" stroke="#ffffff"/>
-</svg>
