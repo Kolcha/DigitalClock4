@@ -14,6 +14,7 @@ enum Options {
   OPT_SEPARATOR_FLASH,          /*!< is separator flashes flag, bool, true/false */
   OPT_DISPLAY_AM_PM,            /*!< display AM/PM symbol, bool, true/false */
   OPT_PLUGINS,                  /*!< plugins to load, QStringList, list of plugin names */
+  OPT_TIME_FORMAT,              /*!< time format, QString, any valid time format string */
   // skin settings
   OPT_SKIN_NAME,                /*!< skin name to use, QString, skin name */
   OPT_FONT,                     /*!< font to use, QFont, any available font */

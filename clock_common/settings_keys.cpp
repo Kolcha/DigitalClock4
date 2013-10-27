@@ -1,6 +1,7 @@
 #include <QFont>
 #include <QColor>
 #include <QStringList>
+#include <QLocale>
 #include "settings_keys.h"
 
 QVariant GetDefaultValue(Options opt) {
@@ -12,6 +13,7 @@ QVariant GetDefaultValue(Options opt) {
     case OPT_SEPARATOR_FLASH:       return true;
     case OPT_DISPLAY_AM_PM:         return false;
     case OPT_PLUGINS:               return QStringList("Test plugin");
+    case OPT_TIME_FORMAT:           return QLocale::system().timeFormat();
     // skin settings
     case OPT_SKIN_NAME:             return QString("Electronic (default)");
     case OPT_FONT:                  return QFont();
