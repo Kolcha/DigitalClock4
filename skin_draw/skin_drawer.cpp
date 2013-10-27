@@ -12,7 +12,7 @@ SkinDrawer::SkinDrawer(QObject* parent)
   space_ = 4;
 }
 
-void SkinDrawer::ApplySkin(ISkin::ClockSkinPtr skin) {
+void SkinDrawer::ApplySkin(ISkin::SkinPtr skin) {
   skin_ = skin;
   Redraw();
 }
