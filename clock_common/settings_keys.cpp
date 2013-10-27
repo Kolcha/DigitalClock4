@@ -11,7 +11,6 @@ QVariant GetDefaultValue(Options opt) {
     case OPT_STAY_ON_TOP:           return false;
     case OPT_TRANSP_FOR_INPUT:      return false;
     case OPT_SEPARATOR_FLASH:       return true;
-    case OPT_DISPLAY_AM_PM:         return false;
     case OPT_PLUGINS:               return QStringList("Test plugin");
     case OPT_TIME_FORMAT:           return QLocale::system().timeFormat();
     // skin settings

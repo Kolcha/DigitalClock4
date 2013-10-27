@@ -49,7 +49,7 @@ void MainWindow::Init() {
   // load application settings
   settings_->Load();
   d_clock_->SetSeparatorFlash(settings_->GetOption(OPT_SEPARATOR_FLASH).toBool());
-  d_clock_->SetDisplayAMPM(settings_->GetOption(OPT_DISPLAY_AM_PM).toBool());
+  d_clock_->SetTimeFormat(settings_->GetOption(OPT_TIME_FORMAT).toString());
   skin_manager_->SetFont(settings_->GetOption(OPT_FONT).value<QFont>());
   skin_manager_->LoadSkin(settings_->GetOption(OPT_SKIN_NAME).toString());
   drawer_->SetZoom(settings_->GetOption(OPT_ZOOM).toReal());
@@ -119,8 +119,8 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       d_clock_->SetSeparatorFlash(value.toBool());
       break;
 
-    case OPT_DISPLAY_AM_PM:
-      d_clock_->SetDisplayAMPM(value.toBool());
+    case OPT_TIME_FORMAT:
+      d_clock_->SetTimeFormat(value.toString());
       break;
 
     case OPT_SKIN_NAME:

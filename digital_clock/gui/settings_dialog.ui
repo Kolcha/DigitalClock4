@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>533</width>
-    <height>387</height>
+    <height>385</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,47 +30,6 @@
           <string>Clock</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="0">
-           <layout class="QVBoxLayout" name="checkbox_layout">
-            <item>
-             <widget class="QCheckBox" name="stay_on_top">
-              <property name="text">
-               <string>stay on top</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="transp_for_input">
-              <property name="text">
-               <string>transparent for input</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="sep_flash">
-              <property name="text">
-               <string>separator flashes</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="0" column="1">
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item row="0" column="2">
            <layout class="QGridLayout" name="sliders_layout">
             <item row="0" column="0">
@@ -153,13 +112,6 @@
            </layout>
           </item>
           <item row="1" column="0" colspan="3">
-           <widget class="QCheckBox" name="display_am_pm">
-            <property name="text">
-             <string>display AM/PM (if time format and skin supports it)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0" colspan="3">
            <widget class="QCheckBox" name="use_customization">
             <property name="text">
              <string>use skin customization (change color or apply texture)</string>
@@ -168,6 +120,47 @@
              <bool>true</bool>
             </property>
            </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="0">
+           <layout class="QVBoxLayout" name="checkbox_layout">
+            <item>
+             <widget class="QCheckBox" name="stay_on_top">
+              <property name="text">
+               <string>stay on top</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="transp_for_input">
+              <property name="text">
+               <string>transparent for input</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="sep_flash">
+              <property name="text">
+               <string>separator flashes</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>

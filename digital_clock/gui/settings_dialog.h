@@ -54,7 +54,6 @@ private slots:
   void on_use_skin_toggled(bool checked);
   void on_use_font_toggled(bool checked);
   void on_sel_font_btn_clicked();
-  void on_display_am_pm_toggled(bool checked);
   void on_use_customization_toggled(bool checked);
 
 private:

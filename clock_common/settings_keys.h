@@ -12,7 +12,6 @@ enum Options {
   OPT_STAY_ON_TOP,              /*!< stay on top flag, bool, true/false */
   OPT_TRANSP_FOR_INPUT,         /*!< "clicks passed through clock", bool, true/false */
   OPT_SEPARATOR_FLASH,          /*!< is separator flashes flag, bool, true/false */
-  OPT_DISPLAY_AM_PM,            /*!< display AM/PM symbol, bool, true/false */
   OPT_PLUGINS,                  /*!< plugins to load, QStringList, list of plugin names */
   OPT_TIME_FORMAT,              /*!< time format, QString, any valid time format string */
   // skin settings

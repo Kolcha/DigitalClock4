@@ -12,7 +12,6 @@ DigitalClock::DigitalClock(QWidget* parent)
 
   sep_visible_ = false;
   sep_flashes_ = true;
-  display_am_pm_ = false;
 }
 
 DigitalClock::~DigitalClock() {
@@ -29,28 +28,23 @@ void DigitalClock::SetSeparatorFlash(bool set) {
   sep_visible_ = !set;
 }
 
-void DigitalClock::SetDisplayAMPM(bool set) {
-  display_am_pm_ = set;
-}
-
 void DigitalClock::SetTimeFormat(const QString& format) {
   time_format_ = format;
+  QString seps = format;
+  seps.remove(QRegExp("[hmszap]", Qt::CaseInsensitive));
+  seps_pos_.clear();
+  for (int i = 0; i < format.length(); ++i) {
+    if (seps.contains(format[i], Qt::CaseInsensitive)) seps_pos_.append(i);
+  }
 }
 
 void DigitalClock::TimeoutHandler() {
-  if (time_format_.isEmpty()) time_format_ = QLocale::system().timeFormat();
+  if (time_format_.isEmpty()) SetTimeFormat(QLocale::system().timeFormat());
   QTime cur_time = QTime::currentTime();
   QString str_time = cur_time.toString(time_format_);
 
-  QString seps = time_format_;
-  seps.remove(QRegExp("[hmszap]", Qt::CaseInsensitive));
-  QList<int> seps_pos;
-  for (int i = 0; i < time_format_.length(); ++i) {
-    if (seps.contains(time_format_[i], Qt::CaseInsensitive)) seps_pos.append(i);
-  }
-
   if (sep_flashes_) {
-    for (auto& sep_pos : seps_pos) {
+    for (auto& sep_pos : seps_pos_) {
       if (!sep_visible_) str_time[sep_pos] = ' ';
     }
     sep_visible_ = !sep_visible_;

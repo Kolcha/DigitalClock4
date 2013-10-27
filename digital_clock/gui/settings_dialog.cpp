@@ -42,10 +42,6 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       ui->sep_flash->setChecked(value.toBool());
       break;
 
-    case OPT_DISPLAY_AM_PM:
-      ui->display_am_pm->setChecked(value.toBool());
-      break;
-
     case OPT_SKIN_NAME:
       ui->skin_box->setCurrentText(value.toString());
       ui->use_skin->setChecked(value.toString() != "Text Skin");
@@ -289,10 +285,6 @@ void SettingsDialog::on_sel_font_btn_clicked() {
     emit OptionChanged(OPT_FONT, font);
     last_font_ = font;
   }
-}
-
-void SettingsDialog::on_display_am_pm_toggled(bool checked) {
-  emit OptionChanged(OPT_DISPLAY_AM_PM, checked);
 }
 
 void SettingsDialog::on_use_customization_toggled(bool checked) {
