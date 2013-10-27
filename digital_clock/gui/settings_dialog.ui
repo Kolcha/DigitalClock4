@@ -419,6 +419,42 @@
             <property name="editable">
              <bool>true</bool>
             </property>
+            <property name="currentText">
+             <string notr="true"/>
+            </property>
+            <property name="currentIndex">
+             <number>-1</number>
+            </property>
+            <item>
+             <property name="text">
+              <string notr="true">h:mm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">hh:mm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">h:mmA</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">hh:mmA</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">H:mm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">HH:mm</string>
+             </property>
+            </item>
            </widget>
           </item>
           <item>
