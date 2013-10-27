@@ -1,5 +1,6 @@
 #include <QTime>
 #include <QLocale>
+#include <QRegExp>
 #include "digital_clock.h"
 
 DigitalClock::DigitalClock(QWidget* parent)
@@ -40,13 +41,18 @@ void DigitalClock::TimeoutHandler() {
   if (time_format_.isEmpty()) time_format_ = QLocale::system().timeFormat();
   QTime cur_time = QTime::currentTime();
   QString str_time = cur_time.toString(time_format_);
-  int sep_pos = str_time.indexOf(':');
-  str_time = str_time.mid(0, str_time.lastIndexOf(':'));
-  if (display_am_pm_ && time_format_.contains('A', Qt::CaseInsensitive)) {
-    str_time += cur_time.toString("AP");
+
+  QString seps = time_format_;
+  seps.remove(QRegExp("[hmszap]", Qt::CaseInsensitive));
+  QList<int> seps_pos;
+  for (int i = 0; i < time_format_.length(); ++i) {
+    if (seps.contains(time_format_[i], Qt::CaseInsensitive)) seps_pos.append(i);
   }
+
   if (sep_flashes_) {
-    str_time[sep_pos] = sep_visible_ ? ':' : ' ';
+    for (auto& sep_pos : seps_pos) {
+      if (!sep_visible_) str_time[sep_pos] = ' ';
+    }
     sep_visible_ = !sep_visible_;
   }
   emit ImageNeeded(str_time);
