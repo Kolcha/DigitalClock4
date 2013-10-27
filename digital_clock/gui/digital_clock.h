@@ -12,6 +12,7 @@ public:
 
 signals:
   void ImageNeeded(const QString& text);
+  void SeparatorsChanged(const QString& seps);
 
 public slots:
   void DrawImage(const QImage& image);

@@ -22,3 +22,11 @@ ClockRasterSkin::ClockRasterSkin(const QDir& skin_root) {
   orig_images_['A'] = orig_images_['a'];
   orig_images_['P'] = orig_images_['p'];
 }
+
+void ClockRasterSkin::ProcSeparators() {
+  for (int i = 0; i < seps_.length(); ++i) {
+    if (orig_images_.find(seps_[i]) == orig_images_.end()) {
+      orig_images_[seps_[i]] = orig_images_[':'];
+    }
+  }
+}

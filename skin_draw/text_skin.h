@@ -27,8 +27,7 @@ protected:
   QPixmapPtr ResizeImage(QChar ch, qreal zoom);
   /// map with chars that need to be replaced
   QMap<QChar, QChar> char_map_;
-
-private:
+  /// used font
   QFont font_;
 };
 

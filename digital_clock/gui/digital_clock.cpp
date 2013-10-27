@@ -32,6 +32,7 @@ void DigitalClock::SetTimeFormat(const QString& format) {
   time_format_ = format;
   seps_ = format;
   seps_.remove(QRegExp("[hmszap]", Qt::CaseInsensitive));
+  emit SeparatorsChanged(seps_);
 }
 
 void DigitalClock::TimeoutHandler() {

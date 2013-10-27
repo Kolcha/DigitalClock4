@@ -21,3 +21,11 @@ ClockVectorSkin::ClockVectorSkin(const QDir& skin_root) {
   image_files_['A'] = image_files_['a'];
   image_files_['P'] = image_files_['p'];
 }
+
+void ClockVectorSkin::ProcSeparators() {
+  for (int i = 0; i < seps_.length(); ++i) {
+    if (image_files_.find(seps_[i]) == image_files_.end()) {
+      image_files_[seps_[i]] = image_files_[':'];
+    }
+  }
+}
