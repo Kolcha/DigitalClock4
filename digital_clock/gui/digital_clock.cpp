@@ -1,5 +1,6 @@
 #include <QTime>
 #include <QLocale>
+#include <QRegExp>
 #include "digital_clock.h"
 
 DigitalClock::DigitalClock(QWidget* parent)
@@ -11,7 +12,6 @@ DigitalClock::DigitalClock(QWidget* parent)
 
   sep_visible_ = false;
   sep_flashes_ = true;
-  display_am_pm_ = false;
 }
 
 DigitalClock::~DigitalClock() {
@@ -28,25 +28,26 @@ void DigitalClock::SetSeparatorFlash(bool set) {
   sep_visible_ = !set;
 }
 
-void DigitalClock::SetDisplayAMPM(bool set) {
-  display_am_pm_ = set;
-}
-
 void DigitalClock::SetTimeFormat(const QString& format) {
   time_format_ = format;
+  seps_ = format;
+  seps_.remove(QRegExp("[hmszap]", Qt::CaseInsensitive));
+  emit SeparatorsChanged(seps_);
 }
 
 void DigitalClock::TimeoutHandler() {
-  if (time_format_.isEmpty()) time_format_ = QLocale::system().timeFormat();
-  QTime cur_time = QTime::currentTime();
-  QString str_time = cur_time.toString(time_format_);
-  int sep_pos = str_time.indexOf(':');
-  str_time = str_time.mid(0, str_time.lastIndexOf(':'));
-  if (display_am_pm_ && time_format_.contains('A', Qt::CaseInsensitive)) {
-    str_time += cur_time.toString("AP");
+  if (time_format_.isEmpty()) SetTimeFormat(QLocale::system().timeFormat());
+  QString str_time = QTime::currentTime().toString(time_format_);
+
+  QList<int> seps_pos;
+  for (int i = 0; i < str_time.length(); ++i) {
+    if (seps_.contains(str_time[i], Qt::CaseInsensitive)) seps_pos.append(i);
   }
+
   if (sep_flashes_) {
-    str_time[sep_pos] = sep_visible_ ? ':' : ' ';
+    for (auto& sep_pos : seps_pos) {
+      if (!sep_visible_) str_time[sep_pos] = ' ';
+    }
     sep_visible_ = !sep_visible_;
   }
   emit ImageNeeded(str_time);

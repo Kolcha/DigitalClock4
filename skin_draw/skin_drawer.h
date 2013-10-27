@@ -40,7 +40,7 @@ public slots:
    * Apply skin for text.
    * @param skin - skin to apply
    */
-  void ApplySkin(ISkin::ClockSkinPtr skin);
+  void ApplySkin(ISkin::SkinPtr skin);
   /*!
    * Set string to draw.
    * @param str - string to draw
@@ -114,7 +114,7 @@ private:
    */
   void DrawTexture(QPainter& painter, const QRect& rect);
 
-  ISkin::ClockSkinPtr skin_;
+  ISkin::SkinPtr skin_;
   QString str_;
   qreal zoom_;
   QPixmap texture_;

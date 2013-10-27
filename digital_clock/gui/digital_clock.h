@@ -12,11 +12,11 @@ public:
 
 signals:
   void ImageNeeded(const QString& text);
+  void SeparatorsChanged(const QString& seps);
 
 public slots:
   void DrawImage(const QImage& image);
   void SetSeparatorFlash(bool set);
-  void SetDisplayAMPM(bool set);
   void SetTimeFormat(const QString& format);
 
 private slots:
@@ -26,8 +26,8 @@ private:
   QTimer* timer_;
   bool sep_visible_;
   bool sep_flashes_;
-  bool display_am_pm_;
   QString time_format_;
+  QString seps_;
 };
 
 #endif // DIGITAL_CLOCK_H

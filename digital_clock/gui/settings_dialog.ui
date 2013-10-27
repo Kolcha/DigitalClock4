@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>533</width>
-    <height>387</height>
+    <height>381</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Settings</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_7">
+  <layout class="QGridLayout" name="gridLayout_9">
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
@@ -30,47 +30,6 @@
           <string>Clock</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="0">
-           <layout class="QVBoxLayout" name="checkbox_layout">
-            <item>
-             <widget class="QCheckBox" name="stay_on_top">
-              <property name="text">
-               <string>stay on top</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="transp_for_input">
-              <property name="text">
-               <string>transparent for input</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="sep_flash">
-              <property name="text">
-               <string>separator flashes</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="0" column="1">
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item row="0" column="2">
            <layout class="QGridLayout" name="sliders_layout">
             <item row="0" column="0">
@@ -153,13 +112,6 @@
            </layout>
           </item>
           <item row="1" column="0" colspan="3">
-           <widget class="QCheckBox" name="display_am_pm">
-            <property name="text">
-             <string>display AM/PM (if time format and skin supports it)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0" colspan="3">
            <widget class="QCheckBox" name="use_customization">
             <property name="text">
              <string>use skin customization (change color or apply texture)</string>
@@ -168,6 +120,47 @@
              <bool>true</bool>
             </property>
            </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="0">
+           <layout class="QVBoxLayout" name="checkbox_layout">
+            <item>
+             <widget class="QCheckBox" name="stay_on_top">
+              <property name="text">
+               <string>stay on top</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="transp_for_input">
+              <property name="text">
+               <string>transparent for input</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="sep_flash">
+              <property name="text">
+               <string>separator flashes</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -390,6 +383,108 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Time fomat</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Time format</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QRadioButton" name="system_format">
+            <property name="text">
+             <string>system</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="custom_format">
+            <property name="text">
+             <string>custom</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="format_box">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="editable">
+             <bool>true</bool>
+            </property>
+            <property name="currentText">
+             <string notr="true"/>
+            </property>
+            <property name="currentIndex">
+             <number>-1</number>
+            </property>
+            <item>
+             <property name="text">
+              <string notr="true">h:mm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">hh:mm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">h:mmA</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">hh:mmA</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">H:mm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">HH:mm</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="apply_btn">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Apply</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>225</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="plugins_tab">
       <attribute name="title">
        <string>Plugins</string>
@@ -606,7 +701,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>93</x>
-     <y>321</y>
+     <y>315</y>
     </hint>
     <hint type="destinationlabel">
      <x>252</x>
@@ -625,8 +720,8 @@
      <y>218</y>
     </hint>
     <hint type="destinationlabel">
-     <x>58</x>
-     <y>255</y>
+     <x>71</x>
+     <y>249</y>
     </hint>
    </hints>
   </connection>
@@ -653,8 +748,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>232</y>
+     <x>91</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
      <x>61</x>
@@ -686,7 +781,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>91</x>
-     <y>232</y>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
      <x>92</x>
@@ -717,8 +812,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>293</x>
-     <y>169</y>
+     <x>314</x>
+     <y>168</y>
     </hint>
     <hint type="destinationlabel">
      <x>297</x>
@@ -739,6 +834,54 @@
     <hint type="destinationlabel">
      <x>37</x>
      <y>163</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>custom_format</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>format_box</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>288</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>custom_format</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>apply_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>73</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>414</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>custom_format</sender>
+   <signal>clicked()</signal>
+   <receiver>apply_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>178</x>
+     <y>73</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>410</x>
+     <y>80</y>
     </hint>
    </hints>
   </connection>

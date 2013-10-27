@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     gui/plugin_list_item.cpp \
     skin/clock_vector_skin.cpp \
     skin/clock_raster_skin.cpp \
-    skin/clock_text_skin.cpp
+    skin/clock_text_skin.cpp \
+    skin/clock_base_skin.cpp
 
 HEADERS  += \
     core/skin_manager.h \
@@ -38,7 +39,8 @@ HEADERS  += \
     gui/plugin_list_item.h \
     skin/clock_vector_skin.h \
     skin/clock_raster_skin.h \
-    skin/clock_text_skin.h
+    skin/clock_text_skin.h \
+    skin/clock_base_skin.h
 
 FORMS    += \
     gui/settings_dialog.ui \

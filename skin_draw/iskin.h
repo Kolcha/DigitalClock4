@@ -27,8 +27,8 @@ public:
   };
   /// skin info type
   typedef QMap<FSkinInfo, QString> TSkinInfo;
-  /// clock skin pointer type
-  typedef QSharedPointer<ISkin> ClockSkinPtr;
+  /// skin pointer type
+  typedef QSharedPointer<ISkin> SkinPtr;
   /// QPixmap shared pointer type
   typedef QSharedPointer<QPixmap> QPixmapPtr;
 

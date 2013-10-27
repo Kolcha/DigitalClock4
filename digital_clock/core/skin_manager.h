@@ -13,7 +13,7 @@ public:
 
 signals:
   void SearchFinished(const QStringList& skins);
-  void SkinLoaded(ISkin::ClockSkinPtr skin);
+  void SkinLoaded(ISkin::SkinPtr skin);
   void SkinInfoLoaded(const ISkin::TSkinInfo& info);
 
 public slots:
@@ -22,12 +22,14 @@ public slots:
   void ListSkins();
   void LoadSkin(const QString& skin_name);
   void SetFont(const QFont& font);
+  void SetSeparators(const QString& seps);
 
 private:
   QList<QDir> skin_dirs_;
   QMap<QString, QDir> skins_;
   QFont font_;
-  QString loaded_skin_;
+  QString seps_;
+  ISkin::SkinPtr current_skin_;
 };
 
 #endif // SKIN_MANAGER_H
