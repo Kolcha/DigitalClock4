@@ -30,21 +30,21 @@ void DigitalClock::SetSeparatorFlash(bool set) {
 
 void DigitalClock::SetTimeFormat(const QString& format) {
   time_format_ = format;
-  QString seps = format;
-  seps.remove(QRegExp("[hmszap]", Qt::CaseInsensitive));
-  seps_pos_.clear();
-  for (int i = 0; i < format.length(); ++i) {
-    if (seps.contains(format[i], Qt::CaseInsensitive)) seps_pos_.append(i);
-  }
+  seps_ = format;
+  seps_.remove(QRegExp("[hmszap]", Qt::CaseInsensitive));
 }
 
 void DigitalClock::TimeoutHandler() {
   if (time_format_.isEmpty()) SetTimeFormat(QLocale::system().timeFormat());
-  QTime cur_time = QTime::currentTime();
-  QString str_time = cur_time.toString(time_format_);
+  QString str_time = QTime::currentTime().toString(time_format_);
+
+  QList<int> seps_pos;
+  for (int i = 0; i < str_time.length(); ++i) {
+    if (seps_.contains(str_time[i], Qt::CaseInsensitive)) seps_pos.append(i);
+  }
 
   if (sep_flashes_) {
-    for (auto& sep_pos : seps_pos_) {
+    for (auto& sep_pos : seps_pos) {
       if (!sep_visible_) str_time[sep_pos] = ' ';
     }
     sep_visible_ = !sep_visible_;

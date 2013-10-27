@@ -26,7 +26,7 @@ private:
   bool sep_visible_;
   bool sep_flashes_;
   QString time_format_;
-  QList<int> seps_pos_;
+  QString seps_;
 };
 
 #endif // DIGITAL_CLOCK_H
