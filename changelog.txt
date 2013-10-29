@@ -1,3 +1,23 @@
+Whats new in 4.2.3:
+-------------------
+Core:
+ - removed display AM/PM option (any time format feature support this)
+ - made skin draw engine common usage library (for clock and plugins, SDK available)
+ - added clock SDK (plugin SDK + skin draw engine SDK)
+
+Features:
+ - added enable/disable skin customization
+ - any time format support
+
+GUI:
+ - fixed bug with some copies of Setting and About dialogs
+ - fixed bug with displaying vectors skins without AM/PM support
+ - added some skins
+
+Installer:
+ - feature-based installer (app, skins, textures can be installed separately)
+ - save previous clock settings (will work only for 4.2.3+, 4.2.2-4.2.3 upgrade is not supported)
+
 Whats new in 4.2.2:
 -------------------
 Core:
