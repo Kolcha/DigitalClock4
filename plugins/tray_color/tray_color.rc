@@ -1,6 +1,6 @@
 1	VERSIONINFO
 FILEVERSION	1,0,0,11
-PRODUCTVERSION	4,2,2,1
+PRODUCTVERSION	4,2,3,0
 FILEOS		0x4
 FILETYPE	0x2
 {
@@ -16,7 +16,7 @@ BLOCK "StringFileInfo"
 		VALUE "LegalCopyright", "Copyright (C) 2013 Nick Korotysh"
 		VALUE "OriginalFilename", "tray_color.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.2.2.1"
+		VALUE "ProductVersion", "4.2.3"
 	}
 }
 
