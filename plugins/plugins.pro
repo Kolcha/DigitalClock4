@@ -6,4 +6,4 @@ SUBDIRS += \
     hour_signal \
     alarm \
     tray_color \
-    extra_zoom
+    any_zoom

@@ -1,18 +1,18 @@
-#ifndef EXTRA_ZOOM_H
-#define EXTRA_ZOOM_H
+#ifndef ANY_ZOOM_H
+#define ANY_ZOOM_H
 
 #include <QPointer>
 #include <QInputDialog>
 #include "iclock_plugin.h"
 #include "plugin_settings.h"
 
-class ExtraZoom : public ISettingsPlugin {
+class AnyZoom : public ISettingsPlugin {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID SETTINGS_PLUGIN_INTERFACE_IID FILE "extra_zoom.json")
+  Q_PLUGIN_METADATA(IID SETTINGS_PLUGIN_INTERFACE_IID FILE "any_zoom.json")
   Q_INTERFACES(IClockPlugin ISettingsPlugin)
 
 public:
-  ExtraZoom();
+  AnyZoom();
 
   void Init(const QMap<Options, QVariant>& current_settings, QWidget* parent);
   void GetInfo(TPluginInfo* info);
@@ -35,4 +35,4 @@ private:
   bool is_enabled_;
 };
 
-#endif // EXTRA_ZOOM_H
+#endif // ANY_ZOOM_H

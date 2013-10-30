@@ -1,12 +1,12 @@
-#include "extra_zoom_settings.h"
-#include "extra_zoom.h"
+#include "any_zoom_settings.h"
+#include "any_zoom.h"
 
-ExtraZoom::ExtraZoom() {
+AnyZoom::AnyZoom() {
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   is_enabled_ = false;
 }
 
-void ExtraZoom::Init(const QMap<Options, QVariant>& current_settings, QWidget* parent) {
+void AnyZoom::Init(const QMap<Options, QVariant>& current_settings, QWidget* parent) {
   parent_ = parent;
 
   QSettings::SettingsMap defaults;
@@ -21,27 +21,27 @@ void ExtraZoom::Init(const QMap<Options, QVariant>& current_settings, QWidget* p
   }
 }
 
-void ExtraZoom::GetInfo(TPluginInfo* info) {
-  info->insert(PI_NAME, "Extra zoom");
+void AnyZoom::GetInfo(TPluginInfo* info) {
+  info->insert(PI_NAME, "Any zoom");
   info->insert(PI_TYPE, "settings");
   info->insert(PI_VERSION, "1.0");
   info->insert(PI_AUTHOR, "Nick Korotysh");
   info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
-  info->insert(PI_COMMENT, "Can set > 400% clock zoom.");
+  info->insert(PI_COMMENT, "Can set any clock zoom.");
   info->insert(PI_CONFIG, "true");
 }
 
-void ExtraZoom::Start() {
+void AnyZoom::Start() {
   is_enabled_ = true;
   emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM));
 }
 
-void ExtraZoom::Stop() {
+void AnyZoom::Stop() {
   is_enabled_ = false;
   emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_PREVIOUS_ZOOM));
 }
 
-void ExtraZoom::Configure() {
+void AnyZoom::Configure() {
   if (settings_dlg_) {
     settings_dlg_->activateWindow();
   } else {
@@ -52,7 +52,7 @@ void ExtraZoom::Configure() {
     settings_dlg_->setLabelText("zoom:");
 
     settings_dlg_->setInputMode(QInputDialog::IntInput);
-    settings_dlg_->setIntRange(401, 1000000);
+    settings_dlg_->setIntRange(1, 1000000);
     settings_dlg_->setIntValue(settings_->GetOption(OPT_CURRENT_ZOOM).toReal() * 100);
 
     connect(settings_dlg_, SIGNAL(intValueChanged(int)), this, SLOT(TrackChange(int)));
@@ -64,12 +64,12 @@ void ExtraZoom::Configure() {
   }
 }
 
-void ExtraZoom::TrackChange(int new_zoom) {
+void AnyZoom::TrackChange(int new_zoom) {
   settings_->SetOption(OPT_CURRENT_ZOOM, new_zoom / 100.);
   if (is_enabled_) emit OptionChanged(OPT_ZOOM, new_zoom / 100.);
 }
 
-void ExtraZoom::RevertSettings() {
+void AnyZoom::RevertSettings() {
   settings_->Load();
   if (is_enabled_) emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_PREVIOUS_ZOOM));
 }
