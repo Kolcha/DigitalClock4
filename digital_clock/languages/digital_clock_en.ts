@@ -161,20 +161,6 @@
         <translation>opacity</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="64"/>
-        <location filename="../gui/settings_dialog.ui" line="101"/>
-        <source>100</source>
-        <translatorcomment>100</translatorcomment>
-        <translation>100</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="71"/>
-        <location filename="../gui/settings_dialog.ui" line="108"/>
-        <source>%</source>
-        <translatorcomment>% sign</translatorcomment>
-        <translation>%</translation>
-    </message>
-    <message>
         <location filename="../gui/settings_dialog.ui" line="78"/>
         <source>zoom</source>
         <translatorcomment>clock zoom</translatorcomment>
