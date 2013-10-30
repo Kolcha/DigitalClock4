@@ -15,8 +15,9 @@ const QVariant& PluginSettings::GetOption(const QString& key) const {
 
 void PluginSettings::Load() {
   for (auto iter = default_map_.begin(); iter != default_map_.end(); ++iter) {
-    settings_map_[iter.key()] = settings_.value(iter.key(), iter.value());
-    if (track_changes_) emit OptionChanged(iter.key(), iter.value());
+    QVariant value = settings_.value(iter.key(), iter.value());
+    settings_map_[iter.key()] = value;
+    if (track_changes_) emit OptionChanged(iter.key(), value);
   }
 }
 
