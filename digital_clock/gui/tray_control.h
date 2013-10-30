@@ -14,6 +14,9 @@ signals:
   void ShowSettingsDlg();
   void ShowAboutDlg();
 
+private slots:
+  void TrayEventHandler(QSystemTrayIcon::ActivationReason reason);
+
 private:
   void CreateActions();
   void CreateTrayIcon();

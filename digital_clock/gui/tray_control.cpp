@@ -7,7 +7,7 @@ TrayControl::TrayControl(QObject* parent)
   CreateTrayIcon();
 }
 
-QSystemTrayIcon*TrayControl::GetTrayIcon() {
+QSystemTrayIcon* TrayControl::GetTrayIcon() {
   return tray_icon_;
 }
 
@@ -34,4 +34,14 @@ void TrayControl::CreateTrayIcon() {
   tray_icon_->setIcon(QIcon(":/images/clock.svg"));
   tray_icon_->setToolTip(qApp->applicationDisplayName() + " " + qApp->applicationVersion());
   tray_icon_->show();
+  connect(tray_icon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+          this, SLOT(TrayEventHandler(QSystemTrayIcon::ActivationReason)));
+}
+
+void TrayControl::TrayEventHandler(QSystemTrayIcon::ActivationReason reason) {
+  switch (reason) {
+    case QSystemTrayIcon::DoubleClick:
+      emit ShowSettingsDlg();
+      break;
+  }
 }
