@@ -16,6 +16,7 @@ void TrayColor::Init(QSystemTrayIcon* tray_icon, QWidget* parent) {
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
+  settings_->Load();
 }
 
 void TrayColor::GetInfo(TPluginInfo* info) {
@@ -29,7 +30,6 @@ void TrayColor::GetInfo(TPluginInfo* info) {
 }
 
 void TrayColor::Start() {
-  settings_->Load();
   is_enabled_ = true;
   RedrawTrayIcon(settings_->GetOption(OPT_TRAY_COLOR).value<QColor>());
 }
