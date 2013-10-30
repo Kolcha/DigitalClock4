@@ -25,3 +25,4 @@ HEADERS += \
     centered_dialog.h
 
 win32:RC_FILE = clock_common.rc
+unix:VERSION = 1.0.0
