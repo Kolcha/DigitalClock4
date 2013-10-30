@@ -5,4 +5,5 @@ SUBDIRS += \
     var_translucency \
     hour_signal \
     alarm \
-    tray_color
+    tray_color \
+    extra_zoom

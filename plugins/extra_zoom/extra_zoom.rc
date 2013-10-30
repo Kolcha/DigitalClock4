@@ -1,0 +1,27 @@
+1	VERSIONINFO
+FILEVERSION	1,0,0,5
+PRODUCTVERSION	4,2,3,0
+FILEOS		0x4
+FILETYPE	0x2
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "Comments", "Any zoom"
+		VALUE "CompanyName", "Nick Korotysh"
+		VALUE "FileDescription", "Digital Clock Plugin"
+		VALUE "FileVersion", "1.0.0.5"
+		VALUE "InternalName", "any_zoom.dll"
+		VALUE "LegalCopyright", "Copyright (C) 2013 Nick Korotysh"
+		VALUE "OriginalFilename", "any_zoom.dll"
+		VALUE "ProductName", "Digital Clock"
+		VALUE "ProductVersion", "4.2.3"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409 0x04B0
+}
+}
