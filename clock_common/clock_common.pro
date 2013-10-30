@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui widgets
+CONFIG += c++11
 
 TARGET = clock_common
 TEMPLATE = lib

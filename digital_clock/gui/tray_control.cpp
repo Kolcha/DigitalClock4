@@ -39,9 +39,5 @@ void TrayControl::CreateTrayIcon() {
 }
 
 void TrayControl::TrayEventHandler(QSystemTrayIcon::ActivationReason reason) {
-  switch (reason) {
-    case QSystemTrayIcon::DoubleClick:
-      emit ShowSettingsDlg();
-      break;
-  }
+  if (reason == QSystemTrayIcon::DoubleClick) emit ShowSettingsDlg();
 }

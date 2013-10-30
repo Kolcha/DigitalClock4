@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui svg
+CONFIG += c++11
 
 TARGET = skin_draw
 TEMPLATE = lib
