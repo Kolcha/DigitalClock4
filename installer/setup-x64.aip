@@ -1196,7 +1196,7 @@
     <ROW Registry="separator_flash" Root="1" Key="Software\[Manufacturer]\[ProductName]\clock" Name="separator_flash" Value="true" Component_="separator_flash"/>
     <ROW Registry="show_notify" Root="1" Key="Software\[Manufacturer]\[ProductName]\alarm_plugin" Name="show_notify" Value="false" Component_="show_notify"/>
     <ROW Registry="signal_type" Root="1" Key="Software\[Manufacturer]\[ProductName]\alarm_plugin" Name="signal_type" Value="#0" Component_="signal_type"/>
-    <ROW Registry="stay_on_top" Root="1" Key="Software\[Manufacturer]\[ProductName]\clock" Name="stay_on_top" Value="false" Component_="stay_on_top"/>
+    <ROW Registry="stay_on_top" Root="1" Key="Software\[Manufacturer]\[ProductName]\clock" Name="stay_on_top" Value="true" Component_="stay_on_top"/>
     <ROW Registry="stream_url" Root="1" Key="Software\[Manufacturer]\[ProductName]\alarm_plugin" Name="stream_url" Component_="stream_url"/>
     <ROW Registry="texture" Root="1" Key="Software\[Manufacturer]\[ProductName]\skin" Name="texture" Component_="texture"/>
     <ROW Registry="texture_draw_mode" Root="1" Key="Software\[Manufacturer]\[ProductName]\skin" Name="texture_draw_mode" Value="#0" Component_="texture_draw_mode"/>

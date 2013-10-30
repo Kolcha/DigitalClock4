@@ -8,7 +8,7 @@ QVariant GetDefaultValue(Options opt) {
   switch (opt) {
     // clock settings
     case OPT_OPACITY:               return 0.75;
-    case OPT_STAY_ON_TOP:           return false;
+    case OPT_STAY_ON_TOP:           return true;
     case OPT_TRANSP_FOR_INPUT:      return false;
     case OPT_SEPARATOR_FLASH:       return true;
     case OPT_PLUGINS:               return QStringList("Test plugin");
