@@ -5,6 +5,7 @@ PluginSettings::PluginSettings(const QString& org_name, const QString& app_name,
 }
 
 void PluginSettings::SetDefaultValues(const QSettings::SettingsMap& values) {
+  default_map_ = values;
   settings_map_ = values;
 }
 
@@ -13,7 +14,7 @@ const QVariant& PluginSettings::GetOption(const QString& key) const {
 }
 
 void PluginSettings::Load() {
-  for (auto iter = settings_map_.begin(); iter != settings_map_.end(); ++iter) {
+  for (auto iter = default_map_.begin(); iter != default_map_.end(); ++iter) {
     settings_map_[iter.key()] = settings_.value(iter.key(), iter.value());
     if (track_changes_) emit OptionChanged(iter.key(), iter.value());
   }

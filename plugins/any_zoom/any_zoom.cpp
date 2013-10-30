@@ -4,6 +4,7 @@
 AnyZoom::AnyZoom() {
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   is_enabled_ = false;
+  last_zoom_ = 1.0;
 }
 
 void AnyZoom::Init(const QMap<Options, QVariant>& current_settings, QWidget* parent) {
@@ -14,11 +15,7 @@ void AnyZoom::Init(const QMap<Options, QVariant>& current_settings, QWidget* par
   settings_->SetDefaultValues(defaults);
 
   settings_->Load();
-
-  if (current_settings[OPT_ZOOM].toReal() < settings_->GetOption(OPT_PREVIOUS_ZOOM).toReal()) {
-    settings_->SetOption(OPT_PREVIOUS_ZOOM, current_settings[OPT_ZOOM]);
-    settings_->Save();
-  }
+  last_zoom_ = current_settings[OPT_ZOOM].toReal();
 }
 
 void AnyZoom::GetInfo(TPluginInfo* info) {
@@ -33,12 +30,12 @@ void AnyZoom::GetInfo(TPluginInfo* info) {
 
 void AnyZoom::Start() {
   is_enabled_ = true;
-  emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM));
+  emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
 }
 
 void AnyZoom::Stop() {
   is_enabled_ = false;
-  emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_PREVIOUS_ZOOM));
+  emit OptionChanged(OPT_ZOOM, last_zoom_);
 }
 
 void AnyZoom::Configure() {
@@ -53,7 +50,7 @@ void AnyZoom::Configure() {
 
     settings_dlg_->setInputMode(QInputDialog::IntInput);
     settings_dlg_->setIntRange(1, 1000000);
-    settings_dlg_->setIntValue(settings_->GetOption(OPT_CURRENT_ZOOM).toReal() * 100);
+    settings_dlg_->setIntValue(settings_->GetOption(OPT_CURRENT_ZOOM).toInt());
 
     connect(settings_dlg_, SIGNAL(intValueChanged(int)), this, SLOT(TrackChange(int)));
     connect(settings_dlg_, SIGNAL(intValueSelected(int)), this, SLOT(TrackChange(int)));
@@ -65,11 +62,19 @@ void AnyZoom::Configure() {
 }
 
 void AnyZoom::TrackChange(int new_zoom) {
-  settings_->SetOption(OPT_CURRENT_ZOOM, new_zoom / 100.);
+  settings_->SetOption(OPT_CURRENT_ZOOM, new_zoom);
   if (is_enabled_) emit OptionChanged(OPT_ZOOM, new_zoom / 100.);
 }
 
 void AnyZoom::RevertSettings() {
   settings_->Load();
-  if (is_enabled_) emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_PREVIOUS_ZOOM));
+  if (is_enabled_)
+    emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
+}
+
+void AnyZoom::SettingsListener(Options option, const QVariant& value) {
+  if (option == OPT_ZOOM && is_enabled_) {
+    last_zoom_ = value.toReal();
+    emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
+  }
 }

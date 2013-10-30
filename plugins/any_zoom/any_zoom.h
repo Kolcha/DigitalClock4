@@ -21,7 +21,7 @@ public slots:
   void Start();
   void Stop();
   void Configure();
-  void SettingsListener(Options, const QVariant&) {}
+  void SettingsListener(Options option, const QVariant& value);
   void TimeUpdateListener(const QString&) {}
 
 private slots:
@@ -33,6 +33,7 @@ private:
   PluginSettings* settings_;
   QPointer<QInputDialog> settings_dlg_;
   bool is_enabled_;
+  qreal last_zoom_;
 };
 
 #endif // ANY_ZOOM_H

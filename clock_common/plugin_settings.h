@@ -63,6 +63,7 @@ signals:
 private:
   QSettings settings_;
   QSettings::SettingsMap settings_map_;
+  QSettings::SettingsMap default_map_;
   bool track_changes_;
 };
 
