@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui svg
+CONFIG += c++11
 
 TARGET = skin_draw
 TEMPLATE = lib
@@ -26,3 +27,4 @@ HEADERS += skin_drawer.h\
     iskin.h
 
 win32:RC_FILE = skin_draw.rc
+unix:VERSION = 1.1.0
