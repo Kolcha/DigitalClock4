@@ -29,7 +29,7 @@
         </font>
        </property>
        <property name="text">
-        <string>program name</string>
+        <string notr="true">program name</string>
        </property>
       </widget>
      </item>
@@ -41,7 +41,7 @@
         </font>
        </property>
        <property name="text">
-        <string>copyright</string>
+        <string notr="true">copyright</string>
        </property>
       </widget>
      </item>
@@ -53,7 +53,7 @@
         </font>
        </property>
        <property name="text">
-        <string>version</string>
+        <string notr="true">version</string>
        </property>
       </widget>
      </item>
@@ -65,7 +65,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Qt</string>
+        <string notr="true">Qt</string>
        </property>
       </widget>
      </item>
@@ -112,7 +112,7 @@
         <item row="0" column="1">
          <widget class="QLabel" name="label_8">
           <property name="text">
-           <string>&lt;a href=&quot;http://www.softpedia.com/get/Desktop-Enhancements/Clocks-Time-Management/Korotysh-Digital-Clock.shtml&quot;&gt;www.softpedia.com&lt;/a&gt;</string>
+           <string notr="true">&lt;a href=&quot;http://www.softpedia.com/get/Desktop-Enhancements/Clocks-Time-Management/Korotysh-Digital-Clock.shtml&quot;&gt;www.softpedia.com&lt;/a&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -132,7 +132,7 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_9">
           <property name="text">
-           <string>&lt;a href=&quot;http://sourceforge.net/projects/digitalclock4/&quot;&gt;sourceforge.net&lt;/a&gt;</string>
+           <string notr="true">&lt;a href=&quot;http://sourceforge.net/projects/digitalclock4/&quot;&gt;sourceforge.net&lt;/a&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -152,7 +152,7 @@
         <item row="2" column="1">
          <widget class="QLabel" name="label_10">
           <property name="text">
-           <string>&lt;a href=&quot;mailto:nick.korotysh@gmail.com&quot;&gt;nick.korotysh@gmail.com&lt;/a&gt;</string>
+           <string notr="true">&lt;a href=&quot;mailto:nick.korotysh@gmail.com&quot;&gt;nick.korotysh@gmail.com&lt;/a&gt;</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -190,7 +190,7 @@
         <item row="0" column="1">
          <widget class="QLabel" name="label_13">
           <property name="text">
-           <string>WMZ:</string>
+           <string notr="true">WMZ:</string>
           </property>
          </widget>
         </item>
@@ -210,7 +210,7 @@
         <item row="0" column="3">
          <widget class="QLabel" name="label_14">
           <property name="text">
-           <string>Z275611204281</string>
+           <string notr="true">Z275611204281</string>
           </property>
           <property name="textInteractionFlags">
            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -236,7 +236,7 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_15">
           <property name="text">
-           <string>WME:</string>
+           <string notr="true">WME:</string>
           </property>
          </widget>
         </item>
@@ -256,7 +256,7 @@
         <item row="1" column="3">
          <widget class="QLabel" name="label_16">
           <property name="text">
-           <string>E241249077263</string>
+           <string notr="true">E241249077263</string>
           </property>
           <property name="textInteractionFlags">
            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
@@ -282,7 +282,7 @@
         <item row="2" column="1">
          <widget class="QLabel" name="label_17">
           <property name="text">
-           <string>WMR:</string>
+           <string notr="true">WMR:</string>
           </property>
          </widget>
         </item>
@@ -302,7 +302,7 @@
         <item row="2" column="3">
          <widget class="QLabel" name="label_18">
           <property name="text">
-           <string>R263617824302</string>
+           <string notr="true">R263617824302</string>
           </property>
           <property name="textInteractionFlags">
            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
