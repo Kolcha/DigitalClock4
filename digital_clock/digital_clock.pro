@@ -39,7 +39,8 @@ HEADERS  += \
     skin/clock_vector_skin.h \
     skin/clock_raster_skin.h \
     skin/clock_text_skin.h \
-    skin/clock_base_skin.h
+    skin/clock_base_skin.h \
+    core/plugin_info.h
 
 FORMS    += \
     gui/settings_dialog.ui \

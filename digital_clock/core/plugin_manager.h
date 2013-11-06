@@ -7,6 +7,7 @@
 #include <QList>
 #include <QPluginLoader>
 #include "iclock_plugin.h"
+#include "plugin_info.h"
 
 class ClockSettings;
 class DigitalClock;
