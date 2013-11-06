@@ -1,6 +1,7 @@
 #ifndef BASE_SKIN_H
 #define BASE_SKIN_H
 
+#include <QMap>
 #include "iskin.h"
 
 /*!
@@ -20,11 +21,6 @@ public:
   virtual ~BaseSkin();
 
   /*!
-   * Get skin info.
-   * @return skin info
-   */
-  const TSkinInfo& GetInfo() const;
-  /*!
    * Get image for specified symbol.
    * @param ch - symbol for which need to get image
    * @param zoom - skin zoom
@@ -42,8 +38,6 @@ protected:
    * @note skin-specific method
    */
   virtual QPixmapPtr ResizeImage(QChar ch, qreal zoom) = 0;
-
-  TSkinInfo info_;
 
 private:
   qreal cached_zoom_;

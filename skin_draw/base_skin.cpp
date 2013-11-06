@@ -6,10 +6,6 @@ BaseSkin::BaseSkin() : cached_zoom_(1.0) {
 BaseSkin::~BaseSkin() {
 }
 
-const ISkin::TSkinInfo& BaseSkin::GetInfo() const {
-  return info_;
-}
-
 ISkin::QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
   QPixmapPtr result;
   if (zoom == cached_zoom_) {

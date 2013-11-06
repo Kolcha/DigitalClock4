@@ -5,6 +5,7 @@
 #include <QString>
 #include <QFont>
 #include "iskin.h"
+#include "../skin/clock_base_skin.h"
 
 class SkinManager : public QObject {
   Q_OBJECT
@@ -14,7 +15,7 @@ public:
 signals:
   void SearchFinished(const QStringList& skins);
   void SkinLoaded(ISkin::SkinPtr skin);
-  void SkinInfoLoaded(const ISkin::TSkinInfo& info);
+  void SkinInfoLoaded(const ClockBaseSkin::TSkinInfo& info);
 
 public slots:
   void AddSkinDir(const QDir& dir);
@@ -29,7 +30,7 @@ private:
   QMap<QString, QDir> skins_;
   QFont font_;
   QString seps_;
-  ISkin::SkinPtr current_skin_;
+  ClockSkinPtr current_skin_;
 };
 
 #endif // SKIN_MANAGER_H
