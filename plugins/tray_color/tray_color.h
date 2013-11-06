@@ -12,7 +12,6 @@ class TrayColor : public ITrayPlugin {
 public:
   TrayColor();
   void Init(QSystemTrayIcon* tray_icon, QWidget* parent);
-  void GetInfo(TPluginInfo* info);
 
 public slots:
   void Start();

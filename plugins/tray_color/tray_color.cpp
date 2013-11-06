@@ -19,16 +19,6 @@ void TrayColor::Init(QSystemTrayIcon* tray_icon, QWidget* parent) {
   settings_->Load();
 }
 
-void TrayColor::GetInfo(TPluginInfo* info) {
-  info->insert(PI_NAME, "Tray color");
-  info->insert(PI_TYPE, "tray");
-  info->insert(PI_VERSION, "1.0");
-  info->insert(PI_AUTHOR, "Nick Korotysh");
-  info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
-  info->insert(PI_COMMENT, "Change tray icon color.");
-  info->insert(PI_CONFIG, "true");
-}
-
 void TrayColor::Start() {
   is_enabled_ = true;
   RedrawTrayIcon(settings_->GetOption(OPT_TRAY_COLOR).value<QColor>());

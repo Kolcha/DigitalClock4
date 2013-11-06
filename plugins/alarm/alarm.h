@@ -17,7 +17,6 @@ class Alarm : public ITrayPlugin {
 public:
   Alarm();
   void Init(QSystemTrayIcon* tray_icon, QWidget* parent);
-  void GetInfo(TPluginInfo* info);
 
 public slots:
   void Start();

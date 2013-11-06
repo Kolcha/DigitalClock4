@@ -10,7 +10,6 @@ class HourSignal : public IClockPlugin {
 
 public:
   HourSignal() : last_hour_(-1) {}
-  void GetInfo(TPluginInfo* info);
 
 public slots:
   void Start() {}

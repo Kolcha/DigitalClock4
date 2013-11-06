@@ -5,16 +5,6 @@ void SpectrumClock::Init(const QMap<Options, QVariant>& current_settings, QWidge
   cur_color_ = Qt::red;
 }
 
-void SpectrumClock::GetInfo(TPluginInfo* info) {
-  info->insert(PI_NAME, "Spectrum clock");
-  info->insert(PI_TYPE, "settings");
-  info->insert(PI_VERSION, "2.0");
-  info->insert(PI_AUTHOR, "Nick Korotysh");
-  info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
-  info->insert(PI_COMMENT, "Clock change color during time.");
-  info->insert(PI_CONFIG, "false");
-}
-
 void SpectrumClock::Start() {
   emit OptionChanged(OPT_COLOR, cur_color_);
 }
