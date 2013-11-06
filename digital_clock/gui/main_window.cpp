@@ -93,6 +93,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
     QSettings settings;
     settings.setValue(OPT_POSITION_KEY, pos());
+    event->accept();
   }
 }
 
