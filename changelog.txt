@@ -18,6 +18,7 @@ GUI:
 
 Plugins:
  - fixed bug with settings load in tray color plugin
+ - added "any zoom" plugin
 
 Installer:
  - feature-based installer (app, skins, textures can be installed separately)
