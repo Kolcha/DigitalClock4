@@ -18,16 +18,6 @@ void AnyZoom::Init(const QMap<Options, QVariant>& current_settings, QWidget* par
   last_zoom_ = current_settings[OPT_ZOOM].toReal();
 }
 
-void AnyZoom::GetInfo(TPluginInfo* info) {
-  info->insert(PI_NAME, "Any zoom");
-  info->insert(PI_TYPE, "settings");
-  info->insert(PI_VERSION, "1.0");
-  info->insert(PI_AUTHOR, "Nick Korotysh");
-  info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
-  info->insert(PI_COMMENT, "Can set any clock zoom.");
-  info->insert(PI_CONFIG, "true");
-}
-
 void AnyZoom::Start() {
   is_enabled_ = true;
   emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);

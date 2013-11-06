@@ -4,20 +4,6 @@
 #include <QtPlugin>
 #include "settings_keys.h"
 
-/*! plugin info fields */
-enum FPluginInfo {
-  PI_NAME,        /*!< plugin name */
-  PI_TYPE,        /*!< plugin type (base, settings, tray, widget) */
-  PI_VERSION,     /*!< plugin version */
-  PI_AUTHOR,      /*!< plugin author */
-  PI_EMAIL,       /*!< author's e-mail */
-  PI_COMMENT,     /*!< plugin description */
-  PI_CONFIG       /*!< plugin is configurable (true/false) */
-};
-/*! plugin info type */
-typedef QMap<FPluginInfo, QString> TPluginInfo;
-
-
 /*! Common plugins interface. */
 class CLOCK_COMMON_EXPORT IClockPlugin : public QObject {
   Q_OBJECT
@@ -25,11 +11,6 @@ class CLOCK_COMMON_EXPORT IClockPlugin : public QObject {
 public:
   /*! Virtual destructor. */
   virtual ~IClockPlugin() {}
-  /*!
-   * Get plugin info. @see TPluginInfo
-   * @param info - variable to store plugin info
-   */
-  virtual void GetInfo(TPluginInfo* info) = 0;
 
 public slots:
   /*! Start plugin activity. */

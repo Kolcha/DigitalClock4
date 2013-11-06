@@ -20,16 +20,6 @@ void Alarm::Init(QSystemTrayIcon* tray_icon, QWidget* parent) {
   settings_->SetDefaultValues(defaults);
 }
 
-void Alarm::GetInfo(TPluginInfo* info) {
-  info->insert(PI_NAME, "Alarm");
-  info->insert(PI_TYPE, "tray");
-  info->insert(PI_VERSION, "2.1.1");
-  info->insert(PI_AUTHOR, "Nick Korotysh");
-  info->insert(PI_EMAIL, "nick.korotysh@gmail.com");
-  info->insert(PI_COMMENT, "Set alarm.");
-  info->insert(PI_CONFIG, "true");
-}
-
 void Alarm::Start() {
   settings_->Load();
   if (!settings_->GetOption(OPT_ENABLED).toBool()) return;

@@ -13,9 +13,7 @@ class AnyZoom : public ISettingsPlugin {
 
 public:
   AnyZoom();
-
   void Init(const QMap<Options, QVariant>& current_settings, QWidget* parent);
-  void GetInfo(TPluginInfo* info);
 
 public slots:
   void Start();

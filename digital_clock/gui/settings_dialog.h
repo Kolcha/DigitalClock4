@@ -6,6 +6,7 @@
 #include "iclock_plugin.h"
 #include "iskin.h"
 #include "centered_dialog.h"
+#include "../core/plugin_info.h"
 
 namespace Ui {
 class SettingsDialog;

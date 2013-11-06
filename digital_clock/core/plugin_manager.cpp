@@ -1,4 +1,5 @@
 #include <QFile>
+#include <QJsonObject>
 #include "../gui/main_window.h"
 #include "plugin_manager.h"
 
@@ -28,12 +29,10 @@ void PluginManager::ListAvailable() {
       QPluginLoader loader(abs_path);
       IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
       if (plugin) {
-        TPluginInfo info;
-        plugin->GetInfo(&info);
-        if (plugin) {
-          available_[info[PI_NAME]] = abs_path;
-          plugins.append(qMakePair(info[PI_NAME], QVariant(info[PI_CONFIG]).toBool()));
-        }
+        QJsonObject metadata = loader.metaData().value("MetaData").toObject();
+        QString name = metadata.value("name").toString();
+        available_[name] = abs_path;
+        plugins.append(qMakePair(name, metadata.value("configurable").toBool()));
         loader.unload();
       }
     }
@@ -54,7 +53,15 @@ void PluginManager::GetPluginInfo(const QString& name) {
   QPluginLoader loader(file);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
   TPluginInfo info;
-  plugin->GetInfo(&info);
+  if (plugin) {
+    QJsonObject metadata = loader.metaData().value("MetaData").toObject();
+    info[PI_NAME] = metadata.value("name").toString();
+    info[PI_TYPE] = metadata.value("type").toString();
+    info[PI_VERSION] = metadata.value("version").toString();
+    info[PI_AUTHOR] = metadata.value("author").toString();
+    info[PI_EMAIL] = metadata.value("email").toString();
+    info[PI_COMMENT] = metadata.value("description").toString();
+  }
   emit InfoGot(info);
   loader.unload();
 }
