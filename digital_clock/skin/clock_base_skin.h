@@ -1,6 +1,7 @@
 #ifndef CLOCK_BASE_SKIN_H
 #define CLOCK_BASE_SKIN_H
 
+#include <QMap>
 #include <QString>
 #include <QSharedPointer>
 

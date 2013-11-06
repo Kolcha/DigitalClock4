@@ -123,31 +123,13 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
   ui->skin_box->addItems(skins);
 }
 
-void SettingsDialog::DisplaySkinInfo(const ISkin::TSkinInfo& info) {
-  if (info[ISkin::SI_NAME] == "Text Skin") return;
-  for (auto i = info.begin(); i != info.end(); ++i) {
-    switch (i.key()) {
-      case ISkin::SI_NAME:
-        ui->skin_box->setCurrentText(i.value());
-        break;
-
-      case ISkin::SI_VERSION:
-        ui->version_value->setText(i.value());
-        break;
-
-      case ISkin::SI_AUTHOR:
-        ui->author_value->setText(i.value());
-        break;
-
-      case ISkin::SI_EMAIL:
-        ui->email_value->setText(i.value());
-        break;
-
-      case ISkin::SI_COMMENT:
-        ui->skin_box->setToolTip(i.value());
-        break;
-    }
-  }
+void SettingsDialog::DisplaySkinInfo(const ClockBaseSkin::TSkinInfo& info) {
+  if (info[ClockBaseSkin::SI_NAME] == "Text Skin") return;
+  ui->skin_box->setCurrentText(info[ClockBaseSkin::SI_NAME]);
+  ui->version_value->setText(info[ClockBaseSkin::SI_VERSION]);
+  ui->author_value->setText(info[ClockBaseSkin::SI_AUTHOR]);
+  ui->email_value->setText(info[ClockBaseSkin::SI_EMAIL]);
+  ui->skin_box->setToolTip(info[ClockBaseSkin::SI_COMMENT]);
 }
 
 void SettingsDialog::SetPluginsList(const QList<QPair<QString, bool> >& plugins) {

@@ -181,8 +181,8 @@ void MainWindow::ShowSettingsDialog() {
     connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
             settings_dlg_, SLOT(SetSkinList(QStringList)));
     skin_manager_->ListSkins();
-    connect(skin_manager_, SIGNAL(SkinInfoLoaded(ISkin::TSkinInfo)),
-            settings_dlg_, SLOT(DisplaySkinInfo(ISkin::TSkinInfo)));
+    connect(skin_manager_, SIGNAL(SkinInfoLoaded(ClockBaseSkin::TSkinInfo)),
+            settings_dlg_, SLOT(DisplaySkinInfo(ClockBaseSkin::TSkinInfo)));
     connect(plugin_manager_, SIGNAL(SearchFinished(QList<QPair<QString,bool> >)),
             settings_dlg_, SLOT(SetPluginsList(QList<QPair<QString,bool> >)));
     connect(settings_dlg_, SIGNAL(PluginInfoRequest(QString)),
