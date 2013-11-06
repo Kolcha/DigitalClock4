@@ -3,12 +3,6 @@
 #include "text_skin.h"
 
 TextSkin::TextSkin(const QFont& font) : font_(font) {
-  // set skin info
-  info_[SI_NAME] = "Text Skin";
-  info_[SI_VERSION] = "1.0";
-  info_[SI_AUTHOR] = "Nick Korotysh";
-  info_[SI_EMAIL] = "nick.korotysh@gmail.com";
-  info_[SI_COMMENT] = "Text Skin. Allows use any font as skin.";
 }
 
 ISkin::QPixmapPtr TextSkin::ResizeImage(QChar ch, qreal zoom) {
