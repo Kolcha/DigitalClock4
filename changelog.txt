@@ -8,11 +8,16 @@ Core:
 Features:
  - added enable/disable skin customization
  - any time format support
+ - double click on tray icon calls settings dialog
 
 GUI:
  - fixed bug with some copies of Setting and About dialogs
  - fixed bug with displaying vectors skins without AM/PM support
  - added some skins
+ - "stay on top" enabled by default
+
+Plugins:
+ - fixed bug with settings load in tray color plugin
 
 Installer:
  - feature-based installer (app, skins, textures can be installed separately)
