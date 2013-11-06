@@ -1,3 +1,9 @@
 {
-    "Keys" : [ ]
+    "name" : "Alarm",
+    "type" : "tray",
+    "version" : "2.1.1",
+    "author" : "Nick Korotysh",
+    "email" : "nick.korotysh@gmail.com",
+    "description" : "Set alarm/notification.",
+    "configurable" : true
 }
