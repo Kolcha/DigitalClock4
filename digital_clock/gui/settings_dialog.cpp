@@ -10,6 +10,7 @@
 
 #define OPT_LAST_CUSTOMIZATION_KEY   "settings_dialog/last_cutomization"
 #define OPT_LAST_TIME_FORMAT_KEY     "settings_dialog/last_time_format"
+#define OPT_GEOMETRY_KEY             "settings_dialog/geometry"
 
 SettingsDialog::SettingsDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDialog) {
@@ -17,8 +18,6 @@ SettingsDialog::SettingsDialog(QWidget* parent)
   setWindowIcon(QIcon(":/images/settings.svg"));
 
   connect(this, SIGNAL(accepted()), this, SLOT(SaveState()));
-
-  LoadState();
 }
 
 SettingsDialog::~SettingsDialog() {
@@ -164,6 +163,11 @@ void SettingsDialog::changeEvent(QEvent* e) {
   }
 }
 
+void SettingsDialog::showEvent(QShowEvent* e) {
+  CenteredDialog::showEvent(e);
+  LoadState();
+}
+
 void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
   if (activated)
     active_plugins_.append(name);
@@ -177,6 +181,7 @@ void SettingsDialog::SaveState() {
   QSettings settings;
   settings.setValue(OPT_LAST_CUSTOMIZATION_KEY, last_customization_);
   settings.setValue(OPT_LAST_TIME_FORMAT_KEY, ui->format_box->currentText());
+  settings.setValue(OPT_GEOMETRY_KEY, saveGeometry());
 }
 
 void SettingsDialog::LoadState() {
@@ -185,6 +190,7 @@ void SettingsDialog::LoadState() {
                                        GetDefaultValue(OPT_CUSTOMIZATION)).toInt();
   ui->format_box->setCurrentText(settings.value(OPT_LAST_TIME_FORMAT_KEY,
                                                 GetDefaultValue(OPT_TIME_FORMAT)).toString());
+  restoreGeometry(settings.value(OPT_GEOMETRY_KEY).toByteArray());
 }
 
 void SettingsDialog::on_stay_on_top_toggled(bool checked) {
