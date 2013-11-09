@@ -7,6 +7,7 @@
 #define OPT_SIGNAL_TYPE       "alarm_plugin/signal_type"
 #define OPT_FILENAME          "alarm_plugin/filename"
 #define OPT_STREAM_URL        "alarm_plugin/stream_url"
+#define OPT_VOLUME            "alarm_plugin/volume"
 #define OPT_SHOW_NOTIFY       "alarm_plugin/show_notify"
 #define OPT_NOTIFY_TEXT       "alarm_plugin/notify_text"
 
@@ -21,6 +22,7 @@ inline void InitDefaults(QSettings::SettingsMap* defaults) {
   defaults->insert(OPT_SIGNAL_TYPE, (int)ST_FILE);
   defaults->insert(OPT_FILENAME, QString());
   defaults->insert(OPT_STREAM_URL, QString());
+  defaults->insert(OPT_VOLUME, 50);
   defaults->insert(OPT_SHOW_NOTIFY, false);
   defaults->insert(OPT_NOTIFY_TEXT, QString());
 }
