@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>297</width>
-    <height>277</height>
+    <width>294</width>
+    <height>297</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,22 +15,38 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QSplitter" name="splitter_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Time :</string>
-      </property>
-     </widget>
-     <widget class="QTimeEdit" name="time_edit"/>
-     <widget class="QCheckBox" name="alarm_enabled">
-      <property name="text">
-       <string>enabled</string>
-      </property>
-     </widget>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Time :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTimeEdit" name="time_edit"/>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="alarm_enabled">
+       <property name="text">
+        <string>enabled</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox">
@@ -38,6 +54,9 @@
       <string>Signal</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
+      <property name="topMargin">
+       <number>6</number>
+      </property>
       <item row="0" column="0">
        <widget class="QRadioButton" name="st_file">
         <property name="text">
@@ -49,33 +68,22 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QSplitter" name="splitter">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <widget class="QLabel" name="signal_label">
-         <property name="text">
-          <string>&lt;please select any mp3&gt;</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="browse_btn">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>23</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>...</string>
-         </property>
-        </widget>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="signal_label">
+          <property name="text">
+           <string>&lt;please select any mp3&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="browse_btn">
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item row="1" column="0">
        <widget class="QRadioButton" name="st_stream">
@@ -98,40 +106,62 @@
     </widget>
    </item>
    <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="volume_label">
+       <property name="text">
+        <string>Volume:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volume_slider">
+       <property name="minimum">
+        <number>5</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>50</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="play_btn">
+       <property name="text">
+        <string>Play</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
       <string>Notification</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="1" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1">
+      <item>
+       <widget class="QCheckBox" name="notification_enabled">
+        <property name="text">
+         <string>display notification</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPlainTextEdit" name="message_edit">
         <property name="enabled">
          <bool>false</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
         </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
           <height>30</height>
          </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>60</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QCheckBox" name="notification_enabled">
-        <property name="text">
-         <string>display notification</string>
         </property>
        </widget>
       </item>
@@ -159,8 +189,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>230</x>
-     <y>267</y>
+     <x>164</x>
+     <y>294</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -175,8 +205,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>230</x>
-     <y>267</y>
+     <x>164</x>
+     <y>294</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -191,8 +221,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>114</x>
-     <y>162</y>
+     <x>133</x>
+     <y>197</y>
     </hint>
     <hint type="destinationlabel">
      <x>98</x>
@@ -217,22 +247,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>st_file</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>browse_btn</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>50</x>
-     <y>72</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>265</x>
-     <y>73</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>st_stream</sender>
    <signal>toggled(bool)</signal>
    <receiver>stream_url_edit</receiver>
@@ -245,6 +259,22 @@
     <hint type="destinationlabel">
      <x>153</x>
      <y>97</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>st_file</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>browse_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>40</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>226</x>
+     <y>70</y>
     </hint>
    </hints>
   </connection>
