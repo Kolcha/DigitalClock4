@@ -12,7 +12,17 @@ QVariant GetDefaultValue(Options opt) {
     case OPT_TRANSP_FOR_INPUT:      return false;
     case OPT_SEPARATOR_FLASH:       return true;
     case OPT_PLUGINS:               return QStringList("Test plugin");
-    case OPT_TIME_FORMAT:           return QLocale::system().timeFormat();
+    case OPT_TIME_FORMAT:
+    {
+      QString sys_time_format = QLocale::system().timeFormat();
+      int sep_pos = sys_time_format.indexOf(':');
+      QString time_format = sys_time_format.mid(0, sys_time_format.indexOf(':', sep_pos + 1));
+
+      if (sys_time_format.contains('A', Qt::CaseInsensitive)) {
+        time_format += 'A';
+      }
+      return time_format;
+    }
     // skin settings
     case OPT_SKIN_NAME:             return QString("Electronic (default)");
     case OPT_FONT:                  return QFont();

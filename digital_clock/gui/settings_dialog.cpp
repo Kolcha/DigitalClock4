@@ -45,7 +45,7 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
     case OPT_TIME_FORMAT:
     {
       QString format = value.toString();
-      bool is_system = (format == QLocale::system().timeFormat());
+      bool is_system = (format == GetDefaultValue(OPT_TIME_FORMAT).toString());
       if (!is_system) ui->format_box->setCurrentText(format);
       ui->system_format->setChecked(is_system);
       ui->custom_format->setChecked(!is_system);
@@ -298,5 +298,5 @@ void SettingsDialog::on_apply_btn_clicked() {
 }
 
 void SettingsDialog::on_system_format_clicked() {
-  emit OptionChanged(OPT_TIME_FORMAT, QLocale::system().timeFormat());
+  emit OptionChanged(OPT_TIME_FORMAT, GetDefaultValue(OPT_TIME_FORMAT).toString());
 }
