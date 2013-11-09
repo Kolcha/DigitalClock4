@@ -109,6 +109,7 @@ void Alarm::TimeUpdateListener(const QString&) {
   }
 
   player_->setMedia(media_url);
+  player_->setVolume(settings_->GetOption(OPT_VOLUME).toInt());
   player_->play();
   if (settings_->GetOption(OPT_SHOW_NOTIFY).toBool()) {
     tray_icon_->showMessage(tr("Digital Clock Alarm"),

@@ -29,6 +29,7 @@ private slots:
   void on_st_file_clicked();
   void on_st_stream_clicked();
   void on_stream_url_edit_textEdited(const QString &arg1);
+  void on_volume_slider_valueChanged(int value);
 
 private:
   Ui::SettingsDlg* ui;

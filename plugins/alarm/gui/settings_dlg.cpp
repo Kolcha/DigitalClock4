@@ -41,6 +41,9 @@ void SettingsDlg::SettingsListener(const QString& key, const QVariant& value) {
     ui->stream_url_edit->setText(stream);
     ui->stream_url_edit->setToolTip(stream);
   }
+  if (key == OPT_VOLUME) {
+    ui->volume_slider->setValue(value.toInt());
+  }
   if (key == OPT_SHOW_NOTIFY) {
     ui->notification_enabled->setChecked(value.toBool());
   }
@@ -87,4 +90,8 @@ void SettingsDlg::on_st_stream_clicked() {
 
 void SettingsDlg::on_stream_url_edit_textEdited(const QString& arg1) {
   emit OptionChanged(OPT_STREAM_URL, arg1);
+}
+
+void SettingsDlg::on_volume_slider_valueChanged(int value) {
+  emit OptionChanged(OPT_VOLUME, value);
 }
