@@ -9,6 +9,7 @@ SettingsDlg::SettingsDlg(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDlg) {
   ui->setupUi(this);
   setWindowIcon(QIcon(":/settings.svg"));
+  ui->play_btn->setIcon(QIcon(":/play.svg"));
 
   player_ = new QMediaPlayer(this);
   connect(player_, SIGNAL(stateChanged(QMediaPlayer::State)),
@@ -64,11 +65,11 @@ void SettingsDlg::SettingsListener(const QString& key, const QVariant& value) {
 void SettingsDlg::PlayerStateChanged(QMediaPlayer::State state) {
   switch (state) {
     case QMediaPlayer::PlayingState:
-      ui->play_btn->setText(tr("Stop"));
+      ui->play_btn->setIcon(QIcon(":/stop.svg"));
       break;
 
     case QMediaPlayer::StoppedState:
-      ui->play_btn->setText(tr("Play"));
+      ui->play_btn->setIcon(QIcon(":/play.svg"));
       break;
   }
 }

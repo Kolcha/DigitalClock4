@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file alias="alarm_clock.svg">res/alarm_clock-24.svg</file>
         <file alias="settings.svg">res/settings-24.svg</file>
+        <file alias="play.svg">res/play-24.svg</file>
+        <file alias="stop.svg">res/stop-24.svg</file>
     </qresource>
 </RCC>
