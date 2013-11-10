@@ -19,6 +19,7 @@ public:
 
 public slots:
   void SetName(const QString& name);
+  void SetType(const QString& type);
   void SetVersion(const QString& version);
   void SetConfigurable(bool configable);
   void SetChecked(bool checked);

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>228</width>
-    <height>24</height>
+    <width>290</width>
+    <height>26</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string notr="true"/>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,0,0,0">
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,0,0,0,0,0">
    <property name="topMargin">
     <number>2</number>
    </property>
@@ -34,12 +34,65 @@
     </widget>
    </item>
    <item>
+    <widget class="QLabel" name="type_label">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>40</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string notr="true">settings</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>10</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <widget class="QLabel" name="version_label">
      <property name="enabled">
       <bool>false</bool>
      </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>50</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="text">
-      <string notr="true">TextLabel</string>
+      <string notr="true">0.0.0.0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
@@ -64,6 +117,10 @@
      <property name="text">
       <string notr="true">...</string>
      </property>
+     <property name="icon">
+      <iconset resource="../digital_clock.qrc">
+       <normaloff>:/images/settings.svg</normaloff>:/images/settings.svg</iconset>
+     </property>
     </widget>
    </item>
    <item>
@@ -71,10 +128,16 @@
      <property name="text">
       <string notr="true">...</string>
      </property>
+     <property name="icon">
+      <iconset resource="../digital_clock.qrc">
+       <normaloff>:/images/about.svg</normaloff>:/images/about.svg</iconset>
+     </property>
     </widget>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../digital_clock.qrc"/>
+ </resources>
  <connections/>
 </ui>
