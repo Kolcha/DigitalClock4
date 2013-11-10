@@ -50,4 +50,11 @@ void PluginListWidget::on_config_btn_clicked() {
 }
 
 void PluginListWidget::on_info_btn_clicked() {
+  if (dialog_) {
+    dialog_->activateWindow();
+  } else {
+    dialog_ = new PluginInfoDialog(this);
+    dialog_->SetInfo(info_);
+    dialog_->show();
+  }
 }

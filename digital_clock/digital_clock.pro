@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     skin/clock_raster_skin.cpp \
     skin/clock_text_skin.cpp \
     skin/clock_base_skin.cpp \
-    gui/plugin_list_widget.cpp
+    gui/plugin_list_widget.cpp \
+    gui/plugin_info_dialog.cpp
 
 HEADERS  += \
     core/skin_manager.h \
@@ -40,12 +41,14 @@ HEADERS  += \
     skin/clock_text_skin.h \
     skin/clock_base_skin.h \
     core/plugin_info.h \
-    gui/plugin_list_widget.h
+    gui/plugin_list_widget.h \
+    gui/plugin_info_dialog.h
 
 FORMS    += \
     gui/settings_dialog.ui \
     gui/about_dialog.ui \
-    gui/plugin_list_widget.ui
+    gui/plugin_list_widget.ui \
+    gui/plugin_info_dialog.ui
 
 RESOURCES += \
     digital_clock.qrc

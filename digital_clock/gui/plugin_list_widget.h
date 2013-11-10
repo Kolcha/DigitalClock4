@@ -2,7 +2,9 @@
 #define PLUGIN_LIST_WIDGET_H
 
 #include <QWidget>
+#include <QPointer>
 #include "../core/plugin_info.h"
+#include "plugin_info_dialog.h"
 
 namespace Ui {
 class PluginListWidget;
@@ -37,6 +39,7 @@ private slots:
 private:
   Ui::PluginListWidget* ui;
   TPluginInfo info_;
+  QPointer<PluginInfoDialog> dialog_;
 };
 
 #endif // PLUGIN_LIST_WIDGET_H

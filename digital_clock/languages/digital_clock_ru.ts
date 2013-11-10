@@ -53,6 +53,33 @@
     </message>
 </context>
 <context>
+    <name>PluginInfoDialog</name>
+    <message>
+        <location filename="../gui/plugin_info_dialog.ui" line="20"/>
+        <source>About plugin</source>
+        <translatorcomment>информация о плагине</translatorcomment>
+        <translation>О плагине</translation>
+    </message>
+    <message>
+        <location filename="../gui/plugin_info_dialog.ui" line="56"/>
+        <source>version:</source>
+        <translatorcomment>версия плагина</translatorcomment>
+        <translation>версия:</translation>
+    </message>
+    <message>
+        <location filename="../gui/plugin_info_dialog.ui" line="115"/>
+        <source>type:</source>
+        <translatorcomment>тип плагина</translatorcomment>
+        <translation>тип:</translation>
+    </message>
+    <message>
+        <location filename="../gui/plugin_info_dialog.ui" line="129"/>
+        <source>author:</source>
+        <translatorcomment>автор плагина</translatorcomment>
+        <translation>автор:</translation>
+    </message>
+</context>
+<context>
     <name>SettingsDialog</name>
     <message>
         <location filename="../gui/settings_dialog.ui" line="14"/>
