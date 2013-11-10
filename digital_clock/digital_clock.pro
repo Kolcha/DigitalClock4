@@ -20,11 +20,12 @@ SOURCES += main.cpp\
     gui/settings_dialog.cpp \
     gui/about_dialog.cpp \
     core/plugin_manager.cpp \
-    gui/plugin_list_item.cpp \
     skin/clock_vector_skin.cpp \
     skin/clock_raster_skin.cpp \
     skin/clock_text_skin.cpp \
-    skin/clock_base_skin.cpp
+    skin/clock_base_skin.cpp \
+    gui/plugin_list_widget.cpp \
+    gui/plugin_info_dialog.cpp
 
 HEADERS  += \
     core/skin_manager.h \
@@ -35,16 +36,19 @@ HEADERS  += \
     gui/settings_dialog.h \
     gui/about_dialog.h \
     core/plugin_manager.h \
-    gui/plugin_list_item.h \
     skin/clock_vector_skin.h \
     skin/clock_raster_skin.h \
     skin/clock_text_skin.h \
     skin/clock_base_skin.h \
-    core/plugin_info.h
+    core/plugin_info.h \
+    gui/plugin_list_widget.h \
+    gui/plugin_info_dialog.h
 
 FORMS    += \
     gui/settings_dialog.ui \
-    gui/about_dialog.ui
+    gui/about_dialog.ui \
+    gui/plugin_list_widget.ui \
+    gui/plugin_info_dialog.ui
 
 RESOURCES += \
     digital_clock.qrc

@@ -4,7 +4,7 @@
 #include <QFileInfo>
 #include <QSettings>
 #include "skin_drawer.h"
-#include "plugin_list_item.h"
+#include "plugin_list_widget.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
@@ -105,10 +105,10 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
 
     case  OPT_PLUGINS:
       for (int i = 0; i < ui->plugins_list->count(); i++) {
-        PluginListItem* item = static_cast<PluginListItem*>(
+        PluginListWidget* item = static_cast<PluginListWidget*>(
               ui->plugins_list->itemWidget(ui->plugins_list->item(i)));
         for (auto& plugin : value.toStringList()) {
-          if (plugin == item->GetText()) {
+          if (plugin == item->GetName()) {
             item->SetChecked(true);
             break;
           }
@@ -131,25 +131,20 @@ void SettingsDialog::DisplaySkinInfo(const ClockBaseSkin::TSkinInfo& info) {
   ui->skin_box->setToolTip(info[ClockBaseSkin::SI_COMMENT]);
 }
 
-void SettingsDialog::SetPluginsList(const QList<QPair<QString, bool> >& plugins) {
+void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins) {
   for (auto& plugin : plugins) {
     QListWidgetItem* item = new QListWidgetItem();
-    PluginListItem* widget = new PluginListItem(plugin.first, false, plugin.second);
-    item->setData(Qt::UserRole, plugin.first);
+    PluginListWidget* widget = new PluginListWidget(ui->plugins_list);
+    widget->SetInfo(plugin.first);
+    widget->SetConfigurable(plugin.second);
     item->setSizeHint(widget->sizeHint());
     ui->plugins_list->addItem(item);
     ui->plugins_list->setItemWidget(item, widget);
-    connect(widget, SIGNAL(StateChanged(QString,bool)), this, SLOT(ChangePluginState(QString,bool)));
-    connect(widget, SIGNAL(ConfigureRequest(QString)), this, SIGNAL(PluginConfigureRequest(QString)));
+    connect(widget, SIGNAL(StateChanged(QString,bool)),
+            this, SLOT(ChangePluginState(QString,bool)));
+    connect(widget, SIGNAL(ConfigureRequested(QString)),
+            this, SIGNAL(PluginConfigureRequest(QString)));
   }
-}
-
-void SettingsDialog::DisplayPluginInfo(const TPluginInfo& info) {
-  ui->p_type_value->setText(info[PI_TYPE]);
-  ui->p_version_value->setText(info[PI_VERSION]);
-  ui->p_author_value->setText(info[PI_AUTHOR]);
-  ui->p_e_mail_value->setText(info[PI_EMAIL]);
-  ui->p_comment->setText(info[PI_COMMENT]);
 }
 
 void SettingsDialog::changeEvent(QEvent* e) {
@@ -173,7 +168,6 @@ void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
     active_plugins_.append(name);
   else
     active_plugins_.removeOne(name);
-  emit PluginInfoRequest(name);
   emit OptionChanged(OPT_PLUGINS, active_plugins_);
 }
 
@@ -261,11 +255,6 @@ void SettingsDialog::on_type_image_toggled(bool checked) {
 
 void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
   emit OptionChanged(OPT_SKIN_NAME, arg1);
-}
-
-void SettingsDialog::on_plugins_list_currentItemChanged(
-    QListWidgetItem* current, QListWidgetItem*) {
-  emit PluginInfoRequest(current->data(Qt::UserRole).toString());
 }
 
 void SettingsDialog::on_use_skin_toggled(bool checked) {

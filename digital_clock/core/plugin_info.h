@@ -1,6 +1,8 @@
 #ifndef PLUGIN_INFO_H
 #define PLUGIN_INFO_H
 
+#include <QMap>
+
 /*! plugin info fields */
 enum FPluginInfo {
   PI_NAME,        /*!< plugin name */

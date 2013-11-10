@@ -21,7 +21,7 @@ void PluginManager::DelPluginsDir(const QDir& dir) {
 
 void PluginManager::ListAvailable() {
   available_.clear();
-  QList<QPair<QString, bool> > plugins;
+  QList<QPair<TPluginInfo, bool> > plugins;
   for (auto& dir : plugins_dirs_) {
     QStringList files = dir.entryList(QDir::Files);
     for (auto& file : files) {
@@ -30,9 +30,15 @@ void PluginManager::ListAvailable() {
       IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
       if (plugin) {
         QJsonObject metadata = loader.metaData().value("MetaData").toObject();
-        QString name = metadata.value("name").toString();
-        available_[name] = abs_path;
-        plugins.append(qMakePair(name, metadata.value("configurable").toBool()));
+        TPluginInfo info;
+        info[PI_NAME] = metadata.value("name").toString();
+        info[PI_TYPE] = metadata.value("type").toString();
+        info[PI_VERSION] = metadata.value("version").toString();
+        info[PI_AUTHOR] = metadata.value("author").toString();
+        info[PI_EMAIL] = metadata.value("email").toString();
+        info[PI_COMMENT] = metadata.value("description").toString();
+        available_[info[PI_NAME]] = abs_path;
+        plugins.append(qMakePair(info, metadata.value("configurable").toBool()));
         loader.unload();
       }
     }
@@ -46,24 +52,6 @@ void PluginManager::LoadPlugins(const QStringList& names) {
 
 void PluginManager::EnablePlugin(const QString& name, bool enable) {
   enable ? LoadPlugin(name) : UnloadPlugin(name);
-}
-
-void PluginManager::GetPluginInfo(const QString& name) {
-  QString file = available_[name];
-  QPluginLoader loader(file);
-  IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
-  TPluginInfo info;
-  if (plugin) {
-    QJsonObject metadata = loader.metaData().value("MetaData").toObject();
-    info[PI_NAME] = metadata.value("name").toString();
-    info[PI_TYPE] = metadata.value("type").toString();
-    info[PI_VERSION] = metadata.value("version").toString();
-    info[PI_AUTHOR] = metadata.value("author").toString();
-    info[PI_EMAIL] = metadata.value("email").toString();
-    info[PI_COMMENT] = metadata.value("description").toString();
-  }
-  emit InfoGot(info);
-  loader.unload();
 }
 
 void PluginManager::ConfigurePlugin(const QString& name) {

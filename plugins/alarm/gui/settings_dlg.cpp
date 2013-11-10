@@ -68,6 +68,7 @@ void SettingsDlg::PlayerStateChanged(QMediaPlayer::State state) {
       ui->play_btn->setIcon(QIcon(":/stop.svg"));
       break;
 
+    case QMediaPlayer::PausedState:
     case QMediaPlayer::StoppedState:
       ui->play_btn->setIcon(QIcon(":/play.svg"));
       break;
