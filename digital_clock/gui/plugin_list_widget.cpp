@@ -4,6 +4,8 @@
 PluginListWidget::PluginListWidget(QWidget* parent)
   : QWidget(parent), ui(new Ui::PluginListWidget) {
   ui->setupUi(this);
+  ui->config_btn->setIcon(QIcon(":/images/settings.svg"));
+  ui->info_btn->setIcon(QIcon(":/images/about.svg"));
 }
 
 PluginListWidget::~PluginListWidget() {
