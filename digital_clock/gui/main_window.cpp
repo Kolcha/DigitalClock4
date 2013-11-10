@@ -183,12 +183,8 @@ void MainWindow::ShowSettingsDialog() {
     skin_manager_->ListSkins();
     connect(skin_manager_, SIGNAL(SkinInfoLoaded(ClockBaseSkin::TSkinInfo)),
             settings_dlg_, SLOT(DisplaySkinInfo(ClockBaseSkin::TSkinInfo)));
-    connect(plugin_manager_, SIGNAL(SearchFinished(QList<QPair<QString,bool> >)),
-            settings_dlg_, SLOT(SetPluginsList(QList<QPair<QString,bool> >)));
-    connect(settings_dlg_, SIGNAL(PluginInfoRequest(QString)),
-            plugin_manager_, SLOT(GetPluginInfo(QString)));
-    connect(plugin_manager_, SIGNAL(InfoGot(TPluginInfo)),
-            settings_dlg_, SLOT(DisplayPluginInfo(TPluginInfo)));
+    connect(plugin_manager_, SIGNAL(SearchFinished(QList<QPair<TPluginInfo,bool> >)),
+            settings_dlg_, SLOT(SetPluginsList(QList<QPair<TPluginInfo,bool> >)));
     plugin_manager_->ListAvailable();
 
     // reload settings to emit signals needed to init settings dialog controls

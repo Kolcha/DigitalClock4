@@ -126,12 +126,6 @@
         <translation>use font</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="499"/>
-        <source>&lt;no comment&gt;</source>
-        <translatorcomment>default comment value</translatorcomment>
-        <translation>&lt;no comment&gt;</translation>
-    </message>
-    <message>
         <location filename="../gui/settings_dialog.ui" line="203"/>
         <source>Version :</source>
         <translatorcomment>skin version</translatorcomment>
@@ -141,10 +135,6 @@
         <location filename="../gui/settings_dialog.ui" line="210"/>
         <location filename="../gui/settings_dialog.ui" line="217"/>
         <location filename="../gui/settings_dialog.ui" line="238"/>
-        <location filename="../gui/settings_dialog.ui" line="515"/>
-        <location filename="../gui/settings_dialog.ui" line="529"/>
-        <location filename="../gui/settings_dialog.ui" line="543"/>
-        <location filename="../gui/settings_dialog.ui" line="557"/>
         <source>unknown</source>
         <translatorcomment>default value</translatorcomment>
         <translation>unknown</translation>
@@ -242,48 +232,24 @@
         <translation>custom</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="466"/>
+        <location filename="../gui/settings_dialog.ui" line="481"/>
         <source>Apply</source>
         <translatorcomment>apply current settings</translatorcomment>
         <translation>Apply</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="490"/>
+        <location filename="../gui/settings_dialog.ui" line="505"/>
         <source>Plugins</source>
         <translation>Plugins</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="508"/>
-        <source>Type:</source>
-        <translatorcomment>plugins type</translatorcomment>
-        <translation>Type:</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="522"/>
-        <source>Version:</source>
-        <translatorcomment>plugin version</translatorcomment>
-        <translation>Version:</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="536"/>
-        <source>Author:</source>
-        <translatorcomment>plugins author</translatorcomment>
-        <translation>Author:</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="550"/>
-        <source>E-mail:</source>
-        <translatorcomment>author&apos;s e-mail</translatorcomment>
-        <translation>E-mail:</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.cpp" line="251"/>
+        <location filename="../gui/settings_dialog.cpp" line="233"/>
         <source>Open texture file</source>
         <translatorcomment>find and select texture file</translatorcomment>
         <translation>Open texture file</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="253"/>
+        <location filename="../gui/settings_dialog.cpp" line="235"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translatorcomment>image formats</translatorcomment>
         <translation>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>

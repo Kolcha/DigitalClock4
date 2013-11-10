@@ -2,6 +2,7 @@
 #define PLUGIN_LIST_WIDGET_H
 
 #include <QWidget>
+#include "../core/plugin_info.h"
 
 namespace Ui {
 class PluginListWidget;
@@ -21,11 +22,11 @@ public slots:
   void SetVersion(const QString& version);
   void SetConfigurable(bool configable);
   void SetChecked(bool checked);
+  void SetInfo(const TPluginInfo& info);
 
 signals:
   void StateChanged(const QString& name, bool new_state);
   void ConfigureRequested(const QString& name);
-  void InfoRequested(const QString& name);
 
 private slots:
   void on_name_check_box_toggled(bool checked);
@@ -34,6 +35,7 @@ private slots:
 
 private:
   Ui::PluginListWidget* ui;
+  TPluginInfo info_;
 };
 
 #endif // PLUGIN_LIST_WIDGET_H

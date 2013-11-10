@@ -20,15 +20,13 @@ public:
 
 signals:
   void OptionChanged(Options opt, const QVariant& value);
-  void PluginInfoRequest(const QString& name);
   void PluginConfigureRequest(const QString& text);
 
 public slots:
   void SettingsListener(Options opt, const QVariant& value);
   void SetSkinList(const QStringList& skins);
   void DisplaySkinInfo(const ClockBaseSkin::TSkinInfo& info);
-  void SetPluginsList(const QList<QPair<QString,bool> >& plugins);
-  void DisplayPluginInfo(const TPluginInfo& info);
+  void SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins);
 
 protected:
   void changeEvent(QEvent* e);

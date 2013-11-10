@@ -32,6 +32,12 @@ void PluginListWidget::SetChecked(bool checked) {
   ui->name_check_box->setChecked(checked);
 }
 
+void PluginListWidget::SetInfo(const TPluginInfo& info) {
+  info_ = info;
+  SetName(info[PI_NAME]);
+  SetVersion(info[PI_VERSION]);
+}
+
 void PluginListWidget::on_name_check_box_toggled(bool checked) {
   emit StateChanged(ui->name_check_box->text(), checked);
 }
@@ -41,5 +47,4 @@ void PluginListWidget::on_config_btn_clicked() {
 }
 
 void PluginListWidget::on_info_btn_clicked() {
-  emit InfoRequested(ui->name_check_box->text());
 }

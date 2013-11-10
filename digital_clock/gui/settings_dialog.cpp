@@ -131,12 +131,11 @@ void SettingsDialog::DisplaySkinInfo(const ClockBaseSkin::TSkinInfo& info) {
   ui->skin_box->setToolTip(info[ClockBaseSkin::SI_COMMENT]);
 }
 
-void SettingsDialog::SetPluginsList(const QList<QPair<QString, bool> >& plugins) {
+void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins) {
   for (auto& plugin : plugins) {
     QListWidgetItem* item = new QListWidgetItem();
     PluginListWidget* widget = new PluginListWidget(ui->plugins_list);
-    widget->SetName(plugin.first);
-    widget->SetVersion("1.0.0");
+    widget->SetInfo(plugin.first);
     widget->SetConfigurable(plugin.second);
     item->setSizeHint(widget->sizeHint());
     ui->plugins_list->addItem(item);
@@ -145,16 +144,7 @@ void SettingsDialog::SetPluginsList(const QList<QPair<QString, bool> >& plugins)
             this, SLOT(ChangePluginState(QString,bool)));
     connect(widget, SIGNAL(ConfigureRequested(QString)),
             this, SIGNAL(PluginConfigureRequest(QString)));
-    connect(widget, SIGNAL(InfoRequested(QString)), this, SIGNAL(PluginInfoRequest(QString)));
   }
-}
-
-void SettingsDialog::DisplayPluginInfo(const TPluginInfo& info) {
-  ui->p_type_value->setText(info[PI_TYPE]);
-  ui->p_version_value->setText(info[PI_VERSION]);
-  ui->p_author_value->setText(info[PI_AUTHOR]);
-  ui->p_e_mail_value->setText(info[PI_EMAIL]);
-  ui->p_comment->setText(info[PI_COMMENT]);
 }
 
 void SettingsDialog::changeEvent(QEvent* e) {
@@ -178,7 +168,6 @@ void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
     active_plugins_.append(name);
   else
     active_plugins_.removeOne(name);
-  emit PluginInfoRequest(name);
   emit OptionChanged(OPT_PLUGINS, active_plugins_);
 }
 

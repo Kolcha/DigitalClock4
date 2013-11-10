@@ -48,12 +48,7 @@ signals:
    * Signal to notify that plugins search was finished.
    * @param plugins - list of found plugins (pair: plugin name - is configurable)
    */
-  void SearchFinished(const QList<QPair<QString, bool> >& plugins);
-  /*!
-   * Signal to notify that info about plugin was got.
-   * @param info - plugin info. @see TPluginInfo
-   */
-  void InfoGot(const TPluginInfo& info);
+  void SearchFinished(const QList<QPair<TPluginInfo, bool> >& plugins);
 
 public slots:
   /*!
@@ -81,11 +76,6 @@ public slots:
    * @param enable - true to enable, false to disable plugin
    */
   void EnablePlugin(const QString& name, bool enable);
-  /*!
-   * Get plugin info. Info will be reported by @see InfoGot signal.
-   * @param name - plugins name to get info
-   */
-  void GetPluginInfo(const QString& name);
   /*!
    * Call plugin settings dialog if available.
    * @param name - plugins name to configure
