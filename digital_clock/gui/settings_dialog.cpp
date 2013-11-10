@@ -4,7 +4,7 @@
 #include <QFileInfo>
 #include <QSettings>
 #include "skin_drawer.h"
-#include "plugin_list_item.h"
+#include "plugin_list_widget.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
@@ -105,10 +105,10 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
 
     case  OPT_PLUGINS:
       for (int i = 0; i < ui->plugins_list->count(); i++) {
-        PluginListItem* item = static_cast<PluginListItem*>(
+        PluginListWidget* item = static_cast<PluginListWidget*>(
               ui->plugins_list->itemWidget(ui->plugins_list->item(i)));
         for (auto& plugin : value.toStringList()) {
-          if (plugin == item->GetText()) {
+          if (plugin == item->GetName()) {
             item->SetChecked(true);
             break;
           }
@@ -134,13 +134,18 @@ void SettingsDialog::DisplaySkinInfo(const ClockBaseSkin::TSkinInfo& info) {
 void SettingsDialog::SetPluginsList(const QList<QPair<QString, bool> >& plugins) {
   for (auto& plugin : plugins) {
     QListWidgetItem* item = new QListWidgetItem();
-    PluginListItem* widget = new PluginListItem(plugin.first, false, plugin.second);
-    item->setData(Qt::UserRole, plugin.first);
+    PluginListWidget* widget = new PluginListWidget(ui->plugins_list);
+    widget->SetName(plugin.first);
+    widget->SetVersion("1.0.0");
+    widget->SetConfigurable(plugin.second);
     item->setSizeHint(widget->sizeHint());
     ui->plugins_list->addItem(item);
     ui->plugins_list->setItemWidget(item, widget);
-    connect(widget, SIGNAL(StateChanged(QString,bool)), this, SLOT(ChangePluginState(QString,bool)));
-    connect(widget, SIGNAL(ConfigureRequest(QString)), this, SIGNAL(PluginConfigureRequest(QString)));
+    connect(widget, SIGNAL(StateChanged(QString,bool)),
+            this, SLOT(ChangePluginState(QString,bool)));
+    connect(widget, SIGNAL(ConfigureRequested(QString)),
+            this, SIGNAL(PluginConfigureRequest(QString)));
+    connect(widget, SIGNAL(InfoRequested(QString)), this, SIGNAL(PluginInfoRequest(QString)));
   }
 }
 
@@ -261,11 +266,6 @@ void SettingsDialog::on_type_image_toggled(bool checked) {
 
 void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
   emit OptionChanged(OPT_SKIN_NAME, arg1);
-}
-
-void SettingsDialog::on_plugins_list_currentItemChanged(
-    QListWidgetItem* current, QListWidgetItem*) {
-  emit PluginInfoRequest(current->data(Qt::UserRole).toString());
 }
 
 void SettingsDialog::on_use_skin_toggled(bool checked) {

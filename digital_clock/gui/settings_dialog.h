@@ -51,7 +51,6 @@ private slots:
   void on_type_color_toggled(bool checked);
   void on_type_image_toggled(bool checked);
   void on_skin_box_currentIndexChanged(const QString& arg1);
-  void on_plugins_list_currentItemChanged(QListWidgetItem* current, QListWidgetItem*);
   void on_use_skin_toggled(bool checked);
   void on_use_font_toggled(bool checked);
   void on_sel_font_btn_clicked();
