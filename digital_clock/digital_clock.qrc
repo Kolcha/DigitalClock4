@@ -17,10 +17,10 @@
         <file alias="electronic/skin.ini">resources/electronic/skin.ini</file>
     </qresource>
     <qresource prefix="/images">
-        <file alias="about.svg">resources/images/bubble-24.svg</file>
         <file alias="quit.svg">resources/images/cross-24.svg</file>
         <file alias="settings.svg">resources/images/settings-24.svg</file>
         <file alias="clock.svg">resources/images/time-24.svg</file>
+        <file alias="about.svg">resources/images/info-24.svg</file>
     </qresource>
     <qresource prefix="/about_dialog">
         <file alias="award.gif">resources/about_dialog/softpedia_clean_award_f.gif</file>
