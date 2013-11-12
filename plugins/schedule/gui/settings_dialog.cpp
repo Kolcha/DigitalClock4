@@ -5,9 +5,6 @@
 SettingsDialog::SettingsDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDialog) {
   ui->setupUi(this);
-  setWindowIcon(QIcon(":/settings.svg"));
-  ui->add_btn->setIcon(QIcon(":/add.svg"));
-  ui->del_btn->setIcon(QIcon(":/remove.svg"));
 }
 
 SettingsDialog::~SettingsDialog() {

@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Add Task Dialog</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../schedule.qrc">
+    <normaloff>:/schedule.svg</normaloff>:/schedule.svg</iconset>
+  </property>
   <property name="modal">
    <bool>true</bool>
   </property>
@@ -75,7 +79,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../schedule.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

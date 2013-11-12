@@ -7,11 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>332</width>
-    <height>270</height>
+    <height>271</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Schedule Settings</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../schedule.qrc">
+    <normaloff>:/settings.svg</normaloff>:/settings.svg</iconset>
   </property>
   <property name="modal">
    <bool>true</bool>
@@ -54,12 +58,20 @@
        <property name="text">
         <string>Add task</string>
        </property>
+       <property name="icon">
+        <iconset resource="../schedule.qrc">
+         <normaloff>:/add.svg</normaloff>:/add.svg</iconset>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="del_btn">
        <property name="text">
         <string>Remove</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../schedule.qrc">
+         <normaloff>:/remove.svg</normaloff>:/remove.svg</iconset>
        </property>
       </widget>
      </item>
@@ -109,7 +121,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../schedule.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>
