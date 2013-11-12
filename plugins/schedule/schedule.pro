@@ -10,9 +10,13 @@ TARGET = schedule
 TEMPLATE = lib
 CONFIG += plugin
 
-SOURCES += schedule.cpp
+SOURCES += schedule.cpp \
+    gui/settings_dialog.cpp \
+    gui/add_task_dialog.cpp
 
-HEADERS += schedule.h
+HEADERS += schedule.h \
+    gui/settings_dialog.h \
+    gui/add_task_dialog.h
 OTHER_FILES += schedule.json
 
 win32:RC_FILE = schedule.rc
@@ -26,3 +30,7 @@ DEPENDPATH += $$PWD/../../clock_common
 
 RESOURCES += \
     schedule.qrc
+
+FORMS += \
+    gui/settings_dialog.ui \
+    gui/add_task_dialog.ui
