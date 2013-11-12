@@ -1,6 +1,7 @@
 #ifndef SCHEDULE_H
 #define SCHEDULE_H
 
+#include <QSystemTrayIcon>
 #include "iclock_plugin.h"
 
 class Schedule : public IWidgetPlugin {
@@ -18,6 +19,14 @@ public slots:
   void Configure();
   void SettingsListener(Options, const QVariant&) {}
   void TimeUpdateListener(const QString&);
+
+private slots:
+  void TrayActivated(QSystemTrayIcon::ActivationReason reason);
+
+private:
+  QWidget* parent_;
+  QSystemTrayIcon* tray_icon_;
+  QMenu* tray_menu_;
 };
 
 #endif // SCHEDULE_H
