@@ -26,6 +26,12 @@ void Schedule::Stop() {
 }
 
 void Schedule::Configure() {
+  if (settings_dlg_) {
+    settings_dlg_->activateWindow();
+  } else {
+    settings_dlg_ = new SettingsDialog(parent_);
+    settings_dlg_->show();
+  }
 }
 
 void Schedule::TimeUpdateListener(const QString&) {

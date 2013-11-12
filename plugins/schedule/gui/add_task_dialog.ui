@@ -7,22 +7,25 @@
     <x>0</x>
     <y>0</y>
     <width>306</width>
-    <height>287</height>
+    <height>163</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Add Task Dialog</string>
   </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="date_label">
      <property name="text">
       <string>Date:</string>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QDateEdit" name="dateEdit"/>
+    <widget class="QDateEdit" name="date_edit"/>
    </item>
    <item row="0" column="2">
     <spacer name="horizontalSpacer">
@@ -38,17 +41,17 @@
     </spacer>
    </item>
    <item row="0" column="3">
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="time_label">
      <property name="text">
       <string>Time:</string>
      </property>
     </widget>
    </item>
    <item row="0" column="4">
-    <widget class="QTimeEdit" name="timeEdit"/>
+    <widget class="QTimeEdit" name="time_edit"/>
    </item>
    <item row="1" column="0" colspan="5">
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="task_desc_label">
      <property name="text">
       <string>Task description</string>
      </property>
@@ -58,7 +61,7 @@
     </widget>
    </item>
    <item row="2" column="0" colspan="5">
-    <widget class="QPlainTextEdit" name="plainTextEdit"/>
+    <widget class="QPlainTextEdit" name="desc_text_edit"/>
    </item>
    <item row="3" column="0" colspan="5">
     <widget class="QDialogButtonBox" name="buttonBox">
