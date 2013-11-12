@@ -38,6 +38,10 @@ public:
    */
   explicit PluginManager(QObject* parent = 0);
   /*!
+   * Destructor.
+   */
+  ~PluginManager();
+  /*!
    * Set data for plugin initialization.
    * @param data - data to set. @see TPluginData
    */

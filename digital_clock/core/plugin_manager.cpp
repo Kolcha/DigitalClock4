@@ -7,6 +7,12 @@ PluginManager::PluginManager(QObject *parent)
   : QObject(parent) {
 }
 
+PluginManager::~PluginManager() {
+  for (auto iter = loaded_.begin(); iter != loaded_.end(); ++iter) {
+    UnloadPlugin(iter.key());
+  }
+}
+
 void PluginManager::SetInitData(const TPluginData& data) {
   data_ = data;
 }
