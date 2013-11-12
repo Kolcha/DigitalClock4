@@ -16,7 +16,8 @@ SOURCES += schedule.cpp \
 
 HEADERS += schedule.h \
     gui/settings_dialog.h \
-    gui/add_task_dialog.h
+    gui/add_task_dialog.h \
+    core/task.h
 OTHER_FILES += schedule.json
 
 win32:RC_FILE = schedule.rc

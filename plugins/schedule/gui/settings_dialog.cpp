@@ -13,5 +13,6 @@ SettingsDialog::~SettingsDialog() {
 
 void SettingsDialog::on_add_btn_clicked() {
   AddTaskDialog* dlg = new AddTaskDialog(this);
+  connect(dlg, SIGNAL(TaskAdded(Task)), this, SIGNAL(TaskAdded(Task)));
   dlg->show();
 }
