@@ -8,8 +8,9 @@ PluginManager::PluginManager(QObject *parent)
 }
 
 PluginManager::~PluginManager() {
-  for (auto iter = loaded_.begin(); iter != loaded_.end(); ++iter) {
-    UnloadPlugin(iter.key());
+  QList<QString> plugins = loaded_.keys();
+  for (auto& plugin : plugins) {
+    UnloadPlugin(plugin);
   }
 }
 
