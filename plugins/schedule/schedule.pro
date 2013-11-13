@@ -12,12 +12,14 @@ CONFIG += plugin
 
 SOURCES += schedule.cpp \
     gui/settings_dialog.cpp \
-    gui/add_task_dialog.cpp
+    gui/add_task_dialog.cpp \
+    core/task_manager.cpp
 
 HEADERS += schedule.h \
     gui/settings_dialog.h \
     gui/add_task_dialog.h \
-    core/task.h
+    core/task.h \
+    core/task_manager.h
 OTHER_FILES += schedule.json
 
 win32:RC_FILE = schedule.rc

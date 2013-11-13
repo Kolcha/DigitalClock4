@@ -6,6 +6,8 @@
 #include "iclock_plugin.h"
 #include "gui/settings_dialog.h"
 
+class TaskManager;
+
 class Schedule : public IWidgetPlugin {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID WIDGET_PLUGIN_INTERFACE_IID FILE "schedule.json")
@@ -24,11 +26,13 @@ public slots:
 
 private slots:
   void TrayActivated(QSystemTrayIcon::ActivationReason reason);
+  void ShowMessage(const QString& message);
 
 private:
   QWidget* parent_;
-  QSystemTrayIcon* tray_icon_;
+  QPointer<QSystemTrayIcon> tray_icon_;
   QMenu* tray_menu_;
+  TaskManager* manager_;
   QPointer<SettingsDialog> settings_dlg_;
 };
 
