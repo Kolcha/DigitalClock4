@@ -2,7 +2,7 @@
 #define ANY_ZOOM_SETTINGS_H
 
 // any zoom plugin settings keys
-#define OPT_CURRENT_ZOOM        "any_zoom/zoom"
+#define OPT_CURRENT_ZOOM        "plugins/any_zoom/zoom"
 
 #include <QSettings>
 

@@ -2,7 +2,7 @@
 #define TRAY_COLOR_SETTINGS_H
 
 // alarm plugin settings keys
-#define OPT_TRAY_COLOR           "tray_color/color"
+#define OPT_TRAY_COLOR           "plugins/tray_color/color"
 
 #include <QSettings>
 
