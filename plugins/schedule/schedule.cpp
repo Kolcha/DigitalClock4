@@ -24,7 +24,6 @@ void Schedule::Start() {
 }
 
 void Schedule::Stop() {
-  manager_->SaveTasks();
   tray_icon_->setVisible(false);
   delete tray_icon_;
   delete tray_menu_;
