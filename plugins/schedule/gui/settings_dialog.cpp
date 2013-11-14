@@ -1,3 +1,4 @@
+#include "settings_keys.h"
 #include "add_task_dialog.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
@@ -12,6 +13,7 @@ SettingsDialog::~SettingsDialog() {
 }
 
 void SettingsDialog::SetDates(const QList<QDate>& dates) {
+  ui->days_box->clear();
   for (auto& date : dates) {
     ui->days_box->addItem(date.toString(Qt::SystemLocaleShortDate), date);
   }
@@ -19,15 +21,16 @@ void SettingsDialog::SetDates(const QList<QDate>& dates) {
 }
 
 void SettingsDialog::SetTasks(const QMap<QTime, QString>& tasks) {
-  ui->tasks_table->clear();
+  ui->tasks_table->setRowCount(0);
   for (auto iter = tasks.begin(); iter != tasks.end(); ++iter) {
     int index = ui->tasks_table->rowCount();
     ui->tasks_table->setRowCount(index + 1);
-    QTableWidgetItem* item1 = new QTableWidgetItem(iter.key().toString(Qt::SystemLocaleShortDate));
+    QTableWidgetItem* item1 = new QTableWidgetItem(
+          iter.key().toString(GetDefaultValue(OPT_TIME_FORMAT).toString()));
     item1->setData(Qt::UserRole, iter.key());
     QTableWidgetItem* item2 = new QTableWidgetItem(iter.value());
     ui->tasks_table->setItem(index, 0, item1);
-    ui->tasks_table->setItem(index - 1, 1, item2);
+    ui->tasks_table->setItem(index, 1, item2);
   }
 }
 

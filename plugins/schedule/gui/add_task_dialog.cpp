@@ -20,6 +20,7 @@ void AddTaskDialog::accept() {
   Task new_task;
   new_task.date = ui->date_edit->date();
   new_task.time = ui->time_edit->time();
+  new_task.time = new_task.time.addSecs(-new_task.time.second());
   new_task.description = ui->desc_text_edit->toPlainText();
   emit TaskAdded(new_task);
   CenteredDialog::accept();

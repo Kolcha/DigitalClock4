@@ -48,7 +48,8 @@ void Schedule::Configure() {
 }
 
 void Schedule::TimeUpdateListener(const QString&) {
-  manager_->CheckTime(QDateTime::currentDateTime());
+  QDateTime now = QDateTime::currentDateTime();
+  manager_->CheckTime(now.addSecs(-now.time().second()));
 }
 
 void Schedule::TrayActivated(QSystemTrayIcon::ActivationReason reason) {
