@@ -1,6 +1,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QFileDialog>
+#include <settings_keys.h>
 #include "../alarm_settings.h"
 #include "settings_dlg.h"
 #include "ui_settings_dlg.h"
@@ -8,6 +9,7 @@
 SettingsDlg::SettingsDlg(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDlg) {
   ui->setupUi(this);
+  ui->time_edit->setDisplayFormat(GetDefaultValue(OPT_TIME_FORMAT).toString());
 
   player_ = new QMediaPlayer(this);
   connect(player_, SIGNAL(stateChanged(QMediaPlayer::State)),
