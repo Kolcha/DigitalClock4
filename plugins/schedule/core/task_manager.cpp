@@ -73,4 +73,5 @@ void TaskManager::CheckTime(const QDateTime& time) {
   emit TaskFound(time_iter.value());
   date_iter.value().erase(time_iter);
   if (date_iter.value().empty()) tasks_.erase(date_iter);
+  SaveTasks();
 }

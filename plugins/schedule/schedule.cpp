@@ -24,6 +24,7 @@ void Schedule::Start() {
 }
 
 void Schedule::Stop() {
+  manager_->SaveTasks();
   tray_icon_->setVisible(false);
   delete tray_icon_;
   delete tray_menu_;
@@ -42,6 +43,7 @@ void Schedule::Configure() {
     connect(settings_dlg_, SIGNAL(TaskRemoved(Task)), manager_, SLOT(RemoveTask(Task)));
     connect(settings_dlg_, SIGNAL(DateChanged(QDate)), manager_, SLOT(SetCurrentDate(QDate)));
     connect(settings_dlg_, SIGNAL(accepted()), manager_, SLOT(SaveTasks()));
+    connect(settings_dlg_, SIGNAL(rejected()), manager_, SLOT(LoadTasks()));
     manager_->LoadTasks();
     settings_dlg_->show();
   }
@@ -49,7 +51,7 @@ void Schedule::Configure() {
 
 void Schedule::TimeUpdateListener(const QString&) {
   QDateTime now = QDateTime::currentDateTime();
-  manager_->CheckTime(now.addSecs(-now.time().second()));
+  manager_->CheckTime(now.addSecs(-now.time().second()).addMSecs(-now.time().msec()));
 }
 
 void Schedule::TrayActivated(QSystemTrayIcon::ActivationReason reason) {
