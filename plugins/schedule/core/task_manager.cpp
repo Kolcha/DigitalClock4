@@ -1,7 +1,13 @@
+#include <QSettings>
+#include <QStringList>
 #include "task_manager.h"
 
+#define APP_NAME   QString("Digital Clock")
+#define ORG_NAME   QString("Nick Korotysh")
+#define ROOT_KEY   QString("plugins/schedule/")
+
 TaskManager::TaskManager(QObject* parent)
-  : QObject(parent), current_date_(QDate::currentDate()) {
+  : QObject(parent) {
 }
 
 void TaskManager::AddTask(const Task& task) {
@@ -30,9 +36,31 @@ void TaskManager::SetCurrentDate(const QDate& date) {
 }
 
 void TaskManager::SaveTasks() {
+  QSettings settings(ORG_NAME, APP_NAME);
+  settings.remove(ROOT_KEY);
+  for (auto d_iter = tasks_.begin(); d_iter != tasks_.end(); ++d_iter) {
+    for (auto t_iter = d_iter.value().begin(); t_iter != d_iter.value().end(); ++t_iter) {
+      QString date = d_iter.key().toString("dd-MM-yyyy");
+      QString time = t_iter.key().toString("hh-mm");
+      settings.setValue(ROOT_KEY + date + "/" + time, t_iter.value());
+    }
+  }
 }
 
 void TaskManager::LoadTasks() {
+  QSettings settings(ORG_NAME, APP_NAME);
+  settings.beginGroup(ROOT_KEY);
+  QStringList dates = settings.childGroups();
+  for (auto& date : dates) {
+    QMap<QTime, QString>& date_tasks = tasks_[QDate::fromString(date, "dd-MM-yyyy")];
+    settings.beginGroup(date);
+    QStringList times = settings.childKeys();
+    for (auto& time : times) {
+      date_tasks[QTime::fromString(time, "hh-mm")] = settings.value(time).toString();
+    }
+    settings.endGroup();
+  }
+  emit DatesUpdated(tasks_.keys());
 }
 
 void TaskManager::CheckTime(const QDateTime& time) {
