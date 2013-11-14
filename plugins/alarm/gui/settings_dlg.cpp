@@ -8,8 +8,6 @@
 SettingsDlg::SettingsDlg(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDlg) {
   ui->setupUi(this);
-  setWindowIcon(QIcon(":/settings.svg"));
-  ui->play_btn->setIcon(QIcon(":/play.svg"));
 
   player_ = new QMediaPlayer(this);
   connect(player_, SIGNAL(stateChanged(QMediaPlayer::State)),

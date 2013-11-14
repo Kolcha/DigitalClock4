@@ -1,6 +1,7 @@
 #include <QSystemTrayIcon>
 #include <QFile>
 #include <QDir>
+#include "plugin_settings.h"
 #include "gui/settings_dlg.h"
 #include "alarm_settings.h"
 #include "alarm.h"
@@ -65,23 +66,19 @@ void Alarm::Stop() {
 }
 
 void Alarm::Configure() {
-  if (dialog_) {
-    dialog_->activateWindow();
-  } else {
-    dialog_ = new SettingsDlg(parent_);
-    // load current settings to dialog
-    connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
-          dialog_, SLOT(SettingsListener(QString,QVariant)));
-    settings_->TrackChanges(true);
-    settings_->Load();
-    settings_->TrackChanges(false);
-    // connect main signals/slots
-    connect(dialog_, SIGNAL(OptionChanged(QString,QVariant)),
-            settings_, SLOT(SetOption(QString,QVariant)));
-    connect(dialog_, SIGNAL(accepted()), settings_, SLOT(Save()));
-    connect(dialog_, SIGNAL(rejected()), settings_, SLOT(Load()));
-    dialog_->show();
-  }
+  SettingsDlg* dialog = new SettingsDlg(parent_);
+  // load current settings to dialog
+  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
+          dialog, SLOT(SettingsListener(QString,QVariant)));
+  settings_->TrackChanges(true);
+  settings_->Load();
+  settings_->TrackChanges(false);
+  // connect main signals/slots
+  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
+          settings_, SLOT(SetOption(QString,QVariant)));
+  connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
+  dialog->show();
 }
 
 void Alarm::TimeUpdateListener(const QString&) {

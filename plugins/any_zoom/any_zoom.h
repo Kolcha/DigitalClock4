@@ -1,10 +1,9 @@
 #ifndef ANY_ZOOM_H
 #define ANY_ZOOM_H
 
-#include <QPointer>
-#include <QInputDialog>
 #include "iclock_plugin.h"
-#include "plugin_settings.h"
+
+class PluginSettings;
 
 class AnyZoom : public ISettingsPlugin {
   Q_OBJECT
@@ -29,7 +28,6 @@ private slots:
 private:
   QWidget* parent_;
   PluginSettings* settings_;
-  QPointer<QInputDialog> settings_dlg_;
   bool is_enabled_;
   qreal last_zoom_;
 };

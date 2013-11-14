@@ -2,7 +2,8 @@
 #define TRAY_COLOR_H
 
 #include "iclock_plugin.h"
-#include "plugin_settings.h"
+
+class PluginSettings;
 
 class TrayColor : public ITrayPlugin {
   Q_OBJECT

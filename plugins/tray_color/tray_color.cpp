@@ -1,6 +1,7 @@
 #include <QSystemTrayIcon>
 #include <QColorDialog>
 #include <QPainter>
+#include "plugin_settings.h"
 #include "tray_color_settings.h"
 #include "tray_color.h"
 
