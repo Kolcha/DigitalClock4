@@ -22,13 +22,13 @@ void TaskManager::RemoveTask(const Task& task) {
     tasks_.erase(date_iter);
     emit DatesUpdated(tasks_.keys());
   }
-  if (task.date == current_date_) emit TasksUpdated(tasks_[task.date]);
+  if (task.date == current_date_) emit TasksUpdated(tasks_.value(task.date));
 }
 
 void TaskManager::SetCurrentDate(const QDate& date) {
   if (date == current_date_) return;
   current_date_ = date;
-  emit TasksUpdated(tasks_[date]);
+  emit TasksUpdated(tasks_.value(date));
 }
 
 void TaskManager::SaveTasks() {
