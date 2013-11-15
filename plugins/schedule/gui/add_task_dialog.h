@@ -12,7 +12,7 @@ class AddTaskDialog : public CenteredDialog {
   Q_OBJECT
 
 public:
-  explicit AddTaskDialog(QWidget* parent = 0);
+  AddTaskDialog(Qt::DateFormat date_format, QWidget* parent = 0);
   ~AddTaskDialog();
 
 signals:

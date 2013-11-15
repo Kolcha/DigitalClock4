@@ -23,7 +23,7 @@ public slots:
   void SaveTasks();
   void LoadTasks();
 
-  void CheckTime(const QDateTime& time);
+  void CheckTime(const QDateTime& time, bool delete_task);
 
 private:
   QMap<QDate, QMap<QTime, QString> > tasks_;

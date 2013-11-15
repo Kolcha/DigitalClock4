@@ -19,7 +19,8 @@ HEADERS += schedule.h \
     gui/settings_dialog.h \
     gui/add_task_dialog.h \
     core/task.h \
-    core/task_manager.h
+    core/task_manager.h \
+    core/schedule_settings.h
 OTHER_FILES += schedule.json
 
 win32:RC_FILE = schedule.rc

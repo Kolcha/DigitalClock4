@@ -1,7 +1,7 @@
 {
     "name" : "Schedule",
     "type" : "widget",
-    "version" : "2.0",
+    "version" : "2.0.1",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
     "description" : "Display notification at specified time.",

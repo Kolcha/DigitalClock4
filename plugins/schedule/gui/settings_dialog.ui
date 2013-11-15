@@ -6,39 +6,32 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>332</width>
-    <height>271</height>
+    <width>331</width>
+    <height>294</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Schedule Settings</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../schedule.qrc">
+   <iconset resource="../../alarm/alarm.qrc">
     <normaloff>:/settings.svg</normaloff>:/settings.svg</iconset>
   </property>
   <property name="modal">
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0">
-   <item>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="days_label">
        <property name="text">
-        <string>Days:</string>
+        <string>Date:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="days_box">
-       <property name="minimumSize">
-        <size>
-         <width>90</width>
-         <height>0</height>
-        </size>
-       </property>
-      </widget>
+      <widget class="QComboBox" name="days_box"/>
      </item>
      <item>
       <spacer name="horizontalSpacer">
@@ -77,7 +70,24 @@
      </item>
     </layout>
    </item>
-   <item>
+   <item row="1" column="0">
+    <widget class="QCheckBox" name="long_format">
+     <property name="text">
+      <string>use long date format</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QCheckBox" name="autodelete">
+     <property name="text">
+      <string>autodelete shown tasks</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
     <widget class="QTableWidget" name="tasks_table">
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
@@ -109,7 +119,7 @@
      </column>
     </widget>
    </item>
-   <item>
+   <item row="3" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -122,6 +132,7 @@
   </layout>
  </widget>
  <resources>
+  <include location="../../alarm/alarm.qrc"/>
   <include location="../schedule.qrc"/>
  </resources>
  <connections>
@@ -132,8 +143,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>257</x>
+     <y>284</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -148,12 +159,28 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>321</x>
+     <y>284</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>long_format</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>days_label</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>30</x>
+     <y>46</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>30</x>
+     <y>26</y>
     </hint>
    </hints>
   </connection>

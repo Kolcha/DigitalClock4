@@ -1,10 +1,6 @@
-#include <QSettings>
 #include <QStringList>
+#include "schedule_settings.h"
 #include "task_manager.h"
-
-#define APP_NAME   QString("Digital Clock")
-#define ORG_NAME   QString("Nick Korotysh")
-#define ROOT_KEY   QString("plugins/schedule/")
 
 TaskManager::TaskManager(QObject* parent)
   : QObject(parent) {
@@ -63,7 +59,7 @@ void TaskManager::LoadTasks() {
   emit DatesUpdated(tasks_.keys());
 }
 
-void TaskManager::CheckTime(const QDateTime& time) {
+void TaskManager::CheckTime(const QDateTime& time, bool delete_task) {
   auto date_iter = tasks_.find(time.date());
   if (date_iter == tasks_.end()) return;
 
@@ -71,7 +67,14 @@ void TaskManager::CheckTime(const QDateTime& time) {
   if (time_iter == date_iter.value().end()) return;
 
   emit TaskFound(time_iter.value());
-  date_iter.value().erase(time_iter);
-  if (date_iter.value().empty()) tasks_.erase(date_iter);
-  SaveTasks();
+
+  if (delete_task) {
+    date_iter.value().erase(time_iter);
+    emit TasksUpdated(date_iter.value());
+    if (date_iter.value().empty()) {
+      tasks_.erase(date_iter);
+      emit DatesUpdated(tasks_.keys());
+    }
+    SaveTasks();
+  }
 }

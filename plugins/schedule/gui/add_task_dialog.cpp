@@ -3,10 +3,12 @@
 #include "add_task_dialog.h"
 #include "ui_add_task_dialog.h"
 
-AddTaskDialog::AddTaskDialog(QWidget* parent)
+AddTaskDialog::AddTaskDialog(Qt::DateFormat date_format, QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::AddTaskDialog) {
   ui->setupUi(this);
-  ui->date_edit->setDisplayFormat(QLocale::system().dateFormat(QLocale::ShortFormat));
+  QLocale::FormatType format_type =
+      date_format == Qt::SystemLocaleLongDate ? QLocale::LongFormat : QLocale::ShortFormat;
+  ui->date_edit->setDisplayFormat(QLocale::system().dateFormat(format_type));
   ui->date_edit->setDate(QDate::currentDate());
   ui->time_edit->setDisplayFormat(GetDefaultValue(OPT_TIME_FORMAT).toString());
   ui->time_edit->setTime(QTime::currentTime());

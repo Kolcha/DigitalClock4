@@ -7,6 +7,7 @@
 #include "gui/settings_dialog.h"
 
 class TaskManager;
+class PluginSettings;
 
 class Schedule : public IWidgetPlugin {
   Q_OBJECT
@@ -34,6 +35,7 @@ private:
   QMenu* tray_menu_;
   TaskManager* manager_;
   QPointer<SettingsDialog> settings_dlg_;
+  PluginSettings* settings_;
 };
 
 #endif // SCHEDULE_H
