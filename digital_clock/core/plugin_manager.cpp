@@ -7,6 +7,13 @@ PluginManager::PluginManager(QObject *parent)
   : QObject(parent) {
 }
 
+PluginManager::~PluginManager() {
+  QList<QString> plugins = loaded_.keys();
+  for (auto& plugin : plugins) {
+    UnloadPlugin(plugin);
+  }
+}
+
 void PluginManager::SetInitData(const TPluginData& data) {
   data_ = data;
 }

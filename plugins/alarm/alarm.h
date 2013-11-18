@@ -5,9 +5,8 @@
 #include <QPointer>
 #include <QMediaPlayer>
 #include "iclock_plugin.h"
-#include "plugin_settings.h"
 
-class SettingsDlg;
+class PluginSettings;
 
 class Alarm : public ITrayPlugin {
   Q_OBJECT
@@ -31,7 +30,6 @@ private:
   QIcon old_icon_;
   PluginSettings* settings_;
   QPointer<QMediaPlayer> player_;
-  QPointer<SettingsDlg> dialog_;
   bool icon_changed_;
 };
 

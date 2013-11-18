@@ -2,14 +2,14 @@
 #define ALARM_SETTINGS_H
 
 // alarm plugin settings keys
-#define OPT_ENABLED           "alarm_plugin/enabled"
-#define OPT_TIME              "alarm_plugin/time"
-#define OPT_SIGNAL_TYPE       "alarm_plugin/signal_type"
-#define OPT_FILENAME          "alarm_plugin/filename"
-#define OPT_STREAM_URL        "alarm_plugin/stream_url"
-#define OPT_VOLUME            "alarm_plugin/volume"
-#define OPT_SHOW_NOTIFY       "alarm_plugin/show_notify"
-#define OPT_NOTIFY_TEXT       "alarm_plugin/notify_text"
+#define OPT_ENABLED           "plugins/alarm/enabled"
+#define OPT_TIME              "plugins/alarm/time"
+#define OPT_SIGNAL_TYPE       "plugins/alarm/signal_type"
+#define OPT_FILENAME          "plugins/alarm/filename"
+#define OPT_STREAM_URL        "plugins/alarm/stream_url"
+#define OPT_VOLUME            "plugins/alarm/volume"
+#define OPT_SHOW_NOTIFY       "plugins/alarm/show_notify"
+#define OPT_NOTIFY_TEXT       "plugins/alarm/notify_text"
 
 #include <QSettings>
 #include <QTime>

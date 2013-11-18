@@ -1,3 +1,5 @@
+#include <QInputDialog>
+#include "plugin_settings.h"
 #include "any_zoom_settings.h"
 #include "any_zoom.h"
 
@@ -29,26 +31,23 @@ void AnyZoom::Stop() {
 }
 
 void AnyZoom::Configure() {
-  if (settings_dlg_) {
-    settings_dlg_->activateWindow();
-  } else {
-    settings_dlg_ = new QInputDialog(parent_);
-    settings_dlg_->setAttribute(Qt::WA_DeleteOnClose);
+  QInputDialog* settings_dlg = new QInputDialog(parent_);
+  settings_dlg->setAttribute(Qt::WA_DeleteOnClose);
+  settings_dlg->setModal(true);
 
-    settings_dlg_->setWindowTitle("Any zoom settings");
-    settings_dlg_->setLabelText("zoom:");
+  settings_dlg->setWindowTitle("Any zoom settings");
+  settings_dlg->setLabelText("zoom:");
 
-    settings_dlg_->setInputMode(QInputDialog::IntInput);
-    settings_dlg_->setIntRange(1, 1000000);
-    settings_dlg_->setIntValue(settings_->GetOption(OPT_CURRENT_ZOOM).toInt());
+  settings_dlg->setInputMode(QInputDialog::IntInput);
+  settings_dlg->setIntRange(1, 1000000);
+  settings_dlg->setIntValue(settings_->GetOption(OPT_CURRENT_ZOOM).toInt());
 
-    connect(settings_dlg_, SIGNAL(intValueChanged(int)), this, SLOT(TrackChange(int)));
-    connect(settings_dlg_, SIGNAL(intValueSelected(int)), this, SLOT(TrackChange(int)));
-    connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
-    connect(settings_dlg_, SIGNAL(rejected()), this, SLOT(RevertSettings()));
+  connect(settings_dlg, SIGNAL(intValueChanged(int)), this, SLOT(TrackChange(int)));
+  connect(settings_dlg, SIGNAL(intValueSelected(int)), this, SLOT(TrackChange(int)));
+  connect(settings_dlg, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(settings_dlg, SIGNAL(rejected()), this, SLOT(RevertSettings()));
 
-    settings_dlg_->show();
-  }
+  settings_dlg->show();
 }
 
 void AnyZoom::TrackChange(int new_zoom) {
