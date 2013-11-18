@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>331</width>
+    <width>360</width>
     <height>294</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>Schedule Settings</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../alarm/alarm.qrc">
+   <iconset resource="../schedule.qrc">
     <normaloff>:/settings.svg</normaloff>:/settings.svg</iconset>
   </property>
   <property name="modal">
@@ -31,20 +31,14 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="days_box"/>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+      <widget class="QComboBox" name="days_box">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="add_btn">
@@ -132,7 +126,6 @@
   </layout>
  </widget>
  <resources>
-  <include location="../../alarm/alarm.qrc"/>
   <include location="../schedule.qrc"/>
  </resources>
  <connections>

@@ -73,8 +73,6 @@ void SettingsDialog::on_long_format_toggled(bool checked) {
     QDate date = ui->days_box->itemData(i).toDate();
     ui->days_box->setItemText(i, date.toString(date_format_));
   }
-  ui->days_box->adjustSize();
-  adjustSize();
 }
 
 void SettingsDialog::on_autodelete_toggled(bool checked) {
