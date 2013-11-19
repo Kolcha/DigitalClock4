@@ -12,16 +12,16 @@ TEMPLATE = lib
 CONFIG += plugin
 
 SOURCES += schedule.cpp \
-    gui/settings_dialog.cpp \
-    gui/add_task_dialog.cpp \
-    core/task_manager.cpp
+    core/task_manager.cpp \
+    gui/add_task_dlg.cpp \
+    gui/settings_dlg.cpp
 
 HEADERS += schedule.h \
-    gui/settings_dialog.h \
-    gui/add_task_dialog.h \
     core/task.h \
     core/task_manager.h \
-    core/schedule_settings.h
+    core/schedule_settings.h \
+    gui/add_task_dlg.h \
+    gui/settings_dlg.h
 OTHER_FILES += schedule.json
 
 win32:RC_FILE = schedule.rc
@@ -37,5 +37,5 @@ RESOURCES += \
     schedule.qrc
 
 FORMS += \
-    gui/settings_dialog.ui \
-    gui/add_task_dialog.ui
+    gui/add_task_dlg.ui \
+    gui/settings_dlg.ui

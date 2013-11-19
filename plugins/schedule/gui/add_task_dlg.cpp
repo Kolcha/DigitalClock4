@@ -1,10 +1,10 @@
 #include <QLocale>
 #include "settings_keys.h"
-#include "add_task_dialog.h"
-#include "ui_add_task_dialog.h"
+#include "add_task_dlg.h"
+#include "ui_add_task_dlg.h"
 
-AddTaskDialog::AddTaskDialog(Qt::DateFormat date_format, QWidget* parent)
-  : CenteredDialog(parent), ui(new Ui::AddTaskDialog) {
+AddTaskDlg::AddTaskDlg(Qt::DateFormat date_format, QWidget* parent)
+  : CenteredDialog(parent), ui(new Ui::AddTaskDlg) {
   ui->setupUi(this);
   QLocale::FormatType format_type =
       date_format == Qt::SystemLocaleLongDate ? QLocale::LongFormat : QLocale::ShortFormat;
@@ -14,11 +14,11 @@ AddTaskDialog::AddTaskDialog(Qt::DateFormat date_format, QWidget* parent)
   ui->time_edit->setTime(QTime::currentTime());
 }
 
-AddTaskDialog::~AddTaskDialog() {
+AddTaskDlg::~AddTaskDlg() {
   delete ui;
 }
 
-void AddTaskDialog::accept() {
+void AddTaskDlg::accept() {
   Task new_task;
   new_task.date = ui->date_edit->date();
   new_task.time = ui->time_edit->time();

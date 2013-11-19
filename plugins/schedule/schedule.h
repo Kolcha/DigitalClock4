@@ -4,7 +4,7 @@
 #include <QSystemTrayIcon>
 #include <QPointer>
 #include "iclock_plugin.h"
-#include "gui/settings_dialog.h"
+#include "gui/settings_dlg.h"
 
 class TaskManager;
 class PluginSettings;
@@ -34,7 +34,7 @@ private:
   QPointer<QSystemTrayIcon> tray_icon_;
   QMenu* tray_menu_;
   TaskManager* manager_;
-  QPointer<SettingsDialog> settings_dlg_;
+  QPointer<SettingsDlg> settings_dlg_;
   PluginSettings* settings_;
 };
 

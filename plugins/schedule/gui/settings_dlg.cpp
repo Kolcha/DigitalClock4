@@ -1,20 +1,20 @@
 #include "settings_keys.h"
 #include "../core/schedule_settings.h"
-#include "add_task_dialog.h"
-#include "settings_dialog.h"
-#include "ui_settings_dialog.h"
+#include "add_task_dlg.h"
+#include "settings_dlg.h"
+#include "ui_settings_dlg.h"
 
-SettingsDialog::SettingsDialog(QWidget* parent)
-  : CenteredDialog(parent), ui(new Ui::SettingsDialog),
+SettingsDlg::SettingsDlg(QWidget* parent)
+  : CenteredDialog(parent), ui(new Ui::SettingsDlg),
     date_format_(Qt::SystemLocaleShortDate) {
   ui->setupUi(this);
 }
 
-SettingsDialog::~SettingsDialog() {
+SettingsDlg::~SettingsDlg() {
   delete ui;
 }
 
-void SettingsDialog::SetDates(const QList<QDate>& dates) {
+void SettingsDlg::SetDates(const QList<QDate>& dates) {
   ui->days_box->clear();
   for (auto& date : dates) {
     ui->days_box->addItem(date.toString(date_format_), date);
@@ -22,7 +22,7 @@ void SettingsDialog::SetDates(const QList<QDate>& dates) {
   ui->days_box->setCurrentText(QDate::currentDate().toString(date_format_));
 }
 
-void SettingsDialog::SetTasks(const QMap<QTime, QString>& tasks) {
+void SettingsDlg::SetTasks(const QMap<QTime, QString>& tasks) {
   ui->tasks_table->setRowCount(0);
   for (auto iter = tasks.begin(); iter != tasks.end(); ++iter) {
     int index = ui->tasks_table->rowCount();
@@ -36,7 +36,7 @@ void SettingsDialog::SetTasks(const QMap<QTime, QString>& tasks) {
   }
 }
 
-void SettingsDialog::SettingsListener(const QString& key, const QVariant& value) {
+void SettingsDlg::SettingsListener(const QString& key, const QVariant& value) {
   if (key == OPT_DATE_FORMAT) {
     date_format_ = (Qt::DateFormat)(value.toInt());
     ui->long_format->setChecked(date_format_ == Qt::SystemLocaleLongDate);
@@ -46,17 +46,17 @@ void SettingsDialog::SettingsListener(const QString& key, const QVariant& value)
   }
 }
 
-void SettingsDialog::on_days_box_currentIndexChanged(int index) {
+void SettingsDlg::on_days_box_currentIndexChanged(int index) {
   emit DateChanged(ui->days_box->itemData(index).toDate());
 }
 
-void SettingsDialog::on_add_btn_clicked() {
-  AddTaskDialog* dlg = new AddTaskDialog(date_format_, this);
+void SettingsDlg::on_add_btn_clicked() {
+  AddTaskDlg* dlg = new AddTaskDlg(date_format_, this);
   connect(dlg, SIGNAL(TaskAdded(Task)), this, SIGNAL(TaskAdded(Task)));
   dlg->show();
 }
 
-void SettingsDialog::on_del_btn_clicked() {
+void SettingsDlg::on_del_btn_clicked() {
   Task task;
   task.date = ui->days_box->itemData(ui->days_box->currentIndex()).toDate();
   int row = ui->tasks_table->currentRow();
@@ -65,7 +65,7 @@ void SettingsDialog::on_del_btn_clicked() {
   emit TaskRemoved(task);
 }
 
-void SettingsDialog::on_long_format_toggled(bool checked) {
+void SettingsDlg::on_long_format_toggled(bool checked) {
   date_format_ = checked ? Qt::SystemLocaleLongDate : Qt::SystemLocaleShortDate;
   emit OptionChanged(OPT_DATE_FORMAT, (int)date_format_);
 
@@ -75,6 +75,6 @@ void SettingsDialog::on_long_format_toggled(bool checked) {
   }
 }
 
-void SettingsDialog::on_autodelete_toggled(bool checked) {
+void SettingsDlg::on_autodelete_toggled(bool checked) {
   emit OptionChanged(OPT_TASK_DELETE, checked);
 }

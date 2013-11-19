@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddTaskDialog</class>
- <widget class="QDialog" name="AddTaskDialog">
+ <class>AddTaskDlg</class>
+ <widget class="QDialog" name="AddTaskDlg">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -86,7 +86,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>AddTaskDialog</receiver>
+   <receiver>AddTaskDlg</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -102,7 +102,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>AddTaskDialog</receiver>
+   <receiver>AddTaskDlg</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

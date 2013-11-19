@@ -42,7 +42,7 @@ void Schedule::Configure() {
   if (settings_dlg_) {
     settings_dlg_->activateWindow();
   } else {
-    settings_dlg_ = new SettingsDialog(parent_);
+    settings_dlg_ = new SettingsDlg(parent_);
     // load current settings to dialog
     connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
             settings_dlg_, SLOT(SettingsListener(QString,QVariant)));

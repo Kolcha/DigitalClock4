@@ -1,19 +1,19 @@
-#ifndef SETTINGS_DIALOG_H
-#define SETTINGS_DIALOG_H
+#ifndef SETTINGS_DLG_H
+#define SETTINGS_DLG_H
 
 #include "centered_dialog.h"
 #include "../core/task.h"
 
 namespace Ui {
-class SettingsDialog;
+class SettingsDlg;
 }
 
-class SettingsDialog : public CenteredDialog {
+class SettingsDlg : public CenteredDialog {
   Q_OBJECT
 
 public:
-  explicit SettingsDialog(QWidget* parent = 0);
-  ~SettingsDialog();
+  explicit SettingsDlg(QWidget* parent = 0);
+  ~SettingsDlg();
 
 signals:
   void TaskAdded(const Task& task);
@@ -34,8 +34,8 @@ private slots:
   void on_autodelete_toggled(bool checked);
 
 private:
-  Ui::SettingsDialog* ui;
+  Ui::SettingsDlg* ui;
   Qt::DateFormat date_format_;
 };
 
-#endif // SETTINGS_DIALOG_H
+#endif // SETTINGS_DLG_H
