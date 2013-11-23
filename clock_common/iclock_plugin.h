@@ -1,10 +1,44 @@
+/*!
+ * @file iclock_plugin.h
+ *
+ * @brief This file contains all plugins interfaces.
+ *
+ * Digital Clock has next plugin types:
+ * @li clock
+ * @li settings
+ * @li tray
+ * @li widget
+ *
+ * Clock plugin is a base plugin interface for all other plugin types. This is only for very
+ * simple plugins, that doesn't need in access to clock settings, tray icon or other things.
+ * See IClockPlugin interface for details.
+ *
+ * Settings plugin can change any clock setting. You must be sure that your plugin set correct
+ * setting values, there is no any check inside clock, be carefull. To get all possible settings
+ * see settings_keys.h. See ISettingsPlugin interface for details.
+ *
+ * Tray plugin can access to clock's system tray icon and do with it anything: show/hide, change
+ * icon/tooltip, display messages from tray. It has access to tray menu too. You can add/remove
+ * any tray menu items from plugin. See ITrayPlugin interface for details.
+ *
+ * Widget plugin has access to clock's main window (as QWidget pointer). This plugin type planned
+ * to modify clock's view, add date or weather string for example. Main window layout will be
+ * described later.
+ * You can use this plugin type to create simple configurable plugin without any clock window
+ * modifications. See IWidgetPlugin interface for details.
+ */
+
 #ifndef ICLOCK_PLUGIN_H
 #define ICLOCK_PLUGIN_H
 
 #include <QtPlugin>
 #include "settings_keys.h"
 
-/*! Common plugins interface. */
+/*!
+ * @brief Clock plugin interface.
+ *
+ * Common interface for all plugins.
+ */
 class CLOCK_COMMON_EXPORT IClockPlugin : public QObject {
   Q_OBJECT
 
@@ -48,6 +82,9 @@ Q_DECLARE_INTERFACE(IClockPlugin, CLOCK_PLUGIN_INTERFACE_IID)
  *
  * Settings plugin can change any clock options. It must emit signal OptionChaged everytime
  * when it changes settings to notify clock. All changes will be applied immediately.
+ * @note You must be sure that your plugin set correct option values, there is no any check
+ * inside clock, be carefull.
+ * @see settings_keys.h.
  */
 class CLOCK_COMMON_EXPORT ISettingsPlugin : public IClockPlugin {
   Q_OBJECT
@@ -58,7 +95,8 @@ public:
   /*!
    * Init plugin.
    * @param current_settings - map with all current clock settings
-   * @param parent - parent widget (main window)
+   * @param parent - parent widget (main window). Use this as parent for settings
+   * dialog that you create.
    */
   virtual void Init(const QMap<Options, QVariant>& current_settings, QWidget* parent) = 0;
 
@@ -92,7 +130,8 @@ public:
   /*!
    * Init plugin.
    * @param tray_icon - pointer to clock QSystemTrayIcon object
-   * @param parent - parent widget (main window)
+   * @param parent - parent widget (main window). Use this as parent for settings
+   * dialog that you create.
    */
   virtual void Init(QSystemTrayIcon* tray_icon, QWidget* parent) = 0;
 };
@@ -106,7 +145,8 @@ Q_DECLARE_INTERFACE(ITrayPlugin, TRAY_PLUGIN_INTERFACE_IID)
  * @brief Widget plugin interface.
  *
  * Widget plugin can access and manipulate with main clock window. It can change
- * window position or add some widgets to this window for example.
+ * window position or add/remove some widgets to this window.
+ * For example, it can add new widget to date or day of week.
  */
 class CLOCK_COMMON_EXPORT IWidgetPlugin : public IClockPlugin {
   Q_OBJECT
