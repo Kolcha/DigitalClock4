@@ -5,10 +5,13 @@
 #include <QSettings>
 
 /*!
- * @brief The PluginSettings class.
+ * @brief Plugin settings save/load class.
  *
- * PluginSettings class provides logic to Save/Load clock plugin settings.
+ * PluginSettings class provides logic to Save/Load any clock plugin settings.
  * This class is based on QSettings class.
+ *
+ * This class can notify about value change emitting signal PluginSettings::OptionChanged().
+ * This feature is disabled by default, to enable it see PluginSettings::TrackChanges().
  */
 class CLOCK_COMMON_EXPORT PluginSettings : public QObject {
   Q_OBJECT
@@ -25,6 +28,7 @@ public:
   /*!
    * Init all options with default values.
    * @param values - map<QString, QVariant> with option names and their values
+   * @note This method must be called before Load() to init internal data.
    */
   void SetDefaultValues(const QSettings::SettingsMap& values);
   /*!
@@ -49,6 +53,8 @@ public slots:
    * Set 'track changes' flag. If it is set then signal OptionChanged() will emitted
    * when any option is changed.
    * @param is_track - true to enable tracking, false to disable
+   * @note When 'track changes' is enabled before Load() call, it will emit signal OptionChanged()
+   * for every loaded value.
    */
   void TrackChanges(bool is_track);
 
