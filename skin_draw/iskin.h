@@ -6,9 +6,15 @@
 #include "skin_draw_global.h"
 
 /*!
- * @brief The ISkin class.
+ * @brief Skin interface.
  *
- * Skin interface.
+ * This class provides interface for all supported skin types:
+ * @li raster image skin
+ * @li vector image skin
+ * @li text skin
+ *
+ * This interface is used by skin draw engine.
+ * @see RasterSkin, VectorSkin, TextSkin, SkinDrawer
  */
 class SKIN_DRAWSHARED_EXPORT ISkin {
 public:
