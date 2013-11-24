@@ -1,3 +1,32 @@
+Whats new in 4.2.4:
+-------------------
+Core:
+ - simplified skin and plugin interfaces
+ - new plugin info system
+ - fixed bug with plugins unload on clock exit
+
+GUI:
+ - redesigned plugins page
+ - setting dialog saves last geometry (size + position)
+ - system time format used without seconds by default
+ - changed about icon
+
+Plugins:
+ - alarm: added play button
+ - alarm: can change volume
+ - alarm: use system time format
+ - added "schedule" plugin
+ - settings dialog now is modal
+
+installer:
+ - VC Redist is not downloaded from internet anymore, it already included in installer
+ - removed 'Setup type (typical/custom/complete)' dialog
+
+SDK:
+ - added documentation
+ - added plugin example
+
+
 Whats new in 4.2.3:
 -------------------
 Core:

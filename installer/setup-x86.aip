@@ -591,7 +591,7 @@
     <ROW RemoveReg="_" InstallMode="2" Condition="(REMOVE=&quot;ALL&quot; AND (NOT UPGRADINGPRODUCTCODE))"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="." PackageFileName="digital_clock-x86" Languages="en" InstallationType="4" UseLargeSchema="true" Unicode="true"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="." PackageFileName="digital_clock_4-x86" Languages="en" InstallationType="4" UseLargeSchema="true" Unicode="true"/>
     <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
