@@ -5,9 +5,12 @@
 #include "base_skin.h"
 
 /*!
- * @brief The TextSkin class.
+ * @brief Any font support class.
  *
  * TextSkin class implements logic to create skin object from any font.
+ * This class is ready for use. You can use it as it implemented there or inherit it and
+ * change something in their behaviour (implement symbols replace logic for example).
+ * To replace some symblols you must fill TextSkin::char_map_ map.
  */
 class SKIN_DRAWSHARED_EXPORT TextSkin : public BaseSkin {
 public:
@@ -25,7 +28,7 @@ protected:
    * @return pointer to resized image
    */
   QPixmapPtr ResizeImage(QChar ch, qreal zoom);
-  /// map with chars that need to be replaced
+  /// map with chars that need to be replaced (old - new char)
   QMap<QChar, QChar> char_map_;
   /// used font
   QFont font_;
