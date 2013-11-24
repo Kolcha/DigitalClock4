@@ -5,13 +5,15 @@
 #include "iskin.h"
 
 /*!
- * @brief The BaseSkin class.
+ * @brief Base class for all skin classes.
  *
- * This is a base class for skin classes. It implements get skin info and get image logic.
+ * It implements get image logic and images cache.
  * Get image logic:
- *  - try to get image from cache, if failed request for new image and add it to cache if needed
- *  - if try to request image with different zoom than cache has and try to add it to cache,
+ * @li try to get image from cache, if failed request for new image and add it to cache if needed
+ * @li if try to request image with different zoom than cache has and try to add it to cache,
  * cache will be cleared and current skin zoom will be updated
+ *
+ * @see BaseSkin::ResizeImage()
  */
 class SKIN_DRAWSHARED_EXPORT BaseSkin : public ISkin {
 public:

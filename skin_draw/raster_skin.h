@@ -4,9 +4,12 @@
 #include "base_skin.h"
 
 /*!
- * @brief The RasterSkin class.
+ * @brief Raster images support class.
  *
- * RasterSkin class implements resize logic for raster images.
+ * RasterSkin class implements resize logic for raster images. Many formats are supported,
+ * see Qt documentation for details. PNG format is recommend.
+ * @note There is no any load skin logic. You must inherit this class and implement your own
+ * logic for skin resources loading. Load logic must fill RasterSkin::orig_images_ map.
  */
 class SKIN_DRAWSHARED_EXPORT RasterSkin : public BaseSkin {
 public:

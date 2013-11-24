@@ -4,9 +4,11 @@
 #include "base_skin.h"
 
 /*!
- * @brief The VectorSkin class.
+ * @brief Vector images support class.
  *
  * VectorSkin class implements resize logic for vector images. Only SVG is supported.
+ * @note There is no any load skin logic. You must inherit this class and implement your own
+ * logic for skin resources loading. Load logic must fill VectorSkin::image_files_ map.
  */
 class SKIN_DRAWSHARED_EXPORT VectorSkin : public BaseSkin {
 public:

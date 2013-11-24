@@ -1,3 +1,12 @@
+/*!
+ * @file settings_keys.h
+ *
+ * @brief All clock options and their possible values.
+ *
+ * You can find any clock option description, its possible values and value type in this file.
+ * @see Options, GetDefaultValue()
+ */
+
 #ifndef SETTINGS_KEYS_H
 #define SETTINGS_KEYS_H
 
@@ -21,8 +30,9 @@ enum Options {
   OPT_COLOR,                    /*!< clock color (if texture is not used), QColor, any color */
   OPT_TEXTURE,                  /*!< path to texture file, QString, path to image file */
   OPT_TEXTURE_PER_ELEMENT,      /*!< apply texture per element flag, bool, true/false */
-  OPT_TEXTURE_DRAW_MODE,        /*!< texture draw mode, @see DrawMode, DM_STRETCH/DM_TILE */
-  OPT_CUSTOMIZATION             /*!< customization type, int, CT_NONE, CT_COLOR, CT_TEXTURE */
+  OPT_TEXTURE_DRAW_MODE,        /*!< texture draw mode, SkinDrawer::DrawMode, DM_STRETCH/DM_TILE */
+  OPT_CUSTOMIZATION             /*!< customization type, SkinDrawer::CustomizationType,
+                                     CT_NONE/CT_COLOR/CT_TEXTURE */
 };
 
 /*! Get default value for specified option.
