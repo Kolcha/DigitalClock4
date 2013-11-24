@@ -5,7 +5,7 @@
 #include "iskin.h"
 
 /*!
- * @brief The SkinDrawer class.
+ * @brief Skin draw engine.
  *
  * SkinDrawer can draw any given text using some skin. Skin can be customized.
  * It draws all symbols one by one, applying needed changes for images from skin.
@@ -14,6 +14,10 @@
 class SKIN_DRAWSHARED_EXPORT SkinDrawer : public QObject {
   Q_OBJECT
 public:
+  /*!
+   * Constructor.
+   * @param parent - parent object
+   */
   explicit SkinDrawer(QObject* parent = 0);
 
   /*! texture draw modes */
