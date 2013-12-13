@@ -32,6 +32,10 @@ QVariant GetDefaultValue(Options opt) {
     case OPT_TEXTURE_PER_ELEMENT:   return false;
     case OPT_TEXTURE_DRAW_MODE:     return 0;
     case OPT_CUSTOMIZATION:         return 1;
+    // updater settings
+    case OPT_USE_AUTOUPDATE:        return true;
+    case OPT_UPDATE_PERIOD:         return 3;
+    case OPT_CHECK_FOR_BETA:        return false;
     default:                        return QVariant();
   }
 }

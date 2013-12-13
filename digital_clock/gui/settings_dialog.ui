@@ -509,28 +509,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="update_period_box">
-            <item>
-             <property name="text">
-              <string>1 day</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>3 days</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>1 week</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>2 weeks</string>
-             </property>
-            </item>
-           </widget>
+           <widget class="QComboBox" name="update_period_box"/>
           </item>
           <item>
            <widget class="QCheckBox" name="check_for_beta">
