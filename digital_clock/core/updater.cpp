@@ -11,7 +11,7 @@ Updater::Updater(QObject* parent)
     check_beta_(false), autoupdate_(true), update_period_(3),
     force_update_(false), was_error_(false) {
   QSettings settings;
-  last_update_ = settings.value(OPT_LAST_UPDATE).value<QDate>();
+  last_update_ = settings.value(OPT_LAST_UPDATE, QDate(2013, 6, 18)).value<QDate>();
 }
 
 Updater::~Updater() {

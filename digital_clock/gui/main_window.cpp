@@ -1,6 +1,7 @@
 #include <QGridLayout>
 #include <QMouseEvent>
 #include <QCoreApplication>
+#include <QDesktopServices>
 #include "settings_dialog.h"
 #include "about_dialog.h"
 #include "main_window.h"
@@ -260,6 +261,7 @@ void MainWindow::ConnectAll() {
   connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(DisplayMenu(QPoint)));
 
   connect(updater_, &Updater::ErrorMessage, [=] (const QString& msg) {
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(QCoreApplication::applicationName()),
           tr("Update error. %1").arg(msg),
@@ -267,6 +269,7 @@ void MainWindow::ConnectAll() {
   });
 
   connect(updater_, &Updater::UpToDate, [=] () {
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(QCoreApplication::applicationName()),
           tr("You already have latest version (%1).").arg(QCoreApplication::applicationVersion()),
@@ -274,10 +277,13 @@ void MainWindow::ConnectAll() {
   });
 
   connect(updater_, &Updater::NewVersion, [=] (const QString& version, const QString& link) {
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(QCoreApplication::applicationName()),
-          tr("Update available (%1). Download here: (%2).").arg(version).arg(link),
+          tr("Update available (%1). Click this message to download.").arg(version),
           QSystemTrayIcon::Warning);
+    connect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
+            [=] () { QDesktopServices::openUrl(link); });
   });
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), updater_, SLOT(TimeoutHandler()));
 }
