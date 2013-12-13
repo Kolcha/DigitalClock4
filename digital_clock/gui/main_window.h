@@ -5,6 +5,7 @@
 #include "../core/clock_settings.h"
 #include "../core/plugin_manager.h"
 #include "../core/skin_manager.h"
+#include "../core/updater.h"
 #include "skin_drawer.h"
 #include "digital_clock.h"
 #include "tray_control.h"
@@ -45,6 +46,7 @@ private:
   QStringList active_plugins_;
   QPointer<SettingsDialog> settings_dlg_;
   QPointer<AboutDialog> about_dlg_;
+  Updater* updater_;
 };
 
 #endif // MAIN_WINDOW_H

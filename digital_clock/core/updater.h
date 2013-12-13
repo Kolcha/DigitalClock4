@@ -2,6 +2,7 @@
 #define UPDATER_H
 
 #include <QDate>
+#include <QPointer>
 #include "http_client.h"
 
 class Updater : public QObject {
@@ -26,7 +27,7 @@ private slots:
   void ProcessData();
 
 private:
-  HttpClient downloader_;
+  QPointer<HttpClient> downloader_;
   bool check_beta_;
   QByteArray data_;
   QDate last_update_;
