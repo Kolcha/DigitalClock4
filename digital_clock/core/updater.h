@@ -11,11 +11,12 @@ public:
   ~Updater();
 
 signals:
-  void LatestVersion(const QString& new_version);
+  void NewVersion(const QString& new_version, const QString& link);
+  void UpToDate();
   void ErrorMessage(const QString& msg);
 
 public slots:
-  void CheckForUpdates();
+  void CheckForUpdates(bool force);
   void SetCheckForBeta(bool check);
   void SetAutoupdate(bool update);
   void SetUpdatePeriod(qint64 period);
@@ -31,6 +32,8 @@ private:
   QDate last_update_;
   bool autoupdate_;
   qint64 update_period_;
+  bool force_update_;
+  bool was_error_;
 };
 
 #endif // UPDATER_H
