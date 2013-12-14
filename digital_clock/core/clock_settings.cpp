@@ -17,6 +17,10 @@ void GetOptionsKeys(QMap<Options, QString>& opt_map) {
   opt_map[OPT_TEXTURE_PER_ELEMENT]  = "skin/texture_per_element";
   opt_map[OPT_TEXTURE_DRAW_MODE]    = "skin/texture_draw_mode";
   opt_map[OPT_CUSTOMIZATION]        = "skin/customization";
+  // updater settings
+  opt_map[OPT_USE_AUTOUPDATE]       = "updater/autoupdate";
+  opt_map[OPT_UPDATE_PERIOD]        = "updater/update_period";
+  opt_map[OPT_CHECK_FOR_BETA]       = "updater/check_for_beta";
 }
 
 ClockSettings::ClockSettings(QObject* parent)

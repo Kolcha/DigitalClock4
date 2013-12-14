@@ -18,6 +18,9 @@ void TrayControl::CreateActions() {
   about_action_ = new QAction(QIcon(":/images/about.svg"), tr("&About"), this);
   connect(about_action_, SIGNAL(triggered()), this, SIGNAL(ShowAboutDlg()));
 
+  update_action_ = new QAction(QIcon(":/images/update.svg"), tr("&Update"), this);
+  connect(update_action_, SIGNAL(triggered()), this, SIGNAL(CheckForUpdates()));
+
   exit_action_ = new QAction(QIcon(":/images/quit.svg"), tr("&Quit"), this);
   connect(exit_action_, SIGNAL(triggered()), qApp, SLOT(quit()));
 }
@@ -26,6 +29,8 @@ void TrayControl::CreateTrayIcon() {
   QMenu* tray_menu = new QMenu();
   tray_menu->addAction(settings_action_);
   tray_menu->addAction(about_action_);
+  tray_menu->addSeparator();
+  tray_menu->addAction(update_action_);
   tray_menu->addSeparator();
   tray_menu->addAction(exit_action_);
 

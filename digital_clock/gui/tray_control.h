@@ -13,6 +13,7 @@ public:
 signals:
   void ShowSettingsDlg();
   void ShowAboutDlg();
+  void CheckForUpdates();
 
 private slots:
   void TrayEventHandler(QSystemTrayIcon::ActivationReason reason);
@@ -22,6 +23,7 @@ private:
   void CreateTrayIcon();
   QAction* settings_action_;
   QAction* about_action_;
+  QAction* update_action_;
   QAction* exit_action_;
   QSystemTrayIcon* tray_icon_;
 };

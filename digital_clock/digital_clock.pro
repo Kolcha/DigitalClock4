@@ -7,6 +7,18 @@
 QT       += core gui widgets
 CONFIG += c++11
 
+# boost configuration
+INCLUDEPATH += $$quote(C:/boost/include)
+contains(QMAKE_TARGET.arch, x86_64) {
+    LIBS += $$quote(-LC:/boost/lib64)
+} else {
+    LIBS += $$quote(-LC:/boost/lib)
+}
+LIBS += -lboost_system
+DEFINES += _WIN32_WINNT=0x600
+DEFINES += BOOST_ALL_NO_LIB
+
+
 TARGET = digital_clock
 TEMPLATE = app
 
@@ -25,7 +37,9 @@ SOURCES += main.cpp\
     skin/clock_text_skin.cpp \
     skin/clock_base_skin.cpp \
     gui/plugin_list_widget.cpp \
-    gui/plugin_info_dialog.cpp
+    gui/plugin_info_dialog.cpp \
+    core/updater.cpp \
+    core/http_client.cpp
 
 HEADERS  += \
     core/skin_manager.h \
@@ -42,7 +56,9 @@ HEADERS  += \
     skin/clock_base_skin.h \
     core/plugin_info.h \
     gui/plugin_list_widget.h \
-    gui/plugin_info_dialog.h
+    gui/plugin_info_dialog.h \
+    core/updater.h \
+    core/http_client.h
 
 FORMS    += \
     gui/settings_dialog.ui \

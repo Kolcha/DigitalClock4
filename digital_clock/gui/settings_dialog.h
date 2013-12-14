@@ -55,6 +55,9 @@ private slots:
   void on_use_customization_toggled(bool checked);
   void on_apply_btn_clicked();
   void on_system_format_clicked();
+  void on_enable_autoupdate_toggled(bool checked);
+  void on_update_period_box_currentIndexChanged(int index);
+  void on_check_for_beta_toggled(bool checked);
 
 private:
   Ui::SettingsDialog* ui;
@@ -63,6 +66,7 @@ private:
   QStringList active_plugins_;
   QFont last_font_;
   int last_customization_;
+  QMap<qint64, QString> update_periods_;
 };
 
 #endif // SETTINGS_DIALOG_H

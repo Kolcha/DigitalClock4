@@ -18,6 +18,15 @@ SettingsDialog::SettingsDialog(QWidget* parent)
   setWindowIcon(QIcon(":/images/settings.svg"));
 
   connect(this, SIGNAL(accepted()), this, SLOT(SaveState()));
+
+  update_periods_[1] = tr("1 day");
+  update_periods_[3] = tr("3 days");
+  update_periods_[7] = tr("1 week");
+  update_periods_[14] = tr("2 weeks");
+  ui->update_period_box->clear();
+  for (auto iter = update_periods_.begin(); iter != update_periods_.end(); ++iter) {
+    ui->update_period_box->addItem(iter.value(), iter.key());
+  }
 }
 
 SettingsDialog::~SettingsDialog() {
@@ -114,6 +123,18 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
           }
         }
       }
+      break;
+
+    case OPT_USE_AUTOUPDATE:
+      ui->enable_autoupdate->setChecked(value.toBool());
+      break;
+
+    case OPT_UPDATE_PERIOD:
+      ui->update_period_box->setCurrentText(update_periods_[value.value<qint64>()]);
+      break;
+
+    case OPT_CHECK_FOR_BETA:
+      ui->check_for_beta->setChecked(value.toBool());
       break;
   }
 }
@@ -288,4 +309,16 @@ void SettingsDialog::on_apply_btn_clicked() {
 
 void SettingsDialog::on_system_format_clicked() {
   emit OptionChanged(OPT_TIME_FORMAT, GetDefaultValue(OPT_TIME_FORMAT).toString());
+}
+
+void SettingsDialog::on_enable_autoupdate_toggled(bool checked) {
+  emit OptionChanged(OPT_USE_AUTOUPDATE, checked);
+}
+
+void SettingsDialog::on_update_period_box_currentIndexChanged(int index) {
+  emit OptionChanged(OPT_UPDATE_PERIOD, ui->update_period_box->itemData(index));
+}
+
+void SettingsDialog::on_check_for_beta_toggled(bool checked) {
+  emit OptionChanged(OPT_CHECK_FOR_BETA, checked);
 }

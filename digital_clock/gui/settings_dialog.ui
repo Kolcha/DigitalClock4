@@ -383,13 +383,13 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="misc_tab">
       <attribute name="title">
-       <string>Time fomat</string>
+       <string>Misc</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
-        <widget class="QGroupBox" name="groupBox">
+        <widget class="QGroupBox" name="time_format_group">
          <property name="title">
           <string>Time format</string>
          </property>
@@ -479,6 +479,42 @@
             </property>
             <property name="text">
              <string>Apply</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="autoupdate_group">
+         <property name="title">
+          <string>Autoupdate</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QCheckBox" name="enable_autoupdate">
+            <property name="text">
+             <string>enable autoupdate</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="update_period_label">
+            <property name="text">
+             <string>Check for updates every</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="update_period_box"/>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="check_for_beta">
+            <property name="text">
+             <string>check for beta releases</string>
             </property>
            </widget>
           </item>
@@ -792,12 +828,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>188</x>
-     <y>71</y>
+     <x>149</x>
+     <y>82</y>
     </hint>
     <hint type="destinationlabel">
-     <x>288</x>
-     <y>77</y>
+     <x>234</x>
+     <y>83</y>
     </hint>
    </hints>
   </connection>
@@ -808,12 +844,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>167</x>
-     <y>73</y>
+     <x>149</x>
+     <y>82</y>
     </hint>
     <hint type="destinationlabel">
-     <x>414</x>
-     <y>69</y>
+     <x>315</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -824,12 +860,44 @@
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>73</y>
+     <x>149</x>
+     <y>82</y>
     </hint>
     <hint type="destinationlabel">
-     <x>410</x>
-     <y>80</y>
+     <x>315</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>enable_autoupdate</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>update_period_label</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>91</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>149</x>
+     <y>128</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>enable_autoupdate</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>update_period_box</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>87</x>
+     <y>137</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>124</y>
     </hint>
    </hints>
   </connection>

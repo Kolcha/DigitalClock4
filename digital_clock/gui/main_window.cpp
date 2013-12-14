@@ -1,6 +1,7 @@
 #include <QGridLayout>
 #include <QMouseEvent>
 #include <QCoreApplication>
+#include <QDesktopServices>
 #include "settings_dialog.h"
 #include "about_dialog.h"
 #include "main_window.h"
@@ -16,6 +17,7 @@ MainWindow::MainWindow(QWidget* parent)
   drawer_ = new SkinDrawer(this);
   d_clock_ = new DigitalClock(this);
   tray_control_ = new TrayControl(this);
+  updater_ = new Updater(this);
 
   // add clock widget
   QGridLayout* main_layout = new QGridLayout(this);
@@ -64,6 +66,10 @@ void MainWindow::Init() {
 
   active_plugins_ = settings_->GetOption(OPT_PLUGINS).toStringList();
   plugin_manager_->LoadPlugins(active_plugins_);
+
+  updater_->SetCheckForBeta(settings_->GetOption(OPT_CHECK_FOR_BETA).toBool());
+  updater_->SetAutoupdate(settings_->GetOption(OPT_USE_AUTOUPDATE).toBool());
+  updater_->SetUpdatePeriod(settings_->GetOption(OPT_UPDATE_PERIOD).value<qint64>());
 
   // apply custom window flags if needed
   Qt::WindowFlags flags = windowFlags();
@@ -168,6 +174,18 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
       active_plugins_ = new_plugins;
       break;
     }
+
+    case OPT_USE_AUTOUPDATE:
+      updater_->SetAutoupdate(value.toBool());
+      break;
+
+    case OPT_UPDATE_PERIOD:
+      updater_->SetUpdatePeriod(value.value<qint64>());
+      break;
+
+    case OPT_CHECK_FOR_BETA:
+      updater_->SetCheckForBeta(value.toBool());
+      break;
   }
 }
 
@@ -239,7 +257,35 @@ void MainWindow::ConnectAll() {
           skin_manager_, SLOT(SetSeparators(QString)));
   connect(tray_control_, SIGNAL(ShowSettingsDlg()), this, SLOT(ShowSettingsDialog()));
   connect(tray_control_, SIGNAL(ShowAboutDlg()), this, SLOT(ShowAboutDialog()));
+  connect(tray_control_, &TrayControl::CheckForUpdates, [=](){ updater_->CheckForUpdates(true); });
   connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(DisplayMenu(QPoint)));
+
+  connect(updater_, &Updater::ErrorMessage, [=] (const QString& msg) {
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_control_->GetTrayIcon()->showMessage(
+          tr("%1 Update").arg(QCoreApplication::applicationName()),
+          tr("Update error. %1").arg(msg),
+          QSystemTrayIcon::Critical);
+  });
+
+  connect(updater_, &Updater::UpToDate, [=] () {
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_control_->GetTrayIcon()->showMessage(
+          tr("%1 Update").arg(QCoreApplication::applicationName()),
+          tr("You already have latest version (%1).").arg(QCoreApplication::applicationVersion()),
+          QSystemTrayIcon::Information);
+  });
+
+  connect(updater_, &Updater::NewVersion, [=] (const QString& version, const QString& link) {
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_control_->GetTrayIcon()->showMessage(
+          tr("%1 Update").arg(QCoreApplication::applicationName()),
+          tr("Update available (%1). Click this message to download.").arg(version),
+          QSystemTrayIcon::Warning);
+    connect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
+            [=] () { QDesktopServices::openUrl(link); });
+  });
+  connect(d_clock_, SIGNAL(ImageNeeded(QString)), updater_, SLOT(TimeoutHandler()));
 }
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {

@@ -31,8 +31,12 @@ enum Options {
   OPT_TEXTURE,                  /*!< path to texture file, QString, path to image file */
   OPT_TEXTURE_PER_ELEMENT,      /*!< apply texture per element flag, bool, true/false */
   OPT_TEXTURE_DRAW_MODE,        /*!< texture draw mode, SkinDrawer::DrawMode, DM_STRETCH/DM_TILE */
-  OPT_CUSTOMIZATION             /*!< customization type, SkinDrawer::CustomizationType,
+  OPT_CUSTOMIZATION,            /*!< customization type, SkinDrawer::CustomizationType,
                                      CT_NONE/CT_COLOR/CT_TEXTURE */
+  // updater settings
+  OPT_USE_AUTOUPDATE,           /*!< enable/disable autoupdate, bool, true/false */
+  OPT_UPDATE_PERIOD,            /*!< how often to check for updates, qint64, days count */
+  OPT_CHECK_FOR_BETA            /*!< check for beta releases, bool, true/false */
 };
 
 /*! Get default value for specified option.
