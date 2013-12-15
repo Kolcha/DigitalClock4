@@ -53,6 +53,35 @@
     </message>
 </context>
 <context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="../gui/main_window.cpp" line="266"/>
+        <location filename="../gui/main_window.cpp" line="274"/>
+        <location filename="../gui/main_window.cpp" line="282"/>
+        <source>%1 Update</source>
+        <translatorcomment>обновление программы</translatorcomment>
+        <translation>Обновление %1</translation>
+    </message>
+    <message>
+        <location filename="../gui/main_window.cpp" line="267"/>
+        <source>Update error. %1</source>
+        <translatorcomment>ошибка в процессе обновления</translatorcomment>
+        <translation>Ошибка обновления. %1</translation>
+    </message>
+    <message>
+        <location filename="../gui/main_window.cpp" line="275"/>
+        <source>You already have latest version (%1).</source>
+        <translatorcomment>сообщение об установленой версии программы</translatorcomment>
+        <translation>У Вас установлена последния версия (%1).</translation>
+    </message>
+    <message>
+        <location filename="../gui/main_window.cpp" line="283"/>
+        <source>Update available (%1). Click this message to download.</source>
+        <translatorcomment>сообщение об последней актульной версии программы</translatorcomment>
+        <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
+    </message>
+</context>
+<context>
     <name>PluginInfoDialog</name>
     <message>
         <location filename="../gui/plugin_info_dialog.ui" line="20"/>
@@ -115,6 +144,12 @@
         <source>separator flashes</source>
         <translatorcomment>разделитель часов и минут мигает</translatorcomment>
         <translation>разделитель мигает</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="388"/>
+        <source>Misc</source>
+        <translatorcomment>вкладка &quot;Разное&quot;</translatorcomment>
+        <translation>Разное</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="38"/>
@@ -235,12 +270,6 @@
         <translation>замостить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="388"/>
-        <source>Time fomat</source>
-        <translatorcomment>сторка формата времени</translatorcomment>
-        <translation>Формат времени</translation>
-    </message>
-    <message>
         <location filename="../gui/settings_dialog.ui" line="394"/>
         <source>Time format</source>
         <translatorcomment>строка формата времени</translatorcomment>
@@ -265,18 +294,62 @@
         <translation>Применить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="505"/>
+        <location filename="../gui/settings_dialog.ui" line="491"/>
+        <source>Autoupdate</source>
+        <translatorcomment>использовать автообновление</translatorcomment>
+        <translation>автообновление</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="497"/>
+        <source>enable autoupdate</source>
+        <translatorcomment>включить/выключить автообновление</translatorcomment>
+        <translation>включить автообновление</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="507"/>
+        <source>Check for updates every</source>
+        <translatorcomment>как часто проверять наличие обновлений</translatorcomment>
+        <translation>Проверять обновления каждые</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="517"/>
+        <source>check for beta releases</source>
+        <translatorcomment>разрешить обновление до бета версий</translatorcomment>
+        <translation>обновляться до бета релизов</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="541"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="233"/>
+        <location filename="../gui/settings_dialog.cpp" line="22"/>
+        <source>1 day</source>
+        <translation>1 день</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="23"/>
+        <source>3 days</source>
+        <translation>3 дня</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="24"/>
+        <source>1 week</source>
+        <translation>1 неделя</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="25"/>
+        <source>2 weeks</source>
+        <translation>2 недели</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="254"/>
         <source>Open texture file</source>
         <translatorcomment>найти и выбрать файл текстуры</translatorcomment>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="235"/>
+        <location filename="../gui/settings_dialog.cpp" line="256"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translatorcomment>форматы картинок</translatorcomment>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
@@ -298,6 +371,12 @@
     </message>
     <message>
         <location filename="../gui/tray_control.cpp" line="21"/>
+        <source>&amp;Update</source>
+        <translatorcomment>проверить наличие обновлений</translatorcomment>
+        <translation>О&amp;бновление</translation>
+    </message>
+    <message>
+        <location filename="../gui/tray_control.cpp" line="24"/>
         <source>&amp;Quit</source>
         <translatorcomment>выход из программы</translatorcomment>
         <translation>&amp;Выход</translation>

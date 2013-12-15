@@ -53,6 +53,35 @@
     </message>
 </context>
 <context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="../gui/main_window.cpp" line="266"/>
+        <location filename="../gui/main_window.cpp" line="274"/>
+        <location filename="../gui/main_window.cpp" line="282"/>
+        <source>%1 Update</source>
+        <translatorcomment>program update</translatorcomment>
+        <translation>%1 Update</translation>
+    </message>
+    <message>
+        <location filename="../gui/main_window.cpp" line="267"/>
+        <source>Update error. %1</source>
+        <translatorcomment>error during update process</translatorcomment>
+        <translation>Update error. %1</translation>
+    </message>
+    <message>
+        <location filename="../gui/main_window.cpp" line="275"/>
+        <source>You already have latest version (%1).</source>
+        <translatorcomment>message about installer program version</translatorcomment>
+        <translation>You already have latest version (%1).</translation>
+    </message>
+    <message>
+        <location filename="../gui/main_window.cpp" line="283"/>
+        <source>Update available (%1). Click this message to download.</source>
+        <translatorcomment>message about latest actual version</translatorcomment>
+        <translation>Update available (%1). Click this message to download.</translation>
+    </message>
+</context>
+<context>
     <name>PluginInfoDialog</name>
     <message>
         <location filename="../gui/plugin_info_dialog.ui" line="20"/>
@@ -115,6 +144,12 @@
         <source>separator flashes</source>
         <translatorcomment>clock separator flashes</translatorcomment>
         <translation>separator flashes</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="388"/>
+        <source>Misc</source>
+        <translatorcomment>misc tab</translatorcomment>
+        <translation>Misc</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="38"/>
@@ -235,12 +270,6 @@
         <translation>tile</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="388"/>
-        <source>Time fomat</source>
-        <translatorcomment>time format string</translatorcomment>
-        <translation>Time format</translation>
-    </message>
-    <message>
         <location filename="../gui/settings_dialog.ui" line="394"/>
         <source>Time format</source>
         <translatorcomment>time format string</translatorcomment>
@@ -265,18 +294,62 @@
         <translation>Apply</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="505"/>
+        <location filename="../gui/settings_dialog.ui" line="491"/>
+        <source>Autoupdate</source>
+        <translatorcomment>use autoupdate</translatorcomment>
+        <translation>Autoupdate</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="497"/>
+        <source>enable autoupdate</source>
+        <translatorcomment>enable/disable autoupdate</translatorcomment>
+        <translation>enable autoupdate</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="507"/>
+        <source>Check for updates every</source>
+        <translatorcomment>how often to check for updates</translatorcomment>
+        <translation>Check for updates every</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="517"/>
+        <source>check for beta releases</source>
+        <translatorcomment>allow upgrades to beta version</translatorcomment>
+        <translation>check for beta releases</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="541"/>
         <source>Plugins</source>
         <translation>Plugins</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="233"/>
+        <location filename="../gui/settings_dialog.cpp" line="22"/>
+        <source>1 day</source>
+        <translation>1 day</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="23"/>
+        <source>3 days</source>
+        <translation>3 days</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="24"/>
+        <source>1 week</source>
+        <translation>1 week</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="25"/>
+        <source>2 weeks</source>
+        <translation>2 weeks</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="254"/>
         <source>Open texture file</source>
         <translatorcomment>find and select texture file</translatorcomment>
         <translation>Open texture file</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="235"/>
+        <location filename="../gui/settings_dialog.cpp" line="256"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translatorcomment>image formats</translatorcomment>
         <translation>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
@@ -298,6 +371,12 @@
     </message>
     <message>
         <location filename="../gui/tray_control.cpp" line="21"/>
+        <source>&amp;Update</source>
+        <translatorcomment>check for updates</translatorcomment>
+        <translation>&amp;Update</translation>
+    </message>
+    <message>
+        <location filename="../gui/tray_control.cpp" line="24"/>
         <source>&amp;Quit</source>
         <translatorcomment>quit application</translatorcomment>
         <translation>&amp;Quit</translation>
