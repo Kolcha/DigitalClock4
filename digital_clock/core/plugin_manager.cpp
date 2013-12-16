@@ -106,12 +106,12 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
     connect(data_.settings, SIGNAL(OptionChanged(Options,QVariant)),
             plugin, SLOT(SettingsListener(Options,QVariant)));
     connect(data_.clock, SIGNAL(ImageNeeded(QString)),
-            plugin, SLOT(TimeUpdateListener(QString)));
+            plugin, SLOT(TimeUpdateListener()));
   }
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
   if (sp) {
-    sp->Init(data_.settings->GetSettings(), data_.window);
+    sp->Init(data_.settings->GetSettings());
     if (connected) {
       connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
               data_.window, SLOT(SettingsListener(Options,QVariant)));
@@ -120,7 +120,7 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
   // init tray plugins
   ITrayPlugin* tp = qobject_cast<ITrayPlugin*>(plugin);
   if (tp) {
-    tp->Init(data_.tray, data_.window);
+    tp->Init(data_.tray);
   }
   // init widget plugins
   IWidgetPlugin* wp = qobject_cast<IWidgetPlugin*>(plugin);

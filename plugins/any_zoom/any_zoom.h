@@ -12,21 +12,20 @@ class AnyZoom : public ISettingsPlugin {
 
 public:
   AnyZoom();
-  void Init(const QMap<Options, QVariant>& current_settings, QWidget* parent);
+  void Init(const QMap<Options, QVariant>& current_settings);
 
 public slots:
   void Start();
   void Stop();
   void Configure();
   void SettingsListener(Options option, const QVariant& value);
-  void TimeUpdateListener(const QString&) {}
+  void TimeUpdateListener() {}
 
 private slots:
   void TrackChange(int new_zoom);
   void RevertSettings();
 
 private:
-  QWidget* parent_;
   PluginSettings* settings_;
   bool is_enabled_;
   qreal last_zoom_;

@@ -11,9 +11,8 @@ Alarm::Alarm() {
   icon_changed_ = false;
 }
 
-void Alarm::Init(QSystemTrayIcon* tray_icon, QWidget* parent) {
+void Alarm::Init(QSystemTrayIcon* tray_icon) {
   tray_icon_ = tray_icon;
-  parent_ = parent;
   old_icon_ = tray_icon->icon();
 
   QSettings::SettingsMap defaults;
@@ -66,7 +65,7 @@ void Alarm::Stop() {
 }
 
 void Alarm::Configure() {
-  SettingsDlg* dialog = new SettingsDlg(parent_);
+  SettingsDlg* dialog = new SettingsDlg();
   // load current settings to dialog
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
           dialog, SLOT(SettingsListener(QString,QVariant)));
@@ -81,7 +80,7 @@ void Alarm::Configure() {
   dialog->show();
 }
 
-void Alarm::TimeUpdateListener(const QString&) {
+void Alarm::TimeUpdateListener() {
   if (settings_->GetOption(OPT_ENABLED).toBool()) {
     if (!icon_changed_) Start();
   } else {

@@ -195,7 +195,7 @@ void MainWindow::ShowSettingsDialog() {
   } else {
     // create settings dialog and connect all need signals
     // (settings dialog will be deleted automatically)
-    settings_dlg_ = new SettingsDialog(this);
+    settings_dlg_ = new SettingsDialog();
     connect(skin_manager_, SIGNAL(SearchFinished(QStringList)),
             settings_dlg_, SLOT(SetSkinList(QStringList)));
     skin_manager_->ListSkins();

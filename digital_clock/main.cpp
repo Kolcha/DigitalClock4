@@ -10,6 +10,7 @@ int main(int argc, char *argv[]) {
   a.setApplicationVersion("4.2.5");
   a.setOrganizationName("Nick Korotysh");
   a.setWindowIcon(QIcon(":/images/clock.svg"));
+  a.setQuitOnLastWindowClosed(false);
 
   QString path = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
   QTranslator qt_translator;

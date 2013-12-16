@@ -68,7 +68,7 @@ void Schedule::Configure() {
   }
 }
 
-void Schedule::TimeUpdateListener(const QString&) {
+void Schedule::TimeUpdateListener() {
   QDateTime now = QDateTime::currentDateTime();
   manager_->CheckTime(now.addSecs(-now.time().second()).addMSecs(-now.time().msec()),
                       settings_->GetOption(OPT_TASK_DELETE).toBool());
