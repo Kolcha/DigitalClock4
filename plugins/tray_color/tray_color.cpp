@@ -10,9 +10,8 @@ TrayColor::TrayColor() {
   is_enabled_ = false;
 }
 
-void TrayColor::Init(QSystemTrayIcon* tray_icon, QWidget* parent) {
+void TrayColor::Init(QSystemTrayIcon* tray_icon) {
   tray_icon_ = tray_icon;
-  parent_ = parent;
 
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
@@ -31,8 +30,7 @@ void TrayColor::Stop() {
 }
 
 void TrayColor::Configure() {
-  QColor color = QColorDialog::getColor(
-        settings_->GetOption(OPT_TRAY_COLOR).value<QColor>(), parent_);
+  QColor color = QColorDialog::getColor(settings_->GetOption(OPT_TRAY_COLOR).value<QColor>());
   if (color.isValid()) {
     settings_->SetOption(OPT_TRAY_COLOR, color);
     if (is_enabled_) RedrawTrayIcon(color);

@@ -9,9 +9,7 @@ AnyZoom::AnyZoom() {
   last_zoom_ = 1.0;
 }
 
-void AnyZoom::Init(const QMap<Options, QVariant>& current_settings, QWidget* parent) {
-  parent_ = parent;
-
+void AnyZoom::Init(const QMap<Options, QVariant>& current_settings) {
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
@@ -31,7 +29,7 @@ void AnyZoom::Stop() {
 }
 
 void AnyZoom::Configure() {
-  QInputDialog* settings_dlg = new QInputDialog(parent_);
+  QInputDialog* settings_dlg = new QInputDialog();
   settings_dlg->setAttribute(Qt::WA_DeleteOnClose);
   settings_dlg->setModal(true);
 

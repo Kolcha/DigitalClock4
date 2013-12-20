@@ -10,14 +10,14 @@ class SpectrumClock : public ISettingsPlugin {
   Q_INTERFACES(IClockPlugin ISettingsPlugin)
 
 public:
-  void Init(const QMap<Options, QVariant>& current_settings, QWidget*);
+  void Init(const QMap<Options, QVariant>& current_settings);
 
 public slots:
   void Start();
   void Stop();
   void Configure() {}
   void SettingsListener(Options, const QVariant&) {}
-  void TimeUpdateListener(const QString&);
+  void TimeUpdateListener();
 
 private:
   QColor old_color_;

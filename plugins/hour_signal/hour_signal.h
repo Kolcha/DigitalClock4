@@ -16,7 +16,7 @@ public slots:
   void Stop() {}
   void Configure() {}
   void SettingsListener(Options, const QVariant&) {}
-  void TimeUpdateListener(const QString&);
+  void TimeUpdateListener();
 
 private:
   int last_hour_;

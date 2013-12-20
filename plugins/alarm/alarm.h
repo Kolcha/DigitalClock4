@@ -15,18 +15,17 @@ class Alarm : public ITrayPlugin {
 
 public:
   Alarm();
-  void Init(QSystemTrayIcon* tray_icon, QWidget* parent);
+  void Init(QSystemTrayIcon* tray_icon);
 
 public slots:
   void Start();
   void Stop();
   void Configure();
   void SettingsListener(Options, const QVariant&) {}
-  void TimeUpdateListener(const QString&);
+  void TimeUpdateListener();
 
 private:
   QSystemTrayIcon* tray_icon_;
-  QWidget* parent_;
   QIcon old_icon_;
   PluginSettings* settings_;
   QPointer<QMediaPlayer> player_;

@@ -66,10 +66,8 @@ public slots:
    *
    * This slot will be called every 0.5 sec when clock updates current time.
    * It can be used as timer. Clock provides current time value as QString.
-   * @param current_time - current time value
-   * @note time format varies depend on system locale settings or plugins
    */
-  virtual void TimeUpdateListener(const QString& current_time) = 0;
+  virtual void TimeUpdateListener() = 0;
 };
 
 /*! Clock plugin interface IID */
@@ -95,10 +93,8 @@ public:
   /*!
    * Init plugin.
    * @param current_settings - map with all current clock settings
-   * @param parent - parent widget (main window). Use this as parent for settings
-   * dialog that you create.
    */
-  virtual void Init(const QMap<Options, QVariant>& current_settings, QWidget* parent) = 0;
+  virtual void Init(const QMap<Options, QVariant>& current_settings) = 0;
 
 signals:
   /*!
@@ -130,10 +126,8 @@ public:
   /*!
    * Init plugin.
    * @param tray_icon - pointer to clock QSystemTrayIcon object
-   * @param parent - parent widget (main window). Use this as parent for settings
-   * dialog that you create.
    */
-  virtual void Init(QSystemTrayIcon* tray_icon, QWidget* parent) = 0;
+  virtual void Init(QSystemTrayIcon* tray_icon) = 0;
 };
 
 /*! Tray plugin interface IID */

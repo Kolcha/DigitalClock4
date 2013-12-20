@@ -11,18 +11,17 @@ Alarm::Alarm() {
   icon_changed_ = false;
 }
 
-void Alarm::Init(QSystemTrayIcon* tray_icon, QWidget* parent) {
+void Alarm::Init(QSystemTrayIcon* tray_icon) {
   tray_icon_ = tray_icon;
-  parent_ = parent;
   old_icon_ = tray_icon->icon();
 
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
+  settings_->Load();
 }
 
 void Alarm::Start() {
-  settings_->Load();
   if (!settings_->GetOption(OPT_ENABLED).toBool()) return;
 
   tray_icon_->setIcon(QIcon(":/alarm_clock.svg"));
@@ -57,7 +56,6 @@ void Alarm::Start() {
 
 void Alarm::Stop() {
   tray_icon_->setIcon(old_icon_);
-  settings_->SetOption(OPT_ENABLED, false);
   icon_changed_ = false;
   if (player_) {
     if (player_->state() == QMediaPlayer::PlayingState) player_->stop();
@@ -66,7 +64,7 @@ void Alarm::Stop() {
 }
 
 void Alarm::Configure() {
-  SettingsDlg* dialog = new SettingsDlg(parent_);
+  SettingsDlg* dialog = new SettingsDlg();
   // load current settings to dialog
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
           dialog, SLOT(SettingsListener(QString,QVariant)));
@@ -81,7 +79,7 @@ void Alarm::Configure() {
   dialog->show();
 }
 
-void Alarm::TimeUpdateListener(const QString&) {
+void Alarm::TimeUpdateListener() {
   if (settings_->GetOption(OPT_ENABLED).toBool()) {
     if (!icon_changed_) Start();
   } else {
