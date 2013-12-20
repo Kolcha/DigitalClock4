@@ -76,7 +76,7 @@ void Updater::ProcessData() {
     }
   }
 
-  if (latest != QCoreApplication::applicationVersion()) {
+  if (latest > QCoreApplication::applicationVersion()) {
     emit NewVersion(latest, link);
   } else {
     if (force_update_) emit UpToDate();
