@@ -9,14 +9,13 @@
 class TaskManager;
 class PluginSettings;
 
-class Schedule : public IWidgetPlugin {
+class Schedule : public IClockPlugin {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID WIDGET_PLUGIN_INTERFACE_IID FILE "schedule.json")
-  Q_INTERFACES(IClockPlugin IWidgetPlugin)
+  Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "schedule.json")
+  Q_INTERFACES(IClockPlugin)
 
 public:
   Schedule();
-  void Init(QWidget* main_wnd);
 
 public slots:
   void Start();
@@ -30,7 +29,6 @@ private slots:
   void ShowMessage(const QString& message);
 
 private:
-  QWidget* parent_;
   QPointer<QSystemTrayIcon> tray_icon_;
   QMenu* tray_menu_;
   TaskManager* manager_;

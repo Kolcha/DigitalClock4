@@ -7,10 +7,6 @@
 Schedule::Schedule() {
   settings_ = new PluginSettings(ORG_NAME, APP_NAME, this);
   manager_ = new TaskManager(this);
-}
-
-void Schedule::Init(QWidget* main_wnd) {
-  parent_ = main_wnd;
 
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
@@ -42,7 +38,7 @@ void Schedule::Configure() {
   if (settings_dlg_) {
     settings_dlg_->activateWindow();
   } else {
-    settings_dlg_ = new SettingsDlg(parent_);
+    settings_dlg_ = new SettingsDlg();
     // load current settings to dialog
     connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
             settings_dlg_, SLOT(SettingsListener(QString,QVariant)));

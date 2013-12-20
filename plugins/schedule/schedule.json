@@ -1,6 +1,6 @@
 {
     "name" : "Schedule",
-    "type" : "widget",
+    "type" : "clock",
     "version" : "2.0.1",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
