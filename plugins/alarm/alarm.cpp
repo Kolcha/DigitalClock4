@@ -18,10 +18,10 @@ void Alarm::Init(QSystemTrayIcon* tray_icon) {
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
+  settings_->Load();
 }
 
 void Alarm::Start() {
-  settings_->Load();
   if (!settings_->GetOption(OPT_ENABLED).toBool()) return;
 
   tray_icon_->setIcon(QIcon(":/alarm_clock.svg"));
@@ -56,7 +56,6 @@ void Alarm::Start() {
 
 void Alarm::Stop() {
   tray_icon_->setIcon(old_icon_);
-  settings_->SetOption(OPT_ENABLED, false);
   icon_changed_ = false;
   if (player_) {
     if (player_->state() == QMediaPlayer::PlayingState) player_->stop();

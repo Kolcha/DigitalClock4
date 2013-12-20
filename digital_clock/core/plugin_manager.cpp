@@ -94,6 +94,10 @@ void PluginManager::UnloadPlugin(const QString& name) {
   if (!loader) return;
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
+    disconnect(data_.settings, SIGNAL(OptionChanged(Options,QVariant)),
+               plugin, SLOT(SettingsListener(Options,QVariant)));
+    disconnect(data_.clock, SIGNAL(ImageNeeded(QString)),
+               plugin, SLOT(TimeUpdateListener()));
     plugin->Stop();
     loader->unload();
     loaded_.remove(name);
