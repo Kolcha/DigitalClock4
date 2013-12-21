@@ -1,6 +1,6 @@
 #include <QTranslator>
 #include <QLocale>
-#include <QCoreApplication>
+#include <QApplication>
 #include <QSystemTrayIcon>
 #include <QFile>
 #include <QDir>
@@ -11,14 +11,14 @@
 
 Alarm::Alarm() {
   translator_ = new QTranslator(this);
-  translator_->load(":/" + QLocale::system().name());
-  QCoreApplication::installTranslator(translator_);
+  translator_->load(":/alarm_" + QLocale::system().name());
+  QApplication::installTranslator(translator_);
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   icon_changed_ = false;
 }
 
 Alarm::~Alarm() {
-  QCoreApplication::removeTranslator(translator_);
+  QApplication::removeTranslator(translator_);
 }
 
 void Alarm::Init(QSystemTrayIcon* tray_icon) {

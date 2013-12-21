@@ -207,14 +207,14 @@
             <item row="0" column="1">
              <widget class="QLabel" name="version_value">
               <property name="text">
-               <string>unknown</string>
+               <string notr="true">unknown</string>
               </property>
              </widget>
             </item>
             <item row="1" column="1">
              <widget class="QLabel" name="author_value">
               <property name="text">
-               <string>unknown</string>
+               <string notr="true">unknown</string>
               </property>
              </widget>
             </item>
@@ -235,7 +235,7 @@
             <item row="2" column="1">
              <widget class="QLabel" name="email_value">
               <property name="text">
-               <string>unknown</string>
+               <string notr="true">unknown</string>
               </property>
              </widget>
             </item>

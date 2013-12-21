@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   a.installTranslator(&qt_translator);
 
   QTranslator app_translator;
-  app_translator.load(":/languages/" + QLocale::system().name());
+  app_translator.load(":/languages/digital_clock_" + QLocale::system().name());
   a.installTranslator(&app_translator);
 
   MainWindow w;

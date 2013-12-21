@@ -145,11 +145,15 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
 
 void SettingsDialog::DisplaySkinInfo(const ClockBaseSkin::TSkinInfo& info) {
   if (info[ClockBaseSkin::SI_NAME] == "Text Skin") return;
-  ui->skin_box->setCurrentText(info[ClockBaseSkin::SI_NAME]);
-  ui->version_value->setText(info[ClockBaseSkin::SI_VERSION]);
-  ui->author_value->setText(info[ClockBaseSkin::SI_AUTHOR]);
-  ui->email_value->setText(info[ClockBaseSkin::SI_EMAIL]);
-  ui->skin_box->setToolTip(info[ClockBaseSkin::SI_COMMENT]);
+  ClockBaseSkin::TSkinInfo l_info = info;
+  for (auto iter = l_info.begin(); iter != l_info.end(); ++iter) {
+    if (iter.value().isEmpty()) iter.value() = tr("unknown");
+  }
+  ui->skin_box->setCurrentText(l_info[ClockBaseSkin::SI_NAME]);
+  ui->version_value->setText(l_info[ClockBaseSkin::SI_VERSION]);
+  ui->author_value->setText(l_info[ClockBaseSkin::SI_AUTHOR]);
+  ui->email_value->setText(l_info[ClockBaseSkin::SI_EMAIL]);
+  ui->skin_box->setToolTip(l_info[ClockBaseSkin::SI_COMMENT]);
 }
 
 void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins) {
@@ -279,8 +283,7 @@ void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
 }
 
 void SettingsDialog::on_use_skin_toggled(bool checked) {
-  if (checked)
-    emit OptionChanged(OPT_SKIN_NAME, ui->skin_box->currentText());
+  if (checked) emit OptionChanged(OPT_SKIN_NAME, ui->skin_box->currentText());
 }
 
 void SettingsDialog::on_use_font_toggled(bool checked) {
