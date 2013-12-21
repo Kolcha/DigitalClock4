@@ -28,13 +28,13 @@ void Updater::CheckForUpdates(bool force) {
   was_error_ = false;
   data_.clear();
   downloader_ = new HttpClient("digitalclock4.sourceforge.net", "/latest.json");
-  connect(downloader_, &HttpClient::ErrorMessage, [=] (const QString& msg) {
+  connect(downloader_.data(), &HttpClient::ErrorMessage, [=] (const QString& msg) {
     was_error_ = true;
     emit ErrorMessage(msg);
   });
-  connect(downloader_, &HttpClient::DataDownloaded,
+  connect(downloader_.data(), &HttpClient::DataDownloaded,
           [=] (const QByteArray& data) { data_.append(data); });
-  connect(downloader_, &HttpClient::finished, this, &Updater::ProcessData);
+  connect(downloader_.data(), &HttpClient::finished, this, &Updater::ProcessData);
   downloader_->start();
 }
 

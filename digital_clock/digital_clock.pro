@@ -15,13 +15,16 @@ contains(QMAKE_TARGET.arch, x86_64) {
     LIBS += $$quote(-LC:/boost/lib)
 }
 LIBS += -lboost_system
-DEFINES += _WIN32_WINNT=0x600
 DEFINES += BOOST_ALL_NO_LIB
+
+windows {
+*-g++*:LIBS += -lws2_32
+*-msvc*:DEFINES += _WIN32_WINNT=0x600
+}
 
 
 TARGET = digital_clock
 TEMPLATE = app
-
 
 SOURCES += main.cpp\
     core/skin_manager.cpp \
