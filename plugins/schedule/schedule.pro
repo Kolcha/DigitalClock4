@@ -39,3 +39,6 @@ RESOURCES += \
 FORMS += \
     gui/add_task_dlg.ui \
     gui/settings_dlg.ui
+
+TRANSLATIONS += \
+    schedule_ru.ts
