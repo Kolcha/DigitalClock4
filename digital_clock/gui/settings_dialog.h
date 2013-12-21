@@ -29,7 +29,6 @@ public slots:
   void SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins);
 
 protected:
-  void changeEvent(QEvent* e);
   void showEvent(QShowEvent* e);
 
 private slots:

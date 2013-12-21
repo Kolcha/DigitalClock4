@@ -172,17 +172,6 @@ void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plug
   }
 }
 
-void SettingsDialog::changeEvent(QEvent* e) {
-  QDialog::changeEvent(e);
-  switch (e->type()) {
-    case QEvent::LanguageChange:
-      ui->retranslateUi(this);
-      break;
-    default:
-      break;
-  }
-}
-
 void SettingsDialog::showEvent(QShowEvent* e) {
   CenteredDialog::showEvent(e);
   LoadState();
