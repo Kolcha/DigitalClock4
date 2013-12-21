@@ -11,13 +11,13 @@
 MainWindow::MainWindow(QWidget* parent)
   : QWidget(parent) {
   // create objects
-  settings_ = new ClockSettings(this);
   plugin_manager_ = new PluginManager(this);
   skin_manager_ = new SkinManager(this);
   drawer_ = new SkinDrawer(this);
   d_clock_ = new DigitalClock(this);
   tray_control_ = new TrayControl(this);
   updater_ = new Updater(this);
+  settings_ = new ClockSettings(this);
 
   // add clock widget
   QGridLayout* main_layout = new QGridLayout(this);
