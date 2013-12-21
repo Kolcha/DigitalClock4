@@ -4,6 +4,6 @@
         <file alias="settings.svg">res/settings-24.svg</file>
         <file alias="play.svg">res/play-24.svg</file>
         <file alias="stop.svg">res/stop-24.svg</file>
-        <file alias="ru.qm">alarm_ru.qm</file>
+        <file>alarm_ru.qm</file>
     </qresource>
 </RCC>

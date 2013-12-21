@@ -1,6 +1,6 @@
 #include <QTranslator>
 #include <QLocale>
-#include <QCoreApplication>
+#include <QApplication>
 #include <QMenu>
 #include "plugin_settings.h"
 #include "core/schedule_settings.h"
@@ -9,8 +9,8 @@
 
 Schedule::Schedule() {
   translator_ = new QTranslator(this);
-  translator_->load(":/" + QLocale::system().name());
-  QCoreApplication::installTranslator(translator_);
+  translator_->load(":/schedule_" + QLocale::system().name());
+  QApplication::installTranslator(translator_);
 
   settings_ = new PluginSettings(ORG_NAME, APP_NAME, this);
   manager_ = new TaskManager(this);
@@ -24,7 +24,7 @@ Schedule::Schedule() {
 }
 
 Schedule::~Schedule() {
-  QCoreApplication::removeTranslator(translator_);
+  QApplication::removeTranslator(translator_);
 }
 
 void Schedule::Start() {
