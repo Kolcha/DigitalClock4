@@ -59,3 +59,9 @@ void ClockSettings::SetOption(Options opt, const QVariant& value) {
 void ClockSettings::TrackChanges(bool set) {
   track_change_ = set;
 }
+
+void ClockSettings::EmitSettings() {
+  for (auto i = values_.begin(); i != values_.end(); ++i) {
+    if (i.key() != OPT_PLUGINS) emit OptionChanged(i.key(), i.value());
+  }
+}

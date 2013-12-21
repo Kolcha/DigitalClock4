@@ -131,4 +131,6 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
   if (wp) {
     wp->Init(data_.window);
   }
+  // pass current clock settings to plugin
+  data_.settings->EmitSettings();
 }
