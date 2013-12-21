@@ -19,6 +19,7 @@ public slots:
   void Save();
   void SetOption(Options opt, const QVariant& value);
   void TrackChanges(bool set);
+  void EmitSettings();
 
 private:
   QMap<Options, QString> keys_;
