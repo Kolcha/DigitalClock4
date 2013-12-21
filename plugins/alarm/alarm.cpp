@@ -1,3 +1,6 @@
+#include <QTranslator>
+#include <QLocale>
+#include <QCoreApplication>
 #include <QSystemTrayIcon>
 #include <QFile>
 #include <QDir>
@@ -7,8 +10,15 @@
 #include "alarm.h"
 
 Alarm::Alarm() {
+  translator_ = new QTranslator(this);
+  translator_->load(":/" + QLocale::system().name());
+  QCoreApplication::installTranslator(translator_);
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   icon_changed_ = false;
+}
+
+Alarm::~Alarm() {
+  QCoreApplication::removeTranslator(translator_);
 }
 
 void Alarm::Init(QSystemTrayIcon* tray_icon) {
@@ -45,7 +55,7 @@ void Alarm::Start() {
     QString mediafile = settings_->GetOption(OPT_FILENAME).toString();
     if (!QFile::exists(mediafile)) {
       tray_icon_->showMessage(tr("Digital Clock Alarm"),
-                              tr("File %1 doesn't exists. Click this message or go to plugin"
+                              tr("File %1 doesn't exists. Click this message or go to plugin "
                                  "settings to choose another.").arg(QDir::toNativeSeparators(mediafile)),
                               QSystemTrayIcon::Critical);
       connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(Configure()));
