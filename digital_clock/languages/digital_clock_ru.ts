@@ -194,7 +194,7 @@
         <translation>Версия :</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="149"/>
+        <location filename="../gui/settings_dialog.cpp" line="150"/>
         <source>unknown</source>
         <translatorcomment>значение по умолчанию</translatorcomment>
         <translation>неизвестно</translation>
@@ -341,13 +341,13 @@
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="257"/>
+        <location filename="../gui/settings_dialog.cpp" line="258"/>
         <source>Open texture file</source>
         <translatorcomment>найти и выбрать файл текстуры</translatorcomment>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="259"/>
+        <location filename="../gui/settings_dialog.cpp" line="260"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translatorcomment>форматы картинок</translatorcomment>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
