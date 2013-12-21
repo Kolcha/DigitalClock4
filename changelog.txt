@@ -1,3 +1,25 @@
+Whats new in 4.2.5:
+-------------------
+Core:
+ - added update checker
+ - build with Qt 5.2.0
+ - improved plugin system
+
+Installer:
+ - reverted online VC Redist installation
+
+GUI:
+ - added special Christmas/New Year skin
+ - added plugins translations
+
+Plugins:
+ - fixed bug in "alarm" plugin
+ - changed "schedule" plugin type to "clock"
+
+SDK:
+ - improved plugin example
+
+
 Whats new in 4.2.4:
 -------------------
 Core:
@@ -18,7 +40,7 @@ Plugins:
  - added "schedule" plugin
  - settings dialog now is modal
 
-installer:
+Installer:
  - VC Redist is not downloaded from internet anymore, it already included in installer
  - removed 'Setup type (typical/custom/complete)' dialog
 
