@@ -1,12 +1,22 @@
+#include <QTranslator>
+#include <QLocale>
+#include <QApplication>
 #include <QInputDialog>
 #include "plugin_settings.h"
 #include "any_zoom_settings.h"
 #include "any_zoom.h"
 
 AnyZoom::AnyZoom() {
+  translator_ = new QTranslator(this);
+  translator_->load(":/any_zoom_" + QLocale::system().name());
+  QApplication::installTranslator(translator_);
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   is_enabled_ = false;
   last_zoom_ = 1.0;
+}
+
+AnyZoom::~AnyZoom() {
+  QApplication::removeTranslator(translator_);
 }
 
 void AnyZoom::Init(const QMap<Options, QVariant>& current_settings) {
@@ -33,8 +43,8 @@ void AnyZoom::Configure() {
   settings_dlg->setAttribute(Qt::WA_DeleteOnClose);
   settings_dlg->setModal(true);
 
-  settings_dlg->setWindowTitle("Any zoom settings");
-  settings_dlg->setLabelText("zoom:");
+  settings_dlg->setWindowTitle(tr("Any zoom settings"));
+  settings_dlg->setLabelText(tr("zoom:"));
 
   settings_dlg->setInputMode(QInputDialog::IntInput);
   settings_dlg->setIntRange(1, 1000000);
