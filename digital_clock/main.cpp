@@ -12,13 +12,13 @@ int main(int argc, char *argv[]) {
   a.setWindowIcon(QIcon(":/images/clock.svg"));
   a.setQuitOnLastWindowClosed(false);
 
-  QString path = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
   QTranslator qt_translator;
-  qt_translator.load("qt_" + QLocale::system().name(), path);
+  qt_translator.load("qt_" + QLocale::system().name(),
+                     QLibraryInfo::location(QLibraryInfo::TranslationsPath));
   a.installTranslator(&qt_translator);
 
   QTranslator app_translator;
-  app_translator.load("digital_clock_" + QLocale::system().name(), path);
+  app_translator.load(":/languages/" + QLocale::system().name());
   a.installTranslator(&app_translator);
 
   MainWindow w;

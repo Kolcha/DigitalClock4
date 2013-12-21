@@ -70,7 +70,6 @@ RESOURCES += \
     digital_clock.qrc
 
 TRANSLATIONS += \
-    languages/digital_clock_en.ts \
     languages/digital_clock_ru.ts
 
 win32:RC_FILE = digital_clock.rc

@@ -29,4 +29,7 @@
         <file alias="wmr.png">resources/about_dialog/wmr-16.png</file>
         <file alias="wmz.png">resources/about_dialog/wmz-16.png</file>
     </qresource>
+    <qresource prefix="/languages">
+        <file alias="ru.qm">languages/digital_clock_ru.qm</file>
+    </qresource>
 </RCC>
