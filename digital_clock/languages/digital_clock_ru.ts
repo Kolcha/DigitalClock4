@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru">
 <context>
-    <name>AboutDialog</name>
+    <name>digital_clock::AboutDialog</name>
     <message>
         <location filename="../gui/about_dialog.ui" line="14"/>
         <source>About</source>
@@ -46,43 +46,43 @@
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="27"/>
+        <location filename="../gui/about_dialog.cpp" line="29"/>
         <source>version: </source>
         <translatorcomment>версия программы</translatorcomment>
         <translation>версия: </translation>
     </message>
 </context>
 <context>
-    <name>MainWindow</name>
+    <name>digital_clock::MainWindow</name>
     <message>
-        <location filename="../gui/main_window.cpp" line="267"/>
-        <location filename="../gui/main_window.cpp" line="275"/>
-        <location filename="../gui/main_window.cpp" line="283"/>
+        <location filename="../gui/main_window.cpp" line="269"/>
+        <location filename="../gui/main_window.cpp" line="277"/>
+        <location filename="../gui/main_window.cpp" line="285"/>
         <source>%1 Update</source>
         <translatorcomment>обновление программы</translatorcomment>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="268"/>
+        <location filename="../gui/main_window.cpp" line="270"/>
         <source>Update error. %1</source>
         <translatorcomment>ошибка в процессе обновления</translatorcomment>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="276"/>
+        <location filename="../gui/main_window.cpp" line="278"/>
         <source>You already have latest version (%1).</source>
         <translatorcomment>сообщение об установленой версии программы</translatorcomment>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="284"/>
+        <location filename="../gui/main_window.cpp" line="286"/>
         <source>Update available (%1). Click this message to download.</source>
         <translatorcomment>сообщение об последней актульной версии программы</translatorcomment>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
 </context>
 <context>
-    <name>PluginInfoDialog</name>
+    <name>digital_clock::PluginInfoDialog</name>
     <message>
         <location filename="../gui/plugin_info_dialog.ui" line="20"/>
         <source>About plugin</source>
@@ -103,7 +103,7 @@
     </message>
 </context>
 <context>
-    <name>SettingsDialog</name>
+    <name>digital_clock::SettingsDialog</name>
     <message>
         <location filename="../gui/settings_dialog.ui" line="14"/>
         <source>Settings</source>
@@ -188,7 +188,7 @@
         <translation>Версия :</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="152"/>
+        <location filename="../gui/settings_dialog.cpp" line="154"/>
         <source>unknown</source>
         <translatorcomment>значение по умолчанию</translatorcomment>
         <translation>неизвестно</translation>
@@ -315,60 +315,60 @@
         <translation>Плагины</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="24"/>
+        <location filename="../gui/settings_dialog.cpp" line="26"/>
         <source>1 day</source>
         <translation>1 день</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="25"/>
+        <location filename="../gui/settings_dialog.cpp" line="27"/>
         <source>3 days</source>
         <translation>3 дня</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="26"/>
+        <location filename="../gui/settings_dialog.cpp" line="28"/>
         <source>1 week</source>
         <translation>1 неделя</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="27"/>
+        <location filename="../gui/settings_dialog.cpp" line="29"/>
         <source>2 weeks</source>
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="249"/>
+        <location filename="../gui/settings_dialog.cpp" line="251"/>
         <source>Open texture file</source>
         <translatorcomment>найти и выбрать файл текстуры</translatorcomment>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="251"/>
+        <location filename="../gui/settings_dialog.cpp" line="253"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translatorcomment>форматы картинок</translatorcomment>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
 </context>
 <context>
-    <name>TrayControl</name>
+    <name>digital_clock::TrayControl</name>
     <message>
-        <location filename="../gui/tray_control.cpp" line="15"/>
+        <location filename="../gui/tray_control.cpp" line="17"/>
         <source>&amp;Settings</source>
         <translatorcomment>настройки программы</translatorcomment>
         <translation>&amp;Настройки</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="18"/>
+        <location filename="../gui/tray_control.cpp" line="20"/>
         <source>&amp;About</source>
         <translatorcomment>информация о программе</translatorcomment>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="21"/>
+        <location filename="../gui/tray_control.cpp" line="23"/>
         <source>&amp;Update</source>
         <translatorcomment>проверить наличие обновлений</translatorcomment>
         <translation>О&amp;бновление</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="24"/>
+        <location filename="../gui/tray_control.cpp" line="26"/>
         <source>&amp;Quit</source>
         <translatorcomment>выход из программы</translatorcomment>
         <translation>&amp;Выход</translation>

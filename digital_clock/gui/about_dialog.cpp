@@ -1,6 +1,8 @@
 #include "about_dialog.h"
 #include "ui_about_dialog.h"
 
+namespace digital_clock {
+
 static QString compilerString() {
 #if defined(Q_CC_CLANG) // must be before GNU, because clang claims to be GNU too
     QString isAppleString;
@@ -34,3 +36,5 @@ AboutDialog::AboutDialog(QWidget* parent)
 AboutDialog::~AboutDialog() {
   delete ui;
 }
+
+} // namespace digital_clock

@@ -10,6 +10,8 @@
 
 using skin_draw::SkinDrawer;
 
+namespace digital_clock {
+
 MainWindow::MainWindow(QWidget* parent)
   : QWidget(parent) {
   // create objects
@@ -295,3 +297,5 @@ void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {
   setWindowFlags(flags);
   show();
 }
+
+} // namespace digital_clock

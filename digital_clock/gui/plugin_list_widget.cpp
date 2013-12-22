@@ -1,6 +1,8 @@
 #include "plugin_list_widget.h"
 #include "ui_plugin_list_widget.h"
 
+namespace digital_clock {
+
 PluginListWidget::PluginListWidget(QWidget* parent)
   : QWidget(parent), ui(new Ui::PluginListWidget) {
   ui->setupUi(this);
@@ -53,3 +55,5 @@ void PluginListWidget::on_info_btn_clicked() {
     dialog_->show();
   }
 }
+
+} // namespace digital_clock

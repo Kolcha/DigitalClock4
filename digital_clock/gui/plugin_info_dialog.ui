@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PluginInfoDialog</class>
- <widget class="QDialog" name="PluginInfoDialog">
+ <class>digital_clock::PluginInfoDialog</class>
+ <widget class="QDialog" name="digital_clock::PluginInfoDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -185,7 +185,7 @@
   <connection>
    <sender>ok_btn</sender>
    <signal>clicked()</signal>
-   <receiver>PluginInfoDialog</receiver>
+   <receiver>digital_clock::PluginInfoDialog</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">

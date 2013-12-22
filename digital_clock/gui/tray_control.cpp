@@ -1,6 +1,8 @@
 #include <QApplication>
 #include "tray_control.h"
 
+namespace digital_clock {
+
 TrayControl::TrayControl(QObject* parent)
   : QObject(parent) {
   CreateActions();
@@ -46,3 +48,5 @@ void TrayControl::CreateTrayIcon() {
 void TrayControl::TrayEventHandler(QSystemTrayIcon::ActivationReason reason) {
   if (reason == QSystemTrayIcon::DoubleClick) emit ShowSettingsDlg();
 }
+
+} // namespace digital_clock

@@ -6,6 +6,8 @@
 #include "../core/plugin_info.h"
 #include "plugin_info_dialog.h"
 
+namespace digital_clock {
+
 namespace Ui {
 class PluginListWidget;
 }
@@ -40,5 +42,7 @@ private:
   TPluginInfo info_;
   QPointer<PluginInfoDialog> dialog_;
 };
+
+} // namespace digital_clock
 
 #endif // PLUGIN_LIST_WIDGET_H

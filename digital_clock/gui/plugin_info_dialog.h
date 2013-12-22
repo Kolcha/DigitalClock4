@@ -4,6 +4,8 @@
 #include "centered_dialog.h"
 #include "../core/plugin_info.h"
 
+namespace digital_clock {
+
 namespace Ui {
 class PluginInfoDialog;
 }
@@ -21,5 +23,7 @@ public slots:
 private:
   Ui::PluginInfoDialog* ui;
 };
+
+} // namespace digital_clock
 
 #endif // PLUGIN_INFO_DIALOG_H

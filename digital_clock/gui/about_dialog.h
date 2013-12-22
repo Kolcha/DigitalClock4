@@ -3,6 +3,8 @@
 
 #include "centered_dialog.h"
 
+namespace digital_clock {
+
 namespace Ui {
 class AboutDialog;
 }
@@ -17,5 +19,7 @@ public:
 private:
   Ui::AboutDialog *ui;
 };
+
+} // namespace digital_clock
 
 #endif // ABOUT_DIALOG_H
