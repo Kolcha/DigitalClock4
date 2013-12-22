@@ -4,11 +4,13 @@
 #include <QSystemTrayIcon>
 #include <QPointer>
 #include "iclock_plugin.h"
-#include "gui/settings_dlg.h"
+#include "gui/settings_dialog.h"
 
 class QTranslator;
 class TaskManager;
 class PluginSettings;
+
+namespace schedule {
 
 class Schedule : public IClockPlugin {
   Q_OBJECT
@@ -35,8 +37,10 @@ private:
   QPointer<QSystemTrayIcon> tray_icon_;
   QMenu* tray_menu_;
   TaskManager* manager_;
-  QPointer<SettingsDlg> settings_dlg_;
+  QPointer<SettingsDialog> settings_dlg_;
   PluginSettings* settings_;
 };
+
+} // namespace schedule
 
 #endif // SCHEDULE_H

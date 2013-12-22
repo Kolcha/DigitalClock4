@@ -2,6 +2,8 @@
 #include "schedule_settings.h"
 #include "task_manager.h"
 
+namespace schedule {
+
 TaskManager::TaskManager(QObject* parent)
   : QObject(parent) {
 }
@@ -78,3 +80,5 @@ void TaskManager::CheckTime(const QDateTime& time, bool delete_task) {
     SaveTasks();
   }
 }
+
+} // namespace schedule

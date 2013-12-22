@@ -3,6 +3,8 @@
 
 #include <QTime>
 
+namespace schedule {
+
 struct Task {
   QDate date;
   QTime time;
@@ -20,5 +22,7 @@ inline bool operator<(const Task& lhs, const Task& rhs){
     return lhs.date < rhs.date;
   }
 }
+
+} // namespace schedule
 
 #endif // TASK_H

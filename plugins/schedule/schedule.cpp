@@ -7,9 +7,11 @@
 #include "core/task_manager.h"
 #include "schedule.h"
 
+namespace schedule {
+
 Schedule::Schedule() {
   translator_ = new QTranslator(this);
-  translator_->load(":/schedule_" + QLocale::system().name());
+  translator_->load(":/schedule/schedule_" + QLocale::system().name());
   QApplication::installTranslator(translator_);
 
   settings_ = new PluginSettings(ORG_NAME, APP_NAME, this);
@@ -28,9 +30,9 @@ Schedule::~Schedule() {
 }
 
 void Schedule::Start() {
-  tray_icon_ = new QSystemTrayIcon(QIcon(":/schedule.svg"));
+  tray_icon_ = new QSystemTrayIcon(QIcon(":/schedule/schedule.svg"));
   tray_menu_ = new QMenu();
-  tray_menu_->addAction(QIcon(":/settings.svg"), "Settings", this, SLOT(Configure()));
+  tray_menu_->addAction(QIcon(":/schedule/settings.svg"), "Settings", this, SLOT(Configure()));
   tray_icon_->setContextMenu(tray_menu_);
   tray_icon_->setToolTip("Digital Clock Schedule Plugin");
   tray_icon_->setVisible(true);
@@ -49,7 +51,7 @@ void Schedule::Configure() {
   if (settings_dlg_) {
     settings_dlg_->activateWindow();
   } else {
-    settings_dlg_ = new SettingsDlg();
+    settings_dlg_ = new SettingsDialog();
     // load current settings to dialog
     connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
             settings_dlg_, SLOT(SettingsListener(QString,QVariant)));
@@ -91,3 +93,5 @@ void Schedule::ShowMessage(const QString& message) {
   if (!tray_icon_) return;
   tray_icon_->showMessage(tr("Scheduled task"), message);
 }
+
+} // namespace schedule

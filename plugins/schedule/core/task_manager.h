@@ -4,6 +4,8 @@
 #include <QMap>
 #include "task.h"
 
+namespace schedule {
+
 class TaskManager : public QObject {
   Q_OBJECT
 
@@ -29,5 +31,7 @@ private:
   QMap<QDate, QMap<QTime, QString> > tasks_;
   QDate current_date_;
 };
+
+} // namespace schedule
 
 #endif // TASK_MANAGER_H
