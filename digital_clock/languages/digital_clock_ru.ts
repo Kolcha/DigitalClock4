@@ -55,27 +55,27 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../gui/main_window.cpp" line="268"/>
-        <location filename="../gui/main_window.cpp" line="276"/>
-        <location filename="../gui/main_window.cpp" line="284"/>
+        <location filename="../gui/main_window.cpp" line="267"/>
+        <location filename="../gui/main_window.cpp" line="275"/>
+        <location filename="../gui/main_window.cpp" line="283"/>
         <source>%1 Update</source>
         <translatorcomment>обновление программы</translatorcomment>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="269"/>
+        <location filename="../gui/main_window.cpp" line="268"/>
         <source>Update error. %1</source>
         <translatorcomment>ошибка в процессе обновления</translatorcomment>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="277"/>
+        <location filename="../gui/main_window.cpp" line="276"/>
         <source>You already have latest version (%1).</source>
         <translatorcomment>сообщение об установленой версии программы</translatorcomment>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="285"/>
+        <location filename="../gui/main_window.cpp" line="284"/>
         <source>Update available (%1). Click this message to download.</source>
         <translatorcomment>сообщение об последней актульной версии программы</translatorcomment>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
