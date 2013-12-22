@@ -18,7 +18,4 @@
 #  define SKIN_DRAWSHARED_EXPORT Q_DECL_IMPORT
 #endif
 
-/// skin draw library namespace name
-#define SKIN_DRAW_NAMESPACE      skin_draw
-
 #endif // SKIN_DRAW_GLOBAL_H

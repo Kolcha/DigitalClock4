@@ -8,7 +8,7 @@
 
 #define OPT_POSITION_KEY          "clock/position"
 
-using SKIN_DRAW_NAMESPACE::SkinDrawer;
+using skin_draw::SkinDrawer;
 
 MainWindow::MainWindow(QWidget* parent)
   : QWidget(parent) {

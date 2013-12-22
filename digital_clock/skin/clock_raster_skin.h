@@ -5,7 +5,7 @@
 #include "raster_skin.h"
 #include "clock_base_skin.h"
 
-class ClockRasterSkin : public SKIN_DRAW_NAMESPACE::RasterSkin, public ClockBaseSkin {
+class ClockRasterSkin : public skin_draw::RasterSkin, public ClockBaseSkin {
 public:
   ClockRasterSkin(const QDir& skin_root);
 

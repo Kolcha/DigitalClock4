@@ -1,9 +1,6 @@
 #include "raster_skin.h"
 
-namespace SKIN_DRAW_NAMESPACE {
-
-RasterSkin::~RasterSkin() {
-}
+namespace skin_draw {
 
 ISkin::QPixmapPtr RasterSkin::ResizeImage(QChar ch, qreal zoom) {
   QPixmap& original = orig_images_[ch];
@@ -14,4 +11,4 @@ ISkin::QPixmapPtr RasterSkin::ResizeImage(QChar ch, qreal zoom) {
   return result;
 }
 
-} // SKIN_DRAW_NAMESPACE
+} // namespace skin_draw

@@ -16,8 +16,7 @@ public:
   };
   typedef QMap<FSkinInfo, QString> TSkinInfo;
 
-  ClockBaseSkin();
-  virtual ~ClockBaseSkin();
+  virtual ~ClockBaseSkin() {}
 
   const TSkinInfo& GetInfo() const;
   void SetSeparators(const QString& seps);

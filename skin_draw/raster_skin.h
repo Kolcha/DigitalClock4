@@ -3,7 +3,7 @@
 
 #include "base_skin.h"
 
-namespace SKIN_DRAW_NAMESPACE {
+namespace skin_draw {
 
 /*!
  * @brief Raster images support class.
@@ -14,10 +14,6 @@ namespace SKIN_DRAW_NAMESPACE {
  * logic for skin resources loading. Load logic must fill RasterSkin::orig_images_ map.
  */
 class SKIN_DRAWSHARED_EXPORT RasterSkin : public BaseSkin {
-public:
-  /*! Virtual destructor. */
-  virtual ~RasterSkin();
-
 protected:
   /*!
    * Resize image for given character.
@@ -30,6 +26,6 @@ protected:
   QMap<QChar, QPixmap> orig_images_;
 };
 
-} // SKIN_DRAW_NAMESPACE
+} // namespace skin_draw
 
 #endif // RASTER_SKIN_H

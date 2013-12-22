@@ -12,7 +12,7 @@
 #define OPT_LAST_TIME_FORMAT_KEY     "settings_dialog/last_time_format"
 #define OPT_GEOMETRY_KEY             "settings_dialog/geometry"
 
-using SKIN_DRAW_NAMESPACE::SkinDrawer;
+using skin_draw::SkinDrawer;
 
 SettingsDialog::SettingsDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDialog) {

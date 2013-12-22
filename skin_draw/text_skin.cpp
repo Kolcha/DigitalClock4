@@ -2,7 +2,7 @@
 #include <QFontMetrics>
 #include "text_skin.h"
 
-namespace SKIN_DRAW_NAMESPACE {
+namespace skin_draw {
 
 TextSkin::TextSkin(const QFont& font) : font_(font) {
 }
@@ -23,4 +23,4 @@ ISkin::QPixmapPtr TextSkin::ResizeImage(QChar ch, qreal zoom) {
   return result;
 }
 
-} // SKIN_DRAW_NAMESPACE
+} // namespace skin_draw

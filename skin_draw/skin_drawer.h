@@ -3,7 +3,7 @@
 
 #include "iskin.h"
 
-namespace SKIN_DRAW_NAMESPACE {
+namespace skin_draw {
 
 /*!
  * @brief Skin draw engine.
@@ -132,6 +132,6 @@ private:
   int space_;
 };
 
-} // SKIN_DRAW_NAMESPACE
+} // namespace skin_draw
 
 #endif // SKIN_DRAWER_H
