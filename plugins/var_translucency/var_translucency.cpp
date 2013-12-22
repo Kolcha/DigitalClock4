@@ -1,5 +1,7 @@
 #include "var_translucency.h"
 
+namespace var_translucency {
+
 void VarTranslucency::Init(const QMap<Options, QVariant>& current_settings) {
   old_opacity_ = current_settings[OPT_OPACITY].toReal();
   cur_opacity_ = 1.0;
@@ -20,3 +22,5 @@ void VarTranslucency::TimeUpdateListener() {
   cur_opacity_ += op_stap_;
   emit OptionChanged(OPT_OPACITY, cur_opacity_);
 }
+
+} // namespace var_translucency

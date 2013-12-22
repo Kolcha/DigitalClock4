@@ -3,6 +3,8 @@
 
 #include "iclock_plugin.h"
 
+namespace var_translucency {
+
 class VarTranslucency : public ISettingsPlugin {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID SETTINGS_PLUGIN_INTERFACE_IID FILE "var_translucency.json")
@@ -23,5 +25,7 @@ private:
   qreal cur_opacity_;
   qreal op_stap_;
 };
+
+} // namespace var_translucency
 
 #endif // VAR_TRANSLUCENCY_H
