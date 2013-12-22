@@ -5,6 +5,8 @@
 
 class PluginSettings;
 
+namespace tray_color {
+
 class TrayColor : public ITrayPlugin {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID TRAY_PLUGIN_INTERFACE_IID FILE "tray_color.json")
@@ -29,5 +31,7 @@ private:
 
   bool is_enabled_;
 };
+
+} // namespace tray_color
 
 #endif // TRAY_COLOR_H
