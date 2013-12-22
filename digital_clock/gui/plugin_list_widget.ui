@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string notr="true"/>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,0,0,0,0,0">
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,0,0,0,0">
    <property name="topMargin">
     <number>2</number>
    </property>
@@ -30,31 +30,6 @@
     <widget class="QCheckBox" name="name_check_box">
      <property name="text">
       <string notr="true">CheckBox</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="type_label">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>40</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="text">
-      <string notr="true">settings</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>

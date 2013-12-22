@@ -96,13 +96,7 @@
         <translation>версия:</translation>
     </message>
     <message>
-        <location filename="../gui/plugin_info_dialog.ui" line="115"/>
-        <source>type:</source>
-        <translatorcomment>тип плагина</translatorcomment>
-        <translation>тип:</translation>
-    </message>
-    <message>
-        <location filename="../gui/plugin_info_dialog.ui" line="129"/>
+        <location filename="../gui/plugin_info_dialog.ui" line="122"/>
         <source>author:</source>
         <translatorcomment>автор плагина</translatorcomment>
         <translation>автор:</translation>
@@ -341,13 +335,13 @@
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="258"/>
+        <location filename="../gui/settings_dialog.cpp" line="247"/>
         <source>Open texture file</source>
         <translatorcomment>найти и выбрать файл текстуры</translatorcomment>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="260"/>
+        <location filename="../gui/settings_dialog.cpp" line="249"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translatorcomment>форматы картинок</translatorcomment>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>

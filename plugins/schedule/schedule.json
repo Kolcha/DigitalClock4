@@ -1,6 +1,5 @@
 {
     "name" : "Schedule",
-    "type" : "clock",
     "version" : "2.0.2",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",

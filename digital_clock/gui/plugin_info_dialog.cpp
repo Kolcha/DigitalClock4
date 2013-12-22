@@ -14,7 +14,6 @@ void PluginInfoDialog::SetInfo(const TPluginInfo& info) {
   ui->name_value->setText(info[PI_NAME]);
   ui->version_value->setText(info[PI_VERSION]);
   ui->description_value->setText(info[PI_COMMENT]);
-  ui->type_value->setText(info[PI_TYPE]);
   ui->author_value->setText(info[PI_AUTHOR]);
   ui->email_value->setText(info[PI_EMAIL]);
   adjustSize();

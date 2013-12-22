@@ -18,10 +18,6 @@ void PluginListWidget::SetName(const QString& name) {
   ui->name_check_box->setText(name);
 }
 
-void PluginListWidget::SetType(const QString& type) {
-  ui->type_label->setText(type);
-}
-
 void PluginListWidget::SetVersion(const QString& version) {
   ui->version_label->setText(version);
 }
@@ -37,7 +33,6 @@ void PluginListWidget::SetChecked(bool checked) {
 void PluginListWidget::SetInfo(const TPluginInfo& info) {
   info_ = info;
   SetName(info[PI_NAME]);
-  SetType(info[PI_TYPE]);
   SetVersion(info[PI_VERSION]);
 }
 
