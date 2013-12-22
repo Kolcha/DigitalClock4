@@ -6,9 +6,11 @@
 #include "any_zoom_settings.h"
 #include "any_zoom.h"
 
+namespace any_zoom {
+
 AnyZoom::AnyZoom() {
   translator_ = new QTranslator(this);
-  translator_->load(":/any_zoom_" + QLocale::system().name());
+  translator_->load(":/any_zoom/any_zoom_" + QLocale::system().name());
   QApplication::installTranslator(translator_);
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   is_enabled_ = false;
@@ -75,3 +77,5 @@ void AnyZoom::SettingsListener(Options option, const QVariant& value) {
     emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
   }
 }
+
+} // namespace any_zoom
