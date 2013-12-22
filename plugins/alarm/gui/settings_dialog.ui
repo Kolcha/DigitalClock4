@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SettingsDlg</class>
- <widget class="QDialog" name="SettingsDlg">
+ <class>alarm::SettingsDialog</class>
+ <widget class="QDialog" name="alarm::SettingsDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../alarm.qrc">
-    <normaloff>:/settings.svg</normaloff>:/settings.svg</iconset>
+    <normaloff>:/alarm/settings.svg</normaloff>:/alarm/settings.svg</iconset>
   </property>
   <property name="modal">
    <bool>true</bool>
@@ -156,7 +156,7 @@
        </property>
        <property name="icon">
         <iconset resource="../alarm.qrc">
-         <normaloff>:/play.svg</normaloff>:/play.svg</iconset>
+         <normaloff>:/alarm/play.svg</normaloff>:/alarm/play.svg</iconset>
        </property>
       </widget>
      </item>
@@ -210,7 +210,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>SettingsDlg</receiver>
+   <receiver>alarm::SettingsDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -226,7 +226,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>SettingsDlg</receiver>
+   <receiver>alarm::SettingsDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

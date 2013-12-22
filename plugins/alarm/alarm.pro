@@ -11,17 +11,17 @@ TEMPLATE = lib
 CONFIG += plugin
 
 SOURCES += alarm.cpp \
-    gui/settings_dlg.cpp
+    gui/settings_dialog.cpp
 
 HEADERS += alarm.h \
-    gui/settings_dlg.h \
-    alarm_settings.h
+    alarm_settings.h \
+    gui/settings_dialog.h
 OTHER_FILES += alarm.json
 
 win32:RC_FILE = alarm.rc
 
 FORMS += \
-    gui/settings_dlg.ui
+    gui/settings_dialog.ui
 
 RESOURCES += \
     alarm.qrc

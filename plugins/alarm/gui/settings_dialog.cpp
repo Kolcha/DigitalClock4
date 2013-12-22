@@ -3,11 +3,14 @@
 #include <QFileDialog>
 #include <settings_keys.h>
 #include "../alarm_settings.h"
-#include "settings_dlg.h"
-#include "ui_settings_dlg.h"
+#include "settings_dialog.h"
+#include "ui_settings_dialog.h"
 
-SettingsDlg::SettingsDlg(QWidget* parent)
-  : CenteredDialog(parent), ui(new Ui::SettingsDlg) {
+namespace alarm {
+
+SettingsDialog::SettingsDialog(QWidget* parent)
+  : QDialog(parent), ui(new Ui::SettingsDialog) {
+  setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
   ui->time_edit->setDisplayFormat(GetDefaultValue(OPT_TIME_FORMAT).toString());
 
@@ -17,11 +20,11 @@ SettingsDlg::SettingsDlg(QWidget* parent)
   connect(ui->volume_slider, SIGNAL(valueChanged(int)), player_, SLOT(setVolume(int)));
 }
 
-SettingsDlg::~SettingsDlg() {
+SettingsDialog::~SettingsDialog() {
   delete ui;
 }
 
-void SettingsDlg::SettingsListener(const QString& key, const QVariant& value) {
+void SettingsDialog::SettingsListener(const QString& key, const QVariant& value) {
   if (key == OPT_ENABLED) {
     ui->alarm_enabled->setChecked(value.toBool());
   }
@@ -62,28 +65,28 @@ void SettingsDlg::SettingsListener(const QString& key, const QVariant& value) {
   }
 }
 
-void SettingsDlg::PlayerStateChanged(QMediaPlayer::State state) {
+void SettingsDialog::PlayerStateChanged(QMediaPlayer::State state) {
   switch (state) {
     case QMediaPlayer::PlayingState:
-      ui->play_btn->setIcon(QIcon(":/stop.svg"));
+      ui->play_btn->setIcon(QIcon(":/alarm/stop.svg"));
       break;
 
     case QMediaPlayer::PausedState:
     case QMediaPlayer::StoppedState:
-      ui->play_btn->setIcon(QIcon(":/play.svg"));
+      ui->play_btn->setIcon(QIcon(":/alarm/play.svg"));
       break;
   }
 }
 
-void SettingsDlg::on_time_edit_timeChanged(const QTime& time) {
+void SettingsDialog::on_time_edit_timeChanged(const QTime& time) {
   emit OptionChanged(OPT_TIME, time);
 }
 
-void SettingsDlg::on_alarm_enabled_toggled(bool checked) {
+void SettingsDialog::on_alarm_enabled_toggled(bool checked) {
   emit OptionChanged(OPT_ENABLED, checked);
 }
 
-void SettingsDlg::on_browse_btn_clicked() {
+void SettingsDialog::on_browse_btn_clicked() {
   QString sound_file = QFileDialog::getOpenFileName(this, tr("Select sound file"),
                        last_file_path_,
                        tr("MP3 Files (*.mp3)"));
@@ -96,38 +99,40 @@ void SettingsDlg::on_browse_btn_clicked() {
   }
 }
 
-void SettingsDlg::on_notification_enabled_toggled(bool checked) {
+void SettingsDialog::on_notification_enabled_toggled(bool checked) {
   emit OptionChanged(OPT_SHOW_NOTIFY, checked);
 }
 
-void SettingsDlg::on_message_edit_textChanged() {
+void SettingsDialog::on_message_edit_textChanged() {
   emit OptionChanged(OPT_NOTIFY_TEXT, ui->message_edit->toPlainText());
 }
 
-void SettingsDlg::on_st_file_clicked() {
+void SettingsDialog::on_st_file_clicked() {
   emit OptionChanged(OPT_SIGNAL_TYPE, (int)ST_FILE);
   player_->setMedia(QUrl::fromLocalFile(
                       QDir::fromNativeSeparators(ui->signal_label->toolTip())));
 }
 
-void SettingsDlg::on_st_stream_clicked() {
+void SettingsDialog::on_st_stream_clicked() {
   emit OptionChanged(OPT_SIGNAL_TYPE, (int)ST_STREAM);
   player_->setMedia(QUrl(ui->stream_url_edit->text()));
 }
 
-void SettingsDlg::on_stream_url_edit_textEdited(const QString& arg1) {
+void SettingsDialog::on_stream_url_edit_textEdited(const QString& arg1) {
   emit OptionChanged(OPT_STREAM_URL, arg1);
   player_->setMedia(QUrl(arg1));
 }
 
-void SettingsDlg::on_volume_slider_valueChanged(int value) {
+void SettingsDialog::on_volume_slider_valueChanged(int value) {
   emit OptionChanged(OPT_VOLUME, value);
 }
 
-void SettingsDlg::on_play_btn_clicked() {
+void SettingsDialog::on_play_btn_clicked() {
   if (player_->state() == QMediaPlayer::PlayingState) {
     player_->stop();
   } else {
     player_->play();
   }
 }
+
+} // namespace alarm
