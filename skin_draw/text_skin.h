@@ -4,6 +4,8 @@
 #include <QFont>
 #include "base_skin.h"
 
+namespace SKIN_DRAW_NAMESPACE {
+
 /*!
  * @brief Any font support class.
  *
@@ -33,5 +35,7 @@ protected:
   /// used font
   QFont font_;
 };
+
+} // SKIN_DRAW_NAMESPACE
 
 #endif // TEXT_SKIN_H

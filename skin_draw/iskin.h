@@ -5,6 +5,8 @@
 #include <QSharedPointer>
 #include "skin_draw_global.h"
 
+namespace SKIN_DRAW_NAMESPACE {
+
 /*!
  * @brief Skin interface.
  *
@@ -35,5 +37,7 @@ public:
    */
   virtual QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache) = 0;
 };
+
+} // SKIN_DRAW_NAMESPACE
 
 #endif // ISKIN_H

@@ -8,6 +8,8 @@
 
 #define OPT_POSITION_KEY          "clock/position"
 
+using SKIN_DRAW_NAMESPACE::SkinDrawer;
+
 MainWindow::MainWindow(QWidget* parent)
   : QWidget(parent) {
   // create objects
@@ -249,8 +251,7 @@ void MainWindow::DisplayMenu(const QPoint& pos) {
 void MainWindow::ConnectAll() {
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
           this, SLOT(SettingsListener(Options,QVariant)));
-  connect(skin_manager_, SIGNAL(SkinLoaded(ISkin::SkinPtr)),
-          drawer_, SLOT(ApplySkin(ISkin::SkinPtr)));
+  connect(skin_manager_, &SkinManager::SkinLoaded, drawer_, &SkinDrawer::ApplySkin);
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), d_clock_, SLOT(DrawImage(QImage)));
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(d_clock_, SIGNAL(SeparatorsChanged(QString)),

@@ -4,6 +4,8 @@
 #include <QMap>
 #include "iskin.h"
 
+namespace SKIN_DRAW_NAMESPACE {
+
 /*!
  * @brief Base class for all skin classes.
  *
@@ -45,5 +47,7 @@ private:
   qreal cached_zoom_;
   QMap<QChar, QPixmapPtr> image_cache_;
 };
+
+} // SKIN_DRAW_NAMESPACE
 
 #endif // BASE_SKIN_H

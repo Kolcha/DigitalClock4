@@ -1,5 +1,7 @@
 #include "base_skin.h"
 
+namespace SKIN_DRAW_NAMESPACE {
+
 BaseSkin::BaseSkin() : cached_zoom_(1.0) {
 }
 
@@ -24,3 +26,5 @@ ISkin::QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
   }
   return result;
 }
+
+} // SKIN_DRAW_NAMESPACE

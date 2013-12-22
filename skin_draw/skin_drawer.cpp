@@ -3,6 +3,8 @@
 #include <QPainter>
 #include "skin_drawer.h"
 
+namespace SKIN_DRAW_NAMESPACE {
+
 SkinDrawer::SkinDrawer(QObject* parent)
   : QObject(parent), texture_(8, 8) {
   zoom_ = 1.0;
@@ -140,3 +142,5 @@ void SkinDrawer::DrawTexture(QPainter& painter, const QRect& rect) {
   }
   painter.setCompositionMode(old_mode);
 }
+
+} // SKIN_DRAW_NAMESPACE

@@ -1,8 +1,9 @@
 #ifndef SKIN_DRAWER_H
 #define SKIN_DRAWER_H
 
-#include "skin_draw_global.h"
 #include "iskin.h"
+
+namespace SKIN_DRAW_NAMESPACE {
 
 /*!
  * @brief Skin draw engine.
@@ -130,5 +131,7 @@ private:
   CustomizationType cust_type_;
   int space_;
 };
+
+} // SKIN_DRAW_NAMESPACE
 
 #endif // SKIN_DRAWER_H

@@ -39,7 +39,7 @@ private:
   ClockSettings* settings_;
   PluginManager* plugin_manager_;
   SkinManager* skin_manager_;
-  SkinDrawer* drawer_;
+  SKIN_DRAW_NAMESPACE::SkinDrawer* drawer_;
   DigitalClock* d_clock_;
   TrayControl* tray_control_;
   QPoint drag_position_;

@@ -3,6 +3,8 @@
 
 #include "base_skin.h"
 
+namespace SKIN_DRAW_NAMESPACE {
+
 /*!
  * @brief Raster images support class.
  *
@@ -27,5 +29,7 @@ protected:
   /// map with original images
   QMap<QChar, QPixmap> orig_images_;
 };
+
+} // SKIN_DRAW_NAMESPACE
 
 #endif // RASTER_SKIN_H

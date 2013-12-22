@@ -54,7 +54,7 @@ void SkinManager::LoadSkin(const QString& skin_name) {
   }
   current_skin_ = skin;
   SetSeparators(seps_);
-  emit SkinLoaded(skin.dynamicCast<ISkin>());
+  emit SkinLoaded(skin.dynamicCast<SKIN_DRAW_NAMESPACE::ISkin>());
   // get skin info
   ClockBaseSkin::TSkinInfo info;
   if (skin) info = skin->GetInfo();

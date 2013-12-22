@@ -2,6 +2,8 @@
 #include <QFontMetrics>
 #include "text_skin.h"
 
+namespace SKIN_DRAW_NAMESPACE {
+
 TextSkin::TextSkin(const QFont& font) : font_(font) {
 }
 
@@ -20,3 +22,5 @@ ISkin::QPixmapPtr TextSkin::ResizeImage(QChar ch, qreal zoom) {
   painter.drawText(result->rect(), Qt::AlignCenter, ch);
   return result;
 }
+
+} // SKIN_DRAW_NAMESPACE

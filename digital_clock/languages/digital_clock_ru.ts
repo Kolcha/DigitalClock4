@@ -55,27 +55,27 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../gui/main_window.cpp" line="266"/>
-        <location filename="../gui/main_window.cpp" line="274"/>
-        <location filename="../gui/main_window.cpp" line="282"/>
+        <location filename="../gui/main_window.cpp" line="268"/>
+        <location filename="../gui/main_window.cpp" line="276"/>
+        <location filename="../gui/main_window.cpp" line="284"/>
         <source>%1 Update</source>
         <translatorcomment>обновление программы</translatorcomment>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="267"/>
+        <location filename="../gui/main_window.cpp" line="269"/>
         <source>Update error. %1</source>
         <translatorcomment>ошибка в процессе обновления</translatorcomment>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="275"/>
+        <location filename="../gui/main_window.cpp" line="277"/>
         <source>You already have latest version (%1).</source>
         <translatorcomment>сообщение об установленой версии программы</translatorcomment>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="283"/>
+        <location filename="../gui/main_window.cpp" line="285"/>
         <source>Update available (%1). Click this message to download.</source>
         <translatorcomment>сообщение об последней актульной версии программы</translatorcomment>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
@@ -188,7 +188,7 @@
         <translation>Версия :</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="150"/>
+        <location filename="../gui/settings_dialog.cpp" line="152"/>
         <source>unknown</source>
         <translatorcomment>значение по умолчанию</translatorcomment>
         <translation>неизвестно</translation>
@@ -315,33 +315,33 @@
         <translation>Плагины</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="22"/>
+        <location filename="../gui/settings_dialog.cpp" line="24"/>
         <source>1 day</source>
         <translation>1 день</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="23"/>
+        <location filename="../gui/settings_dialog.cpp" line="25"/>
         <source>3 days</source>
         <translation>3 дня</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="24"/>
+        <location filename="../gui/settings_dialog.cpp" line="26"/>
         <source>1 week</source>
         <translation>1 неделя</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="25"/>
+        <location filename="../gui/settings_dialog.cpp" line="27"/>
         <source>2 weeks</source>
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="247"/>
+        <location filename="../gui/settings_dialog.cpp" line="249"/>
         <source>Open texture file</source>
         <translatorcomment>найти и выбрать файл текстуры</translatorcomment>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="249"/>
+        <location filename="../gui/settings_dialog.cpp" line="251"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translatorcomment>форматы картинок</translatorcomment>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>

@@ -3,6 +3,8 @@
 #include <QPainter>
 #include "vector_skin.h"
 
+namespace SKIN_DRAW_NAMESPACE {
+
 VectorSkin::~VectorSkin() {
 }
 
@@ -19,3 +21,5 @@ ISkin::QPixmapPtr VectorSkin::ResizeImage(QChar ch, qreal zoom) {
   renderer.render(&painter);
   return result;
 }
+
+} // SKIN_DRAW_NAMESPACE

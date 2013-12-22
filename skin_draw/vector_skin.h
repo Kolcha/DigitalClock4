@@ -3,6 +3,8 @@
 
 #include "base_skin.h"
 
+namespace SKIN_DRAW_NAMESPACE {
+
 /*!
  * @brief Vector images support class.
  *
@@ -26,5 +28,7 @@ protected:
   /// map with paths to original images
   QMap<QChar, QString> image_files_;
 };
+
+} // SKIN_DRAW_NAMESPACE
 
 #endif // VECTOR_SKIN_H
