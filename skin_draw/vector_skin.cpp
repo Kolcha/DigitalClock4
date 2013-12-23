@@ -3,8 +3,7 @@
 #include <QPainter>
 #include "vector_skin.h"
 
-VectorSkin::~VectorSkin() {
-}
+namespace skin_draw {
 
 ISkin::QPixmapPtr VectorSkin::ResizeImage(QChar ch, qreal zoom) {
   QString& img_file = image_files_[ch];
@@ -19,3 +18,5 @@ ISkin::QPixmapPtr VectorSkin::ResizeImage(QChar ch, qreal zoom) {
   renderer.render(&painter);
   return result;
 }
+
+} // namespace skin_draw

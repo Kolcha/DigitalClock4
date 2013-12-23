@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/default_skin">
+    <qresource prefix="/clock/default_skin">
         <file alias="electronic/0.svg">resources/electronic/0.svg</file>
         <file alias="electronic/1.svg">resources/electronic/1.svg</file>
         <file alias="electronic/2.svg">resources/electronic/2.svg</file>
@@ -16,20 +16,20 @@
         <file alias="electronic/s2.svg">resources/electronic/s2.svg</file>
         <file alias="electronic/skin.ini">resources/electronic/skin.ini</file>
     </qresource>
-    <qresource prefix="/images">
+    <qresource prefix="/clock/images">
         <file alias="quit.svg">resources/images/cross-24.svg</file>
         <file alias="settings.svg">resources/images/settings-24.svg</file>
         <file alias="clock.svg">resources/images/time-24.svg</file>
         <file alias="about.svg">resources/images/info-24.svg</file>
         <file alias="update.svg">resources/images/download-16.svg</file>
     </qresource>
-    <qresource prefix="/about_dialog">
+    <qresource prefix="/clock/about_dialog">
         <file alias="award.gif">resources/about_dialog/softpedia_clean_award_f.gif</file>
         <file alias="wme.png">resources/about_dialog/wme-16.png</file>
         <file alias="wmr.png">resources/about_dialog/wmr-16.png</file>
         <file alias="wmz.png">resources/about_dialog/wmz-16.png</file>
     </qresource>
-    <qresource prefix="/languages">
+    <qresource prefix="/clock/languages">
         <file alias="digital_clock_ru.qm">languages/digital_clock_ru.qm</file>
     </qresource>
 </RCC>

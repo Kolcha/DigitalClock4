@@ -1,11 +1,5 @@
 #include "clock_base_skin.h"
 
-ClockBaseSkin::ClockBaseSkin() {
-}
-
-ClockBaseSkin::~ClockBaseSkin() {
-}
-
 const ClockBaseSkin::TSkinInfo& ClockBaseSkin::GetInfo() const {
   return info_;
 }

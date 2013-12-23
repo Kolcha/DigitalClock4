@@ -4,7 +4,7 @@
 #include "text_skin.h"
 #include "clock_base_skin.h"
 
-class ClockTextSkin : public TextSkin, public ClockBaseSkin {
+class ClockTextSkin : public skin_draw::TextSkin, public ClockBaseSkin {
 public:
   ClockTextSkin(const QFont& font);
 

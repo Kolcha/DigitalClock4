@@ -7,6 +7,8 @@
 #include "../core/plugin_info.h"
 #include "../skin/clock_base_skin.h"
 
+namespace digital_clock {
+
 namespace Ui {
 class SettingsDialog;
 }
@@ -67,5 +69,7 @@ private:
   int last_customization_;
   QMap<qint64, QString> update_periods_;
 };
+
+} // namespace digital_clock
 
 #endif // SETTINGS_DIALOG_H

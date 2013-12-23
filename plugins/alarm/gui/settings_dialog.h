@@ -1,19 +1,21 @@
-#ifndef SETTINGS_DLG_H
-#define SETTINGS_DLG_H
+#ifndef ALARM_SETTINGS_DIALOG_H
+#define ALARM_SETTINGS_DIALOG_H
 
+#include <QDialog>
 #include <QMediaPlayer>
-#include "centered_dialog.h"
+
+namespace alarm {
 
 namespace Ui {
-class SettingsDlg;
+class SettingsDialog;
 }
 
-class SettingsDlg : public CenteredDialog {
+class SettingsDialog : public QDialog {
   Q_OBJECT
 
 public:
-  explicit SettingsDlg(QWidget* parent = 0);
-  ~SettingsDlg();
+  explicit SettingsDialog(QWidget* parent = 0);
+  ~SettingsDialog();
 
 public slots:
   void SettingsListener(const QString& key, const QVariant& value);
@@ -35,9 +37,11 @@ private slots:
   void on_play_btn_clicked();
 
 private:
-  Ui::SettingsDlg* ui;
+  Ui::SettingsDialog* ui;
   QString last_file_path_;
   QMediaPlayer* player_;
 };
 
-#endif // SETTINGS_DLG_H
+} // namespace alarm
+
+#endif // ALARM_SETTINGS_DIALOG_H

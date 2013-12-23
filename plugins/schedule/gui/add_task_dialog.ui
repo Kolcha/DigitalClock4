@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddTaskDlg</class>
- <widget class="QDialog" name="AddTaskDlg">
+ <class>schedule::AddTaskDialog</class>
+ <widget class="QDialog" name="schedule::AddTaskDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../schedule.qrc">
-    <normaloff>:/schedule.svg</normaloff>:/schedule.svg</iconset>
+    <normaloff>:/schedule/schedule.svg</normaloff>:/schedule/schedule.svg</iconset>
   </property>
   <property name="modal">
    <bool>true</bool>
@@ -86,7 +86,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>AddTaskDlg</receiver>
+   <receiver>schedule::AddTaskDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -102,7 +102,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>AddTaskDlg</receiver>
+   <receiver>schedule::AddTaskDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

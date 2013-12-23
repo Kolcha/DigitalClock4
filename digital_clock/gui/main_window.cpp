@@ -8,6 +8,10 @@
 
 #define OPT_POSITION_KEY          "clock/position"
 
+using skin_draw::SkinDrawer;
+
+namespace digital_clock {
+
 MainWindow::MainWindow(QWidget* parent)
   : QWidget(parent) {
   // create objects
@@ -35,7 +39,7 @@ void MainWindow::Init() {
   // connect signals
   ConnectAll();
   // init skin manager
-  skin_manager_->AddSkinDir(QDir(":/default_skin"));
+  skin_manager_->AddSkinDir(QDir(":/clock/default_skin"));
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
   // init plugin manager
@@ -249,8 +253,7 @@ void MainWindow::DisplayMenu(const QPoint& pos) {
 void MainWindow::ConnectAll() {
   connect(settings_, SIGNAL(OptionChanged(Options,QVariant)),
           this, SLOT(SettingsListener(Options,QVariant)));
-  connect(skin_manager_, SIGNAL(SkinLoaded(ISkin::SkinPtr)),
-          drawer_, SLOT(ApplySkin(ISkin::SkinPtr)));
+  connect(skin_manager_, &SkinManager::SkinLoaded, drawer_, &SkinDrawer::ApplySkin);
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), d_clock_, SLOT(DrawImage(QImage)));
   connect(d_clock_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(d_clock_, SIGNAL(SeparatorsChanged(QString)),
@@ -294,3 +297,5 @@ void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set) {
   setWindowFlags(flags);
   show();
 }
+
+} // namespace digital_clock

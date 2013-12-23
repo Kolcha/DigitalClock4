@@ -10,6 +10,8 @@
 #include "digital_clock.h"
 #include "tray_control.h"
 
+namespace digital_clock {
+
 class SettingsDialog;
 class AboutDialog;
 
@@ -39,7 +41,7 @@ private:
   ClockSettings* settings_;
   PluginManager* plugin_manager_;
   SkinManager* skin_manager_;
-  SkinDrawer* drawer_;
+  ::skin_draw::SkinDrawer* drawer_;
   DigitalClock* d_clock_;
   TrayControl* tray_control_;
   QPoint drag_position_;
@@ -48,5 +50,7 @@ private:
   QPointer<AboutDialog> about_dlg_;
   Updater* updater_;
 };
+
+} // namespace digital_clock
 
 #endif // MAIN_WINDOW_H

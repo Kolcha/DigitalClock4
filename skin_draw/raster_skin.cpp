@@ -1,7 +1,6 @@
 #include "raster_skin.h"
 
-RasterSkin::~RasterSkin() {
-}
+namespace skin_draw {
 
 ISkin::QPixmapPtr RasterSkin::ResizeImage(QChar ch, qreal zoom) {
   QPixmap& original = orig_images_[ch];
@@ -11,3 +10,5 @@ ISkin::QPixmapPtr RasterSkin::ResizeImage(QChar ch, qreal zoom) {
   *result = original.scaled(original.size() * zoom, Qt::KeepAspectRatio, Qt::SmoothTransformation);
   return result;
 }
+
+} // namespace skin_draw

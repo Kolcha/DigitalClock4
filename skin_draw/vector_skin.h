@@ -3,6 +3,8 @@
 
 #include "base_skin.h"
 
+namespace skin_draw {
+
 /*!
  * @brief Vector images support class.
  *
@@ -11,10 +13,6 @@
  * logic for skin resources loading. Load logic must fill VectorSkin::image_files_ map.
  */
 class SKIN_DRAWSHARED_EXPORT VectorSkin : public BaseSkin {
-public:
-  /*! Virtual destructor. */
-  virtual ~VectorSkin();
-
 protected:
   /*!
    * Resize image for given character.
@@ -26,5 +24,7 @@ protected:
   /// map with paths to original images
   QMap<QChar, QString> image_files_;
 };
+
+} // namespace skin_draw
 
 #endif // VECTOR_SKIN_H

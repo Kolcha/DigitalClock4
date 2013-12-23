@@ -5,13 +5,15 @@
 #include <QFile>
 #include <QDir>
 #include "plugin_settings.h"
-#include "gui/settings_dlg.h"
+#include "gui/settings_dialog.h"
 #include "alarm_settings.h"
 #include "alarm.h"
 
+namespace alarm {
+
 Alarm::Alarm() {
   translator_ = new QTranslator(this);
-  translator_->load(":/alarm_" + QLocale::system().name());
+  translator_->load(":/alarm/alarm_" + QLocale::system().name());
   QApplication::installTranslator(translator_);
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   icon_changed_ = false;
@@ -34,7 +36,7 @@ void Alarm::Init(QSystemTrayIcon* tray_icon) {
 void Alarm::Start() {
   if (!settings_->GetOption(OPT_ENABLED).toBool()) return;
 
-  tray_icon_->setIcon(QIcon(":/alarm_clock.svg"));
+  tray_icon_->setIcon(QIcon(":/alarm/alarm_clock.svg"));
   icon_changed_ = true;
 
   SignalType st = (SignalType)(settings_->GetOption(OPT_SIGNAL_TYPE).toInt());
@@ -74,7 +76,7 @@ void Alarm::Stop() {
 }
 
 void Alarm::Configure() {
-  SettingsDlg* dialog = new SettingsDlg();
+  SettingsDialog* dialog = new SettingsDialog();
   // load current settings to dialog
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
           dialog, SLOT(SettingsListener(QString,QVariant)));
@@ -123,3 +125,5 @@ void Alarm::TimeUpdateListener() {
     connect(tray_icon_, SIGNAL(messageClicked()), player_, SLOT(stop()));
   }
 }
+
+} // namespace alarm

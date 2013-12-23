@@ -1,5 +1,7 @@
 #include "spectrum_clock.h"
 
+namespace spectrum_clock {
+
 void SpectrumClock::Init(const QMap<Options, QVariant>& current_settings) {
   old_color_ = current_settings[OPT_COLOR].value<QColor>();
   cur_color_ = Qt::red;
@@ -29,3 +31,5 @@ void SpectrumClock::TimeUpdateListener() {
   cur_color_.setRgb(r, g, b);
   emit OptionChanged(OPT_COLOR, cur_color_);
 }
+
+} // namespace spectrum_clock

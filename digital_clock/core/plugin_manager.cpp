@@ -39,7 +39,6 @@ void PluginManager::ListAvailable() {
         QJsonObject metadata = loader.metaData().value("MetaData").toObject();
         TPluginInfo info;
         info[PI_NAME] = metadata.value("name").toString();
-        info[PI_TYPE] = metadata.value("type").toString();
         info[PI_VERSION] = metadata.value("version").toString();
         info[PI_AUTHOR] = metadata.value("author").toString();
         info[PI_EMAIL] = metadata.value("email").toString();

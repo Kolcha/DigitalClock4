@@ -4,6 +4,8 @@
 #include <QColor>
 #include "iclock_plugin.h"
 
+namespace spectrum_clock {
+
 class SpectrumClock : public ISettingsPlugin {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID SETTINGS_PLUGIN_INTERFACE_IID FILE "spectrum_clock.json")
@@ -23,5 +25,7 @@ private:
   QColor old_color_;
   QColor cur_color_;
 };
+
+} // namespace spectrum_clock
 
 #endif // SPECTRUM_CLOCK_H

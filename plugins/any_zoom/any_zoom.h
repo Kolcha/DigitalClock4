@@ -6,6 +6,8 @@
 class QTranslator;
 class PluginSettings;
 
+namespace any_zoom {
+
 class AnyZoom : public ISettingsPlugin {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID SETTINGS_PLUGIN_INTERFACE_IID FILE "any_zoom.json")
@@ -33,5 +35,7 @@ private:
   bool is_enabled_;
   qreal last_zoom_;
 };
+
+} // namespace any_zoom
 
 #endif // ANY_ZOOM_H

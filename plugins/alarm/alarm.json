@@ -1,7 +1,6 @@
 {
     "name" : "Alarm",
-    "type" : "tray",
-    "version" : "2.1.3",
+    "version" : "2.1.4",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
     "description" : "Set alarm/notification.",

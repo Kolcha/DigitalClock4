@@ -4,6 +4,8 @@
 #include <QMenu>
 #include <QSystemTrayIcon>
 
+namespace digital_clock {
+
 class TrayControl : public QObject {
   Q_OBJECT
 public:
@@ -27,5 +29,7 @@ private:
   QAction* exit_action_;
   QSystemTrayIcon* tray_icon_;
 };
+
+} // namespace digital_clock
 
 #endif // TRAY_CONTROL_H

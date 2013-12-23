@@ -1,7 +1,6 @@
 {
     "name" : "Any zoom",
-    "type" : "settings",
-    "version" : "1.0.1",
+    "version" : "1.0.2",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
     "description" : "Can set any clock zoom.",

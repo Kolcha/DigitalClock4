@@ -6,6 +6,8 @@
 #include "../core/plugin_info.h"
 #include "plugin_info_dialog.h"
 
+namespace digital_clock {
+
 namespace Ui {
 class PluginListWidget;
 }
@@ -21,7 +23,6 @@ public:
 
 public slots:
   void SetName(const QString& name);
-  void SetType(const QString& type);
   void SetVersion(const QString& version);
   void SetConfigurable(bool configable);
   void SetChecked(bool checked);
@@ -41,5 +42,7 @@ private:
   TPluginInfo info_;
   QPointer<PluginInfoDialog> dialog_;
 };
+
+} // namespace digital_clock
 
 #endif // PLUGIN_LIST_WIDGET_H

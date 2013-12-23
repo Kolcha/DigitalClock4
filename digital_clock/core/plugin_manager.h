@@ -11,14 +11,16 @@
 
 class ClockSettings;
 class DigitalClock;
+
+namespace digital_clock {
 class MainWindow;
-class TrayControl;
+}
 
 /*! Data to init plugins. */
 struct TPluginData {
   ClockSettings* settings;   /*!< clock settings object */
   DigitalClock* clock;       /*!< clock widget */
-  MainWindow* window;        /*!< main window instance */
+  digital_clock::MainWindow* window;  /*!< main window instance */
   QSystemTrayIcon* tray;     /*!< tray icon object */
 };
 

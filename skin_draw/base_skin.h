@@ -4,6 +4,8 @@
 #include <QMap>
 #include "iskin.h"
 
+namespace skin_draw {
+
 /*!
  * @brief Base class for all skin classes.
  *
@@ -19,8 +21,6 @@ class SKIN_DRAWSHARED_EXPORT BaseSkin : public ISkin {
 public:
   /*! Constructor. */
   BaseSkin();
-  /*! Destructor. */
-  virtual ~BaseSkin();
 
   /*!
    * Get image for specified symbol.
@@ -45,5 +45,7 @@ private:
   qreal cached_zoom_;
   QMap<QChar, QPixmapPtr> image_cache_;
 };
+
+} // namespace skin_draw
 
 #endif // BASE_SKIN_H

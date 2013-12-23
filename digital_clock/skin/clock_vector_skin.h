@@ -5,7 +5,7 @@
 #include "vector_skin.h"
 #include "clock_base_skin.h"
 
-class ClockVectorSkin : public VectorSkin, public ClockBaseSkin {
+class ClockVectorSkin : public skin_draw::VectorSkin, public ClockBaseSkin {
 public:
   ClockVectorSkin(const QDir& skin_root);
 

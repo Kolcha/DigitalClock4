@@ -5,6 +5,8 @@
 #include "tray_color_settings.h"
 #include "tray_color.h"
 
+namespace tray_color {
+
 TrayColor::TrayColor() {
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   is_enabled_ = false;
@@ -57,3 +59,5 @@ void TrayColor::RedrawTrayIcon(const QColor& color) {
 
   tray_icon_->setIcon(QPixmap::fromImage(result));
 }
+
+} // namespace tray_color

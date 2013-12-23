@@ -3,6 +3,8 @@
 
 #include "iclock_plugin.h"
 
+namespace hour_signal {
+
 class HourSignal : public IClockPlugin {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "hour_signal.json")
@@ -21,5 +23,7 @@ public slots:
 private:
   int last_hour_;
 };
+
+} // namespace hour_signal
 
 #endif // HOUR_SIGNAL_H

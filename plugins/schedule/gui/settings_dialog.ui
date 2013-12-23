@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SettingsDlg</class>
- <widget class="QDialog" name="SettingsDlg">
+ <class>schedule::SettingsDialog</class>
+ <widget class="QDialog" name="schedule::SettingsDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../schedule.qrc">
-    <normaloff>:/settings.svg</normaloff>:/settings.svg</iconset>
+    <normaloff>:/schedule/settings.svg</normaloff>:/schedule/settings.svg</iconset>
   </property>
   <property name="modal">
    <bool>true</bool>
@@ -47,7 +47,7 @@
        </property>
        <property name="icon">
         <iconset resource="../schedule.qrc">
-         <normaloff>:/add.svg</normaloff>:/add.svg</iconset>
+         <normaloff>:/schedule/add.svg</normaloff>:/schedule/add.svg</iconset>
        </property>
       </widget>
      </item>
@@ -58,7 +58,7 @@
        </property>
        <property name="icon">
         <iconset resource="../schedule.qrc">
-         <normaloff>:/remove.svg</normaloff>:/remove.svg</iconset>
+         <normaloff>:/schedule/remove.svg</normaloff>:/schedule/remove.svg</iconset>
        </property>
       </widget>
      </item>
@@ -132,7 +132,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>SettingsDlg</receiver>
+   <receiver>schedule::SettingsDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -148,7 +148,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>SettingsDlg</receiver>
+   <receiver>schedule::SettingsDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

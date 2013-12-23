@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PluginListWidget</class>
- <widget class="QWidget" name="PluginListWidget">
+ <class>digital_clock::PluginListWidget</class>
+ <widget class="QWidget" name="digital_clock::PluginListWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string notr="true"/>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,0,0,0,0,0">
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,0,0,0,0">
    <property name="topMargin">
     <number>2</number>
    </property>
@@ -30,31 +30,6 @@
     <widget class="QCheckBox" name="name_check_box">
      <property name="text">
       <string notr="true">CheckBox</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="type_label">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>40</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="text">
-      <string notr="true">settings</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
@@ -119,7 +94,7 @@
      </property>
      <property name="icon">
       <iconset resource="../digital_clock.qrc">
-       <normaloff>:/images/settings.svg</normaloff>:/images/settings.svg</iconset>
+       <normaloff>:/clock/images/settings.svg</normaloff>:/clock/images/settings.svg</iconset>
      </property>
     </widget>
    </item>
@@ -130,7 +105,7 @@
      </property>
      <property name="icon">
       <iconset resource="../digital_clock.qrc">
-       <normaloff>:/images/about.svg</normaloff>:/images/about.svg</iconset>
+       <normaloff>:/clock/images/about.svg</normaloff>:/clock/images/about.svg</iconset>
      </property>
     </widget>
    </item>

@@ -2,14 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
-    <name>AnyZoom</name>
+    <name>any_zoom::AnyZoom</name>
     <message>
-        <location filename="any_zoom.cpp" line="46"/>
+        <location filename="any_zoom.cpp" line="48"/>
         <source>Any zoom settings</source>
         <translation>Настройка увеличения</translation>
     </message>
     <message>
-        <location filename="any_zoom.cpp" line="47"/>
+        <location filename="any_zoom.cpp" line="49"/>
         <source>zoom:</source>
         <translation>увеличение:</translation>
     </message>

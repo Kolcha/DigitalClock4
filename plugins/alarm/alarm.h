@@ -9,6 +9,8 @@
 class QTranslator;
 class PluginSettings;
 
+namespace alarm {
+
 class Alarm : public ITrayPlugin {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID TRAY_PLUGIN_INTERFACE_IID FILE "alarm.json")
@@ -34,5 +36,7 @@ private:
   QPointer<QMediaPlayer> player_;
   bool icon_changed_;
 };
+
+} // namespace alarm
 
 #endif // ALARM_H

@@ -12,10 +12,14 @@
 #define OPT_LAST_TIME_FORMAT_KEY     "settings_dialog/last_time_format"
 #define OPT_GEOMETRY_KEY             "settings_dialog/geometry"
 
+using skin_draw::SkinDrawer;
+
+namespace digital_clock {
+
 SettingsDialog::SettingsDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDialog) {
   ui->setupUi(this);
-  setWindowIcon(QIcon(":/images/settings.svg"));
+  setWindowIcon(QIcon(":/clock/images/settings.svg"));
 
   connect(this, SIGNAL(accepted()), this, SLOT(SaveState()));
 
@@ -314,3 +318,5 @@ void SettingsDialog::on_update_period_box_currentIndexChanged(int index) {
 void SettingsDialog::on_check_for_beta_toggled(bool checked) {
   emit OptionChanged(OPT_CHECK_FOR_BETA, checked);
 }
+
+} // namespace digital_clock

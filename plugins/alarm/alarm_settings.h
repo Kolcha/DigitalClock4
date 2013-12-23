@@ -1,6 +1,11 @@
 #ifndef ALARM_SETTINGS_H
 #define ALARM_SETTINGS_H
 
+#include <QSettings>
+#include <QTime>
+
+namespace alarm {
+
 // alarm plugin settings keys
 #define OPT_ENABLED           "plugins/alarm/enabled"
 #define OPT_TIME              "plugins/alarm/time"
@@ -10,9 +15,6 @@
 #define OPT_VOLUME            "plugins/alarm/volume"
 #define OPT_SHOW_NOTIFY       "plugins/alarm/show_notify"
 #define OPT_NOTIFY_TEXT       "plugins/alarm/notify_text"
-
-#include <QSettings>
-#include <QTime>
 
 enum SignalType { ST_FILE, ST_STREAM };
 
@@ -26,5 +28,7 @@ inline void InitDefaults(QSettings::SettingsMap* defaults) {
   defaults->insert(OPT_SHOW_NOTIFY, false);
   defaults->insert(OPT_NOTIFY_TEXT, QString());
 }
+
+} // namespace alarm
 
 #endif // ALARM_SETTINGS_H
