@@ -23,7 +23,7 @@ static QString compilerString() {
 AboutDialog::AboutDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::AboutDialog) {
   ui->setupUi(this);
-  setWindowIcon(QIcon(":/images/about.svg"));
+  setWindowIcon(QIcon(":/clock/images/about.svg"));
 
   ui->name_value->setText(QCoreApplication::applicationName());
   ui->version_value->setText(tr("version: ") + QCoreApplication::applicationVersion());

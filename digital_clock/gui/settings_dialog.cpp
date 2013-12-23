@@ -19,7 +19,7 @@ namespace digital_clock {
 SettingsDialog::SettingsDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDialog) {
   ui->setupUi(this);
-  setWindowIcon(QIcon(":/images/settings.svg"));
+  setWindowIcon(QIcon(":/clock/images/settings.svg"));
 
   connect(this, SIGNAL(accepted()), this, SLOT(SaveState()));
 

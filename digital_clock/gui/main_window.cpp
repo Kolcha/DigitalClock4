@@ -39,7 +39,7 @@ void MainWindow::Init() {
   // connect signals
   ConnectAll();
   // init skin manager
-  skin_manager_->AddSkinDir(QDir(":/default_skin"));
+  skin_manager_->AddSkinDir(QDir(":/clock/default_skin"));
   skin_manager_->AddSkinDir(QDir(QCoreApplication::applicationDirPath() + "/skins"));
   skin_manager_->ListSkins();
   // init plugin manager

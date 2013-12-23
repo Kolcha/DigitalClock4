@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
   a.setApplicationName("Digital Clock");
   a.setApplicationVersion("4.2.5");
   a.setOrganizationName("Nick Korotysh");
-  a.setWindowIcon(QIcon(":/images/clock.svg"));
+  a.setWindowIcon(QIcon(":/clock/images/clock.svg"));
   a.setQuitOnLastWindowClosed(false);
 
   QTranslator qt_translator;
@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   a.installTranslator(&qt_translator);
 
   QTranslator app_translator;
-  app_translator.load(":/languages/digital_clock_" + QLocale::system().name());
+  app_translator.load(":/clock/languages/digital_clock_" + QLocale::system().name());
   a.installTranslator(&app_translator);
 
   digital_clock::MainWindow w;
