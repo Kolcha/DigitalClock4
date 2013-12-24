@@ -51,7 +51,7 @@ void Updater::SetUpdatePeriod(qint64 period) {
 }
 
 void Updater::TimeoutHandler() {
-  if (!autoupdate_ || (downloader_ && downloader_->isRunning())) return;
+  if (!autoupdate_ || was_error_ || (downloader_ && downloader_->isRunning())) return;
   if (last_update_.daysTo(QDate::currentDate()) >= update_period_) CheckForUpdates(false);
 }
 
