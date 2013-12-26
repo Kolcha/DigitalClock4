@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/power_off">
+        <file>power_off_ru.qm</file>
+    </qresource>
+</RCC>
