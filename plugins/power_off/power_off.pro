@@ -14,7 +14,8 @@ SOURCES += power_off.cpp \
     gui/settings_dialog.cpp
 
 HEADERS += power_off.h \
-    gui/settings_dialog.h
+    gui/settings_dialog.h \
+    power_off_settings.h
 OTHER_FILES += power_off.json
 
 win32:RC_FILE = power_off.rc

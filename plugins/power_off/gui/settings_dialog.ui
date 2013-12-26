@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>233</width>
+    <width>174</width>
     <height>67</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Power Off Plugin settings</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -23,13 +26,6 @@
    </item>
    <item row="0" column="1">
     <widget class="QTimeEdit" name="timeEdit"/>
-   </item>
-   <item row="0" column="2">
-    <widget class="QCheckBox" name="checkBox">
-     <property name="text">
-      <string>CheckBox</string>
-     </property>
-    </widget>
    </item>
    <item row="1" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="buttonBox">
