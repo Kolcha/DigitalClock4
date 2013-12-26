@@ -6,17 +6,12 @@
     <message>
         <location filename="gui/settings_dialog.ui" line="14"/>
         <source>Power Off Plugin settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настроки плагина &quot;Выключение&quot;</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="20"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="30"/>
-        <source>CheckBox</source>
-        <translation type="unfinished"></translation>
+        <location filename="gui/settings_dialog.ui" line="23"/>
+        <source>Power off time:</source>
+        <translation>Время выключения:</translation>
     </message>
 </context>
 </TS>

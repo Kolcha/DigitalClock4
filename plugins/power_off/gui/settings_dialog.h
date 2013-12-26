@@ -16,6 +16,15 @@ public:
   explicit SettingsDialog(QWidget* parent = 0);
   ~SettingsDialog();
 
+public slots:
+  void SettingsListener(const QString& key, const QVariant& value);
+
+signals:
+  void OptionChanged(const QString&, const QVariant&);
+
+private slots:
+  void on_time_edit_timeChanged(const QTime& time);
+
 private:
   Ui::SettingsDialog* ui;
 };
