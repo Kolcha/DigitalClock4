@@ -22,7 +22,8 @@ HEADERS += \
     iclock_plugin.h \
     plugin_settings.h \
     clock_common_global.h \
-    centered_dialog.h
+    centered_dialog.h \
+    plugin_gui_info.h
 
 win32:RC_FILE = clock_common.rc
-unix:VERSION = 1.0.0
+unix:VERSION = 1.0.1

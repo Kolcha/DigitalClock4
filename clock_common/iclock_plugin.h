@@ -32,6 +32,7 @@
 #define ICLOCK_PLUGIN_H
 
 #include <QtPlugin>
+#include "plugin_gui_info.h"
 #include "settings_keys.h"
 
 /*!
@@ -45,6 +46,11 @@ class CLOCK_COMMON_EXPORT IClockPlugin : public QObject {
 public:
   /*! Virtual destructor. */
   virtual ~IClockPlugin() {}
+  /*!
+   * Get translatable plugin info.
+   * @return structure with plugin info
+   */
+  const TPluginGUIInfo& GetInfo() const { return info_; }
 
 public slots:
   /*! Start plugin activity. */
@@ -68,6 +74,10 @@ public slots:
    * It can be used as timer. Clock provides current time value as QString.
    */
   virtual void TimeUpdateListener() = 0;
+
+protected:
+  /// Structure with translatable plugin info. This must be filled in constructor.
+  TPluginGUIInfo info_;
 };
 
 /*! Clock plugin interface IID */
