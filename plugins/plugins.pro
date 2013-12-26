@@ -8,3 +8,7 @@ SUBDIRS += \
     tray_color \
     any_zoom \
     schedule
+
+windows {
+SUBDIRS += power_off
+}
