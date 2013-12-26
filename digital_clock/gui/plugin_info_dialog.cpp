@@ -13,11 +13,11 @@ PluginInfoDialog::~PluginInfoDialog() {
 }
 
 void PluginInfoDialog::SetInfo(const TPluginInfo& info) {
-  ui->name_value->setText(info[PI_NAME]);
-  ui->version_value->setText(info[PI_VERSION]);
-  ui->description_value->setText(info[PI_COMMENT]);
-  ui->author_value->setText(info[PI_AUTHOR]);
-  ui->email_value->setText(info[PI_EMAIL]);
+  ui->name_value->setText(info.gui_info.display_name);
+  ui->version_value->setText(info.metadata[PI_VERSION]);
+  ui->description_value->setText(info.gui_info.description);
+  ui->author_value->setText(info.metadata[PI_AUTHOR]);
+  ui->email_value->setText(info.metadata[PI_EMAIL]);
   adjustSize();
 }
 
