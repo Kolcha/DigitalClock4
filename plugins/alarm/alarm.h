@@ -6,7 +6,6 @@
 #include <QMediaPlayer>
 #include "iclock_plugin.h"
 
-class QTranslator;
 class PluginSettings;
 
 namespace alarm {
@@ -18,7 +17,6 @@ class Alarm : public ITrayPlugin {
 
 public:
   Alarm();
-  ~Alarm();
   void Init(QSystemTrayIcon* tray_icon);
 
 public slots:
@@ -29,7 +27,6 @@ public slots:
   void TimeUpdateListener();
 
 private:
-  QTranslator* translator_;
   QSystemTrayIcon* tray_icon_;
   QIcon old_icon_;
   PluginSettings* settings_;

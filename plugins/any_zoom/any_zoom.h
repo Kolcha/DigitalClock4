@@ -3,7 +3,6 @@
 
 #include "iclock_plugin.h"
 
-class QTranslator;
 class PluginSettings;
 
 namespace any_zoom {
@@ -15,7 +14,6 @@ class AnyZoom : public ISettingsPlugin {
 
 public:
   AnyZoom();
-  ~AnyZoom();
   void Init(const QMap<Options, QVariant>& current_settings);
 
 public slots:
@@ -30,7 +28,6 @@ private slots:
   void RevertSettings();
 
 private:
-  QTranslator* translator_;
   PluginSettings* settings_;
   bool is_enabled_;
   qreal last_zoom_;
