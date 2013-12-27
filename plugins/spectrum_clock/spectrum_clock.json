@@ -1,8 +1,7 @@
 {
-    "name" : "Spectrum clock",
-    "version" : "2.0",
+    "name" : "spectrum_clock",
+    "version" : "2.0.1",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
-    "description" : "Clock change color during time.",
     "configurable" : false
 }

@@ -6,7 +6,6 @@
 #include "iclock_plugin.h"
 #include "gui/settings_dialog.h"
 
-class QTranslator;
 class TaskManager;
 class PluginSettings;
 
@@ -19,7 +18,6 @@ class Schedule : public IClockPlugin {
 
 public:
   Schedule();
-  ~Schedule();
 
 public slots:
   void Start();
@@ -33,7 +31,6 @@ private slots:
   void ShowMessage(const QString& message);
 
 private:
-  QTranslator* translator_;
   QPointer<QSystemTrayIcon> tray_icon_;
   QMenu* tray_menu_;
   TaskManager* manager_;

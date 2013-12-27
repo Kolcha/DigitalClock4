@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/spectrum_clock">
+        <file>spectrum_clock_ru.qm</file>
+    </qresource>
+</RCC>

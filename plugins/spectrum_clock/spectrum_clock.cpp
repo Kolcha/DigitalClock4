@@ -2,6 +2,12 @@
 
 namespace spectrum_clock {
 
+SpectrumClock::SpectrumClock() {
+  InitTranslator(QLatin1String(":/spectrum_clock/spectrum_clock_"));
+  info_.display_name = QLatin1String("\"Spectrum clock\"");
+  info_.description = tr("Changes clock color during time.");
+}
+
 void SpectrumClock::Init(const QMap<Options, QVariant>& current_settings) {
   old_color_ = current_settings[OPT_COLOR].value<QColor>();
   cur_color_ = Qt::red;

@@ -1,6 +1,3 @@
-#include <QTranslator>
-#include <QLocale>
-#include <QApplication>
 #include <QMenu>
 #include "plugin_settings.h"
 #include "core/schedule_settings.h"
@@ -10,10 +7,6 @@
 namespace schedule {
 
 Schedule::Schedule() {
-  translator_ = new QTranslator(this);
-  translator_->load(":/schedule/schedule_" + QLocale::system().name());
-  QApplication::installTranslator(translator_);
-
   settings_ = new PluginSettings(ORG_NAME, APP_NAME, this);
   manager_ = new TaskManager(this);
 
@@ -23,10 +16,10 @@ Schedule::Schedule() {
 
   settings_->Load();
   manager_->LoadTasks();
-}
 
-Schedule::~Schedule() {
-  QApplication::removeTranslator(translator_);
+  InitTranslator(QLatin1String(":/schedule/schedule_"));
+  info_.display_name = tr("Scheduler");
+  info_.description = tr("Allow to schedule a task and display notification at specified time.");
 }
 
 void Schedule::Start() {
