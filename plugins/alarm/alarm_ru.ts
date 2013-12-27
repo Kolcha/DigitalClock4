@@ -4,19 +4,30 @@
 <context>
     <name>alarm::Alarm</name>
     <message>
-        <location filename="alarm.cpp" line="48"/>
-        <location filename="alarm.cpp" line="59"/>
-        <location filename="alarm.cpp" line="122"/>
+        <location filename="alarm.cpp" line="16"/>
+        <source>Alarm/Notification</source>
+        <translation>Будильник/Напоминание</translation>
+    </message>
+    <message>
+        <location filename="alarm.cpp" line="17"/>
+        <source>Allows to set alarm/notification.</source>
+        <oldsource>Allow to set alarm/notification.</oldsource>
+        <translation>Позволяет устанавливать будильник или просто напоминание.</translation>
+    </message>
+    <message>
+        <location filename="alarm.cpp" line="43"/>
+        <location filename="alarm.cpp" line="54"/>
+        <location filename="alarm.cpp" line="117"/>
         <source>Digital Clock Alarm</source>
         <translation>Будильник Digital Clock</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="49"/>
+        <location filename="alarm.cpp" line="44"/>
         <source>Stream url is not valid. Force use file instead of stream.Click this message to change settings.</source>
         <translation>Неверный адрес потока. Будет использован файл вместо потока. Щелкните это сообщение чтобы изменить настройки.</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="60"/>
+        <location filename="alarm.cpp" line="55"/>
         <source>File %1 doesn&apos;t exists. Click this message or go to plugin settings to choose another.</source>
         <oldsource>File %1 doesn&apos;t exists. Click this message or go to pluginsettings to choose another.</oldsource>
         <translation>Файл %1 не существует. Щелкнить здесь или откройте настроки плагина и выберите другой файл.</translation>

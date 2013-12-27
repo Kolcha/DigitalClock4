@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>187</width>
+    <width>217</width>
     <height>174</height>
    </rect>
   </property>
@@ -23,44 +23,40 @@
    <iconset resource="../digital_clock.qrc">
     <normaloff>:/clock/images/about.svg</normaloff>:/clock/images/about.svg</iconset>
   </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="name_value">
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string notr="true">&lt;plugin_name&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="version_label">
+    <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,1">
+     <item row="0" column="0" rowspan="2">
+      <widget class="QLabel" name="icon_label">
+       <property name="text">
+        <string notr="true">&lt;icon&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="name_value">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>14</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>version:</string>
+        <string notr="true">&lt;plugin_name&gt;</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
-     <item>
+     <item row="1" column="1">
       <widget class="QLabel" name="version_value">
        <property name="font">
         <font>
@@ -71,6 +67,9 @@
        </property>
        <property name="text">
         <string notr="true">&lt;version&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -108,7 +107,7 @@
     </spacer>
    </item>
    <item>
-    <layout class="QGridLayout" name="gridLayout" columnstretch="0,0">
+    <layout class="QGridLayout" name="gridLayout" columnstretch="0,1">
      <item row="1" column="1">
       <widget class="QLabel" name="email_value">
        <property name="text">

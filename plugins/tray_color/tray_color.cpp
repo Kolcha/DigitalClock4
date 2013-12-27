@@ -10,6 +10,11 @@ namespace tray_color {
 TrayColor::TrayColor() {
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   is_enabled_ = false;
+
+  InitTranslator(QLatin1String(":/tray_color/tray_color_"));
+  info_.display_name = tr("Tray icon color");
+  info_.description = tr("Allows to change tray icon color.");
+  info_.icon.load(":/tray_color/icon.png");
 }
 
 void TrayColor::Init(QSystemTrayIcon* tray_icon) {

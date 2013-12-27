@@ -38,12 +38,12 @@ void PluginManager::ListAvailable() {
       if (plugin) {
         QJsonObject metadata = loader.metaData().value("MetaData").toObject();
         TPluginInfo info;
-        info[PI_NAME] = metadata.value("name").toString();
-        info[PI_VERSION] = metadata.value("version").toString();
-        info[PI_AUTHOR] = metadata.value("author").toString();
-        info[PI_EMAIL] = metadata.value("email").toString();
-        info[PI_COMMENT] = metadata.value("description").toString();
-        available_[info[PI_NAME]] = abs_path;
+        info.metadata[PI_NAME] = metadata.value("name").toString();
+        info.metadata[PI_VERSION] = metadata.value("version").toString();
+        info.metadata[PI_AUTHOR] = metadata.value("author").toString();
+        info.metadata[PI_EMAIL] = metadata.value("email").toString();
+        info.gui_info = plugin->GetInfo();
+        available_[info.metadata[PI_NAME]] = abs_path;
         plugins.append(qMakePair(info, metadata.value("configurable").toBool()));
         loader.unload();
       }

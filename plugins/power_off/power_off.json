@@ -1,8 +1,7 @@
 {
-    "name" : "Auto power off",
-    "version" : "2.0",
+    "name" : "power_off",
+    "version" : "2.0.1",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
-    "description" : "Shutdown system at specified time.",
     "configurable" : true
 }

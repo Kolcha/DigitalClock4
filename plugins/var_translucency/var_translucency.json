@@ -1,8 +1,7 @@
 {
-    "name" : "Variable translucency",
-    "version" : "2.0",
+    "name" : "var_translucency",
+    "version" : "2.0.1",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
-    "description" : "Clock change opacity level during time.",
     "configurable" : false
 }

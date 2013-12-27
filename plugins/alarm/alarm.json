@@ -1,8 +1,7 @@
 {
-    "name" : "Alarm",
+    "name" : "alarm",
     "version" : "2.1.4",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
-    "description" : "Set alarm/notification.",
     "configurable" : true
 }

@@ -3,7 +3,6 @@
 
 #include "iclock_plugin.h"
 
-class QTranslator;
 class PluginSettings;
 
 namespace power_off {
@@ -15,7 +14,6 @@ class PowerOff : public IClockPlugin {
 
 public:
   PowerOff();
-  ~PowerOff();
 
 public slots:
   void Start();
@@ -25,7 +23,6 @@ public slots:
   void TimeUpdateListener();
 
 private:
-  QTranslator* translator_;
   PluginSettings* settings_;
   bool active_;
 };

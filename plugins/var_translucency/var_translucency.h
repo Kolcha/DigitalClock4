@@ -11,6 +11,7 @@ class VarTranslucency : public ISettingsPlugin {
   Q_INTERFACES(IClockPlugin ISettingsPlugin)
 
 public:
+  VarTranslucency();
   void Init(const QMap<Options, QVariant>& current_settings);
 
 public slots:

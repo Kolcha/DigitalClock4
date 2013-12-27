@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/tray_color">
+        <file>tray_color_ru.qm</file>
+        <file alias="icon.png">tray_color-48.png</file>
+    </qresource>
+</RCC>

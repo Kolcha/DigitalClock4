@@ -12,6 +12,7 @@ class SpectrumClock : public ISettingsPlugin {
   Q_INTERFACES(IClockPlugin ISettingsPlugin)
 
 public:
+  SpectrumClock();
   void Init(const QMap<Options, QVariant>& current_settings);
 
 public slots:

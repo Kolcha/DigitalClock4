@@ -1,3 +1,4 @@
+#include "plugin_info_dialog.h"
 #include "plugin_list_widget.h"
 #include "ui_plugin_list_widget.h"
 
@@ -13,10 +14,10 @@ PluginListWidget::~PluginListWidget() {
 }
 
 QString PluginListWidget::GetName() const {
-  return ui->name_check_box->text();
+  return info_.metadata[PI_NAME];
 }
 
-void PluginListWidget::SetName(const QString& name) {
+void PluginListWidget::SetDisplayName(const QString& name) {
   ui->name_check_box->setText(name);
 }
 
@@ -34,26 +35,22 @@ void PluginListWidget::SetChecked(bool checked) {
 
 void PluginListWidget::SetInfo(const TPluginInfo& info) {
   info_ = info;
-  SetName(info[PI_NAME]);
-  SetVersion(info[PI_VERSION]);
+  SetDisplayName(info.gui_info.display_name);
+  SetVersion(info.metadata[PI_VERSION]);
 }
 
 void PluginListWidget::on_name_check_box_toggled(bool checked) {
-  emit StateChanged(ui->name_check_box->text(), checked);
+  emit StateChanged(GetName(), checked);
 }
 
 void PluginListWidget::on_config_btn_clicked() {
-  emit ConfigureRequested(ui->name_check_box->text());
+  emit ConfigureRequested(GetName());
 }
 
 void PluginListWidget::on_info_btn_clicked() {
-  if (dialog_) {
-    dialog_->activateWindow();
-  } else {
-    dialog_ = new PluginInfoDialog(this);
-    dialog_->SetInfo(info_);
-    dialog_->show();
-  }
+  PluginInfoDialog* dialog = new PluginInfoDialog(this);
+  dialog->SetInfo(info_);
+  dialog->show();
 }
 
 } // namespace digital_clock

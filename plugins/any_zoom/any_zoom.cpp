@@ -1,6 +1,3 @@
-#include <QTranslator>
-#include <QLocale>
-#include <QApplication>
 #include <QInputDialog>
 #include "plugin_settings.h"
 #include "any_zoom_settings.h"
@@ -9,16 +6,13 @@
 namespace any_zoom {
 
 AnyZoom::AnyZoom() {
-  translator_ = new QTranslator(this);
-  translator_->load(":/any_zoom/any_zoom_" + QLocale::system().name());
-  QApplication::installTranslator(translator_);
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   is_enabled_ = false;
   last_zoom_ = 1.0;
-}
 
-AnyZoom::~AnyZoom() {
-  QApplication::removeTranslator(translator_);
+  InitTranslator(QLatin1String(":/any_zoom/any_zoom_"));
+  info_.display_name = tr("Any zoom");
+  info_.description = tr("Allows to set any clock zoom.");
 }
 
 void AnyZoom::Init(const QMap<Options, QVariant>& current_settings) {
