@@ -90,16 +90,16 @@
         <translation>О плагине</translation>
     </message>
     <message>
-        <location filename="../gui/plugin_info_dialog.ui" line="56"/>
-        <source>version:</source>
-        <translatorcomment>версия плагина</translatorcomment>
-        <translation>версия:</translation>
-    </message>
-    <message>
-        <location filename="../gui/plugin_info_dialog.ui" line="122"/>
+        <location filename="../gui/plugin_info_dialog.ui" line="117"/>
         <source>author:</source>
         <translatorcomment>автор плагина</translatorcomment>
         <translation>автор:</translation>
+    </message>
+    <message>
+        <location filename="../gui/plugin_info_dialog.cpp" line="17"/>
+        <source>version: %1</source>
+        <translatorcomment>версия плагина</translatorcomment>
+        <translation>версия: %1</translation>
     </message>
 </context>
 <context>
