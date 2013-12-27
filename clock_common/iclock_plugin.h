@@ -32,7 +32,7 @@
 #define ICLOCK_PLUGIN_H
 
 #include <QtPlugin>
-#include "plugin_gui_info.h"
+#include "plugin_base.h"
 #include "settings_keys.h"
 
 /*!
@@ -40,17 +40,8 @@
  *
  * Common interface for all plugins.
  */
-class CLOCK_COMMON_EXPORT IClockPlugin : public QObject {
+class CLOCK_COMMON_EXPORT IClockPlugin : public PluginBase {
   Q_OBJECT
-
-public:
-  /*! Virtual destructor. */
-  virtual ~IClockPlugin() {}
-  /*!
-   * Get translatable plugin info.
-   * @return structure with plugin info
-   */
-  const TPluginGUIInfo& GetInfo() const { return info_; }
 
 public slots:
   /*! Start plugin activity. */
@@ -74,10 +65,6 @@ public slots:
    * It can be used as timer. Clock provides current time value as QString.
    */
   virtual void TimeUpdateListener() = 0;
-
-protected:
-  /// Structure with translatable plugin info. This must be filled in constructor.
-  TPluginGUIInfo info_;
 };
 
 /*! Clock plugin interface IID */
@@ -98,8 +85,6 @@ class CLOCK_COMMON_EXPORT ISettingsPlugin : public IClockPlugin {
   Q_OBJECT
 
 public:
-  /*! Virtual destructor. */
-  virtual ~ISettingsPlugin() {}
   /*!
    * Init plugin.
    * @param current_settings - map with all current clock settings
@@ -131,8 +116,6 @@ class CLOCK_COMMON_EXPORT ITrayPlugin : public IClockPlugin {
   Q_OBJECT
 
 public:
-  /*! Virtual destructor. */
-  virtual ~ITrayPlugin() {}
   /*!
    * Init plugin.
    * @param tray_icon - pointer to clock QSystemTrayIcon object
@@ -156,8 +139,6 @@ class CLOCK_COMMON_EXPORT IWidgetPlugin : public IClockPlugin {
   Q_OBJECT
 
 public:
-  /*! Virtual destructor. */
-  virtual ~IWidgetPlugin() {}
   /*!
    * Init plugin.
    * @param main_wnd - pointer to clock main window

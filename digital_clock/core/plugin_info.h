@@ -2,7 +2,7 @@
 #define PLUGIN_INFO_H
 
 #include <QMap>
-#include "plugin_gui_info.h"
+#include "plugin_base.h"
 
 /*! plugin metadata fields */
 enum FPluginInfo {
