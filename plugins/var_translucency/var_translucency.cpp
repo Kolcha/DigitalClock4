@@ -2,6 +2,12 @@
 
 namespace var_translucency {
 
+VarTranslucency::VarTranslucency() {
+  InitTranslator(QLatin1String(":/var_translucency/var_translucency_"));
+  info_.display_name = tr("Variable translucency");
+  info_.description = tr("Changes clock opacity level during time.");
+}
+
 void VarTranslucency::Init(const QMap<Options, QVariant>& current_settings) {
   old_opacity_ = current_settings[OPT_OPACITY].toReal();
   cur_opacity_ = 1.0;

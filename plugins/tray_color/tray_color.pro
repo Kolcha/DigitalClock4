@@ -16,6 +16,9 @@ HEADERS += tray_color.h \
     tray_color_settings.h
 OTHER_FILES += tray_color.json
 
+TRANSLATIONS += \
+    tray_color_ru.ts
+
 win32:RC_FILE = tray_color.rc
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../clock_common/release/ -lclock_common
@@ -24,3 +27,6 @@ else:unix: LIBS += -L$$OUT_PWD/../../clock_common/ -lclock_common
 
 INCLUDEPATH += $$PWD/../../clock_common
 DEPENDPATH += $$PWD/../../clock_common
+
+RESOURCES += \
+    tray_color.qrc

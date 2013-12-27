@@ -8,7 +8,7 @@ BLOCK "StringFileInfo"
 {
 	BLOCK "040904b0"
 	{
-		VALUE "Comments", "Power off"
+		VALUE "Comments", "Auto power off"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
 		VALUE "FileVersion", "2.0.1.3"

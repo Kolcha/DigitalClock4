@@ -1,8 +1,7 @@
 {
-    "name" : "Tray color",
-    "version" : "1.0",
+    "name" : "tray_color",
+    "version" : "1.0.1",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
-    "description" : "Change tray icon color.",
     "configurable" : true
 }
