@@ -21,6 +21,7 @@ void PluginInfoDialog::SetInfo(const TPluginInfo& info) {
   ui->author_value->setText(info.metadata[PI_AUTHOR]);
   ui->email_value->setText(info.metadata[PI_EMAIL]);
   adjustSize();
+  setMaximumSize(sizeHint());
 }
 
 } // namespace digital_clock

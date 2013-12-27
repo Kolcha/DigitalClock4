@@ -6,6 +6,7 @@ SpectrumClock::SpectrumClock() {
   InitTranslator(QLatin1String(":/spectrum_clock/spectrum_clock_"));
   info_.display_name = QLatin1String("\"Spectrum clock\"");
   info_.description = tr("Changes clock color during time.");
+  info_.icon.load(":/spectrum_clock/icon.png");
 }
 
 void SpectrumClock::Init(const QMap<Options, QVariant>& current_settings) {
