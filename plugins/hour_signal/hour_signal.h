@@ -11,7 +11,7 @@ class HourSignal : public IClockPlugin {
   Q_INTERFACES(IClockPlugin)
 
 public:
-  HourSignal() : last_hour_(-1) {}
+  HourSignal();
 
 public slots:
   void Start() {}

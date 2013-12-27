@@ -1,8 +1,7 @@
 {
-    "name" : "Every hour signal",
-    "version" : "2.0",
+    "name" : "hour_signal",
+    "version" : "2.0.1",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
-    "description" : "Plays short signal every hour.",
     "configurable" : false
 }

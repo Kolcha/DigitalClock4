@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
+    <name>power_off::PowerOff</name>
+    <message>
+        <location filename="power_off.cpp" line="19"/>
+        <source>Auto power off</source>
+        <translation>Выключение системы</translation>
+    </message>
+    <message>
+        <location filename="power_off.cpp" line="20"/>
+        <source>Shutdown system at specified time.</source>
+        <translation>Выключает систему в указанное время.</translation>
+    </message>
+</context>
+<context>
     <name>power_off::SettingsDialog</name>
     <message>
         <location filename="gui/settings_dialog.ui" line="14"/>
