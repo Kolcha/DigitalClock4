@@ -5,5 +5,6 @@
         <file alias="remove.svg">res/minus-24.svg</file>
         <file alias="add.svg">res/plus-24.svg</file>
         <file>schedule_ru.qm</file>
+        <file alias="icon.png">res/calendar-48.png</file>
     </qresource>
 </RCC>

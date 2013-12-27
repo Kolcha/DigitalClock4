@@ -5,5 +5,6 @@
         <file alias="play.svg">res/play-24.svg</file>
         <file alias="stop.svg">res/stop-24.svg</file>
         <file>alarm_ru.qm</file>
+        <file alias="icon.png">res/alarm_clock-48.png</file>
     </qresource>
 </RCC>

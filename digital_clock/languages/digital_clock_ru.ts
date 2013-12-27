@@ -90,7 +90,7 @@
         <translation>О плагине</translation>
     </message>
     <message>
-        <location filename="../gui/plugin_info_dialog.ui" line="117"/>
+        <location filename="../gui/plugin_info_dialog.ui" line="121"/>
         <source>author:</source>
         <translatorcomment>автор плагина</translatorcomment>
         <translation>автор:</translation>
