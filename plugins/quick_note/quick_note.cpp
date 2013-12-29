@@ -24,8 +24,9 @@ void QuickNote::Init(QWidget* main_wnd) {
 }
 
 void QuickNote::Start() {
-  msg_label_ = new QLabel("test message");
+  msg_label_ = new QLabel();
   main_layout_->addWidget(msg_label_, main_layout_->rowCount(), 0, 1, main_layout_->columnCount());
+  ApplyString(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
 }
 
 void QuickNote::Stop() {
@@ -45,8 +46,11 @@ void QuickNote::Configure() {
   settings_dlg->setInputMode(QInputDialog::TextInput);
   settings_dlg->setTextValue(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
 
-  connect(settings_dlg, SIGNAL(textValueSelected(QString)), this, SLOT(ApplyString(QString)));
-  connect(settings_dlg, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(settings_dlg, &QInputDialog::textValueSelected, [=] (const QString& str) {
+    settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
+    settings_->Save();
+    this->ApplyString(str);
+  });
   connect(settings_dlg, &QInputDialog::rejected, [=] () {
     settings_->Load();
     this->ApplyString(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
@@ -59,7 +63,6 @@ void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
 }
 
 void QuickNote::ApplyString(const QString& str) {
-  settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
 }
 
 } // namespace quick_note
