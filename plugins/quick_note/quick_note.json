@@ -1,0 +1,7 @@
+{
+    "name" : "quick_note",
+    "version" : "1.0",
+    "author" : "Nick Korotysh",
+    "email" : "nick.korotysh@gmail.com",
+    "configurable" : true
+}
