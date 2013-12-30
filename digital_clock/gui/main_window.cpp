@@ -35,6 +35,10 @@ MainWindow::MainWindow(QWidget* parent)
   setContextMenuPolicy(Qt::CustomContextMenu);
 }
 
+MainWindow::~MainWindow() {
+  plugin_manager_->UnloadPlugins();
+}
+
 void MainWindow::Init() {
   // connect signals
   ConnectAll();
