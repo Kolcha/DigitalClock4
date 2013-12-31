@@ -73,7 +73,13 @@ void MainWindow::Init() {
   drawer_->SetString("88:88");
 
   active_plugins_ = settings_->GetOption(OPT_PLUGINS).toStringList();
-  plugin_manager_->LoadPlugins(active_plugins_);
+
+  QTimer* timer = new QTimer();
+  timer->setInterval(1000);
+  timer->setSingleShot(true);
+  connect(timer, &QTimer::timeout, [=] () { plugin_manager_->LoadPlugins(active_plugins_); });
+  connect(timer, &QTimer::timeout, timer, &QTimer::deleteLater);
+  timer->start();
 
   updater_->SetCheckForBeta(settings_->GetOption(OPT_CHECK_FOR_BETA).toBool());
   updater_->SetAutoupdate(settings_->GetOption(OPT_USE_AUTOUPDATE).toBool());
