@@ -27,7 +27,7 @@ AboutDialog::AboutDialog(QWidget* parent)
 
   ui->name_value->setText(QCoreApplication::applicationName());
   ui->version_value->setText(tr("version: ") + QCoreApplication::applicationVersion());
-  ui->rights_value->setText("© 2013 " + QCoreApplication::organizationName());
+  ui->rights_value->setText("© 2013-2014 " + QCoreApplication::organizationName());
   ui->qt_value->setText(QString("Qt %1 (%2, %3 bit)").arg(qVersion(), compilerString(),
                                                           QString::number(QSysInfo::WordSize)));
   setFixedSize(sizeHint());
