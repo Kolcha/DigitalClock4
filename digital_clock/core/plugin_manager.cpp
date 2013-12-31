@@ -7,13 +7,6 @@ PluginManager::PluginManager(QObject *parent)
   : QObject(parent) {
 }
 
-PluginManager::~PluginManager() {
-  QList<QString> plugins = loaded_.keys();
-  for (auto& plugin : plugins) {
-    UnloadPlugin(plugin);
-  }
-}
-
 void PluginManager::SetInitData(const TPluginData& data) {
   data_ = data;
 }
@@ -54,6 +47,15 @@ void PluginManager::ListAvailable() {
 
 void PluginManager::LoadPlugins(const QStringList& names) {
   for (auto& name : names) LoadPlugin(name);
+}
+
+void PluginManager::UnloadPlugins(const QStringList& names) {
+  if (!names.isEmpty()) {
+    for (auto& name : names) UnloadPlugin(name);
+  } else {
+    QList<QString> plugins = loaded_.keys();
+    for (auto& plugin : plugins) UnloadPlugin(plugin);
+  }
 }
 
 void PluginManager::EnablePlugin(const QString& name, bool enable) {

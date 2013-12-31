@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/quick_note">
+        <file>quick_note_ru.qm</file>
+        <file alias="icon.png">quick_note.png</file>
+    </qresource>
+</RCC>

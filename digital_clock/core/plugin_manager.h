@@ -40,10 +40,6 @@ public:
    */
   explicit PluginManager(QObject* parent = 0);
   /*!
-   * Destructor.
-   */
-  ~PluginManager();
-  /*!
    * Set data for plugin initialization.
    * @param data - data to set. @see TPluginData
    */
@@ -76,6 +72,11 @@ public slots:
    * @param names - list of plugin names to load
    */
   void LoadPlugins(const QStringList& names);
+  /*!
+   * Unload given plugins. If list is empty - unload all loaded.
+   * @param names - list of plugin names to unload
+   */
+  void UnloadPlugins(const QStringList& names = QStringList());
   /*!
    * Enable/disable given plugin.
    * @param name - plugin name

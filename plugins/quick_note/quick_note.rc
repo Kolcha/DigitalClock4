@@ -1,0 +1,27 @@
+1	VERSIONINFO
+FILEVERSION	1,0,0,44
+PRODUCTVERSION	4,2,6,0
+FILEOS		0x4
+FILETYPE	0x2
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "Comments", "Quick note"
+		VALUE "CompanyName", "Nick Korotysh"
+		VALUE "FileDescription", "Digital Clock Plugin"
+		VALUE "FileVersion", "1.0.0.44"
+		VALUE "InternalName", "quick_note.dll"
+		VALUE "LegalCopyright", "Copyright (C) 2014 Nick Korotysh"
+		VALUE "OriginalFilename", "quick_note.dll"
+		VALUE "ProductName", "Digital Clock"
+		VALUE "ProductVersion", "4.2.6"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409, 0x04B0
+}
+}
