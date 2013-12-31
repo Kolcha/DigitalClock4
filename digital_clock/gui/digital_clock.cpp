@@ -5,6 +5,7 @@
 
 DigitalClock::DigitalClock(QWidget* parent)
   : QLabel(parent) {
+  setAlignment(Qt::AlignCenter);
   timer_ = new QTimer(this);
   timer_->setInterval(500);
   connect(timer_, SIGNAL(timeout()), this, SLOT(TimeoutHandler()));

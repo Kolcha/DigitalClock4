@@ -1,6 +1,7 @@
 #include <QLabel>
 #include <QGridLayout>
 #include <QInputDialog>
+#include <QFontMetricsF>
 #include "plugin_settings.h"
 #include "skin_drawer.h"
 #include "text_skin.h"
@@ -9,7 +10,7 @@
 
 namespace quick_note {
 
-QuickNote::QuickNote() {
+QuickNote::QuickNote() : avail_width_(0) {
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   drawer_ = new skin_draw::SkinDrawer(this);
 
@@ -20,6 +21,7 @@ QuickNote::QuickNote() {
 
 void QuickNote::Init(QWidget* main_wnd) {
   main_layout_ = qobject_cast<QGridLayout*>(main_wnd->layout());
+  main_wnd_ = main_wnd;
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
@@ -29,17 +31,19 @@ void QuickNote::Init(QWidget* main_wnd) {
 
 void QuickNote::Start() {
   msg_label_ = new QLabel();
+  msg_label_->setAlignment(Qt::AlignCenter);
   main_layout_->addWidget(msg_label_, main_layout_->rowCount(), 0, 1, main_layout_->columnCount());
   connect(drawer_, &skin_draw::SkinDrawer::DrawingFinished, [=] (const QImage& img) {
     msg_label_->setPixmap(QPixmap::fromImage(img));
-    qobject_cast<QWidget*>(main_layout_->parent())->adjustSize();
+    main_wnd_->adjustSize();
   });
   ApplyString(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
 }
 
 void QuickNote::Stop() {
   main_layout_->removeWidget(msg_label_);
-  qobject_cast<QWidget*>(main_layout_->parent())->adjustSize();
+  main_wnd_->adjustSize();
+  disconnect(drawer_, &skin_draw::SkinDrawer::DrawingFinished, 0, 0);
   delete msg_label_;
 }
 
@@ -69,16 +73,28 @@ void QuickNote::Configure() {
 
 void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
   switch (option) {
-    case OPT_FONT:
-    {
-      skin_draw::ISkin::SkinPtr skin(new skin_draw::TextSkin(new_value.value<QFont>()));
-      drawer_->ApplySkin(skin);
+    case OPT_SKIN_NAME:
+//      if (!msg_label_) break;  // init, not started yet
+//      Stop();
+//      avail_width_ = main_layout_->cellRect(0, 0).width();
+//      Start();
       break;
-    }
+
+    case OPT_FONT:
+      font_ = new_value.value<QFont>();
+      drawer_->ApplySkin(skin_draw::ISkin::SkinPtr(new skin_draw::TextSkin(font_)));
+      break;
 
     case OPT_ZOOM:
-      drawer_->SetZoom(new_value.toReal());
+    {
+      if (avail_width_ == 0) {  // first init
+        avail_width_ = main_layout_->cellRect(0, 0).width() / new_value.toReal();
+      }
+      QFontMetricsF fmf(font_);
+      qreal tw = fmf.width(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
+      drawer_->SetZoom(avail_width_ * new_value.toReal() / tw);
       break;
+    }
 
     case OPT_COLOR:
       drawer_->SetColor(new_value.value<QColor>());

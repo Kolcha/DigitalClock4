@@ -1,6 +1,8 @@
 #ifndef QUICK_NOTE_H
 #define QUICK_NOTE_H
 
+#include <QFont>
+#include <QPointer>
 #include "iclock_plugin.h"
 
 class QGridLayout;
@@ -34,7 +36,10 @@ private slots:
 private:
   PluginSettings* settings_;
   QGridLayout* main_layout_;
-  QLabel* msg_label_;
+  QWidget* main_wnd_;
+  QPointer<QLabel> msg_label_;
+  QFont font_;
+  int avail_width_;
   ::skin_draw::SkinDrawer* drawer_;
 };
 
