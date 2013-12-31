@@ -4,22 +4,22 @@
 <context>
     <name>quick_note::QuickNote</name>
     <message>
-        <location filename="quick_note.cpp" line="12"/>
+        <location filename="quick_note.cpp" line="18"/>
         <source>Quick note</source>
         <translation>Быстрая заметка</translation>
     </message>
     <message>
-        <location filename="quick_note.cpp" line="13"/>
+        <location filename="quick_note.cpp" line="19"/>
         <source>Allows to display any short message under clock.</source>
         <translation>Отображает короткое сообщение под часами.</translation>
     </message>
     <message>
-        <location filename="quick_note.cpp" line="35"/>
+        <location filename="quick_note.cpp" line="56"/>
         <source>Quick note settings</source>
         <translation>Заметка - настройки</translation>
     </message>
     <message>
-        <location filename="quick_note.cpp" line="36"/>
+        <location filename="quick_note.cpp" line="57"/>
         <source>message:</source>
         <translation>заметка:</translation>
     </message>
