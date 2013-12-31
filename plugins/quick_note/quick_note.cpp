@@ -10,13 +10,14 @@
 
 namespace quick_note {
 
-QuickNote::QuickNote() : avail_width_(0) {
+QuickNote::QuickNote() : avail_width_(0), last_zoom_(1.0) {
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   drawer_ = new skin_draw::SkinDrawer(this);
 
   InitTranslator(QLatin1String(":/quick_note/quick_note_"));
   info_.display_name = tr("Quick note");
   info_.description = tr("Allows to display any short message under clock.");
+  info_.icon.load(":/quick_note/icon.png");
 }
 
 void QuickNote::Init(QWidget* main_wnd) {
@@ -74,10 +75,10 @@ void QuickNote::Configure() {
 void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
   switch (option) {
     case OPT_SKIN_NAME:
-//      if (!msg_label_) break;  // init, not started yet
-//      Stop();
-//      avail_width_ = main_layout_->cellRect(0, 0).width();
-//      Start();
+      if (!msg_label_) break;  // init, not started yet
+      Stop();
+      avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 16;
+      Start();
       break;
 
     case OPT_FONT:
@@ -87,12 +88,13 @@ void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
 
     case OPT_ZOOM:
     {
+      last_zoom_ = new_value.toReal();
       if (avail_width_ == 0) {  // first init
-        avail_width_ = main_layout_->cellRect(0, 0).width() / new_value.toReal();
+        avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 16;
       }
       QFontMetricsF fmf(font_);
       qreal tw = fmf.width(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
-      drawer_->SetZoom(avail_width_ * new_value.toReal() / tw);
+      drawer_->SetZoom(avail_width_ * last_zoom_ / tw);
       break;
     }
 
@@ -119,6 +121,9 @@ void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
 }
 
 void QuickNote::ApplyString(const QString& str) {
+  drawer_->SetString(QString());
+  QFontMetricsF fmf(font_);
+  drawer_->SetZoom(avail_width_ * last_zoom_ / fmf.width(str));
   drawer_->SetString(str);
 }
 

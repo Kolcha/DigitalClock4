@@ -40,6 +40,7 @@ private:
   QPointer<QLabel> msg_label_;
   QFont font_;
   int avail_width_;
+  qreal last_zoom_;
   ::skin_draw::SkinDrawer* drawer_;
 };
 
