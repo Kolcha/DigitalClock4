@@ -14,7 +14,7 @@ Date::Date() : avail_width_(0), last_zoom_(1.0), last_date_("-") {
   InitTranslator(QLatin1String(":/date/date_"));
   info_.display_name = tr("Date");
   info_.description = tr("Allows to display current date under clock.");
-//  info_.icon.load(":/date/icon.png");
+  info_.icon.load(":/date/icon.png");
 }
 
 void Date::Init(QWidget* main_wnd) {
@@ -46,6 +46,7 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
       if (!msg_label_) break;  // init, not started yet
       Stop();
       avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 20;
+      last_date_ = "-";
       Start();
       break;
 
@@ -90,7 +91,7 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
 
 void Date::TimeUpdateListener() {
   QString date = QDate::currentDate().toString(Qt::SystemLocaleLongDate);
-  if (date == last_date_) return;
+  if (date == last_date_ || !msg_label_) return;
   drawer_->SetString(QString());
   QFontMetricsF fmf(font_);
   drawer_->SetZoom(avail_width_ * last_zoom_ / fmf.width(date));

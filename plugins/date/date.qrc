@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/date">
         <file>date_ru.qm</file>
+        <file alias="icon.png">date.png</file>
     </qresource>
 </RCC>
