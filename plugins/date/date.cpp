@@ -61,6 +61,7 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
       if (avail_width_ == 0) {  // first init
         avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 20;
       }
+      if (last_date_ == "-") break;
       QFontMetricsF fmf(font_);
       qreal tw = fmf.width(last_date_);
       drawer_->SetZoom(avail_width_ * last_zoom_ / tw);
