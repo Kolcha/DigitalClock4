@@ -8,7 +8,7 @@ QT       += core gui widgets
 
 TARGET = date
 TEMPLATE = lib
-CONFIG += plugin
+CONFIG += plugin c++11
 
 SOURCES += date.cpp
 
