@@ -10,46 +10,45 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="102"/>
+        <location filename="../gui/about_dialog.ui" line="89"/>
         <source>Links</source>
         <translatorcomment>ссылки на интернет ресурсы</translatorcomment>
         <translation>Ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="108"/>
+        <location filename="../gui/about_dialog.ui" line="95"/>
         <source>information:</source>
         <translatorcomment>информация о прорамме и ссылки на загрузку</translatorcomment>
         <translation>информация:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="128"/>
+        <location filename="../gui/about_dialog.ui" line="115"/>
         <source>source code:</source>
         <translatorcomment>ссылки на исходный код</translatorcomment>
         <translation>исходный код:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="148"/>
+        <location filename="../gui/about_dialog.ui" line="135"/>
         <source>e-mail:</source>
         <translatorcomment>e-mail автора</translatorcomment>
         <translation>e-mail:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="171"/>
+        <location filename="../gui/about_dialog.ui" line="158"/>
         <source>Donate</source>
         <translatorcomment>информация для пожертвований</translatorcomment>
         <translation>Помочь автору</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="335"/>
+        <location filename="../gui/about_dialog.ui" line="322"/>
         <source>Close</source>
         <translatorcomment>Закрыть окно</translatorcomment>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="29"/>
-        <source>version: </source>
-        <translatorcomment>версия программы</translatorcomment>
-        <translation>версия: </translation>
+        <location filename="../gui/about_dialog.cpp" line="31"/>
+        <source>version: %1 (%2)</source>
+        <translation>версия: %1 (%2)</translation>
     </message>
 </context>
 <context>
