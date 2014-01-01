@@ -8,7 +8,8 @@ SUBDIRS += \
     tray_color \
     any_zoom \
     schedule \
-    quick_note
+    quick_note \
+    date
 
 windows {
 SUBDIRS += power_off
