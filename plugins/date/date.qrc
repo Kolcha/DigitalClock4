@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/date">
+        <file>date_ru.qm</file>
+    </qresource>
+</RCC>
