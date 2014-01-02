@@ -1,7 +1,6 @@
 #ifndef WIN_ON_TOP_H
 #define WIN_ON_TOP_H
 
-#include <Windows.h>
 #include "iclock_plugin.h"
 
 namespace win_on_top {
