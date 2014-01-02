@@ -8,7 +8,7 @@ QT       += core
 
 TARGET = win_on_top
 TEMPLATE = lib
-CONFIG += plugin c++11
+CONFIG += plugin
 
 SOURCES += win_on_top.cpp
 
