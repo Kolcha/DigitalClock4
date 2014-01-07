@@ -13,6 +13,7 @@ AnyZoom::AnyZoom() {
   InitTranslator(QLatin1String(":/any_zoom/any_zoom_"));
   info_.display_name = tr("Any zoom");
   info_.description = tr("Allows to set any clock zoom.");
+  info_.icon.load(":/any_zoom/icon.png");
 }
 
 void AnyZoom::Init(const QMap<Options, QVariant>& current_settings) {
