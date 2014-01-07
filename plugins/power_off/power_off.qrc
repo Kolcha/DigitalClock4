@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/power_off">
         <file>power_off_ru.qm</file>
+        <file alias="icon.png">power_off-48.png</file>
     </qresource>
 </RCC>
