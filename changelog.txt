@@ -1,3 +1,28 @@
+Whats new in 4.2.6:
+-------------------
+Core:
+ - memory usage optimization
+ - code optimization
+ - fixed bug in updater: infinity reconnect after connection error
+
+GUI:
+ - fixed issue with system UI language autodetect on some systems
+ - added plugin names/description translation
+ - added icons to about plugin dialog
+ - updated about dialog (version info format)
+
+Plugins:
+ - added "auto power off" plugin (windows only)
+ - added "quick note" plugin
+ - added "date" plugin
+ - added "any window on top" plugin (MSVC build only)
+
+SDK:
+ - namespaces for plugins
+ - improved plugin example
+ - updated documentation
+
+
 Whats new in 4.2.5:
 -------------------
 Core:
