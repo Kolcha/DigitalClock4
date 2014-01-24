@@ -12,7 +12,8 @@ CONFIG += plugin c++11
 
 SOURCES += date.cpp
 
-HEADERS += date.h
+HEADERS += date.h \
+    date_settings.h
 OTHER_FILES += date.json
 
 RESOURCES += \

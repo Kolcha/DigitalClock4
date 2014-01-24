@@ -4,12 +4,15 @@
 #include <QDate>
 #include "skin_drawer.h"
 #include "text_skin.h"
+#include "plugin_settings.h"
+#include "date_settings.h"
 #include "date.h"
 
 namespace date {
 
 Date::Date() : avail_width_(0), last_zoom_(1.0), last_date_("-") {
   drawer_ = new skin_draw::SkinDrawer(this);
+  settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
 
   InitTranslator(QLatin1String(":/date/date_"));
   info_.display_name = tr("Date");
@@ -21,6 +24,13 @@ void Date::Init(QWidget* main_wnd) {
   main_layout_ = qobject_cast<QGridLayout*>(main_wnd->layout());
   main_wnd_ = main_wnd;
   drawer_->SetSpace(0);
+
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->Load();
+
+  font_ = settings_->GetOption(OPT_DATE_FONT).value<QFont>();
 }
 
 void Date::Start() {
@@ -44,6 +54,7 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
   switch (option) {
     case OPT_SKIN_NAME:
       if (!msg_label_) break;  // init, not started yet
+      if (!settings_->GetOption(OPT_FONT_AUTOSIZE).toBool()) break;
       Stop();
       avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 20;
       last_date_ = "-";
@@ -51,12 +62,14 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
       break;
 
     case OPT_FONT:
+      if (!settings_->GetOption(OPT_USE_CLOCK_FONT).toBool()) break;
       font_ = new_value.value<QFont>();
       drawer_->ApplySkin(skin_draw::ISkin::SkinPtr(new skin_draw::TextSkin(font_)));
       break;
 
     case OPT_ZOOM:
     {
+      if (!settings_->GetOption(OPT_FONT_AUTOSIZE).toBool()) break;
       last_zoom_ = new_value.toReal();
       if (avail_width_ == 0) {  // first init
         avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 20;
@@ -91,11 +104,26 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
 }
 
 void Date::TimeUpdateListener() {
-  QString date = QDate::currentDate().toString(Qt::SystemLocaleLongDate);
+  QString date;
+  QDate d_date = QDate::currentDate();
+
+  switch (settings_->GetOption(OPT_DATE_FORMAT_TYPE).value<FormatType>()) {
+    case FormatType::FT_INT:
+      date = d_date.toString(settings_->GetOption(OPT_DATE_FORMAT_INT).value<Qt::DateFormat>());
+      break;
+
+    case FormatType::FT_STR:
+      date = d_date.toString(settings_->GetOption(OPT_DATE_FORMAT_STR).toString());
+      break;
+  }
+
   if (date == last_date_ || !msg_label_) return;
+
   drawer_->SetString(QString());
-  QFontMetricsF fmf(font_);
-  drawer_->SetZoom(avail_width_ * last_zoom_ / fmf.width(date));
+  if (settings_->GetOption(OPT_FONT_AUTOSIZE).toBool()) {
+    QFontMetricsF fmf(font_);
+    drawer_->SetZoom(avail_width_ * last_zoom_ / fmf.width(date));
+  }
   drawer_->SetString(date);
   last_date_ = date;
 }
