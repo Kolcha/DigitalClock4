@@ -6,6 +6,7 @@
 #include "text_skin.h"
 #include "plugin_settings.h"
 #include "date_settings.h"
+#include "gui/settings_dialog.h"
 #include "date.h"
 
 namespace date {
@@ -48,6 +49,22 @@ void Date::Stop() {
   main_wnd_->adjustSize();
   disconnect(drawer_, &skin_draw::SkinDrawer::DrawingFinished, 0, 0);
   delete msg_label_;
+}
+
+void Date::Configure() {
+  SettingsDialog* dialog = new SettingsDialog(main_wnd_);
+  // load current settings to dialog
+  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
+          dialog, SLOT(SettingsListener(QString,QVariant)));
+  settings_->TrackChanges(true);
+  settings_->Load();
+  settings_->TrackChanges(false);
+  // connect main signals/slots
+  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
+          settings_, SLOT(SetOption(QString,QVariant)));
+  connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
+  dialog->show();
 }
 
 void Date::SettingsListener(Options option, const QVariant& new_value) {

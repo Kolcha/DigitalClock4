@@ -10,10 +10,12 @@ TARGET = date
 TEMPLATE = lib
 CONFIG += plugin c++11
 
-SOURCES += date.cpp
+SOURCES += date.cpp \
+    gui/settings_dialog.cpp
 
 HEADERS += date.h \
-    date_settings.h
+    date_settings.h \
+    gui/settings_dialog.h
 OTHER_FILES += date.json
 
 RESOURCES += \
@@ -37,3 +39,6 @@ else:unix: LIBS += -L$$OUT_PWD/../../skin_draw/ -lskin_draw
 
 INCLUDEPATH += $$PWD/../../skin_draw
 DEPENDPATH += $$PWD/../../skin_draw
+
+FORMS += \
+    gui/settings_dialog.ui
