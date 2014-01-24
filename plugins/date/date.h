@@ -9,6 +9,7 @@ class QLabel;
 namespace skin_draw {
 class SkinDrawer;
 }
+class PluginSettings;
 
 namespace date {
 
@@ -24,19 +25,24 @@ public:
 public slots:
   void Start();
   void Stop();
-  void Configure() {}
+  void Configure();
   void SettingsListener(Options option, const QVariant& new_value);
   void TimeUpdateListener();
+
+private slots:
+  void SettingsListener(const QString& key, const QVariant& value);
 
 private:
   QGridLayout* main_layout_;
   QWidget* main_wnd_;
   QPointer<QLabel> msg_label_;
   QFont font_;
+  QFont clock_font_;
   int avail_width_;
   qreal last_zoom_;
   QString last_date_;
   ::skin_draw::SkinDrawer* drawer_;
+  PluginSettings* settings_;
 };
 
 } // namespace date
