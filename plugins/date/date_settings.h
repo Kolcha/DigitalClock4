@@ -19,7 +19,7 @@ enum class FormatType {
 };
 
 inline void InitDefaults(QSettings::SettingsMap* defaults) {
-  defaults->insert(OPT_DATE_FORMAT_TYPE, QVariant::fromValue(FormatType::FT_INT));
+  defaults->insert(OPT_DATE_FORMAT_TYPE, (int)FormatType::FT_INT);
   defaults->insert(OPT_DATE_FORMAT_STR, QLocale::system().dateFormat());
   defaults->insert(OPT_DATE_FORMAT_INT, Qt::SystemLocaleLongDate);
   defaults->insert(OPT_USE_CLOCK_FONT, true);
@@ -28,8 +28,5 @@ inline void InitDefaults(QSettings::SettingsMap* defaults) {
 }
 
 } // namespace date
-
-Q_DECLARE_METATYPE(date::FormatType)
-Q_DECLARE_METATYPE(Qt::DateFormat)
 
 #endif // DATE_SETTINGS_H

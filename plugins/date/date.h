@@ -37,6 +37,7 @@ private:
   QWidget* main_wnd_;
   QPointer<QLabel> msg_label_;
   QFont font_;
+  QFont clock_font_;
   int avail_width_;
   qreal last_zoom_;
   QString last_date_;
