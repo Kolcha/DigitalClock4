@@ -11,7 +11,7 @@ SettingsDialog::SettingsDialog(QWidget* parent)
   ui->setupUi(this);
 
   date_formats_[Qt::TextDate] = tr("default");
-  date_formats_[Qt::ISODate] = tr("ISO 8601");
+  date_formats_[Qt::ISODate] = QString("ISO 8601");
   date_formats_[Qt::SystemLocaleShortDate] = tr("short");
   date_formats_[Qt::SystemLocaleLongDate] = tr("long");
   ui->int_type_box->clear();
