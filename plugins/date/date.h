@@ -29,6 +29,9 @@ public slots:
   void SettingsListener(Options option, const QVariant& new_value);
   void TimeUpdateListener();
 
+private slots:
+  void SettingsListener(const QString& key, const QVariant& value);
+
 private:
   QGridLayout* main_layout_;
   QWidget* main_wnd_;

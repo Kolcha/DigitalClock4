@@ -61,6 +61,8 @@ void Date::Configure() {
   settings_->TrackChanges(false);
   // connect main signals/slots
   connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
+          this, SLOT(SettingsListener(QString,QVariant)));
+  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
           settings_, SLOT(SetOption(QString,QVariant)));
   connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
@@ -143,6 +145,12 @@ void Date::TimeUpdateListener() {
   }
   drawer_->SetString(date);
   last_date_ = date;
+}
+
+void Date::SettingsListener(const QString& key, const QVariant& value) {
+  if (key == OPT_FONT_AUTOSIZE) {
+    if (value.toBool()) SettingsListener(OPT_SKIN_NAME, QString("Text Skin"));
+  }
 }
 
 } // namespace date
