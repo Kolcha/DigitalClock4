@@ -12,10 +12,14 @@ namespace date {
 #define OPT_DATE_FORMAT_INT   "plugins/date/format_int"
 #define OPT_USE_CLOCK_FONT    "plugins/date/clock_font"
 #define OPT_DATE_FONT         "plugins/date/font"
-#define OPT_FONT_AUTOSIZE     "plugins/date/font_autosize"
+#define OPT_ZOOM_MODE         "plugins/date/zoom_mode"
 
 enum class FormatType {
   FT_STR, FT_INT
+};
+
+enum class ZoomMode {
+  ZM_NOT_ZOOM, ZM_AUTOSIZE, ZM_CLOCK_ZOOM
 };
 
 inline void InitDefaults(QSettings::SettingsMap* defaults) {
@@ -24,7 +28,7 @@ inline void InitDefaults(QSettings::SettingsMap* defaults) {
   defaults->insert(OPT_DATE_FORMAT_INT, Qt::SystemLocaleLongDate);
   defaults->insert(OPT_USE_CLOCK_FONT, true);
   defaults->insert(OPT_DATE_FONT, QFont());
-  defaults->insert(OPT_FONT_AUTOSIZE, true);
+  defaults->insert(OPT_ZOOM_MODE, (int)ZoomMode::ZM_AUTOSIZE);
 }
 
 } // namespace date

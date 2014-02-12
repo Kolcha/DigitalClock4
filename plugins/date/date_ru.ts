@@ -33,7 +33,7 @@
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="42"/>
-        <location filename="gui/settings_dialog.ui" line="113"/>
+        <location filename="gui/settings_dialog.ui" line="103"/>
         <source>custom</source>
         <translation>пользовательский</translation>
     </message>
@@ -43,14 +43,29 @@
         <translation>Шрифт</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="103"/>
+        <location filename="gui/settings_dialog.ui" line="110"/>
         <source>use clock font</source>
         <translation>использовать шрифт часов</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="130"/>
-        <source>auto calculate font size</source>
-        <translation>рассчитывать размер шрифта</translation>
+        <location filename="gui/settings_dialog.ui" line="133"/>
+        <source>Zoom</source>
+        <translation>Масштабирование</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="139"/>
+        <source>do not zoom</source>
+        <translation>не масштабировать</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="146"/>
+        <source>calculate font size</source>
+        <translation>рассчитать размер шрифта</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="156"/>
+        <source>use clock zoom</source>
+        <translation>использовать масштаб часов</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.cpp" line="13"/>
