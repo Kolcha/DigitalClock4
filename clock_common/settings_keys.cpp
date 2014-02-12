@@ -32,6 +32,7 @@ QVariant GetDefaultValue(Options opt) {
     case OPT_TEXTURE_PER_ELEMENT:   return false;
     case OPT_TEXTURE_DRAW_MODE:     return 0;
     case OPT_CUSTOMIZATION:         return 1;
+    case OPT_SPACING:               return 4;
     // updater settings
     case OPT_USE_AUTOUPDATE:        return true;
     case OPT_UPDATE_PERIOD:         return 3;

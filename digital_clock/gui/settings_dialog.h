@@ -59,6 +59,7 @@ private slots:
   void on_enable_autoupdate_toggled(bool checked);
   void on_update_period_box_currentIndexChanged(int index);
   void on_check_for_beta_toggled(bool checked);
+  void on_space_value_valueChanged(int arg1);
 
 private:
   Ui::SettingsDialog* ui;

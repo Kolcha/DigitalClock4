@@ -70,6 +70,7 @@ void MainWindow::Init() {
                               (settings_->GetOption(OPT_TEXTURE_DRAW_MODE).toInt()));
   drawer_->SetCustomizationType((SkinDrawer::CustomizationType)
                                 (settings_->GetOption(OPT_CUSTOMIZATION).toInt()));
+  drawer_->SetSpace(settings_->GetOption(OPT_SPACING).toInt());
   drawer_->SetString("88:88");
 
   active_plugins_ = settings_->GetOption(OPT_PLUGINS).toStringList();
@@ -174,6 +175,10 @@ void MainWindow::SettingsListener(Options opt, const QVariant& value) {
 
     case OPT_CUSTOMIZATION:
       drawer_->SetCustomizationType((SkinDrawer::CustomizationType)value.toInt());
+      break;
+
+    case OPT_SPACING:
+      drawer_->SetSpace(value.toInt());
       break;
 
     case OPT_PLUGINS:
