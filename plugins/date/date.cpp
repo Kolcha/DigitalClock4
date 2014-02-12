@@ -70,11 +70,21 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
   switch (option) {
     case OPT_SKIN_NAME:
       if (!msg_label_) break;  // init, not started yet
-      if (!settings_->GetOption(OPT_FONT_AUTOSIZE).toBool()) break;
-      Stop();
-      avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 20;
-      last_date_ = "-";
-      Start();
+      switch ((ZoomMode)settings_->GetOption(OPT_ZOOM_MODE).toInt()) {
+        case ZoomMode::ZM_NOT_ZOOM:
+          break;
+
+        case ZoomMode::ZM_AUTOSIZE:
+          Stop();
+          avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 20;
+          last_date_ = "-";
+          Start();
+          break;
+
+        case ZoomMode::ZM_CLOCK_ZOOM:
+          drawer_->SetZoom(last_zoom_);
+          break;
+      }
       break;
 
     case OPT_FONT:
@@ -85,18 +95,28 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
       break;
 
     case OPT_ZOOM:
-    {
       last_zoom_ = new_value.toReal();
       if (avail_width_ == 0) {  // first init
         avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 20;
       }
       if (last_date_ == "-") break;
-      if (!settings_->GetOption(OPT_FONT_AUTOSIZE).toBool()) break;
-      QFontMetricsF fmf(font_);
-      qreal tw = fmf.width(last_date_);
-      drawer_->SetZoom(avail_width_ * last_zoom_ / tw);
+      switch ((ZoomMode)settings_->GetOption(OPT_ZOOM_MODE).toInt()) {
+        case ZoomMode::ZM_NOT_ZOOM:
+          break;
+
+        case ZoomMode::ZM_AUTOSIZE:
+        {
+          QFontMetricsF fmf(font_);
+          qreal tw = fmf.width(last_date_);
+          drawer_->SetZoom(avail_width_ * last_zoom_ / tw);
+          break;
+        }
+
+        case ZoomMode::ZM_CLOCK_ZOOM:
+          drawer_->SetZoom(last_zoom_);
+          break;
+      }
       break;
-    }
 
     case OPT_COLOR:
       drawer_->SetColor(new_value.value<QColor>());
@@ -137,9 +157,19 @@ void Date::TimeUpdateListener() {
   if (date == last_date_ || !msg_label_) return;
 
   drawer_->SetString(QString());
-  if (settings_->GetOption(OPT_FONT_AUTOSIZE).toBool()) {
-    QFontMetricsF fmf(font_);
-    drawer_->SetZoom(avail_width_ * last_zoom_ / fmf.width(date));
+  switch ((ZoomMode)settings_->GetOption(OPT_ZOOM_MODE).toInt()) {
+    case ZoomMode::ZM_NOT_ZOOM:
+      break;
+
+    case ZoomMode::ZM_AUTOSIZE:
+    {
+      QFontMetricsF fmf(font_);
+      drawer_->SetZoom(avail_width_ * last_zoom_ / fmf.width(date));
+      break;
+    }
+
+    case ZoomMode::ZM_CLOCK_ZOOM:
+      break;
   }
   drawer_->SetString(date);
   last_date_ = date;
@@ -154,11 +184,19 @@ void Date::SettingsListener(const QString& key, const QVariant& value) {
     font_ = value.value<QFont>();
     drawer_->ApplySkin(skin_draw::ISkin::SkinPtr(new skin_draw::TextSkin(font_)));
   }
-  if (key == OPT_FONT_AUTOSIZE) {
-    if (value.toBool()) {
-      SettingsListener(OPT_SKIN_NAME, QString("Text Skin"));
-    } else {
-      drawer_->SetZoom(1.0);
+  if (key == OPT_ZOOM_MODE) {
+    switch ((ZoomMode)value.toInt()) {
+      case ZoomMode::ZM_NOT_ZOOM:
+        drawer_->SetZoom(1.0);
+        break;
+
+      case ZoomMode::ZM_AUTOSIZE:
+        SettingsListener(OPT_SKIN_NAME, QString("Text Skin"));
+        break;
+
+      case ZoomMode::ZM_CLOCK_ZOOM:
+        SettingsListener(OPT_ZOOM, last_zoom_);
+        break;
     }
   }
 }

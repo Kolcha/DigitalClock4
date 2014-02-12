@@ -42,8 +42,11 @@ void SettingsDialog::SettingsListener(const QString& key, const QVariant& value)
   if (key == OPT_DATE_FONT) {
     last_font_ = value.value<QFont>();
   }
-  if (key == OPT_FONT_AUTOSIZE) {
-    ui->font_autosize->setChecked(value.toBool());
+  if (key == OPT_ZOOM_MODE) {
+    ZoomMode mode = (ZoomMode)value.toInt();
+    ui->not_zoom->setChecked(mode == ZoomMode::ZM_NOT_ZOOM);
+    ui->font_autosize->setChecked(mode == ZoomMode::ZM_AUTOSIZE);
+    ui->clock_zoom->setChecked(mode == ZoomMode::ZM_CLOCK_ZOOM);
   }
 }
 
@@ -76,8 +79,16 @@ void SettingsDialog::on_choose_font_button_clicked() {
   }
 }
 
-void SettingsDialog::on_font_autosize_toggled(bool checked) {
-  emit OptionChanged(OPT_FONT_AUTOSIZE, checked);
+void SettingsDialog::on_not_zoom_clicked() {
+  emit OptionChanged(OPT_ZOOM_MODE, (int)ZoomMode::ZM_NOT_ZOOM);
+}
+
+void SettingsDialog::on_font_autosize_clicked() {
+  emit OptionChanged(OPT_ZOOM_MODE, (int)ZoomMode::ZM_AUTOSIZE);
+}
+
+void SettingsDialog::on_clock_zoom_clicked() {
+  emit OptionChanged(OPT_ZOOM_MODE, (int)ZoomMode::ZM_CLOCK_ZOOM);
 }
 
 } // namespace date

@@ -30,7 +30,9 @@ private slots:
   void on_str_type_box_currentTextChanged(const QString& arg1);
   void on_clock_font_button_toggled(bool checked);
   void on_choose_font_button_clicked();
-  void on_font_autosize_toggled(bool checked);
+  void on_not_zoom_clicked();
+  void on_font_autosize_clicked();
+  void on_clock_zoom_clicked();
 
 private:
   Ui::SettingsDialog* ui;

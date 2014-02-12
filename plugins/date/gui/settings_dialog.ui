@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>199</width>
-    <height>230</height>
+    <height>309</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <property name="modal">
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QGroupBox" name="format_group">
      <property name="title">
@@ -97,6 +97,13 @@
       <string>Font</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="custom_font_button">
+        <property name="text">
+         <string>custom</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="QRadioButton" name="clock_font_button">
         <property name="text">
@@ -104,13 +111,6 @@
         </property>
         <property name="checked">
          <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="custom_font_button">
-        <property name="text">
-         <string>custom</string>
         </property>
        </widget>
       </item>
@@ -124,13 +124,36 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="QCheckBox" name="font_autosize">
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="zoom_group">
+     <property name="title">
+      <string>Zoom</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QRadioButton" name="not_zoom">
         <property name="text">
-         <string>auto calculate font size</string>
+         <string>do not zoom</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="font_autosize">
+        <property name="text">
+         <string>calculate font size</string>
         </property>
         <property name="checked">
          <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="clock_zoom">
+        <property name="text">
+         <string>use clock zoom</string>
         </property>
        </widget>
       </item>
@@ -158,8 +181,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>164</x>
-     <y>212</y>
+     <x>173</x>
+     <y>243</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -174,8 +197,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>164</x>
-     <y>218</y>
+     <x>173</x>
+     <y>243</y>
     </hint>
     <hint type="destinationlabel">
      <x>173</x>
@@ -226,8 +249,8 @@
      <y>148</y>
     </hint>
     <hint type="destinationlabel">
-     <x>138</x>
-     <y>150</y>
+     <x>179</x>
+     <y>158</y>
     </hint>
    </hints>
   </connection>
