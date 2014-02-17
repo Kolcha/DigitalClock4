@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
   a.setApplicationDisplayName("Digital Clock");
   a.setApplicationName("Digital Clock");
-  a.setApplicationVersion("4.2.6");
+  a.setApplicationVersion("4.2.6+");
   a.setOrganizationName("Nick Korotysh");
   a.setWindowIcon(QIcon(":/clock/images/clock.svg"));
   a.setQuitOnLastWindowClosed(false);
