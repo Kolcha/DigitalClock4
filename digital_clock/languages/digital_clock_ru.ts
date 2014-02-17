@@ -54,27 +54,27 @@
 <context>
     <name>digital_clock::MainWindow</name>
     <message>
-        <location filename="../gui/main_window.cpp" line="279"/>
-        <location filename="../gui/main_window.cpp" line="287"/>
-        <location filename="../gui/main_window.cpp" line="295"/>
+        <location filename="../gui/main_window.cpp" line="284"/>
+        <location filename="../gui/main_window.cpp" line="292"/>
+        <location filename="../gui/main_window.cpp" line="300"/>
         <source>%1 Update</source>
         <translatorcomment>обновление программы</translatorcomment>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="280"/>
+        <location filename="../gui/main_window.cpp" line="285"/>
         <source>Update error. %1</source>
         <translatorcomment>ошибка в процессе обновления</translatorcomment>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="288"/>
+        <location filename="../gui/main_window.cpp" line="293"/>
         <source>You already have latest version (%1).</source>
         <translatorcomment>сообщение об установленой версии программы</translatorcomment>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../gui/main_window.cpp" line="296"/>
+        <location filename="../gui/main_window.cpp" line="301"/>
         <source>Update available (%1). Click this message to download.</source>
         <translatorcomment>сообщение об последней актульной версии программы</translatorcomment>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
@@ -110,206 +110,211 @@
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="24"/>
+        <location filename="../gui/settings_dialog.ui" line="34"/>
         <source>Appearance</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="30"/>
+        <location filename="../gui/settings_dialog.ui" line="40"/>
         <source>Clock</source>
         <translatorcomment>группа настроек поведения часов</translatorcomment>
         <translation>Часы</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="145"/>
+        <location filename="../gui/settings_dialog.ui" line="155"/>
         <source>stay on top</source>
         <translatorcomment>часы остаются поверх всех окон</translatorcomment>
         <translation>поверх всех окон</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="152"/>
+        <location filename="../gui/settings_dialog.ui" line="162"/>
         <source>transparent for input</source>
         <translatorcomment>часы програзчны для кликов мыши</translatorcomment>
         <translation>прозрачность для мыши</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="159"/>
+        <location filename="../gui/settings_dialog.ui" line="169"/>
         <source>separator flashes</source>
         <translatorcomment>разделитель часов и минут мигает</translatorcomment>
         <translation>разделитель мигает</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="388"/>
+        <location filename="../gui/settings_dialog.ui" line="398"/>
         <source>Misc</source>
         <translatorcomment>вкладка &quot;Разное&quot;</translatorcomment>
         <translation>Разное</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="38"/>
+        <location filename="../gui/settings_dialog.ui" line="48"/>
         <source>opacity</source>
         <translatorcomment>непрозрачность часов</translatorcomment>
         <translation>непрозрачность</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="78"/>
+        <location filename="../gui/settings_dialog.ui" line="88"/>
         <source>zoom</source>
         <translatorcomment>масштаб</translatorcomment>
         <translation>увеличение</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="117"/>
+        <location filename="../gui/settings_dialog.ui" line="127"/>
         <source>use skin customization (change color or apply texture)</source>
         <translatorcomment>если выключено, то стиль будет выглядеть как сделан изначально</translatorcomment>
         <translation>изменять стиль (изменять цвет или применять текстуру)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="171"/>
+        <location filename="../gui/settings_dialog.ui" line="181"/>
         <source>Skin</source>
         <translatorcomment>стиль часов</translatorcomment>
         <translation>Стиль</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="179"/>
+        <location filename="../gui/settings_dialog.ui" line="189"/>
         <source>use skin</source>
         <translatorcomment>использовать стиль а не текст</translatorcomment>
         <translation>использовать стиль</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="249"/>
+        <location filename="../gui/settings_dialog.ui" line="259"/>
         <source>use font</source>
         <translatorcomment>выбрать шрифт текста, не использовать стиль</translatorcomment>
         <translation>использовать шрифт</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="203"/>
+        <location filename="../gui/settings_dialog.ui" line="213"/>
         <source>Version :</source>
         <translatorcomment>версия стиля</translatorcomment>
         <translation>Версия :</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="154"/>
+        <location filename="../gui/settings_dialog.cpp" line="158"/>
         <source>unknown</source>
         <translatorcomment>значение по умолчанию</translatorcomment>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="231"/>
+        <location filename="../gui/settings_dialog.ui" line="241"/>
         <source>Author :</source>
         <translatorcomment>автор стиля</translatorcomment>
         <translation>Автор :</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="224"/>
+        <location filename="../gui/settings_dialog.ui" line="234"/>
         <source>E-mail :</source>
         <translatorcomment>эелектронный адрес автора стиля</translatorcomment>
         <translation>E-mail :</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="290"/>
+        <location filename="../gui/settings_dialog.ui" line="300"/>
         <source>Texture</source>
         <translatorcomment>группа настроек тектуры</translatorcomment>
         <translation>Текстура</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="377"/>
+        <location filename="../gui/settings_dialog.ui" line="387"/>
         <source>texture per element</source>
         <translatorcomment>использовать текстуру для каждого элемента (цифры) отдельно</translatorcomment>
         <translation>текстура для каждого элемента</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="296"/>
+        <location filename="../gui/settings_dialog.ui" line="306"/>
         <source>Type</source>
         <translatorcomment>тип текстуры</translatorcomment>
         <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="302"/>
+        <location filename="../gui/settings_dialog.ui" line="312"/>
         <source>solid color</source>
         <translatorcomment>сплошной цвет как текстура</translatorcomment>
         <translation>сплошной цвет</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="309"/>
+        <location filename="../gui/settings_dialog.ui" line="319"/>
         <source>custom image</source>
         <translatorcomment>использовать картинку как текстуру</translatorcomment>
         <translation>изображение</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="278"/>
-        <location filename="../gui/settings_dialog.ui" line="325"/>
-        <location filename="../gui/settings_dialog.ui" line="341"/>
+        <location filename="../gui/settings_dialog.ui" line="288"/>
+        <location filename="../gui/settings_dialog.ui" line="335"/>
+        <location filename="../gui/settings_dialog.ui" line="351"/>
         <source>...</source>
         <translatorcomment>...</translatorcomment>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="351"/>
+        <location filename="../gui/settings_dialog.ui" line="361"/>
         <source>Mode</source>
         <translatorcomment>режим отрисовки текстуры</translatorcomment>
         <translation>Режим</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="357"/>
+        <location filename="../gui/settings_dialog.ui" line="367"/>
         <source>stretch</source>
         <translatorcomment>растянуть текстуру</translatorcomment>
         <translation>растянуть</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="364"/>
+        <location filename="../gui/settings_dialog.ui" line="374"/>
         <source>tile</source>
         <translatorcomment>замостить текстуру</translatorcomment>
         <translation>замостить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="394"/>
+        <location filename="../gui/settings_dialog.ui" line="404"/>
         <source>Time format</source>
         <translatorcomment>строка формата времени</translatorcomment>
         <translation>Формат времени</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="400"/>
+        <location filename="../gui/settings_dialog.ui" line="410"/>
         <source>system</source>
         <translatorcomment>использовать системный формат</translatorcomment>
         <translation>системный</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="410"/>
+        <location filename="../gui/settings_dialog.ui" line="420"/>
         <source>custom</source>
         <translatorcomment>использовать пользовательский формат</translatorcomment>
         <translation>другой</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="481"/>
+        <location filename="../gui/settings_dialog.ui" line="491"/>
         <source>Apply</source>
         <translatorcomment>применить текущие настройки</translatorcomment>
         <translation>Применить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="491"/>
+        <location filename="../gui/settings_dialog.ui" line="501"/>
         <source>Autoupdate</source>
         <translatorcomment>использовать автообновление</translatorcomment>
         <translation>автообновление</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="497"/>
+        <location filename="../gui/settings_dialog.ui" line="507"/>
         <source>enable autoupdate</source>
         <translatorcomment>включить/выключить автообновление</translatorcomment>
         <translation>включить автообновление</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="507"/>
+        <location filename="../gui/settings_dialog.ui" line="517"/>
         <source>Check for updates every</source>
         <translatorcomment>как часто проверять наличие обновлений</translatorcomment>
         <translation>Проверять обновления каждые</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="517"/>
+        <location filename="../gui/settings_dialog.ui" line="527"/>
         <source>check for beta releases</source>
         <translatorcomment>разрешить обновление до бета версий</translatorcomment>
         <translation>обновляться до бета релизов</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="541"/>
+        <location filename="../gui/settings_dialog.ui" line="539"/>
+        <source>space between digits:</source>
+        <translation>расстояние между цифрами:</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="588"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
@@ -334,13 +339,13 @@
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="251"/>
+        <location filename="../gui/settings_dialog.cpp" line="255"/>
         <source>Open texture file</source>
         <translatorcomment>найти и выбрать файл текстуры</translatorcomment>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="253"/>
+        <location filename="../gui/settings_dialog.cpp" line="257"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translatorcomment>форматы картинок</translatorcomment>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>

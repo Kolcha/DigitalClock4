@@ -116,6 +116,10 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       break;
     }
 
+    case OPT_SPACING:
+      ui->space_value->setValue(value.toInt());
+      break;
+
     case  OPT_PLUGINS:
       for (int i = 0; i < ui->plugins_list->count(); i++) {
         PluginListWidget* item = static_cast<PluginListWidget*>(
@@ -317,6 +321,10 @@ void SettingsDialog::on_update_period_box_currentIndexChanged(int index) {
 
 void SettingsDialog::on_check_for_beta_toggled(bool checked) {
   emit OptionChanged(OPT_CHECK_FOR_BETA, checked);
+}
+
+void SettingsDialog::on_space_value_valueChanged(int arg1) {
+  emit OptionChanged(OPT_SPACING, arg1);
 }
 
 } // namespace digital_clock

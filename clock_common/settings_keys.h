@@ -33,6 +33,8 @@ enum Options {
   OPT_TEXTURE_DRAW_MODE,        /*!< texture draw mode, SkinDrawer::DrawMode, DM_STRETCH/DM_TILE */
   OPT_CUSTOMIZATION,            /*!< customization type, SkinDrawer::CustomizationType,
                                      CT_NONE/CT_COLOR/CT_TEXTURE */
+  OPT_SPACING,                  /*!< space between clock digits in pixels */
+
   // updater settings
   OPT_USE_AUTOUPDATE,           /*!< enable/disable autoupdate, bool, true/false */
   OPT_UPDATE_PERIOD,            /*!< how often to check for updates, qint64, days count */
