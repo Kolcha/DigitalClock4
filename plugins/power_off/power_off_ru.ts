@@ -26,5 +26,10 @@
         <source>Power off time:</source>
         <translation>Время выключения:</translation>
     </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="33"/>
+        <source>force power off</source>
+        <translation>принудительное выключение</translation>
+    </message>
 </context>
 </TS>

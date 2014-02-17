@@ -24,6 +24,7 @@ signals:
 
 private slots:
   void on_time_edit_timeChanged(const QTime& time);
+  void on_force_off_toggled(bool checked);
 
 private:
   Ui::SettingsDialog* ui;

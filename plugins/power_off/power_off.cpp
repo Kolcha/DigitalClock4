@@ -55,7 +55,9 @@ void PowerOff::TimeUpdateListener() {
   QString curr_time = QTime::currentTime().toString();
   if (off_time != curr_time || active_) return;
   active_ = true;
-  ExitWindowsEx(EWX_SHUTDOWN, 0);
+  UINT flags = EWX_SHUTDOWN;
+  settings_->GetOption(OPT_FORCE).toBool() ? flags |= EWX_FORCE : flags |= EWX_FORCEIFHUNG;
+  ExitWindowsEx(flags, 0);
 }
 
 } // namespace power_off
