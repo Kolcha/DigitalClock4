@@ -72,6 +72,7 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
       if (!msg_label_) break;  // init, not started yet
       switch ((ZoomMode)settings_->GetOption(OPT_ZOOM_MODE).toInt()) {
         case ZoomMode::ZM_NOT_ZOOM:
+          msg_label_->setAlignment(Qt::AlignCenter);
           break;
 
         case ZoomMode::ZM_AUTOSIZE:
@@ -79,10 +80,12 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
           avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 20;
           last_date_ = "-";
           Start();
+          msg_label_->setAlignment(Qt::AlignLeft);
           break;
 
         case ZoomMode::ZM_CLOCK_ZOOM:
           drawer_->SetZoom(last_zoom_);
+          msg_label_->setAlignment(Qt::AlignCenter);
           break;
       }
       break;
@@ -102,6 +105,7 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
       if (last_date_ == "-") break;
       switch ((ZoomMode)settings_->GetOption(OPT_ZOOM_MODE).toInt()) {
         case ZoomMode::ZM_NOT_ZOOM:
+          msg_label_->setAlignment(Qt::AlignCenter);
           break;
 
         case ZoomMode::ZM_AUTOSIZE:
@@ -109,11 +113,13 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
           QFontMetricsF fmf(font_);
           qreal tw = fmf.width(last_date_);
           drawer_->SetZoom(avail_width_ * last_zoom_ / tw);
+          msg_label_->setAlignment(Qt::AlignLeft);
           break;
         }
 
         case ZoomMode::ZM_CLOCK_ZOOM:
           drawer_->SetZoom(last_zoom_);
+          msg_label_->setAlignment(Qt::AlignCenter);
           break;
       }
       break;
