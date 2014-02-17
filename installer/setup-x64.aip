@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="10.7.1" version="10.8" Modules="professional" RootPath="." Language="en" Id="{1960A182-4B40-446B-997D-4D6CB7D42D0D}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="10.7.1" version="10.9.1" Modules="professional" RootPath="." Language="en" Id="{1960A182-4B40-446B-997D-4D6CB7D42D0D}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_SHORTCUTSREG" Value="0|0|0|0|"/>
@@ -13,7 +13,7 @@
     <ROW Property="ARPURLUPDATEINFO" Value="http://sourceforge.net/projects/digitalclock4/"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Nick Korotysh"/>
-    <ROW Property="ProductCode" Value="1033:{DC59316D-F5FF-4A39-9F64-0E7D87778E9F} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{08F3CE19-1F71-4B6F-8DDE-405337899CDD} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Digital Clock"/>
     <ROW Property="ProductVersion" Value="4.2.6" Type="32"/>
@@ -142,12 +142,12 @@
     <ROW File="Qt5Network.dll" Component_="Qt5Network.dll" FileName="QT5NET~1.DLL|Qt5Network.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Network.dll" SelfReg="false" NextFile="Qt5Svg.dll"/>
     <ROW File="Qt5Svg.dll" Component_="Qt5Svg.dll" FileName="Qt5Svg.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Svg.dll" SelfReg="false" NextFile="Qt5Widgets.dll"/>
     <ROW File="Qt5Widgets.dll" Component_="Qt5Widgets.dll" FileName="QT5WID~1.DLL|Qt5Widgets.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Widgets.dll" SelfReg="false" NextFile="qtbase_cs.qm"/>
-    <ROW File="alarm.dll" Component_="alarm.dll" FileName="alarm.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\plugins\alarm\release\alarm.dll" SelfReg="false" NextFile="any_zoom.dll"/>
+    <ROW File="alarm.dll" Component_="alarm.dll" FileName="alarm.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\alarm\release\alarm.dll" SelfReg="false" NextFile="any_zoom.dll"/>
     <ROW File="am.png" Component_="png" FileName="am.png" Attributes="0" SourcePath="..\..\data\skins\comic\am.png" SelfReg="false" NextFile="pm.png"/>
     <ROW File="am.svg" Component_="svg_1" FileName="am.svg" Attributes="0" SourcePath="..\..\data\skins\floral_digits\am.svg" SelfReg="false" NextFile="pm.svg"/>
     <ROW File="am.svg_1" Component_="svg_4" FileName="am.svg" Attributes="0" SourcePath="..\..\data\skins\pattern-numbers\am.svg" SelfReg="false" NextFile="pm.svg_1"/>
     <ROW File="am.svg_2" Component_="svg_5" FileName="am.svg" Attributes="0" SourcePath="..\..\data\skins\vintage_digits\am.svg" SelfReg="false" NextFile="pm.svg_2"/>
-    <ROW File="any_zoom.dll" Component_="any_zoom.dll" FileName="any_zoom.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\plugins\any_zoom\release\any_zoom.dll" SelfReg="false" NextFile="hour_signal.dll"/>
+    <ROW File="any_zoom.dll" Component_="any_zoom.dll" FileName="any_zoom.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\any_zoom\release\any_zoom.dll" SelfReg="false" NextFile="hour_signal.dll"/>
     <ROW File="biclock_item0.svg" Component_="biclock_item0.svg" FileName="BICLOC~1.SVG|biclock_item-0.svg" Attributes="0" SourcePath="..\..\data\skins\bin-clock\biclock_item-0.svg" SelfReg="false" NextFile="biclock_item1.svg"/>
     <ROW File="biclock_item1.svg" Component_="biclock_item0.svg" FileName="BICLOC~2.SVG|biclock_item-1.svg" Attributes="0" SourcePath="..\..\data\skins\bin-clock\biclock_item-1.svg" SelfReg="false" NextFile="biclock_item2.svg"/>
     <ROW File="biclock_item2.svg" Component_="biclock_item0.svg" FileName="BICLOC~3.SVG|biclock_item-2.svg" Attributes="0" SourcePath="..\..\data\skins\bin-clock\biclock_item-2.svg" SelfReg="false" NextFile="biclock_item3.svg"/>
@@ -160,10 +160,10 @@
     <ROW File="biclock_item9.svg" Component_="biclock_item0.svg" FileName="BICLO~10.SVG|biclock_item-9.svg" Attributes="0" SourcePath="..\..\data\skins\bin-clock\biclock_item-9.svg" SelfReg="false" NextFile="biclock_items1.svg"/>
     <ROW File="biclock_items1.svg" Component_="biclock_item0.svg" FileName="BICLO~11.SVG|biclock_item-s1.svg" Attributes="0" SourcePath="..\..\data\skins\bin-clock\biclock_item-s1.svg" SelfReg="false" NextFile="biclock_items2.svg"/>
     <ROW File="biclock_items2.svg" Component_="biclock_item0.svg" FileName="BICLO~12.SVG|biclock_item-s2.svg" Attributes="0" SourcePath="..\..\data\skins\bin-clock\biclock_item-s2.svg" SelfReg="false" NextFile="png"/>
-    <ROW File="clock_common.dll" Component_="clock_common.dll" FileName="CLOCK_~1.DLL|clock_common.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\clock_common\release\clock_common.dll" SelfReg="false" NextFile="digital_clock.exe"/>
+    <ROW File="clock_common.dll" Component_="clock_common.dll" FileName="CLOCK_~1.DLL|clock_common.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\clock_common\release\clock_common.dll" SelfReg="false" NextFile="digital_clock.exe"/>
     <ROW File="d3dcompiler_46.dll" Component_="d3dcompiler_46.dll" FileName="D3DCOM~1.DLL|d3dcompiler_46.dll" Attributes="0" SourcePath="..\..\Qt files x64\d3dcompiler_46.dll" SelfReg="false" NextFile="NY0.png"/>
-    <ROW File="date.dll" Component_="date.dll" FileName="date.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\plugins\date\release\date.dll" SelfReg="false" NextFile="power_off.dll"/>
-    <ROW File="digital_clock.exe" Component_="digital_clock.exe" FileName="DIGITA~1.EXE|digital_clock.exe" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\digital_clock\release\digital_clock.exe" SelfReg="false" NextFile="skin_draw.dll" DigSign="true"/>
+    <ROW File="date.dll" Component_="date.dll" FileName="date.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\date\release\date.dll" SelfReg="false" NextFile="power_off.dll"/>
+    <ROW File="digital_clock.exe" Component_="digital_clock.exe" FileName="DIGITA~1.EXE|digital_clock.exe" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\digital_clock\release\digital_clock.exe" SelfReg="false" NextFile="skin_draw.dll" DigSign="true"/>
     <ROW File="grassempty.png" Component_="grassempty.png" FileName="GRASS-~1.PNG|grass-empty.png" Attributes="0" SourcePath="..\..\data\skins\grass_numbers-hd\grass-empty.png" SelfReg="false" NextFile="grassnumber0.png"/>
     <ROW File="grassnumber0.png" Component_="grassempty.png" FileName="GRASS-~2.PNG|grass-number-0.png" Attributes="0" SourcePath="..\..\data\skins\grass_numbers-hd\grass-number-0.png" SelfReg="false" NextFile="grassnumber1.png"/>
     <ROW File="grassnumber1.png" Component_="grassempty.png" FileName="GRASS-~3.PNG|grass-number-1.png" Attributes="0" SourcePath="..\..\data\skins\grass_numbers-hd\grass-number-1.png" SelfReg="false" NextFile="grassnumber2.png"/>
@@ -176,7 +176,7 @@
     <ROW File="grassnumber8.png" Component_="grassempty.png" FileName="GRASS~10.PNG|grass-number-8.png" Attributes="0" SourcePath="..\..\data\skins\grass_numbers-hd\grass-number-8.png" SelfReg="false" NextFile="grassnumber9.png"/>
     <ROW File="grassnumber9.png" Component_="grassempty.png" FileName="GRASS~11.PNG|grass-number-9.png" Attributes="0" SourcePath="..\..\data\skins\grass_numbers-hd\grass-number-9.png" SelfReg="false" NextFile="grassseparator.png"/>
     <ROW File="grassseparator.png" Component_="grassempty.png" FileName="GRASS~12.PNG|grass-separator.png" Attributes="0" SourcePath="..\..\data\skins\grass_numbers-hd\grass-separator.png" SelfReg="false" NextFile="svg_20"/>
-    <ROW File="hour_signal.dll" Component_="hour_signal.dll" FileName="HOUR_S~1.DLL|hour_signal.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\plugins\hour_signal\release\hour_signal.dll" SelfReg="false" NextFile="schedule.dll"/>
+    <ROW File="hour_signal.dll" Component_="hour_signal.dll" FileName="HOUR_S~1.DLL|hour_signal.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\hour_signal\release\hour_signal.dll" SelfReg="false" NextFile="schedule.dll"/>
     <ROW File="icudt51.dll" Component_="icudt51.dll" FileName="icudt51.dll" Attributes="0" SourcePath="..\..\Qt files x64\icudt51.dll" SelfReg="false" NextFile="icuin51.dll"/>
     <ROW File="icuin51.dll" Component_="icuin51.dll" FileName="icuin51.dll" Attributes="0" SourcePath="..\..\Qt files x64\icuin51.dll" SelfReg="false" NextFile="icuuc51.dll"/>
     <ROW File="icuuc51.dll" Component_="icuuc51.dll" FileName="icuuc51.dll" Attributes="0" SourcePath="..\..\Qt files x64\icuuc51.dll" SelfReg="false" NextFile="libEGL.dll"/>
@@ -226,7 +226,7 @@
     <ROW File="png_7" Component_="png" FileName="7.png" Attributes="0" SourcePath="..\..\data\skins\comic\7.png" SelfReg="false" NextFile="png_8"/>
     <ROW File="png_8" Component_="png" FileName="8.png" Attributes="0" SourcePath="..\..\data\skins\comic\8.png" SelfReg="false" NextFile="png_9"/>
     <ROW File="png_9" Component_="png" FileName="9.png" Attributes="0" SourcePath="..\..\data\skins\comic\9.png" SelfReg="false" NextFile="am.png"/>
-    <ROW File="power_off.dll" Component_="power_off.dll" FileName="POWER_~1.DLL|power_off.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\plugins\power_off\release\power_off.dll" SelfReg="false" NextFile="quick_note.dll"/>
+    <ROW File="power_off.dll" Component_="power_off.dll" FileName="POWER_~1.DLL|power_off.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\power_off\release\power_off.dll" SelfReg="false" NextFile="quick_note.dll"/>
     <ROW File="qgif.dll" Component_="qgif.dll" FileName="qgif.dll" Attributes="0" SourcePath="..\..\Qt files x64\plugins\imageformats\qgif.dll" SelfReg="false" NextFile="qico.dll"/>
     <ROW File="qico.dll" Component_="qico.dll" FileName="qico.dll" Attributes="0" SourcePath="..\..\Qt files x64\plugins\imageformats\qico.dll" SelfReg="false" NextFile="qjpeg.dll"/>
     <ROW File="qjpeg.dll" Component_="qjpeg.dll" FileName="qjpeg.dll" Attributes="0" SourcePath="..\..\Qt files x64\plugins\imageformats\qjpeg.dll" SelfReg="false" NextFile="qmng.dll"/>
@@ -310,7 +310,7 @@
     <ROW File="qtxmlpatterns_ru.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~4.QM|qtxmlpatterns_ru.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qtxmlpatterns_ru.qm" SelfReg="false" NextFile="qtxmlpatterns_sk.qm"/>
     <ROW File="qtxmlpatterns_sk.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~5.QM|qtxmlpatterns_sk.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qtxmlpatterns_sk.qm" SelfReg="false" NextFile="qtxmlpatterns_uk.qm"/>
     <ROW File="qtxmlpatterns_uk.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~6.QM|qtxmlpatterns_uk.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qtxmlpatterns_uk.qm" SelfReg="false" NextFile="qt_ar.qm"/>
-    <ROW File="quick_note.dll" Component_="quick_note.dll" FileName="QUICK_~1.DLL|quick_note.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\plugins\quick_note\release\quick_note.dll" SelfReg="false" NextFile="win_on_top.dll"/>
+    <ROW File="quick_note.dll" Component_="quick_note.dll" FileName="QUICK_~1.DLL|quick_note.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\quick_note\release\quick_note.dll" SelfReg="false" NextFile="win_on_top.dll"/>
     <ROW File="qwbmp.dll" Component_="qwbmp.dll" FileName="qwbmp.dll" Attributes="0" SourcePath="..\..\Qt files x64\plugins\imageformats\qwbmp.dll" SelfReg="false" NextFile="wmfengine.dll"/>
     <ROW File="qwindows.dll" Component_="qwindows.dll" FileName="qwindows.dll" Attributes="0" SourcePath="..\..\Qt files x64\plugins\platforms\qwindows.dll" SelfReg="false" NextFile="qt.conf"/>
     <ROW File="s.png" Component_="png_2" FileName="s.png" Attributes="0" SourcePath="..\..\data\skins\flipclock-hd\s.png" SelfReg="false" NextFile="svg_10"/>
@@ -334,7 +334,7 @@
     <ROW File="s2.svg_4" Component_="svg_4" FileName="s2.svg" Attributes="0" SourcePath="..\..\data\skins\pattern-numbers\s2.svg" SelfReg="false" NextFile="qsn_cp_clock_digital_new_eight.svg"/>
     <ROW File="s2.svg_5" Component_="qsn_cp_clock_digital_new_eight.svg" FileName="s2.svg" Attributes="0" SourcePath="..\..\data\skins\qsn_cp_clock_digital_new\s2.svg" SelfReg="false" NextFile="svg_50"/>
     <ROW File="s2.svg_6" Component_="svg_5" FileName="s2.svg" Attributes="0" SourcePath="..\..\data\skins\vintage_digits\s2.svg" SelfReg="false" NextFile="skin.ini"/>
-    <ROW File="schedule.dll" Component_="schedule.dll" FileName="schedule.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\plugins\schedule\release\schedule.dll" SelfReg="false" NextFile="spectrum_clock.dll"/>
+    <ROW File="schedule.dll" Component_="schedule.dll" FileName="schedule.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\schedule\release\schedule.dll" SelfReg="false" NextFile="spectrum_clock.dll"/>
     <ROW File="skin.ini" Component_="biclock_item0.svg" FileName="skin.ini" Attributes="0" SourcePath="..\..\data\skins\bin-clock\skin.ini" SelfReg="false" NextFile="skin.ini_1"/>
     <ROW File="skin.ini_1" Component_="png" FileName="skin.ini" Attributes="0" SourcePath="..\..\data\skins\comic\skin.ini" SelfReg="false" NextFile="skin.ini_2"/>
     <ROW File="skin.ini_10" Component_="svg_4" FileName="skin.ini" Attributes="0" SourcePath="..\..\data\skins\pattern-numbers\skin.ini" SelfReg="false" NextFile="skin.ini_11"/>
@@ -349,8 +349,8 @@
     <ROW File="skin.ini_7" Component_="svg_2" FileName="skin.ini" Attributes="0" SourcePath="..\..\data\skins\hearts-empty\skin.ini" SelfReg="false" NextFile="skin.ini_8"/>
     <ROW File="skin.ini_8" Component_="svg_3" FileName="skin.ini" Attributes="0" SourcePath="..\..\data\skins\hearts-simple\skin.ini" SelfReg="false" NextFile="skin.ini_9"/>
     <ROW File="skin.ini_9" Component_="png_3" FileName="skin.ini" Attributes="0" SourcePath="..\..\data\skins\origami_style\skin.ini" SelfReg="false" NextFile="skin.ini_10"/>
-    <ROW File="skin_draw.dll" Component_="skin_draw.dll" FileName="SKIN_D~1.DLL|skin_draw.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\skin_draw\release\skin_draw.dll" SelfReg="false" NextFile="alarm.dll"/>
-    <ROW File="spectrum_clock.dll" Component_="spectrum_clock.dll" FileName="SPECTR~1.DLL|spectrum_clock.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\plugins\spectrum_clock\release\spectrum_clock.dll" SelfReg="false" NextFile="tray_color.dll"/>
+    <ROW File="skin_draw.dll" Component_="skin_draw.dll" FileName="SKIN_D~1.DLL|skin_draw.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\skin_draw\release\skin_draw.dll" SelfReg="false" NextFile="alarm.dll"/>
+    <ROW File="spectrum_clock.dll" Component_="spectrum_clock.dll" FileName="SPECTR~1.DLL|spectrum_clock.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\spectrum_clock\release\spectrum_clock.dll" SelfReg="false" NextFile="tray_color.dll"/>
     <ROW File="svg" Component_="svg" FileName="0.svg" Attributes="0" SourcePath="..\..\data\skins\doodled-empty\0.svg" SelfReg="false" NextFile="svg_1"/>
     <ROW File="svg_1" Component_="svg" FileName="1.svg" Attributes="0" SourcePath="..\..\data\skins\doodled-empty\1.svg" SelfReg="false" NextFile="svg_2"/>
     <ROW File="svg_10" Component_="svg_1" FileName="0.svg" Attributes="0" SourcePath="..\..\data\skins\floral_digits\0.svg" SelfReg="false" NextFile="svg_11"/>
@@ -616,9 +616,9 @@
     <ROW File="texture_203_128.jpg" Component_="texture_001_128.jpg" FileName="TEXT~203.JPG|texture_203_128.jpg" Attributes="0" SourcePath="..\..\data\textures\texture_203_128.jpg" SelfReg="false" NextFile="texture_204_128.jpg"/>
     <ROW File="texture_204_128.jpg" Component_="texture_001_128.jpg" FileName="TEXT~204.JPG|texture_204_128.jpg" Attributes="0" SourcePath="..\..\data\textures\texture_204_128.jpg" SelfReg="false" NextFile="texture_205_128.jpg"/>
     <ROW File="texture_205_128.jpg" Component_="texture_001_128.jpg" FileName="TEXT~205.JPG|texture_205_128.jpg" Attributes="0" SourcePath="..\..\data\textures\texture_205_128.jpg" SelfReg="false" NextFile="biclock_item0.svg"/>
-    <ROW File="tray_color.dll" Component_="tray_color.dll" FileName="TRAY_C~1.DLL|tray_color.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\plugins\tray_color\release\tray_color.dll" SelfReg="false" NextFile="var_translucency.dll"/>
-    <ROW File="var_translucency.dll" Component_="var_translucency.dll" FileName="VAR_TR~1.DLL|var_translucency.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\plugins\var_translucency\release\var_translucency.dll" SelfReg="false" NextFile="texture_001_128.jpg"/>
-    <ROW File="win_on_top.dll" Component_="win_on_top.dll" FileName="WIN_ON~1.DLL|win_on_top.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\plugins\win_on_top\release\win_on_top.dll" SelfReg="false"/>
+    <ROW File="tray_color.dll" Component_="tray_color.dll" FileName="TRAY_C~1.DLL|tray_color.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\tray_color\release\tray_color.dll" SelfReg="false" NextFile="var_translucency.dll"/>
+    <ROW File="var_translucency.dll" Component_="var_translucency.dll" FileName="VAR_TR~1.DLL|var_translucency.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\var_translucency\release\var_translucency.dll" SelfReg="false" NextFile="texture_001_128.jpg"/>
+    <ROW File="win_on_top.dll" Component_="win_on_top.dll" FileName="WIN_ON~1.DLL|win_on_top.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\win_on_top\release\win_on_top.dll" SelfReg="false"/>
     <ROW File="wmfengine.dll" Component_="wmfengine.dll" FileName="WMFENG~1.DLL|wmfengine.dll" Attributes="0" SourcePath="..\..\Qt files x64\plugins\mediaservice\wmfengine.dll" SelfReg="false" NextFile="qwindows.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AiRemoveRegComponent">
@@ -735,7 +735,7 @@
     <ROW Environment="Path" Name="=-*Path" Value="[~];[APPDIR]" Component_="AIShRegAnswer"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
-    <ROW Name="digital_clock.exe" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_0_MSVC2012_64bit-Release\digital_clock\release\digital_clock.exe" Index="0"/>
+    <ROW Name="digital_clock.exe" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\digital_clock\release\digital_clock.exe" Index="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
