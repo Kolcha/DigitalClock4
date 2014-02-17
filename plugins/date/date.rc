@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	1,1,1,14
+FILEVERSION	1,1,1,15
 PRODUCTVERSION	4,2,7,0
 FILEOS		0x4
 FILETYPE	0x2
@@ -11,7 +11,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Date"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "1.1.1.14"
+		VALUE "FileVersion", "1.1.1.15"
 		VALUE "InternalName", "date.dll"
 		VALUE "LegalCopyright", "Copyright (C) 2014 Nick Korotysh"
 		VALUE "OriginalFilename", "date.dll"
