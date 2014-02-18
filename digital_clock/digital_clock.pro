@@ -4,24 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += core gui widgets network
 CONFIG += c++11
-
-# boost configuration
-INCLUDEPATH += $$quote(C:/boost/include)
-contains(QMAKE_TARGET.arch, x86_64) {
-    LIBS += $$quote(-LC:/boost/lib64)
-} else {
-    LIBS += $$quote(-LC:/boost/lib)
-}
-LIBS += -lboost_system
-DEFINES += BOOST_ALL_NO_LIB
-
-windows {
-*-g++*:LIBS += -lws2_32
-*-msvc*:DEFINES += _WIN32_WINNT=0x600
-}
-
 
 TARGET = digital_clock
 TEMPLATE = app

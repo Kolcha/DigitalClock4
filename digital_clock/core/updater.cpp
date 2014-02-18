@@ -12,13 +12,18 @@ Updater::Updater(QObject* parent)
     force_update_(false), was_error_(false) {
   QSettings settings;
   last_update_ = settings.value(OPT_LAST_UPDATE, QDate(2013, 6, 18)).value<QDate>();
+  downloader_ = new HttpClient(this);
+  connect(downloader_, &HttpClient::ErrorMessage, [=] (const QString& msg) {
+    was_error_ = true;
+    emit ErrorMessage(msg);
+  });
+  connect(downloader_, &HttpClient::DataDownloaded,
+          [=] (const QByteArray& data) { data_.append(data); });
+  connect(downloader_, &HttpClient::finished, this, &Updater::ProcessData);
 }
 
 Updater::~Updater() {
-  if (downloader_ && downloader_->isRunning()) {
-    downloader_->wait();
-    delete downloader_;
-  }
+  if (downloader_->isRunning()) downloader_->cancel();
   QSettings settings;
   settings.setValue(OPT_LAST_UPDATE, last_update_);
 }
@@ -27,15 +32,7 @@ void Updater::CheckForUpdates(bool force) {
   force_update_ = force;
   was_error_ = false;
   data_.clear();
-  downloader_ = new HttpClient("digitalclock4.sourceforge.net", "/latest.json");
-  connect(downloader_.data(), &HttpClient::ErrorMessage, [=] (const QString& msg) {
-    was_error_ = true;
-    emit ErrorMessage(msg);
-  });
-  connect(downloader_.data(), &HttpClient::DataDownloaded,
-          [=] (const QByteArray& data) { data_.append(data); });
-  connect(downloader_.data(), &HttpClient::finished, this, &Updater::ProcessData);
-  downloader_->start();
+  downloader_->startRequest(QUrl("http://digitalclock4.sourceforge.net/latest.json"));
 }
 
 void Updater::SetCheckForBeta(bool check) {
@@ -61,7 +58,6 @@ void Updater::ProcessData() {
   QJsonDocument js_doc = QJsonDocument::fromJson(data_, &err);
   if (err.error != QJsonParseError::NoError) {
     emit ErrorMessage(err.errorString());
-    delete downloader_;
     return;
   }
   QJsonObject js_obj = js_doc.object().value("stable").toObject();
@@ -83,5 +79,4 @@ void Updater::ProcessData() {
   }
   last_update_ = QDate::currentDate();
   data_.clear();
-  delete downloader_;
 }
