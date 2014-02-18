@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+include(../../config.pri)
+
 QT       += core
 
 TARGET = spectrum_clock

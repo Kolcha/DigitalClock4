@@ -4,11 +4,13 @@
 #
 #-------------------------------------------------
 
+include(../../config.pri)
+
 QT       += core gui widgets
 
 TARGET = date
 TEMPLATE = lib
-CONFIG += plugin c++11
+CONFIG += plugin
 
 SOURCES += date.cpp \
     gui/settings_dialog.cpp

@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+include(../../config.pri)
+
 QT       += core gui widgets
 
 TARGET = power_off

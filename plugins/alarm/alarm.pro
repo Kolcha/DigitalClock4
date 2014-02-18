@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+include(../../config.pri)
+
 QT       += core gui widgets multimedia
 
 TARGET = alarm

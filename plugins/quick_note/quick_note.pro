@@ -4,11 +4,13 @@
 #
 #-------------------------------------------------
 
+include(../../config.pri)
+
 QT       += core gui widgets
 
 TARGET = quick_note
 TEMPLATE = lib
-CONFIG += plugin c++11
+CONFIG += plugin
 
 SOURCES += quick_note.cpp
 

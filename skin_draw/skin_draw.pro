@@ -4,8 +4,9 @@
 #
 #-------------------------------------------------
 
+include(../config.pri)
+
 QT       += core gui svg
-CONFIG += c++11
 
 TARGET = skin_draw
 TEMPLATE = lib
@@ -19,7 +20,7 @@ SOURCES += skin_drawer.cpp \
     text_skin.cpp
 
 HEADERS += skin_drawer.h\
-        skin_draw_global.h \
+    skin_draw_global.h \
     vector_skin.h \
     raster_skin.h \
     base_skin.h \

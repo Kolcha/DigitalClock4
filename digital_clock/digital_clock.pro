@@ -4,8 +4,9 @@
 #
 #-------------------------------------------------
 
+include(../config.pri)
+
 QT       += core gui widgets network
-CONFIG += c++11
 
 TARGET = digital_clock
 TEMPLATE = app
