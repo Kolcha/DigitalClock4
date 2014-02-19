@@ -4,8 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../config.pri)
-
 QT       += core gui svg
 
 TARGET = skin_draw
@@ -29,3 +27,5 @@ HEADERS += skin_drawer.h\
 
 win32:RC_FILE = skin_draw.rc
 unix:VERSION = 1.1.1
+
+include(../config.pri)

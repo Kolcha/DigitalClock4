@@ -4,8 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../config.pri)
-
 QT       += core gui widgets network
 
 TARGET = digital_clock
@@ -77,3 +75,5 @@ else:unix: LIBS += -L$$OUT_PWD/../clock_common/ -lclock_common
 
 INCLUDEPATH += $$PWD/../clock_common
 DEPENDPATH += $$PWD/../clock_common
+
+include(../config.pri)

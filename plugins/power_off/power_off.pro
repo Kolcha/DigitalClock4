@@ -4,9 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../../config.pri)
-include(../common.pri)
-
 QT       += core gui widgets
 
 TARGET = power_off
@@ -31,3 +28,5 @@ FORMS += \
     gui/settings_dialog.ui
 
 win32:LIBS += -lAdvapi32
+
+include(../common.pri)

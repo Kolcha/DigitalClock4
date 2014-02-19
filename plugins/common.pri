@@ -9,3 +9,5 @@ INCLUDEPATH += $$PWD/../clock_common
 DEPENDPATH += $$PWD/../clock_common
 
 *-g++*:QMAKE_CXXFLAGS += -Wno-switch
+
+include($$PWD/../config.pri)

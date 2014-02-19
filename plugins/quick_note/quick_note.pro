@@ -4,9 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../../config.pri)
-include(../common.pri)
-
 QT       += core gui widgets
 
 TARGET = quick_note
@@ -31,3 +28,5 @@ else:unix: LIBS += -L$$OUT_PWD/../../skin_draw/ -lskin_draw
 
 INCLUDEPATH += $$PWD/../../skin_draw
 DEPENDPATH += $$PWD/../../skin_draw
+
+include(../common.pri)

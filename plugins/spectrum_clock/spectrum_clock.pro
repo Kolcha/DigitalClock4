@@ -4,9 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../../config.pri)
-include(../common.pri)
-
 QT       += core
 
 TARGET = spectrum_clock
@@ -23,3 +20,5 @@ win32:RC_FILE = spectrum_clock.rc
 
 RESOURCES += \
     spectrum_clock.qrc
+
+include(../common.pri)

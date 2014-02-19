@@ -4,9 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../../config.pri)
-include(../common.pri)
-
 QT       += core gui widgets multimedia
 
 TARGET = alarm
@@ -29,3 +26,5 @@ RESOURCES += \
 
 TRANSLATIONS += \
     alarm_ru.ts
+
+include(../common.pri)

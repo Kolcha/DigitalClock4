@@ -4,9 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../../config.pri)
-include(../common.pri)
-
 QT       += core
 
 TARGET = win_on_top
@@ -23,3 +20,5 @@ RESOURCES += \
     win_on_top.qrc
 
 win32:RC_FILE = win_on_top.rc
+
+include(../common.pri)

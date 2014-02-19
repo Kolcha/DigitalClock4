@@ -4,9 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../../config.pri)
-include(../common.pri)
-
 QT       += core
 
 TARGET = var_translucency
@@ -23,3 +20,5 @@ win32:RC_FILE = var_translucency.rc
 
 RESOURCES += \
     var_translucency.qrc
+
+include(../common.pri)

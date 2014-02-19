@@ -4,9 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../../config.pri)
-include(../common.pri)
-
 QT       += core gui widgets
 
 TARGET = any_zoom
@@ -26,3 +23,5 @@ RESOURCES += \
 
 TRANSLATIONS += \
     any_zoom_ru.ts
+
+include(../common.pri)

@@ -4,9 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../../config.pri)
-include(../common.pri)
-
 QT       += core gui widgets
 
 TARGET = schedule
@@ -35,3 +32,5 @@ FORMS += \
 
 TRANSLATIONS += \
     schedule_ru.ts
+
+include(../common.pri)

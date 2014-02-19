@@ -4,9 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../../config.pri)
-include(../common.pri)
-
 QT       += core multimedia
 
 TARGET = hour_signal
@@ -23,3 +20,5 @@ RESOURCES += \
 
 TRANSLATIONS += \
     hour_signal_ru.ts
+
+include(../common.pri)

@@ -4,8 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../config.pri)
-
 QT       += core gui widgets
 
 TARGET = clock_common
@@ -29,3 +27,5 @@ HEADERS += \
 
 win32:RC_FILE = clock_common.rc
 unix:VERSION = 1.0.1
+
+include(../config.pri)

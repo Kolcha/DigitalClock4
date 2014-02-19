@@ -4,9 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../../config.pri)
-include(../common.pri)
-
 QT       += core gui widgets
 
 TARGET = date
@@ -36,3 +33,5 @@ DEPENDPATH += $$PWD/../../skin_draw
 
 FORMS += \
     gui/settings_dialog.ui
+
+include(../common.pri)

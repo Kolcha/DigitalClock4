@@ -4,9 +4,6 @@
 #
 #-------------------------------------------------
 
-include(../../config.pri)
-include(../common.pri)
-
 QT       += core gui widgets
 
 TARGET = tray_color
@@ -24,3 +21,5 @@ win32:RC_FILE = tray_color.rc
 
 RESOURCES += \
     tray_color.qrc
+
+include(../common.pri)
