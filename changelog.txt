@@ -1,3 +1,22 @@
+Whats new in 4.2.7:
+-------------------
+Core:
+ - build with Qt 5.2.1
+ - reimplemented updater without boost::asio
+ - code optimization
+
+Features:
+ - configurable space between digits
+
+Plugins:
+ - power off: added force power off option
+ - configurable date plugin
+
+SDK:
+ - improved plugin example
+ - updated documentation
+
+
 Whats new in 4.2.6:
 -------------------
 Core:
