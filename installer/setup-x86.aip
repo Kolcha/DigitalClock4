@@ -13,10 +13,10 @@
     <ROW Property="ARPURLUPDATEINFO" Value="http://sourceforge.net/projects/digitalclock4/"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Nick Korotysh"/>
-    <ROW Property="ProductCode" Value="1033:{F0E400E6-5730-4CDE-9F57-B0FD06C1C04E} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{E0844708-C750-4F30-9B0D-5156926CA5CF} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Digital Clock"/>
-    <ROW Property="ProductVersion" Value="4.2.6" Type="32"/>
+    <ROW Property="ProductVersion" Value="4.2.7" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{19300332-9971-4ECE-B0AA-2D4ABF2DFC7D}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
