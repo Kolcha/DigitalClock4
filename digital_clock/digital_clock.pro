@@ -25,7 +25,9 @@ SOURCES += main.cpp\
     gui/plugin_list_widget.cpp \
     gui/plugin_info_dialog.cpp \
     core/updater.cpp \
-    core/http_client.cpp
+    core/http_client.cpp \
+    gui/clock_widget.cpp \
+    gui/clock_display.cpp
 
 HEADERS  += \
     core/skin_manager.h \
@@ -44,7 +46,9 @@ HEADERS  += \
     gui/plugin_list_widget.h \
     gui/plugin_info_dialog.h \
     core/updater.h \
-    core/http_client.h
+    core/http_client.h \
+    gui/clock_widget.h \
+    gui/clock_display.h
 
 FORMS    += \
     gui/settings_dialog.ui \
