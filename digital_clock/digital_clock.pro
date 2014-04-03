@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     core/updater.cpp \
     core/http_client.cpp \
     gui/clock_widget.cpp \
-    gui/clock_display.cpp
+    gui/clock_display.cpp \
+    gui/n_tray_control.cpp
 
 HEADERS  += \
     core/skin_manager.h \
@@ -48,7 +49,8 @@ HEADERS  += \
     core/updater.h \
     core/http_client.h \
     gui/clock_widget.h \
-    gui/clock_display.h
+    gui/clock_display.h \
+    gui/n_tray_control.h
 
 FORMS    += \
     gui/settings_dialog.ui \
