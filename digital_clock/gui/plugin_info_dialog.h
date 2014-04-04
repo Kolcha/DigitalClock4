@@ -5,6 +5,7 @@
 #include "../core/plugin_info.h"
 
 namespace digital_clock {
+namespace gui {
 
 namespace Ui {
 class PluginInfoDialog;
@@ -24,6 +25,7 @@ private:
   Ui::PluginInfoDialog* ui;
 };
 
+} // namespace gui
 } // namespace digital_clock
 
 #endif // PLUGIN_INFO_DIALOG_H

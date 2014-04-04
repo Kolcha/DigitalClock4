@@ -2,6 +2,7 @@
 #include "ui_plugin_info_dialog.h"
 
 namespace digital_clock {
+namespace gui {
 
 PluginInfoDialog::PluginInfoDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::PluginInfoDialog) {
@@ -24,4 +25,5 @@ void PluginInfoDialog::SetInfo(const TPluginInfo& info) {
   setMaximumSize(sizeHint());
 }
 
+} // namespace gui
 } // namespace digital_clock
