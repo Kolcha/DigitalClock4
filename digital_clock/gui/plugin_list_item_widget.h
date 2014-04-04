@@ -1,21 +1,22 @@
-#ifndef PLUGIN_LIST_WIDGET_H
-#define PLUGIN_LIST_WIDGET_H
+#ifndef DIGITAL_CLOCK_GUI_PLUGIN_LIST_ITEM_WIDGET_H
+#define DIGITAL_CLOCK_GUI_PLUGIN_LIST_ITEM_WIDGET_H
 
 #include <QWidget>
 #include "../core/plugin_info.h"
 
 namespace digital_clock {
+namespace gui {
 
 namespace Ui {
-class PluginListWidget;
+class PluginListItemWidget;
 }
 
-class PluginListWidget : public QWidget {
+class PluginListItemWidget : public QWidget {
   Q_OBJECT
 
 public:
-  explicit PluginListWidget(QWidget* parent = 0);
-  ~PluginListWidget();
+  explicit PluginListItemWidget(QWidget* parent = 0);
+  ~PluginListItemWidget();
 
   QString GetName() const;
 
@@ -36,10 +37,11 @@ private slots:
   void on_info_btn_clicked();
 
 private:
-  Ui::PluginListWidget* ui;
+  Ui::PluginListItemWidget* ui;
   TPluginInfo info_;
 };
 
+} // namespace gui
 } // namespace digital_clock
 
-#endif // PLUGIN_LIST_WIDGET_H
+#endif // DIGITAL_CLOCK_GUI_PLUGIN_LIST_ITEM_WIDGET_H
