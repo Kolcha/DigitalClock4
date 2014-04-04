@@ -12,9 +12,7 @@ TEMPLATE = app
 SOURCES += main.cpp\
     core/skin_manager.cpp \
     core/clock_settings.cpp \
-    gui/digital_clock.cpp \
     gui/main_window.cpp \
-    gui/tray_control.cpp \
     gui/settings_dialog.cpp \
     gui/about_dialog.cpp \
     core/plugin_manager.cpp \
@@ -33,9 +31,7 @@ SOURCES += main.cpp\
 HEADERS  += \
     core/skin_manager.h \
     core/clock_settings.h \
-    gui/digital_clock.h \
     gui/main_window.h \
-    gui/tray_control.h \
     gui/settings_dialog.h \
     gui/about_dialog.h \
     core/plugin_manager.h \
