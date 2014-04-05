@@ -1,6 +1,5 @@
 #include <QMenu>
-#include <QApplication>
-#include "n_tray_control.h"
+#include "tray_control.h"
 
 namespace digital_clock {
 namespace gui {
@@ -8,14 +7,15 @@ namespace gui {
 TrayControl::TrayControl(QWidget* parent) : QObject(parent) {
   QMenu* tray_menu = new QMenu(parent);
   tray_menu->addAction(QIcon(":/clock/images/settings.svg"), tr("&Settings"),
-                        this, SIGNAL(ShowSettingsDlg()));
+                       this, SIGNAL(ShowSettingsDlg()));
   tray_menu->addAction(QIcon(":/clock/images/about.svg"), tr("&About"),
-                        this, SIGNAL(ShowAboutDlg()));
+                       this, SIGNAL(ShowAboutDlg()));
   tray_menu->addSeparator();
   tray_menu->addAction(QIcon(":/clock/images/update.svg"), tr("&Update"),
-                        this, SIGNAL(CheckForUpdates()));
+                       this, SIGNAL(CheckForUpdates()));
   tray_menu->addSeparator();
-  tray_menu->addAction(QIcon(":/clock/images/quit.svg"), tr("&Quit"), qApp, SLOT(quit()));
+  tray_menu->addAction(QIcon(":/clock/images/quit.svg"), tr("&Quit"),
+                       this, SIGNAL(AppExit()));
 
   tray_icon_ = new QSystemTrayIcon(this);
   tray_icon_->setContextMenu(tray_menu);

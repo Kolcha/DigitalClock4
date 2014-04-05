@@ -21,8 +21,7 @@ static QString compilerString() {
     return QLatin1String("<unknown compiler>");
 }
 
-AboutDialog::AboutDialog(QWidget* parent)
-  : CenteredDialog(parent), ui(new Ui::AboutDialog) {
+AboutDialog::AboutDialog(QWidget* parent) : CenteredDialog(parent), ui(new Ui::AboutDialog) {
   ui->setupUi(this);
   setWindowIcon(QIcon(":/clock/images/about.svg"));
 

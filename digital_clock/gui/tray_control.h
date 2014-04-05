@@ -17,8 +17,7 @@ signals:
   void ShowSettingsDlg();
   void ShowAboutDlg();
   void CheckForUpdates();
-
-public slots:
+  void AppExit();
 
 private slots:
   void TrayEventHandler(QSystemTrayIcon::ActivationReason reason);
