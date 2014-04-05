@@ -13,6 +13,7 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent) {
   main_layout->addWidget(display_);
   setLayout(main_layout);
   drawer_ = new ::skin_draw::SkinDrawer(this);
+  connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
 }
 
 void ClockWidget::ApplySkin(skin_draw::ISkin::SkinPtr skin) {

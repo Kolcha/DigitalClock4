@@ -4,6 +4,7 @@
 #include <QSharedPointer>
 #include <QMenu>
 #include <QDesktopServices>
+#include "core/skin_manager.h"
 #include "core/updater.h"
 #include "gui/clock_widget.h"
 #include "gui/tray_control.h"
@@ -43,6 +44,14 @@ int main(int argc, char *argv[]) {
   }
 
   // create core components
+  // skin manager
+  QSharedPointer<digital_clock::core::SkinManager> skin_manager(
+        new digital_clock::core::SkinManager());
+  skin_manager->AddSkinDir(QDir(":/clock/default_skin"));
+  skin_manager->AddSkinDir(QDir(app.applicationDirPath() + "/skins"));
+  skin_manager->ListSkins();
+
+  // updater
   QSharedPointer<digital_clock::core::Updater> updater(
         new digital_clock::core::Updater());
 
@@ -53,6 +62,11 @@ int main(int argc, char *argv[]) {
   clock_widget->setWindowFlags(Qt::FramelessWindowHint | Qt::Tool);
   clock_widget->setAttribute(Qt::WA_TranslucentBackground);
   clock_widget->setContextMenuPolicy(Qt::CustomContextMenu);
+
+  QObject::connect(skin_manager.data(), &digital_clock::core::SkinManager::SkinLoaded,
+                   clock_widget.data(), &digital_clock::gui::ClockWidget::ApplySkin);
+  QObject::connect(clock_widget.data(), &digital_clock::gui::ClockWidget::SeparatorsChanged,
+                   skin_manager.data(), &digital_clock::core::SkinManager::SetSeparators);
 
   // tray icon
   digital_clock::gui::TrayControl* tray_control(

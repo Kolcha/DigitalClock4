@@ -1,9 +1,12 @@
-#ifndef CLOCK_BASE_SKIN_H
-#define CLOCK_BASE_SKIN_H
+#ifndef DIGITAL_CLOCK_CORE_CLOCK_BASE_SKIN_H
+#define DIGITAL_CLOCK_CORE_CLOCK_BASE_SKIN_H
 
 #include <QMap>
 #include <QString>
 #include <QSharedPointer>
+
+namespace digital_clock {
+namespace core {
 
 class ClockBaseSkin {
 public:
@@ -30,4 +33,7 @@ protected:
 
 typedef QSharedPointer<ClockBaseSkin> ClockSkinPtr;
 
-#endif // CLOCK_BASE_SKIN_H
+} // namespace core
+} // namespace digital_clock
+
+#endif // DIGITAL_CLOCK_CORE_CLOCK_BASE_SKIN_H

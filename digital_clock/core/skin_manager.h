@@ -1,5 +1,5 @@
-#ifndef SKIN_MANAGER_H
-#define SKIN_MANAGER_H
+#ifndef DIGITAL_CLOCK_CORE_SKIN_MANAGER_H
+#define DIGITAL_CLOCK_CORE_SKIN_MANAGER_H
 
 #include <QDir>
 #include <QString>
@@ -7,8 +7,12 @@
 #include "iskin.h"
 #include "../skin/clock_base_skin.h"
 
+namespace digital_clock {
+namespace core {
+
 class SkinManager : public QObject {
   Q_OBJECT
+
 public:
   explicit SkinManager(QObject* parent = 0);
 
@@ -33,4 +37,7 @@ private:
   ClockSkinPtr current_skin_;
 };
 
-#endif // SKIN_MANAGER_H
+} // namespace core
+} // namespace digital_clock
+
+#endif // DIGITAL_CLOCK_CORE_SKIN_MANAGER_H

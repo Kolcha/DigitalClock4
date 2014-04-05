@@ -1,6 +1,9 @@
 #include <QSettings>
 #include "clock_vector_skin.h"
 
+namespace digital_clock {
+namespace core {
+
 ClockVectorSkin::ClockVectorSkin(const QDir& skin_root) {
   QSettings config(skin_root.filePath("skin.ini"), QSettings::IniFormat);
   // load info
@@ -29,3 +32,6 @@ void ClockVectorSkin::ProcSeparators() {
     }
   }
 }
+
+} // namespace core
+} // namespace digital_clock

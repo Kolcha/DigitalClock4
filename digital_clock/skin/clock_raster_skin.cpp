@@ -1,6 +1,9 @@
 #include <QSettings>
 #include "clock_raster_skin.h"
 
+namespace digital_clock {
+namespace core {
+
 ClockRasterSkin::ClockRasterSkin(const QDir& skin_root) {
   QSettings config(skin_root.filePath("skin.ini"), QSettings::IniFormat);
   // load info
@@ -30,3 +33,6 @@ void ClockRasterSkin::ProcSeparators() {
     }
   }
 }
+
+} // namespace core
+} // namespace digital_clock

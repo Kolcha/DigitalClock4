@@ -22,6 +22,7 @@ public:
 
 signals:
   void PositionChanged(const QPoint& new_pos);
+  void SeparatorsChanged(const QString& seps);
 
 public slots:
   void ApplySkin(::skin_draw::ISkin::SkinPtr skin);
