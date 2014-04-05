@@ -1,11 +1,15 @@
-#ifndef UPDATER_H
-#define UPDATER_H
+#ifndef DIGITAL_CLOCK_CORE_UPDATER_H
+#define DIGITAL_CLOCK_CORE_UPDATER_H
 
 #include <QDate>
 #include "http_client.h"
 
+namespace digital_clock {
+namespace core {
+
 class Updater : public QObject {
   Q_OBJECT
+
 public:
   explicit Updater(QObject* parent = 0);
   ~Updater();
@@ -36,4 +40,7 @@ private:
   bool was_error_;
 };
 
-#endif // UPDATER_H
+} // namespace core
+} // namespace digital_clock
+
+#endif // DIGITAL_CLOCK_CORE_UPDATER_H

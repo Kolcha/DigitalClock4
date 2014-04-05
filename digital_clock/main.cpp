@@ -3,6 +3,8 @@
 #include <QLibraryInfo>
 #include <QSharedPointer>
 #include <QMenu>
+#include <QDesktopServices>
+#include "core/updater.h"
 #include "gui/clock_widget.h"
 #include "gui/tray_control.h"
 #include "gui/settings_dialog.h"
@@ -40,6 +42,10 @@ int main(int argc, char *argv[]) {
     }
   }
 
+  // create core components
+  QSharedPointer<digital_clock::core::Updater> updater(
+        new digital_clock::core::Updater());
+
   // create gui components
   // main clock widget
   QSharedPointer<digital_clock::gui::ClockWidget> clock_widget(
@@ -67,9 +73,39 @@ int main(int argc, char *argv[]) {
     AboutDialog* dialog = new AboutDialog(clock_widget.data());
     dialog->show();
   });
-  QObject::connect(tray_control, &digital_clock::gui::TrayControl::CheckForUpdates, [] () {});
+  QObject::connect(tray_control, &digital_clock::gui::TrayControl::CheckForUpdates,
+                   [=] () { updater->CheckForUpdates(true); });
   QObject::connect(
         tray_control, &digital_clock::gui::TrayControl::AppExit, &app, &QApplication::quit);
+
+  // updater messages
+  connect(updater.data(), &digital_clock::core::Updater::ErrorMessage, [=] (const QString& msg) {
+    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_control->GetTrayIcon()->showMessage(
+          updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
+          updater->tr("Update error. %1").arg(msg),
+          QSystemTrayIcon::Critical);
+  });
+
+  connect(updater.data(), &digital_clock::core::Updater::UpToDate, [=] () {
+    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_control->GetTrayIcon()->showMessage(
+          updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
+          updater->tr("You already have latest version (%1).").arg(
+            QCoreApplication::applicationVersion()),
+          QSystemTrayIcon::Information);
+  });
+
+  connect(updater, &digital_clock::core::Updater::NewVersion,
+          [=] (const QString& version, const QString& link) {
+    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_control->GetTrayIcon()->showMessage(
+          updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
+          updater->tr("Update available (%1). Click this message to download.").arg(version),
+          QSystemTrayIcon::Warning);
+    QObject::connect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
+                     [=] () { QDesktopServices::openUrl(link); });
+  });
 
 
   clock_widget->show();

@@ -1,11 +1,15 @@
-#ifndef HTTP_CLIENT_H
-#define HTTP_CLIENT_H
+#ifndef DIGITAL_CLOCK_CORE_HTTP_CLIENT_H
+#define DIGITAL_CLOCK_CORE_HTTP_CLIENT_H
 
 #include <QUrl>
 #include <QNetworkAccessManager>
 
+namespace digital_clock {
+namespace core {
+
 class HttpClient : public QObject {
   Q_OBJECT
+
 public:
   explicit HttpClient(QObject* parent = 0);
   ~HttpClient();
@@ -30,4 +34,7 @@ private:
   bool is_running_;
 };
 
-#endif // HTTP_CLIENT_H
+} // namespace core
+} // namespace digital_clock
+
+#endif // DIGITAL_CLOCK_CORE_HTTP_CLIENT_H

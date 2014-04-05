@@ -2,8 +2,10 @@
 #include <QNetworkReply>
 #include "http_client.h"
 
-HttpClient::HttpClient(QObject* parent)
-  : QObject(parent), is_running_(false) {
+namespace digital_clock {
+namespace core {
+
+HttpClient::HttpClient(QObject* parent) : QObject(parent), is_running_(false) {
 }
 
 HttpClient::~HttpClient() {
@@ -53,3 +55,6 @@ void HttpClient::httpReadyRead() {
   // this slot gets called every time the QNetworkReply has new data.
   emit DataDownloaded(reply_->readAll());
 }
+
+} // namespace core
+} // namespace digital_clock
