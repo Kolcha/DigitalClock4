@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
   clock_widget->setContextMenuPolicy(Qt::CustomContextMenu);
 
   // tray icon
-  QSharedPointer<digital_clock::gui::TrayControl> tray_control(
+  digital_clock::gui::TrayControl* tray_control(
         new digital_clock::gui::TrayControl(clock_widget.data()));
   // clock tray/context menu
   QObject::connect(
@@ -57,19 +57,19 @@ int main(int argc, char *argv[]) {
         [=] (const QPoint& p) { tray_control->GetTrayIcon()->contextMenu()->exec(p); }
   );
   // menu actions
-  QObject::connect(tray_control.data(), &digital_clock::gui::TrayControl::ShowSettingsDlg, [=] () {
+  QObject::connect(tray_control, &digital_clock::gui::TrayControl::ShowSettingsDlg, [=] () {
     using digital_clock::gui::SettingsDialog;
     SettingsDialog* dialog = new SettingsDialog(clock_widget.data());
     dialog->show();
   });
-  QObject::connect(tray_control.data(), &digital_clock::gui::TrayControl::ShowAboutDlg, [=] () {
+  QObject::connect(tray_control, &digital_clock::gui::TrayControl::ShowAboutDlg, [=] () {
     using digital_clock::gui::AboutDialog;
     AboutDialog* dialog = new AboutDialog(clock_widget.data());
     dialog->show();
   });
-  QObject::connect(tray_control.data(), &digital_clock::gui::TrayControl::CheckForUpdates, [] () {});
+  QObject::connect(tray_control, &digital_clock::gui::TrayControl::CheckForUpdates, [] () {});
   QObject::connect(
-        tray_control.data(), &digital_clock::gui::TrayControl::AppExit, &app, &QApplication::quit);
+        tray_control, &digital_clock::gui::TrayControl::AppExit, &app, &QApplication::quit);
 
 
   clock_widget->show();
