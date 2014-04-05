@@ -1,9 +1,10 @@
-#ifndef ABOUT_DIALOG_H
-#define ABOUT_DIALOG_H
+#ifndef DIGITAL_CLOCK_GUI_ABOUT_DIALOG_H
+#define DIGITAL_CLOCK_GUI_ABOUT_DIALOG_H
 
 #include "centered_dialog.h"
 
 namespace digital_clock {
+namespace gui {
 
 namespace Ui {
 class AboutDialog;
@@ -20,6 +21,7 @@ private:
   Ui::AboutDialog *ui;
 };
 
+} // namespace gui
 } // namespace digital_clock
 
-#endif // ABOUT_DIALOG_H
+#endif // DIGITAL_CLOCK_GUI_ABOUT_DIALOG_H

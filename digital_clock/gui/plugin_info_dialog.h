@@ -1,5 +1,5 @@
-#ifndef PLUGIN_INFO_DIALOG_H
-#define PLUGIN_INFO_DIALOG_H
+#ifndef DIGITAL_CLOCK_GUI_PLUGIN_INFO_DIALOG_H
+#define DIGITAL_CLOCK_GUI_PLUGIN_INFO_DIALOG_H
 
 #include "centered_dialog.h"
 #include "../core/plugin_info.h"
@@ -28,4 +28,4 @@ private:
 } // namespace gui
 } // namespace digital_clock
 
-#endif // PLUGIN_INFO_DIALOG_H
+#endif // DIGITAL_CLOCK_GUI_PLUGIN_INFO_DIALOG_H

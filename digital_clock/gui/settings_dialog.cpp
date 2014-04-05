@@ -4,7 +4,7 @@
 #include <QFileInfo>
 #include <QSettings>
 #include "skin_drawer.h"
-#include "plugin_list_widget.h"
+#include "plugin_list_item_widget.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
@@ -15,6 +15,7 @@
 using skin_draw::SkinDrawer;
 
 namespace digital_clock {
+namespace gui {
 
 SettingsDialog::SettingsDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDialog) {
@@ -122,7 +123,7 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
 
     case  OPT_PLUGINS:
       for (int i = 0; i < ui->plugins_list->count(); i++) {
-        PluginListWidget* item = static_cast<PluginListWidget*>(
+        PluginListItemWidget* item = static_cast<PluginListItemWidget*>(
               ui->plugins_list->itemWidget(ui->plugins_list->item(i)));
         for (auto& plugin : value.toStringList()) {
           if (plugin == item->GetName()) {
@@ -327,4 +328,5 @@ void SettingsDialog::on_space_value_valueChanged(int arg1) {
   emit OptionChanged(OPT_SPACING, arg1);
 }
 
+} // namespace gui
 } // namespace digital_clock

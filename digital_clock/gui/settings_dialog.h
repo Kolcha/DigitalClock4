@@ -1,5 +1,5 @@
-#ifndef SETTINGS_DIALOG_H
-#define SETTINGS_DIALOG_H
+#ifndef DIGITAL_CLOCK_GUI_SETTINGS_DIALOG_H
+#define DIGITAL_CLOCK_GUI_SETTINGS_DIALOG_H
 
 #include <QListWidgetItem>
 #include "settings_keys.h"
@@ -8,6 +8,7 @@
 #include "../skin/clock_base_skin.h"
 
 namespace digital_clock {
+namespace gui {
 
 namespace Ui {
 class SettingsDialog;
@@ -71,6 +72,7 @@ private:
   QMap<qint64, QString> update_periods_;
 };
 
+} // namespace gui
 } // namespace digital_clock
 
-#endif // SETTINGS_DIALOG_H
+#endif // DIGITAL_CLOCK_GUI_SETTINGS_DIALOG_H
