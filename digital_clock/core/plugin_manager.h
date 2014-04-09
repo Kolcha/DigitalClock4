@@ -9,7 +9,6 @@
 #include "plugin_info.h"
 
 class QPluginLoader;
-class ClockSettings;
 
 namespace digital_clock {
 namespace gui {
@@ -17,6 +16,8 @@ class ClockWidget;
 }
 
 namespace core {
+
+class ClockSettings;
 
 /*! Data to init plugins. */
 struct TPluginData {

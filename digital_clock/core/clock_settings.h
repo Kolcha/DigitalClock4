@@ -1,11 +1,15 @@
-#ifndef CLOCK_SETTINGS_H
-#define CLOCK_SETTINGS_H
+#ifndef DIGITAL_CLOCK_CORE_CLOCK_SETTINGS_H
+#define DIGITAL_CLOCK_CORE_CLOCK_SETTINGS_H
 
 #include <QSettings>
 #include "settings_keys.h"
 
+namespace digital_clock {
+namespace core {
+
 class ClockSettings : public QObject {
   Q_OBJECT
+
 public:
   explicit ClockSettings(QObject* parent = 0);
   const QVariant& GetOption(Options opt);
@@ -28,4 +32,7 @@ private:
   bool track_change_;
 };
 
-#endif // CLOCK_SETTINGS_H
+} // namespace core
+} // namespace digital_clock
+
+#endif // DIGITAL_CLOCK_CORE_CLOCK_SETTINGS_H

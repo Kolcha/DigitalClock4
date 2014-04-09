@@ -1,6 +1,7 @@
 #include <QFile>
 #include <QJsonObject>
 #include <QPluginLoader>
+#include "clock_settings.h"
 #include "../gui/clock_display.h"
 #include "../gui/clock_widget.h"
 #include "plugin_manager.h"

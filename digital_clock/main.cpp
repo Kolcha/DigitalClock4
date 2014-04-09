@@ -4,6 +4,7 @@
 #include <QSharedPointer>
 #include <QMenu>
 #include <QDesktopServices>
+#include "core/clock_settings.h"
 #include "core/skin_manager.h"
 #include "core/plugin_manager.h"
 #include "core/updater.h"
@@ -45,6 +46,10 @@ int main(int argc, char *argv[]) {
   }
 
   // create core components
+  // settings manager
+  QSharedPointer<digital_clock::core::ClockSettings> settings(
+        new digital_clock::core::ClockSettings());
+
   // skin manager
   QSharedPointer<digital_clock::core::SkinManager> skin_manager(
         new digital_clock::core::SkinManager());
@@ -62,7 +67,7 @@ int main(int argc, char *argv[]) {
   plugin_manager->AddPluginsDir(QDir(app.applicationDirPath() + "/plugins"));
   plugin_manager->ListAvailable();
   digital_clock::core::TPluginData plugin_data;
-//  plugin_data.settings = settings_;
+  plugin_data.settings = settings.data();
 
   // create gui components
   // main clock widget
@@ -134,9 +139,11 @@ int main(int argc, char *argv[]) {
                      [=] () { QDesktopServices::openUrl(link); });
   });
 
-
-  plugin_manager->SetInitData(plugin_data);
+  settings->Load();
   clock_widget->show();
+  clock_widget->setWindowOpacity(settings->GetOption(OPT_OPACITY).toReal());
+  plugin_manager->SetInitData(plugin_data);
+  plugin_manager->LoadPlugins(settings->GetOption(OPT_PLUGINS).toStringList());
 
   return app.exec();
 }
