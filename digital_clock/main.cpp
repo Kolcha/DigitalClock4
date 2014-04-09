@@ -5,6 +5,7 @@
 #include <QMenu>
 #include <QDesktopServices>
 #include "core/skin_manager.h"
+#include "core/plugin_manager.h"
 #include "core/updater.h"
 #include "gui/clock_widget.h"
 #include "gui/tray_control.h"
@@ -55,10 +56,19 @@ int main(int argc, char *argv[]) {
   QSharedPointer<digital_clock::core::Updater> updater(
         new digital_clock::core::Updater());
 
+  // plugin manager
+  QSharedPointer<digital_clock::core::PluginManager> plugin_manager(
+        new digital_clock::core::PluginManager());
+  plugin_manager->AddPluginsDir(QDir(app.applicationDirPath() + "/plugins"));
+  plugin_manager->ListAvailable();
+  digital_clock::core::TPluginData plugin_data;
+//  plugin_data.settings = settings_;
+
   // create gui components
   // main clock widget
   QSharedPointer<digital_clock::gui::ClockWidget> clock_widget(
         new digital_clock::gui::ClockWidget());
+  plugin_data.window = clock_widget.data();
   clock_widget->setWindowFlags(Qt::FramelessWindowHint | Qt::Tool);
   clock_widget->setAttribute(Qt::WA_TranslucentBackground);
   clock_widget->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -71,6 +81,7 @@ int main(int argc, char *argv[]) {
   // tray icon
   digital_clock::gui::TrayControl* tray_control(
         new digital_clock::gui::TrayControl(clock_widget.data()));
+  plugin_data.tray = tray_control->GetTrayIcon();
   // clock tray/context menu
   QObject::connect(
         clock_widget.data(), &digital_clock::gui::ClockWidget::customContextMenuRequested,
@@ -89,6 +100,8 @@ int main(int argc, char *argv[]) {
   });
   QObject::connect(tray_control, &digital_clock::gui::TrayControl::CheckForUpdates,
                    [=] () { updater->CheckForUpdates(true); });
+  QObject::connect(tray_control, &digital_clock::gui::TrayControl::AppExit,
+                   plugin_manager.data(), &digital_clock::core::PluginManager::UnloadPlugins);
   QObject::connect(
         tray_control, &digital_clock::gui::TrayControl::AppExit, &app, &QApplication::quit);
 
@@ -122,6 +135,7 @@ int main(int argc, char *argv[]) {
   });
 
 
+  plugin_manager->SetInitData(plugin_data);
   clock_widget->show();
 
   return app.exec();

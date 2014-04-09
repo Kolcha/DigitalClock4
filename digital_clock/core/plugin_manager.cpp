@@ -1,10 +1,14 @@
 #include <QFile>
 #include <QJsonObject>
-#include "../gui/main_window.h"
+#include <QPluginLoader>
+#include "../gui/clock_display.h"
+#include "../gui/clock_widget.h"
 #include "plugin_manager.h"
 
-PluginManager::PluginManager(QObject *parent)
-  : QObject(parent) {
+namespace digital_clock {
+namespace core {
+
+PluginManager::PluginManager(QObject *parent) : QObject(parent) {
 }
 
 void PluginManager::SetInitData(const TPluginData& data) {
@@ -97,7 +101,7 @@ void PluginManager::UnloadPlugin(const QString& name) {
   if (plugin) {
     disconnect(data_.settings, SIGNAL(OptionChanged(Options,QVariant)),
                plugin, SLOT(SettingsListener(Options,QVariant)));
-    disconnect(data_.clock, SIGNAL(ImageNeeded(QString)),
+    disconnect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
                plugin, SLOT(TimeUpdateListener()));
     plugin->Stop();
     loader->unload();
@@ -110,7 +114,7 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
   if (connected) {
     connect(data_.settings, SIGNAL(OptionChanged(Options,QVariant)),
             plugin, SLOT(SettingsListener(Options,QVariant)));
-    connect(data_.clock, SIGNAL(ImageNeeded(QString)),
+    connect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
             plugin, SLOT(TimeUpdateListener()));
   }
   // init settings plugins
@@ -119,7 +123,7 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
     sp->Init(data_.settings->GetSettings());
     if (connected) {
       connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
-              data_.window, SLOT(SettingsListener(Options,QVariant)));
+              data_.window, SLOT(ApplyOption(Options,QVariant)));
     }
   }
   // init tray plugins
@@ -135,3 +139,6 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
   // pass current clock settings to plugin
   data_.settings->EmitSettings();
 }
+
+} // namespace core
+} // namespace digital_clock

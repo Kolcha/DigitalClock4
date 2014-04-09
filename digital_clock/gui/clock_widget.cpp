@@ -16,6 +16,10 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent) {
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
 }
 
+ClockDisplay* ClockWidget::GetDisplay() const {
+  return display_;
+}
+
 void ClockWidget::ApplySkin(skin_draw::ISkin::SkinPtr skin) {
   drawer_->ApplySkin(skin);
 }

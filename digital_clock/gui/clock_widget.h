@@ -19,6 +19,7 @@ class ClockWidget : public QWidget {
 
 public:
   explicit ClockWidget(QWidget* parent = 0);
+  ClockDisplay* GetDisplay() const;
 
 signals:
   void PositionChanged(const QPoint& new_pos);
