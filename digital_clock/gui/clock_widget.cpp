@@ -14,6 +14,8 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent) {
   setLayout(main_layout);
   drawer_ = new ::skin_draw::SkinDrawer(this);
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
+  connect(display_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
+  connect(drawer_, SIGNAL(DrawingFinished(QImage)), display_, SLOT(DrawImage(QImage)));
 }
 
 ClockDisplay* ClockWidget::GetDisplay() const {
