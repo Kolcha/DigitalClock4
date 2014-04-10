@@ -152,7 +152,8 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
   ui->skin_box->addItems(skins);
 }
 
-void SettingsDialog::DisplaySkinInfo(const ClockBaseSkin::TSkinInfo& info) {
+void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::ClockBaseSkin::TSkinInfo& info) {
+  using ::digital_clock::core::ClockBaseSkin;
   if (info[ClockBaseSkin::SI_NAME] == "Text Skin") return;
   ClockBaseSkin::TSkinInfo l_info = info;
   for (auto iter = l_info.begin(); iter != l_info.end(); ++iter) {
@@ -168,7 +169,7 @@ void SettingsDialog::DisplaySkinInfo(const ClockBaseSkin::TSkinInfo& info) {
 void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins) {
   for (auto& plugin : plugins) {
     QListWidgetItem* item = new QListWidgetItem();
-    PluginListWidget* widget = new PluginListWidget(ui->plugins_list);
+    PluginListItemWidget* widget = new PluginListItemWidget(ui->plugins_list);
     widget->SetInfo(plugin.first);
     widget->SetConfigurable(plugin.second);
     item->setSizeHint(widget->sizeHint());

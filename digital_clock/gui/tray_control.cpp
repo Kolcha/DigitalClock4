@@ -1,4 +1,5 @@
 #include <QMenu>
+#include <QApplication>
 #include "tray_control.h"
 
 namespace digital_clock {

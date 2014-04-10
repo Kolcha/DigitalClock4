@@ -106,21 +106,22 @@ int main(int argc, char *argv[]) {
   QObject::connect(tray_control, &digital_clock::gui::TrayControl::CheckForUpdates,
                    [=] () { updater->CheckForUpdates(true); });
   QObject::connect(tray_control, &digital_clock::gui::TrayControl::AppExit,
-                   plugin_manager.data(), &digital_clock::core::PluginManager::UnloadPlugins);
+                   [=] () { plugin_manager->UnloadPlugins(); });
   QObject::connect(
         tray_control, &digital_clock::gui::TrayControl::AppExit, &app, &QApplication::quit);
 
   // updater messages
-  connect(updater.data(), &digital_clock::core::Updater::ErrorMessage, [=] (const QString& msg) {
-    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+  QObject::connect(updater.data(), &digital_clock::core::Updater::ErrorMessage,
+                   [=] (const QString& msg) {
+//    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
           updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
           updater->tr("Update error. %1").arg(msg),
           QSystemTrayIcon::Critical);
   });
 
-  connect(updater.data(), &digital_clock::core::Updater::UpToDate, [=] () {
-    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+  QObject::connect(updater.data(), &digital_clock::core::Updater::UpToDate, [=] () {
+//    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
           updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
           updater->tr("You already have latest version (%1).").arg(
@@ -128,17 +129,59 @@ int main(int argc, char *argv[]) {
           QSystemTrayIcon::Information);
   });
 
-  connect(updater, &digital_clock::core::Updater::NewVersion,
-          [=] (const QString& version, const QString& link) {
-    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+  QObject::connect(updater.data(), &digital_clock::core::Updater::NewVersion,
+                   [=] (const QString& version, const QString& link) {
+//    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
           updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
           updater->tr("Update available (%1). Click this message to download.").arg(version),
           QSystemTrayIcon::Warning);
-    QObject::connect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
-                     [=] () { QDesktopServices::openUrl(link); });
+//    QObject::connect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
+//                     [=] () { QDesktopServices::openUrl(link); });
   });
 
+  // settings load
+  QObject::connect(settings.data(), &digital_clock::core::ClockSettings::OptionChanged,
+                   clock_widget.data(), &digital_clock::gui::ClockWidget::ApplyOption);
+  QObject::connect(settings.data(), &digital_clock::core::ClockSettings::OptionChanged,
+                   [=] (Options option, const QVariant& value) {
+    switch (option) {
+      case OPT_SKIN_NAME:
+        skin_manager->LoadSkin(value.toString());
+        break;
+
+      case OPT_FONT:
+        skin_manager->SetFont(value.value<QFont>());
+        break;
+
+      case OPT_PLUGINS:
+      {
+//        QStringList new_plugins = value.toStringList();
+//        for (auto& plugin : active_plugins_) {
+//          if (!new_plugins.contains(plugin)) plugin_manager_->EnablePlugin(plugin, false);
+//        }
+//        for (auto& plugin : new_plugins) {
+//          if (!active_plugins_.contains(plugin)) plugin_manager_->EnablePlugin(plugin, true);
+//        }
+//        active_plugins_ = new_plugins;
+        break;
+      }
+
+      case OPT_USE_AUTOUPDATE:
+        updater->SetAutoupdate(value.toBool());
+        break;
+
+      case OPT_UPDATE_PERIOD:
+        updater->SetUpdatePeriod(value.value<qint64>());
+        break;
+
+      case OPT_CHECK_FOR_BETA:
+        updater->SetCheckForBeta(value.toBool());
+        break;
+    }
+  });
+
+  settings->TrackChanges(true);
   settings->Load();
   clock_widget->show();
   clock_widget->setWindowOpacity(settings->GetOption(OPT_OPACITY).toReal());

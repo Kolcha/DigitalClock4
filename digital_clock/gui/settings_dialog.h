@@ -28,7 +28,7 @@ signals:
 public slots:
   void SettingsListener(Options opt, const QVariant& value);
   void SetSkinList(const QStringList& skins);
-  void DisplaySkinInfo(const ClockBaseSkin::TSkinInfo& info);
+  void DisplaySkinInfo(const ::digital_clock::core::ClockBaseSkin::TSkinInfo& info);
   void SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins);
 
 protected:
