@@ -176,6 +176,8 @@ void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plug
     ui->plugins_list->addItem(item);
     ui->plugins_list->setItemWidget(item, widget);
     connect(widget, SIGNAL(StateChanged(QString,bool)),
+            this, SIGNAL(PluginStateChanged(QString,bool)));
+    connect(widget, SIGNAL(StateChanged(QString,bool)),
             this, SLOT(ChangePluginState(QString,bool)));
     connect(widget, SIGNAL(ConfigureRequested(QString)),
             this, SIGNAL(PluginConfigureRequest(QString)));

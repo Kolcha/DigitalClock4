@@ -125,10 +125,16 @@ int main(int argc, char *argv[]) {
       // connect main logic signals: change/save/discard settings
       QObject::connect(dialog.data(), SIGNAL(OptionChanged(Options,QVariant)),
                        settings.data(), SLOT(SetOption(Options,QVariant)));
+      QObject::connect(dialog.data(), &SettingsDialog::PluginStateChanged,
+                       plugin_manager.data(), &digital_clock::core::PluginManager::EnablePlugin);
       QObject::connect(dialog.data(), SIGNAL(PluginConfigureRequest(QString)),
                        plugin_manager.data(), SLOT(ConfigurePlugin(QString)));
       QObject::connect(dialog.data(), SIGNAL(accepted()), settings.data(), SLOT(Save()));
       QObject::connect(dialog.data(), SIGNAL(rejected()), settings.data(), SLOT(Load()));
+      QObject::connect(dialog.data(), &SettingsDialog::rejected, [=] () {
+        plugin_manager->UnloadPlugins();
+        plugin_manager->LoadPlugins(settings->GetOption(OPT_PLUGINS).toStringList());
+      });
 
       QObject::connect(dialog.data(), &SettingsDialog::destroyed, [=] () {
         clock_widget->PreviewMode(false);
@@ -198,19 +204,6 @@ int main(int argc, char *argv[]) {
         skin_manager->SetFont(value.value<QFont>());
         break;
 
-      case OPT_PLUGINS:
-      {
-//        QStringList new_plugins = value.toStringList();
-//        for (auto& plugin : active_plugins_) {
-//          if (!new_plugins.contains(plugin)) plugin_manager_->EnablePlugin(plugin, false);
-//        }
-//        for (auto& plugin : new_plugins) {
-//          if (!active_plugins_.contains(plugin)) plugin_manager_->EnablePlugin(plugin, true);
-//        }
-//        active_plugins_ = new_plugins;
-        break;
-      }
-
       case OPT_USE_AUTOUPDATE:
         updater->SetAutoupdate(value.toBool());
         break;
@@ -229,6 +222,7 @@ int main(int argc, char *argv[]) {
   settings->Load();
   clock_widget->show();
   clock_widget->setWindowOpacity(settings->GetOption(OPT_OPACITY).toReal());
+  settings->TrackChanges(false);
   plugin_manager->SetInitData(plugin_data);
   plugin_manager->LoadPlugins(settings->GetOption(OPT_PLUGINS).toStringList());
 

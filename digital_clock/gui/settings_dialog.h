@@ -24,6 +24,7 @@ public:
 signals:
   void OptionChanged(Options opt, const QVariant& value);
   void PluginConfigureRequest(const QString& text);
+  void PluginStateChanged(const QString& name, bool enabled);
 
 public slots:
   void SettingsListener(Options opt, const QVariant& value);
