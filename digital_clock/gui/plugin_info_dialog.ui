@@ -184,16 +184,16 @@
   <connection>
    <sender>ok_btn</sender>
    <signal>clicked()</signal>
-   <receiver>digital_clock::PluginInfoDialog</receiver>
-   <slot>close()</slot>
+   <receiver>digital_clock::gui::PluginInfoDialog</receiver>
+   <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>166</y>
+     <x>131</x>
+     <y>154</y>
     </hint>
     <hint type="destinationlabel">
-     <x>159</x>
-     <y>163</y>
+     <x>165</x>
+     <y>149</y>
     </hint>
    </hints>
   </connection>

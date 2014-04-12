@@ -156,7 +156,7 @@ int main(int argc, char *argv[]) {
 
   // updater messages
   QObject::connect(updater.data(), &digital_clock::core::Updater::ErrorMessage,
-                   [=] (const QString& msg) {
+                   [&] (const QString& msg) {
     QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
           updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
@@ -164,7 +164,7 @@ int main(int argc, char *argv[]) {
           QSystemTrayIcon::Critical);
   });
 
-  QObject::connect(updater.data(), &digital_clock::core::Updater::UpToDate, [=] () {
+  QObject::connect(updater.data(), &digital_clock::core::Updater::UpToDate, [&] () {
     QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
           updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
@@ -174,7 +174,7 @@ int main(int argc, char *argv[]) {
   });
 
   QObject::connect(updater.data(), &digital_clock::core::Updater::NewVersion,
-                   [=] (const QString& version, const QString& link) {
+                   [&] (const QString& version, const QString& link) {
     QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
           updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
