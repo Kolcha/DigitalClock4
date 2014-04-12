@@ -215,6 +215,9 @@ int main(int argc, char *argv[]) {
       case OPT_CHECK_FOR_BETA:
         updater->SetCheckForBeta(value.toBool());
         break;
+
+      default:
+        break;
     }
   });
 

@@ -80,6 +80,9 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
     case OPT_SPACING:
       drawer_->SetSpace(value.toInt());
       break;
+
+    default:
+      break;
   }
 }
 
