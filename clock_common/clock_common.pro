@@ -23,7 +23,8 @@ HEADERS += \
     plugin_settings.h \
     clock_common_global.h \
     centered_dialog.h \
-    plugin_base.h
+    plugin_base.h \
+    iplugin_init.h
 
 win32:RC_FILE = clock_common.rc
 unix:VERSION = 1.0.1
