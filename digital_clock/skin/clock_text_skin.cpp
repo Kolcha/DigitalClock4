@@ -1,6 +1,9 @@
 #include <QFontMetrics>
 #include "clock_text_skin.h"
 
+namespace digital_clock {
+namespace core {
+
 ClockTextSkin::ClockTextSkin(const QFont& font)
   : TextSkin(font) {
   char_map_[' '] = ':';
@@ -31,3 +34,6 @@ void ClockTextSkin::ProcSeparators() {
     if (seps_[i] != widest) char_map_[seps_[i]] = widest;
   }
 }
+
+} // namespace core
+} // namespace digital_clock

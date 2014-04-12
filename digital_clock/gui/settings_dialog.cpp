@@ -4,7 +4,7 @@
 #include <QFileInfo>
 #include <QSettings>
 #include "skin_drawer.h"
-#include "plugin_list_widget.h"
+#include "plugin_list_item_widget.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
@@ -15,6 +15,7 @@
 using skin_draw::SkinDrawer;
 
 namespace digital_clock {
+namespace gui {
 
 SettingsDialog::SettingsDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDialog) {
@@ -122,7 +123,7 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
 
     case  OPT_PLUGINS:
       for (int i = 0; i < ui->plugins_list->count(); i++) {
-        PluginListWidget* item = static_cast<PluginListWidget*>(
+        PluginListItemWidget* item = static_cast<PluginListItemWidget*>(
               ui->plugins_list->itemWidget(ui->plugins_list->item(i)));
         for (auto& plugin : value.toStringList()) {
           if (plugin == item->GetName()) {
@@ -151,7 +152,8 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
   ui->skin_box->addItems(skins);
 }
 
-void SettingsDialog::DisplaySkinInfo(const ClockBaseSkin::TSkinInfo& info) {
+void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::ClockBaseSkin::TSkinInfo& info) {
+  using ::digital_clock::core::ClockBaseSkin;
   if (info[ClockBaseSkin::SI_NAME] == "Text Skin") return;
   ClockBaseSkin::TSkinInfo l_info = info;
   for (auto iter = l_info.begin(); iter != l_info.end(); ++iter) {
@@ -167,12 +169,14 @@ void SettingsDialog::DisplaySkinInfo(const ClockBaseSkin::TSkinInfo& info) {
 void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins) {
   for (auto& plugin : plugins) {
     QListWidgetItem* item = new QListWidgetItem();
-    PluginListWidget* widget = new PluginListWidget(ui->plugins_list);
+    PluginListItemWidget* widget = new PluginListItemWidget(ui->plugins_list);
     widget->SetInfo(plugin.first);
     widget->SetConfigurable(plugin.second);
     item->setSizeHint(widget->sizeHint());
     ui->plugins_list->addItem(item);
     ui->plugins_list->setItemWidget(item, widget);
+    connect(widget, SIGNAL(StateChanged(QString,bool)),
+            this, SIGNAL(PluginStateChanged(QString,bool)));
     connect(widget, SIGNAL(StateChanged(QString,bool)),
             this, SLOT(ChangePluginState(QString,bool)));
     connect(widget, SIGNAL(ConfigureRequested(QString)),
@@ -327,4 +331,5 @@ void SettingsDialog::on_space_value_valueChanged(int arg1) {
   emit OptionChanged(OPT_SPACING, arg1);
 }
 
+} // namespace gui
 } // namespace digital_clock

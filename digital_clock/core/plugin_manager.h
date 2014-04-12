@@ -1,27 +1,29 @@
-#ifndef PLUGIN_MANAGER_H
-#define PLUGIN_MANAGER_H
+#ifndef DIGITAL_CLOCK_CORE_PLUGIN_MANAGER_H
+#define DIGITAL_CLOCK_CORE_PLUGIN_MANAGER_H
 
 #include <QMap>
 #include <QDir>
 #include <QString>
 #include <QList>
-#include <QPluginLoader>
 #include "iclock_plugin.h"
 #include "plugin_info.h"
 
-class ClockSettings;
-class DigitalClock;
+class QPluginLoader;
 
 namespace digital_clock {
-class MainWindow;
+namespace gui {
+class ClockWidget;
 }
+
+namespace core {
+
+class ClockSettings;
 
 /*! Data to init plugins. */
 struct TPluginData {
-  ClockSettings* settings;   /*!< clock settings object */
-  DigitalClock* clock;       /*!< clock widget */
-  digital_clock::MainWindow* window;  /*!< main window instance */
-  QSystemTrayIcon* tray;     /*!< tray icon object */
+  ClockSettings* settings;                    /*!< clock settings object */
+  ::digital_clock::gui::ClockWidget* window;  /*!< clock widget */
+  QSystemTrayIcon* tray;                      /*!< tray icon object */
 };
 
 
@@ -33,6 +35,7 @@ struct TPluginData {
  */
 class PluginManager : public QObject {
   Q_OBJECT
+
 public:
   /*!
    * Constructor.
@@ -115,4 +118,7 @@ private:
   TPluginData data_;
 };
 
-#endif // PLUGIN_MANAGER_H
+} // namespace core
+} // namespace digital_clock
+
+#endif // DIGITAL_CLOCK_CORE_PLUGIN_MANAGER_H

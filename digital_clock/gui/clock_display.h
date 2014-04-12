@@ -1,14 +1,18 @@
-#ifndef DIGITAL_CLOCK_H
-#define DIGITAL_CLOCK_H
+#ifndef DIGITAL_CLOCK_GUI_CLOCK_DISPLAY_H
+#define DIGITAL_CLOCK_GUI_CLOCK_DISPLAY_H
 
 #include <QLabel>
 #include <QTimer>
 
-class DigitalClock : public QLabel {
+namespace digital_clock {
+namespace gui {
+
+class ClockDisplay : public QLabel {
   Q_OBJECT
+
 public:
-  explicit DigitalClock(QWidget* parent = 0);
-  ~DigitalClock();
+  explicit ClockDisplay(QWidget* parent = 0);
+  ~ClockDisplay();
 
 signals:
   void ImageNeeded(const QString& text);
@@ -23,11 +27,14 @@ private slots:
   void TimeoutHandler();
 
 private:
-  QTimer* timer_;
+  QTimer timer_;
   bool sep_visible_;
   bool sep_flashes_;
   QString time_format_;
   QString seps_;
 };
 
-#endif // DIGITAL_CLOCK_H
+} // namespace gui
+} // namespace digital_clock
+
+#endif // DIGITAL_CLOCK_GUI_CLOCK_DISPLAY_H

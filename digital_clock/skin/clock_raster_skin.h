@@ -1,11 +1,14 @@
-#ifndef CLOCK_RASTER_SKIN_H
-#define CLOCK_RASTER_SKIN_H
+#ifndef DIGITAL_CLOCK_CORE_CLOCK_RASTER_SKIN_H
+#define DIGITAL_CLOCK_CORE_CLOCK_RASTER_SKIN_H
 
 #include <QDir>
 #include "raster_skin.h"
 #include "clock_base_skin.h"
 
-class ClockRasterSkin : public skin_draw::RasterSkin, public ClockBaseSkin {
+namespace digital_clock {
+namespace core {
+
+class ClockRasterSkin : public ::skin_draw::RasterSkin, public ClockBaseSkin {
 public:
   ClockRasterSkin(const QDir& skin_root);
 
@@ -13,4 +16,7 @@ protected:
   void ProcSeparators();
 };
 
-#endif // CLOCK_RASTER_SKIN_H
+} // namespace core
+} // namespace digital_clock
+
+#endif // DIGITAL_CLOCK_CORE_CLOCK_RASTER_SKIN_H

@@ -2,6 +2,7 @@
 #include "ui_about_dialog.h"
 
 namespace digital_clock {
+namespace gui {
 
 static QString compilerString() {
 #if defined(Q_CC_CLANG) // must be before GNU, because clang claims to be GNU too
@@ -20,8 +21,7 @@ static QString compilerString() {
     return QLatin1String("<unknown compiler>");
 }
 
-AboutDialog::AboutDialog(QWidget* parent)
-  : CenteredDialog(parent), ui(new Ui::AboutDialog) {
+AboutDialog::AboutDialog(QWidget* parent) : CenteredDialog(parent), ui(new Ui::AboutDialog) {
   ui->setupUi(this);
   setWindowIcon(QIcon(":/clock/images/about.svg"));
 
@@ -39,4 +39,5 @@ AboutDialog::~AboutDialog() {
   delete ui;
 }
 
+} // namespace gui
 } // namespace digital_clock

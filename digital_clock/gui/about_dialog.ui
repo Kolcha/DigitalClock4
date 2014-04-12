@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>digital_clock::AboutDialog</class>
- <widget class="QDialog" name="digital_clock::AboutDialog">
+ <class>digital_clock::gui::AboutDialog</class>
+ <widget class="QDialog" name="digital_clock::gui::AboutDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -347,16 +347,16 @@
   <connection>
    <sender>close_btn</sender>
    <signal>clicked()</signal>
-   <receiver>digital_clock::AboutDialog</receiver>
-   <slot>close()</slot>
+   <receiver>digital_clock::gui::AboutDialog</receiver>
+   <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>488</x>
-     <y>214</y>
+     <x>219</x>
+     <y>244</y>
     </hint>
     <hint type="destinationlabel">
-     <x>488</x>
-     <y>223</y>
+     <x>265</x>
+     <y>242</y>
     </hint>
    </hints>
   </connection>

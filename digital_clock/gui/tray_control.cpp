@@ -1,40 +1,22 @@
+#include <QMenu>
 #include <QApplication>
 #include "tray_control.h"
 
 namespace digital_clock {
+namespace gui {
 
-TrayControl::TrayControl(QObject* parent)
-  : QObject(parent) {
-  CreateActions();
-  CreateTrayIcon();
-}
-
-QSystemTrayIcon* TrayControl::GetTrayIcon() {
-  return tray_icon_;
-}
-
-void TrayControl::CreateActions() {
-  settings_action_ = new QAction(QIcon(":/clock/images/settings.svg"), tr("&Settings"), this);
-  connect(settings_action_, SIGNAL(triggered()), this, SIGNAL(ShowSettingsDlg()));
-
-  about_action_ = new QAction(QIcon(":/clock/images/about.svg"), tr("&About"), this);
-  connect(about_action_, SIGNAL(triggered()), this, SIGNAL(ShowAboutDlg()));
-
-  update_action_ = new QAction(QIcon(":/clock/images/update.svg"), tr("&Update"), this);
-  connect(update_action_, SIGNAL(triggered()), this, SIGNAL(CheckForUpdates()));
-
-  exit_action_ = new QAction(QIcon(":/clock/images/quit.svg"), tr("&Quit"), this);
-  connect(exit_action_, SIGNAL(triggered()), qApp, SLOT(quit()));
-}
-
-void TrayControl::CreateTrayIcon() {
-  QMenu* tray_menu = new QMenu();
-  tray_menu->addAction(settings_action_);
-  tray_menu->addAction(about_action_);
+TrayControl::TrayControl(QWidget* parent) : QObject(parent) {
+  QMenu* tray_menu = new QMenu(parent);
+  tray_menu->addAction(QIcon(":/clock/images/settings.svg"), tr("&Settings"),
+                       this, SIGNAL(ShowSettingsDlg()));
+  tray_menu->addAction(QIcon(":/clock/images/about.svg"), tr("&About"),
+                       this, SIGNAL(ShowAboutDlg()));
   tray_menu->addSeparator();
-  tray_menu->addAction(update_action_);
+  tray_menu->addAction(QIcon(":/clock/images/update.svg"), tr("&Update"),
+                       this, SIGNAL(CheckForUpdates()));
   tray_menu->addSeparator();
-  tray_menu->addAction(exit_action_);
+  tray_menu->addAction(QIcon(":/clock/images/quit.svg"), tr("&Quit"),
+                       this, SIGNAL(AppExit()));
 
   tray_icon_ = new QSystemTrayIcon(this);
   tray_icon_->setContextMenu(tray_menu);
@@ -45,8 +27,13 @@ void TrayControl::CreateTrayIcon() {
           this, SLOT(TrayEventHandler(QSystemTrayIcon::ActivationReason)));
 }
 
+QSystemTrayIcon* TrayControl::GetTrayIcon() {
+  return tray_icon_;
+}
+
 void TrayControl::TrayEventHandler(QSystemTrayIcon::ActivationReason reason) {
   if (reason == QSystemTrayIcon::DoubleClick) emit ShowSettingsDlg();
 }
 
+} // namespace gui
 } // namespace digital_clock

@@ -1,5 +1,8 @@
 #include "clock_settings.h"
 
+namespace digital_clock {
+namespace core {
+
 void GetOptionsKeys(QMap<Options, QString>& opt_map) {
   // clock settings
   opt_map[OPT_OPACITY]              = "clock/opacity";
@@ -66,3 +69,6 @@ void ClockSettings::EmitSettings() {
     if (i.key() != OPT_PLUGINS) emit OptionChanged(i.key(), i.value());
   }
 }
+
+} // namespace core
+} // namespace digital_clock

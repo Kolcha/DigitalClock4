@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>digital_clock::PluginListWidget</class>
- <widget class="QWidget" name="digital_clock::PluginListWidget">
+ <class>digital_clock::gui::PluginListItemWidget</class>
+ <widget class="QWidget" name="digital_clock::gui::PluginListItemWidget">
   <property name="geometry">
    <rect>
     <x>0</x>

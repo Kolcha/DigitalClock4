@@ -3,6 +3,9 @@
 #include "../skin/clock_text_skin.h"
 #include "skin_manager.h"
 
+namespace digital_clock {
+namespace core {
+
 ClockSkinPtr CreateSkin(const QDir& skin_root) {
   QStringList images = skin_root.entryList(QStringList("*.svg"), QDir::Files);
   bool skinini = skin_root.exists("skin.ini");
@@ -71,3 +74,6 @@ void SkinManager::SetSeparators(const QString& seps) {
   seps_ = seps;
   if (current_skin_) current_skin_->SetSeparators(seps);
 }
+
+} // namespace core
+} // namespace digital_clock

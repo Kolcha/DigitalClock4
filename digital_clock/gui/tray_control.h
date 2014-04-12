@@ -1,35 +1,32 @@
-#ifndef TRAY_CONTROL_H
-#define TRAY_CONTROL_H
+#ifndef DIGITAL_CLOCK_GUI_TRAY_CONTROL_H
+#define DIGITAL_CLOCK_GUI_TRAY_CONTROL_H
 
-#include <QMenu>
 #include <QSystemTrayIcon>
 
 namespace digital_clock {
+namespace gui {
 
 class TrayControl : public QObject {
   Q_OBJECT
+
 public:
-  explicit TrayControl(QObject* parent = 0);
+  explicit TrayControl(QWidget* parent = 0);
   QSystemTrayIcon* GetTrayIcon();
 
 signals:
   void ShowSettingsDlg();
   void ShowAboutDlg();
   void CheckForUpdates();
+  void AppExit();
 
 private slots:
   void TrayEventHandler(QSystemTrayIcon::ActivationReason reason);
 
 private:
-  void CreateActions();
-  void CreateTrayIcon();
-  QAction* settings_action_;
-  QAction* about_action_;
-  QAction* update_action_;
-  QAction* exit_action_;
   QSystemTrayIcon* tray_icon_;
 };
 
+} // namespace gui
 } // namespace digital_clock
 
-#endif // TRAY_CONTROL_H
+#endif // DIGITAL_CLOCK_GUI_TRAY_CONTROL_H

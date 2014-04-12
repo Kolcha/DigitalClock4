@@ -6,6 +6,9 @@
 
 #define OPT_LAST_UPDATE    "updater/last_update"
 
+namespace digital_clock {
+namespace core {
+
 Updater::Updater(QObject* parent)
   : QObject(parent),
     check_beta_(false), autoupdate_(true), update_period_(3),
@@ -80,3 +83,6 @@ void Updater::ProcessData() {
   last_update_ = QDate::currentDate();
   data_.clear();
 }
+
+} // namespace core
+} // namespace digital_clock
