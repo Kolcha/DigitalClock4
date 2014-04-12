@@ -22,7 +22,6 @@ public:
   ClockDisplay* GetDisplay() const;
 
 signals:
-  void PositionChanged(const QPoint& new_pos);
   void SeparatorsChanged(const QString& seps);
 
 public slots:

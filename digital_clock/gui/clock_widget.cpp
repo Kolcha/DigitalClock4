@@ -1,8 +1,11 @@
 #include <QGridLayout>
+#include <QSettings>
 #include <QMouseEvent>
 #include "skin_drawer.h"
 #include "clock_display.h"
 #include "clock_widget.h"
+
+#define S_OPT_POSITION              "clock/position"
 
 namespace digital_clock {
 namespace gui {
@@ -16,6 +19,8 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent) {
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
   connect(display_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), display_, SLOT(DrawImage(QImage)));
+  QSettings state;
+  move(state.value(S_OPT_POSITION, QPoint(50, 20)).toPoint());
 }
 
 ClockDisplay* ClockWidget::GetDisplay() const {
@@ -98,7 +103,8 @@ void ClockWidget::mousePressEvent(QMouseEvent* event) {
 
 void ClockWidget::mouseReleaseEvent(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
-    emit PositionChanged(pos());
+    QSettings state;
+    state.setValue(S_OPT_POSITION, pos());
     event->accept();
   }
 }
