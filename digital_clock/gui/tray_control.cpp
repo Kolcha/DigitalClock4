@@ -27,7 +27,7 @@ TrayControl::TrayControl(QWidget* parent) : QObject(parent) {
           this, SLOT(TrayEventHandler(QSystemTrayIcon::ActivationReason)));
 }
 
-QSystemTrayIcon*TrayControl::GetTrayIcon() {
+QSystemTrayIcon* TrayControl::GetTrayIcon() {
   return tray_icon_;
 }
 
