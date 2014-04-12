@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
         [=] (const QPoint& p) { tray_control->GetTrayIcon()->contextMenu()->exec(p); }
   );
   // menu actions
-  QObject::connect(tray_control, &digital_clock::gui::TrayControl::ShowSettingsDlg, [=] () {
+  QObject::connect(tray_control, &digital_clock::gui::TrayControl::ShowSettingsDlg, [&] () {
     using digital_clock::gui::SettingsDialog;
     static QPointer<SettingsDialog> dialog;
     if (dialog) {
@@ -137,10 +137,15 @@ int main(int argc, char *argv[]) {
       clock_widget->PreviewMode(true);
     }
   });
-  QObject::connect(tray_control, &digital_clock::gui::TrayControl::ShowAboutDlg, [=] () {
-    using digital_clock::gui::AboutDialog;
-    AboutDialog* dialog = new AboutDialog(clock_widget.data());
-    dialog->show();
+  QObject::connect(tray_control, &digital_clock::gui::TrayControl::ShowAboutDlg, [&] () {
+    // don't need to delete AboutDialog, it will destroyed on self close
+    static QPointer<digital_clock::gui::AboutDialog> dialog;
+    if (dialog) {
+      dialog->activateWindow();
+    } else {
+      dialog = new digital_clock::gui::AboutDialog(clock_widget.data());
+      dialog->show();
+    }
   });
   QObject::connect(tray_control, &digital_clock::gui::TrayControl::CheckForUpdates,
                    [=] () { updater->CheckForUpdates(true); });
