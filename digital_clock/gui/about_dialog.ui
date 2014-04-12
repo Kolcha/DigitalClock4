@@ -347,16 +347,16 @@
   <connection>
    <sender>close_btn</sender>
    <signal>clicked()</signal>
-   <receiver>digital_clock::AboutDialog</receiver>
-   <slot>close()</slot>
+   <receiver>digital_clock::gui::AboutDialog</receiver>
+   <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>488</x>
-     <y>214</y>
+     <x>219</x>
+     <y>244</y>
     </hint>
     <hint type="destinationlabel">
-     <x>488</x>
-     <y>223</y>
+     <x>265</x>
+     <y>242</y>
     </hint>
    </hints>
   </connection>

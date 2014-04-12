@@ -28,6 +28,7 @@ signals:
 public slots:
   void ApplySkin(::skin_draw::ISkin::SkinPtr skin);
   void ApplyOption(Options option, const QVariant& value);
+  void PreviewMode(bool enabled);
 
 protected:
   void mouseMoveEvent(QMouseEvent* event);

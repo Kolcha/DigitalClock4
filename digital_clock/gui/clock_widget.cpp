@@ -78,6 +78,10 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
   }
 }
 
+void ClockWidget::PreviewMode(bool enabled) {
+  drawer_->SetPreviewMode(enabled);
+}
+
 void ClockWidget::mouseMoveEvent(QMouseEvent* event) {
   if (event->buttons() & Qt::LeftButton) {
     move(event->globalPos() - drag_position_);

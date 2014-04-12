@@ -603,38 +603,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>digital_clock::SettingsDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>205</x>
-     <y>371</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>digital_clock::SettingsDialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>273</x>
-     <y>371</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>opacity_slider</sender>
    <signal>valueChanged(int)</signal>
    <receiver>opacity_value</receiver>
@@ -865,12 +833,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>149</x>
-     <y>82</y>
+     <x>119</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>234</x>
-     <y>83</y>
+     <x>88</x>
+     <y>59</y>
     </hint>
    </hints>
   </connection>
@@ -881,12 +849,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>149</x>
-     <y>82</y>
+     <x>119</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>315</x>
-     <y>85</y>
+     <x>119</x>
+     <y>69</y>
     </hint>
    </hints>
   </connection>
@@ -897,12 +865,12 @@
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>149</x>
-     <y>82</y>
+     <x>119</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>315</x>
-     <y>85</y>
+     <x>119</x>
+     <y>69</y>
     </hint>
    </hints>
   </connection>
@@ -913,12 +881,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>91</x>
-     <y>122</y>
+     <x>102</x>
+     <y>74</y>
     </hint>
     <hint type="destinationlabel">
-     <x>149</x>
-     <y>128</y>
+     <x>119</x>
+     <y>74</y>
     </hint>
    </hints>
   </connection>
@@ -929,12 +897,44 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>87</x>
-     <y>137</y>
+     <x>98</x>
+     <y>74</y>
     </hint>
     <hint type="destinationlabel">
-     <x>232</x>
-     <y>124</y>
+     <x>119</x>
+     <y>74</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>digital_clock::gui::SettingsDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>409</x>
+     <y>359</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>339</x>
+     <y>346</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>digital_clock::gui::SettingsDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>383</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>346</y>
     </hint>
    </hints>
   </connection>

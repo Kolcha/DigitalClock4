@@ -95,8 +95,47 @@ int main(int argc, char *argv[]) {
   // menu actions
   QObject::connect(tray_control, &digital_clock::gui::TrayControl::ShowSettingsDlg, [=] () {
     using digital_clock::gui::SettingsDialog;
-    SettingsDialog* dialog = new SettingsDialog(clock_widget.data());
-    dialog->show();
+    static QPointer<SettingsDialog> dialog;
+    if (dialog) {
+      dialog->activateWindow();
+    } else {
+      // create settings dialog and connect all need signals
+      // (settings dialog will be deleted automatically)
+      dialog = new SettingsDialog(clock_widget.data());
+      QObject::connect(skin_manager.data(), SIGNAL(SearchFinished(QStringList)),
+                       dialog.data(), SLOT(SetSkinList(QStringList)));
+      skin_manager->ListSkins();
+      QObject::connect(skin_manager.data(), &digital_clock::core::SkinManager::SkinInfoLoaded,
+                       dialog.data(), &SettingsDialog::DisplaySkinInfo);
+      QObject::connect(plugin_manager.data(),
+                       SIGNAL(SearchFinished(QList<QPair<TPluginInfo,bool> >)),
+                       dialog.data(), SLOT(SetPluginsList(QList<QPair<TPluginInfo,bool> >)));
+      plugin_manager->ListAvailable();
+
+      // reload settings to emit signals needed to init settings dialog controls
+      // with current values
+      QObject::connect(settings.data(), SIGNAL(OptionChanged(Options,QVariant)),
+                       dialog.data(), SLOT(SettingsListener(Options,QVariant)));
+      settings->TrackChanges(true);
+      settings->Load();
+      dialog->show();
+      // disable settings listener for settings dialog
+      QObject::disconnect(settings.data(), SIGNAL(OptionChanged(Options,QVariant)),
+                          dialog.data(), SLOT(SettingsListener(Options,QVariant)));
+      // connect main logic signals: change/save/discard settings
+      QObject::connect(dialog.data(), SIGNAL(OptionChanged(Options,QVariant)),
+                       settings.data(), SLOT(SetOption(Options,QVariant)));
+      QObject::connect(dialog.data(), SIGNAL(PluginConfigureRequest(QString)),
+                       plugin_manager.data(), SLOT(ConfigurePlugin(QString)));
+      QObject::connect(dialog.data(), SIGNAL(accepted()), settings.data(), SLOT(Save()));
+      QObject::connect(dialog.data(), SIGNAL(rejected()), settings.data(), SLOT(Load()));
+
+      QObject::connect(dialog.data(), &SettingsDialog::destroyed, [=] () {
+        clock_widget->PreviewMode(false);
+        settings->TrackChanges(false);
+      });
+      clock_widget->PreviewMode(true);
+    }
   });
   QObject::connect(tray_control, &digital_clock::gui::TrayControl::ShowAboutDlg, [=] () {
     using digital_clock::gui::AboutDialog;
@@ -113,7 +152,7 @@ int main(int argc, char *argv[]) {
   // updater messages
   QObject::connect(updater.data(), &digital_clock::core::Updater::ErrorMessage,
                    [=] (const QString& msg) {
-//    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
           updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
           updater->tr("Update error. %1").arg(msg),
@@ -121,7 +160,7 @@ int main(int argc, char *argv[]) {
   });
 
   QObject::connect(updater.data(), &digital_clock::core::Updater::UpToDate, [=] () {
-//    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
           updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
           updater->tr("You already have latest version (%1).").arg(
@@ -131,13 +170,13 @@ int main(int argc, char *argv[]) {
 
   QObject::connect(updater.data(), &digital_clock::core::Updater::NewVersion,
                    [=] (const QString& version, const QString& link) {
-//    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
           updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
           updater->tr("Update available (%1). Click this message to download.").arg(version),
           QSystemTrayIcon::Warning);
-//    QObject::connect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
-//                     [=] () { QDesktopServices::openUrl(link); });
+    QObject::connect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
+                     [=] () { QDesktopServices::openUrl(link); });
   });
 
   // settings load
