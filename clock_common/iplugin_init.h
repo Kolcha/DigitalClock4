@@ -14,6 +14,7 @@
 
 #include <QtPlugin>
 #include "clock_common_global.h"
+#include "settings_keys.h"
 
 /*!
  * @brief Settings plugin initializer interface.

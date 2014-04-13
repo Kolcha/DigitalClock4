@@ -27,6 +27,6 @@ HEADERS += \
     iplugin_init.h
 
 win32:RC_FILE = clock_common.rc
-unix:VERSION = 1.0.1
+unix:VERSION = 1.0.2
 
 include(../config.pri)
