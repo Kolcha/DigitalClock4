@@ -49,6 +49,8 @@ int main(int argc, char *argv[]) {
   // settings manager
   QSharedPointer<digital_clock::core::ClockSettings> settings(
         new digital_clock::core::ClockSettings());
+  QObject::connect(settings.data(), SIGNAL(SettingsImported()),
+                   settings.data(), SLOT(EmitSettings()));
 
   // skin manager
   QSharedPointer<digital_clock::core::SkinManager> skin_manager(
@@ -140,6 +142,13 @@ int main(int argc, char *argv[]) {
                        settings.data(), SLOT(ExportSettings(QString)));
       QObject::connect(dialog.data(), SIGNAL(ImportSettings(QString)),
                        settings.data(), SLOT(ImportSettings(QString)));
+      QObject::connect(settings.data(), &digital_clock::core::ClockSettings::SettingsImported,
+                       [&] () {
+        const QMap<Options, QVariant>& values = settings->GetSettings();
+        for (auto iter = values.cbegin(); iter != values.cend(); ++iter) {
+          dialog->SettingsListener(iter.key(), iter.value());
+        }
+      });
 
       QObject::connect(dialog.data(), &SettingsDialog::destroyed, [=] () {
         clock_widget->PreviewMode(false);
