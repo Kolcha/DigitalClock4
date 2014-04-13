@@ -3,6 +3,7 @@
 
 #include <QFont>
 #include "iclock_plugin.h"
+#include "iplugin_init.h"
 
 class QGridLayout;
 class QLabel;
@@ -13,13 +14,16 @@ class PluginSettings;
 
 namespace date {
 
-class Date : public IWidgetPlugin {
+class Date : public IClockPlugin,
+             public ISettingsPluginInit,
+             public IWidgetPluginInit {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID WIDGET_PLUGIN_INTERFACE_IID FILE "date.json")
-  Q_INTERFACES(IClockPlugin IWidgetPlugin)
+  Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "date.json")
+  Q_INTERFACES(IClockPlugin ISettingsPluginInit IWidgetPluginInit)
 
 public:
   Date();
+  void Init(const QMap<Options, QVariant>& current_settings);
   void Init(QWidget* main_wnd);
 
 public slots:

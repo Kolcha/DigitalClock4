@@ -1,6 +1,7 @@
 #include <QFile>
 #include <QJsonObject>
 #include <QPluginLoader>
+#include "iplugin_init.h"
 #include "clock_settings.h"
 #include "../gui/clock_display.h"
 #include "../gui/clock_widget.h"
@@ -127,18 +128,24 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
               data_.window, SLOT(ApplyOption(Options,QVariant)));
     }
   }
+  ISettingsPluginInit* spi = qobject_cast<ISettingsPluginInit*>(plugin);
+  if (spi) spi->Init(data_.settings->GetSettings());
   // init tray plugins
   ITrayPlugin* tp = qobject_cast<ITrayPlugin*>(plugin);
   if (tp) {
     tp->Init(data_.tray);
   }
+  ITrayPluginInit* tpi = qobject_cast<ITrayPluginInit*>(plugin);
+  if (tpi) tpi->Init(data_.tray);
   // init widget plugins
   IWidgetPlugin* wp = qobject_cast<IWidgetPlugin*>(plugin);
   if (wp) {
     wp->Init(data_.window);
   }
+  IWidgetPluginInit* wpi = qobject_cast<IWidgetPluginInit*>(plugin);
+  if (wpi) wpi->Init(data_.window);
   // pass current clock settings to plugin
-  data_.settings->EmitSettings();
+  if (!spi) data_.settings->EmitSettings();
 }
 
 } // namespace core

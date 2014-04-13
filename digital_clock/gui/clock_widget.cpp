@@ -15,10 +15,12 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent) {
   QGridLayout* main_layout = new QGridLayout(this);
   main_layout->addWidget(display_);
   setLayout(main_layout);
+
   drawer_ = new ::skin_draw::SkinDrawer(this);
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
   connect(display_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), display_, SLOT(DrawImage(QImage)));
+
   QSettings state;
   move(state.value(S_OPT_POSITION, QPoint(50, 20)).toPoint());
 }
