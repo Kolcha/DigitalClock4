@@ -165,16 +165,16 @@ int main(int argc, char *argv[]) {
                    [&] (const QString& msg) {
     QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
-          updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
-          updater->tr("Update error. %1").arg(msg),
+          QObject::tr("%1 Update").arg(QCoreApplication::applicationName()),
+          QObject::tr("Update error. %1").arg(msg),
           QSystemTrayIcon::Critical);
   });
 
   QObject::connect(updater.data(), &digital_clock::core::Updater::UpToDate, [&] () {
     QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
-          updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
-          updater->tr("You already have latest version (%1).").arg(
+          QObject::tr("%1 Update").arg(QCoreApplication::applicationName()),
+          QObject::tr("You already have latest version (%1).").arg(
             QCoreApplication::applicationVersion()),
           QSystemTrayIcon::Information);
   });
@@ -183,8 +183,8 @@ int main(int argc, char *argv[]) {
                    [&] (const QString& version, const QString& link) {
     QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
     tray_control->GetTrayIcon()->showMessage(
-          updater->tr("%1 Update").arg(QCoreApplication::applicationName()),
-          updater->tr("Update available (%1). Click this message to download.").arg(version),
+          QObject::tr("%1 Update").arg(QCoreApplication::applicationName()),
+          QObject::tr("Update available (%1). Click this message to download.").arg(version),
           QSystemTrayIcon::Warning);
     QObject::connect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
                      [=] () { QDesktopServices::openUrl(link); });
