@@ -4,24 +4,24 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="168"/>
-        <location filename="../main.cpp" line="176"/>
-        <location filename="../main.cpp" line="186"/>
+        <location filename="../main.cpp" line="182"/>
+        <location filename="../main.cpp" line="190"/>
+        <location filename="../main.cpp" line="200"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="169"/>
+        <location filename="../main.cpp" line="183"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="177"/>
+        <location filename="../main.cpp" line="191"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="187"/>
+        <location filename="../main.cpp" line="201"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
@@ -255,7 +255,22 @@
         <translation>расстояние между цифрами:</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="588"/>
+        <location filename="../gui/settings_dialog.ui" line="572"/>
+        <source>Settings:</source>
+        <translation>Настройки:</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="579"/>
+        <source>Export ...</source>
+        <translation>Экспорт ...</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="586"/>
+        <source>Import ...</source>
+        <translation>Импорт ...</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="609"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
@@ -293,6 +308,22 @@
         <location filename="../gui/settings_dialog.cpp" line="261"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="335"/>
+        <source>Export settings to ...</source>
+        <translation>Экспортировать настройки в ...</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="337"/>
+        <location filename="../gui/settings_dialog.cpp" line="344"/>
+        <source>Digital Clock settings files (*.dcs)</source>
+        <translation>файлы конфигурации Digital Clock</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="342"/>
+        <source>Import settings from ...</source>
+        <translation>Импортировать настройки из ...</translation>
     </message>
 </context>
 <context>
