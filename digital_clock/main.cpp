@@ -135,6 +135,11 @@ int main(int argc, char *argv[]) {
         plugin_manager->UnloadPlugins();
         plugin_manager->LoadPlugins(settings->GetOption(OPT_PLUGINS).toStringList());
       });
+      // export/import settings
+      QObject::connect(dialog.data(), SIGNAL(ExportSettings(QString)),
+                       settings.data(), SLOT(ExportSettings(QString)));
+      QObject::connect(dialog.data(), SIGNAL(ImportSettings(QString)),
+                       settings.data(), SLOT(ImportSettings(QString)));
 
       QObject::connect(dialog.data(), &SettingsDialog::destroyed, [=] () {
         clock_widget->PreviewMode(false);

@@ -17,6 +17,8 @@ public:
 
 signals:
   void OptionChanged(Options opt, const QVariant& value);
+  void SettingsExported();
+  void SettingsImported();
 
 public slots:
   void Load();
@@ -24,6 +26,8 @@ public slots:
   void SetOption(Options opt, const QVariant& value);
   void TrackChanges(bool set);
   void EmitSettings();
+  void ExportSettings(const QString& filename);
+  void ImportSettings(const QString& filename);
 
 private:
   QMap<Options, QString> keys_;

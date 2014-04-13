@@ -1,4 +1,18 @@
+#include <QFile>
+#include <QDataStream>
 #include "clock_settings.h"
+
+inline QDataStream& operator<<(QDataStream& out, Options val) {
+  out << (int)val;
+  return out;
+}
+
+inline QDataStream& operator>>(QDataStream& in, Options& val) {
+  int v;
+  in >> v;
+  val = (Options)v;
+  return in;
+}
 
 namespace digital_clock {
 namespace core {
@@ -68,6 +82,24 @@ void ClockSettings::EmitSettings() {
   for (auto i = values_.begin(); i != values_.end(); ++i) {
     if (i.key() != OPT_PLUGINS) emit OptionChanged(i.key(), i.value());
   }
+}
+
+void ClockSettings::ExportSettings(const QString& filename) {
+  QFile file(filename);
+  if (!file.open(QIODevice::WriteOnly)) return;
+  QDataStream stream(&file);
+  stream << values_;
+  file.close();
+  emit SettingsExported();
+}
+
+void ClockSettings::ImportSettings(const QString& filename) {
+  QFile file(filename);
+  if (!file.open(QIODevice::ReadOnly)) return;
+  QDataStream stream(&file);
+  stream >> values_;
+  file.close();
+  emit SettingsImported();
 }
 
 } // namespace core
