@@ -13,7 +13,6 @@
 #define IPLUGIN_INIT_H
 
 #include <QtPlugin>
-#include "clock_common_global.h"
 #include "settings_keys.h"
 
 /*!
@@ -23,7 +22,7 @@
  * clock settings.
  * Settings initializer is called first of all initializers.
  */
-class CLOCK_COMMON_EXPORT ISettingsPluginInit {
+class ISettingsPluginInit {
 public:
   /*!
    * Virtual destructor.
@@ -48,7 +47,7 @@ class QSystemTrayIcon;
  * Interface for 'tray' plugin initialization. This interface allows plugin to get access to
  * clock's tray icon.
  */
-class CLOCK_COMMON_EXPORT ITrayPluginInit {
+class ITrayPluginInit {
 public:
   /*!
    * Virtual destructor.
@@ -73,7 +72,7 @@ Q_DECLARE_INTERFACE(ITrayPluginInit, TRAY_PLUGIN_INIT_INTERFACE_IID)
  * clock's main window.
  * Main window has grid layout (QGridLayout). Clock widget is situated in cell (0,0).
  */
-class CLOCK_COMMON_EXPORT IWidgetPluginInit {
+class IWidgetPluginInit {
 public:
   /*!
    * Virtual destructor.

@@ -33,6 +33,7 @@ void ClockDisplay::SetTimeFormat(const QString& format) {
   seps_ = format;
   seps_.remove(QRegExp("[hmszap]", Qt::CaseInsensitive));
   emit SeparatorsChanged(seps_);
+  TimeoutHandler(); // to emit redraw request
 }
 
 void ClockDisplay::TimeoutHandler() {
