@@ -331,5 +331,19 @@ void SettingsDialog::on_space_value_valueChanged(int arg1) {
   emit OptionChanged(OPT_SPACING, arg1);
 }
 
+void SettingsDialog::on_export_btn_clicked() {
+  QString filename = QFileDialog::getSaveFileName(this, tr("Export settings to ..."),
+                     QDir::homePath(),
+                     tr("Digital Clock settings files (*.dcs)"));
+  if (!filename.isEmpty()) emit ExportSettings(filename);
+}
+
+void SettingsDialog::on_import_btn_clicked() {
+  QString filename = QFileDialog::getOpenFileName(this, tr("Import settings from ..."),
+                     QDir::homePath(),
+                     tr("Digital Clock settings files (*.dcs)"));
+  if (!filename.isEmpty()) emit ImportSettings(filename);
+}
+
 } // namespace gui
 } // namespace digital_clock

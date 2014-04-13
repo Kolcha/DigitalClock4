@@ -566,6 +566,27 @@
            </property>
           </spacer>
          </item>
+         <item>
+          <widget class="QLabel" name="settings_label">
+           <property name="text">
+            <string>Settings:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="export_btn">
+           <property name="text">
+            <string>Export ...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="import_btn">
+           <property name="text">
+            <string>Import ...</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item>
