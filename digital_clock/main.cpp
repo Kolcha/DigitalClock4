@@ -101,7 +101,7 @@ int main(int argc, char *argv[]) {
     } else {
       // create settings dialog and connect all need signals
       // (settings dialog will be deleted automatically)
-      dialog = new SettingsDialog(clock_widget.data());
+      dialog = new SettingsDialog();
       QObject::connect(skin_manager.data(), SIGNAL(SearchFinished(QStringList)),
                        dialog.data(), SLOT(SetSkinList(QStringList)));
       skin_manager->ListSkins();

@@ -145,7 +145,7 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
   IWidgetPluginInit* wpi = qobject_cast<IWidgetPluginInit*>(plugin);
   if (wpi) wpi->Init(data_.window);
   // pass current clock settings to plugin
-  data_.settings->EmitSettings();
+  if (!spi) data_.settings->EmitSettings();
 }
 
 } // namespace core
