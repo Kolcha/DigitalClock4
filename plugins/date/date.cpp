@@ -23,16 +23,45 @@ Date::Date() : avail_width_(0), last_zoom_(1.0), last_date_("-") {
   info_.icon.load(":/date/icon.png");
 }
 
+void Date::Init(const QMap<Options, QVariant>& current_settings) {
+  for (auto iter = current_settings.begin(); iter != current_settings.end(); ++iter) {
+    switch (iter.key()) {
+      case OPT_FONT:
+        clock_font_ = iter.value().value<QFont>();
+        break;
+
+      case OPT_ZOOM:
+        last_zoom_ = iter.value().toReal();
+        break;
+
+      case OPT_COLOR:
+        drawer_->SetColor(iter.value().value<QColor>());
+        break;
+
+      case OPT_TEXTURE:
+        drawer_->SetTexture(iter.value().toString());
+        break;
+
+      case OPT_TEXTURE_PER_ELEMENT:
+        drawer_->SetTexturePerElement(iter.value().toBool());
+        break;
+
+      case OPT_TEXTURE_DRAW_MODE:
+        drawer_->SetTextureDrawMode((skin_draw::SkinDrawer::DrawMode)iter.value().toInt());
+        break;
+
+      case OPT_CUSTOMIZATION:
+        drawer_->SetCustomizationType((skin_draw::SkinDrawer::CustomizationType)iter.value().toInt());
+        break;
+    }
+  }
+  drawer_->SetSpace(0);
+}
+
 void Date::Init(QWidget* main_wnd) {
   main_layout_ = qobject_cast<QGridLayout*>(main_wnd->layout());
   main_wnd_ = main_wnd;
-  drawer_->SetSpace(0);
-
-  QSettings::SettingsMap defaults;
-  InitDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-  settings_->TrackChanges(true);
-  settings_->Load();
+  avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 7;
 }
 
 void Date::Start() {
@@ -43,6 +72,12 @@ void Date::Start() {
     msg_label_->setPixmap(QPixmap::fromImage(img));
     main_wnd_->adjustSize();
   });
+
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->TrackChanges(true);
+  settings_->Load();
 }
 
 void Date::Stop() {
@@ -69,17 +104,14 @@ void Date::Configure() {
 void Date::SettingsListener(Options option, const QVariant& new_value) {
   switch (option) {
     case OPT_SKIN_NAME:
-      if (!msg_label_) break;  // init, not started yet
+      avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 7;
       switch ((ZoomMode)settings_->GetOption(OPT_ZOOM_MODE).toInt()) {
         case ZoomMode::ZM_NOT_ZOOM:
           msg_label_->setAlignment(Qt::AlignCenter);
           break;
 
         case ZoomMode::ZM_AUTOSIZE:
-          Stop();
-          avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 20;
           last_date_ = "-";
-          Start();
           msg_label_->setAlignment(Qt::AlignLeft);
           break;
 
@@ -93,15 +125,12 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
     case OPT_FONT:
       clock_font_ = new_value.value<QFont>();
       if (!settings_->GetOption(OPT_USE_CLOCK_FONT).toBool()) break;
-      font_ = new_value.value<QFont>();
+      font_ = clock_font_;
       drawer_->ApplySkin(skin_draw::ISkin::SkinPtr(new skin_draw::TextSkin(font_)));
       break;
 
     case OPT_ZOOM:
       last_zoom_ = new_value.toReal();
-      if (avail_width_ == 0) {  // first init
-        avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 20;
-      }
       if (last_date_ == "-") break;
       switch ((ZoomMode)settings_->GetOption(OPT_ZOOM_MODE).toInt()) {
         case ZoomMode::ZM_NOT_ZOOM:
@@ -147,6 +176,8 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
 }
 
 void Date::TimeUpdateListener() {
+  if (!msg_label_) return;  // not started
+
   QString date;
   QDate d_date = QDate::currentDate();
 
@@ -160,15 +191,15 @@ void Date::TimeUpdateListener() {
       break;
   }
 
-  if (date == last_date_ || !msg_label_) return;
+  if (date == last_date_) return;
 
-  drawer_->SetString(QString());
   switch ((ZoomMode)settings_->GetOption(OPT_ZOOM_MODE).toInt()) {
     case ZoomMode::ZM_NOT_ZOOM:
       break;
 
     case ZoomMode::ZM_AUTOSIZE:
     {
+      drawer_->SetString(QString());
       QFontMetricsF fmf(font_);
       drawer_->SetZoom(avail_width_ * last_zoom_ / fmf.width(date));
       break;
