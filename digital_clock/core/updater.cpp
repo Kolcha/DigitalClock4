@@ -65,17 +65,23 @@ void Updater::ProcessData() {
   }
   QJsonObject js_obj = js_doc.object().value("stable").toObject();
   QString latest = js_obj.value("version").toString();
+  QDate last_build = QDateTime::fromString(js_obj.value("timestamp").toString(),
+                                           Qt::RFC2822Date).toUTC().date();
   QString link = js_obj.value("download").toString();
   if (check_beta_) {
     js_obj = js_doc.object().value("testing").toObject();
     QString t_version = js_obj.value("version").toString("-");
     if (t_version != "-") {
       latest = t_version;
+      last_build = QDateTime::fromString(js_obj.value("timestamp").toString(),
+                                         Qt::RFC2822Date).toUTC().date();
       link = js_obj.value("download").toString();
     }
   }
 
-  if (latest > QCoreApplication::applicationVersion()) {
+  if (latest > QCoreApplication::applicationVersion() ||
+      QDateTime::fromString(__TIMESTAMP__).toUTC().date() < last_build) {
+    latest = QString("%1, %2").arg(latest).arg(last_build.toString(Qt::SystemLocaleShortDate));
     emit NewVersion(latest, link);
   } else {
     if (force_update_) emit UpToDate();
