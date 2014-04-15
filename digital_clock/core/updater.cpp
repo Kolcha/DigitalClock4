@@ -4,7 +4,7 @@
 #include <QCoreApplication>
 #include "updater.h"
 
-#define OPT_LAST_UPDATE    "updater/last_update"
+#define S_OPT_LAST_UPDATE        "state/last_update"
 
 namespace digital_clock {
 namespace core {
@@ -14,7 +14,7 @@ Updater::Updater(QObject* parent)
     check_beta_(false), autoupdate_(true), update_period_(3),
     force_update_(false), was_error_(false) {
   QSettings settings;
-  last_update_ = settings.value(OPT_LAST_UPDATE, QDate(2013, 6, 18)).value<QDate>();
+  last_update_ = settings.value(S_OPT_LAST_UPDATE, QDate(2013, 6, 18)).value<QDate>();
   downloader_ = new HttpClient(this);
   connect(downloader_, &HttpClient::ErrorMessage, [=] (const QString& msg) {
     was_error_ = true;
@@ -28,7 +28,7 @@ Updater::Updater(QObject* parent)
 Updater::~Updater() {
   if (downloader_->isRunning()) downloader_->cancel();
   QSettings settings;
-  settings.setValue(OPT_LAST_UPDATE, last_update_);
+  settings.setValue(S_OPT_LAST_UPDATE, last_update_);
 }
 
 void Updater::CheckForUpdates(bool force) {

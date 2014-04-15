@@ -5,7 +5,7 @@
 #include "clock_display.h"
 #include "clock_widget.h"
 
-#define S_OPT_POSITION              "clock/position"
+#define S_OPT_POSITION              "state/clock_position"
 
 namespace digital_clock {
 namespace gui {

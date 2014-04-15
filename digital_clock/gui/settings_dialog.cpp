@@ -8,9 +8,9 @@
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
-#define OPT_LAST_CUSTOMIZATION_KEY   "settings_dialog/last_cutomization"
-#define OPT_LAST_TIME_FORMAT_KEY     "settings_dialog/last_time_format"
-#define OPT_GEOMETRY_KEY             "settings_dialog/geometry"
+#define S_OPT_LAST_CUSTOMIZATION_KEY      "state/last_cutomization"
+#define S_OPT_LAST_TIME_FORMAT_KEY        "state/last_time_format"
+#define S_OPT_GEOMETRY_KEY                "state/settings_dialog_geometry"
 
 using skin_draw::SkinDrawer;
 
@@ -199,18 +199,18 @@ void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
 
 void SettingsDialog::SaveState() {
   QSettings settings;
-  settings.setValue(OPT_LAST_CUSTOMIZATION_KEY, last_customization_);
-  settings.setValue(OPT_LAST_TIME_FORMAT_KEY, ui->format_box->currentText());
-  settings.setValue(OPT_GEOMETRY_KEY, saveGeometry());
+  settings.setValue(S_OPT_LAST_CUSTOMIZATION_KEY, last_customization_);
+  settings.setValue(S_OPT_LAST_TIME_FORMAT_KEY, ui->format_box->currentText());
+  settings.setValue(S_OPT_GEOMETRY_KEY, saveGeometry());
 }
 
 void SettingsDialog::LoadState() {
   QSettings settings;
-  last_customization_ = settings.value(OPT_LAST_CUSTOMIZATION_KEY,
+  last_customization_ = settings.value(S_OPT_LAST_CUSTOMIZATION_KEY,
                                        GetDefaultValue(OPT_CUSTOMIZATION)).toInt();
-  ui->format_box->setCurrentText(settings.value(OPT_LAST_TIME_FORMAT_KEY,
+  ui->format_box->setCurrentText(settings.value(S_OPT_LAST_TIME_FORMAT_KEY,
                                                 GetDefaultValue(OPT_TIME_FORMAT)).toString());
-  restoreGeometry(settings.value(OPT_GEOMETRY_KEY).toByteArray());
+  restoreGeometry(settings.value(S_OPT_GEOMETRY_KEY).toByteArray());
 }
 
 void SettingsDialog::on_stay_on_top_toggled(bool checked) {
