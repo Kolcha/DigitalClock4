@@ -102,7 +102,9 @@ int main(int argc, char *argv[]) {
   // clock tray/context menu
   QObject::connect(
         clock_widget.data(), &digital_clock::gui::ClockWidget::customContextMenuRequested,
-        [=] (const QPoint& p) { tray_control->GetTrayIcon()->contextMenu()->exec(p); }
+        [&] (const QPoint& p) {
+          tray_control->GetTrayIcon()->contextMenu()->exec(clock_widget->mapToParent(p));
+        }
   );
   // menu actions
   QObject::connect(tray_control, &digital_clock::gui::TrayControl::ShowSettingsDlg, [&] () {

@@ -1,4 +1,5 @@
 #include <QMenu>
+#include <QIcon>
 #include <QApplication>
 #include "tray_control.h"
 
