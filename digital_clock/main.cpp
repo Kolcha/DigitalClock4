@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 #ifdef Q_OS_LINUX
   skin_manager->AddSkinDir(QDir("/usr/share/digital_clock/skins"));
   skin_manager->AddSkinDir(QDir("/usr/local/share/digital_clock/skins"));
-  skin_manager->AddSkinDir(QDir(QDir(QDir::homePath() + "/.local/share/digital_clock/skins"));
+  skin_manager->AddSkinDir(QDir(QDir::homePath() + "/.local/share/digital_clock/skins"));
 #endif
   skin_manager->ListSkins();
 
