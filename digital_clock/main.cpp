@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
   // skin manager
   QSharedPointer<digital_clock::core::SkinManager> skin_manager(
         new digital_clock::core::SkinManager());
-  skin_manager->AddSkinDir(QDir(":/clock/default_skin"));
+  skin_manager->AddSkinDir(QDir(":/clock/default_skins"));
   skin_manager->AddSkinDir(QDir(app.applicationDirPath() + "/skins"));
 #ifdef Q_OS_LINUX
   skin_manager->AddSkinDir(QDir("/usr/share/digital_clock/skins"));

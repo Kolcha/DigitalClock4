@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.0"
+   width="52"
+   height="64"
+   id="svg2">
+  <title
+     id="title2984">epm</title>
+  <defs
+     id="defs6" />
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>epm</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     d="m 21.121094,11.736328 c -2.1e-5,1.160173 -0.202169,2.235368 -0.606446,3.225586 -0.404316,0.990248 -0.969745,1.848646 -1.696289,2.575195 -0.902361,0.902356 -1.968766,1.579113 -3.199218,2.030274 -1.230483,0.451182 -2.783216,0.676767 -4.658203,0.676758 l -3.4804693,0 0,9.755859 L 4,30 4,3.8261719 l 7.101563,0 c 1.5703,2.61e-5 2.900377,0.131862 3.990234,0.3955078 1.089828,0.2636974 2.056624,0.6767829 2.90039,1.2392578 0.996076,0.6679926 1.766583,1.500023 2.311524,2.4960937 0.544901,0.9961148 0.817362,2.2558788 0.817383,3.7792968 z M 17.5,11.824219 C 17.499983,10.921894 17.34178,10.136739 17.025391,9.46875 16.708968,8.8008024 16.2285,8.2558811 15.583984,7.8339844 15.02147,7.4707257 14.379869,7.2099837 13.65918,7.0517578 12.938464,6.8935778 12.027332,6.8144763 10.925781,6.8144531 l -3.4453123,0 0,10.4589839 2.9355473,0 c 1.406238,1.3e-5 2.548815,-0.125963 3.427734,-0.377929 0.878892,-0.25194 1.593735,-0.653307 2.144531,-1.204102 0.550765,-0.562485 0.940413,-1.154281 1.168946,-1.77539 0.228498,-0.621077 0.342756,-1.318342 0.342773,-2.091797 z"
+     id="path3764"
+     style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:none;stroke:#000000;stroke-width:0.75;stroke-linejoin:bevel;font-family:Verdana;-inkscape-font-specification:Verdana" />
+  <path
+     d="m 49.035156,30 -3.480469,0 0,-22.5527344 -7.277343,15.3457034 -2.074219,0 -7.224609,-15.3457034 0,22.5527344 -3.251954,0 0,-26.1738281 4.746094,0 6.978516,14.5722651 6.75,-14.5722651 4.833984,0 z"
+     id="path3766"
+     style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:none;stroke:#000000;stroke-width:0.75;stroke-linejoin:bevel;font-family:Verdana;-inkscape-font-specification:Verdana" />
+</svg>
