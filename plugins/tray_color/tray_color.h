@@ -2,15 +2,16 @@
 #define TRAY_COLOR_H
 
 #include "iclock_plugin.h"
+#include "iplugin_init.h"
 
 class PluginSettings;
 
 namespace tray_color {
 
-class TrayColor : public ITrayPlugin {
+class TrayColor : public IClockPlugin, public ITrayPluginInit {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID TRAY_PLUGIN_INTERFACE_IID FILE "tray_color.json")
-  Q_INTERFACES(IClockPlugin ITrayPlugin)
+  Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "tray_color.json")
+  Q_INTERFACES(IClockPlugin ITrayPluginInit)
 
 public:
   TrayColor();

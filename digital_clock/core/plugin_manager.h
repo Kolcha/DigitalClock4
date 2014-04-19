@@ -9,6 +9,7 @@
 #include "plugin_info.h"
 
 class QPluginLoader;
+class QSystemTrayIcon;
 
 namespace digital_clock {
 namespace gui {

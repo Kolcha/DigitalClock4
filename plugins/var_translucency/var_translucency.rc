@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	2,0,1,26
+FILEVERSION	2,0,1,27
 PRODUCTVERSION	4,3,0,0
 FILEOS		0x4
 FILETYPE	0x2
@@ -11,7 +11,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Variable translucency"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "2.0.1.26"
+		VALUE "FileVersion", "2.0.1.27"
 		VALUE "InternalName", "var_translucency.dll"
 		VALUE "LegalCopyright", "Copyright (C) 2013-2014 Nick Korotysh"
 		VALUE "OriginalFilename", "var_translucency.dll"

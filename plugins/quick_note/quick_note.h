@@ -4,6 +4,7 @@
 #include <QFont>
 #include <QPointer>
 #include "iclock_plugin.h"
+#include "iplugin_init.h"
 
 class QGridLayout;
 class QLabel;
@@ -14,10 +15,10 @@ class SkinDrawer;
 
 namespace quick_note {
 
-class QuickNote : public IWidgetPlugin {
+class QuickNote : public IClockPlugin, public IWidgetPluginInit {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID WIDGET_PLUGIN_INTERFACE_IID FILE "quick_note.json")
-  Q_INTERFACES(IClockPlugin IWidgetPlugin)
+  Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "quick_note.json")
+  Q_INTERFACES(IClockPlugin IWidgetPluginInit)
 
 public:
   QuickNote();

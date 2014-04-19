@@ -84,13 +84,6 @@ Q_DECLARE_INTERFACE(IClockPlugin, CLOCK_PLUGIN_INTERFACE_IID)
 class CLOCK_COMMON_EXPORT ISettingsPlugin : public IClockPlugin {
   Q_OBJECT
 
-public:
-  /*!
-   * Init plugin.
-   * @param current_settings - map with all current clock settings
-   */
-  virtual void Init(const QMap<Options, QVariant>& current_settings) = 0;
-
 signals:
   /*!
    * Signal to notify clock that option have changed.
@@ -103,51 +96,5 @@ signals:
 /*! Settings plugin interface IID */
 #define SETTINGS_PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.settings-plugin"
 Q_DECLARE_INTERFACE(ISettingsPlugin, SETTINGS_PLUGIN_INTERFACE_IID)
-
-class QSystemTrayIcon;
-
-/*!
- * @brief Tray plugin interface.
- *
- * Tray plugin can access to the clock tray icon in system tray. It can change clock
- * tray icon and modify tray menu (right click clock popup menu will modified too).
- */
-class CLOCK_COMMON_EXPORT ITrayPlugin : public IClockPlugin {
-  Q_OBJECT
-
-public:
-  /*!
-   * Init plugin.
-   * @param tray_icon - pointer to clock QSystemTrayIcon object
-   */
-  virtual void Init(QSystemTrayIcon* tray_icon) = 0;
-};
-
-/*! Tray plugin interface IID */
-#define TRAY_PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.tray-plugin"
-Q_DECLARE_INTERFACE(ITrayPlugin, TRAY_PLUGIN_INTERFACE_IID)
-
-
-/*!
- * @brief Widget plugin interface.
- *
- * Widget plugin can access and manipulate with main clock window. It can change
- * window position or add/remove some widgets to this window.
- * For example, it can add new widget to date or day of week.
- */
-class CLOCK_COMMON_EXPORT IWidgetPlugin : public IClockPlugin {
-  Q_OBJECT
-
-public:
-  /*!
-   * Init plugin.
-   * @param main_wnd - pointer to clock main window
-   */
-  virtual void Init(QWidget* main_wnd) = 0;
-};
-
-/*! Widget plugin interface IID */
-#define WIDGET_PLUGIN_INTERFACE_IID   "nick-korotysh.digital-clock.widget-plugin"
-Q_DECLARE_INTERFACE(IWidgetPlugin, WIDGET_PLUGIN_INTERFACE_IID)
 
 #endif // ICLOCK_PLUGIN_H

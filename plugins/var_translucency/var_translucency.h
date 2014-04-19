@@ -2,13 +2,14 @@
 #define VAR_TRANSLUCENCY_H
 
 #include "iclock_plugin.h"
+#include "iplugin_init.h"
 
 namespace var_translucency {
 
-class VarTranslucency : public ISettingsPlugin {
+class VarTranslucency : public ISettingsPlugin, public ISettingsPluginInit {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID SETTINGS_PLUGIN_INTERFACE_IID FILE "var_translucency.json")
-  Q_INTERFACES(IClockPlugin ISettingsPlugin)
+  Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "var_translucency.json")
+  Q_INTERFACES(IClockPlugin ISettingsPlugin ISettingsPluginInit)
 
 public:
   VarTranslucency();
