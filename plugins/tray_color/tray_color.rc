@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	1,0,1,26
+FILEVERSION	1,0,2,28
 PRODUCTVERSION	4,3,0,0
 FILEOS		0x4
 FILETYPE	0x2
@@ -11,7 +11,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Tray color"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "1.0.1.26"
+		VALUE "FileVersion", "1.0.2.28"
 		VALUE "InternalName", "tray_color.dll"
 		VALUE "LegalCopyright", "Copyright (C) 2013-2014 Nick Korotysh"
 		VALUE "OriginalFilename", "tray_color.dll"

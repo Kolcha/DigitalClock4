@@ -20,14 +20,51 @@ QuickNote::QuickNote() : avail_width_(0), last_zoom_(1.0) {
   info_.icon.load(":/quick_note/icon.png");
 }
 
+void QuickNote::Init(const QMap<Options, QVariant>& current_settings) {
+  for (auto iter = current_settings.begin(); iter != current_settings.end(); ++iter) {
+    switch (iter.key()) {
+      case OPT_FONT:
+        font_ = iter.value().value<QFont>();
+        drawer_->ApplySkin(skin_draw::ISkin::SkinPtr(new skin_draw::TextSkin(font_)));
+        break;
+
+      case OPT_ZOOM:
+        last_zoom_ = iter.value().toReal();
+        break;
+
+      case OPT_COLOR:
+        drawer_->SetColor(iter.value().value<QColor>());
+        break;
+
+      case OPT_TEXTURE:
+        drawer_->SetTexture(iter.value().toString());
+        break;
+
+      case OPT_TEXTURE_PER_ELEMENT:
+        drawer_->SetTexturePerElement(iter.value().toBool());
+        break;
+
+      case OPT_TEXTURE_DRAW_MODE:
+        drawer_->SetTextureDrawMode((skin_draw::SkinDrawer::DrawMode)iter.value().toInt());
+        break;
+
+      case OPT_CUSTOMIZATION:
+        drawer_->SetCustomizationType((skin_draw::SkinDrawer::CustomizationType)iter.value().toInt());
+        break;
+    }
+  }
+  drawer_->SetSpace(0);
+}
+
 void QuickNote::Init(QWidget* main_wnd) {
   main_layout_ = qobject_cast<QGridLayout*>(main_wnd->layout());
   main_wnd_ = main_wnd;
+  avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 7;
+
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
   settings_->Load();
-  drawer_->SetSpace(0);
 }
 
 void QuickNote::Start() {
@@ -75,10 +112,8 @@ void QuickNote::Configure() {
 void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
   switch (option) {
     case OPT_SKIN_NAME:
-      if (!msg_label_) break;  // init, not started yet
-      Stop();
       avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 16;
-      Start();
+      ApplyString(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
       break;
 
     case OPT_FONT:
@@ -89,9 +124,6 @@ void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
     case OPT_ZOOM:
     {
       last_zoom_ = new_value.toReal();
-      if (avail_width_ == 0) {  // first init
-        avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 16;
-      }
       QFontMetricsF fmf(font_);
       qreal tw = fmf.width(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
       drawer_->SetZoom(avail_width_ * last_zoom_ / tw);

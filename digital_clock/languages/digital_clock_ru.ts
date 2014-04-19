@@ -4,24 +4,24 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="182"/>
-        <location filename="../main.cpp" line="190"/>
+        <location filename="../main.cpp" line="192"/>
         <location filename="../main.cpp" line="200"/>
+        <location filename="../main.cpp" line="209"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="183"/>
+        <location filename="../main.cpp" line="193"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="191"/>
+        <location filename="../main.cpp" line="201"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="201"/>
+        <location filename="../main.cpp" line="210"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
@@ -329,22 +329,22 @@
 <context>
     <name>digital_clock::gui::TrayControl</name>
     <message>
-        <location filename="../gui/tray_control.cpp" line="10"/>
+        <location filename="../gui/tray_control.cpp" line="11"/>
         <source>&amp;Settings</source>
         <translation>&amp;Настройки</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="12"/>
+        <location filename="../gui/tray_control.cpp" line="13"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="15"/>
+        <location filename="../gui/tray_control.cpp" line="16"/>
         <source>&amp;Update</source>
         <translation>О&amp;бновление</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="18"/>
+        <location filename="../gui/tray_control.cpp" line="19"/>
         <source>&amp;Quit</source>
         <translation>&amp;Выход</translation>
     </message>

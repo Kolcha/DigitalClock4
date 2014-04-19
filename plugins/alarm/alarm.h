@@ -5,15 +5,16 @@
 #include <QPointer>
 #include <QMediaPlayer>
 #include "iclock_plugin.h"
+#include "iplugin_init.h"
 
 class PluginSettings;
 
 namespace alarm {
 
-class Alarm : public ITrayPlugin {
+class Alarm : public IClockPlugin, public ITrayPluginInit {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID TRAY_PLUGIN_INTERFACE_IID FILE "alarm.json")
-  Q_INTERFACES(IClockPlugin ITrayPlugin)
+  Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "alarm.json")
+  Q_INTERFACES(IClockPlugin ITrayPluginInit)
 
 public:
   Alarm();

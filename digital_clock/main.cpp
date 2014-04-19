@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
   app.setApplicationDisplayName("Digital Clock");
   app.setApplicationName("Digital Clock");
-  app.setApplicationVersion("4.3.0");
+  app.setApplicationVersion("4.3.0+");
   app.setOrganizationName("Nick Korotysh");
   app.setWindowIcon(QIcon(":/clock/images/clock.svg"));
   app.setQuitOnLastWindowClosed(false);
@@ -182,9 +182,7 @@ int main(int argc, char *argv[]) {
   QObject::connect(tray_control, &digital_clock::gui::TrayControl::CheckForUpdates,
                    [=] () { updater->CheckForUpdates(true); });
   QObject::connect(tray_control, &digital_clock::gui::TrayControl::AppExit,
-                   [=] () { plugin_manager->UnloadPlugins(); });
-  QObject::connect(
-        tray_control, &digital_clock::gui::TrayControl::AppExit, &app, &QApplication::quit);
+                   [&] () { plugin_manager->UnloadPlugins(); app.quit(); });
 
   // updater messages
   QObject::connect(updater.data(), &digital_clock::core::Updater::ErrorMessage,

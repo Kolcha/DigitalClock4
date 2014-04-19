@@ -3,13 +3,14 @@
 
 #include <QColor>
 #include "iclock_plugin.h"
+#include "iplugin_init.h"
 
 namespace spectrum_clock {
 
-class SpectrumClock : public ISettingsPlugin {
+class SpectrumClock : public ISettingsPlugin, public ISettingsPluginInit {
   Q_OBJECT
-  Q_PLUGIN_METADATA(IID SETTINGS_PLUGIN_INTERFACE_IID FILE "spectrum_clock.json")
-  Q_INTERFACES(IClockPlugin ISettingsPlugin)
+  Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "spectrum_clock.json")
+  Q_INTERFACES(IClockPlugin ISettingsPlugin ISettingsPluginInit)
 
 public:
   SpectrumClock();

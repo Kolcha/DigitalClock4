@@ -62,6 +62,11 @@ void Date::Init(QWidget* main_wnd) {
   main_layout_ = qobject_cast<QGridLayout*>(main_wnd->layout());
   main_wnd_ = main_wnd;
   avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 7;
+
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->TrackChanges(true);
 }
 
 void Date::Start() {
@@ -73,10 +78,6 @@ void Date::Start() {
     main_wnd_->adjustSize();
   });
 
-  QSettings::SettingsMap defaults;
-  InitDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-  settings_->TrackChanges(true);
   settings_->Load();
 }
 
@@ -113,6 +114,7 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
         case ZoomMode::ZM_AUTOSIZE:
           last_date_ = "-";
           msg_label_->setAlignment(Qt::AlignLeft);
+          TimeUpdateListener();
           break;
 
         case ZoomMode::ZM_CLOCK_ZOOM:
@@ -131,7 +133,6 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
 
     case OPT_ZOOM:
       last_zoom_ = new_value.toReal();
-      if (last_date_ == "-") break;
       switch ((ZoomMode)settings_->GetOption(OPT_ZOOM_MODE).toInt()) {
         case ZoomMode::ZM_NOT_ZOOM:
           msg_label_->setAlignment(Qt::AlignCenter);
@@ -219,11 +220,15 @@ void Date::SettingsListener(const QString& key, const QVariant& value) {
   }
   if (key == OPT_DATE_FONT) {
     font_ = value.value<QFont>();
+    if (settings_->GetOption(OPT_USE_CLOCK_FONT).toBool()) font_ = clock_font_;
     drawer_->ApplySkin(skin_draw::ISkin::SkinPtr(new skin_draw::TextSkin(font_)));
+    last_date_ = "-";      // reset last date to recalculate zoom
+    TimeUpdateListener();  // on redraw if needed
   }
   if (key == OPT_ZOOM_MODE) {
     switch ((ZoomMode)value.toInt()) {
       case ZoomMode::ZM_NOT_ZOOM:
+        msg_label_->setAlignment(Qt::AlignCenter);
         drawer_->SetZoom(1.0);
         break;
 

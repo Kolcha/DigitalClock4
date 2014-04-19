@@ -118,34 +118,27 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
             plugin, SLOT(SettingsListener(Options,QVariant)));
     connect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
             plugin, SLOT(TimeUpdateListener()));
+    connect(this, SIGNAL(UpdateSettings(Options,QVariant)),
+            plugin, SLOT(SettingsListener(Options,QVariant)));
   }
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
   if (sp) {
-    sp->Init(data_.settings->GetSettings());
     if (connected) {
       connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
               data_.window, SLOT(ApplyOption(Options,QVariant)));
+      connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
+              this, SIGNAL(UpdateSettings(Options,QVariant)));
     }
   }
   ISettingsPluginInit* spi = qobject_cast<ISettingsPluginInit*>(plugin);
   if (spi) spi->Init(data_.settings->GetSettings());
   // init tray plugins
-  ITrayPlugin* tp = qobject_cast<ITrayPlugin*>(plugin);
-  if (tp) {
-    tp->Init(data_.tray);
-  }
   ITrayPluginInit* tpi = qobject_cast<ITrayPluginInit*>(plugin);
   if (tpi) tpi->Init(data_.tray);
   // init widget plugins
-  IWidgetPlugin* wp = qobject_cast<IWidgetPlugin*>(plugin);
-  if (wp) {
-    wp->Init(data_.window);
-  }
   IWidgetPluginInit* wpi = qobject_cast<IWidgetPluginInit*>(plugin);
   if (wpi) wpi->Init(data_.window);
-  // pass current clock settings to plugin
-  if (!spi) data_.settings->EmitSettings();
 }
 
 } // namespace core
