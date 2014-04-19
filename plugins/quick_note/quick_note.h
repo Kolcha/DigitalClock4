@@ -15,13 +15,16 @@ class SkinDrawer;
 
 namespace quick_note {
 
-class QuickNote : public IClockPlugin, public IWidgetPluginInit {
+class QuickNote : public IClockPlugin,
+                  public ISettingsPluginInit,
+                  public IWidgetPluginInit {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "quick_note.json")
-  Q_INTERFACES(IClockPlugin IWidgetPluginInit)
+  Q_INTERFACES(IClockPlugin ISettingsPluginInit IWidgetPluginInit)
 
 public:
   QuickNote();
+  void Init(const QMap<Options, QVariant>& current_settings);
   void Init(QWidget* main_wnd);
 
 public slots:
