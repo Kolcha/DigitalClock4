@@ -222,10 +222,13 @@ void Date::SettingsListener(const QString& key, const QVariant& value) {
     font_ = value.value<QFont>();
     if (settings_->GetOption(OPT_USE_CLOCK_FONT).toBool()) font_ = clock_font_;
     drawer_->ApplySkin(skin_draw::ISkin::SkinPtr(new skin_draw::TextSkin(font_)));
+    last_date_ = "-";      // reset last date to recalculate zoom
+    TimeUpdateListener();  // on redraw if needed
   }
   if (key == OPT_ZOOM_MODE) {
     switch ((ZoomMode)value.toInt()) {
       case ZoomMode::ZM_NOT_ZOOM:
+        msg_label_->setAlignment(Qt::AlignCenter);
         drawer_->SetZoom(1.0);
         break;
 
