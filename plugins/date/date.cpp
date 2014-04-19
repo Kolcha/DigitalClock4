@@ -62,6 +62,11 @@ void Date::Init(QWidget* main_wnd) {
   main_layout_ = qobject_cast<QGridLayout*>(main_wnd->layout());
   main_wnd_ = main_wnd;
   avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 7;
+
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->TrackChanges(true);
 }
 
 void Date::Start() {
@@ -73,10 +78,6 @@ void Date::Start() {
     main_wnd_->adjustSize();
   });
 
-  QSettings::SettingsMap defaults;
-  InitDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-  settings_->TrackChanges(true);
   settings_->Load();
 }
 
