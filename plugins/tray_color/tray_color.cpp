@@ -45,6 +45,10 @@ void TrayColor::Configure() {
   settings_->Save();
 }
 
+void TrayColor::SettingsListener(Options opt, const QVariant& value) {
+  if (opt == OPT_COLOR) RedrawTrayIcon(value.value<QColor>());
+}
+
 void TrayColor::RedrawTrayIcon(const QColor& color) {
   QSize size = tray_icon_->icon().actualSize(QSize(48, 48));
 
