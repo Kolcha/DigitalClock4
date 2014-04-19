@@ -55,6 +55,18 @@ signals:
    * @param plugins - list of found plugins (pair: plugin name - is configurable)
    */
   void SearchFinished(const QList<QPair<TPluginInfo, bool> >& plugins);
+  /*!
+   * @brief Settings update signal.
+   *
+   * Special signal to establish communications between plugins (to track changes made by different
+   * plugins). This signal is connected to SettingsListener() slot on each plugin and will emitted
+   * when some 'settings' plugin changes any option.
+   * @param option - changed option
+   * @param value - new option's value
+   * @note This signal is a part of internal PluginManager logic.
+   * @see settings_keys.h, Options, IClockPlugin
+   */
+  void UpdateSettings(Options option, const QVariant& value);
 
 public slots:
   /*!

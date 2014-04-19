@@ -118,6 +118,8 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
             plugin, SLOT(SettingsListener(Options,QVariant)));
     connect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
             plugin, SLOT(TimeUpdateListener()));
+    connect(this, SIGNAL(UpdateSettings(Options,QVariant)),
+            plugin, SLOT(SettingsListener(Options,QVariant)));
   }
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
@@ -125,6 +127,8 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
     if (connected) {
       connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
               data_.window, SLOT(ApplyOption(Options,QVariant)));
+      connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
+              this, SIGNAL(UpdateSettings(Options,QVariant)));
     }
   }
   ISettingsPluginInit* spi = qobject_cast<ISettingsPluginInit*>(plugin);
