@@ -1,3 +1,29 @@
+Whats new in 4.3.0:
+-------------------
+Core:
+ - code refactored, a lot of little issues are fixed
+ - plugin system updated: added new plugin interfaces
+ - improved updater: check for daily builds (for BETA releases)
+ - reorganized/renamed some option keys
+ - improved Linux support
+
+Features:
+ - export/import clock settings (without plugin settings)
+
+GUI:
+ - added new built-in skin
+
+Plugins:
+ - date: fixed bug with font autoresize on clock startup
+
+SDK:
+ - added new header with new plugin interfaces
+ - updated documentation
+
+Wiki:
+ - added 'How to create skin' article
+
+
 Whats new in 4.2.7:
 -------------------
 Core:
