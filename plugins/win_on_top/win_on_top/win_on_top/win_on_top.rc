@@ -1,0 +1,27 @@
+1	VERSIONINFO
+FILEVERSION	1,0,0,8
+PRODUCTVERSION	1,0,0,0
+FILEOS		0x4
+FILETYPE	0x2
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "Comments", "Adds 'Always on top' menu item"
+		VALUE "CompanyName", "Nick Korotysh"
+		VALUE "FileDescription", "Win on Top library"
+		VALUE "FileVersion", "1.0.0.8"
+		VALUE "InternalName", "win_on_top.dll"
+		VALUE "LegalCopyright", "Copyright (C) 2014 Nick Korotysh"
+		VALUE "OriginalFilename", "win_on_top.dll"
+		VALUE "ProductName", "Win on Top"
+		VALUE "ProductVersion", "1.0.0"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409, 0x04B0
+}
+}
