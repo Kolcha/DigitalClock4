@@ -12,6 +12,7 @@ SUBDIRS += \
     date
 
 windows {
-SUBDIRS += power_off
-*-msvc*:SUBDIRS += win_on_top
+SUBDIRS += \
+    power_off \
+    win_on_top
 }
