@@ -7,3 +7,9 @@ syntax: glob
 installer/*-cache
 installer/Prerequisites
 desktop.ini
+*.suo
+*.opensdf
+*.sdf
+[Dd]ebug/
+[Rr]elease/
+x64/

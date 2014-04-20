@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	1,0,2,27
-PRODUCTVERSION	4,3,0,0
+FILEVERSION	1,0,0,8
+PRODUCTVERSION	1,0,0,0
 FILEOS		0x4
 FILETYPE	0x2
 {
@@ -8,15 +8,15 @@ BLOCK "StringFileInfo"
 {
 	BLOCK "040904b0"
 	{
-		VALUE "Comments", "Always on top"
+		VALUE "Comments", "Adds 'Always on top' menu item"
 		VALUE "CompanyName", "Nick Korotysh"
-		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "1.0.2.27"
+		VALUE "FileDescription", "Win on Top library"
+		VALUE "FileVersion", "1.0.0.8"
 		VALUE "InternalName", "win_on_top.dll"
 		VALUE "LegalCopyright", "Copyright (C) 2014 Nick Korotysh"
 		VALUE "OriginalFilename", "win_on_top.dll"
-		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.3.0"
+		VALUE "ProductName", "Win on Top"
+		VALUE "ProductVersion", "1.0.0"
 	}
 }
 
