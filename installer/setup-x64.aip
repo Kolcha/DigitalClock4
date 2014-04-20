@@ -53,6 +53,7 @@
     <ROW Directory="plugins_Dir" Directory_Parent="APPDIR" DefaultDir="plugins"/>
     <ROW Directory="qsn_cp_clock_digital_new_Dir" Directory_Parent="skins_Dir" DefaultDir="QSN_CP~1|qsn_cp_clock_digital_new"/>
     <ROW Directory="skins_Dir" Directory_Parent="APPDIR" DefaultDir="skins"/>
+    <ROW Directory="special_Dir" Directory_Parent="plugins_Dir" DefaultDir="special"/>
     <ROW Directory="textures_Dir" Directory_Parent="APPDIR" DefaultDir="textures"/>
     <ROW Directory="translations_Dir" Directory_Parent="APPDIR" DefaultDir="TRANSL~1|translations"/>
     <ROW Directory="vintage_digits_Dir" Directory_Parent="skins_Dir" DefaultDir="VINTAG~1|vintage_digits"/>
@@ -116,11 +117,12 @@
     <ROW Component="tray_color.dll" ComponentId="{44AF1003-28B2-4F44-A36B-E99D4FE2E361}" Directory_="plugins_Dir" Attributes="256" KeyPath="tray_color.dll"/>
     <ROW Component="var_translucency.dll" ComponentId="{A552BA0A-9625-42B3-A380-72C216AEFF34}" Directory_="plugins_Dir" Attributes="256" KeyPath="var_translucency.dll"/>
     <ROW Component="win_on_top.dll" ComponentId="{D9ACC5BA-0305-4950-94B7-05A71ED3781C}" Directory_="plugins_Dir" Attributes="256" KeyPath="win_on_top.dll"/>
+    <ROW Component="win_on_top.dll_1" ComponentId="{24A506AE-2146-4673-9FFA-AE7FB824BB66}" Directory_="special_Dir" Attributes="256" KeyPath="win_on_top.dll_1"/>
     <ROW Component="wmfengine.dll" ComponentId="{6103C217-3A2B-4D68-A210-1DC82482CDD4}" Directory_="mediaservice_Dir" Attributes="256" KeyPath="wmfengine.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="EF36CDD6CE40CFA978040EA5CBA799" Title="Visual C++ Redistributable for Visual Studio 2012 x64" Description="Visual C++ Redistributable for Visual Studio 2012 x64" Display="3" Level="1" Attributes="0" Components="EF36CDD6CE40CFA978040EA5CBA799"/>
-    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AIShRegAnswer NY0.png ProductInformation Qt5Core.dll Qt5Gui.dll Qt5Multimedia.dll Qt5Network.dll Qt5Svg.dll Qt5Widgets.dll SHORTCUTDIR alarm.dll any_zoom.dll biclock_item0.svg clock_common.dll d3dcompiler_46.dll date.dll digital_clock.exe grassempty.png hour_signal.dll icudt51.dll icuin51.dll icuuc51.dll libEGL.dll libGLESv2.dll png png_1 png_2 png_3 power_off.dll qgif.dll qico.dll qjpeg.dll qmng.dll qsn_cp_clock_digital_new_eight.svg qsvg.dll qsvgicon.dll qt.conf qtaccessiblewidgets.dll qtbase_cs.qm qtga.dll qtiff.dll quick_note.dll qwbmp.dll qwindows.dll schedule.dll skin_draw.dll spectrum_clock.dll svg svg_1 svg_2 svg_3 svg_4 svg_5 texture_001_128.jpg tray_color.dll var_translucency.dll win_on_top.dll wmfengine.dll"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AIShRegAnswer NY0.png ProductInformation Qt5Core.dll Qt5Gui.dll Qt5Multimedia.dll Qt5Network.dll Qt5Svg.dll Qt5Widgets.dll SHORTCUTDIR alarm.dll any_zoom.dll biclock_item0.svg clock_common.dll d3dcompiler_46.dll date.dll digital_clock.exe grassempty.png hour_signal.dll icudt51.dll icuin51.dll icuuc51.dll libEGL.dll libGLESv2.dll png png_1 png_2 png_3 power_off.dll qgif.dll qico.dll qjpeg.dll qmng.dll qsn_cp_clock_digital_new_eight.svg qsvg.dll qsvgicon.dll qt.conf qtaccessiblewidgets.dll qtbase_cs.qm qtga.dll qtiff.dll quick_note.dll qwbmp.dll qwindows.dll schedule.dll skin_draw.dll spectrum_clock.dll svg svg_1 svg_2 svg_3 svg_4 svg_5 texture_001_128.jpg tray_color.dll var_translucency.dll win_on_top.dll win_on_top.dll_1 wmfengine.dll"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
@@ -618,7 +620,8 @@
     <ROW File="texture_205_128.jpg" Component_="texture_001_128.jpg" FileName="TEXT~205.JPG|texture_205_128.jpg" Attributes="0" SourcePath="..\..\data\textures\texture_205_128.jpg" SelfReg="false" NextFile="biclock_item0.svg"/>
     <ROW File="tray_color.dll" Component_="tray_color.dll" FileName="TRAY_C~1.DLL|tray_color.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\tray_color\release\tray_color.dll" SelfReg="false" NextFile="var_translucency.dll"/>
     <ROW File="var_translucency.dll" Component_="var_translucency.dll" FileName="VAR_TR~1.DLL|var_translucency.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\var_translucency\release\var_translucency.dll" SelfReg="false" NextFile="texture_001_128.jpg"/>
-    <ROW File="win_on_top.dll" Component_="win_on_top.dll" FileName="WIN_ON~1.DLL|win_on_top.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\win_on_top\release\win_on_top.dll" SelfReg="false"/>
+    <ROW File="win_on_top.dll" Component_="win_on_top.dll" FileName="WIN_ON~1.DLL|win_on_top.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\plugins\win_on_top\release\win_on_top.dll" SelfReg="false" NextFile="win_on_top.dll_1"/>
+    <ROW File="win_on_top.dll_1" Component_="win_on_top.dll_1" FileName="WIN_ON~1.DLL|win_on_top.dll" Attributes="0" SourcePath="..\plugins\win_on_top\win_on_top\x64\Release\win_on_top.dll" SelfReg="false"/>
     <ROW File="wmfengine.dll" Component_="wmfengine.dll" FileName="WMFENG~1.DLL|wmfengine.dll" Attributes="0" SourcePath="..\..\Qt files x64\plugins\mediaservice\wmfengine.dll" SelfReg="false" NextFile="qwindows.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AiRemoveRegComponent">
@@ -729,9 +732,6 @@
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFiles64Folder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
-  </COMPONENT>
-  <COMPONENT cid="caphyon.advinst.msicomp.MsiEnvComponent">
-    <ROW Environment="Path" Name="=-*Path" Value="[~];[APPDIR]" Component_="AIShRegAnswer"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="digital_clock.exe" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_2_1_MSVC2012_64bit-Release\digital_clock\release\digital_clock.exe" Index="0"/>
