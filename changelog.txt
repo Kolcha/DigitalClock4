@@ -1,3 +1,22 @@
+Whats new in 4.3.1:
+-------------------
+Core:
+ - changed all plugins to use new interfaces
+ - improved plugin engine: plugins can 'listen' settings changes from each other
+ - fixed issue with plugin unload on app exit
+
+Plugins:
+ - date: fixed issues with custom font using
+ - reimplemented 'quick_note' plugin
+ - tray color: 'spectum tray' feature (enable 'Spectrum clock' plugin to see this)
+ - enabled 'Always on top for any window' plugin for MinGW builds
+
+SDK:
+ - removed 'Init()' from old interfaces
+ - updated SDK
+ - updated plugin example
+
+
 Whats new in 4.3.0:
 -------------------
 Core:

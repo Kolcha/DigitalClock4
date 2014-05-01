@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="10.7.1" version="11.0" Modules="professional" RootPath="." Language="en" Id="{1960A182-4B40-446B-997D-4D6CB7D42D0D}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="10.7.1" version="11.1" Modules="professional" RootPath="." Language="en" Id="{1960A182-4B40-446B-997D-4D6CB7D42D0D}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_SHORTCUTSREG" Value="0|0|0|0|"/>
@@ -13,10 +13,10 @@
     <ROW Property="ARPURLUPDATEINFO" Value="http://sourceforge.net/projects/digitalclock4/"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Nick Korotysh"/>
-    <ROW Property="ProductCode" Value="1033:{0DCACA65-E069-4B3A-A771-1623BDCEE41F} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{00AF0CE3-0291-4A5B-853D-972C74CC9515} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Digital Clock"/>
-    <ROW Property="ProductVersion" Value="4.3.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="4.3.1" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{64E0CE3B-F6E2-4CC9-ACD2-A24E812DF339}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -704,7 +704,7 @@
     <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="101"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
-    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR"/>
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_AiRemoveRegsCommit" Type="11777" Source="ResourceCleaner.dll" Target="OnAiRemoveRegs" WithoutSeq="true"/>
