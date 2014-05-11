@@ -1,6 +1,7 @@
 #ifndef MOVE_CLOCK_MOVE_CLOCK_H
 #define MOVE_CLOCK_MOVE_CLOCK_H
 
+#include <QTimer>
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
 
@@ -22,15 +23,17 @@ public slots:
   void Stop();
   void Configure();
   void SettingsListener(Options, const QVariant&) {}
-  void TimeUpdateListener();
+  void TimeUpdateListener() {}
 
 private slots:
   void SettingsListener(const QString& key, const QVariant& value);
+  void TimeoutHandler();
 
 private:
   PluginSettings* settings_;
   QWidget* clock_wnd_;
   QPoint old_pos_;
+  QTimer timer_;
 };
 
 } // namespace move_clock
