@@ -26,3 +26,39 @@ void SettingsDialog::SettingsListener(const QString& key, const QVariant& value)
 }
 
 } // namespace move_clock
+
+void move_clock::SettingsDialog::on_x0_value_valueChanged(double arg1) {
+  emit OptionChanged(OPT_X0, arg1);
+}
+
+void move_clock::SettingsDialog::on_kx_value_valueChanged(double arg1) {
+  emit OptionChanged(OPT_KX, arg1);
+}
+
+void move_clock::SettingsDialog::on_ax_value_valueChanged(double arg1) {
+  emit OptionChanged(OPT_AX, arg1);
+}
+
+void move_clock::SettingsDialog::on_nx_value_valueChanged(double arg1) {
+  emit OptionChanged(OPT_NX, arg1);
+}
+
+void move_clock::SettingsDialog::on_y0_value_valueChanged(double arg1) {
+  emit OptionChanged(OPT_Y0, arg1);
+}
+
+void move_clock::SettingsDialog::on_ky_value_valueChanged(double arg1) {
+  emit OptionChanged(OPT_KY, arg1);
+}
+
+void move_clock::SettingsDialog::on_ay_value_valueChanged(double arg1) {
+  emit OptionChanged(OPT_AY, arg1);
+}
+
+void move_clock::SettingsDialog::on_ny_value_valueChanged(double arg1) {
+  emit OptionChanged(OPT_NY, arg1);
+}
+
+void move_clock::SettingsDialog::on_speed_slider_valueChanged(int value) {
+  emit OptionChanged(OPT_TIMEOUT, value);
+}

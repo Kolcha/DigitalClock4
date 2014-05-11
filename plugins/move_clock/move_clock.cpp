@@ -15,7 +15,7 @@ double y(double c, double k, double a, double n, double t) {
   return c + k*t + a*cos(n*t);
 }
 
-MoveClock::MoveClock() {
+MoveClock::MoveClock() : t_(0.0) {
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
           this, SLOT(SettingsListener(QString,QVariant)));
@@ -64,10 +64,24 @@ void MoveClock::Configure() {
 }
 
 void MoveClock::SettingsListener(const QString& key, const QVariant& value) {
+  if (key == OPT_X0) x0_ = value.toReal();
+  if (key == OPT_KX) kx_ = value.toReal();
+  if (key == OPT_AX) ax_ = value.toReal();
+  if (key == OPT_NX) nx_ = value.toReal();
+  if (key == OPT_Y0) y0_ = value.toReal();
+  if (key == OPT_KY) ky_ = value.toReal();
+  if (key == OPT_AY) ay_ = value.toReal();
+  if (key == OPT_NY) ny_ = value.toReal();
   if (key == OPT_TIMEOUT) timer_.setInterval(value.toInt());
 }
 
 void MoveClock::TimeoutHandler() {
+  int cx = x(x0_, kx_, ax_, nx_, t_);
+  if (cx > desktop_.screen()->width()) cx = 0;
+  int cy = y(y0_, ky_, ay_, ny_, t_);
+  if (cy > desktop_.screen()->height()) cy = 0;
+  clock_wnd_->move(cx, cy);
+  t_ += 0.5;
 }
 
 } // namespace move_clock

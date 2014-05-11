@@ -1,6 +1,7 @@
 #ifndef MOVE_CLOCK_MOVE_CLOCK_H
 #define MOVE_CLOCK_MOVE_CLOCK_H
 
+#include <QDesktopWidget>
 #include <QTimer>
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
@@ -32,8 +33,12 @@ private slots:
 private:
   PluginSettings* settings_;
   QWidget* clock_wnd_;
+  QDesktopWidget desktop_;
   QPoint old_pos_;
   QTimer timer_;
+  double x0_, kx_, ax_, nx_;
+  double y0_, ky_, ay_, ny_;
+  double t_;
 };
 
 } // namespace move_clock
