@@ -1,6 +1,7 @@
 #include <QGridLayout>
 #include <QSettings>
 #include <QMouseEvent>
+#include <QPainter>
 #include "skin_drawer.h"
 #include "clock_display.h"
 #include "clock_widget.h"
@@ -112,6 +113,12 @@ void ClockWidget::mouseReleaseEvent(QMouseEvent* event) {
     state.setValue(S_OPT_POSITION, pos());
     event->accept();
   }
+}
+
+void ClockWidget::paintEvent(QPaintEvent* /*event*/) {
+  QPainter p(this);
+  p.setCompositionMode(QPainter::CompositionMode_Clear);
+  p.fillRect(this->rect(), Qt::transparent);
 }
 
 void ClockWidget::SetWindowFlag(Qt::WindowFlags flag, bool set) {
