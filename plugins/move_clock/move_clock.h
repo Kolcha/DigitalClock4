@@ -11,6 +11,7 @@ namespace move_clock {
 class MoveClock : public IClockPlugin, public IWidgetPluginInit {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "move_clock.json")
+  Q_INTERFACES(IClockPlugin IWidgetPluginInit)
 
 public:
   MoveClock();
@@ -20,7 +21,7 @@ public slots:
   void Start();
   void Stop();
   void Configure();
-  void SettingsListener(Options option, const QVariant& new_value) {}
+  void SettingsListener(Options, const QVariant&) {}
   void TimeUpdateListener();
 
 private slots:

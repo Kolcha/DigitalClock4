@@ -1,5 +1,6 @@
 #include <QWidget>
 #include "plugin_settings.h"
+#include "gui/settings_dialog.h"
 #include "move_clock.h"
 
 namespace move_clock {
