@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Move Clock Plugin Settings</string>
+   <string>Moving clock plugin settings</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

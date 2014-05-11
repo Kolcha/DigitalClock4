@@ -24,7 +24,7 @@ MoveClock::MoveClock() : t_(0.0) {
   connect(&timer_, SIGNAL(timeout()), this, SLOT(TimeoutHandler()));
 
   InitTranslator(QLatin1String(":/move_clock/move_clock_"));
-  info_.display_name = tr("Move Clock");
+  info_.display_name = tr("Moving clock");
   info_.description = tr("Moves the clock.");
   info_.icon.load(":/move_clock/icon.png");
 }
