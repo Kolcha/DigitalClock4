@@ -64,13 +64,13 @@ void MoveClock::Configure() {
 }
 
 void MoveClock::SettingsListener(const QString& key, const QVariant& value) {
-  if (key == OPT_X0) x0_ = value.toReal();
+  if (key == OPT_X0) x0_ = value.toInt();
   if (key == OPT_KX) kx_ = value.toReal();
-  if (key == OPT_AX) ax_ = value.toReal();
+  if (key == OPT_AX) ax_ = value.toInt();
   if (key == OPT_NX) nx_ = value.toReal();
-  if (key == OPT_Y0) y0_ = value.toReal();
+  if (key == OPT_Y0) y0_ = value.toInt();
   if (key == OPT_KY) ky_ = value.toReal();
-  if (key == OPT_AY) ay_ = value.toReal();
+  if (key == OPT_AY) ay_ = value.toInt();
   if (key == OPT_NY) ny_ = value.toReal();
   if (key == OPT_TIMEOUT) timer_.setInterval(value.toInt());
 }

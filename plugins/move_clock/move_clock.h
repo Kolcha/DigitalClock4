@@ -36,8 +36,10 @@ private:
   QDesktopWidget desktop_;
   QPoint old_pos_;
   QTimer timer_;
-  double x0_, kx_, ax_, nx_;
-  double y0_, ky_, ay_, ny_;
+  int x0_, ax_;
+  double kx_, nx_;
+  int y0_, ay_;
+  double ky_, ny_;
   double t_;
   int dx_, dy_;
 };

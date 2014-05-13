@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>466</width>
+    <width>426</width>
     <height>262</height>
    </rect>
   </property>
@@ -28,7 +28,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="x0_value"/>
+       <widget class="QSpinBox" name="x0_value"/>
       </item>
       <item>
        <widget class="QLabel" name="kx_label">
@@ -52,7 +52,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="ax_value"/>
+       <widget class="QSpinBox" name="ax_value"/>
       </item>
       <item>
        <widget class="QLabel" name="nx_label">
@@ -63,8 +63,17 @@
       </item>
       <item>
        <widget class="QDoubleSpinBox" name="nx_value">
+        <property name="decimals">
+         <number>3</number>
+        </property>
         <property name="minimum">
-         <double>-99.989999999999995</double>
+         <double>-9.999000000000001</double>
+        </property>
+        <property name="maximum">
+         <double>9.999000000000001</double>
+        </property>
+        <property name="singleStep">
+         <double>0.010000000000000</double>
         </property>
        </widget>
       </item>
@@ -85,7 +94,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="y0_value"/>
+       <widget class="QSpinBox" name="y0_value"/>
       </item>
       <item>
        <widget class="QLabel" name="ky_label">
@@ -109,7 +118,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="ay_value"/>
+       <widget class="QSpinBox" name="ay_value"/>
       </item>
       <item>
        <widget class="QLabel" name="ny_label">
@@ -120,8 +129,17 @@
       </item>
       <item>
        <widget class="QDoubleSpinBox" name="ny_value">
+        <property name="decimals">
+         <number>3</number>
+        </property>
         <property name="minimum">
-         <double>-99.989999999999995</double>
+         <double>-9.999000000000001</double>
+        </property>
+        <property name="maximum">
+         <double>9.999000000000001</double>
+        </property>
+        <property name="singleStep">
+         <double>0.010000000000000</double>
         </property>
        </widget>
       </item>

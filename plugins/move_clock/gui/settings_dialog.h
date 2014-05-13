@@ -23,13 +23,13 @@ signals:
   void OptionChanged(const QString&, const QVariant&);
 
 private slots:
-  void on_x0_value_valueChanged(double arg1);
+  void on_x0_value_valueChanged(int arg1);
   void on_kx_value_valueChanged(double arg1);
-  void on_ax_value_valueChanged(double arg1);
+  void on_ax_value_valueChanged(int arg1);
   void on_nx_value_valueChanged(double arg1);
-  void on_y0_value_valueChanged(double arg1);
+  void on_y0_value_valueChanged(int arg1);
   void on_ky_value_valueChanged(double arg1);
-  void on_ay_value_valueChanged(double arg1);
+  void on_ay_value_valueChanged(int arg1);
   void on_ny_value_valueChanged(double arg1);
   void on_speed_slider_valueChanged(int value);
 

@@ -17,14 +17,14 @@ namespace move_clock {
 
 
 inline void InitDefaults(QSettings::SettingsMap* defaults) {
-  defaults->insert(OPT_X0, 0.0);
-  defaults->insert(OPT_KX, 0.0);
-  defaults->insert(OPT_AX, 0.0);
-  defaults->insert(OPT_NX, 0.0);
-  defaults->insert(OPT_Y0, 0.0);
+  defaults->insert(OPT_X0, 50);
+  defaults->insert(OPT_KX, -2.0);
+  defaults->insert(OPT_AX, 0);
+  defaults->insert(OPT_NX, 0.01);
+  defaults->insert(OPT_Y0, 20);
   defaults->insert(OPT_KY, 0.0);
-  defaults->insert(OPT_AY, 0.0);
-  defaults->insert(OPT_NY, 0.0);
+  defaults->insert(OPT_AY, 0);
+  defaults->insert(OPT_NY, 0.01);
   defaults->insert(OPT_TIMEOUT, 200);
 }
 
