@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/move_clock">
         <file>move_clock_ru.qm</file>
+        <file alias="icon.png">move_clock-48.png</file>
     </qresource>
 </RCC>
