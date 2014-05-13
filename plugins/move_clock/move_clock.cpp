@@ -8,11 +8,11 @@
 namespace move_clock {
 
 double x(double c, double k, double a, double n, double t) {
-  return c + k*t + a*sin(n*t);
+  return c + k*t + a*cos(n*t);
 }
 
 double y(double c, double k, double a, double n, double t) {
-  return c + k*t + a*cos(n*t);
+  return c + k*t + a*sin(n*t);
 }
 
 MoveClock::MoveClock() : t_(0.0), dx_(0), dy_(0) {

@@ -17,7 +17,7 @@
    <item>
     <widget class="QGroupBox" name="x_group_box">
      <property name="title">
-      <string notr="true">x(t)=x0+kt+a sin(nt)</string>
+      <string notr="true">x(t)=x0+kt+a cos(nt)</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
@@ -83,7 +83,7 @@
    <item>
     <widget class="QGroupBox" name="y_group_box">
      <property name="title">
-      <string notr="true">y(t)=y0+kt+a cos(nt)</string>
+      <string notr="true">y(t)=y0+kt+a sin(nt)</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>

@@ -23,17 +23,17 @@
         <translation>Настройки плагина &quot;Движущиеся часы&quot;</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="134"/>
+        <location filename="gui/settings_dialog.ui" line="152"/>
         <source>Speed</source>
         <translation>Скорость</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="140"/>
+        <location filename="gui/settings_dialog.ui" line="158"/>
         <source>fast</source>
         <translation>быстро</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="160"/>
+        <location filename="gui/settings_dialog.ui" line="178"/>
         <source>slow</source>
         <translation>медленно</translation>
     </message>
