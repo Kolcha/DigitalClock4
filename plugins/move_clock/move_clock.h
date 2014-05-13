@@ -39,6 +39,7 @@ private:
   double x0_, kx_, ax_, nx_;
   double y0_, ky_, ay_, ny_;
   double t_;
+  int dx_, dy_;
 };
 
 } // namespace move_clock
