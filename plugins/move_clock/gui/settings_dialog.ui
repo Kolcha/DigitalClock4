@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>450</width>
-    <height>237</height>
+    <width>466</width>
+    <height>262</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,7 +38,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="kx_value"/>
+       <widget class="QDoubleSpinBox" name="kx_value">
+        <property name="minimum">
+         <double>-99.989999999999995</double>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="ax_label">
@@ -58,7 +62,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="nx_value"/>
+       <widget class="QDoubleSpinBox" name="nx_value">
+        <property name="minimum">
+         <double>-99.989999999999995</double>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -87,7 +95,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="ky_value"/>
+       <widget class="QDoubleSpinBox" name="ky_value">
+        <property name="minimum">
+         <double>-99.989999999999995</double>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="ay_label">
@@ -107,34 +119,50 @@
        </widget>
       </item>
       <item>
-       <widget class="QDoubleSpinBox" name="ny_value"/>
+       <widget class="QDoubleSpinBox" name="ny_value">
+        <property name="minimum">
+         <double>-99.989999999999995</double>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="speed_h_layout">
-     <item>
-      <widget class="QLabel" name="speed_label">
-       <property name="text">
-        <string>speed:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSlider" name="speed_slider">
-       <property name="minimum">
-        <number>25</number>
-       </property>
-       <property name="maximum">
-        <number>1000</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QGroupBox" name="speed_group_box">
+     <property name="title">
+      <string>Speed</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="fast_label">
+        <property name="text">
+         <string>fast</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="speed_slider">
+        <property name="minimum">
+         <number>25</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="slow_label">
+        <property name="text">
+         <string>slow</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">

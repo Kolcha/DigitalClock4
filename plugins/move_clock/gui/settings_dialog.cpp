@@ -6,6 +6,7 @@ namespace move_clock {
 
 SettingsDialog::SettingsDialog(QWidget* parent)
   : QDialog(parent), ui(new Ui::SettingsDialog) {
+  setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
 }
 
