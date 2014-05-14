@@ -9,7 +9,8 @@ SUBDIRS += \
     any_zoom \
     schedule \
     quick_note \
-    date
+    date \
+    move_clock
 
 windows {
 SUBDIRS += \
