@@ -55,6 +55,10 @@ void SkinManager::LoadSkin(const QString& skin_name) {
   } else {
     skin = CreateSkin(skins_[skin_name]);
   }
+  if (!skin && !fallback_skin_.isEmpty()) {
+    emit ErrorMessage(tr("Skin '%1' is not loaded, using default skin.").arg(skin_name));
+    skin = CreateSkin(skins_[fallback_skin_]);
+  }
   current_skin_ = skin;
   SetSeparators(seps_);
   emit SkinLoaded(skin.dynamicCast<skin_draw::ISkin>());
@@ -73,6 +77,10 @@ void SkinManager::SetFont(const QFont& font) {
 void SkinManager::SetSeparators(const QString& seps) {
   seps_ = seps;
   if (current_skin_) current_skin_->SetSeparators(seps);
+}
+
+void SkinManager::SetFallbackSkin(const QString& skin_name) {
+  fallback_skin_ = skin_name;
 }
 
 } // namespace core

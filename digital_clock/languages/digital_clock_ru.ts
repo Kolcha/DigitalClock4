@@ -4,26 +4,39 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="192"/>
-        <location filename="../main.cpp" line="200"/>
-        <location filename="../main.cpp" line="209"/>
+        <location filename="../main.cpp" line="193"/>
+        <location filename="../main.cpp" line="201"/>
+        <location filename="../main.cpp" line="210"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="193"/>
+        <location filename="../main.cpp" line="194"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="201"/>
+        <location filename="../main.cpp" line="202"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="210"/>
+        <location filename="../main.cpp" line="211"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="222"/>
+        <source>%1 Error</source>
+        <translation>%1 - Ошибка</translation>
+    </message>
+</context>
+<context>
+    <name>digital_clock::core::SkinManager</name>
+    <message>
+        <location filename="../core/skin_manager.cpp" line="59"/>
+        <source>Skin &apos;%1&apos; is not loaded, using default skin.</source>
+        <translation>Стиль &apos;%1&apos; не загружен, использован стиль по умолчанию.</translation>
     </message>
 </context>
 <context>

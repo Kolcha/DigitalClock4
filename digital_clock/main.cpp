@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
   app.setApplicationDisplayName("Digital Clock");
   app.setApplicationName("Digital Clock");
-  app.setApplicationVersion("4.3.1");
+  app.setApplicationVersion("4.3.1+");
   app.setOrganizationName("Nick Korotysh");
   app.setWindowIcon(QIcon(":/clock/images/clock.svg"));
   app.setQuitOnLastWindowClosed(false);
@@ -63,6 +63,7 @@ int main(int argc, char *argv[]) {
   skin_manager->AddSkinDir(QDir(QDir::homePath() + "/.local/share/digital_clock/skins"));
 #endif
   skin_manager->ListSkins();
+  skin_manager->SetFallbackSkin("Electronic (default)");
 
   // updater
   QSharedPointer<digital_clock::core::Updater> updater(
@@ -211,6 +212,14 @@ int main(int argc, char *argv[]) {
           QSystemTrayIcon::Warning);
     QObject::connect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
                      [=] () { QDesktopServices::openUrl(link); });
+  });
+
+  // skin_manager messages
+  QObject::connect(skin_manager.data(), &digital_clock::core::SkinManager::ErrorMessage,
+                   [&] (const QString& msg) {
+    QObject::disconnect(tray_control->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_control->GetTrayIcon()->showMessage(
+          QObject::tr("%1 Error").arg(app.applicationName()), msg, QSystemTrayIcon::Warning);
   });
 
   // settings load
