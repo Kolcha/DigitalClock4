@@ -59,6 +59,10 @@ TRANSLATIONS += \
     languages/digital_clock_ru.ts
 
 win32:RC_FILE = digital_clock.rc
+macx {
+    ICON = resources/1400320218_103169.icns
+    QMAKE_INFO_PLIST = resources/Info.plist
+}
 
 # add skin_draw library
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../skin_draw/release/ -lskin_draw
