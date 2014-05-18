@@ -1,3 +1,4 @@
+#include <QDir>
 #include <QFont>
 #include <QColor>
 #include <QStringList>
@@ -22,6 +23,26 @@ QVariant GetDefaultValue(Options opt) {
         time_format += 'A';
       }
       return time_format;
+    }
+    case OPT_SKINS_PATHS:
+    {
+      QStringList paths;
+#ifdef Q_OS_LINUX
+      paths.append("/usr/share/digital_clock/skins");
+      paths.append("/usr/local/share/digital_clock/skins");
+      paths.append(QDir::homePath() + "/.local/share/digital_clock/skins");
+#endif
+      return paths;
+    }
+    case OPT_PLUGINS_PATHS:
+    {
+      QStringList paths;
+#ifdef Q_OS_LINUX
+      paths.append("/usr/share/digital_clock/plugins");
+      paths.append("/usr/local/share/digital_clock/plugins");
+      paths.append(QDir::homePath() + "/.local/share/digital_clock/plugins");
+#endif
+      return paths;
     }
     // skin settings
     case OPT_SKIN_NAME:             return QString("Electronic (default)");

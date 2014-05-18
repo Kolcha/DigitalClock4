@@ -66,6 +66,20 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
       break;
     }
 
+    case OPT_SKINS_PATHS:
+    {
+      QStringList paths = value.toStringList();
+      for (auto& item : paths) ui->skins_paths_list->addItem(QDir::toNativeSeparators(item));
+      break;
+    }
+
+    case OPT_PLUGINS_PATHS:
+    {
+      QStringList paths = value.toStringList();
+      for (auto& item : paths) ui->plugins_paths_list->addItem(QDir::toNativeSeparators(item));
+      break;
+    }
+
     case OPT_SKIN_NAME:
       ui->skin_box->setCurrentText(value.toString());
       ui->use_skin->setChecked(value.toString() != "Text Skin");
