@@ -66,6 +66,10 @@ private slots:
   void on_space_value_valueChanged(int arg1);
   void on_export_btn_clicked();
   void on_import_btn_clicked();
+  void on_add_sp_btn_clicked();
+  void on_del_sp_btn_clicked();
+  void on_add_pp_btn_clicked();
+  void on_del_pp_btn_clicked();
 
 private:
   Ui::SettingsDialog* ui;

@@ -361,3 +361,27 @@ void SettingsDialog::on_import_btn_clicked() {
 
 } // namespace gui
 } // namespace digital_clock
+
+void digital_clock::gui::SettingsDialog::on_add_sp_btn_clicked() {
+  QString dir = QFileDialog::getExistingDirectory(this, tr("Add skins directory"),
+                QDir::homePath(),
+                QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+  if (dir.isEmpty()) return;
+  ui->skins_paths_list->addItem(QDir::toNativeSeparators(dir));
+}
+
+void digital_clock::gui::SettingsDialog::on_del_sp_btn_clicked() {
+  qDeleteAll(ui->skins_paths_list->selectedItems());
+}
+
+void digital_clock::gui::SettingsDialog::on_add_pp_btn_clicked() {
+  QString dir = QFileDialog::getExistingDirectory(this, tr("Add plugins directory"),
+                QDir::homePath(),
+                QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+  if (dir.isEmpty()) return;
+  ui->plugins_paths_list->addItem(QDir::toNativeSeparators(dir));
+}
+
+void digital_clock::gui::SettingsDialog::on_del_pp_btn_clicked() {
+  qDeleteAll(ui->plugins_paths_list->selectedItems());
+}
