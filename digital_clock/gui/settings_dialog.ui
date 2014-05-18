@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Settings</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_9">
+  <layout class="QGridLayout" name="dialog_layout">
    <item row="1" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
@@ -33,7 +33,7 @@
       <attribute name="title">
        <string>Appearance</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_6">
+      <layout class="QGridLayout" name="appearance_tab_layout">
        <property name="leftMargin">
         <number>10</number>
        </property>
@@ -51,7 +51,7 @@
          <property name="title">
           <string>Clock</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_5">
+         <layout class="QGridLayout" name="clock_layout">
           <item row="0" column="2">
            <layout class="QGridLayout" name="sliders_layout">
             <item row="0" column="0">
@@ -192,9 +192,9 @@
          <property name="title">
           <string>Skin</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout">
+         <layout class="QVBoxLayout" name="skin_layout">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+           <layout class="QHBoxLayout" name="skin_name_layout" stretch="0,1">
             <item>
              <widget class="QRadioButton" name="use_skin">
               <property name="text">
@@ -218,7 +218,7 @@
            </layout>
           </item>
           <item>
-           <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,1">
+           <layout class="QGridLayout" name="skin_info_layout" columnstretch="0,1">
             <item row="0" column="0">
              <widget class="QLabel" name="version_label">
               <property name="text">
@@ -264,7 +264,7 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <layout class="QHBoxLayout" name="font_layout">
             <item>
              <widget class="QRadioButton" name="use_font">
               <property name="text">
@@ -311,13 +311,13 @@
          <property name="title">
           <string>Texture</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_2">
+         <layout class="QGridLayout" name="texture_layout">
           <item row="1" column="0">
            <widget class="QGroupBox" name="txd_type_group">
             <property name="title">
              <string>Type</string>
             </property>
-            <layout class="QGridLayout" name="gridLayout">
+            <layout class="QGridLayout" name="type_layout">
              <item row="0" column="0">
               <widget class="QRadioButton" name="type_color">
                <property name="text">
@@ -372,7 +372,7 @@
             <property name="title">
              <string>Mode</string>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_2">
+            <layout class="QVBoxLayout" name="mode_layout">
              <item>
               <widget class="QRadioButton" name="mode_stretch">
                <property name="text">
@@ -404,7 +404,7 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <layout class="QHBoxLayout" name="space_layout">
          <item>
           <widget class="QLabel" name="space_label">
            <property name="text">
@@ -433,7 +433,7 @@
       <attribute name="title">
        <string>Misc</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_8">
+      <layout class="QGridLayout" name="misc_tab_layout">
        <property name="leftMargin">
         <number>10</number>
        </property>
@@ -451,7 +451,7 @@
          <property name="title">
           <string>Time format</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <layout class="QHBoxLayout" name="time_format_layout">
           <property name="topMargin">
            <number>8</number>
           </property>
@@ -550,11 +550,11 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QGroupBox" name="groupBox_3">
+        <widget class="QGroupBox" name="export_import_group">
          <property name="title">
           <string>GroupBox</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <layout class="QHBoxLayout" name="export_import_layout">
           <property name="leftMargin">
            <number>8</number>
           </property>
@@ -589,7 +589,7 @@
          <property name="title">
           <string>Autoupdate</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <layout class="QHBoxLayout" name="autoupdate_layout">
           <property name="topMargin">
            <number>8</number>
           </property>
@@ -627,13 +627,13 @@
         </widget>
        </item>
        <item row="2" column="0" colspan="2">
-        <widget class="QGroupBox" name="groupBox">
+        <widget class="QGroupBox" name="skins_paths_group">
          <property name="title">
-          <string>GroupBox</string>
+          <string>Skins search paths</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_3">
+         <layout class="QGridLayout" name="skins_paths_layout">
           <item row="0" column="0" rowspan="2">
-           <widget class="QListWidget" name="listWidget">
+           <widget class="QListWidget" name="skins_paths_list">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
               <horstretch>0</horstretch>
@@ -643,14 +643,14 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QToolButton" name="toolButton">
+           <widget class="QToolButton" name="add_sp_btn">
             <property name="text">
              <string>...</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QToolButton" name="toolButton_2">
+           <widget class="QToolButton" name="del_sp_btn">
             <property name="text">
              <string>...</string>
             </property>
@@ -660,13 +660,13 @@
         </widget>
        </item>
        <item row="3" column="0" colspan="2">
-        <widget class="QGroupBox" name="groupBox_2">
+        <widget class="QGroupBox" name="plugins_paths_group">
          <property name="title">
-          <string>GroupBox</string>
+          <string>Plugins search paths</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_7">
+         <layout class="QGridLayout" name="plugins_paths_layout">
           <item row="0" column="0" rowspan="2">
-           <widget class="QListWidget" name="listWidget_2">
+           <widget class="QListWidget" name="plugins_paths_list">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
               <horstretch>0</horstretch>
@@ -676,14 +676,14 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QToolButton" name="toolButton_3">
+           <widget class="QToolButton" name="add_pp_btn">
             <property name="text">
              <string>...</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QToolButton" name="toolButton_4">
+           <widget class="QToolButton" name="del_pp_btn">
             <property name="text">
              <string>...</string>
             </property>
@@ -698,7 +698,7 @@
       <attribute name="title">
        <string>Plugins</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
+      <layout class="QVBoxLayout" name="plugins_tab_layout">
        <item>
         <widget class="QListWidget" name="plugins_list"/>
        </item>
