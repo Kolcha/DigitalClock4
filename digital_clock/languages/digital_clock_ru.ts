@@ -4,29 +4,29 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="193"/>
-        <location filename="../main.cpp" line="201"/>
-        <location filename="../main.cpp" line="210"/>
+        <location filename="../main.cpp" line="191"/>
+        <location filename="../main.cpp" line="199"/>
+        <location filename="../main.cpp" line="208"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="194"/>
+        <location filename="../main.cpp" line="192"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="202"/>
+        <location filename="../main.cpp" line="200"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="211"/>
+        <location filename="../main.cpp" line="209"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="222"/>
+        <location filename="../main.cpp" line="220"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -288,12 +288,12 @@
         <translation>Пути поиска стилей</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="664"/>
+        <location filename="../gui/settings_dialog.ui" line="670"/>
         <source>Plugins search paths</source>
         <translation>Пути поиска плагинов</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="706"/>
+        <location filename="../gui/settings_dialog.ui" line="718"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
@@ -318,35 +318,45 @@
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="160"/>
+        <location filename="../gui/settings_dialog.cpp" line="172"/>
         <source>unknown</source>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="259"/>
+        <location filename="../gui/settings_dialog.cpp" line="271"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="261"/>
+        <location filename="../gui/settings_dialog.cpp" line="273"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="335"/>
+        <location filename="../gui/settings_dialog.cpp" line="347"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="337"/>
-        <location filename="../gui/settings_dialog.cpp" line="344"/>
+        <location filename="../gui/settings_dialog.cpp" line="349"/>
+        <location filename="../gui/settings_dialog.cpp" line="356"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="342"/>
+        <location filename="../gui/settings_dialog.cpp" line="354"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="364"/>
+        <source>Add skins directory</source>
+        <translation>Добавить папку со стилями</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="386"/>
+        <source>Add plugins directory</source>
+        <translation>Добавить папку с плагинами</translation>
     </message>
 </context>
 <context>
