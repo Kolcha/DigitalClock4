@@ -142,6 +142,8 @@ int main(int argc, char *argv[]) {
                        plugin_manager.data(), &digital_clock::core::PluginManager::AddPluginsDir);
       QObject::connect(dialog.data(), &SettingsDialog::PluginsPathRemoved,
                        plugin_manager.data(), &digital_clock::core::PluginManager::DelPluginsDir);
+      QObject::connect(dialog.data(), &SettingsDialog::ResetSettings,
+                       settings.data(), &digital_clock::core::ClockSettings::LoadDefaults);
       QObject::connect(dialog.data(), SIGNAL(accepted()), settings.data(), SLOT(Save()));
       QObject::connect(dialog.data(), SIGNAL(rejected()), settings.data(), SLOT(Load()));
       QObject::connect(dialog.data(), &SettingsDialog::rejected, [=] () {

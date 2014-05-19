@@ -28,6 +28,7 @@ public slots:
   void EmitSettings();
   void ExportSettings(const QString& filename);
   void ImportSettings(const QString& filename);
+  void LoadDefaults();
 
 private:
   QMap<Options, QString> keys_;

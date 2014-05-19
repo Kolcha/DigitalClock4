@@ -32,6 +32,7 @@ signals:
   void SkinPathRemoved(const QDir& path);
   void PluginsPathAdded(const QDir& path);
   void PluginsPathRemoved(const QDir& path);
+  void ResetSettings();
 
 public slots:
   void SettingsListener(Options opt, const QVariant& value);

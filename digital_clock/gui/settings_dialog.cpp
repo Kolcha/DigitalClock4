@@ -23,6 +23,7 @@ SettingsDialog::SettingsDialog(QWidget* parent)
   setWindowIcon(QIcon(":/clock/images/settings.svg"));
 
   connect(this, SIGNAL(accepted()), this, SLOT(SaveState()));
+  connect(ui->defaults_bth, SIGNAL(clicked()), this, SIGNAL(ResetSettings()));
 
   update_periods_[1] = tr("1 day");
   update_periods_[3] = tr("3 days");

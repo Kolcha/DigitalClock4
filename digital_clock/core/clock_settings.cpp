@@ -104,5 +104,14 @@ void ClockSettings::ImportSettings(const QString& filename) {
   emit SettingsImported();
 }
 
+void ClockSettings::LoadDefaults() {
+  for (auto i = keys_.begin(); i != keys_.end(); ++i) {
+    QVariant value = GetDefaultValue(i.key());
+    values_[i.key()] = value;
+    if (track_change_) emit OptionChanged(i.key(), value);
+  }
+  emit SettingsImported();
+}
+
 } // namespace core
 } // namespace digital_clock
