@@ -250,6 +250,15 @@ int main(int argc, char *argv[]) {
         break;
     }
   });
+  // load skins and plugins search paths
+  settings->TrackChanges(false);
+  settings->Load();
+  QStringList skins_paths = settings->GetOption(OPT_SKINS_PATHS).toStringList();
+  for (auto& item : skins_paths) skin_manager->AddSkinDir(QDir(item));
+  skin_manager->ListSkins();
+  QStringList plugins_paths = settings->GetOption(OPT_PLUGINS_PATHS).toStringList();
+  for (auto& item : plugins_paths) plugin_manager->AddPluginsDir(QDir(item));
+  plugin_manager->ListAvailable();
 
   settings->TrackChanges(true);
   settings->Load();
