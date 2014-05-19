@@ -134,6 +134,14 @@ int main(int argc, char *argv[]) {
                        plugin_manager.data(), &digital_clock::core::PluginManager::EnablePlugin);
       QObject::connect(dialog.data(), SIGNAL(PluginConfigureRequest(QString)),
                        plugin_manager.data(), SLOT(ConfigurePlugin(QString)));
+      QObject::connect(dialog.data(), &SettingsDialog::SkinPathAdded,
+                       skin_manager.data(), &digital_clock::core::SkinManager::AddSkinDir);
+      QObject::connect(dialog.data(), &SettingsDialog::SkinPathRemoved,
+                       skin_manager.data(), &digital_clock::core::SkinManager::DelSkinDir);
+      QObject::connect(dialog.data(), &SettingsDialog::PluginsPathAdded,
+                       plugin_manager.data(), &digital_clock::core::PluginManager::AddPluginsDir);
+      QObject::connect(dialog.data(), &SettingsDialog::PluginsPathRemoved,
+                       plugin_manager.data(), &digital_clock::core::PluginManager::DelPluginsDir);
       QObject::connect(dialog.data(), SIGNAL(accepted()), settings.data(), SLOT(Save()));
       QObject::connect(dialog.data(), SIGNAL(rejected()), settings.data(), SLOT(Load()));
       QObject::connect(dialog.data(), &SettingsDialog::rejected, [=] () {

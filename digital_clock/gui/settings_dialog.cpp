@@ -67,18 +67,16 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
     }
 
     case OPT_SKINS_PATHS:
-    {
-      QStringList paths = value.toStringList();
-      for (auto& item : paths) ui->skins_paths_list->addItem(QDir::toNativeSeparators(item));
+      skins_paths_ = value.toStringList();
+      for (auto& item : skins_paths_)
+        ui->skins_paths_list->addItem(QDir::toNativeSeparators(item));
       break;
-    }
 
     case OPT_PLUGINS_PATHS:
-    {
-      QStringList paths = value.toStringList();
-      for (auto& item : paths) ui->plugins_paths_list->addItem(QDir::toNativeSeparators(item));
+      plugins_paths_ = value.toStringList();
+      for (auto& item : plugins_paths_)
+        ui->plugins_paths_list->addItem(QDir::toNativeSeparators(item));
       break;
-    }
 
     case OPT_SKIN_NAME:
       ui->skin_box->setCurrentText(value.toString());
@@ -368,10 +366,20 @@ void digital_clock::gui::SettingsDialog::on_add_sp_btn_clicked() {
                 QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
   if (dir.isEmpty()) return;
   ui->skins_paths_list->addItem(QDir::toNativeSeparators(dir));
+  skins_paths_.append(dir);
+  emit SkinPathAdded(QDir(dir));
+  emit OptionChanged(OPT_SKINS_PATHS, skins_paths_);
 }
 
 void digital_clock::gui::SettingsDialog::on_del_sp_btn_clicked() {
-  qDeleteAll(ui->skins_paths_list->selectedItems());
+  QList<QListWidgetItem*> sel_items = ui->skins_paths_list->selectedItems();
+  for (auto& item : sel_items) {
+    QString dir = QDir::fromNativeSeparators(item->text());
+    skins_paths_.removeOne(dir);
+    emit SkinPathRemoved(QDir(dir));
+  }
+  qDeleteAll(sel_items);
+  emit OptionChanged(OPT_SKINS_PATHS, skins_paths_);
 }
 
 void digital_clock::gui::SettingsDialog::on_add_pp_btn_clicked() {
@@ -380,8 +388,18 @@ void digital_clock::gui::SettingsDialog::on_add_pp_btn_clicked() {
                 QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
   if (dir.isEmpty()) return;
   ui->plugins_paths_list->addItem(QDir::toNativeSeparators(dir));
+  plugins_paths_.append(dir);
+  emit PluginsPathAdded(QDir(dir));
+  emit OptionChanged(OPT_PLUGINS_PATHS, plugins_paths_);
 }
 
 void digital_clock::gui::SettingsDialog::on_del_pp_btn_clicked() {
-  qDeleteAll(ui->plugins_paths_list->selectedItems());
+  QList<QListWidgetItem*> sel_items = ui->plugins_paths_list->selectedItems();
+  for (auto& item : sel_items) {
+    QString dir = QDir::fromNativeSeparators(item->text());
+    plugins_paths_.removeOne(dir);
+    emit PluginsPathRemoved(QDir(dir));
+  }
+  qDeleteAll(sel_items);
+  emit OptionChanged(OPT_PLUGINS_PATHS, plugins_paths_);
 }
