@@ -57,11 +57,6 @@ int main(int argc, char *argv[]) {
         new digital_clock::core::SkinManager());
   skin_manager->AddSkinDir(QDir(":/clock/default_skins"));
   skin_manager->AddSkinDir(QDir(app.applicationDirPath() + "/skins"));
-#ifdef Q_OS_LINUX
-  skin_manager->AddSkinDir(QDir("/usr/share/digital_clock/skins"));
-  skin_manager->AddSkinDir(QDir("/usr/local/share/digital_clock/skins"));
-  skin_manager->AddSkinDir(QDir(QDir::homePath() + "/.local/share/digital_clock/skins"));
-#endif
   skin_manager->ListSkins();
   skin_manager->SetFallbackSkin("Electronic (default)");
 
@@ -73,11 +68,6 @@ int main(int argc, char *argv[]) {
   QSharedPointer<digital_clock::core::PluginManager> plugin_manager(
         new digital_clock::core::PluginManager());
   plugin_manager->AddPluginsDir(QDir(app.applicationDirPath() + "/plugins"));
-#ifdef Q_OS_LINUX
-  plugin_manager->AddPluginsDir(QDir("/usr/share/digital_clock/plugins"));
-  plugin_manager->AddPluginsDir(QDir("/usr/local/share/digital_clock/plugins"));
-  plugin_manager->AddPluginsDir(QDir(QDir::homePath() + "/.local/share/digital_clock/plugins"));
-#endif
   plugin_manager->ListAvailable();
   digital_clock::core::TPluginData plugin_data;
   plugin_data.settings = settings.data();
@@ -144,6 +134,14 @@ int main(int argc, char *argv[]) {
                        plugin_manager.data(), &digital_clock::core::PluginManager::EnablePlugin);
       QObject::connect(dialog.data(), SIGNAL(PluginConfigureRequest(QString)),
                        plugin_manager.data(), SLOT(ConfigurePlugin(QString)));
+      QObject::connect(dialog.data(), &SettingsDialog::SkinPathAdded,
+                       skin_manager.data(), &digital_clock::core::SkinManager::AddSkinDir);
+      QObject::connect(dialog.data(), &SettingsDialog::SkinPathRemoved,
+                       skin_manager.data(), &digital_clock::core::SkinManager::DelSkinDir);
+      QObject::connect(dialog.data(), &SettingsDialog::PluginsPathAdded,
+                       plugin_manager.data(), &digital_clock::core::PluginManager::AddPluginsDir);
+      QObject::connect(dialog.data(), &SettingsDialog::PluginsPathRemoved,
+                       plugin_manager.data(), &digital_clock::core::PluginManager::DelPluginsDir);
       QObject::connect(dialog.data(), SIGNAL(accepted()), settings.data(), SLOT(Save()));
       QObject::connect(dialog.data(), SIGNAL(rejected()), settings.data(), SLOT(Load()));
       QObject::connect(dialog.data(), &SettingsDialog::rejected, [=] () {
@@ -252,6 +250,15 @@ int main(int argc, char *argv[]) {
         break;
     }
   });
+  // load skins and plugins search paths
+  settings->TrackChanges(false);
+  settings->Load();
+  QStringList skins_paths = settings->GetOption(OPT_SKINS_PATHS).toStringList();
+  for (auto& item : skins_paths) skin_manager->AddSkinDir(QDir(item));
+  skin_manager->ListSkins();
+  QStringList plugins_paths = settings->GetOption(OPT_PLUGINS_PATHS).toStringList();
+  for (auto& item : plugins_paths) plugin_manager->AddPluginsDir(QDir(item));
+  plugin_manager->ListAvailable();
 
   settings->TrackChanges(true);
   settings->Load();

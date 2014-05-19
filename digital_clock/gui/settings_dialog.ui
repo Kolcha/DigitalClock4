@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>533</width>
-    <height>381</height>
+    <width>670</width>
+    <height>434</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Settings</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_9">
+  <layout class="QGridLayout" name="dialog_layout">
    <item row="1" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
@@ -33,13 +33,25 @@
       <attribute name="title">
        <string>Appearance</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_6">
+      <layout class="QGridLayout" name="appearance_tab_layout">
+       <property name="leftMargin">
+        <number>10</number>
+       </property>
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
        <item row="0" column="0" colspan="2">
         <widget class="QGroupBox" name="clock_group">
          <property name="title">
           <string>Clock</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_5">
+         <layout class="QGridLayout" name="clock_layout">
           <item row="0" column="2">
            <layout class="QGridLayout" name="sliders_layout">
             <item row="0" column="0">
@@ -175,14 +187,14 @@
          </layout>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="1" column="0" rowspan="2">
         <widget class="QGroupBox" name="skin_group">
          <property name="title">
           <string>Skin</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout">
+         <layout class="QVBoxLayout" name="skin_layout">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+           <layout class="QHBoxLayout" name="skin_name_layout" stretch="0,1">
             <item>
              <widget class="QRadioButton" name="use_skin">
               <property name="text">
@@ -206,7 +218,7 @@
            </layout>
           </item>
           <item>
-           <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,1">
+           <layout class="QGridLayout" name="skin_info_layout" columnstretch="0,1">
             <item row="0" column="0">
              <widget class="QLabel" name="version_label">
               <property name="text">
@@ -252,7 +264,7 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <layout class="QHBoxLayout" name="font_layout">
             <item>
              <widget class="QRadioButton" name="use_font">
               <property name="text">
@@ -274,15 +286,9 @@
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="sel_font_btn">
+             <widget class="QToolButton" name="sel_font_btn">
               <property name="enabled">
                <bool>false</bool>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>24</width>
-                <height>16777215</height>
-               </size>
               </property>
               <property name="text">
                <string notr="true">...</string>
@@ -299,13 +305,13 @@
          <property name="title">
           <string>Texture</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_2">
+         <layout class="QGridLayout" name="texture_layout">
           <item row="1" column="0">
            <widget class="QGroupBox" name="txd_type_group">
             <property name="title">
              <string>Type</string>
             </property>
-            <layout class="QGridLayout" name="gridLayout">
+            <layout class="QGridLayout" name="type_layout">
              <item row="0" column="0">
               <widget class="QRadioButton" name="type_color">
                <property name="text">
@@ -324,28 +330,16 @@
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="QPushButton" name="sel_image_btn">
-               <property name="maximumSize">
-                <size>
-                 <width>24</width>
-                 <height>16777215</height>
-                </size>
-               </property>
+              <widget class="QToolButton" name="sel_image_btn">
                <property name="text">
                 <string notr="true">...</string>
                </property>
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QPushButton" name="sel_color_btn">
+              <widget class="QToolButton" name="sel_color_btn">
                <property name="enabled">
                 <bool>false</bool>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>24</width>
-                 <height>16777215</height>
-                </size>
                </property>
                <property name="text">
                 <string notr="true">...</string>
@@ -360,7 +354,16 @@
             <property name="title">
              <string>Mode</string>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_2">
+            <layout class="QVBoxLayout" name="mode_layout">
+             <property name="spacing">
+              <number>8</number>
+             </property>
+             <property name="topMargin">
+              <number>6</number>
+             </property>
+             <property name="bottomMargin">
+              <number>6</number>
+             </property>
              <item>
               <widget class="QRadioButton" name="mode_stretch">
                <property name="text">
@@ -391,19 +394,61 @@
          </layout>
         </widget>
        </item>
+       <item row="2" column="1">
+        <layout class="QHBoxLayout" name="space_layout">
+         <item>
+          <widget class="QLabel" name="space_label">
+           <property name="text">
+            <string>space between digits:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="space_value">
+           <property name="minimum">
+            <number>-10</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="value">
+            <number>4</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="misc_tab">
       <attribute name="title">
        <string>Misc</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
+      <layout class="QGridLayout" name="misc_tab_layout">
+       <property name="leftMargin">
+        <number>10</number>
+       </property>
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
+       <item row="0" column="0">
         <widget class="QGroupBox" name="time_format_group">
          <property name="title">
           <string>Time format</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <layout class="QHBoxLayout" name="time_format_layout">
+          <property name="topMargin">
+           <number>8</number>
+          </property>
+          <property name="bottomMargin">
+           <number>8</number>
+          </property>
           <item>
            <widget class="QRadioButton" name="system_format">
             <property name="text">
@@ -495,12 +540,53 @@
          </layout>
         </widget>
        </item>
-       <item>
+       <item row="0" column="1">
+        <widget class="QGroupBox" name="export_import_group">
+         <property name="title">
+          <string>Export/import settings</string>
+         </property>
+         <layout class="QHBoxLayout" name="export_import_layout">
+          <property name="leftMargin">
+           <number>8</number>
+          </property>
+          <property name="topMargin">
+           <number>8</number>
+          </property>
+          <property name="rightMargin">
+           <number>8</number>
+          </property>
+          <property name="bottomMargin">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="export_btn">
+            <property name="text">
+             <string>Export ...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="import_btn">
+            <property name="text">
+             <string>Import ...</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
         <widget class="QGroupBox" name="autoupdate_group">
          <property name="title">
           <string>Autoupdate</string>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <layout class="QHBoxLayout" name="autoupdate_layout">
+          <property name="topMargin">
+           <number>8</number>
+          </property>
+          <property name="bottomMargin">
+           <number>8</number>
+          </property>
           <item>
            <widget class="QCheckBox" name="enable_autoupdate">
             <property name="text">
@@ -531,76 +617,99 @@
          </layout>
         </widget>
        </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <widget class="QLabel" name="space_label">
-           <property name="text">
-            <string>space between digits:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="space_value">
-           <property name="minimum">
-            <number>-10</number>
-           </property>
-           <property name="maximum">
-            <number>100</number>
-           </property>
-           <property name="value">
-            <number>4</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="settings_label">
-           <property name="text">
-            <string>Settings:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="export_btn">
-           <property name="text">
-            <string>Export ...</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="import_btn">
-           <property name="text">
-            <string>Import ...</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+       <item row="2" column="0" colspan="2">
+        <widget class="QGroupBox" name="skins_paths_group">
+         <property name="title">
+          <string>Skins search paths</string>
+         </property>
+         <layout class="QGridLayout" name="skins_paths_layout">
+          <item row="0" column="0" rowspan="2">
+           <widget class="QListWidget" name="skins_paths_list">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::MultiSelection</enum>
+            </property>
+            <property name="sortingEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QToolButton" name="add_sp_btn">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../digital_clock.qrc">
+              <normaloff>:/clock/images/add.svg</normaloff>:/clock/images/add.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QToolButton" name="del_sp_btn">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../digital_clock.qrc">
+              <normaloff>:/clock/images/del.svg</normaloff>:/clock/images/del.svg</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
+       <item row="3" column="0" colspan="2">
+        <widget class="QGroupBox" name="plugins_paths_group">
+         <property name="title">
+          <string>Plugins search paths</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>225</height>
-          </size>
-         </property>
-        </spacer>
+         <layout class="QGridLayout" name="plugins_paths_layout">
+          <item row="0" column="0" rowspan="2">
+           <widget class="QListWidget" name="plugins_paths_list">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::MultiSelection</enum>
+            </property>
+            <property name="sortingEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QToolButton" name="add_pp_btn">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../digital_clock.qrc">
+              <normaloff>:/clock/images/add.svg</normaloff>:/clock/images/add.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QToolButton" name="del_pp_btn">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../digital_clock.qrc">
+              <normaloff>:/clock/images/del.svg</normaloff>:/clock/images/del.svg</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -608,7 +717,7 @@
       <attribute name="title">
        <string>Plugins</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
+      <layout class="QVBoxLayout" name="plugins_tab_layout">
        <item>
         <widget class="QListWidget" name="plugins_list"/>
        </item>
@@ -621,7 +730,9 @@
  <tabstops>
   <tabstop>buttonBox</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../digital_clock.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>opacity_slider</sender>

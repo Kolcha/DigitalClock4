@@ -23,6 +23,8 @@ enum Options {
   OPT_SEPARATOR_FLASH,          /*!< is separator flashes flag, bool, true/false */
   OPT_PLUGINS,                  /*!< plugins to load, QStringList, list of plugin names */
   OPT_TIME_FORMAT,              /*!< time format, QString, any valid time format string */
+  OPT_SKINS_PATHS,              /*!< skins search paths, QStringList, any valid paths */
+  OPT_PLUGINS_PATHS,            /*!< plugins search paths, QStringList, any valid paths */
   // skin settings
   OPT_SKIN_NAME,                /*!< skin name to use, QString, skin name */
   OPT_FONT,                     /*!< font to use, QFont, any available font */

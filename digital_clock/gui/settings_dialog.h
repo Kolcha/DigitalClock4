@@ -2,6 +2,7 @@
 #define DIGITAL_CLOCK_GUI_SETTINGS_DIALOG_H
 
 #include <QListWidgetItem>
+#include <QDir>
 #include "settings_keys.h"
 #include "centered_dialog.h"
 #include "../core/plugin_info.h"
@@ -27,6 +28,10 @@ signals:
   void PluginStateChanged(const QString& name, bool enabled);
   void ExportSettings(const QString& filename);
   void ImportSettings(const QString& filename);
+  void SkinPathAdded(const QDir& path);
+  void SkinPathRemoved(const QDir& path);
+  void PluginsPathAdded(const QDir& path);
+  void PluginsPathRemoved(const QDir& path);
 
 public slots:
   void SettingsListener(Options opt, const QVariant& value);
@@ -66,6 +71,10 @@ private slots:
   void on_space_value_valueChanged(int arg1);
   void on_export_btn_clicked();
   void on_import_btn_clicked();
+  void on_add_sp_btn_clicked();
+  void on_del_sp_btn_clicked();
+  void on_add_pp_btn_clicked();
+  void on_del_pp_btn_clicked();
 
 private:
   Ui::SettingsDialog* ui;
@@ -75,6 +84,8 @@ private:
   QFont last_font_;
   int last_customization_;
   QMap<qint64, QString> update_periods_;
+  QStringList skins_paths_;
+  QStringList plugins_paths_;
 };
 
 } // namespace gui
