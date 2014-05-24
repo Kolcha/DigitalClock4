@@ -1,3 +1,21 @@
+Whats new in 4.3.2:
+-------------------
+Core:
+ - build with Qt 5.3.0
+ - basic Mac OS X support
+ - if skin is not loaded load default skin
+
+Features:
+ - skins/plugins search path management
+ - one click restore default settings
+
+GUI:
+ - fixed some GUI issues on Mac OS X
+
+Plugins:
+ - added "moving clock" plugin
+
+
 Whats new in 4.3.1:
 -------------------
 Core:
