@@ -18,7 +18,7 @@ PowerOff::PowerOff() : active_(false) {
   InitTranslator(QLatin1String(":/power_off/power_off_"));
   info_.display_name = tr("Auto power off");
   info_.description = tr("Shutdown system at specified time.");
-  info_.icon.load(":/power_off/icon.png");
+  InitIcon(":/power_off/icon.svg");
 }
 
 void PowerOff::Start() {

@@ -2,6 +2,6 @@
     <qresource prefix="/hour_signal">
         <file alias="hour_signal.wav">hour_signal.wav</file>
         <file>hour_signal_ru.qm</file>
-        <file alias="icon.png">hour_signal-48.png</file>
+        <file alias="icon.svg">1401047747_Streamline-48.svg</file>
     </qresource>
 </RCC>

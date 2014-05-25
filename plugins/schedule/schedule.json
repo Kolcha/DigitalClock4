@@ -1,6 +1,6 @@
 {
     "name" : "schedule",
-    "version" : "2.0.3",
+    "version" : "2.0.4",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
     "configurable" : true
