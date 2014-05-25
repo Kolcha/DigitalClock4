@@ -2,11 +2,10 @@
 #define DIGITAL_CLOCK_CORE_PLUGIN_MANAGER_H
 
 #include <QMap>
-#include <QDir>
 #include <QString>
-#include <QList>
 #include "iclock_plugin.h"
 #include "plugin_info.h"
+#include "manager_base.h"
 
 class QPluginLoader;
 class QSystemTrayIcon;
@@ -34,7 +33,7 @@ struct TPluginData {
  * This class provides plugin management system. It loads/unloads plugins.
  * It distinguishes plugin types and int them with appropriate data.
  */
-class PluginManager : public QObject {
+class PluginManager : public ManagerBase {
   Q_OBJECT
 
 public:
@@ -69,16 +68,6 @@ signals:
   void UpdateSettings(Options option, const QVariant& value);
 
 public slots:
-  /*!
-   * Add plugins search directory.
-   * @param dir - search directory
-   */
-  void AddPluginsDir(const QDir& dir);
-  /*!
-   * Remove plugins search directory.
-   * @param dir - directory to remove
-   */
-  void DelPluginsDir(const QDir& dir);
   /*!
    * List all available plugins. Signal @SearchFinished will emited with list of all plugins.
    */
@@ -125,7 +114,6 @@ private:
    */
   void InitPlugin(IClockPlugin* plugin, bool connected);
 
-  QList<QDir> plugins_dirs_;
   QMap<QString, QString> available_;
   QMap<QString, QPluginLoader*> loaded_;
   TPluginData data_;

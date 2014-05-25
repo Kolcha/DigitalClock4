@@ -1,16 +1,16 @@
 #ifndef DIGITAL_CLOCK_CORE_SKIN_MANAGER_H
 #define DIGITAL_CLOCK_CORE_SKIN_MANAGER_H
 
-#include <QDir>
 #include <QString>
 #include <QFont>
 #include "iskin.h"
 #include "../skin/clock_base_skin.h"
+#include "manager_base.h"
 
 namespace digital_clock {
 namespace core {
 
-class SkinManager : public QObject {
+class SkinManager : public ManagerBase {
   Q_OBJECT
 
 public:
@@ -23,8 +23,6 @@ signals:
   void ErrorMessage(const QString& msg);
 
 public slots:
-  void AddSkinDir(const QDir& dir);
-  void DelSkinDir(const QDir& dir);
   void ListSkins();
   void LoadSkin(const QString& skin_name);
   void SetFont(const QFont& font);
@@ -33,7 +31,6 @@ public slots:
   void SetDevicePixelRatio(qreal new_ratio);
 
 private:
-  QList<QDir> skin_dirs_;
   QMap<QString, QDir> skins_;
   QFont font_;
   QString seps_;

@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
   app.setApplicationDisplayName("Digital Clock");
   app.setApplicationName("Digital Clock");
-  app.setApplicationVersion("4.3.2");
+  app.setApplicationVersion("4.3.2+");
   app.setOrganizationName("Nick Korotysh");
   app.setWindowIcon(QIcon(":/clock/images/clock.svg"));
   app.setQuitOnLastWindowClosed(false);
@@ -56,8 +56,15 @@ int main(int argc, char *argv[]) {
   // skin manager
   QSharedPointer<digital_clock::core::SkinManager> skin_manager(
         new digital_clock::core::SkinManager());
-  skin_manager->AddSkinDir(QDir(":/clock/default_skins"));
-  skin_manager->AddSkinDir(QDir(app.applicationDirPath() + "/skins"));
+  QList<QDir> default_skin_dirs;
+  default_skin_dirs.append(QDir(":/clock/default_skins"));
+  default_skin_dirs.append(QDir(app.applicationDirPath() + "/skins"));
+#ifdef Q_OS_LINUX
+  default_skin_dirs.append(QDir("/usr/share/digital_clock/skins"));
+  default_skin_dirs.append(QDir("/usr/local/share/digital_clock/skins"));
+  default_skin_dirs.append(QDir(QDir::homePath() + "/.local/share/digital_clock/skins"));
+#endif
+  skin_manager->ResetSearchDirs(default_skin_dirs);
   skin_manager->ListSkins();
   skin_manager->SetFallbackSkin("Electronic (default)");
 
@@ -68,7 +75,14 @@ int main(int argc, char *argv[]) {
   // plugin manager
   QSharedPointer<digital_clock::core::PluginManager> plugin_manager(
         new digital_clock::core::PluginManager());
-  plugin_manager->AddPluginsDir(QDir(app.applicationDirPath() + "/plugins"));
+  QList<QDir> default_plugin_dirs;
+  default_plugin_dirs.append(QDir(app.applicationDirPath() + "/plugins"));
+#ifdef Q_OS_LINUX
+  default_plugin_dirs.append(QDir("/usr/share/digital_clock/plugins"));
+  default_plugin_dirs.append(QDir("/usr/local/share/digital_clock/plugins"));
+  default_plugin_dirs.append(QDir(QDir::homePath() + "/.local/share/digital_clock/plugins"));
+#endif
+  plugin_manager->ResetSearchDirs(default_plugin_dirs);
   plugin_manager->ListAvailable();
   digital_clock::core::TPluginData plugin_data;
   plugin_data.settings = settings.data();
@@ -136,14 +150,6 @@ int main(int argc, char *argv[]) {
                        plugin_manager.data(), &digital_clock::core::PluginManager::EnablePlugin);
       QObject::connect(dialog.data(), SIGNAL(PluginConfigureRequest(QString)),
                        plugin_manager.data(), SLOT(ConfigurePlugin(QString)));
-      QObject::connect(dialog.data(), &SettingsDialog::SkinPathAdded,
-                       skin_manager.data(), &digital_clock::core::SkinManager::AddSkinDir);
-      QObject::connect(dialog.data(), &SettingsDialog::SkinPathRemoved,
-                       skin_manager.data(), &digital_clock::core::SkinManager::DelSkinDir);
-      QObject::connect(dialog.data(), &SettingsDialog::PluginsPathAdded,
-                       plugin_manager.data(), &digital_clock::core::PluginManager::AddPluginsDir);
-      QObject::connect(dialog.data(), &SettingsDialog::PluginsPathRemoved,
-                       plugin_manager.data(), &digital_clock::core::PluginManager::DelPluginsDir);
       QObject::connect(dialog.data(), &SettingsDialog::ResetSettings,
                        settings.data(), &digital_clock::core::ClockSettings::LoadDefaults);
       QObject::connect(dialog.data(), SIGNAL(accepted()), settings.data(), SLOT(Save()));
@@ -250,6 +256,22 @@ int main(int argc, char *argv[]) {
         updater->SetCheckForBeta(value.toBool());
         break;
 
+      case OPT_SKINS_PATHS:
+      {
+        QStringList skins_paths = value.toStringList();
+        skin_manager->ResetSearchDirs(default_skin_dirs);
+        for (auto& path : skins_paths) skin_manager->AddSearchDir(QDir(path));
+        break;
+      }
+
+      case OPT_PLUGINS_PATHS:
+      {
+        QStringList plugins_paths = value.toStringList();
+        plugin_manager->ResetSearchDirs(default_plugin_dirs);
+        for (auto& path : plugins_paths) plugin_manager->AddSearchDir(QDir(path));
+        break;
+      }
+
       default:
         break;
     }
@@ -258,10 +280,10 @@ int main(int argc, char *argv[]) {
   settings->TrackChanges(false);
   settings->Load();
   QStringList skins_paths = settings->GetOption(OPT_SKINS_PATHS).toStringList();
-  for (auto& item : skins_paths) skin_manager->AddSkinDir(QDir(item));
+  for (auto& item : skins_paths) skin_manager->AddSearchDir(QDir(item));
   skin_manager->ListSkins();
   QStringList plugins_paths = settings->GetOption(OPT_PLUGINS_PATHS).toStringList();
-  for (auto& item : plugins_paths) plugin_manager->AddPluginsDir(QDir(item));
+  for (auto& item : plugins_paths) plugin_manager->AddSearchDir(QDir(item));
   plugin_manager->ListAvailable();
 
   settings->TrackChanges(true);

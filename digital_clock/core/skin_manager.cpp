@@ -21,21 +21,12 @@ ClockSkinPtr CreateSkin(const QFont& font) {
 }
 
 
-SkinManager::SkinManager(QObject* parent)
-  : QObject(parent), ratio_(1.0) {
-}
-
-void SkinManager::AddSkinDir(const QDir& dir) {
-  skin_dirs_.append(dir);
-}
-
-void SkinManager::DelSkinDir(const QDir& dir) {
-  skin_dirs_.removeOne(dir);
+SkinManager::SkinManager(QObject* parent) : ManagerBase(parent), ratio_(1.0) {
 }
 
 void SkinManager::ListSkins() {
   skins_.clear();
-  for (auto& s_dir : skin_dirs_) {
+  for (auto& s_dir : search_dirs_) {
     QStringList f_dirs = s_dir.entryList(QDir::NoDotAndDotDot | QDir::AllDirs);
     for (auto& f_dir : f_dirs) {
       QDir skin_root(s_dir.filePath(f_dir));

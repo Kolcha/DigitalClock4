@@ -10,25 +10,17 @@
 namespace digital_clock {
 namespace core {
 
-PluginManager::PluginManager(QObject *parent) : QObject(parent) {
+PluginManager::PluginManager(QObject *parent) : ManagerBase(parent) {
 }
 
 void PluginManager::SetInitData(const TPluginData& data) {
   data_ = data;
 }
 
-void PluginManager::AddPluginsDir(const QDir& dir) {
-  plugins_dirs_.append(dir);
-}
-
-void PluginManager::DelPluginsDir(const QDir& dir) {
-  plugins_dirs_.removeOne(dir);
-}
-
 void PluginManager::ListAvailable() {
   available_.clear();
   QList<QPair<TPluginInfo, bool> > plugins;
-  for (auto& dir : plugins_dirs_) {
+  for (auto& dir : search_dirs_) {
     QStringList files = dir.entryList(QDir::Files);
     for (auto& file : files) {
       QString abs_path = dir.filePath(file);
