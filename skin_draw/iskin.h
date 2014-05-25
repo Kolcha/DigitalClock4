@@ -36,6 +36,14 @@ public:
    * @return pointer to result image
    */
   virtual QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache) = 0;
+  /*!
+   * @brief Set device pixel ratio value.
+   *
+   * This value 1.0 for normal displays and 2.0 or higher for Retina displays.
+   * See Qt documentation for details. Default value 1.0.
+   * @param new_ratio - new device pixel ratio
+   */
+  virtual void SetDevicePixelRatio(qreal new_ratio) = 0;
 };
 
 } // namespace skin_draw

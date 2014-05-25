@@ -103,6 +103,7 @@ void SkinDrawer::Redraw() {
 
   // create result image
   QImage result(result_w, result_h, QImage::Format_ARGB32_Premultiplied);
+  result.setDevicePixelRatio(elements.front()->devicePixelRatio());
   QPainter painter(&result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
   painter.fillRect(result.rect(), Qt::transparent);
@@ -117,7 +118,7 @@ void SkinDrawer::Redraw() {
       // draw texture
       DrawTexture(painter, QRect(x, 0, elem->width(), elem->height()));
     }
-    x += elem->width() + space_;
+    x += (elem->width() + space_) / elem->devicePixelRatio();
   }
   if (!txd_per_elem_ && cust_type_ != CT_NONE) {
     // draw texture

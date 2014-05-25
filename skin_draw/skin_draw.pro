@@ -26,6 +26,6 @@ HEADERS += skin_drawer.h\
     iskin.h
 
 win32:RC_FILE = skin_draw.rc
-unix:VERSION = 1.1.1
+unix:VERSION = 1.2.0
 
 include(../config.pri)
