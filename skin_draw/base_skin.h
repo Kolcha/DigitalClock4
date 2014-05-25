@@ -30,6 +30,14 @@ public:
    * @return pointer to result image
    */
   QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache);
+  /*!
+   * @brief Set device pixel ratio value.
+   *
+   * This value 1.0 for normal displays and 2.0 or higher for Retina displays.
+   * See Qt documentation for details. Default value 1.0.
+   * @param new_ratio - new device pixel ratio
+   */
+  void SetDevicePixelRatio(qreal new_ratio);
 
 protected:
   /*!
@@ -40,6 +48,8 @@ protected:
    * @note skin-specific method
    */
   virtual QPixmapPtr ResizeImage(QChar ch, qreal zoom) = 0;
+  /// device pixel ratio
+  qreal ratio_;
 
 private:
   qreal cached_zoom_;

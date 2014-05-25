@@ -7,7 +7,9 @@ ISkin::QPixmapPtr RasterSkin::ResizeImage(QChar ch, qreal zoom) {
   if (original.isNull()) return QPixmapPtr();
 
   QPixmapPtr result(new QPixmap());
-  *result = original.scaled(original.size() * zoom, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+  *result = original.scaled(original.size() * zoom * ratio_,
+                            Qt::KeepAspectRatio, Qt::SmoothTransformation);
+  result->setDevicePixelRatio(ratio_);
   return result;
 }
 

@@ -10,12 +10,14 @@ ISkin::QPixmapPtr VectorSkin::ResizeImage(QChar ch, qreal zoom) {
   if (!QFile::exists(img_file)) return QPixmapPtr();
 
   QSvgRenderer renderer(img_file);
-  QPixmapPtr result(new QPixmap(renderer.defaultSize() * zoom));
+  QPixmapPtr result(new QPixmap(renderer.defaultSize() * zoom * ratio_));
   QPainter painter(result.data());
   painter.setCompositionMode(QPainter::CompositionMode_Source);
   painter.fillRect(result->rect(), Qt::transparent);
   painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
   renderer.render(&painter);
+  painter.end();
+  result->setDevicePixelRatio(ratio_);
   return result;
 }
 
