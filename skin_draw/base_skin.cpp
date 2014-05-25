@@ -1,8 +1,11 @@
+#include <QGuiApplication>
+#include <QScreen>
 #include "base_skin.h"
 
 namespace skin_draw {
 
-BaseSkin::BaseSkin() : ratio_(1.0), cached_zoom_(1.0) {
+BaseSkin::BaseSkin() : cached_zoom_(1.0) {
+  device_pixel_ratio_ = QGuiApplication::primaryScreen()->devicePixelRatio();
 }
 
 ISkin::QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
@@ -22,10 +25,6 @@ ISkin::QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
     }
   }
   return result;
-}
-
-void BaseSkin::SetDevicePixelRatio(qreal new_ratio) {
-  ratio_ = new_ratio;
 }
 
 } // namespace skin_draw
