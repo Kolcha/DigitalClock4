@@ -2,7 +2,7 @@
 #define PLUGIN_BASE_H
 
 #include "clock_common_global.h"
-#include <QImage>
+#include <QPixmap>
 
 /*!
  * @brief Translatable plugin info structure.
@@ -14,7 +14,7 @@
 struct TPluginGUIInfo {
   QString display_name;   /*!< plugin display name (user friendly) */
   QString description;    /*!< plugin description */
-  QImage icon;            /*!< plugin icon (logo) */
+  QPixmap icon;           /*!< plugin icon (logo) */
 };
 
 class QTranslator;
@@ -45,6 +45,12 @@ protected:
    * @param prefix - language file path prefix (example: ":/lang/example_")
    */
   void InitTranslator(const QLatin1String& prefix);
+  /*!
+   * Load plugin icon and init need filed in plugin info structure with it.
+   * @param file_path - path to icon file (svg file from plugin resource, for example)
+   * @see TPluginGUIInfo
+   */
+  void InitIcon(const QString& file_path);
   /// Structure with translatable plugin info. This must be filled in child constructor.
   TPluginGUIInfo info_;
 
