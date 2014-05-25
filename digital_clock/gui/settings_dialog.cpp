@@ -69,12 +69,14 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
 
     case OPT_SKINS_PATHS:
       skins_paths_ = value.toStringList();
+      ui->skins_paths_list->clear();
       for (auto& item : skins_paths_)
         ui->skins_paths_list->addItem(QDir::toNativeSeparators(item));
       break;
 
     case OPT_PLUGINS_PATHS:
       plugins_paths_ = value.toStringList();
+      ui->plugins_paths_list->clear();
       for (auto& item : plugins_paths_)
         ui->plugins_paths_list->addItem(QDir::toNativeSeparators(item));
       break;
@@ -162,7 +164,11 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
 }
 
 void SettingsDialog::SetSkinList(const QStringList& skins) {
+  QString current_skin;
+  if (ui->skin_box->count()) current_skin = ui->skin_box->currentText();
+  ui->skin_box->clear();
   ui->skin_box->addItems(skins);
+  if (!current_skin.isEmpty()) ui->skin_box->setCurrentText(current_skin);
 }
 
 void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::ClockBaseSkin::TSkinInfo& info) {
@@ -180,6 +186,7 @@ void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::ClockBaseSkin:
 }
 
 void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins) {
+  ui->plugins_list->clear();
   for (auto& plugin : plugins) {
     QListWidgetItem* item = new QListWidgetItem();
     PluginListItemWidget* widget = new PluginListItemWidget(ui->plugins_list);
@@ -293,7 +300,7 @@ void SettingsDialog::on_type_image_toggled(bool checked) {
 }
 
 void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
-  emit OptionChanged(OPT_SKIN_NAME, arg1);
+  if (!arg1.isEmpty()) emit OptionChanged(OPT_SKIN_NAME, arg1);
 }
 
 void SettingsDialog::on_use_skin_toggled(bool checked) {
@@ -368,16 +375,13 @@ void digital_clock::gui::SettingsDialog::on_add_sp_btn_clicked() {
   if (dir.isEmpty()) return;
   ui->skins_paths_list->addItem(QDir::toNativeSeparators(dir));
   skins_paths_.append(dir);
-  emit SkinPathAdded(QDir(dir));
   emit OptionChanged(OPT_SKINS_PATHS, skins_paths_);
 }
 
 void digital_clock::gui::SettingsDialog::on_del_sp_btn_clicked() {
   QList<QListWidgetItem*> sel_items = ui->skins_paths_list->selectedItems();
   for (auto& item : sel_items) {
-    QString dir = QDir::fromNativeSeparators(item->text());
-    skins_paths_.removeOne(dir);
-    emit SkinPathRemoved(QDir(dir));
+    skins_paths_.removeOne(QDir::fromNativeSeparators(item->text()));
   }
   qDeleteAll(sel_items);
   emit OptionChanged(OPT_SKINS_PATHS, skins_paths_);
@@ -390,16 +394,13 @@ void digital_clock::gui::SettingsDialog::on_add_pp_btn_clicked() {
   if (dir.isEmpty()) return;
   ui->plugins_paths_list->addItem(QDir::toNativeSeparators(dir));
   plugins_paths_.append(dir);
-  emit PluginsPathAdded(QDir(dir));
   emit OptionChanged(OPT_PLUGINS_PATHS, plugins_paths_);
 }
 
 void digital_clock::gui::SettingsDialog::on_del_pp_btn_clicked() {
   QList<QListWidgetItem*> sel_items = ui->plugins_paths_list->selectedItems();
   for (auto& item : sel_items) {
-    QString dir = QDir::fromNativeSeparators(item->text());
-    plugins_paths_.removeOne(dir);
-    emit PluginsPathRemoved(QDir(dir));
+    plugins_paths_.removeOne(QDir::fromNativeSeparators(item->text()));
   }
   qDeleteAll(sel_items);
   emit OptionChanged(OPT_PLUGINS_PATHS, plugins_paths_);

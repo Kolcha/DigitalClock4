@@ -28,10 +28,6 @@ signals:
   void PluginStateChanged(const QString& name, bool enabled);
   void ExportSettings(const QString& filename);
   void ImportSettings(const QString& filename);
-  void SkinPathAdded(const QDir& path);
-  void SkinPathRemoved(const QDir& path);
-  void PluginsPathAdded(const QDir& path);
-  void PluginsPathRemoved(const QDir& path);
   void ResetSettings();
 
 public slots:

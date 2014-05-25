@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     gui/clock_widget.cpp \
     gui/clock_display.cpp \
     gui/tray_control.cpp \
-    gui/plugin_list_item_widget.cpp
+    gui/plugin_list_item_widget.cpp \
+    core/manager_base.cpp
 
 HEADERS  += \
     core/skin_manager.h \
@@ -44,7 +45,8 @@ HEADERS  += \
     gui/clock_widget.h \
     gui/clock_display.h \
     gui/tray_control.h \
-    gui/plugin_list_item_widget.h
+    gui/plugin_list_item_widget.h \
+    core/manager_base.h
 
 FORMS    += \
     gui/settings_dialog.ui \
