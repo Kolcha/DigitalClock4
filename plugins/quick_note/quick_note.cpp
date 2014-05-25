@@ -51,6 +51,9 @@ void QuickNote::Init(const QMap<Options, QVariant>& current_settings) {
       case OPT_CUSTOMIZATION:
         drawer_->SetCustomizationType((skin_draw::SkinDrawer::CustomizationType)iter.value().toInt());
         break;
+
+      default:
+        break;
     }
   }
   drawer_->SetSpace(0);
@@ -148,6 +151,9 @@ void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
 
     case OPT_CUSTOMIZATION:
       drawer_->SetCustomizationType((skin_draw::SkinDrawer::CustomizationType)new_value.toInt());
+      break;
+
+    default:
       break;
   }
 }
