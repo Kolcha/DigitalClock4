@@ -81,6 +81,7 @@ int main(int argc, char *argv[]) {
   clock_widget->setWindowFlags(Qt::FramelessWindowHint | Qt::Tool | Qt::NoDropShadowWindowHint);
   clock_widget->setAttribute(Qt::WA_TranslucentBackground);
   clock_widget->setContextMenuPolicy(Qt::CustomContextMenu);
+  skin_manager->SetDevicePixelRatio(app.devicePixelRatio());
 
   QObject::connect(skin_manager.data(), &digital_clock::core::SkinManager::SkinLoaded,
                    clock_widget.data(), &digital_clock::gui::ClockWidget::ApplySkin);

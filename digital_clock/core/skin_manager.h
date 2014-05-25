@@ -30,6 +30,7 @@ public slots:
   void SetFont(const QFont& font);
   void SetSeparators(const QString& seps);
   void SetFallbackSkin(const QString& skin_name);
+  void SetDevicePixelRatio(qreal new_ratio);
 
 private:
   QList<QDir> skin_dirs_;
@@ -38,6 +39,7 @@ private:
   QString seps_;
   ClockSkinPtr current_skin_;
   QString fallback_skin_;
+  qreal ratio_;
 };
 
 } // namespace core
