@@ -21,7 +21,7 @@ ClockSkinPtr CreateSkin(const QFont& font) {
 }
 
 
-SkinManager::SkinManager(QObject* parent) : ManagerBase(parent), ratio_(1.0) {
+SkinManager::SkinManager(QObject* parent) : ManagerBase(parent) {
 }
 
 void SkinManager::ListSkins() {
@@ -50,7 +50,6 @@ void SkinManager::LoadSkin(const QString& skin_name) {
     emit ErrorMessage(tr("Skin '%1' is not loaded, using default skin.").arg(skin_name));
     skin = CreateSkin(skins_[fallback_skin_]);
   }
-  skin.dynamicCast<skin_draw::ISkin>()->SetDevicePixelRatio(ratio_);
   current_skin_ = skin;
   SetSeparators(seps_);
   emit SkinLoaded(skin.dynamicCast<skin_draw::ISkin>());
@@ -73,10 +72,6 @@ void SkinManager::SetSeparators(const QString& seps) {
 
 void SkinManager::SetFallbackSkin(const QString& skin_name) {
   fallback_skin_ = skin_name;
-}
-
-void SkinManager::SetDevicePixelRatio(qreal new_ratio) {
-  ratio_ = new_ratio;
 }
 
 } // namespace core
