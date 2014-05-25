@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
   app.setOrganizationName("Nick Korotysh");
   app.setWindowIcon(QIcon(":/clock/images/clock.svg"));
   app.setQuitOnLastWindowClosed(false);
+  app.setAttribute(Qt::AA_UseHighDpiPixmaps);
 
   // install app translators
   QTranslator app_translator;
