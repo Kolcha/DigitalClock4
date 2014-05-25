@@ -261,6 +261,7 @@ int main(int argc, char *argv[]) {
         QStringList skins_paths = value.toStringList();
         skin_manager->ResetSearchDirs(default_skin_dirs);
         for (auto& path : skins_paths) skin_manager->AddSearchDir(QDir(path));
+        skin_manager->ListSkins();
         break;
       }
 
@@ -269,6 +270,7 @@ int main(int argc, char *argv[]) {
         QStringList plugins_paths = value.toStringList();
         plugin_manager->ResetSearchDirs(default_plugin_dirs);
         for (auto& path : plugins_paths) plugin_manager->AddSearchDir(QDir(path));
+        plugin_manager->ListAvailable();
         break;
       }
 
