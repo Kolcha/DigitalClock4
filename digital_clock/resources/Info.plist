@@ -22,5 +22,7 @@
 	<string>True</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2013-2014 Nick Korotysh</string>
+	<key>LSUIElement</key>
+	<string>1</string>
 </dict>
 </plist>
