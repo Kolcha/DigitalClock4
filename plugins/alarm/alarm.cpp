@@ -15,7 +15,7 @@ Alarm::Alarm() {
   InitTranslator(QLatin1String(":/alarm/alarm_"));
   info_.display_name = tr("Alarm/Notification");
   info_.description = tr("Allows to set alarm/notification.");
-  info_.icon.load(":/alarm/icon.png");
+  InitIcon(":/alarm/alarm_clock.svg");
 }
 
 void Alarm::Init(QSystemTrayIcon* tray_icon) {

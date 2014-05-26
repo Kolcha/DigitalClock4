@@ -26,7 +26,7 @@ MoveClock::MoveClock() : t_(0.0), dx_(0), dy_(0) {
   InitTranslator(QLatin1String(":/move_clock/move_clock_"));
   info_.display_name = tr("Moving clock");
   info_.description = tr("Moves the clock.");
-  info_.icon.load(":/move_clock/icon.png");
+  InitIcon(":/move_clock/icon.svg");
 }
 
 void MoveClock::Init(QWidget* main_wnd) {

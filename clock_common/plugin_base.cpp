@@ -1,6 +1,7 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QApplication>
+#include <QIcon>
 #include "plugin_base.h"
 
 PluginBase::PluginBase() : translator_(0) {
@@ -30,4 +31,9 @@ void PluginBase::InitTranslator(const QLatin1String& prefix) {
       break;
     }
   }
+}
+
+void PluginBase::InitIcon(const QString& file_path) {
+  QIcon ico(file_path);
+  info_.icon = ico.pixmap(48);
 }

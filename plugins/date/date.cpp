@@ -20,7 +20,7 @@ Date::Date() : avail_width_(0), last_zoom_(1.0), last_date_("-") {
   InitTranslator(QLatin1String(":/date/date_"));
   info_.display_name = tr("Date");
   info_.description = tr("Allows to display current date under clock.");
-  info_.icon.load(":/date/icon.png");
+  InitIcon(":/date/icon.svg");
 }
 
 void Date::Init(const QMap<Options, QVariant>& current_settings) {

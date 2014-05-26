@@ -17,7 +17,7 @@ QuickNote::QuickNote() : avail_width_(0), last_zoom_(1.0) {
   InitTranslator(QLatin1String(":/quick_note/quick_note_"));
   info_.display_name = tr("Quick note");
   info_.description = tr("Allows to display any short message under clock.");
-  info_.icon.load(":/quick_note/icon.png");
+  InitIcon(":/quick_note/icon.svg");
 }
 
 void QuickNote::Init(const QMap<Options, QVariant>& current_settings) {

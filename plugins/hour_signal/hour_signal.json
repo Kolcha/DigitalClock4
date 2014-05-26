@@ -1,6 +1,6 @@
 {
     "name" : "hour_signal",
-    "version" : "2.0.1",
+    "version" : "2.0.2",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
     "configurable" : false

@@ -20,7 +20,7 @@ Schedule::Schedule() {
   InitTranslator(QLatin1String(":/schedule/schedule_"));
   info_.display_name = tr("Scheduler");
   info_.description = tr("Allow to schedule a task and display notification at specified time.");
-  info_.icon.load(":/schedule/icon.png");
+  InitIcon(":/schedule/schedule.svg");
 }
 
 void Schedule::Start() {
