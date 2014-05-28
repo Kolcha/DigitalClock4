@@ -58,7 +58,11 @@ int main(int argc, char *argv[]) {
         new digital_clock::core::SkinManager());
   QList<QDir> default_skin_dirs;
   default_skin_dirs.append(QDir(":/clock/default_skins"));
+#ifdef Q_OS_OSX
+  default_skin_dirs.append(QDir(app.applicationDirPath() + "/../skins"));
+#else
   default_skin_dirs.append(QDir(app.applicationDirPath() + "/skins"));
+#endif
 #ifdef Q_OS_LINUX
   default_skin_dirs.append(QDir("/usr/share/digital_clock/skins"));
   default_skin_dirs.append(QDir("/usr/local/share/digital_clock/skins"));
@@ -76,7 +80,11 @@ int main(int argc, char *argv[]) {
   QSharedPointer<digital_clock::core::PluginManager> plugin_manager(
         new digital_clock::core::PluginManager());
   QList<QDir> default_plugin_dirs;
+#ifdef Q_OS_OSX
+  default_plugin_dirs.append(QDir(app.applicationDirPath() + "/../PlugIns"));
+#else
   default_plugin_dirs.append(QDir(app.applicationDirPath() + "/plugins"));
+#endif
 #ifdef Q_OS_LINUX
   default_plugin_dirs.append(QDir("/usr/share/digital_clock/plugins"));
   default_plugin_dirs.append(QDir("/usr/local/share/digital_clock/plugins"));

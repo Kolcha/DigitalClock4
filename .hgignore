@@ -14,3 +14,4 @@ desktop.ini
 [Rr]elease/
 x64/
 .DS_Store
+*.dmg

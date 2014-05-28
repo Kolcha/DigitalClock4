@@ -102,7 +102,11 @@ void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
     case OPT_TEXTURE:
     {
       QString texture = value.toString();
+#ifdef Q_OS_OSX
+      last_txd_path_ = texture.isEmpty() ? "../textures" : QFileInfo(texture).absolutePath();
+#else
       last_txd_path_ = texture.isEmpty() ? "textures" : QFileInfo(texture).absolutePath();
+#endif
       break;
     }
 

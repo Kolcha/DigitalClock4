@@ -4,29 +4,29 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="200"/>
         <location filename="../main.cpp" line="208"/>
-        <location filename="../main.cpp" line="217"/>
+        <location filename="../main.cpp" line="216"/>
+        <location filename="../main.cpp" line="225"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="201"/>
+        <location filename="../main.cpp" line="209"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="209"/>
+        <location filename="../main.cpp" line="217"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="218"/>
+        <location filename="../main.cpp" line="226"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="229"/>
+        <location filename="../main.cpp" line="237"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -323,43 +323,43 @@
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="179"/>
+        <location filename="../gui/settings_dialog.cpp" line="183"/>
         <source>unknown</source>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="279"/>
+        <location filename="../gui/settings_dialog.cpp" line="283"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="281"/>
+        <location filename="../gui/settings_dialog.cpp" line="285"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="355"/>
+        <location filename="../gui/settings_dialog.cpp" line="359"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="357"/>
-        <location filename="../gui/settings_dialog.cpp" line="364"/>
+        <location filename="../gui/settings_dialog.cpp" line="361"/>
+        <location filename="../gui/settings_dialog.cpp" line="368"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="362"/>
+        <location filename="../gui/settings_dialog.cpp" line="366"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="372"/>
+        <location filename="../gui/settings_dialog.cpp" line="376"/>
         <source>Add skins directory</source>
         <translation>Добавить папку со стилями</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="391"/>
+        <location filename="../gui/settings_dialog.cpp" line="395"/>
         <source>Add plugins directory</source>
         <translation>Добавить папку с плагинами</translation>
     </message>
