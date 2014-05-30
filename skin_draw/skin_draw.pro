@@ -27,5 +27,6 @@ HEADERS += skin_drawer.h\
 
 win32:RC_FILE = skin_draw.rc
 unix:VERSION = 1.2.1
+macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
 
 include(../config.pri)
