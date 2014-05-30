@@ -100,7 +100,12 @@ int main(int argc, char *argv[]) {
   QSharedPointer<digital_clock::gui::ClockWidget> clock_widget(
         new digital_clock::gui::ClockWidget());
   plugin_data.window = clock_widget.data();
-  clock_widget->setWindowFlags(Qt::FramelessWindowHint | Qt::Tool | Qt::NoDropShadowWindowHint);
+  clock_widget->setWindowFlags(Qt::FramelessWindowHint);
+#ifdef Q_OS_OSX
+  clock_widget->setWindowFlags(clock_widget->windowFlags() | Qt::NoDropShadowWindowHint);
+#else
+  clock_widget->setWindowFlags(clock_widget->windowFlags() | Qt::Tool);
+#endif
   clock_widget->setAttribute(Qt::WA_TranslucentBackground);
   clock_widget->setContextMenuPolicy(Qt::CustomContextMenu);
 
