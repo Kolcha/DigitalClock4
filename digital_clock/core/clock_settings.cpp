@@ -82,7 +82,7 @@ void ClockSettings::TrackChanges(bool set) {
 
 void ClockSettings::EmitSettings() {
   for (auto i = values_.begin(); i != values_.end(); ++i) {
-    if (i.key() != OPT_PLUGINS) emit OptionChanged(i.key(), i.value());
+    emit OptionChanged(i.key(), i.value());
   }
 }
 

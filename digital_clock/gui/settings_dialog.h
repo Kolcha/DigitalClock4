@@ -84,6 +84,7 @@ private:
   QMap<qint64, QString> update_periods_;
   QStringList skins_paths_;
   QStringList plugins_paths_;
+  bool is_loading_;
 };
 
 } // namespace gui

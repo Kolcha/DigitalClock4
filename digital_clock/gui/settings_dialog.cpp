@@ -33,6 +33,7 @@ SettingsDialog::SettingsDialog(QWidget* parent)
   for (auto iter = update_periods_.begin(); iter != update_periods_.end(); ++iter) {
     ui->update_period_box->addItem(iter.value(), iter.key());
   }
+  is_loading_ = false;
 }
 
 SettingsDialog::~SettingsDialog() {
@@ -40,6 +41,7 @@ SettingsDialog::~SettingsDialog() {
 }
 
 void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings) {
+  is_loading_ = true;
   for (auto iter = settings.begin(); iter != settings.end(); iter++) {
     const Options& opt = iter.key();
     const QVariant& value = iter.value();
@@ -154,6 +156,7 @@ void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings)
             }
           }
         }
+        active_plugins_ = value.toStringList();
         break;
 
       case OPT_USE_AUTOUPDATE:
@@ -169,14 +172,17 @@ void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings)
         break;
     }
   }
+  is_loading_ = false;
 }
 
 void SettingsDialog::SetSkinList(const QStringList& skins) {
+  is_loading_ = true;
   QString current_skin;
   if (ui->skin_box->count()) current_skin = ui->skin_box->currentText();
   ui->skin_box->clear();
   ui->skin_box->addItems(skins);
   if (!current_skin.isEmpty()) ui->skin_box->setCurrentText(current_skin);
+  is_loading_ = false;
 }
 
 void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::ClockBaseSkin::TSkinInfo& info) {
@@ -194,6 +200,7 @@ void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::ClockBaseSkin:
 }
 
 void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins) {
+  is_loading_ = true;
   ui->plugins_list->clear();
   for (auto& plugin : plugins) {
     QListWidgetItem* item = new QListWidgetItem();
@@ -210,6 +217,7 @@ void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plug
     connect(widget, SIGNAL(ConfigureRequested(QString)),
             this, SIGNAL(PluginConfigureRequest(QString)));
   }
+  is_loading_ = false;
 }
 
 void SettingsDialog::showEvent(QShowEvent* e) {
@@ -218,6 +226,7 @@ void SettingsDialog::showEvent(QShowEvent* e) {
 }
 
 void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
+  if (is_loading_) return;
   if (activated)
     active_plugins_.append(name);
   else
@@ -308,7 +317,7 @@ void SettingsDialog::on_type_image_toggled(bool checked) {
 }
 
 void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
-  if (!arg1.isEmpty()) emit OptionChanged(OPT_SKIN_NAME, arg1);
+  if (!arg1.isEmpty() && !is_loading_) emit OptionChanged(OPT_SKIN_NAME, arg1);
 }
 
 void SettingsDialog::on_use_skin_toggled(bool checked) {
