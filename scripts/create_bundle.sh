@@ -4,7 +4,7 @@ QT_PATH="$HOME/Qt/5.3/clang_64/bin"
 
 CLOCK_APP_NAME="Digital Clock 4"
 
-CLOCK_SRC_PATH="$HOME/Documents/src/DigitalClock4"
+CLOCK_SRC_PATH="$HOME/Documents/Qt/DigitalClock4"
 CLOCK_DATA_PATH="$CLOCK_SRC_PATH/../data"
 
 cd $CLOCK_SRC_PATH
