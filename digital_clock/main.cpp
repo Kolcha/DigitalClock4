@@ -146,6 +146,7 @@ int main(int argc, char *argv[]) {
       plugin_manager->ListAvailable();
 
       dialog->SetCurrentSettings(settings->GetSettings());
+      dialog->DisplaySkinInfo(skin_manager->CurrentSkin()->GetInfo());
       settings->TrackChanges(true);
       dialog->show();
       // connect main logic signals: change/save/discard settings

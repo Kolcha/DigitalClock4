@@ -15,6 +15,7 @@ class SkinManager : public ManagerBase {
 
 public:
   explicit SkinManager(QObject* parent = 0);
+  ClockSkinPtr CurrentSkin() const;
 
 signals:
   void SearchFinished(const QStringList& skins);
