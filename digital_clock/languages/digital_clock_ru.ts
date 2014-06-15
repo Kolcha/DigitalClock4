@@ -4,29 +4,29 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="208"/>
-        <location filename="../main.cpp" line="216"/>
-        <location filename="../main.cpp" line="225"/>
+        <location filename="../main.cpp" line="205"/>
+        <location filename="../main.cpp" line="213"/>
+        <location filename="../main.cpp" line="222"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="209"/>
+        <location filename="../main.cpp" line="206"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="217"/>
+        <location filename="../main.cpp" line="214"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="226"/>
+        <location filename="../main.cpp" line="223"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="237"/>
+        <location filename="../main.cpp" line="234"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -34,7 +34,7 @@
 <context>
     <name>digital_clock::core::SkinManager</name>
     <message>
-        <location filename="../core/skin_manager.cpp" line="50"/>
+        <location filename="../core/skin_manager.cpp" line="54"/>
         <source>Skin &apos;%1&apos; is not loaded, using default skin.</source>
         <translation>Стиль &apos;%1&apos; не загружен, использован стиль по умолчанию.</translation>
     </message>
@@ -323,43 +323,43 @@
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="183"/>
+        <location filename="../gui/settings_dialog.cpp" line="193"/>
         <source>unknown</source>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="283"/>
+        <location filename="../gui/settings_dialog.cpp" line="296"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="285"/>
+        <location filename="../gui/settings_dialog.cpp" line="298"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="359"/>
+        <location filename="../gui/settings_dialog.cpp" line="372"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="361"/>
-        <location filename="../gui/settings_dialog.cpp" line="368"/>
+        <location filename="../gui/settings_dialog.cpp" line="374"/>
+        <location filename="../gui/settings_dialog.cpp" line="381"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="366"/>
+        <location filename="../gui/settings_dialog.cpp" line="379"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="376"/>
+        <location filename="../gui/settings_dialog.cpp" line="389"/>
         <source>Add skins directory</source>
         <translation>Добавить папку со стилями</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="395"/>
+        <location filename="../gui/settings_dialog.cpp" line="408"/>
         <source>Add plugins directory</source>
         <translation>Добавить папку с плагинами</translation>
     </message>
