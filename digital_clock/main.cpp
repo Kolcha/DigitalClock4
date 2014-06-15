@@ -145,16 +145,9 @@ int main(int argc, char *argv[]) {
                        dialog.data(), SLOT(SetPluginsList(QList<QPair<TPluginInfo,bool> >)));
       plugin_manager->ListAvailable();
 
-      // reload settings to emit signals needed to init settings dialog controls
-      // with current values
-      QObject::connect(settings.data(), SIGNAL(OptionChanged(Options,QVariant)),
-                       dialog.data(), SLOT(SettingsListener(Options,QVariant)));
+      dialog->SetCurrentSettings(settings->GetSettings());
       settings->TrackChanges(true);
-      settings->Load();
       dialog->show();
-      // disable settings listener for settings dialog
-      QObject::disconnect(settings.data(), SIGNAL(OptionChanged(Options,QVariant)),
-                          dialog.data(), SLOT(SettingsListener(Options,QVariant)));
       // connect main logic signals: change/save/discard settings
       QObject::connect(dialog.data(), SIGNAL(OptionChanged(Options,QVariant)),
                        settings.data(), SLOT(SetOption(Options,QVariant)));
@@ -176,12 +169,7 @@ int main(int argc, char *argv[]) {
       QObject::connect(dialog.data(), SIGNAL(ImportSettings(QString)),
                        settings.data(), SLOT(ImportSettings(QString)));
       QObject::connect(settings.data(), &digital_clock::core::ClockSettings::SettingsImported,
-                       [&] () {
-        const QMap<Options, QVariant>& values = settings->GetSettings();
-        for (auto iter = values.cbegin(); iter != values.cend(); ++iter) {
-          dialog->SettingsListener(iter.key(), iter.value());
-        }
-      });
+                       [&] () { dialog->SetCurrentSettings(settings->GetSettings()); });
 
       QObject::connect(dialog.data(), &SettingsDialog::destroyed, [=] () {
         clock_widget->PreviewMode(false);

@@ -22,6 +22,8 @@ public:
   explicit SettingsDialog(QWidget* parent = 0);
   ~SettingsDialog();
 
+  void SetCurrentSettings(const QMap<Options, QVariant>& settings);
+
 signals:
   void OptionChanged(Options opt, const QVariant& value);
   void PluginConfigureRequest(const QString& text);
@@ -31,7 +33,6 @@ signals:
   void ResetSettings();
 
 public slots:
-  void SettingsListener(Options opt, const QVariant& value);
   void SetSkinList(const QStringList& skins);
   void DisplaySkinInfo(const ::digital_clock::core::ClockBaseSkin::TSkinInfo& info);
   void SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins);
