@@ -149,6 +149,11 @@ int main(int argc, char *argv[]) {
       dialog->DisplaySkinInfo(skin_manager->CurrentSkin()->GetInfo());
       settings->TrackChanges(true);
       dialog->show();
+      std::function<void()> reload_plugins = [=] () {
+        plugin_manager->UnloadPlugins();
+        plugin_manager->LoadPlugins(settings->GetOption(OPT_PLUGINS).toStringList());
+      };
+      using digital_clock::core::ClockSettings;
       // connect main logic signals: change/save/discard settings
       QObject::connect(dialog.data(), SIGNAL(OptionChanged(Options,QVariant)),
                        settings.data(), SLOT(SetOption(Options,QVariant)));
@@ -157,20 +162,18 @@ int main(int argc, char *argv[]) {
       QObject::connect(dialog.data(), SIGNAL(PluginConfigureRequest(QString)),
                        plugin_manager.data(), SLOT(ConfigurePlugin(QString)));
       QObject::connect(dialog.data(), &SettingsDialog::ResetSettings,
-                       settings.data(), &digital_clock::core::ClockSettings::LoadDefaults);
+                       settings.data(), &ClockSettings::LoadDefaults);
       QObject::connect(dialog.data(), SIGNAL(accepted()), settings.data(), SLOT(Save()));
       QObject::connect(dialog.data(), SIGNAL(rejected()), settings.data(), SLOT(Load()));
-      QObject::connect(dialog.data(), &SettingsDialog::rejected, [=] () {
-        plugin_manager->UnloadPlugins();
-        plugin_manager->LoadPlugins(settings->GetOption(OPT_PLUGINS).toStringList());
-      });
+      QObject::connect(dialog.data(), &SettingsDialog::rejected, reload_plugins);
       // export/import settings
       QObject::connect(dialog.data(), SIGNAL(ExportSettings(QString)),
                        settings.data(), SLOT(ExportSettings(QString)));
       QObject::connect(dialog.data(), SIGNAL(ImportSettings(QString)),
                        settings.data(), SLOT(ImportSettings(QString)));
-      QObject::connect(settings.data(), &digital_clock::core::ClockSettings::SettingsImported,
+      QObject::connect(settings.data(), &ClockSettings::SettingsImported,
                        [&] () { dialog->SetCurrentSettings(settings->GetSettings()); });
+      QObject::connect(settings.data(), &ClockSettings::SettingsImported, reload_plugins);
 
       QObject::connect(dialog.data(), &SettingsDialog::destroyed, [=] () {
         clock_widget->PreviewMode(false);
