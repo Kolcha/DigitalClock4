@@ -24,6 +24,10 @@ ClockSkinPtr CreateSkin(const QFont& font) {
 SkinManager::SkinManager(QObject* parent) : ManagerBase(parent) {
 }
 
+ClockSkinPtr SkinManager::CurrentSkin() const {
+  return current_skin_;
+}
+
 void SkinManager::ListSkins() {
   skins_.clear();
   for (auto& s_dir : search_dirs_) {

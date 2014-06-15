@@ -33,146 +33,156 @@ SettingsDialog::SettingsDialog(QWidget* parent)
   for (auto iter = update_periods_.begin(); iter != update_periods_.end(); ++iter) {
     ui->update_period_box->addItem(iter.value(), iter.key());
   }
+  is_loading_ = false;
 }
 
 SettingsDialog::~SettingsDialog() {
   delete ui;
 }
 
-void SettingsDialog::SettingsListener(Options opt, const QVariant& value) {
-  switch (opt) {
-    case OPT_OPACITY:
-      ui->opacity_slider->setValue(int(value.toReal() * 100));
-      break;
+void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings) {
+  is_loading_ = true;
+  for (auto iter = settings.begin(); iter != settings.end(); iter++) {
+    const Options& opt = iter.key();
+    const QVariant& value = iter.value();
+    switch (opt) {
+      case OPT_OPACITY:
+        ui->opacity_slider->setValue(int(value.toReal() * 100));
+        break;
 
-    case OPT_STAY_ON_TOP:
-      ui->stay_on_top->setChecked(value.toBool());
-      break;
+      case OPT_STAY_ON_TOP:
+        ui->stay_on_top->setChecked(value.toBool());
+        break;
 
-    case OPT_TRANSP_FOR_INPUT:
-      ui->transp_for_input->setChecked(value.toBool());
-      break;
+      case OPT_TRANSP_FOR_INPUT:
+        ui->transp_for_input->setChecked(value.toBool());
+        break;
 
-    case OPT_SEPARATOR_FLASH:
-      ui->sep_flash->setChecked(value.toBool());
-      break;
+      case OPT_SEPARATOR_FLASH:
+        ui->sep_flash->setChecked(value.toBool());
+        break;
 
-    case OPT_TIME_FORMAT:
-    {
-      QString format = value.toString();
-      bool is_system = (format == GetDefaultValue(OPT_TIME_FORMAT).toString());
-      if (!is_system) ui->format_box->setCurrentText(format);
-      ui->system_format->setChecked(is_system);
-      ui->custom_format->setChecked(!is_system);
-      break;
-    }
-
-    case OPT_SKINS_PATHS:
-      skins_paths_ = value.toStringList();
-      ui->skins_paths_list->clear();
-      for (auto& item : skins_paths_)
-        ui->skins_paths_list->addItem(QDir::toNativeSeparators(item));
-      break;
-
-    case OPT_PLUGINS_PATHS:
-      plugins_paths_ = value.toStringList();
-      ui->plugins_paths_list->clear();
-      for (auto& item : plugins_paths_)
-        ui->plugins_paths_list->addItem(QDir::toNativeSeparators(item));
-      break;
-
-    case OPT_SKIN_NAME:
-      ui->skin_box->setCurrentText(value.toString());
-      ui->use_skin->setChecked(value.toString() != "Text Skin");
-      ui->use_font->setChecked(value.toString() == "Text Skin");
-      break;
-
-    case OPT_FONT:
-      last_font_ = value.value<QFont>();
-      break;
-
-    case OPT_ZOOM:
-      ui->zoom_slider->setValue(int(value.toReal() * 100));
-      break;
-
-    case OPT_COLOR:
-      last_color_ = value.value<QColor>();
-      break;
-
-    case OPT_TEXTURE:
-    {
-      QString texture = value.toString();
-#ifdef Q_OS_OSX
-      last_txd_path_ = texture.isEmpty() ? "../textures" : QFileInfo(texture).absolutePath();
-#else
-      last_txd_path_ = texture.isEmpty() ? "textures" : QFileInfo(texture).absolutePath();
-#endif
-      break;
-    }
-
-    case OPT_TEXTURE_PER_ELEMENT:
-      ui->txd_per_elem->setChecked(value.toBool());
-      break;
-
-    case OPT_TEXTURE_DRAW_MODE:
-    {
-      SkinDrawer::DrawMode mode = (SkinDrawer::DrawMode)value.toInt();
-      ui->mode_stretch->setChecked(mode == SkinDrawer::DM_STRETCH);
-      ui->mode_tile->setChecked(mode == SkinDrawer::DM_TILE);
-      break;
-    }
-
-    case OPT_CUSTOMIZATION:
-    {
-      SkinDrawer::CustomizationType type = (SkinDrawer::CustomizationType)value.toInt();
-      ui->use_customization->setChecked(type != SkinDrawer::CT_NONE);
-      if (type != SkinDrawer::CT_NONE) {
-        ui->type_color->setChecked(type == SkinDrawer::CT_COLOR);
-        ui->type_image->setChecked(type == SkinDrawer::CT_TEXTURE);
-      } else {
-        ui->type_color->setChecked(last_customization_ == (int)SkinDrawer::CT_COLOR);
-        ui->type_image->setChecked(last_customization_ == (int)SkinDrawer::CT_TEXTURE);
+      case OPT_TIME_FORMAT:
+      {
+        QString format = value.toString();
+        bool is_system = (format == GetDefaultValue(OPT_TIME_FORMAT).toString());
+        if (!is_system) ui->format_box->setCurrentText(format);
+        ui->system_format->setChecked(is_system);
+        ui->custom_format->setChecked(!is_system);
+        break;
       }
-      break;
-    }
 
-    case OPT_SPACING:
-      ui->space_value->setValue(value.toInt());
-      break;
+      case OPT_SKINS_PATHS:
+        skins_paths_ = value.toStringList();
+        ui->skins_paths_list->clear();
+        for (auto& item : skins_paths_)
+          ui->skins_paths_list->addItem(QDir::toNativeSeparators(item));
+        break;
 
-    case  OPT_PLUGINS:
-      for (int i = 0; i < ui->plugins_list->count(); i++) {
-        PluginListItemWidget* item = static_cast<PluginListItemWidget*>(
-              ui->plugins_list->itemWidget(ui->plugins_list->item(i)));
-        for (auto& plugin : value.toStringList()) {
-          if (plugin == item->GetName()) {
-            item->SetChecked(true);
-            break;
+      case OPT_PLUGINS_PATHS:
+        plugins_paths_ = value.toStringList();
+        ui->plugins_paths_list->clear();
+        for (auto& item : plugins_paths_)
+          ui->plugins_paths_list->addItem(QDir::toNativeSeparators(item));
+        break;
+
+      case OPT_SKIN_NAME:
+        ui->skin_box->setCurrentText(value.toString());
+        ui->use_skin->setChecked(value.toString() != "Text Skin");
+        ui->use_font->setChecked(value.toString() == "Text Skin");
+        break;
+
+      case OPT_FONT:
+        last_font_ = value.value<QFont>();
+        break;
+
+      case OPT_ZOOM:
+        ui->zoom_slider->setValue(int(value.toReal() * 100));
+        break;
+
+      case OPT_COLOR:
+        last_color_ = value.value<QColor>();
+        break;
+
+      case OPT_TEXTURE:
+      {
+        QString texture = value.toString();
+#ifdef Q_OS_OSX
+        last_txd_path_ = texture.isEmpty() ? "../textures" : QFileInfo(texture).absolutePath();
+#else
+        last_txd_path_ = texture.isEmpty() ? "textures" : QFileInfo(texture).absolutePath();
+#endif
+        break;
+      }
+
+      case OPT_TEXTURE_PER_ELEMENT:
+        ui->txd_per_elem->setChecked(value.toBool());
+        break;
+
+      case OPT_TEXTURE_DRAW_MODE:
+      {
+        SkinDrawer::DrawMode mode = (SkinDrawer::DrawMode)value.toInt();
+        ui->mode_stretch->setChecked(mode == SkinDrawer::DM_STRETCH);
+        ui->mode_tile->setChecked(mode == SkinDrawer::DM_TILE);
+        break;
+      }
+
+      case OPT_CUSTOMIZATION:
+      {
+        SkinDrawer::CustomizationType type = (SkinDrawer::CustomizationType)value.toInt();
+        ui->use_customization->setChecked(type != SkinDrawer::CT_NONE);
+        if (type != SkinDrawer::CT_NONE) {
+          ui->type_color->setChecked(type == SkinDrawer::CT_COLOR);
+          ui->type_image->setChecked(type == SkinDrawer::CT_TEXTURE);
+        } else {
+          ui->type_color->setChecked(last_customization_ == (int)SkinDrawer::CT_COLOR);
+          ui->type_image->setChecked(last_customization_ == (int)SkinDrawer::CT_TEXTURE);
+        }
+        break;
+      }
+
+      case OPT_SPACING:
+        ui->space_value->setValue(value.toInt());
+        break;
+
+      case  OPT_PLUGINS:
+        for (int i = 0; i < ui->plugins_list->count(); i++) {
+          PluginListItemWidget* item = static_cast<PluginListItemWidget*>(
+                ui->plugins_list->itemWidget(ui->plugins_list->item(i)));
+          for (auto& plugin : value.toStringList()) {
+            if (plugin == item->GetName()) {
+              item->SetChecked(true);
+              break;
+            }
           }
         }
-      }
-      break;
+        active_plugins_ = value.toStringList();
+        break;
 
-    case OPT_USE_AUTOUPDATE:
-      ui->enable_autoupdate->setChecked(value.toBool());
-      break;
+      case OPT_USE_AUTOUPDATE:
+        ui->enable_autoupdate->setChecked(value.toBool());
+        break;
 
-    case OPT_UPDATE_PERIOD:
-      ui->update_period_box->setCurrentText(update_periods_[value.value<qint64>()]);
-      break;
+      case OPT_UPDATE_PERIOD:
+        ui->update_period_box->setCurrentText(update_periods_[value.value<qint64>()]);
+        break;
 
-    case OPT_CHECK_FOR_BETA:
-      ui->check_for_beta->setChecked(value.toBool());
-      break;
+      case OPT_CHECK_FOR_BETA:
+        ui->check_for_beta->setChecked(value.toBool());
+        break;
+    }
   }
+  is_loading_ = false;
 }
 
 void SettingsDialog::SetSkinList(const QStringList& skins) {
+  is_loading_ = true;
   QString current_skin;
   if (ui->skin_box->count()) current_skin = ui->skin_box->currentText();
   ui->skin_box->clear();
   ui->skin_box->addItems(skins);
   if (!current_skin.isEmpty()) ui->skin_box->setCurrentText(current_skin);
+  is_loading_ = false;
 }
 
 void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::ClockBaseSkin::TSkinInfo& info) {
@@ -190,6 +200,7 @@ void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::ClockBaseSkin:
 }
 
 void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins) {
+  is_loading_ = true;
   ui->plugins_list->clear();
   for (auto& plugin : plugins) {
     QListWidgetItem* item = new QListWidgetItem();
@@ -206,6 +217,7 @@ void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plug
     connect(widget, SIGNAL(ConfigureRequested(QString)),
             this, SIGNAL(PluginConfigureRequest(QString)));
   }
+  is_loading_ = false;
 }
 
 void SettingsDialog::showEvent(QShowEvent* e) {
@@ -214,6 +226,7 @@ void SettingsDialog::showEvent(QShowEvent* e) {
 }
 
 void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
+  if (is_loading_) return;
   if (activated)
     active_plugins_.append(name);
   else
@@ -304,7 +317,7 @@ void SettingsDialog::on_type_image_toggled(bool checked) {
 }
 
 void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
-  if (!arg1.isEmpty()) emit OptionChanged(OPT_SKIN_NAME, arg1);
+  if (!arg1.isEmpty() && !is_loading_) emit OptionChanged(OPT_SKIN_NAME, arg1);
 }
 
 void SettingsDialog::on_use_skin_toggled(bool checked) {
