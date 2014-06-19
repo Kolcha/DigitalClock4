@@ -9,6 +9,7 @@ CLOCK_DATA_PATH="$CLOCK_SRC_PATH/../data"
 
 cd $CLOCK_SRC_PATH
 
+$QT_PATH/lupdate -no-obsolete DigitalClock.pro
 $QT_PATH/qmake -config release
 make
 
