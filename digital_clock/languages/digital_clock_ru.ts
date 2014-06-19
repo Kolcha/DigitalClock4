@@ -4,29 +4,29 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="205"/>
-        <location filename="../main.cpp" line="213"/>
-        <location filename="../main.cpp" line="222"/>
+        <location filename="../main.cpp" line="206"/>
+        <location filename="../main.cpp" line="214"/>
+        <location filename="../main.cpp" line="223"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="206"/>
+        <location filename="../main.cpp" line="207"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="214"/>
+        <location filename="../main.cpp" line="215"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="223"/>
+        <location filename="../main.cpp" line="224"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="234"/>
+        <location filename="../main.cpp" line="235"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
