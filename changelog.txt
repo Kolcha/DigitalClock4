@@ -1,3 +1,20 @@
+Whats new in 4.3.3:
+-------------------
+Core:
+ - fixed search paths restore after cancel
+ - fixed settings import
+ - improved path management: scan recently added paths on runtime
+
+GUI:
+ - Retina displays support
+ - hide clock icon from dock and its system menu on Mac OS X
+
+SDK:
+ - updated plugin interface
+ - updated documentation
+ - updated plugin example
+
+
 Whats new in 4.3.2:
 -------------------
 Core:
