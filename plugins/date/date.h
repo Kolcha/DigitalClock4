@@ -39,6 +39,7 @@ private slots:
 private:
   QGridLayout* main_layout_;
   QWidget* main_wnd_;
+  QSize last_main_wnd_size_;
   QPointer<QLabel> msg_label_;
   QFont font_;
   QFont clock_font_;

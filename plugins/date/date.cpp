@@ -64,6 +64,7 @@ void Date::Init(const QMap<Options, QVariant>& current_settings) {
 void Date::Init(QWidget* main_wnd) {
   main_layout_ = qobject_cast<QGridLayout*>(main_wnd->layout());
   main_wnd_ = main_wnd;
+  last_main_wnd_size_ = main_wnd->size();
   avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 7;
 
   QSettings::SettingsMap defaults;
@@ -79,6 +80,7 @@ void Date::Start() {
   connect(drawer_, &skin_draw::SkinDrawer::DrawingFinished, [=] (const QImage& img) {
     msg_label_->setPixmap(QPixmap::fromImage(img));
     main_wnd_->adjustSize();
+    last_main_wnd_size_ = main_wnd_->size();
   });
 
   settings_->Load();
@@ -198,7 +200,7 @@ void Date::TimeUpdateListener() {
       break;
   }
 
-  if (date == last_date_) return;
+  if (date == last_date_ && last_main_wnd_size_ == main_wnd_->size()) return;
 
   switch ((ZoomMode)settings_->GetOption(OPT_ZOOM_MODE).toInt()) {
     case ZoomMode::ZM_NOT_ZOOM:
