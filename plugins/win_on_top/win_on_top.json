@@ -1,6 +1,6 @@
 {
     "name" : "win_on_top",
-    "version" : "1.0.2",
+    "version" : "1.0.3",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
     "configurable" : false
