@@ -732,6 +732,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="defaults_bth">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
         <string>Restore Defaults</string>
        </property>
