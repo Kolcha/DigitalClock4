@@ -12,6 +12,5 @@ desktop.ini
 *.sdf
 [Dd]ebug/
 [Rr]elease/
-x64/
 .DS_Store
 *.dmg
