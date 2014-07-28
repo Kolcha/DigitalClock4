@@ -15,7 +15,7 @@ WinOnTop::WinOnTop() {
 
 void WinOnTop::Start() {
   std::wstring lib_path = QCoreApplication::applicationDirPath().toStdWString();
-  lib_path += L"/plugins/special/win_on_top.dll";
+  lib_path += L"/plugins/special/win_on_top_hook.dll";
   lib_ = LoadLibrary(lib_path.c_str());
   if (!lib_) return;
 

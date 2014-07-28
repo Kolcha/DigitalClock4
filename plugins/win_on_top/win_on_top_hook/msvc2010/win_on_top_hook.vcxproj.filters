@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="win_on_top.cpp">
+    <ClCompile Include="../win_on_top_hook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="win_on_top.rc">
+    <ResourceCompile Include="../win_on_top_hook.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
