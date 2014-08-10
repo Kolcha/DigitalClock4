@@ -93,7 +93,7 @@
         </item>
         <item>
          <property name="text">
-          <string notr="true">M:W</string>
+          <string notr="true">MMMM:W</string>
          </property>
         </item>
        </widget>
