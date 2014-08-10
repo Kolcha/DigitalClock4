@@ -198,8 +198,20 @@ void Date::TimeUpdateListener() {
       break;
 
     case FormatType::FT_STR:
-      date = d_date.toString(settings_->GetOption(OPT_DATE_FORMAT_STR).toString());
+    {
+      QString format = settings_->GetOption(OPT_DATE_FORMAT_STR).toString();
+      int pos = format.indexOf("WW", 0, Qt::CaseInsensitive);
+      if (pos != -1) {
+        format.replace(pos, 2, QString("%1").arg(d_date.weekNumber(), 2, 10, QChar('0')));
+      } else {
+        pos = format.indexOf('W', 0, Qt::CaseInsensitive);
+        if (pos != -1) {
+          format.replace(pos, 1, QString::number(d_date.weekNumber()));
+        }
+      }
+      date = d_date.toString(format);
       break;
+    }
   }
 
   if (date == last_date_ && last_main_wnd_size_ == main_wnd_->size()) return;

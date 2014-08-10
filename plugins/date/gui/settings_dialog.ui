@@ -86,6 +86,16 @@
           <string notr="true">dddd, MMMM d</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string notr="true">MM:WW</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string notr="true">M:W</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>
