@@ -263,7 +263,7 @@
         <translation>обновляться до бета релизов</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="736"/>
+        <location filename="../gui/settings_dialog.ui" line="742"/>
         <source>Restore Defaults</source>
         <translation>По умолчанию</translation>
     </message>
