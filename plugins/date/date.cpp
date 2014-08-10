@@ -108,6 +108,8 @@ void Date::Configure() {
 }
 
 void Date::SettingsListener(Options option, const QVariant& new_value) {
+  if (!msg_label_) return;  // not started
+
   switch (option) {
     case OPT_SKIN_NAME:
       avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 7;
@@ -222,6 +224,8 @@ void Date::TimeUpdateListener() {
 }
 
 void Date::SettingsListener(const QString& key, const QVariant& value) {
+  if (!msg_label_) return;  // not started
+
   if (key == OPT_USE_CLOCK_FONT) {
     SettingsListener(OPT_DATE_FONT, value.toBool() ?
                        clock_font_ : settings_->GetOption(OPT_DATE_FONT).value<QFont>());
