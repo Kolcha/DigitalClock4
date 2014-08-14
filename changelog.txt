@@ -1,3 +1,22 @@
+Whats new in 4.3.4:
+-------------------
+Core:
+ - build with Qt 5.3.1
+ - removed VC Redist 2013 dependency for portable version
+
+GUI:
+ - fixed 'Restore defaults' button size
+
+plugins:
+ - fixed 'every hour signal' on Windows
+ - fixed autoresize logic in 'date' plugin
+ - fixed crash on try to configure not loaded 'date' plugin
+ - updated 'win on top' plugin
+
+Features:
+ - 'date' plugin: added week number support
+
+
 Whats new in 4.3.3:
 -------------------
 Core:
