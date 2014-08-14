@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	2,1,5,122
-PRODUCTVERSION	4,3,3,0
+FILEVERSION	2,1,5,123
+PRODUCTVERSION	4,3,4,0
 FILEOS		0x4
 FILETYPE	0x2
 {
@@ -11,12 +11,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Alarm"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "2.1.5.122"
+		VALUE "FileVersion", "2.1.5.123"
 		VALUE "InternalName", "alarm.dll"
 		VALUE "LegalCopyright", "Copyright (C) 2013-2014 Nick Korotysh"
 		VALUE "OriginalFilename", "alarm.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.3.3"
+		VALUE "ProductVersion", "4.3.4"
 	}
 }
 
