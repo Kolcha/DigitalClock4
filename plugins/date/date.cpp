@@ -198,15 +198,32 @@ void Date::TimeUpdateListener() {
     case FormatType::FT_STR:
     {
       QString format = settings_->GetOption(OPT_DATE_FORMAT_STR).toString();
-      int pos = format.indexOf("WW", 0, Qt::CaseInsensitive);
-      if (pos != -1) {
-        format.replace(pos, 2, QString("%1").arg(d_date.weekNumber(), 2, 10, QChar('0')));
-      } else {
-        pos = format.indexOf('W', 0, Qt::CaseInsensitive);
-        if (pos != -1) {
-          format.replace(pos, 1, QString::number(d_date.weekNumber()));
+
+      int prev = -1;
+      bool is_start = false;
+      while (true) {
+        int pos = format.indexOf('\'', prev + 1);
+        QString substr = format.mid(prev + 1, pos - prev - 1);
+        if (is_start) {
+          int s_pos = substr.indexOf("\\n");
+          if (s_pos != -1) substr.replace(s_pos, 2, '\n');
+          is_start = false;
+        } else {
+          int s_pos = substr.indexOf("WW", 0, Qt::CaseInsensitive);
+          if (s_pos != -1) {
+            substr.replace(s_pos, 2, QString("%1").arg(d_date.weekNumber(), 2, 10, QChar('0')));
+          } else {
+            s_pos = substr.indexOf('W', 0, Qt::CaseInsensitive);
+            if (s_pos != -1) substr.replace(s_pos, 1, QString::number(d_date.weekNumber()));
+          }
+          is_start = true;
         }
+        format.replace(prev + 1, pos != -1 ? pos - prev - 1 : format.length() - prev - 1, substr);
+        pos = format.indexOf('\'', prev + 1);
+        if (pos == -1) break;
+        prev = pos;
       }
+
       date = d_date.toString(format);
       break;
     }
