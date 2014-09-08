@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QMap>
+#include <QSettings>
 
 namespace date {
 
@@ -16,6 +17,8 @@ class SettingsDialog : public QDialog {
 public:
   explicit SettingsDialog(QWidget* parent = 0);
   ~SettingsDialog();
+
+  void Init(const QSettings::SettingsMap& settings);
 
 public slots:
   void SettingsListener(const QString& key, const QVariant& value);

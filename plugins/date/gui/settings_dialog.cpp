@@ -24,6 +24,12 @@ SettingsDialog::~SettingsDialog() {
   delete ui;
 }
 
+void SettingsDialog::Init(const QSettings::SettingsMap& settings) {
+  for (auto iter = settings.constBegin(); iter != settings.constEnd(); ++iter) {
+    this->SettingsListener(iter.key(), iter.value());
+  }
+}
+
 void SettingsDialog::SettingsListener(const QString& key, const QVariant& value) {
   if (key == OPT_DATE_FORMAT_TYPE) {
     ui->int_type_button->setChecked((FormatType)value.toInt() == FormatType::FT_INT);

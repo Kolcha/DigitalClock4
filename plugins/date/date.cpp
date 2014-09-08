@@ -96,9 +96,7 @@ void Date::Stop() {
 void Date::Configure() {
   SettingsDialog* dialog = new SettingsDialog();
   // load current settings to dialog
-  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
-          dialog, SLOT(SettingsListener(QString,QVariant)));
-  settings_->Load();
+  dialog->Init(settings_->GetSettingsMap());
   // connect main signals/slots
   connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
           settings_, SLOT(SetOption(QString,QVariant)));
