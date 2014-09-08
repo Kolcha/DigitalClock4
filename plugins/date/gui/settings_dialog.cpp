@@ -26,33 +26,29 @@ SettingsDialog::~SettingsDialog() {
 
 void SettingsDialog::Init(const QSettings::SettingsMap& settings) {
   for (auto iter = settings.constBegin(); iter != settings.constEnd(); ++iter) {
-    this->SettingsListener(iter.key(), iter.value());
-  }
-}
-
-void SettingsDialog::SettingsListener(const QString& key, const QVariant& value) {
-  if (key == OPT_DATE_FORMAT_TYPE) {
-    ui->int_type_button->setChecked((FormatType)value.toInt() == FormatType::FT_INT);
-    ui->str_type_button->setChecked((FormatType)value.toInt() == FormatType::FT_STR);
-  }
-  if (key == OPT_DATE_FORMAT_INT) {
-    ui->int_type_box->setCurrentText(date_formats_[(Qt::DateFormat)value.toInt()]);
-  }
-  if (key == OPT_DATE_FORMAT_STR) {
-    ui->str_type_box->setCurrentText(value.toString());
-  }
-  if (key == OPT_USE_CLOCK_FONT) {
-    ui->clock_font_button->setChecked(value.toBool());
-    ui->custom_font_button->setChecked(!value.toBool());
-  }
-  if (key == OPT_DATE_FONT) {
-    last_font_ = value.value<QFont>();
-  }
-  if (key == OPT_ZOOM_MODE) {
-    ZoomMode mode = (ZoomMode)value.toInt();
-    ui->not_zoom->setChecked(mode == ZoomMode::ZM_NOT_ZOOM);
-    ui->font_autosize->setChecked(mode == ZoomMode::ZM_AUTOSIZE);
-    ui->clock_zoom->setChecked(mode == ZoomMode::ZM_CLOCK_ZOOM);
+    if (iter.key() == OPT_DATE_FORMAT_TYPE) {
+      ui->int_type_button->setChecked((FormatType)(iter.value().toInt()) == FormatType::FT_INT);
+      ui->str_type_button->setChecked((FormatType)(iter.value().toInt()) == FormatType::FT_STR);
+    }
+    if (iter.key() == OPT_DATE_FORMAT_INT) {
+      ui->int_type_box->setCurrentText(date_formats_[(Qt::DateFormat)(iter.value().toInt())]);
+    }
+    if (iter.key() == OPT_DATE_FORMAT_STR) {
+      ui->str_type_box->setCurrentText(iter.value().toString());
+    }
+    if (iter.key() == OPT_USE_CLOCK_FONT) {
+      ui->clock_font_button->setChecked(iter.value().toBool());
+      ui->custom_font_button->setChecked(!iter.value().toBool());
+    }
+    if (iter.key() == OPT_DATE_FONT) {
+      last_font_ = iter.value().value<QFont>();
+    }
+    if (iter.key() == OPT_ZOOM_MODE) {
+      ZoomMode mode = (ZoomMode)(iter.value().toInt());
+      ui->not_zoom->setChecked(mode == ZoomMode::ZM_NOT_ZOOM);
+      ui->font_autosize->setChecked(mode == ZoomMode::ZM_AUTOSIZE);
+      ui->clock_zoom->setChecked(mode == ZoomMode::ZM_CLOCK_ZOOM);
+    }
   }
 }
 

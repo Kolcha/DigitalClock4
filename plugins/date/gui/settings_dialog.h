@@ -20,9 +20,6 @@ public:
 
   void Init(const QSettings::SettingsMap& settings);
 
-public slots:
-  void SettingsListener(const QString& key, const QVariant& value);
-
 signals:
   void OptionChanged(const QString&, const QVariant&);
 
