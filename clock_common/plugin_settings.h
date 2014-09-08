@@ -37,6 +37,11 @@ public:
    * @return option value as QVariant object
    */
   const QVariant& GetOption(const QString& key) const;
+  /*!
+   * Get all settings map.
+   * @return map with all settings (key - value)
+   */
+  const QSettings::SettingsMap& GetSettingsMap() const;
 
 public slots:
   /*! Load settings. */

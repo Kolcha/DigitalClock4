@@ -13,6 +13,10 @@ const QVariant& PluginSettings::GetOption(const QString& key) const {
   return settings_map_.find(key).value();
 }
 
+const QSettings::SettingsMap& PluginSettings::GetSettingsMap() const {
+  return settings_map_;
+}
+
 void PluginSettings::Load() {
   for (auto iter = default_map_.begin(); iter != default_map_.end(); ++iter) {
     QVariant value = settings_.value(iter.key(), iter.value());
