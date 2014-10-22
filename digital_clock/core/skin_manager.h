@@ -20,7 +20,7 @@ public:
 signals:
   void SearchFinished(const QStringList& skins);
   void SkinLoaded(skin_draw::ISkin::SkinPtr skin);
-  void SkinInfoLoaded(const ClockBaseSkin::TSkinInfo& info);
+  void SkinInfoLoaded(const BaseSkin::TSkinInfo& info);
   void ErrorMessage(const QString& msg);
 
 public slots:

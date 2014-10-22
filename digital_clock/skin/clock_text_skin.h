@@ -1,5 +1,5 @@
-#ifndef DIGITAL_CLOCK_CORE_CLOCK_TEXT_SKIN_H
-#define DIGITAL_CLOCK_CORE_CLOCK_TEXT_SKIN_H
+#ifndef DIGITAL_CLOCK_CORE_TEXT_SKIN_H
+#define DIGITAL_CLOCK_CORE_TEXT_SKIN_H
 
 #include "text_skin.h"
 #include "clock_base_skin.h"
@@ -7,9 +7,9 @@
 namespace digital_clock {
 namespace core {
 
-class ClockTextSkin : public ::skin_draw::TextSkin, public ClockBaseSkin {
+class TextSkin : public ::skin_draw::TextSkin, public BaseSkin {
 public:
-  ClockTextSkin(const QFont& font);
+  TextSkin(const QFont& font);
 
 protected:
   void ProcSeparators();
@@ -18,4 +18,4 @@ protected:
 } // namespace core
 } // namespace digital_clock
 
-#endif // DIGITAL_CLOCK_CORE_CLOCK_TEXT_SKIN_H
+#endif // DIGITAL_CLOCK_CORE_TEXT_SKIN_H

@@ -10,14 +10,14 @@ ClockSkinPtr CreateSkin(const QDir& skin_root) {
   QStringList images = skin_root.entryList(QStringList("*.svg"), QDir::Files);
   bool skinini = skin_root.exists("skin.ini");
   ClockSkinPtr skin;
-  if (!images.empty() && skinini) skin.reset(new ClockVectorSkin(skin_root));
+  if (!images.empty() && skinini) skin.reset(new VectorSkin(skin_root));
   images = skin_root.entryList(QStringList("*.png"), QDir::Files);
-  if (!images.empty() && skinini) skin.reset(new ClockRasterSkin(skin_root));
+  if (!images.empty() && skinini) skin.reset(new RasterSkin(skin_root));
   return skin;
 }
 
 ClockSkinPtr CreateSkin(const QFont& font) {
-  return ClockSkinPtr(new ClockTextSkin(font));
+  return ClockSkinPtr(new TextSkin(font));
 }
 
 
@@ -36,8 +36,8 @@ void SkinManager::ListSkins() {
       QDir skin_root(s_dir.filePath(f_dir));
       ClockSkinPtr tmp = CreateSkin(skin_root);
       if (!tmp) continue;
-      const ClockBaseSkin::TSkinInfo& info = tmp->GetInfo();
-      skins_[info[ClockBaseSkin::SI_NAME]] = skin_root;
+      const BaseSkin::TSkinInfo& info = tmp->GetInfo();
+      skins_[info[BaseSkin::SI_NAME]] = skin_root;
     }
   }
   emit SearchFinished(skins_.keys());
@@ -58,7 +58,7 @@ void SkinManager::LoadSkin(const QString& skin_name) {
   SetSeparators(seps_);
   emit SkinLoaded(skin.dynamicCast<skin_draw::ISkin>());
   // get skin info
-  ClockBaseSkin::TSkinInfo info;
+  BaseSkin::TSkinInfo info;
   if (skin) info = skin->GetInfo();
   emit SkinInfoLoaded(info);
 }
@@ -66,7 +66,7 @@ void SkinManager::LoadSkin(const QString& skin_name) {
 void SkinManager::SetFont(const QFont& font) {
   font_ = font;
   // update text skin if needed
-  if (current_skin_.dynamicCast<ClockTextSkin>()) LoadSkin("Text Skin");
+  if (current_skin_.dynamicCast<TextSkin>()) LoadSkin("Text Skin");
 }
 
 void SkinManager::SetSeparators(const QString& seps) {

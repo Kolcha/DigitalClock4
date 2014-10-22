@@ -1,5 +1,5 @@
-#ifndef DIGITAL_CLOCK_CORE_CLOCK_BASE_SKIN_H
-#define DIGITAL_CLOCK_CORE_CLOCK_BASE_SKIN_H
+#ifndef DIGITAL_CLOCK_CORE_BASE_SKIN_H
+#define DIGITAL_CLOCK_CORE_BASE_SKIN_H
 
 #include <QMap>
 #include <QString>
@@ -8,7 +8,7 @@
 namespace digital_clock {
 namespace core {
 
-class ClockBaseSkin {
+class BaseSkin {
 public:
   enum FSkinInfo {
     SI_NAME,        // skin name
@@ -19,7 +19,7 @@ public:
   };
   typedef QMap<FSkinInfo, QString> TSkinInfo;
 
-  virtual ~ClockBaseSkin() {}
+  virtual ~BaseSkin() {}
 
   const TSkinInfo& GetInfo() const;
   void SetSeparators(const QString& seps);
@@ -31,9 +31,9 @@ protected:
   QString seps_;
 };
 
-typedef QSharedPointer<ClockBaseSkin> ClockSkinPtr;
+typedef QSharedPointer<BaseSkin> ClockSkinPtr;
 
 } // namespace core
 } // namespace digital_clock
 
-#endif // DIGITAL_CLOCK_CORE_CLOCK_BASE_SKIN_H
+#endif // DIGITAL_CLOCK_CORE_BASE_SKIN_H

@@ -1,5 +1,5 @@
-#ifndef DIGITAL_CLOCK_CORE_CLOCK_VECTOR_SKIN_H
-#define DIGITAL_CLOCK_CORE_CLOCK_VECTOR_SKIN_H
+#ifndef DIGITAL_CLOCK_CORE_VECTOR_SKIN_H
+#define DIGITAL_CLOCK_CORE_VECTOR_SKIN_H
 
 #include <QDir>
 #include "vector_skin.h"
@@ -8,9 +8,9 @@
 namespace digital_clock {
 namespace core {
 
-class ClockVectorSkin : public ::skin_draw::VectorSkin, public ClockBaseSkin {
+class VectorSkin : public ::skin_draw::VectorSkin, public BaseSkin {
 public:
-  ClockVectorSkin(const QDir& skin_root);
+  VectorSkin(const QDir& skin_root);
 
 protected:
   void ProcSeparators();
@@ -19,4 +19,4 @@ protected:
 } // namespace core
 } // namespace digital_clock
 
-#endif // DIGITAL_CLOCK_CORE_CLOCK_VECTOR_SKIN_H
+#endif // DIGITAL_CLOCK_CORE_VECTOR_SKIN_H

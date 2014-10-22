@@ -185,18 +185,18 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
   is_loading_ = false;
 }
 
-void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::ClockBaseSkin::TSkinInfo& info) {
-  using ::digital_clock::core::ClockBaseSkin;
-  if (info[ClockBaseSkin::SI_NAME] == "Text Skin") return;
-  ClockBaseSkin::TSkinInfo l_info = info;
+void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::BaseSkin::TSkinInfo& info) {
+  using ::digital_clock::core::BaseSkin;
+  if (info[BaseSkin::SI_NAME] == "Text Skin") return;
+  BaseSkin::TSkinInfo l_info = info;
   for (auto iter = l_info.begin(); iter != l_info.end(); ++iter) {
     if (iter.value().isEmpty()) iter.value() = tr("unknown");
   }
-  ui->skin_box->setCurrentText(l_info[ClockBaseSkin::SI_NAME]);
-  ui->version_value->setText(l_info[ClockBaseSkin::SI_VERSION]);
-  ui->author_value->setText(l_info[ClockBaseSkin::SI_AUTHOR]);
-  ui->email_value->setText(l_info[ClockBaseSkin::SI_EMAIL]);
-  ui->skin_box->setToolTip(l_info[ClockBaseSkin::SI_COMMENT]);
+  ui->skin_box->setCurrentText(l_info[BaseSkin::SI_NAME]);
+  ui->version_value->setText(l_info[BaseSkin::SI_VERSION]);
+  ui->author_value->setText(l_info[BaseSkin::SI_AUTHOR]);
+  ui->email_value->setText(l_info[BaseSkin::SI_EMAIL]);
+  ui->skin_box->setToolTip(l_info[BaseSkin::SI_COMMENT]);
 }
 
 void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins) {

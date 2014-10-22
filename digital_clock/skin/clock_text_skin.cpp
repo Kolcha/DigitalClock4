@@ -4,8 +4,7 @@
 namespace digital_clock {
 namespace core {
 
-ClockTextSkin::ClockTextSkin(const QFont& font)
-  : TextSkin(font) {
+TextSkin::TextSkin(const QFont& font) : ::skin_draw::TextSkin(font) {
   char_map_[' '] = ':';
   // set skin info
   info_[SI_NAME] = "Text Skin";
@@ -15,7 +14,7 @@ ClockTextSkin::ClockTextSkin(const QFont& font)
   info_[SI_COMMENT] = "Text Skin. Allows use any font as skin.";
 }
 
-void ClockTextSkin::ProcSeparators() {
+void TextSkin::ProcSeparators() {
   if (seps_.isEmpty()) return;
 
   QFontMetrics fm(font_);

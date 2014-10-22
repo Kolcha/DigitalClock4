@@ -4,7 +4,7 @@
 namespace digital_clock {
 namespace core {
 
-ClockVectorSkin::ClockVectorSkin(const QDir& skin_root) {
+VectorSkin::VectorSkin(const QDir& skin_root) {
   QSettings config(skin_root.filePath("skin.ini"), QSettings::IniFormat);
   // load info
   info_[SI_NAME] = config.value("info/name").toString();
@@ -25,7 +25,7 @@ ClockVectorSkin::ClockVectorSkin(const QDir& skin_root) {
   image_files_['P'] = image_files_['p'];
 }
 
-void ClockVectorSkin::ProcSeparators() {
+void VectorSkin::ProcSeparators() {
   for (int i = 0; i < seps_.length(); ++i) {
     if (image_files_.find(seps_[i]) == image_files_.end()) {
       image_files_[seps_[i]] = image_files_[':'];
