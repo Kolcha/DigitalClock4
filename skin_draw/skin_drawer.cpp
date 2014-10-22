@@ -93,13 +93,33 @@ void SkinDrawer::Redraw() {
   // calculate result image width and height
   int result_w = 0;
   int result_h = 0;
+  int c_row_w = 0;
+  int c_row_n = 0;
+  int m_row_n = 0;
   for (auto& elem : elements) {
+    ++c_row_n;
     if (!elem) continue;
-    result_w += elem->width();
+    if (elem->size() == QSize(0,0)) {
+      if (c_row_w >= result_w) {
+        result_w = c_row_w;
+        m_row_n = c_row_n;
+      }
+      c_row_w = 0;
+      c_row_n = 0;
+      continue;
+    }
+    c_row_w += elem->width();
     result_h = qMax(result_h, elem->height());
   }
+  if (c_row_w >= result_w) {
+    result_w = c_row_w;
+    m_row_n = c_row_n;
+  }
+  int elem_h = result_h;
   // leave some space between images
-  result_w += space_ * (str_.length() - 1);
+  result_w += space_ * (m_row_n - 1);
+  int rows = str_.count('\n');
+  result_h = result_h * (rows + 1) + space_ * rows;
 
   // create result image
   QImage result(result_w, result_h, QImage::Format_ARGB32_Premultiplied);
@@ -110,13 +130,19 @@ void SkinDrawer::Redraw() {
   painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
 
   int x = 0;
+  int y = 0;
   for (auto& elem : elements) {
     // draw mask
     if (!elem) continue;
-    painter.drawPixmap(x, 0, *elem);
+    if (elem->size() == QSize(0,0)) {
+      x = 0;
+      y += (elem_h + space_) / elem->devicePixelRatio();
+      continue;
+    }
+    painter.drawPixmap(x, y, *elem);
     if (txd_per_elem_ && cust_type_ != CT_NONE) {
       // draw texture
-      DrawTexture(painter, QRect(x, 0, elem->width(), elem->height()));
+      DrawTexture(painter, QRect(x, y, elem->width(), elem->height()));
     }
     x += (elem->width() + space_) / elem->devicePixelRatio();
   }

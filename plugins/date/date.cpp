@@ -146,7 +146,9 @@ void Date::SettingsListener(Options option, const QVariant& new_value) {
         case ZoomMode::ZM_AUTOSIZE:
         {
           QFontMetricsF fmf(font_);
-          qreal tw = fmf.width(last_date_);
+          QStringList ss = last_date_.split('\n');
+          qreal tw = 0;
+          for (auto& s : ss) tw = qMax(tw, fmf.width(s));
           drawer_->SetZoom(avail_width_ * last_zoom_ / tw);
           msg_label_->setAlignment(Qt::AlignLeft);
           break;
@@ -239,7 +241,10 @@ void Date::TimeUpdateListener() {
     {
       drawer_->SetString(QString());
       QFontMetricsF fmf(font_);
-      drawer_->SetZoom(avail_width_ * last_zoom_ / fmf.width(date));
+      QStringList ss = date.split('\n');
+      qreal tw = 0;
+      for (auto& s : ss) tw = qMax(tw, fmf.width(s));
+      drawer_->SetZoom(avail_width_ * last_zoom_ / tw);
       break;
     }
 

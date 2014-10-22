@@ -10,6 +10,11 @@ BaseSkin::BaseSkin() : cached_zoom_(1.0) {
 
 ISkin::QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
   QPixmapPtr result;
+  if (ch == '\n') {
+    result = QPixmapPtr(new QPixmap());
+    result->setDevicePixelRatio(device_pixel_ratio_);
+    return result;
+  }
   if (zoom == cached_zoom_) {
     result = image_cache_[ch];
     if (!result) {
