@@ -6,6 +6,8 @@
 
 QT       += core gui widgets
 
+include(../common.pri)
+
 TARGET = date
 
 SOURCES += date.cpp \
@@ -14,13 +16,18 @@ SOURCES += date.cpp \
 HEADERS += date.h \
     date_settings.h \
     gui/settings_dialog.h
-OTHER_FILES += date.json
 
-RESOURCES += \
-    date.qrc
+FORMS += \
+    gui/settings_dialog.ui
 
 TRANSLATIONS += \
     date_ru.ts
+
+include(../../qm_gen.pri)
+
+RESOURCES += date.qrc
+
+OTHER_FILES += date.json
 
 win32:RC_FILE = date.rc
 
@@ -30,8 +37,3 @@ else:unix: LIBS += -L$$OUT_PWD/../../skin_draw/ -lskin_draw
 
 INCLUDEPATH += $$PWD/../../skin_draw
 DEPENDPATH += $$PWD/../../skin_draw
-
-FORMS += \
-    gui/settings_dialog.ui
-
-include(../common.pri)

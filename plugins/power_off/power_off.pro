@@ -6,6 +6,8 @@
 
 QT       += core gui widgets
 
+include(../common.pri)
+
 TARGET = power_off
 
 SOURCES += power_off.cpp \
@@ -14,19 +16,18 @@ SOURCES += power_off.cpp \
 HEADERS += power_off.h \
     gui/settings_dialog.h \
     power_off_settings.h
-OTHER_FILES += power_off.json
-
-win32:RC_FILE = power_off.rc
-
-RESOURCES += \
-    power_off.qrc
-
-TRANSLATIONS += \
-    power_off_ru.ts
 
 FORMS += \
     gui/settings_dialog.ui
 
-win32:LIBS += -lAdvapi32
+TRANSLATIONS += \
+    power_off_ru.ts
 
-include(../common.pri)
+include(../../qm_gen.pri)
+
+RESOURCES += power_off.qrc
+
+OTHER_FILES += power_off.json
+
+win32:RC_FILE = power_off.rc
+win32:LIBS += -lAdvapi32

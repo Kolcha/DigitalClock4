@@ -6,6 +6,8 @@
 
 QT       += core gui widgets multimedia
 
+include(../common.pri)
+
 TARGET = alarm
 
 SOURCES += alarm.cpp \
@@ -14,17 +16,17 @@ SOURCES += alarm.cpp \
 HEADERS += alarm.h \
     alarm_settings.h \
     gui/settings_dialog.h
-OTHER_FILES += alarm.json
-
-win32:RC_FILE = alarm.rc
 
 FORMS += \
     gui/settings_dialog.ui
 
-RESOURCES += \
-    alarm.qrc
-
 TRANSLATIONS += \
     alarm_ru.ts
 
-include(../common.pri)
+include(../../qm_gen.pri)
+
+RESOURCES += alarm.qrc
+
+OTHER_FILES += alarm.json
+
+win32:RC_FILE = alarm.rc

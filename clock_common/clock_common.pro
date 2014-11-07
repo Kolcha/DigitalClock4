@@ -6,7 +6,9 @@
 
 QT       += core gui widgets
 
-TARGET = clock_common
+include(../config.pri)
+
+TARGET   = clock_common
 TEMPLATE = lib
 
 DEFINES += CLOCK_COMMON_LIBRARY
@@ -29,5 +31,3 @@ HEADERS += \
 win32:RC_FILE = clock_common.rc
 unix:VERSION = 1.0.3
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
-
-include(../config.pri)

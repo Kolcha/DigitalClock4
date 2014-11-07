@@ -6,6 +6,8 @@
 
 QT       += core gui widgets
 
+include(../common.pri)
+
 TARGET = schedule
 
 SOURCES += schedule.cpp \
@@ -19,12 +21,6 @@ HEADERS += schedule.h \
     core/schedule_settings.h \
     gui/settings_dialog.h \
     gui/add_task_dialog.h
-OTHER_FILES += schedule.json
-
-win32:RC_FILE = schedule.rc
-
-RESOURCES += \
-    schedule.qrc
 
 FORMS += \
     gui/settings_dialog.ui \
@@ -33,4 +29,10 @@ FORMS += \
 TRANSLATIONS += \
     schedule_ru.ts
 
-include(../common.pri)
+include(../../qm_gen.pri)
+
+RESOURCES += schedule.qrc
+
+OTHER_FILES += schedule.json
+
+win32:RC_FILE = schedule.rc

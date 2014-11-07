@@ -6,18 +6,22 @@
 
 QT       += core gui svg
 
-TARGET = skin_draw
+include(../config.pri)
+
+TARGET   = skin_draw
 TEMPLATE = lib
 
 DEFINES += SKIN_DRAW_LIBRARY
 
-SOURCES += skin_drawer.cpp \
+SOURCES += \
+    skin_drawer.cpp \
     vector_skin.cpp \
     raster_skin.cpp \
     base_skin.cpp \
     text_skin.cpp
 
-HEADERS += skin_drawer.h\
+HEADERS += \
+    skin_drawer.h \
     skin_draw_global.h \
     vector_skin.h \
     raster_skin.h \
@@ -28,5 +32,3 @@ HEADERS += skin_drawer.h\
 win32:RC_FILE = skin_draw.rc
 unix:VERSION = 1.2.2
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
-
-include(../config.pri)

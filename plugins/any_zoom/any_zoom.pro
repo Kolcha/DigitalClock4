@@ -6,22 +6,22 @@
 
 QT       += core gui widgets
 
+include(../common.pri)
+
 TARGET = any_zoom
 
-SOURCES += \
-    any_zoom.cpp
+SOURCES += any_zoom.cpp
 
-HEADERS += \
-    any_zoom.h \
+HEADERS += any_zoom.h \
     any_zoom_settings.h
-OTHER_FILES += any_zoom.json
-
-win32:RC_FILE = any_zoom.rc
-
-RESOURCES += \
-    any_zoom.qrc
 
 TRANSLATIONS += \
     any_zoom_ru.ts
 
-include(../common.pri)
+include(../../qm_gen.pri)
+
+RESOURCES += any_zoom.qrc
+
+OTHER_FILES += any_zoom.json
+
+win32:RC_FILE = any_zoom.rc

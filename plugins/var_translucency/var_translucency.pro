@@ -6,19 +6,21 @@
 
 QT       += core
 
+include(../common.pri)
+
 TARGET = var_translucency
 
 SOURCES += var_translucency.cpp
 
 HEADERS += var_translucency.h
-OTHER_FILES += var_translucency.json
 
 TRANSLATIONS += \
     var_translucency_ru.ts
 
+include(../../qm_gen.pri)
+
+RESOURCES += var_translucency.qrc
+
+OTHER_FILES += var_translucency.json
+
 win32:RC_FILE = var_translucency.rc
-
-RESOURCES += \
-    var_translucency.qrc
-
-include(../common.pri)

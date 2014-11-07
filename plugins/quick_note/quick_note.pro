@@ -6,19 +6,23 @@
 
 QT       += core gui widgets
 
+include(../common.pri)
+
 TARGET = quick_note
 
 SOURCES += quick_note.cpp
 
 HEADERS += quick_note.h \
     quick_note_settings.h
-OTHER_FILES += quick_note.json
-
-RESOURCES += \
-    quick_note.qrc
 
 TRANSLATIONS += \
     quick_note_ru.ts
+
+include(../../qm_gen.pri)
+
+RESOURCES += quick_note.qrc
+
+OTHER_FILES += quick_note.json
 
 win32:RC_FILE = quick_note.rc
 
@@ -28,5 +32,3 @@ else:unix: LIBS += -L$$OUT_PWD/../../skin_draw/ -lskin_draw
 
 INCLUDEPATH += $$PWD/../../skin_draw
 DEPENDPATH += $$PWD/../../skin_draw
-
-include(../common.pri)

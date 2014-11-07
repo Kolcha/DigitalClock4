@@ -6,7 +6,9 @@
 
 QT       += core gui widgets network
 
-TARGET = digital_clock
+include(../config.pri)
+
+TARGET   = digital_clock
 TEMPLATE = app
 
 SOURCES += main.cpp\
@@ -28,7 +30,7 @@ SOURCES += main.cpp\
     gui/plugin_list_item_widget.cpp \
     core/manager_base.cpp
 
-HEADERS  += \
+HEADERS += \
     core/skin_manager.h \
     core/clock_settings.h \
     gui/settings_dialog.h \
@@ -48,17 +50,19 @@ HEADERS  += \
     gui/plugin_list_item_widget.h \
     core/manager_base.h
 
-FORMS    += \
+FORMS += \
     gui/settings_dialog.ui \
     gui/about_dialog.ui \
     gui/plugin_info_dialog.ui \
     gui/plugin_list_item_widget.ui
 
-RESOURCES += \
-    digital_clock.qrc
-
 TRANSLATIONS += \
     languages/digital_clock_ru.ts
+
+include(../qm_gen.pri)
+
+RESOURCES += \
+    digital_clock.qrc
 
 win32:RC_FILE = digital_clock.rc
 macx {
@@ -81,5 +85,3 @@ else:unix: LIBS += -L$$OUT_PWD/../clock_common/ -lclock_common
 
 INCLUDEPATH += $$PWD/../clock_common
 DEPENDPATH += $$PWD/../clock_common
-
-include(../config.pri)

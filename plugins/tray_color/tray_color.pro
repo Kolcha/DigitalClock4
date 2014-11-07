@@ -6,20 +6,22 @@
 
 QT       += core gui widgets
 
+include(../common.pri)
+
 TARGET = tray_color
 
 SOURCES += tray_color.cpp
 
 HEADERS += tray_color.h \
     tray_color_settings.h
-OTHER_FILES += tray_color.json
 
 TRANSLATIONS += \
     tray_color_ru.ts
 
+include(../../qm_gen.pri)
+
+RESOURCES += tray_color.qrc
+
+OTHER_FILES += tray_color.json
+
 win32:RC_FILE = tray_color.rc
-
-RESOURCES += \
-    tray_color.qrc
-
-include(../common.pri)

@@ -6,6 +6,8 @@
 
 QT       += core gui widgets
 
+include(../common.pri)
+
 TARGET = move_clock
 
 SOURCES += move_clock.cpp \
@@ -14,17 +16,17 @@ SOURCES += move_clock.cpp \
 HEADERS += move_clock.h \
     gui/settings_dialog.h \
     move_clock_settings.h
-OTHER_FILES += move_clock.json
-
-win32::RC_FILE = move_clock.rc
 
 FORMS += \
     gui/settings_dialog.ui
 
-RESOURCES += \
-    move_clock.qrc
-
 TRANSLATIONS += \
     move_clock_ru.ts
 
-include(../common.pri)
+include(../../qm_gen.pri)
+
+RESOURCES += move_clock.qrc
+
+OTHER_FILES += move_clock.json
+
+win32::RC_FILE = move_clock.rc
