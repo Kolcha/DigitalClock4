@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Digital Clock
+GenericName=Digital Clock
+Comment=Beautiful very customizable clock with plugins
+Comment[ru]=Красивые часы с большим количеством настроек и плагинами
+Type=Application
+Terminal=false
+Exec=digital_clock
+Icon=digital_clock
+StartupNotify=false
+Categories=Utility;Clock;
