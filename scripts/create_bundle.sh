@@ -18,7 +18,7 @@ $QT_PATH/macdeployqt digital_clock/digital_clock.app
 
 # deploy Qt for libs
 cp clock_common/libclock_common.1.0.3.dylib digital_clock/digital_clock.app/Contents/Frameworks/libclock_common.1.dylib
-cp skin_draw/libskin_draw.1.2.1.dylib digital_clock/digital_clock.app/Contents/Frameworks/libskin_draw.1.dylib
+cp skin_draw/libskin_draw.1.2.2.dylib digital_clock/digital_clock.app/Contents/Frameworks/libskin_draw.1.dylib
 $QT_PATH/macdeployqt digital_clock/digital_clock.app -executable=digital_clock/digital_clock.app/Contents/Frameworks/libclock_common.1.dylib
 $QT_PATH/macdeployqt digital_clock/digital_clock.app -executable=digital_clock/digital_clock.app/Contents/Frameworks/libskin_draw.1.dylib
 
