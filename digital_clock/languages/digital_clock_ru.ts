@@ -77,7 +77,7 @@
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="31"/>
+        <location filename="../gui/about_dialog.cpp" line="34"/>
         <source>version: %1 (%2)</source>
         <translation>версия: %1 (%2)</translation>
     </message>

@@ -26,18 +26,24 @@ void PluginManager::ListAvailable() {
       QString abs_path = dir.filePath(file);
       QPluginLoader loader(abs_path);
       IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
-      if (plugin) {
-        QJsonObject metadata = loader.metaData().value("MetaData").toObject();
-        TPluginInfo info;
-        info.metadata[PI_NAME] = metadata.value("name").toString();
+      if (!plugin) continue;
+      QJsonObject metadata = loader.metaData().value("MetaData").toObject();
+      TPluginInfo info;
+      QString c_name = metadata.value("name").toString();
+      auto iter = std::find_if(plugins.cbegin(), plugins.cend(),
+          [&] (const QPair<TPluginInfo, bool>& i) -> bool {
+            return i.first.metadata[PI_NAME] == c_name;
+          });
+      if (iter == plugins.cend()) {
+        info.metadata[PI_NAME] = c_name;
         info.metadata[PI_VERSION] = metadata.value("version").toString();
         info.metadata[PI_AUTHOR] = metadata.value("author").toString();
         info.metadata[PI_EMAIL] = metadata.value("email").toString();
         info.gui_info = plugin->GetInfo();
-        available_[info.metadata[PI_NAME]] = abs_path;
+        available_[c_name] = abs_path;
         plugins.append(qMakePair(info, metadata.value("configurable").toBool()));
-        loader.unload();
       }
+      loader.unload();
     }
   }
   emit SearchFinished(plugins);
