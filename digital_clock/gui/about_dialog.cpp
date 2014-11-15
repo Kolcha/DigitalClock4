@@ -15,8 +15,11 @@ static QString compilerString() {
 #elif defined(Q_CC_GNU)
     return QLatin1String("GCC " ) + QLatin1String(__VERSION__);
 #elif defined(Q_CC_MSVC)
-    if (_MSC_VER >= 1500) // 1500: MSVC 2008, 1600: MSVC 2010, ...
-        return QLatin1String("MSVC ") + QString::number(2008 + 2 * ((_MSC_VER / 100) - 15));
+    if (_MSC_VER >= 1500) { // 1500: MSVC 2008, 1600: MSVC 2010, ...
+        int ver = 2008 + 2 * ((_MSC_VER / 100) - 15);
+        if (_MSC_VER >= 1800) ver -= 1;
+        return QLatin1String("MSVC ") + QString::number(ver);
+    }
 #endif
     return QLatin1String("<unknown compiler>");
 }

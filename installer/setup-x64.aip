@@ -829,6 +829,6 @@
     <ATTRIBUTE name="PrereqsOrder" value="CA62D813A4E74FA2AAE86A7D7B7B1493"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">
-    <ROW SearchKey="CA62D813A4E74FA2AAE86A7D7B7B1493Version" Prereq="CA62D813A4E74FA2AAE86A7D7B7B1493" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\12.0\RuntimeMinimum\Version" VerMin="12.0.21005" Order="1" Property="PreReqSearch_CA62D813A4E74FA2AAE86A7D7B7B1493" Platform="1"/>
+    <ROW SearchKey="CA62D813A4E74FA2AAE86A7D7B7B1493Version" Prereq="CA62D813A4E74FA2AAE86A7D7B7B1493" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\12.0\RuntimeMinimum\Version" VerMin="12.0.21005" Order="1" Property="PreReqSearch_CA62D813A4E74FA2AAE86A7D7B7B1493"/>
   </COMPONENT>
 </DOCUMENT>
