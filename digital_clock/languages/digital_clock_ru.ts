@@ -47,32 +47,32 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="89"/>
+        <location filename="../gui/about_dialog.ui" line="102"/>
         <source>Links</source>
         <translation>Ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="95"/>
+        <location filename="../gui/about_dialog.ui" line="108"/>
         <source>information:</source>
         <translation>информация:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="115"/>
+        <location filename="../gui/about_dialog.ui" line="128"/>
         <source>source code:</source>
         <translation>исходный код:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="135"/>
+        <location filename="../gui/about_dialog.ui" line="148"/>
         <source>e-mail:</source>
         <translation>e-mail:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="158"/>
+        <location filename="../gui/about_dialog.ui" line="171"/>
         <source>Donate</source>
         <translation>Помочь автору</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="322"/>
+        <location filename="../gui/about_dialog.ui" line="335"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
