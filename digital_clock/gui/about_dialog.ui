@@ -77,7 +77,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="../digital_clock.qrc">:/clock/about_dialog/award.gif</pixmap>
+      <pixmap resource="../digital_clock.qrc">:/clock/about_dialog/award.png</pixmap>
      </property>
     </widget>
    </item>

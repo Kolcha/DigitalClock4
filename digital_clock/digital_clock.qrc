@@ -41,10 +41,10 @@
         <file alias="del.svg">resources/images/minus-512.svg</file>
     </qresource>
     <qresource prefix="/clock/about_dialog">
-        <file alias="award.gif">resources/about_dialog/softpedia_clean_award_f.gif</file>
         <file alias="wme.png">resources/about_dialog/wme-16.png</file>
         <file alias="wmr.png">resources/about_dialog/wmr-16.png</file>
         <file alias="wmz.png">resources/about_dialog/wmz-16.png</file>
+        <file alias="award.png">resources/about_dialog/softpedia_100_clean.png</file>
     </qresource>
     <qresource prefix="/clock/languages">
         <file alias="digital_clock_ru.qm">languages/digital_clock_ru.qm</file>
