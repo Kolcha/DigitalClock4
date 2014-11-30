@@ -20,6 +20,7 @@ plugins:
 SDK:
  - changed config class for plugins
  - updated documentation
+ - updated plugin example
 
 
 Whats new in 4.3.4:
