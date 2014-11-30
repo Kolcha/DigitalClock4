@@ -1,3 +1,28 @@
+Whats new in 4.3.5:
+-------------------
+Core:
+ - build with Qt 5.3.2
+ - new line symbol support in skin draw engine
+ - fixed plugins engine (do not add plugins with same name)
+ - MinGW build is no longer supported
+
+Features:
+ - new line symbol support for date plugin
+ - .desktop file for linux build + script to configure it
+
+GUI:
+ - fixed VisualStudio version detect
+ - updated softpedia.com award
+
+plugins:
+ - 'date' plugin: fixed format editing
+
+SDK:
+ - changed config class for plugins
+ - updated documentation
+ - updated plugin example
+
+
 Whats new in 4.3.4:
 -------------------
 Core:

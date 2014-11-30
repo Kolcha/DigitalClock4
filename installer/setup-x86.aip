@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="10.7.1" version="11.6.2" Modules="professional" RootPath="." Language="en" Id="{FC9F3579-EBFE-4EEF-AA87-FA06D728D8A6}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="10.7.1" version="11.6.3" Modules="professional" RootPath="." Language="en" Id="{FC9F3579-EBFE-4EEF-AA87-FA06D728D8A6}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_SHORTCUTSREG" Value="0|0|0|0|"/>
@@ -13,10 +13,10 @@
     <ROW Property="ARPURLUPDATEINFO" Value="http://sourceforge.net/projects/digitalclock4/"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Nick Korotysh"/>
-    <ROW Property="ProductCode" Value="1033:{206F6B56-868B-4465-96E6-6306EE284F30} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{97A38DC0-F28B-4473-BD58-D610A67831C6} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Digital Clock"/>
-    <ROW Property="ProductVersion" Value="4.3.4" Type="32"/>
+    <ROW Property="ProductVersion" Value="4.3.5" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{19300332-9971-4ECE-B0AA-2D4ABF2DFC7D}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
