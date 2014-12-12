@@ -30,4 +30,4 @@ RESOURCES += power_off.qrc
 OTHER_FILES += power_off.json
 
 win32:RC_FILE = power_off.rc
-win32:LIBS += -lAdvapi32
+win32:LIBS += -lAdvapi32 -luser32
