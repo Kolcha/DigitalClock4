@@ -211,6 +211,7 @@ void Date::TimeUpdateListener() {
           if (s_pos != -1) substr.replace(s_pos, 2, '\n');
           is_start = false;
         } else {
+          // parse 'WW' or 'W' -- week number
           int s_pos = substr.indexOf("WW", 0, Qt::CaseInsensitive);
           if (s_pos != -1) {
             substr.replace(s_pos, 2, QString("%1").arg(d_date.weekNumber(), 2, 10, QChar('0')));
@@ -218,6 +219,9 @@ void Date::TimeUpdateListener() {
             s_pos = substr.indexOf('W', 0, Qt::CaseInsensitive);
             if (s_pos != -1) substr.replace(s_pos, 1, QString::number(d_date.weekNumber()));
           }
+          // parse 'J' -- day of year
+          s_pos = substr.indexOf('J', 0, Qt::CaseSensitive);
+          if (s_pos != -1) substr.replace(s_pos, 1, QString::number(d_date.dayOfYear()));
           is_start = true;
         }
         format.replace(prev + 1, pos != -1 ? pos - prev - 1 : format.length() - prev - 1, substr);
