@@ -33,37 +33,37 @@
     </message>
     <message>
         <location filename="gui/settings_dialog.ui" line="42"/>
-        <location filename="gui/settings_dialog.ui" line="113"/>
+        <location filename="gui/settings_dialog.ui" line="145"/>
         <source>custom</source>
         <translation>пользовательский</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="107"/>
+        <location filename="gui/settings_dialog.ui" line="127"/>
         <source>Font</source>
         <translation>Шрифт</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="120"/>
+        <location filename="gui/settings_dialog.ui" line="133"/>
         <source>use clock font</source>
         <translation>использовать шрифт часов</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="143"/>
+        <location filename="gui/settings_dialog.ui" line="180"/>
         <source>Zoom</source>
         <translation>Масштабирование</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="149"/>
+        <location filename="gui/settings_dialog.ui" line="186"/>
         <source>do not zoom</source>
         <translation>не масштабировать</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="156"/>
+        <location filename="gui/settings_dialog.ui" line="193"/>
         <source>calculate font size</source>
         <translation>рассчитать размер шрифта</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="166"/>
+        <location filename="gui/settings_dialog.ui" line="203"/>
         <source>use clock zoom</source>
         <translation>использовать масштаб часов</translation>
     </message>

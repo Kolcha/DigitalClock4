@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>263</width>
+    <width>297</width>
     <height>228</height>
    </rect>
   </property>
@@ -98,22 +98,22 @@
         </item>
         <item>
          <property name="text">
-          <string>dddd,'\n'MMMM d, yyyy</string>
+          <string notr="true">dddd,'\n'MMMM d, yyyy</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>MMMM d, yyyy'\nWeek: 'WW</string>
+          <string notr="true">MMMM d, yyyy'\nWeek: 'WW</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>yyyy-MM-dd - J</string>
+          <string notr="true">yyyy-MM-dd - J</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>yyyy-MM-dd'\nweek': WW'\nday': J</string>
+          <string notr="true">yyyy-MM-dd'\nweek': WW'\nday': J</string>
          </property>
         </item>
        </widget>
