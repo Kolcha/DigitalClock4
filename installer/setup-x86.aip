@@ -13,7 +13,7 @@
     <ROW Property="ARPURLUPDATEINFO" Value="http://sourceforge.net/projects/digitalclock4/"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Nick Korotysh"/>
-    <ROW Property="ProductCode" Value="1033:{9E60DF3C-5A62-4AA0-B792-5B99490FC824} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{E49BD16A-1BF5-40C6-8535-7EB2F596E2E3} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Digital Clock"/>
     <ROW Property="ProductVersion" Value="4.3.6" Type="32"/>
@@ -63,6 +63,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="AIShRegAnswer" ComponentId="{BD8C1799-C944-40E7-B9A3-BB4FE1C3A2CB}" Directory_="APPDIR" Attributes="4" KeyPath="AIShRegAnswer"/>
+    <ROW Component="D3Dcompiler_47.dll" ComponentId="{44F223ED-CAF5-4633-9464-7F054F5DB55F}" Directory_="APPDIR" Attributes="0" KeyPath="D3Dcompiler_47.dll"/>
     <ROW Component="D564007E3BBE4F85950A09B470A7CA65" ComponentId="{25A3E2DA-B550-4DEB-B09E-8943D3C629D7}" Directory_="APPDIR" Attributes="4" KeyPath="D564007E3BBE4F85950A09B470A7CA65" Options="2"/>
     <ROW Component="NY0.png" ComponentId="{0FF47352-358A-4427-AEFF-20EB65B9C562}" Directory_="new_year_Dir" Attributes="0" KeyPath="NY0.png" Type="0"/>
     <ROW Component="ProductInformation" ComponentId="{7CE55ED8-55B7-4F62-A284-ED0DC2D0DD3A}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
@@ -77,7 +78,6 @@
     <ROW Component="any_zoom.dll" ComponentId="{F75207F4-A922-45BC-9717-404B5B9E96D1}" Directory_="plugins_Dir" Attributes="0" KeyPath="any_zoom.dll"/>
     <ROW Component="biclock_item0.svg" ComponentId="{5E35C160-8B3E-4582-92EA-F4BC2625A63E}" Directory_="binclock_Dir" Attributes="0" KeyPath="biclock_item0.svg" Type="0"/>
     <ROW Component="clock_common.dll" ComponentId="{B27773FF-EBFF-4D8B-B4F4-E2ACFB7992E5}" Directory_="APPDIR" Attributes="0" KeyPath="clock_common.dll"/>
-    <ROW Component="d3dcompiler_47.dll" ComponentId="{44F223ED-CAF5-4633-9464-7F054F5DB55F}" Directory_="APPDIR" Attributes="0" KeyPath="d3dcompiler_47.dll"/>
     <ROW Component="date.dll" ComponentId="{C3DFBE8D-F0E1-4E3D-B435-2E55F45F4DA2}" Directory_="plugins_Dir" Attributes="0" KeyPath="date.dll"/>
     <ROW Component="digital_clock.exe" ComponentId="{442AE4B0-B2D5-478B-991A-F2BF64F761F1}" Directory_="APPDIR" Attributes="0" KeyPath="digital_clock.exe"/>
     <ROW Component="dsengine.dll" ComponentId="{7CF70009-1DF6-4C82-B458-65DB74AF05FA}" Directory_="mediaservice_Dir" Attributes="0" KeyPath="dsengine.dll"/>
@@ -89,6 +89,7 @@
     <ROW Component="libEGL.dll" ComponentId="{A9D8BD9B-5A75-44C7-AE06-9E256C21A50A}" Directory_="APPDIR" Attributes="0" KeyPath="libEGL.dll"/>
     <ROW Component="libGLESv2.dll" ComponentId="{CFBC3083-7E82-4C66-83A5-BA75DB1F0871}" Directory_="APPDIR" Attributes="0" KeyPath="libGLESv2.dll"/>
     <ROW Component="move_clock.dll" ComponentId="{102EC06F-E6AB-4D9B-9CCB-056E1E51874A}" Directory_="plugins_Dir" Attributes="256" KeyPath="move_clock.dll"/>
+    <ROW Component="opengl32sw.dll" ComponentId="{8E5C5E26-C8B2-440B-81D9-62C3852D8506}" Directory_="APPDIR" Attributes="0" KeyPath="opengl32sw.dll"/>
     <ROW Component="png" ComponentId="{4B0E17EE-A078-4D8D-82CC-10E45F834844}" Directory_="comic_Dir" Attributes="0" KeyPath="png" Type="0"/>
     <ROW Component="png_1" ComponentId="{07207139-FC48-44BF-A6EF-62BA5D0F1C02}" Directory_="electronicitalic_Dir" Attributes="0" KeyPath="png_10" Type="0"/>
     <ROW Component="png_2" ComponentId="{7314D597-A3A8-4A55-B00C-348CE39128B8}" Directory_="flipclockhd_Dir" Attributes="0" KeyPath="png_20" Type="0"/>
@@ -101,16 +102,14 @@
     <ROW Component="qico.dll" ComponentId="{D5E4C104-9411-4CFA-B5EF-41D94EA463CD}" Directory_="imageformats_Dir" Attributes="0" KeyPath="qico.dll"/>
     <ROW Component="qjp2.dll" ComponentId="{7C31205D-CF84-4793-B3D7-A7E66DBD3239}" Directory_="imageformats_Dir" Attributes="0" KeyPath="qjp2.dll"/>
     <ROW Component="qjpeg.dll" ComponentId="{4F294FB6-8B5C-4C60-B64E-244AF22781AA}" Directory_="imageformats_Dir" Attributes="0" KeyPath="qjpeg.dll"/>
-    <ROW Component="qminimal.dll" ComponentId="{21A0161A-8545-4EED-B282-76198C2FAECE}" Directory_="platforms_Dir" Attributes="0" KeyPath="qminimal.dll"/>
     <ROW Component="qmng.dll" ComponentId="{E99EB3BF-8285-42FB-817A-2701FA63D41D}" Directory_="imageformats_Dir" Attributes="0" KeyPath="qmng.dll"/>
     <ROW Component="qnativewifibearer.dll" ComponentId="{0D032D6A-B349-44BF-A5A3-B071C8AD9544}" Directory_="bearer_Dir" Attributes="0" KeyPath="qnativewifibearer.dll"/>
-    <ROW Component="qoffscreen.dll" ComponentId="{B12EDA2C-0F28-466A-8570-704101B070AD}" Directory_="platforms_Dir" Attributes="0" KeyPath="qoffscreen.dll"/>
     <ROW Component="qsn_cp_clock_digital_new_eight.svg" ComponentId="{2623C35E-32C3-4EE4-BF5B-799B0EE190CC}" Directory_="qsn_cp_clock_digital_new_Dir" Attributes="0" KeyPath="qsn_cp_clock_digital_new_eight.svg" Type="0"/>
     <ROW Component="qsvg.dll" ComponentId="{D493CEAE-0B33-43D9-8618-2BC50736CA6F}" Directory_="imageformats_Dir" Attributes="0" KeyPath="qsvg.dll"/>
     <ROW Component="qsvgicon.dll" ComponentId="{AB84247D-317F-4D9E-8F59-575997D483FF}" Directory_="iconengines_Dir" Attributes="0" KeyPath="qsvgicon.dll"/>
     <ROW Component="qt.conf" ComponentId="{A26E993B-4707-46BA-A0CE-AB3E06B28A94}" Directory_="APPDIR" Attributes="0" KeyPath="qt.conf" Type="0"/>
     <ROW Component="qtaudio_windows.dll" ComponentId="{BC91BD15-77D5-48EE-B2E7-F584473F8E98}" Directory_="audio_Dir" Attributes="0" KeyPath="qtaudio_windows.dll"/>
-    <ROW Component="qtbase_cs.qm" ComponentId="{D3AB3D13-F9D8-45D9-9652-363B22821608}" Directory_="translations_Dir" Attributes="0" KeyPath="qtbase_cs.qm" Type="0"/>
+    <ROW Component="qtbase_cs.qm" ComponentId="{D3AB3D13-F9D8-45D9-9652-363B22821608}" Directory_="translations_Dir" Attributes="0" KeyPath="qt_ca.qm" Type="0"/>
     <ROW Component="qtga.dll" ComponentId="{10220952-D70E-4CFA-8F1A-C387FAD510CB}" Directory_="imageformats_Dir" Attributes="0" KeyPath="qtga.dll"/>
     <ROW Component="qtiff.dll" ComponentId="{A601E444-850D-4F7A-8E75-12A58314A0D4}" Directory_="imageformats_Dir" Attributes="0" KeyPath="qtiff.dll"/>
     <ROW Component="qtmedia_audioengine.dll" ComponentId="{468F4444-7428-4657-BC7B-E9AC49E7307D}" Directory_="mediaservice_Dir" Attributes="0" KeyPath="qtmedia_audioengine.dll"/>
@@ -137,10 +136,11 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="D564007E3BBE4F85950A09B470A7CA65" Title="Visual C++ Redistributable for Visual Studio 2013 x86" Description="Visual C++ Redistributable for Visual Studio 2013 x86" Display="5" Level="1" Attributes="0" Components="D564007E3BBE4F85950A09B470A7CA65"/>
-    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AIShRegAnswer NY0.png ProductInformation Qt5Core.dll Qt5Gui.dll Qt5Multimedia.dll Qt5Network.dll Qt5Svg.dll Qt5Widgets.dll SHORTCUTDIR alarm.dll any_zoom.dll biclock_item0.svg clock_common.dll d3dcompiler_47.dll date.dll digital_clock.exe dsengine.dll grassempty.png hour_signal.dll icudt53.dll icuin53.dll icuuc53.dll libEGL.dll libGLESv2.dll move_clock.dll png png_1 png_2 png_3 power_off.dll qdds.dll qgenericbearer.dll qgif.dll qicns.dll qico.dll qjp2.dll qjpeg.dll qminimal.dll qmng.dll qnativewifibearer.dll qoffscreen.dll qsn_cp_clock_digital_new_eight.svg qsvg.dll qsvgicon.dll qt.conf qtaudio_windows.dll qtbase_cs.qm qtga.dll qtiff.dll qtmedia_audioengine.dll qtmultimedia_m3u.dll quick_note.dll qwbmp.dll qwebp.dll qwindows.dll schedule.dll skin_draw.dll spectrum_clock.dll svg svg_1 svg_2 svg_3 svg_4 svg_5 texture_001_128.jpg tray_color.dll var_translucency.dll win_on_top.dll win_on_top_hook.dll wmfengine.dll"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AIShRegAnswer D3Dcompiler_47.dll NY0.png ProductInformation Qt5Core.dll Qt5Gui.dll Qt5Multimedia.dll Qt5Network.dll Qt5Svg.dll Qt5Widgets.dll SHORTCUTDIR alarm.dll any_zoom.dll biclock_item0.svg clock_common.dll date.dll digital_clock.exe dsengine.dll grassempty.png hour_signal.dll icudt53.dll icuin53.dll icuuc53.dll libEGL.dll libGLESv2.dll move_clock.dll opengl32sw.dll png png_1 png_2 png_3 power_off.dll qdds.dll qgenericbearer.dll qgif.dll qicns.dll qico.dll qjp2.dll qjpeg.dll qmng.dll qnativewifibearer.dll qsn_cp_clock_digital_new_eight.svg qsvg.dll qsvgicon.dll qt.conf qtaudio_windows.dll qtbase_cs.qm qtga.dll qtiff.dll qtmedia_audioengine.dll qtmultimedia_m3u.dll quick_note.dll qwbmp.dll qwebp.dll qwindows.dll schedule.dll skin_draw.dll spectrum_clock.dll svg svg_1 svg_2 svg_3 svg_4 svg_5 texture_001_128.jpg tray_color.dll var_translucency.dll win_on_top.dll win_on_top_hook.dll wmfengine.dll"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="D3Dcompiler_47.dll" Component_="D3Dcompiler_47.dll" FileName="D3DCOM~2.DLL|D3Dcompiler_47.dll" Attributes="0" SourcePath="..\..\Qt files x86\D3Dcompiler_47.dll" SelfReg="false" NextFile="qtaudio_windows.dll"/>
     <ROW File="NY0.png" Component_="NY0.png" FileName="NY-0.png" Attributes="0" SourcePath="..\..\data\skins\new_year\NY-0.png" SelfReg="false" NextFile="NY1.png"/>
     <ROW File="NY1.png" Component_="NY0.png" FileName="NY-1.png" Attributes="0" SourcePath="..\..\data\skins\new_year\NY-1.png" SelfReg="false" NextFile="NY2.png"/>
     <ROW File="NY2.png" Component_="NY0.png" FileName="NY-2.png" Attributes="0" SourcePath="..\..\data\skins\new_year\NY-2.png" SelfReg="false" NextFile="NY3.png"/>
@@ -158,7 +158,7 @@
     <ROW File="Qt5Multimedia.dll" Component_="Qt5Multimedia.dll" FileName="QT5MUL~1.DLL|Qt5Multimedia.dll" Attributes="0" SourcePath="..\..\Qt files x86\Qt5Multimedia.dll" SelfReg="false" NextFile="Qt5Network.dll"/>
     <ROW File="Qt5Network.dll" Component_="Qt5Network.dll" FileName="QT5NET~1.DLL|Qt5Network.dll" Attributes="0" SourcePath="..\..\Qt files x86\Qt5Network.dll" SelfReg="false" NextFile="Qt5Svg.dll"/>
     <ROW File="Qt5Svg.dll" Component_="Qt5Svg.dll" FileName="Qt5Svg.dll" Attributes="0" SourcePath="..\..\Qt files x86\Qt5Svg.dll" SelfReg="false" NextFile="Qt5Widgets.dll"/>
-    <ROW File="Qt5Widgets.dll" Component_="Qt5Widgets.dll" FileName="QT5WID~1.DLL|Qt5Widgets.dll" Attributes="0" SourcePath="..\..\Qt files x86\Qt5Widgets.dll" SelfReg="false" NextFile="qtbase_cs.qm"/>
+    <ROW File="Qt5Widgets.dll" Component_="Qt5Widgets.dll" FileName="QT5WID~1.DLL|Qt5Widgets.dll" Attributes="0" SourcePath="..\..\Qt files x86\Qt5Widgets.dll" SelfReg="false" NextFile="qt_cs.qm"/>
     <ROW File="alarm.dll" Component_="alarm.dll" FileName="alarm.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_32bit-Release\plugins\alarm\release\alarm.dll" SelfReg="false" NextFile="any_zoom.dll"/>
     <ROW File="am.png" Component_="png" FileName="am.png" Attributes="0" SourcePath="..\..\data\skins\comic\am.png" SelfReg="false" NextFile="pm.png"/>
     <ROW File="am.svg" Component_="svg_1" FileName="am.svg" Attributes="0" SourcePath="..\..\data\skins\floral_digits\am.svg" SelfReg="false" NextFile="pm.svg"/>
@@ -178,7 +178,6 @@
     <ROW File="biclock_items1.svg" Component_="biclock_item0.svg" FileName="BICLO~11.SVG|biclock_item-s1.svg" Attributes="0" SourcePath="..\..\data\skins\bin-clock\biclock_item-s1.svg" SelfReg="false" NextFile="biclock_items2.svg"/>
     <ROW File="biclock_items2.svg" Component_="biclock_item0.svg" FileName="BICLO~12.SVG|biclock_item-s2.svg" Attributes="0" SourcePath="..\..\data\skins\bin-clock\biclock_item-s2.svg" SelfReg="false" NextFile="png"/>
     <ROW File="clock_common.dll" Component_="clock_common.dll" FileName="CLOCK_~1.DLL|clock_common.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_32bit-Release\clock_common\release\clock_common.dll" SelfReg="false" NextFile="digital_clock.exe"/>
-    <ROW File="d3dcompiler_47.dll" Component_="d3dcompiler_47.dll" FileName="D3DCOM~2.DLL|d3dcompiler_47.dll" Attributes="0" SourcePath="..\..\Qt files x86\D3Dcompiler_47.dll" SelfReg="false" NextFile="qtaudio_windows.dll"/>
     <ROW File="date.dll" Component_="date.dll" FileName="date.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_32bit-Release\plugins\date\release\date.dll" SelfReg="false" NextFile="power_off.dll"/>
     <ROW File="digital_clock.exe" Component_="digital_clock.exe" FileName="DIGITA~1.EXE|digital_clock.exe" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_32bit-Release\digital_clock\release\digital_clock.exe" SelfReg="false" NextFile="skin_draw.dll" DigSign="true"/>
     <ROW File="dsengine.dll" Component_="dsengine.dll" FileName="dsengine.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\mediaservice\dsengine.dll" SelfReg="false" NextFile="qtmedia_audioengine.dll"/>
@@ -197,10 +196,11 @@
     <ROW File="hour_signal.dll" Component_="hour_signal.dll" FileName="HOUR_S~1.DLL|hour_signal.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_32bit-Release\plugins\hour_signal\release\hour_signal.dll" SelfReg="false" NextFile="schedule.dll"/>
     <ROW File="icudt53.dll" Component_="icudt53.dll" FileName="icudt53.dll" Attributes="0" SourcePath="..\..\Qt files x86\icudt53.dll" SelfReg="false" NextFile="icuin53.dll"/>
     <ROW File="icuin53.dll" Component_="icuin53.dll" FileName="icuin53.dll" Attributes="0" SourcePath="..\..\Qt files x86\icuin53.dll" SelfReg="false" NextFile="icuuc53.dll"/>
-    <ROW File="icuuc53.dll" Component_="icuuc53.dll" FileName="icuuc53.dll" Attributes="0" SourcePath="..\..\Qt files x86\icuuc53.dll" SelfReg="false"/>
+    <ROW File="icuuc53.dll" Component_="icuuc53.dll" FileName="icuuc53.dll" Attributes="0" SourcePath="..\..\Qt files x86\icuuc53.dll" SelfReg="false" NextFile="opengl32sw.dll"/>
     <ROW File="libEGL.dll" Component_="libEGL.dll" FileName="libEGL.dll" Attributes="0" SourcePath="..\..\Qt files x86\libEGL.dll" SelfReg="false" NextFile="libGLESv2.dll"/>
     <ROW File="libGLESv2.dll" Component_="libGLESv2.dll" FileName="LIBGLE~1.DLL|libGLESv2.dll" Attributes="0" SourcePath="..\..\Qt files x86\libGLESv2.dll" SelfReg="false" NextFile="qsvgicon.dll"/>
     <ROW File="move_clock.dll" Component_="move_clock.dll" FileName="MOVE_C~1.DLL|move_clock.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_32bit-Release\plugins\move_clock\release\move_clock.dll" SelfReg="false" NextFile="qdds.dll"/>
+    <ROW File="opengl32sw.dll" Component_="opengl32sw.dll" FileName="OPENGL~1.DLL|opengl32sw.dll" Attributes="0" SourcePath="..\..\Qt files x86\opengl32sw.dll" SelfReg="false" NextFile="qt_lv.qm"/>
     <ROW File="pm.png" Component_="png" FileName="pm.png" Attributes="0" SourcePath="..\..\data\skins\comic\pm.png" SelfReg="false" NextFile="s1.png"/>
     <ROW File="pm.svg" Component_="svg_1" FileName="pm.svg" Attributes="0" SourcePath="..\..\data\skins\floral_digits\pm.svg" SelfReg="false" NextFile="s1.svg_1"/>
     <ROW File="pm.svg_1" Component_="svg_4" FileName="pm.svg" Attributes="0" SourcePath="..\..\data\skins\pattern-numbers\pm.svg" SelfReg="false" NextFile="s1.svg_4"/>
@@ -253,10 +253,8 @@
     <ROW File="qico.dll" Component_="qico.dll" FileName="qico.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\imageformats\qico.dll" SelfReg="false" NextFile="qjpeg.dll"/>
     <ROW File="qjp2.dll" Component_="qjp2.dll" FileName="qjp2.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\imageformats\qjp2.dll" SelfReg="false" NextFile="qwebp.dll"/>
     <ROW File="qjpeg.dll" Component_="qjpeg.dll" FileName="qjpeg.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\imageformats\qjpeg.dll" SelfReg="false" NextFile="qmng.dll"/>
-    <ROW File="qminimal.dll" Component_="qminimal.dll" FileName="qminimal.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\platforms\qminimal.dll" SelfReg="false" NextFile="qoffscreen.dll"/>
     <ROW File="qmng.dll" Component_="qmng.dll" FileName="qmng.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\imageformats\qmng.dll" SelfReg="false" NextFile="qsvg.dll"/>
     <ROW File="qnativewifibearer.dll" Component_="qnativewifibearer.dll" FileName="QNATIV~1.DLL|qnativewifibearer.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\bearer\qnativewifibearer.dll" SelfReg="false" NextFile="qtmultimedia_m3u.dll"/>
-    <ROW File="qoffscreen.dll" Component_="qoffscreen.dll" FileName="QOFFSC~1.DLL|qoffscreen.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\platforms\qoffscreen.dll" SelfReg="false" NextFile="qtbase_fi.qm"/>
     <ROW File="qsn_cp_clock_digital_new_eight.svg" Component_="qsn_cp_clock_digital_new_eight.svg" FileName="QSN_CP~1.SVG|qsn_cp_clock_digital_new_eight.svg" Attributes="0" SourcePath="..\..\data\skins\qsn_cp_clock_digital_new\qsn_cp_clock_digital_new_eight.svg" SelfReg="false" NextFile="qsn_cp_clock_digital_new_five.svg"/>
     <ROW File="qsn_cp_clock_digital_new_five.svg" Component_="qsn_cp_clock_digital_new_eight.svg" FileName="QSN_CP~2.SVG|qsn_cp_clock_digital_new_five.svg" Attributes="0" SourcePath="..\..\data\skins\qsn_cp_clock_digital_new\qsn_cp_clock_digital_new_five.svg" SelfReg="false" NextFile="qsn_cp_clock_digital_new_four.svg"/>
     <ROW File="qsn_cp_clock_digital_new_four.svg" Component_="qsn_cp_clock_digital_new_eight.svg" FileName="QSN_CP~3.SVG|qsn_cp_clock_digital_new_four.svg" Attributes="0" SourcePath="..\..\data\skins\qsn_cp_clock_digital_new\qsn_cp_clock_digital_new_four.svg" SelfReg="false" NextFile="qsn_cp_clock_digital_new_nine.svg"/>
@@ -270,94 +268,25 @@
     <ROW File="qsvg.dll" Component_="qsvg.dll" FileName="qsvg.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\imageformats\qsvg.dll" SelfReg="false" NextFile="qtga.dll"/>
     <ROW File="qsvgicon.dll" Component_="qsvgicon.dll" FileName="qsvgicon.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\iconengines\qsvgicon.dll" SelfReg="false" NextFile="qgif.dll"/>
     <ROW File="qt.conf" Component_="qt.conf" FileName="QT~1.CON|qt.conf" Attributes="0" SourcePath="..\..\Qt files x86\qt.conf" SelfReg="false" NextFile="Qt5Core.dll"/>
-    <ROW File="qt_ar.qm" Component_="qtbase_cs.qm" FileName="qt_ar.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_ar.qm" SelfReg="false" NextFile="qt_cs.qm"/>
     <ROW File="qt_ca.qm" Component_="qtbase_cs.qm" FileName="qt_ca.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_ca.qm" SelfReg="false" NextFile="icudt53.dll"/>
-    <ROW File="qt_cs.qm" Component_="qtbase_cs.qm" FileName="qt_cs.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_cs.qm" SelfReg="false" NextFile="qt_da.qm"/>
-    <ROW File="qt_da.qm" Component_="qtbase_cs.qm" FileName="qt_da.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_da.qm" SelfReg="false" NextFile="qt_de.qm"/>
-    <ROW File="qt_de.qm" Component_="qtbase_cs.qm" FileName="qt_de.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_de.qm" SelfReg="false" NextFile="qt_es.qm"/>
-    <ROW File="qt_es.qm" Component_="qtbase_cs.qm" FileName="qt_es.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_es.qm" SelfReg="false" NextFile="qt_fa.qm"/>
-    <ROW File="qt_fa.qm" Component_="qtbase_cs.qm" FileName="qt_fa.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_fa.qm" SelfReg="false" NextFile="qt_fr.qm"/>
-    <ROW File="qt_fi.qm" Component_="qtbase_cs.qm" FileName="qt_fi.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_fi.qm" SelfReg="false" NextFile="d3dcompiler_47.dll"/>
-    <ROW File="qt_fr.qm" Component_="qtbase_cs.qm" FileName="qt_fr.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_fr.qm" SelfReg="false" NextFile="qt_gl.qm"/>
-    <ROW File="qt_gl.qm" Component_="qtbase_cs.qm" FileName="qt_gl.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_gl.qm" SelfReg="false" NextFile="qt_he.qm"/>
-    <ROW File="qt_he.qm" Component_="qtbase_cs.qm" FileName="qt_he.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_he.qm" SelfReg="false" NextFile="qt_hu.qm"/>
+    <ROW File="qt_cs.qm" Component_="qtbase_cs.qm" FileName="qt_cs.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_cs.qm" SelfReg="false" NextFile="qt_de.qm"/>
+    <ROW File="qt_de.qm" Component_="qtbase_cs.qm" FileName="qt_de.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_de.qm" SelfReg="false" NextFile="qt_hu.qm"/>
+    <ROW File="qt_fi.qm" Component_="qtbase_cs.qm" FileName="qt_fi.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_fi.qm" SelfReg="false" NextFile="D3Dcompiler_47.dll"/>
     <ROW File="qt_hu.qm" Component_="qtbase_cs.qm" FileName="qt_hu.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_hu.qm" SelfReg="false" NextFile="qt_ja.qm"/>
     <ROW File="qt_it.qm" Component_="qtbase_cs.qm" FileName="qt_it.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_it.qm" SelfReg="false" NextFile="NY0.png"/>
-    <ROW File="qt_ja.qm" Component_="qtbase_cs.qm" FileName="qt_ja.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_ja.qm" SelfReg="false" NextFile="qt_ko.qm"/>
-    <ROW File="qt_ko.qm" Component_="qtbase_cs.qm" FileName="qt_ko.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_ko.qm" SelfReg="false" NextFile="qt_lt.qm"/>
-    <ROW File="qt_lt.qm" Component_="qtbase_cs.qm" FileName="qt_lt.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_lt.qm" SelfReg="false" NextFile="qt_pl.qm"/>
-    <ROW File="qt_pl.qm" Component_="qtbase_cs.qm" FileName="qt_pl.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_pl.qm" SelfReg="false" NextFile="qt_pt.qm"/>
-    <ROW File="qt_pt.qm" Component_="qtbase_cs.qm" FileName="qt_pt.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_pt.qm" SelfReg="false" NextFile="qt_ru.qm"/>
+    <ROW File="qt_ja.qm" Component_="qtbase_cs.qm" FileName="qt_ja.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_ja.qm" SelfReg="false" NextFile="qt_ru.qm"/>
+    <ROW File="qt_lv.qm" Component_="qtbase_cs.qm" FileName="qt_lv.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_lv.qm" SelfReg="false"/>
     <ROW File="qt_ru.qm" Component_="qtbase_cs.qm" FileName="qt_ru.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_ru.qm" SelfReg="false" NextFile="qt_sk.qm"/>
-    <ROW File="qt_sk.qm" Component_="qtbase_cs.qm" FileName="qt_sk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_sk.qm" SelfReg="false" NextFile="qt_sl.qm"/>
-    <ROW File="qt_sl.qm" Component_="qtbase_cs.qm" FileName="qt_sl.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_sl.qm" SelfReg="false" NextFile="qt_sv.qm"/>
-    <ROW File="qt_sv.qm" Component_="qtbase_cs.qm" FileName="qt_sv.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_sv.qm" SelfReg="false" NextFile="qt_uk.qm"/>
-    <ROW File="qt_uk.qm" Component_="qtbase_cs.qm" FileName="qt_uk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_uk.qm" SelfReg="false" NextFile="qt_zh_CN.qm"/>
-    <ROW File="qt_zh_CN.qm" Component_="qtbase_cs.qm" FileName="qt_zh_CN.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_zh_CN.qm" SelfReg="false" NextFile="qt_zh_TW.qm"/>
-    <ROW File="qt_zh_TW.qm" Component_="qtbase_cs.qm" FileName="qt_zh_TW.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_zh_TW.qm" SelfReg="false" NextFile="texture_001_128.jpg"/>
+    <ROW File="qt_sk.qm" Component_="qtbase_cs.qm" FileName="qt_sk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_sk.qm" SelfReg="false" NextFile="qt_uk.qm"/>
+    <ROW File="qt_uk.qm" Component_="qtbase_cs.qm" FileName="qt_uk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qt_uk.qm" SelfReg="false" NextFile="texture_001_128.jpg"/>
     <ROW File="qtaudio_windows.dll" Component_="qtaudio_windows.dll" FileName="QTAUDI~1.DLL|qtaudio_windows.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\audio\qtaudio_windows.dll" SelfReg="false" NextFile="dsengine.dll"/>
-    <ROW File="qtbase_ca.qm" Component_="qtbase_cs.qm" FileName="QTBAS~10.QM|qtbase_ca.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtbase_ca.qm" SelfReg="false" NextFile="qtbase_lv.qm"/>
-    <ROW File="qtbase_cs.qm" Component_="qtbase_cs.qm" FileName="QTBASE~1.QM|qtbase_cs.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtbase_cs.qm" SelfReg="false" NextFile="qtbase_de.qm"/>
-    <ROW File="qtbase_de.qm" Component_="qtbase_cs.qm" FileName="QTBASE~2.QM|qtbase_de.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtbase_de.qm" SelfReg="false" NextFile="qtbase_hu.qm"/>
-    <ROW File="qtbase_fi.qm" Component_="qtbase_cs.qm" FileName="QTBASE~9.QM|qtbase_fi.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtbase_fi.qm" SelfReg="false" NextFile="qtmultimedia_fi.qm"/>
-    <ROW File="qtbase_hu.qm" Component_="qtbase_cs.qm" FileName="QTBASE~3.QM|qtbase_hu.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtbase_hu.qm" SelfReg="false" NextFile="qtbase_ru.qm"/>
-    <ROW File="qtbase_it.qm" Component_="qtbase_cs.qm" FileName="QTBASE~7.QM|qtbase_it.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtbase_it.qm" SelfReg="false" NextFile="qtbase_ja.qm"/>
-    <ROW File="qtbase_ja.qm" Component_="qtbase_cs.qm" FileName="QTBASE~8.QM|qtbase_ja.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtbase_ja.qm" SelfReg="false" NextFile="qtmultimedia_it.qm"/>
-    <ROW File="qtbase_lv.qm" Component_="qtbase_cs.qm" FileName="QTBAS~11.QM|qtbase_lv.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtbase_lv.qm" SelfReg="false" NextFile="qtmultimedia_ca.qm"/>
-    <ROW File="qtbase_ru.qm" Component_="qtbase_cs.qm" FileName="QTBASE~4.QM|qtbase_ru.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtbase_ru.qm" SelfReg="false" NextFile="qtbase_sk.qm"/>
-    <ROW File="qtbase_sk.qm" Component_="qtbase_cs.qm" FileName="QTBASE~5.QM|qtbase_sk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtbase_sk.qm" SelfReg="false" NextFile="qtbase_uk.qm"/>
-    <ROW File="qtbase_uk.qm" Component_="qtbase_cs.qm" FileName="QTBASE~6.QM|qtbase_uk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtbase_uk.qm" SelfReg="false" NextFile="qtmultimedia_cs.qm"/>
     <ROW File="qtga.dll" Component_="qtga.dll" FileName="qtga.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\imageformats\qtga.dll" SelfReg="false" NextFile="qtiff.dll"/>
     <ROW File="qtiff.dll" Component_="qtiff.dll" FileName="qtiff.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\imageformats\qtiff.dll" SelfReg="false" NextFile="qwbmp.dll"/>
     <ROW File="qtmedia_audioengine.dll" Component_="qtmedia_audioengine.dll" FileName="QTMEDI~1.DLL|qtmedia_audioengine.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\mediaservice\qtmedia_audioengine.dll" SelfReg="false" NextFile="win_on_top_hook.dll"/>
-    <ROW File="qtmultimedia_ca.qm" Component_="qtbase_cs.qm" FileName="QTMUL~10.QM|qtmultimedia_ca.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtmultimedia_ca.qm" SelfReg="false" NextFile="qtquick1_ca.qm"/>
-    <ROW File="qtmultimedia_cs.qm" Component_="qtbase_cs.qm" FileName="QTMULT~1.QM|qtmultimedia_cs.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtmultimedia_cs.qm" SelfReg="false" NextFile="qtmultimedia_de.qm"/>
-    <ROW File="qtmultimedia_de.qm" Component_="qtbase_cs.qm" FileName="QTMULT~2.QM|qtmultimedia_de.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtmultimedia_de.qm" SelfReg="false" NextFile="qtmultimedia_hu.qm"/>
-    <ROW File="qtmultimedia_fi.qm" Component_="qtbase_cs.qm" FileName="QTMULT~9.QM|qtmultimedia_fi.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtmultimedia_fi.qm" SelfReg="false" NextFile="qtquick1_fi.qm"/>
-    <ROW File="qtmultimedia_hu.qm" Component_="qtbase_cs.qm" FileName="QTMULT~3.QM|qtmultimedia_hu.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtmultimedia_hu.qm" SelfReg="false" NextFile="qtmultimedia_ru.qm"/>
-    <ROW File="qtmultimedia_it.qm" Component_="qtbase_cs.qm" FileName="QTMULT~7.QM|qtmultimedia_it.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtmultimedia_it.qm" SelfReg="false" NextFile="qtmultimedia_ja.qm"/>
-    <ROW File="qtmultimedia_ja.qm" Component_="qtbase_cs.qm" FileName="QTMULT~8.QM|qtmultimedia_ja.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtmultimedia_ja.qm" SelfReg="false" NextFile="qtquick1_it.qm"/>
-    <ROW File="qtmultimedia_m3u.dll" Component_="qtmultimedia_m3u.dll" FileName="QTMULT~1.DLL|qtmultimedia_m3u.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\playlistformats\qtmultimedia_m3u.dll" SelfReg="false" NextFile="qtbase_ca.qm"/>
-    <ROW File="qtmultimedia_ru.qm" Component_="qtbase_cs.qm" FileName="QTMULT~4.QM|qtmultimedia_ru.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtmultimedia_ru.qm" SelfReg="false" NextFile="qtmultimedia_sk.qm"/>
-    <ROW File="qtmultimedia_sk.qm" Component_="qtbase_cs.qm" FileName="QTMULT~5.QM|qtmultimedia_sk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtmultimedia_sk.qm" SelfReg="false" NextFile="qtmultimedia_uk.qm"/>
-    <ROW File="qtmultimedia_uk.qm" Component_="qtbase_cs.qm" FileName="QTMULT~6.QM|qtmultimedia_uk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtmultimedia_uk.qm" SelfReg="false" NextFile="qtquick1_cs.qm"/>
-    <ROW File="qtquick1_ca.qm" Component_="qtbase_cs.qm" FileName="QTQUI~10.QM|qtquick1_ca.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquick1_ca.qm" SelfReg="false" NextFile="qtquickcontrols_de.qm"/>
-    <ROW File="qtquick1_cs.qm" Component_="qtbase_cs.qm" FileName="QTQUIC~1.QM|qtquick1_cs.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquick1_cs.qm" SelfReg="false" NextFile="qtquick1_de.qm"/>
-    <ROW File="qtquick1_de.qm" Component_="qtbase_cs.qm" FileName="QTQUIC~2.QM|qtquick1_de.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquick1_de.qm" SelfReg="false" NextFile="qtquick1_hu.qm"/>
-    <ROW File="qtquick1_fi.qm" Component_="qtbase_cs.qm" FileName="QTQUIC~9.QM|qtquick1_fi.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquick1_fi.qm" SelfReg="false" NextFile="qtscript_fi.qm"/>
-    <ROW File="qtquick1_hu.qm" Component_="qtbase_cs.qm" FileName="QTQUIC~3.QM|qtquick1_hu.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquick1_hu.qm" SelfReg="false" NextFile="qtquick1_ru.qm"/>
-    <ROW File="qtquick1_it.qm" Component_="qtbase_cs.qm" FileName="QTQUIC~7.QM|qtquick1_it.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquick1_it.qm" SelfReg="false" NextFile="qtquick1_ja.qm"/>
-    <ROW File="qtquick1_ja.qm" Component_="qtbase_cs.qm" FileName="QTQUIC~8.QM|qtquick1_ja.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquick1_ja.qm" SelfReg="false" NextFile="qtscript_it.qm"/>
-    <ROW File="qtquick1_ru.qm" Component_="qtbase_cs.qm" FileName="QTQUIC~4.QM|qtquick1_ru.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquick1_ru.qm" SelfReg="false" NextFile="qtquick1_sk.qm"/>
-    <ROW File="qtquick1_sk.qm" Component_="qtbase_cs.qm" FileName="QTQUIC~5.QM|qtquick1_sk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquick1_sk.qm" SelfReg="false" NextFile="qtquick1_uk.qm"/>
-    <ROW File="qtquick1_uk.qm" Component_="qtbase_cs.qm" FileName="QTQUIC~6.QM|qtquick1_uk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquick1_uk.qm" SelfReg="false" NextFile="qtscript_cs.qm"/>
-    <ROW File="qtquickcontrols_de.qm" Component_="qtbase_cs.qm" FileName="QTQUI~11.QM|qtquickcontrols_de.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquickcontrols_de.qm" SelfReg="false" NextFile="qtquickcontrols_ja.qm"/>
-    <ROW File="qtquickcontrols_ja.qm" Component_="qtbase_cs.qm" FileName="QTQUI~12.QM|qtquickcontrols_ja.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquickcontrols_ja.qm" SelfReg="false" NextFile="qtquickcontrols_ru.qm"/>
-    <ROW File="qtquickcontrols_ru.qm" Component_="qtbase_cs.qm" FileName="QTQUI~13.QM|qtquickcontrols_ru.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquickcontrols_ru.qm" SelfReg="false" NextFile="qtquickcontrols_uk.qm"/>
-    <ROW File="qtquickcontrols_uk.qm" Component_="qtbase_cs.qm" FileName="QTQUI~14.QM|qtquickcontrols_uk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtquickcontrols_uk.qm" SelfReg="false" NextFile="qtscript_ca.qm"/>
-    <ROW File="qtscript_ca.qm" Component_="qtbase_cs.qm" FileName="QTSCR~10.QM|qtscript_ca.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtscript_ca.qm" SelfReg="false" NextFile="qtscript_lv.qm"/>
-    <ROW File="qtscript_cs.qm" Component_="qtbase_cs.qm" FileName="QTSCRI~1.QM|qtscript_cs.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtscript_cs.qm" SelfReg="false" NextFile="qtscript_de.qm"/>
-    <ROW File="qtscript_de.qm" Component_="qtbase_cs.qm" FileName="QTSCRI~2.QM|qtscript_de.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtscript_de.qm" SelfReg="false" NextFile="qtscript_hu.qm"/>
-    <ROW File="qtscript_fi.qm" Component_="qtbase_cs.qm" FileName="QTSCRI~9.QM|qtscript_fi.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtscript_fi.qm" SelfReg="false" NextFile="qt_fi.qm"/>
-    <ROW File="qtscript_hu.qm" Component_="qtbase_cs.qm" FileName="QTSCRI~3.QM|qtscript_hu.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtscript_hu.qm" SelfReg="false" NextFile="qtscript_ru.qm"/>
-    <ROW File="qtscript_it.qm" Component_="qtbase_cs.qm" FileName="QTSCRI~7.QM|qtscript_it.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtscript_it.qm" SelfReg="false" NextFile="qtscript_ja.qm"/>
-    <ROW File="qtscript_ja.qm" Component_="qtbase_cs.qm" FileName="QTSCRI~8.QM|qtscript_ja.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtscript_ja.qm" SelfReg="false" NextFile="qtxmlpatterns_it.qm"/>
-    <ROW File="qtscript_lv.qm" Component_="qtbase_cs.qm" FileName="QTSCR~11.QM|qtscript_lv.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtscript_lv.qm" SelfReg="false" NextFile="qtxmlpatterns_ca.qm"/>
-    <ROW File="qtscript_ru.qm" Component_="qtbase_cs.qm" FileName="QTSCRI~4.QM|qtscript_ru.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtscript_ru.qm" SelfReg="false" NextFile="qtscript_sk.qm"/>
-    <ROW File="qtscript_sk.qm" Component_="qtbase_cs.qm" FileName="QTSCRI~5.QM|qtscript_sk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtscript_sk.qm" SelfReg="false" NextFile="qtscript_uk.qm"/>
-    <ROW File="qtscript_uk.qm" Component_="qtbase_cs.qm" FileName="QTSCRI~6.QM|qtscript_uk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtscript_uk.qm" SelfReg="false" NextFile="qtxmlpatterns_cs.qm"/>
-    <ROW File="qtxmlpatterns_ca.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~9.QM|qtxmlpatterns_ca.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtxmlpatterns_ca.qm" SelfReg="false" NextFile="qt_ca.qm"/>
-    <ROW File="qtxmlpatterns_cs.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~1.QM|qtxmlpatterns_cs.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtxmlpatterns_cs.qm" SelfReg="false" NextFile="qtxmlpatterns_de.qm"/>
-    <ROW File="qtxmlpatterns_de.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~2.QM|qtxmlpatterns_de.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtxmlpatterns_de.qm" SelfReg="false" NextFile="qtxmlpatterns_hu.qm"/>
-    <ROW File="qtxmlpatterns_hu.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~3.QM|qtxmlpatterns_hu.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtxmlpatterns_hu.qm" SelfReg="false" NextFile="qtxmlpatterns_ru.qm"/>
-    <ROW File="qtxmlpatterns_it.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~7.QM|qtxmlpatterns_it.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtxmlpatterns_it.qm" SelfReg="false" NextFile="qtxmlpatterns_ja.qm"/>
-    <ROW File="qtxmlpatterns_ja.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~8.QM|qtxmlpatterns_ja.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtxmlpatterns_ja.qm" SelfReg="false" NextFile="qt_it.qm"/>
-    <ROW File="qtxmlpatterns_ru.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~4.QM|qtxmlpatterns_ru.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtxmlpatterns_ru.qm" SelfReg="false" NextFile="qtxmlpatterns_sk.qm"/>
-    <ROW File="qtxmlpatterns_sk.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~5.QM|qtxmlpatterns_sk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtxmlpatterns_sk.qm" SelfReg="false" NextFile="qtxmlpatterns_uk.qm"/>
-    <ROW File="qtxmlpatterns_uk.qm" Component_="qtbase_cs.qm" FileName="QTXMLP~6.QM|qtxmlpatterns_uk.qm" Attributes="0" SourcePath="..\..\Qt files x86\translations\qtxmlpatterns_uk.qm" SelfReg="false" NextFile="qt_ar.qm"/>
+    <ROW File="qtmultimedia_m3u.dll" Component_="qtmultimedia_m3u.dll" FileName="QTMULT~1.DLL|qtmultimedia_m3u.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\playlistformats\qtmultimedia_m3u.dll" SelfReg="false" NextFile="qt_ca.qm"/>
     <ROW File="quick_note.dll" Component_="quick_note.dll" FileName="QUICK_~1.DLL|quick_note.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_32bit-Release\plugins\quick_note\release\quick_note.dll" SelfReg="false" NextFile="win_on_top.dll"/>
     <ROW File="qwbmp.dll" Component_="qwbmp.dll" FileName="qwbmp.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\imageformats\qwbmp.dll" SelfReg="false" NextFile="wmfengine.dll"/>
-    <ROW File="qwebp.dll" Component_="qwebp.dll" FileName="qwebp.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\imageformats\qwebp.dll" SelfReg="false" NextFile="qminimal.dll"/>
+    <ROW File="qwebp.dll" Component_="qwebp.dll" FileName="qwebp.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\imageformats\qwebp.dll" SelfReg="false" NextFile="qt_fi.qm"/>
     <ROW File="qwindows.dll" Component_="qwindows.dll" FileName="qwindows.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\platforms\qwindows.dll" SelfReg="false" NextFile="qt.conf"/>
     <ROW File="s.png" Component_="png_2" FileName="s.png" Attributes="0" SourcePath="..\..\data\skins\flipclock-hd\s.png" SelfReg="false" NextFile="svg_10"/>
     <ROW File="s1.png" Component_="png" FileName="s1.png" Attributes="0" SourcePath="..\..\data\skins\comic\s1.png" SelfReg="false" NextFile="s2.png"/>
@@ -663,7 +592,7 @@
     <ROW File="texture_204_128.jpg" Component_="texture_001_128.jpg" FileName="TEXT~204.JPG|texture_204_128.jpg" Attributes="0" SourcePath="..\..\data\textures\texture_204_128.jpg" SelfReg="false" NextFile="texture_205_128.jpg"/>
     <ROW File="texture_205_128.jpg" Component_="texture_001_128.jpg" FileName="TEXT~205.JPG|texture_205_128.jpg" Attributes="0" SourcePath="..\..\data\textures\texture_205_128.jpg" SelfReg="false" NextFile="biclock_item0.svg"/>
     <ROW File="tray_color.dll" Component_="tray_color.dll" FileName="TRAY_C~1.DLL|tray_color.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_32bit-Release\plugins\tray_color\release\tray_color.dll" SelfReg="false" NextFile="var_translucency.dll"/>
-    <ROW File="var_translucency.dll" Component_="var_translucency.dll" FileName="VAR_TR~1.DLL|var_translucency.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_32bit-Release\plugins\var_translucency\release\var_translucency.dll" SelfReg="false" NextFile="qtbase_it.qm"/>
+    <ROW File="var_translucency.dll" Component_="var_translucency.dll" FileName="VAR_TR~1.DLL|var_translucency.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_32bit-Release\plugins\var_translucency\release\var_translucency.dll" SelfReg="false" NextFile="qt_it.qm"/>
     <ROW File="win_on_top.dll" Component_="win_on_top.dll" FileName="WIN_ON~1.DLL|win_on_top.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_32bit-Release\plugins\win_on_top\release\win_on_top.dll" SelfReg="false" NextFile="move_clock.dll"/>
     <ROW File="win_on_top_hook.dll" Component_="win_on_top_hook.dll" FileName="WIN_ON~2.DLL|win_on_top_hook.dll" Attributes="0" SourcePath="..\plugins\win_on_top\win_on_top_hook\msvc2013\Win32\Release\win_on_top_hook.dll" SelfReg="false" NextFile="qgenericbearer.dll"/>
     <ROW File="wmfengine.dll" Component_="wmfengine.dll" FileName="WMFENG~1.DLL|wmfengine.dll" Attributes="0" SourcePath="..\..\Qt files x86\plugins\mediaservice\wmfengine.dll" SelfReg="false" NextFile="qwindows.dll"/>
