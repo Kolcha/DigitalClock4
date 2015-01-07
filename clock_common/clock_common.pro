@@ -17,7 +17,8 @@ SOURCES += \
     settings_keys.cpp \
     plugin_settings.cpp \
     centered_dialog.cpp \
-    plugin_base.cpp
+    plugin_base.cpp \
+    message_box.cpp
 
 HEADERS += \
     settings_keys.h \
@@ -26,8 +27,9 @@ HEADERS += \
     clock_common_global.h \
     centered_dialog.h \
     plugin_base.h \
-    iplugin_init.h
+    iplugin_init.h \
+    message_box.h
 
 win32:RC_FILE = clock_common.rc
-unix:VERSION = 1.0.3
+unix:VERSION = 1.0.4
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
