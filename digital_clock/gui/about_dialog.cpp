@@ -32,7 +32,7 @@ AboutDialog::AboutDialog(QWidget* parent) : CenteredDialog(parent), ui(new Ui::A
   QString build_type = version[version.length() - 1].isDigit() ? "stable" : "testing";
   ui->name_value->setText(QCoreApplication::applicationName());
   ui->version_value->setText(tr("version: %1 (%2)").arg(version).arg(build_type));
-  ui->rights_value->setText("© 2013-2014 " + QCoreApplication::organizationName());
+  ui->rights_value->setText("© 2013-2015 " + QCoreApplication::organizationName());
   ui->qt_value->setText(QString("Qt %1 (%2, %3 bit)").arg(qVersion(), compilerString(),
                                                           QString::number(QSysInfo::WordSize)));
   setFixedSize(sizeHint());
