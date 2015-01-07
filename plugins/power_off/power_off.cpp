@@ -1,6 +1,7 @@
 #define NOMINMAX
 #include <Windows.h>
 #include "plugin_settings.h"
+#include "message_box.h"
 #include "power_off_settings.h"
 #include "gui/settings_dialog.h"
 #include "power_off.h"
@@ -55,6 +56,15 @@ void PowerOff::TimeUpdateListener() {
   QString curr_time = QTime::currentTime().toString();
   if (off_time != curr_time || active_) return;
   active_ = true;
+  TMessageBox msg;
+  msg.setIcon(QMessageBox::Warning);
+  msg.setWindowTitle(tr("System shutdown"));
+  msg.setText(tr("Warning! Shutdown will happen after a few seconds."));
+  msg.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+  msg.setDefaultButton(QMessageBox::Ok);
+  msg.setAutoClose(true);
+  msg.setTimeout(20);
+  if (msg.exec() != QMessageBox::Ok) return;
   UINT flags = EWX_SHUTDOWN;
   settings_->GetOption(OPT_FORCE).toBool() ? flags |= EWX_FORCE : flags |= EWX_FORCEIFHUNG;
   ExitWindowsEx(flags, 0);
