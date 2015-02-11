@@ -13,7 +13,7 @@ static QString compilerString() {
     return QLatin1String("Clang " ) + QString::number(__clang_major__) + QLatin1Char('.')
             + QString::number(__clang_minor__) + isAppleString;
 #elif defined(Q_CC_GNU)
-    return QLatin1String("GCC " ) + QLatin1String(__VERSION__);
+    return QString("GCC %1.%2.%3").arg(__GNUC__).arg(__GNUC_MINOR__).arg(__GNUC_PATCHLEVEL__);
 #elif defined(Q_CC_MSVC)
     if (_MSC_VER >= 1500) { // 1500: MSVC 2008, 1600: MSVC 2010, ...
         int ver = 2008 + 2 * ((_MSC_VER / 100) - 15);
