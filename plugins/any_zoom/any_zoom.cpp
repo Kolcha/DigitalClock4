@@ -68,6 +68,9 @@ void AnyZoom::RevertSettings() {
 
 void AnyZoom::SettingsListener(Options option, const QVariant& value) {
   if (option == OPT_ZOOM && is_enabled_) {
+    // ignore zoom changes from other plugins (and own change too)
+    QString sender_name = sender()->metaObject()->className();
+    if (sender_name.contains("PluginManager")) return;
     last_zoom_ = value.toReal();
     emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
   }
