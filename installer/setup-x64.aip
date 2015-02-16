@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="10.7.1" version="11.7.1" Modules="professional" RootPath="." Language="en" Id="{1960A182-4B40-446B-997D-4D6CB7D42D0D}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="10.7.1" version="11.8" Modules="professional" RootPath="." Language="en" Id="{1960A182-4B40-446B-997D-4D6CB7D42D0D}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_SHORTCUTSREG" Value="0|0|0|0|"/>
@@ -13,7 +13,7 @@
     <ROW Property="ARPURLUPDATEINFO" Value="http://sourceforge.net/projects/digitalclock4/"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Nick Korotysh"/>
-    <ROW Property="ProductCode" Value="1033:{E9554178-0606-4A10-BA5E-02139C83A65F} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{133C1431-2A3E-4A33-9AA3-777406F98C69} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Digital Clock"/>
     <ROW Property="ProductVersion" Value="4.3.6" Type="32"/>
@@ -25,9 +25,9 @@
     <ROW Property="WindowsTypeNT" MultiBuildValue="DefaultBuild:Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
-    <ROW Property="WindowsTypeNT64" MultiBuildValue="DefaultBuild:Windows XP x64, Windows XP x64 Service Pack 1, Windows XP x64 Service Pack 2, Windows Server 2003 x64, Windows Server 2003 x64 Service Pack 1, Windows Server 2003 x64 Service Pack 2, Windows Vista x64, Windows Vista x64 Service Pack 1, Windows 7 x64" ValueLocId="-"/>
-    <ROW Property="WindowsTypeNT64Display" MultiBuildValue="DefaultBuild:Windows XP x64, Windows Server 2003 x64, Windows Vista x64, Windows Vista x64 Service Pack 1, Windows 7 x64" ValueLocId="-"/>
-    <ROW Property="WindowsTypeNTDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64" MultiBuildValue="DefaultBuild:Windows XP x64, Windows XP x64 Service Pack 1, Windows XP x64 Service Pack 2, Windows Server 2003 x64, Windows Server 2003 x64 Service Pack 1, Windows Server 2003 x64 Service Pack 2, Windows Vista x64, Windows Vista x64 Service Pack 1, Windows Vista x64 Service Pack 2, Windows Server 2008 x64, Windows 7 x64" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64Display" MultiBuildValue="DefaultBuild:Windows XP x64, Windows Server 2003 x64, Windows Vista x64, Windows Server 2008 x64, Windows 7 x64" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNTDisplay" MultiBuildValue="DefaultBuild:32 bit Operating Systems" ValueLocId="-"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
@@ -161,6 +161,7 @@
     <ROW File="Qt5Widgets.dll" Component_="Qt5Widgets.dll" FileName="QT5WID~1.DLL|Qt5Widgets.dll" Attributes="0" SourcePath="..\..\Qt files x64\Qt5Widgets.dll" SelfReg="false" NextFile="qt_cs.qm"/>
     <ROW File="alarm.dll" Component_="alarm.dll" FileName="alarm.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_64bit-Release\plugins\alarm\release\alarm.dll" SelfReg="false" NextFile="any_zoom.dll"/>
     <ROW File="am.png" Component_="png" FileName="am.png" Attributes="0" SourcePath="..\..\data\skins\comic\am.png" SelfReg="false" NextFile="pm.png"/>
+    <ROW File="am.png_1" Component_="png_3" FileName="am.png" Attributes="0" SourcePath="..\..\data\skins\origami_style\am.png" SelfReg="false" NextFile="pm.png_1"/>
     <ROW File="am.svg" Component_="svg_1" FileName="am.svg" Attributes="0" SourcePath="..\..\data\skins\floral_digits\am.svg" SelfReg="false" NextFile="pm.svg"/>
     <ROW File="am.svg_1" Component_="svg_4" FileName="am.svg" Attributes="0" SourcePath="..\..\data\skins\pattern-numbers\am.svg" SelfReg="false" NextFile="pm.svg_1"/>
     <ROW File="am.svg_2" Component_="svg_5" FileName="am.svg" Attributes="0" SourcePath="..\..\data\skins\vintage_digits\am.svg" SelfReg="false" NextFile="pm.svg_2"/>
@@ -202,6 +203,7 @@
     <ROW File="move_clock.dll" Component_="move_clock.dll" FileName="MOVE_C~1.DLL|move_clock.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_64bit-Release\plugins\move_clock\release\move_clock.dll" SelfReg="false" NextFile="qdds.dll"/>
     <ROW File="opengl32sw.dll" Component_="opengl32sw.dll" FileName="OPENGL~1.DLL|opengl32sw.dll" Attributes="0" SourcePath="..\..\Qt files x64\opengl32sw.dll" SelfReg="false" NextFile="qt_lv.qm"/>
     <ROW File="pm.png" Component_="png" FileName="pm.png" Attributes="0" SourcePath="..\..\data\skins\comic\pm.png" SelfReg="false" NextFile="s1.png"/>
+    <ROW File="pm.png_1" Component_="png_3" FileName="pm.png" Attributes="0" SourcePath="..\..\data\skins\origami_style\pm.png" SelfReg="false"/>
     <ROW File="pm.svg" Component_="svg_1" FileName="pm.svg" Attributes="0" SourcePath="..\..\data\skins\floral_digits\pm.svg" SelfReg="false" NextFile="s1.svg_1"/>
     <ROW File="pm.svg_1" Component_="svg_4" FileName="pm.svg" Attributes="0" SourcePath="..\..\data\skins\pattern-numbers\pm.svg" SelfReg="false" NextFile="s1.svg_4"/>
     <ROW File="pm.svg_2" Component_="svg_5" FileName="pm.svg" Attributes="0" SourcePath="..\..\data\skins\vintage_digits\pm.svg" SelfReg="false" NextFile="s1.svg_6"/>
@@ -275,7 +277,7 @@
     <ROW File="qt_hu.qm" Component_="qtbase_cs.qm" FileName="qt_hu.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_hu.qm" SelfReg="false" NextFile="qt_ja.qm"/>
     <ROW File="qt_it.qm" Component_="qtbase_cs.qm" FileName="qt_it.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_it.qm" SelfReg="false" NextFile="NY0.png"/>
     <ROW File="qt_ja.qm" Component_="qtbase_cs.qm" FileName="qt_ja.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_ja.qm" SelfReg="false" NextFile="qt_ru.qm"/>
-    <ROW File="qt_lv.qm" Component_="qtbase_cs.qm" FileName="qt_lv.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_lv.qm" SelfReg="false"/>
+    <ROW File="qt_lv.qm" Component_="qtbase_cs.qm" FileName="qt_lv.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_lv.qm" SelfReg="false" NextFile="am.png_1"/>
     <ROW File="qt_ru.qm" Component_="qtbase_cs.qm" FileName="qt_ru.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_ru.qm" SelfReg="false" NextFile="qt_sk.qm"/>
     <ROW File="qt_sk.qm" Component_="qtbase_cs.qm" FileName="qt_sk.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_sk.qm" SelfReg="false" NextFile="qt_uk.qm"/>
     <ROW File="qt_uk.qm" Component_="qtbase_cs.qm" FileName="qt_uk.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_uk.qm" SelfReg="false" NextFile="clock_common.dll"/>
@@ -734,7 +736,7 @@
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
-    <ROW Condition="( Version9X OR ( NOT VersionNT64 ) OR ( VersionNT64 AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &gt;= 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 2)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &gt;= 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 2)))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &gt;= 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 601) OR ((VersionNT64 = 601) AND ((ServicePackLevel &gt;= 1) OR (MsiNTProductType &lt;&gt; 1)))) ) )" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT64Display]" DescriptionLocId="AI.LaunchCondition.NoSpecificNT64" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="( Version9X OR ( NOT VersionNT64 ) OR ( VersionNT64 AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &gt;= 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR (((VersionNT64 = 502) AND (ServicePackLevel &lt;&gt; 2)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &gt;= 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 1)))) AND ((VersionNT64 &lt;&gt; 502) OR ((VersionNT64 = 502) AND ((MsiNTProductType = 1) OR (ServicePackLevel &lt;&gt; 2)))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &gt;= 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &lt;&gt; 1)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR (((VersionNT64 = 600) AND (ServicePackLevel &lt;&gt; 2)) OR (MsiNTProductType &lt;&gt; 1))) AND ((VersionNT64 &lt;&gt; 600) OR ((VersionNT64 = 600) AND (MsiNTProductType = 1))) AND ((VersionNT64 &lt;&gt; 601) OR ((VersionNT64 = 601) AND ((ServicePackLevel &gt;= 1) OR (MsiNTProductType &lt;&gt; 1)))) ) )" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT64Display]" DescriptionLocId="AI.LaunchCondition.NoSpecificNT64" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="( Version9X OR VersionNT64 )" Description="[ProductName] cannot be installed on [WindowsTypeNTDisplay]" DescriptionLocId="AI.LaunchCondition.NoNT" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT40Display]" DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]" DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
@@ -768,6 +770,6 @@
     <ATTRIBUTE name="PrereqsOrder" value="CA62D813A4E74FA2AAE86A7D7B7B1493"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">
-    <ROW SearchKey="CA62D813A4E74FA2AAE86A7D7B7B1493Version" Prereq="CA62D813A4E74FA2AAE86A7D7B7B1493" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\12.0\RuntimeMinimum\Version" VerMin="12.0.21005" Order="1" Property="PreReqSearch_CA62D813A4E74FA2AAE86A7D7B7B1493" Platform="1"/>
+    <ROW SearchKey="CA62D813A4E74FA2AAE86A7D7B7B1493Version" Prereq="CA62D813A4E74FA2AAE86A7D7B7B1493" SearchType="2" SearchString="HKLM\SOFTWARE\Microsoft\DevDiv\VC\Servicing\12.0\RuntimeMinimum\Version" VerMin="12.0.21005" Order="1" Property="PreReqSearch_CA62D813A4E74FA2AAE86A7D7B7B1493"/>
   </COMPONENT>
 </DOCUMENT>

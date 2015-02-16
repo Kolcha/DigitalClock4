@@ -3,7 +3,7 @@
 # File:   config_desktop.sh
 # Author: Nick Korotysh <nick.korotysh@gmail.com>
 #
-# Copyright (C) 2014 Nick Korotysh
+# Copyright (C) 2014-2015 Nick Korotysh
 #
 # Created on November 7, 2014, 10:36 PM
 #

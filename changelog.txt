@@ -1,3 +1,28 @@
+Whats new in 4.3.6:
+-------------------
+Core:
+ - build with Qt 5.4.0
+ - updated copyright string in file info
+
+GUI:
+ - chnaged GCC version display format
+ - origami skin: added AM/PM
+
+plugins:
+ - 'date' : J option in format
+ - 'date' : added new predefined formats
+ - 'date' : redesigned settings dialog
+ - 'power off' : added message before power off
+ - 'any zoom' : fixed load bug
+
+Installer:
+ - 'Launch Digital Clock' is checked by default
+
+SDK:
+ - added new class to 'clock_common'
+ - updated documentation
+
+
 Whats new in 4.3.5:
 -------------------
 Core:

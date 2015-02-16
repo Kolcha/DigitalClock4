@@ -9,7 +9,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.3.5</string>
+	<string>4.3.6</string>
 	<key>CFBundleSignature</key>
 	<string>NKDC</string>
 	<key>CFBundleExecutable</key>
@@ -21,7 +21,7 @@
 	<key>NSHighResolutionCapable</key>
 	<string>True</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2013-2014 Nick Korotysh</string>
+	<string>Copyright © 2013-2015 Nick Korotysh</string>
 	<key>LSUIElement</key>
 	<string>1</string>
 </dict>
