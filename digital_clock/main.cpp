@@ -10,6 +10,7 @@
 #include "core/plugin_manager.h"
 #include "core/updater.h"
 #include "gui/clock_widget.h"
+#include "gui/clock_display.h"
 #include "gui/tray_control.h"
 #include "gui/settings_dialog.h"
 #include "gui/about_dialog.h"
@@ -74,8 +75,8 @@ int main(int argc, char *argv[]) {
   skin_manager->SetFallbackSkin("Electronic (default)");
 
   // updater
-  QSharedPointer<digital_clock::core::Updater> updater(
-        new digital_clock::core::Updater());
+  QSharedPointer<digital_clock::core::Updater> updater(new digital_clock::core::Updater());
+  updater->SetAutoupdate(false);
 
   // plugin manager
   QSharedPointer<digital_clock::core::PluginManager> plugin_manager(
@@ -114,6 +115,8 @@ int main(int argc, char *argv[]) {
                    clock_widget.data(), &digital_clock::gui::ClockWidget::ApplySkin);
   QObject::connect(clock_widget.data(), &digital_clock::gui::ClockWidget::SeparatorsChanged,
                    skin_manager.data(), &digital_clock::core::SkinManager::SetSeparators);
+  QObject::connect(clock_widget->GetDisplay(), &digital_clock::gui::ClockDisplay::ImageNeeded,
+                   updater.data(), &digital_clock::core::Updater::TimeoutHandler);
 
   // tray icon
   digital_clock::gui::TrayControl* tray_control(
