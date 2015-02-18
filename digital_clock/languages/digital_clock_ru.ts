@@ -4,29 +4,29 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="206"/>
-        <location filename="../main.cpp" line="214"/>
-        <location filename="../main.cpp" line="223"/>
+        <location filename="../main.cpp" line="209"/>
+        <location filename="../main.cpp" line="217"/>
+        <location filename="../main.cpp" line="226"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="207"/>
+        <location filename="../main.cpp" line="210"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="215"/>
+        <location filename="../main.cpp" line="218"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="224"/>
+        <location filename="../main.cpp" line="227"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="235"/>
+        <location filename="../main.cpp" line="238"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -47,39 +47,45 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="102"/>
+        <location filename="../gui/about_dialog.ui" line="114"/>
         <source>Links</source>
         <translation>Ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="108"/>
+        <location filename="../gui/about_dialog.ui" line="120"/>
         <source>information:</source>
         <translation>информация:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="128"/>
+        <location filename="../gui/about_dialog.ui" line="140"/>
         <source>source code:</source>
         <translation>исходный код:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="148"/>
+        <location filename="../gui/about_dialog.ui" line="160"/>
         <source>e-mail:</source>
         <translation>e-mail:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="171"/>
+        <location filename="../gui/about_dialog.ui" line="183"/>
         <source>Donate</source>
         <translation>Помочь автору</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="335"/>
+        <location filename="../gui/about_dialog.ui" line="347"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="34"/>
+        <location filename="../gui/about_dialog.cpp" line="35"/>
         <source>version: %1 (%2)</source>
         <translation>версия: %1 (%2)</translation>
+    </message>
+    <message>
+        <location filename="../gui/about_dialog.cpp" line="40"/>
+        <source>build date: %1</source>
+        <translatorcomment>дата компиляции приложения</translatorcomment>
+        <translation>дата сборки: %1</translation>
     </message>
 </context>
 <context>
