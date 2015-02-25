@@ -1,5 +1,6 @@
 #include "about_dialog.h"
 #include "ui_about_dialog.h"
+#include <QDate>
 
 namespace digital_clock {
 namespace gui {
@@ -35,6 +36,8 @@ AboutDialog::AboutDialog(QWidget* parent) : CenteredDialog(parent), ui(new Ui::A
   ui->rights_value->setText("© 2013-2015 " + QCoreApplication::organizationName());
   ui->qt_value->setText(QString("Qt %1 (%2, %3 bit)").arg(qVersion(), compilerString(),
                                                           QString::number(QSysInfo::WordSize)));
+  QDate build_date = QDate::fromString(QString(__DATE__).simplified(), "MMM d yyyy");
+  ui->build_date_value->setText(tr("build date: %1").arg(build_date.toString(Qt::DefaultLocaleShortDate)));
   setFixedSize(sizeHint());
 }
 

@@ -58,6 +58,18 @@
       </widget>
      </item>
      <item>
+      <widget class="QLabel" name="build_date_value">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string notr="true">build date</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QLabel" name="qt_value">
        <property name="font">
         <font>
@@ -314,7 +326,7 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="2" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <spacer name="horizontalSpacer_4">
