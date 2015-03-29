@@ -31,5 +31,5 @@ HEADERS += \
     message_box.h
 
 win32:RC_FILE = clock_common.rc
-unix:VERSION = 1.0.4
+unix:VERSION = 1.0.5
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/

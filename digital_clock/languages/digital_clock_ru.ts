@@ -269,7 +269,7 @@
         <translation>обновляться до бета релизов</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="742"/>
+        <location filename="../gui/settings_dialog.ui" line="661"/>
         <source>Restore Defaults</source>
         <translation>По умолчанию</translation>
     </message>
@@ -294,17 +294,7 @@
         <translation>Импорт ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="613"/>
-        <source>Skins search paths</source>
-        <translation>Пути поиска стилей</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="660"/>
-        <source>Plugins search paths</source>
-        <translation>Пути поиска плагинов</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="708"/>
+        <location filename="../gui/settings_dialog.ui" line="627"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
@@ -329,45 +319,35 @@
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="193"/>
+        <location filename="../gui/settings_dialog.cpp" line="179"/>
         <source>unknown</source>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="296"/>
+        <location filename="../gui/settings_dialog.cpp" line="282"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="298"/>
+        <location filename="../gui/settings_dialog.cpp" line="284"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="372"/>
+        <location filename="../gui/settings_dialog.cpp" line="358"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="374"/>
-        <location filename="../gui/settings_dialog.cpp" line="381"/>
+        <location filename="../gui/settings_dialog.cpp" line="360"/>
+        <location filename="../gui/settings_dialog.cpp" line="367"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="379"/>
+        <location filename="../gui/settings_dialog.cpp" line="365"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.cpp" line="389"/>
-        <source>Add skins directory</source>
-        <translation>Добавить папку со стилями</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.cpp" line="408"/>
-        <source>Add plugins directory</source>
-        <translation>Добавить папку с плагинами</translation>
     </message>
 </context>
 <context>

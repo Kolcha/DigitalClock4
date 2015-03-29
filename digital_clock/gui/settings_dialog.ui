@@ -607,99 +607,18 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QGroupBox" name="skins_paths_group">
-         <property name="title">
-          <string>Skins search paths</string>
+       <item row="2" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
-         <layout class="QGridLayout" name="skins_paths_layout">
-          <item row="0" column="0" rowspan="2">
-           <widget class="QListWidget" name="skins_paths_list">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="selectionMode">
-             <enum>QAbstractItemView::MultiSelection</enum>
-            </property>
-            <property name="sortingEnabled">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QToolButton" name="add_sp_btn">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../digital_clock.qrc">
-              <normaloff>:/clock/images/add.svg</normaloff>:/clock/images/add.svg</iconset>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QToolButton" name="del_sp_btn">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../digital_clock.qrc">
-              <normaloff>:/clock/images/del.svg</normaloff>:/clock/images/del.svg</iconset>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QGroupBox" name="plugins_paths_group">
-         <property name="title">
-          <string>Plugins search paths</string>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
          </property>
-         <layout class="QGridLayout" name="plugins_paths_layout">
-          <item row="0" column="0" rowspan="2">
-           <widget class="QListWidget" name="plugins_paths_list">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="selectionMode">
-             <enum>QAbstractItemView::MultiSelection</enum>
-            </property>
-            <property name="sortingEnabled">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QToolButton" name="add_pp_btn">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../digital_clock.qrc">
-              <normaloff>:/clock/images/add.svg</normaloff>:/clock/images/add.svg</iconset>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QToolButton" name="del_pp_btn">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../digital_clock.qrc">
-              <normaloff>:/clock/images/del.svg</normaloff>:/clock/images/del.svg</iconset>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -773,9 +692,7 @@
  <tabstops>
   <tabstop>buttonBox</tabstop>
  </tabstops>
- <resources>
-  <include location="../digital_clock.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>opacity_slider</sender>

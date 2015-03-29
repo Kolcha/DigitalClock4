@@ -264,37 +264,10 @@ int main(int argc, char *argv[]) {
         updater->SetCheckForBeta(value.toBool());
         break;
 
-      case OPT_SKINS_PATHS:
-      {
-        QStringList skins_paths = value.toStringList();
-        skin_manager->ResetSearchDirs(default_skin_dirs);
-        for (auto& path : skins_paths) skin_manager->AddSearchDir(QDir(path));
-        skin_manager->ListSkins();
-        break;
-      }
-
-      case OPT_PLUGINS_PATHS:
-      {
-        QStringList plugins_paths = value.toStringList();
-        plugin_manager->ResetSearchDirs(default_plugin_dirs);
-        for (auto& path : plugins_paths) plugin_manager->AddSearchDir(QDir(path));
-        plugin_manager->ListAvailable();
-        break;
-      }
-
       default:
         break;
     }
   });
-  // load skins and plugins search paths
-  settings->TrackChanges(false);
-  settings->Load();
-  QStringList skins_paths = settings->GetOption(OPT_SKINS_PATHS).toStringList();
-  for (auto& item : skins_paths) skin_manager->AddSearchDir(QDir(item));
-  skin_manager->ListSkins();
-  QStringList plugins_paths = settings->GetOption(OPT_PLUGINS_PATHS).toStringList();
-  for (auto& item : plugins_paths) plugin_manager->AddSearchDir(QDir(item));
-  plugin_manager->ListAvailable();
 
   settings->TrackChanges(true);
   settings->Load();
