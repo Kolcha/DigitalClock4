@@ -14,12 +14,12 @@
         <translation>Позволяет устанавливать любое значение увеличения.</translation>
     </message>
     <message>
-        <location filename="any_zoom.cpp" line="43"/>
+        <location filename="any_zoom.cpp" line="53"/>
         <source>Any zoom settings</source>
         <translation>Настройка увеличения</translation>
     </message>
     <message>
-        <location filename="any_zoom.cpp" line="44"/>
+        <location filename="any_zoom.cpp" line="54"/>
         <source>zoom:</source>
         <translation>увеличение:</translation>
     </message>

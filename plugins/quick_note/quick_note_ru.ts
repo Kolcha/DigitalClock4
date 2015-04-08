@@ -14,12 +14,12 @@
         <translation>Отображает короткое сообщение под часами.</translation>
     </message>
     <message>
-        <location filename="quick_note.cpp" line="96"/>
+        <location filename="quick_note.cpp" line="106"/>
         <source>Quick note settings</source>
         <translation>Заметка - настройки</translation>
     </message>
     <message>
-        <location filename="quick_note.cpp" line="97"/>
+        <location filename="quick_note.cpp" line="107"/>
         <source>message:</source>
         <translation>заметка:</translation>
     </message>
