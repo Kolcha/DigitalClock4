@@ -24,8 +24,8 @@ enum class ZoomMode {
 
 inline void InitDefaults(QSettings::SettingsMap* defaults) {
   defaults->insert(OPT_DATE_FORMAT_TYPE, (int)FormatType::FT_INT);
-  defaults->insert(OPT_DATE_FORMAT_STR, QLocale::system().dateFormat());
-  defaults->insert(OPT_DATE_FORMAT_INT, Qt::SystemLocaleLongDate);
+  defaults->insert(OPT_DATE_FORMAT_STR, QLocale().dateFormat());
+  defaults->insert(OPT_DATE_FORMAT_INT, Qt::DefaultLocaleLongDate);
   defaults->insert(OPT_USE_CLOCK_FONT, true);
   defaults->insert(OPT_DATE_FONT, QFont());
   defaults->insert(OPT_ZOOM_MODE, (int)ZoomMode::ZM_AUTOSIZE);

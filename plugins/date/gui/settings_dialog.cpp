@@ -12,8 +12,8 @@ SettingsDialog::SettingsDialog(QWidget* parent)
 
   date_formats_[Qt::TextDate] = tr("default");
   date_formats_[Qt::ISODate] = QString("ISO 8601");
-  date_formats_[Qt::SystemLocaleShortDate] = tr("short");
-  date_formats_[Qt::SystemLocaleLongDate] = tr("long");
+  date_formats_[Qt::DefaultLocaleShortDate] = tr("short");
+  date_formats_[Qt::DefaultLocaleLongDate] = tr("long");
   ui->int_type_box->clear();
   for (auto iter = date_formats_.begin(); iter != date_formats_.end(); ++iter) {
     ui->int_type_box->addItem(iter.value(), iter.key());

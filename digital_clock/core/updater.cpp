@@ -79,7 +79,7 @@ void Updater::ProcessData() {
 
   if (latest > QCoreApplication::applicationVersion() ||
       QDate::fromString(QString(__DATE__).simplified(), "MMM d yyyy") < last_build) {
-    latest = QString("%1, %2").arg(latest).arg(last_build.toString(Qt::SystemLocaleShortDate));
+    latest = QString("%1, %2").arg(latest).arg(last_build.toString(Qt::DefaultLocaleShortDate));
     emit NewVersion(latest, link);
   } else {
     if (force_update_) emit UpToDate();
