@@ -32,6 +32,11 @@ public:
    */
   void SetDefaultValues(const QSettings::SettingsMap& values);
   /*!
+   * Replace all current option values with given.
+   * @param values - map<QString, QVariant> with option names and their values
+   */
+  void SetValues(const QSettings::SettingsMap& values);
+  /*!
    * Get option value.
    * @param key - option name
    * @return option value as QVariant object
