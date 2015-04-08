@@ -17,6 +17,47 @@ void PluginManager::SetInitData(const TPluginData& data) {
   data_ = data;
 }
 
+void PluginManager::ExportPluginsSettings(QMap<QString, QSettings::SettingsMap>* settings) {
+  Q_ASSERT(settings);
+  for (auto i = available_.cbegin(); i != available_.cend(); ++i) {
+    QSettings::SettingsMap& plugin_settings = (*settings)[i.key()];
+    if (loaded_.contains(i.key())) {
+      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loaded_[i.key()]->instance());
+      if (plugin) plugin->ExportSettings(&plugin_settings);
+    } else {
+      QString file = i.value();
+      if (!QFile::exists(file)) continue;
+      QPluginLoader* loader = new QPluginLoader(file, this);
+      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
+      if (plugin) {
+        InitPlugin(plugin, false);
+        plugin->ExportSettings(&plugin_settings);
+      }
+    }
+  }
+}
+
+void PluginManager::ImportPluginsSettings(const QMap<QString, QSettings::SettingsMap>& settings) {
+  for (auto i = available_.cbegin(); i != available_.cend(); ++i) {
+    auto s_iter = settings.find(i.key());
+    if (s_iter == settings.cend()) continue;
+    const QSettings::SettingsMap& plugin_settings = s_iter.value();
+    if (loaded_.contains(i.key())) {
+      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loaded_[i.key()]->instance());
+      if (plugin) plugin->ImportSettings(plugin_settings);
+    } else {
+      QString file = i.value();
+      if (!QFile::exists(file)) continue;
+      QPluginLoader* loader = new QPluginLoader(file, this);
+      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
+      if (plugin) {
+        InitPlugin(plugin, false);
+        plugin->ImportSettings(plugin_settings);
+      }
+    }
+  }
+}
+
 void PluginManager::ListAvailable() {
   available_.clear();
   QList<QPair<TPluginInfo, bool> > plugins;

@@ -9,6 +9,10 @@ void PluginSettings::SetDefaultValues(const QSettings::SettingsMap& values) {
   settings_map_ = values;
 }
 
+void PluginSettings::SetValues(const QSettings::SettingsMap& values) {
+  settings_map_ = values;
+}
+
 const QVariant& PluginSettings::GetOption(const QString& key) const {
   return settings_map_.find(key).value();
 }

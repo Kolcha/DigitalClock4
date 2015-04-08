@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QMap>
+#include <QSettings>
 #include "task.h"
 
 namespace schedule {
@@ -12,6 +13,9 @@ class TaskManager : public QObject {
 
 public:
   explicit TaskManager(QObject* parent = 0);
+
+  void ExportTasks(QSettings::SettingsMap* settings);
+  void ImportTasks(const QSettings::SettingsMap& settings);
 
 signals:
   void DatesUpdated(const QList<QDate>& dates);

@@ -19,6 +19,9 @@ class Schedule : public IClockPlugin {
 public:
   Schedule();
 
+  void ExportSettings(QSettings::SettingsMap* settings);
+  void ImportSettings(const QSettings::SettingsMap& settings);
+
 public slots:
   void Start();
   void Stop();

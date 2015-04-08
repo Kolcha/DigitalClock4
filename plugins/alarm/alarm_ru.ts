@@ -15,19 +15,19 @@
         <translation>Позволяет устанавливать будильник или просто напоминание.</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="43"/>
-        <location filename="alarm.cpp" line="54"/>
-        <location filename="alarm.cpp" line="117"/>
+        <location filename="alarm.cpp" line="53"/>
+        <location filename="alarm.cpp" line="64"/>
+        <location filename="alarm.cpp" line="127"/>
         <source>Digital Clock Alarm</source>
         <translation>Будильник Digital Clock</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="44"/>
+        <location filename="alarm.cpp" line="54"/>
         <source>Stream url is not valid. Force use file instead of stream.Click this message to change settings.</source>
         <translation>Неверный адрес потока. Будет использован файл вместо потока. Щелкните это сообщение чтобы изменить настройки.</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="55"/>
+        <location filename="alarm.cpp" line="65"/>
         <source>File %1 doesn&apos;t exists. Click this message or go to plugin settings to choose another.</source>
         <oldsource>File %1 doesn&apos;t exists. Click this message or go to pluginsettings to choose another.</oldsource>
         <translation>Файл %1 не существует. Щелкнить здесь или откройте настроки плагина и выберите другой файл.</translation>

@@ -14,12 +14,12 @@
         <translation>Выключает систему в указанное время.</translation>
     </message>
     <message>
-        <location filename="power_off.cpp" line="61"/>
+        <location filename="power_off.cpp" line="71"/>
         <source>System shutdown</source>
         <translation>Выключение системы</translation>
     </message>
     <message>
-        <location filename="power_off.cpp" line="62"/>
+        <location filename="power_off.cpp" line="72"/>
         <source>Warning! Shutdown will happen after a few seconds.</source>
         <translation>Внимание! Система будет выключена через несколько секунд.</translation>
     </message>

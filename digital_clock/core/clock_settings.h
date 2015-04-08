@@ -15,6 +15,9 @@ public:
   const QVariant& GetOption(Options opt);
   const QMap<Options, QVariant>& GetSettings();
 
+  void ExportSettings(QSettings::SettingsMap* settings);
+  void ImportSettings(const QSettings::SettingsMap& settings);
+
 signals:
   void OptionChanged(Options opt, const QVariant& value);
   void SettingsExported();
@@ -26,8 +29,6 @@ public slots:
   void SetOption(Options opt, const QVariant& value);
   void TrackChanges(bool set);
   void EmitSettings();
-  void ExportSettings(const QString& filename);
-  void ImportSettings(const QString& filename);
   void LoadDefaults();
 
 private:

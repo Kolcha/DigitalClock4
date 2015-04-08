@@ -11,6 +11,10 @@ SettingsDialog::SettingsDialog(QWidget* parent)
     date_format_(Qt::SystemLocaleShortDate) {
   setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
+
+  QHeaderView* header = ui->tasks_table->horizontalHeader();
+  header->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+  header->setSectionResizeMode(1, QHeaderView::Stretch);
 }
 
 SettingsDialog::~SettingsDialog() {
@@ -23,6 +27,7 @@ void SettingsDialog::SetDates(const QList<QDate>& dates) {
     ui->days_box->addItem(date.toString(date_format_), date);
   }
   ui->days_box->setCurrentText(QDate::currentDate().toString(date_format_));
+  emit DateChanged(ui->days_box->currentData().toDate());
 }
 
 void SettingsDialog::SetTasks(const QMap<QTime, QString>& tasks) {

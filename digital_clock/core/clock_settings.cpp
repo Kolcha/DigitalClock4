@@ -1,18 +1,4 @@
-#include <QFile>
-#include <QDataStream>
 #include "clock_settings.h"
-
-inline QDataStream& operator<<(QDataStream& out, Options val) {
-  out << (int)val;
-  return out;
-}
-
-inline QDataStream& operator>>(QDataStream& in, Options& val) {
-  int v;
-  in >> v;
-  val = (Options)v;
-  return in;
-}
 
 namespace digital_clock {
 namespace core {
@@ -55,6 +41,24 @@ const QMap<Options, QVariant>&ClockSettings::GetSettings() {
   return values_;
 }
 
+void ClockSettings::ExportSettings(QSettings::SettingsMap* settings) {
+  Q_ASSERT(settings);
+  Q_ASSERT(keys_.size() == values_.size());
+  auto k_iter = keys_.cbegin();
+  auto v_iter = values_.cbegin();
+  for (; k_iter != keys_.cend(); ++k_iter, ++v_iter) {
+    settings->insert(k_iter.value(), v_iter.value());
+  }
+  emit SettingsExported();
+}
+
+void ClockSettings::ImportSettings(const QSettings::SettingsMap& settings) {
+  for (auto i = keys_.cbegin(); i != keys_.cend(); ++i) {
+    values_[i.key()] = settings.value(i.value(), GetDefaultValue(i.key()));
+  }
+  emit SettingsImported();
+}
+
 void ClockSettings::Load() {
   for (auto i = keys_.begin(); i != keys_.end(); ++i) {
     QVariant value = settings_.value(i.value(), GetDefaultValue(i.key()));
@@ -82,24 +86,6 @@ void ClockSettings::EmitSettings() {
   for (auto i = values_.begin(); i != values_.end(); ++i) {
     emit OptionChanged(i.key(), i.value());
   }
-}
-
-void ClockSettings::ExportSettings(const QString& filename) {
-  QFile file(filename);
-  if (!file.open(QIODevice::WriteOnly)) return;
-  QDataStream stream(&file);
-  stream << values_;
-  file.close();
-  emit SettingsExported();
-}
-
-void ClockSettings::ImportSettings(const QString& filename) {
-  QFile file(filename);
-  if (!file.open(QIODevice::ReadOnly)) return;
-  QDataStream stream(&file);
-  stream >> values_;
-  file.close();
-  emit SettingsImported();
 }
 
 void ClockSettings::LoadDefaults() {

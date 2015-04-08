@@ -37,7 +37,7 @@
         <translation>Позволяет запланировать задание и отображает уведомление в указанное время.</translation>
     </message>
     <message>
-        <location filename="schedule.cpp" line="88"/>
+        <location filename="schedule.cpp" line="101"/>
         <source>Scheduled task</source>
         <translation>Запланированое задание</translation>
     </message>

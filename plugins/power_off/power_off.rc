@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	2,1,0,20
-PRODUCTVERSION	4,3,6,0
+FILEVERSION	2,1,1,23
+PRODUCTVERSION	4,4,0,0
 FILEOS		0x4
 FILETYPE	0x2
 {
@@ -11,12 +11,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Auto power off"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "2.1.0.20"
+		VALUE "FileVersion", "2.1.1.23"
 		VALUE "InternalName", "power_off.dll"
 		VALUE "LegalCopyright", "© 2013-2015 Nick Korotysh"
 		VALUE "OriginalFilename", "power_off.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.3.6"
+		VALUE "ProductVersion", "4.4.0"
 	}
 }
 
