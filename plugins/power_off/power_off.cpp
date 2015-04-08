@@ -22,6 +22,16 @@ PowerOff::PowerOff() : active_(false) {
   InitIcon(":/power_off/icon.svg");
 }
 
+void PowerOff::ExportSettings(QSettings::SettingsMap* settings) {
+  if (!settings) return;
+  *settings = settings_->GetSettingsMap();
+}
+
+void PowerOff::ImportSettings(const QSettings::SettingsMap& settings) {
+  settings_->SetValues(settings);
+  settings_->Save();
+}
+
 void PowerOff::Start() {
   HANDLE hToken;
   TOKEN_PRIVILEGES* NewState;

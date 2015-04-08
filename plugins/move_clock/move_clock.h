@@ -19,6 +19,9 @@ public:
   MoveClock();
   void Init(QWidget* main_wnd);
 
+  void ExportSettings(QSettings::SettingsMap* settings);
+  void ImportSettings(const QSettings::SettingsMap& settings);
+
 public slots:
   void Start();
   void Stop();

@@ -73,6 +73,16 @@ void Date::Init(QWidget* main_wnd) {
   settings_->TrackChanges(true);
 }
 
+void Date::ExportSettings(QSettings::SettingsMap* settings) {
+  if (!settings) return;
+  *settings = settings_->GetSettingsMap();
+}
+
+void Date::ImportSettings(const QSettings::SettingsMap& settings) {
+  settings_->SetValues(settings);
+  settings_->Save();
+}
+
 void Date::Start() {
   msg_label_ = new QLabel();
   msg_label_->setAlignment(Qt::AlignCenter);

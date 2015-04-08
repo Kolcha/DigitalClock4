@@ -70,6 +70,16 @@ void QuickNote::Init(QWidget* main_wnd) {
   settings_->Load();
 }
 
+void QuickNote::ExportSettings(QSettings::SettingsMap* settings) {
+  if (!settings) return;
+  *settings = settings_->GetSettingsMap();
+}
+
+void QuickNote::ImportSettings(const QSettings::SettingsMap& settings) {
+  settings_->SetValues(settings);
+  settings_->Save();
+}
+
 void QuickNote::Start() {
   msg_label_ = new QLabel();
   msg_label_->setAlignment(Qt::AlignCenter);
