@@ -47,6 +47,16 @@ public:
    * @param data - data to set. @see TPluginData
    */
   void SetInitData(const TPluginData& data);
+  /*!
+   * Export all plugins settings to given map.
+   * @param settings - map where all settings will be saved
+   */
+  void ExportPluginsSettings(QMap<QString, QSettings::SettingsMap>* settings);
+  /*!
+   * Import all plugins settings from given map.
+   * @param settings - map with settings
+   */
+  void ImportPluginsSettings(const QMap<QString, QSettings::SettingsMap>& settings);
 
 signals:
   /*!

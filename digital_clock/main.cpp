@@ -171,10 +171,31 @@ int main(int argc, char *argv[]) {
       QObject::connect(dialog.data(), SIGNAL(rejected()), settings.data(), SLOT(Load()));
       QObject::connect(dialog.data(), &SettingsDialog::rejected, reload_plugins);
       // export/import settings
-      QObject::connect(dialog.data(), SIGNAL(ExportSettings(QString)),
-                       settings.data(), SLOT(ExportSettings(QString)));
-      QObject::connect(dialog.data(), SIGNAL(ImportSettings(QString)),
-                       settings.data(), SLOT(ImportSettings(QString)));
+      QObject::connect(dialog.data(), &SettingsDialog::ExportSettings, [&] (const QString& fn) {
+        QMap<QString, QSettings::SettingsMap> all_settings;
+        plugin_manager->ExportPluginsSettings(&all_settings);
+        QSettings::SettingsMap& clock_settings = all_settings["core_settings"];
+        settings->ExportSettings(&clock_settings);
+
+        QFile file(fn);
+        if (!file.open(QIODevice::WriteOnly)) return;
+        QDataStream stream(&file);
+        stream << all_settings;
+        file.close();
+      });
+
+      QObject::connect(dialog.data(), &SettingsDialog::ImportSettings, [&] (const QString& fn) {
+        QFile file(fn);
+        if (!file.open(QIODevice::ReadOnly)) return;
+        QDataStream stream(&file);
+        QMap<QString, QSettings::SettingsMap> all_settings;
+        stream >> all_settings;
+        file.close();
+
+        plugin_manager->ImportPluginsSettings(all_settings);
+        settings->ImportSettings(all_settings["core_settings"]);
+      });
+
       QObject::connect(settings.data(), &ClockSettings::SettingsImported,
                        [&] () { dialog->SetCurrentSettings(settings->GetSettings()); });
       QObject::connect(settings.data(), &ClockSettings::SettingsImported, reload_plugins);
