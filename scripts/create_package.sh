@@ -52,3 +52,13 @@ cd "$TARGET_APP_FOLDER/.."
 rm -f digital_clock_4-linux.tar.xz
 tar cJvf digital_clock_4-linux.tar.xz "$CLOCK_APP_NAME"
 
+# create source tarball
+cp -r "$CLOCK_SRC_PATH" digital_clock_4-src
+cd digital_clock_4-src
+hg clean --all
+rm -rf .hg*
+rm -rf installer
+cd ..
+rm -f digital_clock_4-src.tar.xz
+tar cJvf digital_clock_4-src.tar.xz digital_clock_4-src
+rm -rf digital_clock_4-src
