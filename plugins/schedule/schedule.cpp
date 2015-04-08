@@ -26,11 +26,13 @@ Schedule::Schedule() {
 void Schedule::ExportSettings(QSettings::SettingsMap* settings) {
   if (!settings) return;
   *settings = settings_->GetSettingsMap();
+  manager_->ExportTasks(settings);
 }
 
 void Schedule::ImportSettings(const QSettings::SettingsMap& settings) {
   settings_->SetValues(settings);
   settings_->Save();
+  manager_->ImportTasks(settings);
 }
 
 
