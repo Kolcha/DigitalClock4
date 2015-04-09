@@ -427,6 +427,41 @@
        <property name="bottomMargin">
         <number>10</number>
        </property>
+       <item row="0" column="1">
+        <widget class="QGroupBox" name="export_import_group">
+         <property name="title">
+          <string>Export/import settings</string>
+         </property>
+         <layout class="QHBoxLayout" name="export_import_layout">
+          <property name="leftMargin">
+           <number>8</number>
+          </property>
+          <property name="topMargin">
+           <number>8</number>
+          </property>
+          <property name="rightMargin">
+           <number>8</number>
+          </property>
+          <property name="bottomMargin">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="export_btn">
+            <property name="text">
+             <string>Export ...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="import_btn">
+            <property name="text">
+             <string>Import ...</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QGroupBox" name="time_format_group">
          <property name="title">
@@ -530,41 +565,6 @@
          </layout>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QGroupBox" name="export_import_group">
-         <property name="title">
-          <string>Export/import settings</string>
-         </property>
-         <layout class="QHBoxLayout" name="export_import_layout">
-          <property name="leftMargin">
-           <number>8</number>
-          </property>
-          <property name="topMargin">
-           <number>8</number>
-          </property>
-          <property name="rightMargin">
-           <number>8</number>
-          </property>
-          <property name="bottomMargin">
-           <number>8</number>
-          </property>
-          <item>
-           <widget class="QPushButton" name="export_btn">
-            <property name="text">
-             <string>Export ...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="import_btn">
-            <property name="text">
-             <string>Import ...</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
        <item row="1" column="0" colspan="2">
         <widget class="QGroupBox" name="autoupdate_group">
          <property name="title">
@@ -607,7 +607,7 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="3" column="0">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -619,6 +619,13 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QCheckBox" name="autostart">
+         <property name="text">
+          <string>start on system startup</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
