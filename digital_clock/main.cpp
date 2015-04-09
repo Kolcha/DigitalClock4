@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
   app.setApplicationName("Digital Clock");
   app.setApplicationVersion("4.3.6+");
   app.setOrganizationName("Nick Korotysh");
+  app.setOrganizationDomain("digitalclock4.sourceforge.net");
   app.setWindowIcon(QIcon(":/clock/images/clock.svg"));
   app.setQuitOnLastWindowClosed(false);
   app.setAttribute(Qt::AA_UseHighDpiPixmaps);
