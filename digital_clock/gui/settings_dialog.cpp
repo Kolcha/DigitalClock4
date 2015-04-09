@@ -3,6 +3,7 @@
 #include <QFontDialog>
 #include <QFileInfo>
 #include <QSettings>
+#include "../core/autostart.h"
 #include "skin_drawer.h"
 #include "plugin_list_item_widget.h"
 #include "settings_dialog.h"
@@ -34,6 +35,11 @@ SettingsDialog::SettingsDialog(QWidget* parent)
     ui->update_period_box->addItem(iter.value(), iter.key());
   }
   is_loading_ = false;
+
+  ui->autostart->setChecked(IsAutoStartEnabled());
+  connect(this, &SettingsDialog::accepted, [this] () {
+    SetAutoStart(this->ui->autostart->isChecked());
+  });
 }
 
 SettingsDialog::~SettingsDialog() {

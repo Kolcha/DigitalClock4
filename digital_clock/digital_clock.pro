@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     gui/clock_display.cpp \
     gui/tray_control.cpp \
     gui/plugin_list_item_widget.cpp \
-    core/manager_base.cpp
+    core/manager_base.cpp \
+    core/autostart.cpp
 
 HEADERS += \
     core/skin_manager.h \
@@ -48,7 +49,8 @@ HEADERS += \
     gui/clock_display.h \
     gui/tray_control.h \
     gui/plugin_list_item_widget.h \
-    core/manager_base.h
+    core/manager_base.h \
+    core/autostart.h
 
 FORMS += \
     gui/settings_dialog.ui \
