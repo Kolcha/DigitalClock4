@@ -45,7 +45,7 @@ void SetAutoStart(bool enable) {
         .arg(
           QApplication::applicationName(),
           QApplication::applicationName() + " " + QApplication::applicationVersion() + " by " + QApplication::organizationName(),
-          QApplication::applicationFilePath(),
+          QApplication::applicationFilePath() + ".sh",
           QApplication::applicationFilePath() + ".svg");
 
     QFile file(desktop_file);
