@@ -14,10 +14,10 @@
     <ROW Property="ARPURLUPDATEINFO" Value="http://sourceforge.net/projects/digitalclock4/"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Nick Korotysh"/>
-    <ROW Property="ProductCode" Value="1033:{571CEDBD-3D21-4A9B-A58E-E175D3AA2A4D} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{01B28FCC-480C-48A6-94A0-3ADF3300B6F3} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Digital Clock"/>
-    <ROW Property="ProductVersion" Value="4.3.6" Type="32"/>
+    <ROW Property="ProductVersion" Value="4.4.0" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{64E0CE3B-F6E2-4CC9-ACD2-A24E812DF339}"/>
@@ -202,7 +202,7 @@
     <ROW File="libEGL.dll" Component_="libEGL.dll" FileName="libEGL.dll" Attributes="0" SourcePath="..\..\Qt files x64\libEGL.dll" SelfReg="false" NextFile="libGLESv2.dll"/>
     <ROW File="libGLESv2.dll" Component_="libGLESv2.dll" FileName="LIBGLE~1.DLL|libGLESv2.dll" Attributes="0" SourcePath="..\..\Qt files x64\libGLESv2.dll" SelfReg="false" NextFile="qsvgicon.dll"/>
     <ROW File="move_clock.dll" Component_="move_clock.dll" FileName="MOVE_C~1.DLL|move_clock.dll" Attributes="0" SourcePath="..\..\build-DigitalClock-Desktop_Qt_5_4_0_MSVC2013_64bit-Release\plugins\move_clock\release\move_clock.dll" SelfReg="false" NextFile="qdds.dll"/>
-    <ROW File="opengl32sw.dll" Component_="opengl32sw.dll" FileName="OPENGL~1.DLL|opengl32sw.dll" Attributes="0" SourcePath="..\..\Qt files x64\opengl32sw.dll" SelfReg="false" NextFile="qt_lv.qm"/>
+    <ROW File="opengl32sw.dll" Component_="opengl32sw.dll" FileName="OPENGL~1.DLL|opengl32sw.dll" Attributes="0" SourcePath="..\..\Qt files x64\opengl32sw.dll" SelfReg="false" NextFile="am.png_1"/>
     <ROW File="pm.png" Component_="png" FileName="pm.png" Attributes="0" SourcePath="..\..\data\skins\comic\pm.png" SelfReg="false" NextFile="s1.png"/>
     <ROW File="pm.png_1" Component_="png_3" FileName="pm.png" Attributes="0" SourcePath="..\..\data\skins\origami_style\pm.png" SelfReg="false"/>
     <ROW File="pm.svg" Component_="svg_1" FileName="pm.svg" Attributes="0" SourcePath="..\..\data\skins\floral_digits\pm.svg" SelfReg="false" NextFile="s1.svg_1"/>
@@ -278,7 +278,6 @@
     <ROW File="qt_hu.qm" Component_="qtbase_cs.qm" FileName="qt_hu.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_hu.qm" SelfReg="false" NextFile="qt_ja.qm"/>
     <ROW File="qt_it.qm" Component_="qtbase_cs.qm" FileName="qt_it.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_it.qm" SelfReg="false" NextFile="NY0.png"/>
     <ROW File="qt_ja.qm" Component_="qtbase_cs.qm" FileName="qt_ja.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_ja.qm" SelfReg="false" NextFile="qt_ru.qm"/>
-    <ROW File="qt_lv.qm" Component_="qtbase_cs.qm" FileName="qt_lv.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_lv.qm" SelfReg="false" NextFile="am.png_1"/>
     <ROW File="qt_ru.qm" Component_="qtbase_cs.qm" FileName="qt_ru.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_ru.qm" SelfReg="false" NextFile="qt_sk.qm"/>
     <ROW File="qt_sk.qm" Component_="qtbase_cs.qm" FileName="qt_sk.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_sk.qm" SelfReg="false" NextFile="qt_uk.qm"/>
     <ROW File="qt_uk.qm" Component_="qtbase_cs.qm" FileName="qt_uk.qm" Attributes="0" SourcePath="..\..\Qt files x64\translations\qt_uk.qm" SelfReg="false" NextFile="clock_common.dll"/>
