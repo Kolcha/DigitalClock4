@@ -35,7 +35,7 @@ void Updater::CheckForUpdates(bool force) {
   force_update_ = force;
   was_error_ = false;
   data_.clear();
-  downloader_->startRequest(QUrl("http://digitalclock4.sourceforge.net/latest.json"));
+  downloader_->startRequest(QUrl("http://digitalclock4.sourceforge.net/clock-version.json"));
 }
 
 void Updater::SetCheckForBeta(bool check) {
@@ -65,14 +65,14 @@ void Updater::ProcessData() {
   }
   QJsonObject js_obj = js_doc.object().value("stable").toObject();
   QString latest = js_obj.value("version").toString();
-  QDate last_build = QDate::fromString(js_obj.value("timestamp").toString().simplified(), "MMM d yyyy");
+  QDate last_build = QDate::fromString(js_obj.value("timestamp").toString().simplified(), "dd-MM-yyyy");
   QString link = js_obj.value("download").toString();
   if (check_beta_) {
     js_obj = js_doc.object().value("testing").toObject();
     QString t_version = js_obj.value("version").toString("-");
     if (t_version != "-") {
       latest = t_version;
-      last_build = QDate::fromString(js_obj.value("timestamp").toString().simplified(), "MMM d yyyy");
+      last_build = QDate::fromString(js_obj.value("timestamp").toString().simplified(), "dd-MM-yyyy");
       link = js_obj.value("download").toString();
     }
   }

@@ -33,6 +33,9 @@ void SetAutoStart(bool enable) {
     QString startup_dir = GetAutoStartDir();
     if (!QFile::exists(startup_dir)) QDir::home().mkpath(startup_dir);
 
+    QString exec_path = QApplication::applicationFilePath() + ".sh";
+    exec_path.replace(' ', "\\ ");
+
     QString desktop_data = QString(
           "[Desktop Entry]\n"
           "Name=%1\n"
@@ -45,7 +48,7 @@ void SetAutoStart(bool enable) {
         .arg(
           QApplication::applicationName(),
           QApplication::applicationName() + " " + QApplication::applicationVersion() + " by " + QApplication::organizationName(),
-          QApplication::applicationFilePath() + ".sh",
+          exec_path,
           QApplication::applicationFilePath() + ".svg");
 
     QFile file(desktop_file);

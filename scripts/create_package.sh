@@ -1,6 +1,6 @@
 #!/bin/bash
 
-QT_PATH="$HOME/Programming/Qt/5.4/gcc_64/bin"
+QT_PATH="$HOME/Programming/Qt-5.5.0/bin"
 
 CLOCK_APP_NAME="Digital Clock 4"
 
