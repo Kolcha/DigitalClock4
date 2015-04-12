@@ -47,32 +47,32 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="114"/>
+        <location filename="../gui/about_dialog.ui" line="112"/>
         <source>Links</source>
         <translation>Ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="120"/>
+        <location filename="../gui/about_dialog.ui" line="118"/>
         <source>information:</source>
         <translation>информация:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="140"/>
+        <location filename="../gui/about_dialog.ui" line="138"/>
+        <source>&lt;a href=&quot;http://sourceforge.net/projects/digitalclock4/&quot;&gt;project home page&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;http://sourceforge.net/projects/digitalclock4/&quot;&gt;страница проекта&lt;/a&gt;</translation>
+    </message>
+    <message>
+        <location filename="../gui/about_dialog.ui" line="151"/>
         <source>source code:</source>
         <translation>исходный код:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="160"/>
+        <location filename="../gui/about_dialog.ui" line="184"/>
         <source>e-mail:</source>
         <translation>e-mail:</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="183"/>
-        <source>Donate</source>
-        <translation>Помочь автору</translation>
-    </message>
-    <message>
-        <location filename="../gui/about_dialog.ui" line="347"/>
+        <location filename="../gui/about_dialog.ui" line="248"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>

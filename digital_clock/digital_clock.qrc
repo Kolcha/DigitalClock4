@@ -39,9 +39,6 @@
         <file alias="update.svg">resources/images/download-16.svg</file>
     </qresource>
     <qresource prefix="/clock/about_dialog">
-        <file alias="wme.png">resources/about_dialog/wme-16.png</file>
-        <file alias="wmr.png">resources/about_dialog/wmr-16.png</file>
-        <file alias="wmz.png">resources/about_dialog/wmz-16.png</file>
         <file alias="award.png">resources/about_dialog/softpedia_100_clean.png</file>
     </qresource>
     <qresource prefix="/clock/languages">
