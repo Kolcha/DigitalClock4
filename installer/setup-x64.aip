@@ -14,7 +14,7 @@
     <ROW Property="ARPURLUPDATEINFO" Value="http://sourceforge.net/projects/digitalclock4/"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Nick Korotysh"/>
-    <ROW Property="ProductCode" Value="1033:{01B28FCC-480C-48A6-94A0-3ADF3300B6F3} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{ACCA9AD2-57A1-4359-8CCC-99FC33360595} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Digital Clock"/>
     <ROW Property="ProductVersion" Value="4.4.0" Type="32"/>

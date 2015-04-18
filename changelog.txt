@@ -1,3 +1,29 @@
+Whats new in 4.4.0:
+-------------------
+Core:
+ - build with Qt 5.4.1
+ - updater: fixed build time detect
+ - updater: fixed autoupdate option
+ - plugin settings export/import
+ - fixed some localization issues
+ - improved linux build script to produce source tarball
+
+Features:
+ - autostart option for any supported platform
+
+GUI:
+ - added build date to about dialog
+ - redesigned about dialog
+
+plugins:
+ - improved 'schedule' plugin
+
+SDK:
+ - updated plugin interface
+ - updated plugin settings class
+ - updated documentation
+
+
 Whats new in 4.3.6:
 -------------------
 Core:
