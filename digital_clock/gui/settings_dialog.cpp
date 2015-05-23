@@ -122,7 +122,10 @@ void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings)
       case OPT_CUSTOMIZATION:
       {
         SkinDrawer::CustomizationType type = (SkinDrawer::CustomizationType)value.toInt();
-        ui->use_customization->setChecked(type != SkinDrawer::CT_NONE);
+        ui->cust_none->setChecked(type == SkinDrawer::CT_NONE);
+        ui->cust_texturing->setChecked(type != SkinDrawer::CT_NONE);
+//        ui->cust_colorize
+
         if (type != SkinDrawer::CT_NONE) {
           ui->type_color->setChecked(type == SkinDrawer::CT_COLOR);
           ui->type_image->setChecked(type == SkinDrawer::CT_TEXTURE);
@@ -134,7 +137,7 @@ void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings)
       }
 
       case OPT_SPACING:
-        ui->space_value->setValue(value.toInt());
+        ui->space_slider->setValue(value.toInt());
         break;
 
       case  OPT_PLUGINS:
@@ -185,9 +188,6 @@ void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::BaseSkin::TSki
     if (iter.value().isEmpty()) iter.value() = tr("unknown");
   }
   ui->skin_box->setCurrentText(l_info[BaseSkin::SI_NAME]);
-  ui->version_value->setText(l_info[BaseSkin::SI_VERSION]);
-  ui->author_value->setText(l_info[BaseSkin::SI_AUTHOR]);
-  ui->email_value->setText(l_info[BaseSkin::SI_EMAIL]);
   ui->skin_box->setToolTip(l_info[BaseSkin::SI_COMMENT]);
 }
 
@@ -319,7 +319,6 @@ void SettingsDialog::on_use_skin_toggled(bool checked) {
 void SettingsDialog::on_use_font_toggled(bool checked) {
   if (checked) {
     emit OptionChanged(OPT_SKIN_NAME, "Text Skin");
-    ui->use_customization->setChecked(true);
   }
 }
 
@@ -330,10 +329,6 @@ void SettingsDialog::on_sel_font_btn_clicked() {
     emit OptionChanged(OPT_FONT, font);
     last_font_ = font;
   }
-}
-
-void SettingsDialog::on_use_customization_toggled(bool checked) {
-  emit OptionChanged(OPT_CUSTOMIZATION, checked ? last_customization_ : SkinDrawer::CT_NONE);
 }
 
 void SettingsDialog::on_apply_btn_clicked() {
@@ -356,7 +351,7 @@ void SettingsDialog::on_check_for_beta_toggled(bool checked) {
   emit OptionChanged(OPT_CHECK_FOR_BETA, checked);
 }
 
-void SettingsDialog::on_space_value_valueChanged(int arg1) {
+void SettingsDialog::on_space_slider_valueChanged(int arg1) {
   emit OptionChanged(OPT_SPACING, arg1);
 }
 
@@ -376,3 +371,7 @@ void SettingsDialog::on_import_btn_clicked() {
 
 } // namespace gui
 } // namespace digital_clock
+
+void digital_clock::gui::SettingsDialog::on_cust_none_toggled(bool checked) {
+  emit OptionChanged(OPT_CUSTOMIZATION, checked ? SkinDrawer::CT_NONE : last_customization_);
+}

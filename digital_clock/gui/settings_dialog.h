@@ -59,15 +59,16 @@ private slots:
   void on_use_skin_toggled(bool checked);
   void on_use_font_toggled(bool checked);
   void on_sel_font_btn_clicked();
-  void on_use_customization_toggled(bool checked);
   void on_apply_btn_clicked();
   void on_system_format_clicked();
   void on_enable_autoupdate_toggled(bool checked);
   void on_update_period_box_currentIndexChanged(int index);
   void on_check_for_beta_toggled(bool checked);
-  void on_space_value_valueChanged(int arg1);
+  void on_space_slider_valueChanged(int arg1);
   void on_export_btn_clicked();
   void on_import_btn_clicked();
+
+  void on_cust_none_toggled(bool checked);
 
 private:
   Ui::SettingsDialog* ui;
