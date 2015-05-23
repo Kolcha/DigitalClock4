@@ -290,7 +290,7 @@
           <item>
            <widget class="QRadioButton" name="cust_none">
             <property name="text">
-             <string>none (leave as is)</string>
+             <string>none</string>
             </property>
            </widget>
           </item>
