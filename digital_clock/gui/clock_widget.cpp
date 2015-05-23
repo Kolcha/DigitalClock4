@@ -68,6 +68,10 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
       drawer_->SetTexture(value.toString());
       break;
 
+    case OPT_TEXTURE_TYPE:
+      drawer_->SetCustomizationType(static_cast< ::skin_draw::SkinDrawer::CustomizationType>(value.toInt()));
+      break;
+
     case OPT_TEXTURE_PER_ELEMENT:
       drawer_->SetTexturePerElement(value.toBool());
       break;
@@ -77,8 +81,22 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
       break;
 
     case OPT_CUSTOMIZATION:
-      drawer_->SetCustomizationType((::skin_draw::SkinDrawer::CustomizationType)value.toInt());
+    {
+      Customization cust = static_cast<Customization>(value.toInt());
+      switch (cust) {
+        case Customization::C_NONE:
+          drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
+          break;
+
+        case Customization::C_TEXTURING:
+          break;
+
+        case Customization::C_COLORIZE:
+          drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
+          break;
+      }
       break;
+    }
 
     case OPT_SPACING:
       drawer_->SetSpace(value.toInt());

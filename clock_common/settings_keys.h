@@ -13,6 +13,13 @@
 #include "clock_common_global.h"
 #include <QVariant>
 
+/*! skin customization types */
+enum class Customization {
+  C_NONE,         /*!< do not use any customization, display skin as is */
+  C_TEXTURING,    /*!< apply texture (solid color or custom image) to skin */
+  C_COLORIZE      /*!< colorize skin without changing its texture */
+};
+
 /*! clock settings keys */
 /*! @note Comments format: option description, type, possible values */
 enum Options {
@@ -29,10 +36,11 @@ enum Options {
   OPT_ZOOM,                     /*!< clock zoom, qreal, > 0 */
   OPT_COLOR,                    /*!< clock color (if texture is not used), QColor, any color */
   OPT_TEXTURE,                  /*!< path to texture file, QString, path to image file */
+  OPT_TEXTURE_TYPE,             /*!< texture type, SkinDrawer::CustomizationType, CT_COLOR/CT_TEXTURE */
   OPT_TEXTURE_PER_ELEMENT,      /*!< apply texture per element flag, bool, true/false */
   OPT_TEXTURE_DRAW_MODE,        /*!< texture draw mode, SkinDrawer::DrawMode, DM_STRETCH/DM_TILE */
-  OPT_CUSTOMIZATION,            /*!< customization type, SkinDrawer::CustomizationType,
-                                     CT_NONE/CT_COLOR/CT_TEXTURE */
+  OPT_CUSTOMIZATION,            /*!< customization type, Customization,
+                                     C_NONE/C_TEXTURING/C_COLORIZE */
   OPT_SPACING,                  /*!< space between clock digits in pixels */
 
   // updater settings

@@ -29,6 +29,7 @@ QVariant GetDefaultValue(Options opt) {
     case OPT_ZOOM:                  return 1.25;
     case OPT_COLOR:                 return QVariant::fromValue<QColor>(Qt::blue);
     case OPT_TEXTURE:               return QString();
+    case OPT_TEXTURE_TYPE:          return 1;
     case OPT_TEXTURE_PER_ELEMENT:   return false;
     case OPT_TEXTURE_DRAW_MODE:     return 0;
     case OPT_CUSTOMIZATION:         return 1;

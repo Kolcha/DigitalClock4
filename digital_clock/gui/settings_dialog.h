@@ -67,8 +67,9 @@ private slots:
   void on_space_slider_valueChanged(int arg1);
   void on_export_btn_clicked();
   void on_import_btn_clicked();
-
   void on_cust_none_toggled(bool checked);
+  void on_cust_texturing_toggled(bool checked);
+  void on_cust_colorize_toggled(bool checked);
 
 private:
   Ui::SettingsDialog* ui;
@@ -76,7 +77,6 @@ private:
   QString last_txd_path_;
   QStringList active_plugins_;
   QFont last_font_;
-  int last_customization_;
   QMap<qint64, QString> update_periods_;
   bool is_loading_;
 };

@@ -9,9 +9,14 @@
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
-#define S_OPT_LAST_CUSTOMIZATION_KEY      "state/last_cutomization"
 #define S_OPT_LAST_TIME_FORMAT_KEY        "state/last_time_format"
 #define S_OPT_GEOMETRY_KEY                "state/settings_dialog_geometry"
+
+#ifdef Q_OS_OSX
+#define DEFAULT_TEXTURE_PATH              "../textures"
+#else
+#define DEFAULT_TEXTURE_PATH              "textures"
+#endif
 
 using skin_draw::SkinDrawer;
 
@@ -99,11 +104,15 @@ void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings)
       case OPT_TEXTURE:
       {
         QString texture = value.toString();
-#ifdef Q_OS_OSX
-        last_txd_path_ = texture.isEmpty() ? "../textures" : QFileInfo(texture).absolutePath();
-#else
-        last_txd_path_ = texture.isEmpty() ? "textures" : QFileInfo(texture).absolutePath();
-#endif
+        last_txd_path_ = texture.isEmpty() ? DEFAULT_TEXTURE_PATH : QFileInfo(texture).absolutePath();
+        break;
+      }
+
+      case OPT_TEXTURE_TYPE:
+      {
+        SkinDrawer::CustomizationType type = static_cast<SkinDrawer::CustomizationType>(value.toInt());
+        ui->type_color->setChecked(type == SkinDrawer::CT_COLOR);
+        ui->type_image->setChecked(type == SkinDrawer::CT_TEXTURE);
         break;
       }
 
@@ -121,18 +130,10 @@ void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings)
 
       case OPT_CUSTOMIZATION:
       {
-        SkinDrawer::CustomizationType type = (SkinDrawer::CustomizationType)value.toInt();
-        ui->cust_none->setChecked(type == SkinDrawer::CT_NONE);
-        ui->cust_texturing->setChecked(type != SkinDrawer::CT_NONE);
-//        ui->cust_colorize
-
-        if (type != SkinDrawer::CT_NONE) {
-          ui->type_color->setChecked(type == SkinDrawer::CT_COLOR);
-          ui->type_image->setChecked(type == SkinDrawer::CT_TEXTURE);
-        } else {
-          ui->type_color->setChecked(last_customization_ == (int)SkinDrawer::CT_COLOR);
-          ui->type_image->setChecked(last_customization_ == (int)SkinDrawer::CT_TEXTURE);
-        }
+        Customization cust = static_cast<Customization>(value.toInt());
+        ui->cust_none->setChecked(cust == Customization::C_NONE);
+        ui->cust_texturing->setChecked(cust == Customization::C_TEXTURING);
+        ui->cust_colorize->setChecked(cust == Customization::C_COLORIZE);
         break;
       }
 
@@ -228,15 +229,12 @@ void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
 
 void SettingsDialog::SaveState() {
   QSettings settings;
-  settings.setValue(S_OPT_LAST_CUSTOMIZATION_KEY, last_customization_);
   settings.setValue(S_OPT_LAST_TIME_FORMAT_KEY, ui->format_box->currentText());
   settings.setValue(S_OPT_GEOMETRY_KEY, saveGeometry());
 }
 
 void SettingsDialog::LoadState() {
   QSettings settings;
-  last_customization_ = settings.value(S_OPT_LAST_CUSTOMIZATION_KEY,
-                                       GetDefaultValue(OPT_CUSTOMIZATION)).toInt();
   ui->format_box->setCurrentText(settings.value(S_OPT_LAST_TIME_FORMAT_KEY,
                                                 GetDefaultValue(OPT_TIME_FORMAT)).toString());
   restoreGeometry(settings.value(S_OPT_GEOMETRY_KEY).toByteArray());
@@ -278,9 +276,7 @@ void SettingsDialog::on_sel_color_btn_clicked() {
   QColor color = QColorDialog::getColor(last_color_, this);
   if (color.isValid()) {
     emit OptionChanged(OPT_COLOR, color);
-    emit OptionChanged(OPT_CUSTOMIZATION, SkinDrawer::CT_COLOR);
     last_color_ = color;
-    last_customization_ = SkinDrawer::CT_COLOR;
   }
 }
 
@@ -290,22 +286,19 @@ void SettingsDialog::on_sel_image_btn_clicked() {
                     tr("Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)"));
   if (!texture.isEmpty()) {
     emit OptionChanged(OPT_TEXTURE, texture);
-    emit OptionChanged(OPT_CUSTOMIZATION, SkinDrawer::CT_TEXTURE);
+    if (last_txd_path_ == DEFAULT_TEXTURE_PATH) {
+      emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_TEXTURE);
+    }
     last_txd_path_ = QFileInfo(texture).absolutePath();
-    last_customization_ = SkinDrawer::CT_TEXTURE;
   }
 }
 
 void SettingsDialog::on_type_color_toggled(bool checked) {
-  if (!checked) return;
-  emit OptionChanged(OPT_CUSTOMIZATION, SkinDrawer::CT_COLOR);
-  emit OptionChanged(OPT_COLOR, last_color_);
+  if (checked) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_COLOR);
 }
 
 void SettingsDialog::on_type_image_toggled(bool checked) {
-  SkinDrawer::CustomizationType current = checked ? SkinDrawer::CT_TEXTURE : SkinDrawer::CT_COLOR;
-  emit OptionChanged(OPT_CUSTOMIZATION, current);
-  last_customization_ = (int)current;
+  if (checked) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_TEXTURE);
 }
 
 void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
@@ -373,5 +366,24 @@ void SettingsDialog::on_import_btn_clicked() {
 } // namespace digital_clock
 
 void digital_clock::gui::SettingsDialog::on_cust_none_toggled(bool checked) {
-  emit OptionChanged(OPT_CUSTOMIZATION, checked ? SkinDrawer::CT_NONE : last_customization_);
+  if (!checked) return;
+  ui->image_group->setDisabled(true);
+  emit OptionChanged(OPT_CUSTOMIZATION, static_cast<int>(Customization::C_NONE));
+}
+
+void digital_clock::gui::SettingsDialog::on_cust_texturing_toggled(bool checked) {
+  if (checked) {
+    emit OptionChanged(OPT_CUSTOMIZATION, static_cast<int>(Customization::C_TEXTURING));
+    if (ui->type_color->isChecked()) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_COLOR);
+    if (ui->type_image->isChecked()) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_TEXTURE);
+    ui->image_group->setEnabled(ui->type_image->isChecked());
+  } else {
+    ui->image_group->setDisabled(true);
+  }
+}
+
+void digital_clock::gui::SettingsDialog::on_cust_colorize_toggled(bool checked) {
+  if (!checked) return;
+  ui->image_group->setDisabled(true);
+  emit OptionChanged(OPT_CUSTOMIZATION, static_cast<int>(Customization::C_COLORIZE));
 }
