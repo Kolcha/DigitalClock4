@@ -70,6 +70,8 @@ private slots:
   void on_cust_none_toggled(bool checked);
   void on_cust_texturing_toggled(bool checked);
   void on_cust_colorize_toggled(bool checked);
+  void on_img_color_btn_clicked();
+  void on_level_slider_valueChanged(int value);
 
 private:
   Ui::SettingsDialog* ui;
@@ -79,6 +81,7 @@ private:
   QFont last_font_;
   QMap<qint64, QString> update_periods_;
   bool is_loading_;
+  QColor last_colorize_color_;
 };
 
 } // namespace gui

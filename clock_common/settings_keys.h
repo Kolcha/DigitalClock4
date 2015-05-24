@@ -42,6 +42,8 @@ enum Options {
   OPT_CUSTOMIZATION,            /*!< customization type, Customization,
                                      C_NONE/C_TEXTURING/C_COLORIZE */
   OPT_SPACING,                  /*!< space between clock digits in pixels */
+  OPT_COLORIZE_COLOR,           /*!< color for colorize effect, QColor, any color */
+  OPT_COLORIZE_LEVEL,           /*!< colorize effect strength, qreal, 0..1 */
 
   // updater settings
   OPT_USE_AUTOUPDATE,           /*!< enable/disable autoupdate, bool, true/false */

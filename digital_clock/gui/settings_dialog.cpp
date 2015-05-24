@@ -141,6 +141,14 @@ void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings)
         ui->space_slider->setValue(value.toInt());
         break;
 
+      case OPT_COLORIZE_COLOR:
+        last_colorize_color_ = value.value<QColor>();
+        break;
+
+      case OPT_COLORIZE_LEVEL:
+        ui->level_slider->setValue(static_cast<int>(value.toReal() * 100));
+        break;
+
       case  OPT_PLUGINS:
         for (int i = 0; i < ui->plugins_list->count(); i++) {
           PluginListItemWidget* item = static_cast<PluginListItemWidget*>(
@@ -386,4 +394,16 @@ void digital_clock::gui::SettingsDialog::on_cust_colorize_toggled(bool checked) 
   if (!checked) return;
   ui->image_group->setDisabled(true);
   emit OptionChanged(OPT_CUSTOMIZATION, static_cast<int>(Customization::C_COLORIZE));
+}
+
+void digital_clock::gui::SettingsDialog::on_img_color_btn_clicked() {
+  QColor color = QColorDialog::getColor(last_colorize_color_, this);
+  if (color.isValid()) {
+    emit OptionChanged(OPT_COLORIZE_COLOR, color);
+    last_colorize_color_ = color;
+  }
+}
+
+void digital_clock::gui::SettingsDialog::on_level_slider_valueChanged(int value) {
+  emit OptionChanged(OPT_COLORIZE_LEVEL, value / 100.);
 }

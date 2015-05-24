@@ -2,6 +2,7 @@
 #include <QSettings>
 #include <QMouseEvent>
 #include <QPainter>
+#include <QGraphicsColorizeEffect>
 #include "skin_drawer.h"
 #include "clock_display.h"
 #include "clock_widget.h"
@@ -24,6 +25,9 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent) {
 
   QSettings state;
   move(state.value(S_OPT_POSITION, QPoint(50, 20)).toPoint());
+
+  colorize_color_ = GetDefaultValue(OPT_COLORIZE_COLOR).value<QColor>();
+  colorize_level_ = GetDefaultValue(OPT_COLORIZE_LEVEL).toReal();
 }
 
 ClockDisplay* ClockWidget::GetDisplay() const {
@@ -85,15 +89,23 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
       Customization cust = static_cast<Customization>(value.toInt());
       switch (cust) {
         case Customization::C_NONE:
+          this->setGraphicsEffect(0);
           drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
           break;
 
         case Customization::C_TEXTURING:
+          this->setGraphicsEffect(0);
           break;
 
         case Customization::C_COLORIZE:
+        {
           drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
+          QGraphicsColorizeEffect* effect = new QGraphicsColorizeEffect();
+          effect->setColor(colorize_color_);
+          effect->setStrength(colorize_level_);
+          this->setGraphicsEffect(effect);
           break;
+        }
       }
       break;
     }
@@ -101,6 +113,22 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
     case OPT_SPACING:
       drawer_->SetSpace(value.toInt());
       break;
+
+    case OPT_COLORIZE_COLOR:
+    {
+      colorize_color_ = value.value<QColor>();
+      QGraphicsColorizeEffect* effect = qobject_cast<QGraphicsColorizeEffect*>(graphicsEffect());
+      if (effect) effect->setColor(colorize_color_);
+      break;
+    }
+
+    case OPT_COLORIZE_LEVEL:
+    {
+      colorize_level_ = value.toReal();
+      QGraphicsColorizeEffect* effect = qobject_cast<QGraphicsColorizeEffect*>(graphicsEffect());
+      if (effect) effect->setStrength(colorize_level_);
+      break;
+    }
 
     default:
       break;

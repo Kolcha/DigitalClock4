@@ -41,6 +41,9 @@ private:
   ClockDisplay* display_;
   ::skin_draw::SkinDrawer* drawer_;
   QPoint drag_position_;
+
+  QColor colorize_color_;
+  qreal colorize_level_;
 };
 
 } // namespace gui
