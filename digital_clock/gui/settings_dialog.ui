@@ -26,6 +26,9 @@
    </item>
    <item row="1" column="1">
     <widget class="QPushButton" name="export_btn">
+     <property name="toolTip">
+      <string>Export current settings to file</string>
+     </property>
      <property name="text">
       <string>Export...</string>
      </property>
@@ -53,6 +56,9 @@
    </item>
    <item row="1" column="0">
     <widget class="QPushButton" name="import_btn">
+     <property name="toolTip">
+      <string>Import settings from file</string>
+     </property>
      <property name="text">
       <string>Import...</string>
      </property>
@@ -231,7 +237,7 @@
           <item>
            <widget class="QToolButton" name="skin_info_btn">
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
             <property name="icon">
              <iconset resource="../digital_clock.qrc">
@@ -333,7 +339,7 @@
              <bool>false</bool>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -350,7 +356,7 @@
           <item row="1" column="1">
            <widget class="QToolButton" name="sel_image_btn">
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -433,7 +439,7 @@
           <item>
            <widget class="QToolButton" name="img_color_btn">
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -476,14 +482,14 @@
           <item>
            <widget class="QLabel" name="level_value">
             <property name="text">
-             <string>100</string>
+             <string notr="true">100</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QLabel" name="level_percent">
             <property name="text">
-             <string>%</string>
+             <string notr="true">%</string>
             </property>
            </widget>
           </item>
