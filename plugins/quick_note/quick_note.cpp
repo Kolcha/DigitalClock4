@@ -40,6 +40,10 @@ void QuickNote::Init(const QMap<Options, QVariant>& current_settings) {
         drawer_->SetTexture(iter.value().toString());
         break;
 
+      case OPT_TEXTURE_TYPE:
+        drawer_->SetCustomizationType(static_cast<skin_draw::SkinDrawer::CustomizationType>(iter.value().toInt()));
+        break;
+
       case OPT_TEXTURE_PER_ELEMENT:
         drawer_->SetTexturePerElement(iter.value().toBool());
         break;
@@ -49,8 +53,19 @@ void QuickNote::Init(const QMap<Options, QVariant>& current_settings) {
         break;
 
       case OPT_CUSTOMIZATION:
-        drawer_->SetCustomizationType((skin_draw::SkinDrawer::CustomizationType)iter.value().toInt());
+      {
+        Customization cust = static_cast<Customization>(iter.value().toInt());
+        switch (cust) {
+          case Customization::C_NONE:
+          case Customization::C_COLORIZE:
+            drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
+            break;
+
+          default:
+            break;
+        }
         break;
+      }
 
       default:
         break;
@@ -151,6 +166,10 @@ void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
       drawer_->SetTexture(new_value.toString());
       break;
 
+    case OPT_TEXTURE_TYPE:
+      drawer_->SetCustomizationType(static_cast<skin_draw::SkinDrawer::CustomizationType>(new_value.toInt()));
+      break;
+
     case OPT_TEXTURE_PER_ELEMENT:
       drawer_->SetTexturePerElement(new_value.toBool());
       break;
@@ -160,8 +179,19 @@ void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
       break;
 
     case OPT_CUSTOMIZATION:
-      drawer_->SetCustomizationType((skin_draw::SkinDrawer::CustomizationType)new_value.toInt());
+    {
+      Customization cust = static_cast<Customization>(new_value.toInt());
+      switch (cust) {
+        case Customization::C_NONE:
+        case Customization::C_COLORIZE:
+          drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
+          break;
+
+        default:
+          break;
+      }
       break;
+    }
 
     default:
       break;

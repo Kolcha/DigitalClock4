@@ -6,15 +6,78 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>536</width>
-    <height>385</height>
+    <width>496</width>
+    <height>382</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Settings</string>
   </property>
-  <layout class="QGridLayout" name="dialog_layout">
-   <item row="0" column="0">
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="5">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QPushButton" name="export_btn">
+     <property name="toolTip">
+      <string>Export current settings to file</string>
+     </property>
+     <property name="text">
+      <string>Export...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="defaults_bth">
+     <property name="text">
+      <string>Restore Defaults</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="4">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>21</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="import_btn">
+     <property name="toolTip">
+      <string>Import settings from file</string>
+     </property>
+     <property name="text">
+      <string>Import...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>21</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" colspan="6">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
       <number>0</number>
@@ -23,118 +86,365 @@
       <attribute name="title">
        <string>Appearance</string>
       </attribute>
-      <layout class="QGridLayout" name="appearance_tab_layout">
+      <layout class="QGridLayout" name="appearance_layout">
        <property name="leftMargin">
-        <number>10</number>
-       </property>
-       <property name="topMargin">
-        <number>10</number>
+        <number>12</number>
        </property>
        <property name="rightMargin">
-        <number>10</number>
+        <number>12</number>
        </property>
        <property name="bottomMargin">
-        <number>10</number>
+        <number>12</number>
        </property>
-       <item row="0" column="0" colspan="2">
-        <widget class="QGroupBox" name="clock_group">
+       <item row="0" column="0">
+        <layout class="QVBoxLayout" name="checkbox_layout">
+         <item>
+          <widget class="QCheckBox" name="stay_on_top">
+           <property name="text">
+            <string>stay on top</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="transp_for_input">
+           <property name="text">
+            <string>transparent for input</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="sep_flash">
+           <property name="text">
+            <string>separator flashes</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <layout class="QGridLayout" name="sliders_layout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="opacity_label">
+           <property name="text">
+            <string>opacity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSlider" name="opacity_slider">
+           <property name="minimum">
+            <number>5</number>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="value">
+            <number>100</number>
+           </property>
+           <property name="sliderPosition">
+            <number>100</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="opacity_value">
+           <property name="text">
+            <string notr="true">100</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="opcacity_percent">
+           <property name="text">
+            <string notr="true">%</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="zoom_label">
+           <property name="text">
+            <string>zoom</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSlider" name="zoom_slider">
+           <property name="minimum">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <number>400</number>
+           </property>
+           <property name="value">
+            <number>100</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLabel" name="zoom_value">
+           <property name="text">
+            <string notr="true">100</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QLabel" name="zoom_percent">
+           <property name="text">
+            <string notr="true">%</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="QGroupBox" name="skin_group">
          <property name="title">
-          <string>Clock</string>
+          <string>Skin</string>
          </property>
-         <layout class="QGridLayout" name="clock_layout">
-          <item row="0" column="2">
-           <layout class="QGridLayout" name="sliders_layout">
-            <item row="0" column="0">
-             <widget class="QLabel" name="opacity_label">
-              <property name="text">
-               <string>opacity</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QSlider" name="opacity_slider">
-              <property name="minimum">
-               <number>5</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-              <property name="value">
-               <number>100</number>
-              </property>
-              <property name="sliderPosition">
-               <number>100</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLabel" name="opacity_value">
-              <property name="text">
-               <string notr="true">100</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="3">
-             <widget class="QLabel" name="opcacity_percent">
-              <property name="text">
-               <string notr="true">%</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="zoom_label">
-              <property name="text">
-               <string>zoom</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QSlider" name="zoom_slider">
-              <property name="minimum">
-               <number>10</number>
-              </property>
-              <property name="maximum">
-               <number>400</number>
-              </property>
-              <property name="value">
-               <number>100</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QLabel" name="zoom_value">
-              <property name="text">
-               <string notr="true">100</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="3">
-             <widget class="QLabel" name="zoom_percent">
-              <property name="text">
-               <string notr="true">%</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="1" column="0" colspan="3">
-           <widget class="QCheckBox" name="use_customization">
+         <layout class="QHBoxLayout" name="skin_layout">
+          <item>
+           <widget class="QRadioButton" name="use_skin">
             <property name="text">
-             <string>use skin customization (change color or apply texture)</string>
+             <string>use skin</string>
             </property>
             <property name="checked">
              <bool>true</bool>
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QComboBox" name="skin_box">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>155</width>
+              <height>0</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="skin_info_btn">
+            <property name="text">
+             <string notr="true">...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../digital_clock.qrc">
+              <normaloff>:/clock/images/about.svg</normaloff>:/clock/images/about.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>28</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="use_font">
+            <property name="text">
+             <string>use font</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="sel_font_btn">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string notr="true">...</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QGroupBox" name="customization_group">
+         <property name="title">
+          <string>skin customization</string>
+         </property>
+         <layout class="QVBoxLayout" name="customization_layout">
+          <property name="topMargin">
+           <number>6</number>
+          </property>
+          <property name="bottomMargin">
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QRadioButton" name="cust_none">
+            <property name="text">
+             <string>none</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="cust_texturing">
+            <property name="text">
+             <string>change texture</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="cust_colorize">
+            <property name="text">
+             <string>colorize</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QGroupBox" name="texture_group">
+         <property name="title">
+          <string>texture type</string>
+         </property>
+         <layout class="QGridLayout" name="texture_layout">
+          <item row="0" column="0">
+           <widget class="QRadioButton" name="type_color">
+            <property name="text">
+             <string>solid color</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="1">
-           <spacer name="horizontalSpacer">
+           <widget class="QToolButton" name="sel_color_btn">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string notr="true">...</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="type_image">
+            <property name="text">
+             <string>custom image</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QToolButton" name="sel_image_btn">
+            <property name="text">
+             <string notr="true">...</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QGroupBox" name="image_group">
+         <property name="title">
+          <string>custom image</string>
+         </property>
+         <layout class="QVBoxLayout" name="image_layout">
+          <property name="topMargin">
+           <number>6</number>
+          </property>
+          <property name="bottomMargin">
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QCheckBox" name="txd_per_elem">
+            <property name="text">
+             <string>texture per element</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="mode_group">
+            <property name="title">
+             <string>texturing mode</string>
+            </property>
+            <layout class="QHBoxLayout" name="mode_layout">
+             <property name="topMargin">
+              <number>6</number>
+             </property>
+             <property name="bottomMargin">
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QRadioButton" name="mode_stretch">
+               <property name="text">
+                <string>stretch</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="mode_tile">
+               <property name="text">
+                <string>tile</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="3">
+        <widget class="QGroupBox" name="colorize_group">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="title">
+          <string>colorize</string>
+         </property>
+         <layout class="QHBoxLayout" name="colorize_layout">
+          <item>
+           <widget class="QLabel" name="color_label">
+            <property name="text">
+             <string>color</string>
+            </property>
+            <property name="margin">
+             <number>3</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="img_color_btn">
+            <property name="text">
+             <string notr="true">...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -149,264 +459,42 @@
             </property>
            </spacer>
           </item>
-          <item row="0" column="0">
-           <layout class="QVBoxLayout" name="checkbox_layout">
-            <item>
-             <widget class="QCheckBox" name="stay_on_top">
-              <property name="text">
-               <string>stay on top</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="transp_for_input">
-              <property name="text">
-               <string>transparent for input</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="sep_flash">
-              <property name="text">
-               <string>separator flashes</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="1" column="0" rowspan="2">
-        <widget class="QGroupBox" name="skin_group">
-         <property name="title">
-          <string>Skin</string>
-         </property>
-         <layout class="QVBoxLayout" name="skin_layout">
           <item>
-           <layout class="QHBoxLayout" name="skin_name_layout" stretch="0,1">
-            <item>
-             <widget class="QRadioButton" name="use_skin">
-              <property name="text">
-               <string>use skin</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="skin_box">
-              <property name="minimumSize">
-               <size>
-                <width>155</width>
-                <height>0</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QGridLayout" name="skin_info_layout" columnstretch="0,1">
-            <item row="0" column="0">
-             <widget class="QLabel" name="version_label">
-              <property name="text">
-               <string>Version :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLabel" name="version_value">
-              <property name="text">
-               <string notr="true">unknown</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLabel" name="author_value">
-              <property name="text">
-               <string notr="true">unknown</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="email_label">
-              <property name="text">
-               <string>E-mail :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="author_label">
-              <property name="text">
-               <string>Author :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLabel" name="email_value">
-              <property name="text">
-               <string notr="true">unknown</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="font_layout">
-            <item>
-             <widget class="QRadioButton" name="use_font">
-              <property name="text">
-               <string>use font</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QToolButton" name="sel_font_btn">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string notr="true">...</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QGroupBox" name="texture_group">
-         <property name="title">
-          <string>Texture</string>
-         </property>
-         <layout class="QGridLayout" name="texture_layout">
-          <item row="1" column="0">
-           <widget class="QGroupBox" name="txd_type_group">
-            <property name="title">
-             <string>Type</string>
-            </property>
-            <layout class="QGridLayout" name="type_layout">
-             <item row="0" column="0">
-              <widget class="QRadioButton" name="type_color">
-               <property name="text">
-                <string>solid color</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QRadioButton" name="type_image">
-               <property name="text">
-                <string>custom image</string>
-               </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QToolButton" name="sel_image_btn">
-               <property name="text">
-                <string notr="true">...</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QToolButton" name="sel_color_btn">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="text">
-                <string notr="true">...</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QGroupBox" name="mode_group">
-            <property name="title">
-             <string>Mode</string>
-            </property>
-            <layout class="QVBoxLayout" name="mode_layout">
-             <property name="spacing">
-              <number>8</number>
-             </property>
-             <property name="topMargin">
-              <number>6</number>
-             </property>
-             <property name="bottomMargin">
-              <number>6</number>
-             </property>
-             <item>
-              <widget class="QRadioButton" name="mode_stretch">
-               <property name="text">
-                <string>stretch</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="mode_tile">
-               <property name="text">
-                <string>tile</string>
-               </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QCheckBox" name="txd_per_elem">
+           <widget class="QLabel" name="level_label">
             <property name="text">
-             <string>texture per element</string>
+             <string>level</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="level_slider">
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>100</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="level_value">
+            <property name="text">
+             <string notr="true">100</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="level_percent">
+            <property name="text">
+             <string notr="true">%</string>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
-       </item>
-       <item row="2" column="1">
-        <layout class="QHBoxLayout" name="space_layout">
-         <item>
-          <widget class="QLabel" name="space_label">
-           <property name="text">
-            <string>space between digits:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="space_value">
-           <property name="minimum">
-            <number>-10</number>
-           </property>
-           <property name="maximum">
-            <number>100</number>
-           </property>
-           <property name="value">
-            <number>4</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
       </layout>
      </widget>
@@ -414,65 +502,54 @@
       <attribute name="title">
        <string>Misc</string>
       </attribute>
-      <layout class="QGridLayout" name="misc_tab_layout">
+      <layout class="QGridLayout" name="misc_layout">
        <property name="leftMargin">
-        <number>10</number>
-       </property>
-       <property name="topMargin">
-        <number>10</number>
+        <number>12</number>
        </property>
        <property name="rightMargin">
-        <number>10</number>
+        <number>12</number>
        </property>
        <property name="bottomMargin">
-        <number>10</number>
+        <number>12</number>
        </property>
-       <item row="0" column="1">
-        <widget class="QGroupBox" name="export_import_group">
-         <property name="title">
-          <string>Export/import settings</string>
-         </property>
-         <layout class="QHBoxLayout" name="export_import_layout">
-          <property name="leftMargin">
-           <number>8</number>
-          </property>
-          <property name="topMargin">
-           <number>8</number>
-          </property>
-          <property name="rightMargin">
-           <number>8</number>
-          </property>
-          <property name="bottomMargin">
-           <number>8</number>
-          </property>
-          <item>
-           <widget class="QPushButton" name="export_btn">
-            <property name="text">
-             <string>Export ...</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="import_btn">
-            <property name="text">
-             <string>Import ...</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
        <item row="0" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QCheckBox" name="autostart">
+           <property name="text">
+            <string>start on system startup</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="enable_autoupdate">
+           <property name="text">
+            <string>enable autoupdate</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="1">
         <widget class="QGroupBox" name="time_format_group">
          <property name="title">
           <string>Time format</string>
          </property>
          <layout class="QHBoxLayout" name="time_format_layout">
+          <property name="leftMargin">
+           <number>8</number>
+          </property>
           <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
            <number>8</number>
           </property>
           <property name="bottomMargin">
-           <number>8</number>
+           <number>10</number>
           </property>
           <item>
            <widget class="QRadioButton" name="system_format">
@@ -566,27 +643,53 @@
         </widget>
        </item>
        <item row="1" column="0" colspan="2">
+        <widget class="QGroupBox" name="space_group">
+         <property name="title">
+          <string>Space between digits</string>
+         </property>
+         <layout class="QHBoxLayout" name="space_layout">
+          <item>
+           <widget class="QLabel" name="space_less_label">
+            <property name="text">
+             <string>less</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="space_slider">
+            <property name="minimum">
+             <number>-10</number>
+            </property>
+            <property name="maximum">
+             <number>50</number>
+            </property>
+            <property name="value">
+             <number>4</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::NoTicks</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="space_more_label">
+            <property name="text">
+             <string>more</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
         <widget class="QGroupBox" name="autoupdate_group">
          <property name="title">
           <string>Autoupdate</string>
          </property>
          <layout class="QHBoxLayout" name="autoupdate_layout">
-          <property name="topMargin">
-           <number>8</number>
-          </property>
-          <property name="bottomMargin">
-           <number>8</number>
-          </property>
-          <item>
-           <widget class="QCheckBox" name="enable_autoupdate">
-            <property name="text">
-             <string>enable autoupdate</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QLabel" name="update_period_label">
             <property name="text">
@@ -598,6 +701,19 @@
            <widget class="QComboBox" name="update_period_box"/>
           </item>
           <item>
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>81</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QCheckBox" name="check_for_beta">
             <property name="text">
              <string>check for beta releases</string>
@@ -607,7 +723,7 @@
          </layout>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="3" column="1">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -620,391 +736,35 @@
          </property>
         </spacer>
        </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QCheckBox" name="autostart">
-         <property name="text">
-          <string>start on system startup</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="plugins_tab">
       <attribute name="title">
        <string>Plugins</string>
       </attribute>
-      <layout class="QVBoxLayout" name="plugins_tab_layout">
-       <item>
+      <layout class="QGridLayout" name="plugins_layout">
+       <property name="leftMargin">
+        <number>12</number>
+       </property>
+       <property name="rightMargin">
+        <number>12</number>
+       </property>
+       <property name="bottomMargin">
+        <number>12</number>
+       </property>
+       <item row="0" column="0">
         <widget class="QListWidget" name="plugins_list"/>
        </item>
       </layout>
      </widget>
     </widget>
    </item>
-   <item row="1" column="0">
-    <layout class="QHBoxLayout" name="buttons_layout">
-     <item>
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="defaults_bth">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Restore Defaults</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_4">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QDialogButtonBox" name="buttonBox">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="standardButtons">
-        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
- <tabstops>
-  <tabstop>buttonBox</tabstop>
- </tabstops>
- <resources/>
+ <resources>
+  <include location="../digital_clock.qrc"/>
+ </resources>
  <connections>
-  <connection>
-   <sender>opacity_slider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>opacity_value</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>293</x>
-     <y>78</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>482</x>
-     <y>89</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>zoom_slider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>zoom_value</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>458</x>
-     <y>121</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>482</x>
-     <y>121</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>type_color</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>sel_color_btn</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>375</x>
-     <y>274</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>407</x>
-     <y>277</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>type_image</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>sel_image_btn</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>377</x>
-     <y>304</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>407</x>
-     <y>307</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>use_skin</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>skin_box</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>91</x>
-     <y>226</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>252</x>
-     <y>228</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>use_font</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>sel_font_btn</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>93</x>
-     <y>315</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>252</x>
-     <y>318</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>use_skin</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>version_label</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>37</x>
-     <y>218</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>71</x>
-     <y>249</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>use_skin</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>author_label</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>52</x>
-     <y>218</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>48</x>
-     <y>264</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>use_skin</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>email_label</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>91</x>
-     <y>226</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>61</x>
-     <y>283</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>use_skin</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>version_value</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>85</x>
-     <y>221</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>103</x>
-     <y>248</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>use_skin</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>author_value</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>91</x>
-     <y>226</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>92</x>
-     <y>265</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>use_skin</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>email_value</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>73</x>
-     <y>222</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>89</x>
-     <y>283</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>use_customization</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>texture_group</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>314</x>
-     <y>168</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>297</x>
-     <y>197</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>use_font</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>use_customization</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>35</x>
-     <y>310</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>37</x>
-     <y>163</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>custom_format</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>format_box</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>69</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>88</x>
-     <y>59</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>custom_format</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>apply_btn</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>69</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>69</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>custom_format</sender>
-   <signal>clicked()</signal>
-   <receiver>apply_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>119</x>
-     <y>69</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>69</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>enable_autoupdate</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>update_period_label</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>102</x>
-     <y>74</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>74</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>enable_autoupdate</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>update_period_box</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>98</x>
-     <y>74</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>119</x>
-     <y>74</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
@@ -1012,12 +772,12 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>409</x>
-     <y>359</y>
+     <x>610</x>
+     <y>409</y>
     </hint>
     <hint type="destinationlabel">
-     <x>339</x>
-     <y>346</y>
+     <x>157</x>
+     <y>274</y>
     </hint>
    </hints>
   </connection>
@@ -1028,12 +788,236 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>383</x>
-     <y>356</y>
+     <x>610</x>
+     <y>409</y>
     </hint>
     <hint type="destinationlabel">
-     <x>449</x>
-     <y>346</y>
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>opacity_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>opacity_value</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>535</x>
+     <y>67</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>566</x>
+     <y>67</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoom_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>zoom_value</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>535</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>566</x>
+     <y>102</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>level_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>level_value</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>521</x>
+     <y>334</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>552</x>
+     <y>335</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>type_color</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sel_color_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>342</x>
+     <y>233</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>378</x>
+     <y>233</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>type_image</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sel_image_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>342</x>
+     <y>263</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>378</x>
+     <y>263</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>type_image</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>image_group</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>342</x>
+     <y>263</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>589</x>
+     <y>279</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cust_colorize</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>colorize_group</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>102</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>70</x>
+     <y>328</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cust_texturing</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>texture_group</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>186</x>
+     <y>248</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>377</x>
+     <y>279</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_font</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sel_font_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>538</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>574</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_skin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>skin_box</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>115</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>247</x>
+     <y>164</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_skin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>skin_info_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>115</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>415</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>custom_format</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>format_box</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>369</x>
+     <y>84</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>501</x>
+     <y>88</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>custom_format</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>apply_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>369</x>
+     <y>84</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>584</x>
+     <y>91</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>enable_autoupdate</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>autoupdate_group</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>194</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>505</x>
+     <y>213</y>
     </hint>
    </hints>
   </connection>

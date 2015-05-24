@@ -17,10 +17,13 @@ void GetOptionsKeys(QMap<Options, QString>& opt_map) {
   opt_map[OPT_ZOOM]                 = "skin/zoom";
   opt_map[OPT_COLOR]                = "skin/color";
   opt_map[OPT_TEXTURE]              = "skin/texture";
+  opt_map[OPT_TEXTURE_TYPE]         = "skin/texture_type";
   opt_map[OPT_TEXTURE_PER_ELEMENT]  = "skin/texture_per_element";
   opt_map[OPT_TEXTURE_DRAW_MODE]    = "skin/texture_draw_mode";
   opt_map[OPT_CUSTOMIZATION]        = "skin/customization";
   opt_map[OPT_SPACING]              = "skin/spacing";
+  opt_map[OPT_COLORIZE_COLOR]       = "skin/colorize_color";
+  opt_map[OPT_COLORIZE_LEVEL]       = "skin/colorize_level";
   // updater settings
   opt_map[OPT_USE_AUTOUPDATE]       = "updater/autoupdate";
   opt_map[OPT_UPDATE_PERIOD]        = "updater/update_period";

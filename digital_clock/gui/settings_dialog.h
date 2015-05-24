@@ -59,15 +59,19 @@ private slots:
   void on_use_skin_toggled(bool checked);
   void on_use_font_toggled(bool checked);
   void on_sel_font_btn_clicked();
-  void on_use_customization_toggled(bool checked);
   void on_apply_btn_clicked();
   void on_system_format_clicked();
   void on_enable_autoupdate_toggled(bool checked);
   void on_update_period_box_currentIndexChanged(int index);
   void on_check_for_beta_toggled(bool checked);
-  void on_space_value_valueChanged(int arg1);
+  void on_space_slider_valueChanged(int arg1);
   void on_export_btn_clicked();
   void on_import_btn_clicked();
+  void on_cust_none_toggled(bool checked);
+  void on_cust_texturing_toggled(bool checked);
+  void on_cust_colorize_toggled(bool checked);
+  void on_img_color_btn_clicked();
+  void on_level_slider_valueChanged(int value);
 
 private:
   Ui::SettingsDialog* ui;
@@ -75,9 +79,9 @@ private:
   QString last_txd_path_;
   QStringList active_plugins_;
   QFont last_font_;
-  int last_customization_;
   QMap<qint64, QString> update_periods_;
   bool is_loading_;
+  QColor last_colorize_color_;
 };
 
 } // namespace gui
