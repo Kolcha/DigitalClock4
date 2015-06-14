@@ -1,6 +1,6 @@
 #!/bin/bash
 
-QT_PATH="$HOME/Programming/Qt-5.5.0/bin"
+QT_PATH="$HOME/Programming/Qt/5.4/gcc_64/bin"
 
 CLOCK_APP_NAME="Digital Clock 4"
 
@@ -23,7 +23,7 @@ cp -r "$CLOCK_DATA_PATH/qt_linux/"* "$TARGET_APP_FOLDER/"
 
 # copy all app files to target folder
 cp digital_clock/digital_clock "$TARGET_APP_FOLDER/"
-cp clock_common/libclock_common.so.1.0.6 "$TARGET_APP_FOLDER/libclock_common.so.1"
+cp clock_common/libclock_common.so.1.0.7 "$TARGET_APP_FOLDER/libclock_common.so.1"
 cp skin_draw/libskin_draw.so.1.2.2 "$TARGET_APP_FOLDER/libskin_draw.so.1"
 [ -d "$TARGET_APP_FOLDER/plugins" ] || mkdir "$TARGET_APP_FOLDER/plugins"
 cd plugins

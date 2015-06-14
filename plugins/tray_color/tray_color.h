@@ -25,7 +25,6 @@ public slots:
   void Stop();
   void Configure();
   void SettingsListener(Options opt, const QVariant& value);
-  void TimeUpdateListener() {}
 
 private:
   void RedrawTrayIcon(const QColor& color);

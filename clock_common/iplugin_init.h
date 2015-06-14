@@ -70,7 +70,7 @@ Q_DECLARE_INTERFACE(ITrayPluginInit, TRAY_PLUGIN_INIT_INTERFACE_IID)
  *
  * Interface for 'widget' plugin initialization. This interface allows plugin to get access to
  * clock's main window.
- * Main window has grid layout (QGridLayout). Clock widget is situated in cell (0,0).
+ * Main window has grid layout (QGridLayout). Clock widget is located in cell (0,0).
  */
 class IWidgetPluginInit {
 public:
@@ -88,5 +88,31 @@ public:
 /*! Widget plugin init interface IID */
 #define WIDGET_PLUGIN_INIT_INTERFACE_IID   "nick-korotysh.digital-clock.widget-plugin-init"
 Q_DECLARE_INTERFACE(IWidgetPluginInit, WIDGET_PLUGIN_INIT_INTERFACE_IID)
+
+class ISkinDrawer;
+
+/*!
+ * @brief Drawer plugin initializer interface.
+ *
+ * Interface for 'drawer' plugin initialization. This interface allows plugin to get access to
+ * clock's skin drawing engine and draw own information using it.
+ * @see ISkinDrawer
+ */
+class IDrawerPluginInit {
+public:
+  /*!
+   * Virtual destructor.
+   */
+  virtual ~IDrawerPluginInit() {}
+  /*!
+   * Init plugin.
+   * @param drawer - configured drawer instance
+   */
+  virtual void Init(ISkinDrawer* drawer) = 0;
+};
+
+/*! Drawer plugin init interface IID */
+#define DRAWER_PLUGIN_INIT_INTERFACE_IID   "nick-korotysh.digital-clock.drawer-plugin-init"
+Q_DECLARE_INTERFACE(IDrawerPluginInit, DRAWER_PLUGIN_INIT_INTERFACE_IID)
 
 #endif // IPLUGIN_INIT_H

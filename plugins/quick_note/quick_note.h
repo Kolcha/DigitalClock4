@@ -35,7 +35,6 @@ public slots:
   void Stop();
   void Configure();
   void SettingsListener(Options option, const QVariant& new_value);
-  void TimeUpdateListener() {}
 
 private slots:
   void ApplyString(const QString& str);

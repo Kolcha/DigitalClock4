@@ -62,11 +62,11 @@ public:
 
 public slots:
   /*! Start plugin activity. */
-  virtual void Start() = 0;
+  virtual void Start() {}
   /*! Stop plugin activity. */
-  virtual void Stop() = 0;
+  virtual void Stop()  {}
   /*! Call plugin settings dialog if it exists. */
-  virtual void Configure() = 0;
+  virtual void Configure() {}
   /*!
    * @brief Clock settings changes listener.
    *
@@ -74,14 +74,14 @@ public slots:
    * @param option - option which was changed. @see Options
    * @param new_value - new option value as QVariant
    */
-  virtual void SettingsListener(Options option, const QVariant& new_value) = 0;
+  virtual void SettingsListener(Options option, const QVariant& new_value) { Q_UNUSED(option); Q_UNUSED(new_value); }
   /*!
    * @brief Current time update listener.
    *
    * This slot will be called every 0.5 sec when clock updates current time.
    * It can be used as timer. Clock provides current time value as QString.
    */
-  virtual void TimeUpdateListener() = 0;
+  virtual void TimeUpdateListener() {}
 };
 
 /*! Clock plugin interface IID */

@@ -25,7 +25,6 @@ public slots:
   void Stop();
   void Configure();
   void SettingsListener(Options option, const QVariant& value);
-  void TimeUpdateListener() {}
 
 private slots:
   void TrackChange(int new_zoom);
