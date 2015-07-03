@@ -18,8 +18,6 @@ public:
 public slots:
   void Start();
   void Stop();
-  void Configure() {}
-  void SettingsListener(Options, const QVariant&) {}
   void TimeUpdateListener();
 
 private:

@@ -26,8 +26,6 @@ public slots:
   void Start();
   void Stop();
   void Configure();
-  void SettingsListener(Options, const QVariant&) {}
-  void TimeUpdateListener() {}
 
 private slots:
   void SettingsListener(const QString& key, const QVariant& value);

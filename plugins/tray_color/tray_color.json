@@ -1,7 +1,10 @@
 {
     "name" : "tray_color",
-    "version" : "1.0.4",
+    "version" : "1.1.0",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
-    "configurable" : true
+    "configurable" : true,
+    "settings_listener" : true,
+    "needs_in_timer" : false,
+    "needs_in_drawer" : false
 }

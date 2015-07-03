@@ -1,7 +1,10 @@
 {
     "name" : "move_clock",
-    "version" : "2.0.2",
+    "version" : "2.1.0",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
-    "configurable" : true
+    "configurable" : true,
+    "settings_listener" : false,
+    "needs_in_timer" : false,
+    "needs_in_drawer" : false
 }
