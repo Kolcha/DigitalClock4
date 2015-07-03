@@ -50,7 +50,8 @@ HEADERS += \
     gui/tray_control.h \
     gui/plugin_list_item_widget.h \
     core/manager_base.h \
-    core/autostart.h
+    core/autostart.h \
+    core/build_defs.h
 
 FORMS += \
     gui/settings_dialog.ui \

@@ -2,12 +2,22 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QCoreApplication>
+#include "../core/build_defs.h"
 #include "updater.h"
 
 #define S_OPT_LAST_UPDATE        "state/last_update"
 
 namespace digital_clock {
 namespace core {
+
+const char c_build_date[] = {
+  BUILD_DAY_CH0, BUILD_DAY_CH1,
+  '-',
+  BUILD_MONTH_CH0, BUILD_MONTH_CH1,
+  '-',
+  BUILD_YEAR_CH0, BUILD_YEAR_CH1, BUILD_YEAR_CH2, BUILD_YEAR_CH3,
+  '\0'
+};
 
 Updater::Updater(QObject* parent)
   : QObject(parent),
@@ -78,7 +88,7 @@ void Updater::ProcessData() {
   }
 
   if (latest > QCoreApplication::applicationVersion() ||
-      QDate::fromString(QString(__DATE__).simplified(), "MMM d yyyy") < last_build) {
+      QDate::fromString(QLatin1String(c_build_date), "dd-MM-yyyy") < last_build) {
     latest = QString("%1, %2").arg(latest).arg(last_build.toString(Qt::DefaultLocaleShortDate));
     emit NewVersion(latest, link);
   } else {
