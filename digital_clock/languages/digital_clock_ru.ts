@@ -77,12 +77,12 @@
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="35"/>
+        <location filename="../gui/about_dialog.cpp" line="45"/>
         <source>version: %1 (%2)</source>
         <translation>версия: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="40"/>
+        <location filename="../gui/about_dialog.cpp" line="50"/>
         <source>build date: %1</source>
         <translatorcomment>дата компиляции приложения</translatorcomment>
         <translation>дата сборки: %1</translation>
