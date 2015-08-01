@@ -5,6 +5,7 @@
 #include "plugin_settings.h"
 #include "skin_drawer.h"
 #include "text_skin.h"
+#include "gui/message_widget.h"
 #include "quick_note_settings.h"
 #include "quick_note.h"
 
@@ -96,14 +97,18 @@ void QuickNote::ImportSettings(const QSettings::SettingsMap& settings) {
 }
 
 void QuickNote::Start() {
-  msg_label_ = new QLabel();
-  msg_label_->setAlignment(Qt::AlignCenter);
+  msg_label_ = new MessageWidget();
   main_layout_->addWidget(msg_label_, main_layout_->rowCount(), 0, 1, main_layout_->columnCount());
   connect(drawer_, &skin_draw::SkinDrawer::DrawingFinished, [=] (const QImage& img) {
     msg_label_->setPixmap(QPixmap::fromImage(img));
     main_wnd_->adjustSize();
   });
-  ApplyString(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
+  connect(msg_label_.data(), &MessageWidget::textChanged, this, &QuickNote::ApplyString);
+  connect(msg_label_.data(), &MessageWidget::textChanged, [=] (const QString& str) {
+    settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
+    settings_->Save();
+  });
+  msg_label_->setText(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
 }
 
 void QuickNote::Stop() {
@@ -127,11 +132,11 @@ void QuickNote::Configure() {
   connect(settings_dlg, &QInputDialog::textValueSelected, [=] (const QString& str) {
     settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
     settings_->Save();
-    this->ApplyString(str);
+    msg_label_->setText(str);
   });
   connect(settings_dlg, &QInputDialog::rejected, [=] () {
     settings_->Load();
-    this->ApplyString(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
+    msg_label_->setText(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
   });
 
   settings_dlg->show();
@@ -141,7 +146,7 @@ void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
   switch (option) {
     case OPT_SKIN_NAME:
       avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 16;
-      ApplyString(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
+      msg_label_->setText(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
       break;
 
     case OPT_FONT:

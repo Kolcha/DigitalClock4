@@ -7,7 +7,7 @@
 #include "iplugin_init.h"
 
 class QGridLayout;
-class QLabel;
+class MessageWidget;
 class PluginSettings;
 namespace skin_draw {
 class SkinDrawer;
@@ -43,7 +43,7 @@ private:
   PluginSettings* settings_;
   QGridLayout* main_layout_;
   QWidget* main_wnd_;
-  QPointer<QLabel> msg_label_;
+  QPointer<MessageWidget> msg_label_;
   QFont font_;
   int avail_width_;
   qreal last_zoom_;

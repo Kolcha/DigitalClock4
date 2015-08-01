@@ -10,10 +10,12 @@ include(../common.pri)
 
 TARGET = quick_note
 
-SOURCES += quick_note.cpp
+SOURCES += quick_note.cpp \
+    gui/message_widget.cpp
 
 HEADERS += quick_note.h \
-    quick_note_settings.h
+    quick_note_settings.h \
+    gui/message_widget.h
 
 TRANSLATIONS += \
     quick_note_ru.ts
@@ -32,3 +34,6 @@ else:unix: LIBS += -L$$OUT_PWD/../../skin_draw/ -lskin_draw
 
 INCLUDEPATH += $$PWD/../../skin_draw
 DEPENDPATH += $$PWD/../../skin_draw
+
+FORMS += \
+    gui/message_widget.ui
