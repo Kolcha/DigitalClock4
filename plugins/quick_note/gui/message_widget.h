@@ -2,6 +2,7 @@
 #define MESSAGE_WIDGET_H
 
 #include <QWidget>
+#include <QIcon>
 
 namespace quick_note {
 
@@ -17,6 +18,8 @@ public:
   explicit MessageWidget(QWidget *parent = 0);
   ~MessageWidget();
 
+  void ColorizeIcon(const QColor& color);
+
 signals:
   void textChanged(const QString& new_text);
 
@@ -30,6 +33,7 @@ private slots:
 private:
   Ui::MessageWidget *ui;
   QString curr_text_;
+  QIcon edit_icon_;
 };
 
 }  // namespace quick_note

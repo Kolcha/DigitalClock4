@@ -44,6 +44,9 @@
    </item>
    <item>
     <widget class="QToolButton" name="edit_btn">
+     <property name="toolTip">
+      <string>edit note</string>
+     </property>
      <property name="text">
       <string notr="true">...</string>
      </property>

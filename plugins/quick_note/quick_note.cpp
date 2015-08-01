@@ -34,7 +34,8 @@ void QuickNote::Init(const QMap<Options, QVariant>& current_settings) {
         break;
 
       case OPT_COLOR:
-        drawer_->SetColor(iter.value().value<QColor>());
+        msg_color_ = iter.value().value<QColor>();
+        drawer_->SetColor(msg_color_);
         break;
 
       case OPT_TEXTURE:
@@ -101,6 +102,7 @@ void QuickNote::Start() {
   main_layout_->addWidget(msg_label_, main_layout_->rowCount(), 0, 1, main_layout_->columnCount());
   connect(drawer_, &skin_draw::SkinDrawer::DrawingFinished, [=] (const QImage& img) {
     msg_label_->setPixmap(QPixmap::fromImage(img));
+    msg_label_->ColorizeIcon(msg_color_);
     main_wnd_->adjustSize();
   });
   connect(msg_label_.data(), &MessageWidget::textChanged, this, &QuickNote::ApplyString);
@@ -164,7 +166,8 @@ void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
     }
 
     case OPT_COLOR:
-      drawer_->SetColor(new_value.value<QColor>());
+      msg_color_ = new_value.value<QColor>();
+      drawer_->SetColor(msg_color_);
       break;
 
     case OPT_TEXTURE:

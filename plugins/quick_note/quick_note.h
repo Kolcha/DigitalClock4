@@ -7,13 +7,14 @@
 #include "iplugin_init.h"
 
 class QGridLayout;
-class MessageWidget;
 class PluginSettings;
 namespace skin_draw {
 class SkinDrawer;
 }
 
 namespace quick_note {
+
+class MessageWidget;
 
 class QuickNote : public IClockPlugin,
                   public ISettingsPluginInit,
@@ -48,6 +49,7 @@ private:
   int avail_width_;
   qreal last_zoom_;
   ::skin_draw::SkinDrawer* drawer_;
+  QColor msg_color_;
 };
 
 } // namespace quick_note
