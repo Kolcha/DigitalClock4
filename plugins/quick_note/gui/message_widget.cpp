@@ -9,7 +9,7 @@ namespace quick_note {
 MessageWidget::MessageWidget(QWidget *parent) :
   QWidget(parent),
   ui(new Ui::MessageWidget),
-  edit_icon_(":/quick_note/icon.svg")
+  edit_icon_(":/quick_note/edit.svg")
 {
   ui->setupUi(this);
 }
