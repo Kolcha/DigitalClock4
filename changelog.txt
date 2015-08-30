@@ -1,3 +1,27 @@
+Whats new in 4.4.1:
+-------------------
+Core:
+ - build with Qt 5.5.0 (5.4.2 for Mac)
+ - Windows 10 ready!
+ - improved updater
+
+Features:
+ - colorize effect
+
+GUI:
+ - redesigned settings dialog
+ - fixed some localization issues
+
+Plugins:
+ - added new metadata fields
+ - 'quick note': added quick edit button
+
+SDK:
+ - added new setting options
+ - updated documentation
+ - simplified plugins api: most of all methods are optional
+
+
 Whats new in 4.4.0:
 -------------------
 Core:

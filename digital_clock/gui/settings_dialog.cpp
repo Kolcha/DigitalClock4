@@ -26,6 +26,7 @@ namespace gui {
 SettingsDialog::SettingsDialog(QWidget* parent)
   : CenteredDialog(parent), ui(new Ui::SettingsDialog) {
   ui->setupUi(this);
+  ui->skin_info_btn->setVisible(false);  // temporary, not implemented
   setWindowIcon(QIcon(":/clock/images/settings.svg"));
 
   connect(this, SIGNAL(accepted()), this, SLOT(SaveState()));
