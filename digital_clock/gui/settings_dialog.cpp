@@ -408,3 +408,11 @@ void digital_clock::gui::SettingsDialog::on_img_color_btn_clicked() {
 void digital_clock::gui::SettingsDialog::on_level_slider_valueChanged(int value) {
   emit OptionChanged(OPT_COLORIZE_LEVEL, value / 100.);
 }
+
+void digital_clock::gui::SettingsDialog::on_align_left_rbtn_toggled(bool checked) {
+  //
+}
+
+void digital_clock::gui::SettingsDialog::on_align_right_rbtn_toggled(bool checked) {
+  //
+}

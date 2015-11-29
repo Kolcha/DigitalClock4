@@ -272,21 +272,38 @@
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="648"/>
+        <source>Alignment</source>
+        <translation>Выравнивание</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="654"/>
+        <source>left</source>
+        <translatorcomment>выравнивание по левому краю</translatorcomment>
+        <translation>по левому</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="664"/>
+        <source>right</source>
+        <translatorcomment>выравнивание по правому краю</translatorcomment>
+        <translation>по правому</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="674"/>
         <source>Space between digits</source>
         <translation>расстояние между цифрами</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="654"/>
+        <location filename="../gui/settings_dialog.ui" line="680"/>
         <source>less</source>
         <translation>меньше</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="680"/>
+        <location filename="../gui/settings_dialog.ui" line="706"/>
         <source>more</source>
         <translation>больше</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="690"/>
+        <location filename="../gui/settings_dialog.ui" line="716"/>
         <source>Autoupdate</source>
         <translation>автообновление</translation>
     </message>
@@ -296,12 +313,12 @@
         <translation>включить автообновление</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="696"/>
+        <location filename="../gui/settings_dialog.ui" line="722"/>
         <source>Check for updates every</source>
         <translation>Проверять обновления каждые</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="719"/>
+        <location filename="../gui/settings_dialog.ui" line="745"/>
         <source>check for beta releases</source>
         <translation>обновляться до бета релизов</translation>
     </message>
@@ -316,7 +333,7 @@
         <translation>По умолчанию</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="743"/>
+        <location filename="../gui/settings_dialog.ui" line="769"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
