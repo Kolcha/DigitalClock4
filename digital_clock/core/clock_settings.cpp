@@ -11,6 +11,7 @@ void GetOptionsKeys(QMap<Options, QString>& opt_map) {
   opt_map[OPT_SEPARATOR_FLASH]      = "clock/separator_flash";
   opt_map[OPT_PLUGINS]              = "clock/plugins";
   opt_map[OPT_TIME_FORMAT]          = "clock/time_format";
+  opt_map[OPT_ALIGNMENT]            = "clock/alignment";
   // skin settings
   opt_map[OPT_SKIN_NAME]            = "skin/name";
   opt_map[OPT_FONT]                 = "skin/font";
