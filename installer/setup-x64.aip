@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="10.7.1" version="12.3.1" Modules="professional" RootPath="." Language="en" Id="{1960A182-4B40-446B-997D-4D6CB7D42D0D}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="10.7.1" version="12.5.1" Modules="professional" RootPath="." Language="en" Id="{1960A182-4B40-446B-997D-4D6CB7D42D0D}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_DESKTOP_SH" Type="4" MsiKey="AI_DESKTOP_SH"/>
@@ -14,10 +14,10 @@
     <ROW Property="ARPURLUPDATEINFO" Value="http://sourceforge.net/projects/digitalclock4/"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="Nick Korotysh"/>
-    <ROW Property="ProductCode" Value="1033:{83BF3C15-6540-4F4D-9DC5-525FFBF5A8F5} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{104B8527-BDC2-4016-A2F3-5D3C317252C0} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Digital Clock"/>
-    <ROW Property="ProductVersion" Value="4.4.1" Type="32"/>
+    <ROW Property="ProductVersion" Value="4.4.2" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{64E0CE3B-F6E2-4CC9-ACD2-A24E812DF339}"/>
@@ -646,7 +646,7 @@
     <ROW Dialog_="ShortcutsDlg" Control_="QuickLaunchShorcutsCheckBox" Action="Hide" Condition="(Not Installed) AND (VersionNT&lt;&quot;601&quot;)"/>
     <ROW Dialog_="ShortcutsDlg" Control_="DesktopShortcutsCheckBox" Action="Show" Condition="(Not Installed)"/>
     <ROW Dialog_="ShortcutsDlg" Control_="StartupShorcutsCheckBox" Action="Hide" Condition="(Not Installed)"/>
-    <ATTRIBUTE name="DeletedRows" value="ShortcutsDlg#StartupShorcutsCheckBox#Show#(Not Installed)@ShortcutsDlg#DesktopShortcutsCheckBox#Show#(Not Installed)@ShortcutsDlg#QuickLaunchShorcutsCheckBox#Show#(Not Installed) AND (VersionNT&lt;&quot;601&quot;)"/>
+    <ATTRIBUTE name="DeletedRows" value="ShortcutsDlg#DesktopShortcutsCheckBox#Show#(Not Installed)@ShortcutsDlg#QuickLaunchShorcutsCheckBox#Show#(Not Installed) AND (VersionNT&lt;&quot;601&quot;)@ShortcutsDlg#StartupShorcutsCheckBox#Show#(Not Installed)"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
