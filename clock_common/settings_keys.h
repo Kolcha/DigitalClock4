@@ -20,6 +20,12 @@ enum class Customization {
   C_COLORIZE      /*!< colorize skin without changing its texture */
 };
 
+/*! clock alignment value type */
+enum CAlignment {
+  A_LEFT = 1,     /*!< align left */
+  A_RIGHT         /*!< align right */
+};
+
 /*! clock settings keys */
 /*! @note Comments format: option description, type, possible values */
 enum Options {
@@ -30,6 +36,7 @@ enum Options {
   OPT_SEPARATOR_FLASH,          /*!< is separator flashes flag, bool, true/false */
   OPT_PLUGINS,                  /*!< plugins to load, QStringList, list of plugin names */
   OPT_TIME_FORMAT,              /*!< time format, QString, any valid time format string */
+  OPT_ALIGNMENT,                /*!< clock alignment, CAlignment, A_LEFT/A_RIGHT */
   // skin settings
   OPT_SKIN_NAME,                /*!< skin name to use, QString, skin name */
   OPT_FONT,                     /*!< font to use, QFont, any available font */

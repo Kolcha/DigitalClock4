@@ -23,6 +23,7 @@ QVariant GetDefaultValue(Options opt) {
       }
       return time_format;
     }
+    case OPT_ALIGNMENT:             return static_cast<int>(CAlignment::A_LEFT);
     // skin settings
     case OPT_SKIN_NAME:             return QString("Electronic (default)");
     case OPT_FONT:                  return QFont();

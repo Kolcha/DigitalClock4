@@ -84,6 +84,14 @@ void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings)
         break;
       }
 
+      case OPT_ALIGNMENT:
+      {
+        CAlignment alignment = static_cast<CAlignment>(value.toInt());
+        ui->align_left_rbtn->setChecked(alignment == CAlignment::A_LEFT);
+        ui->align_right_rbtn->setChecked(alignment == CAlignment::A_RIGHT);
+        break;
+      }
+
       case OPT_SKIN_NAME:
         ui->skin_box->setCurrentText(value.toString());
         ui->use_skin->setChecked(value.toString() != "Text Skin");
@@ -407,4 +415,12 @@ void digital_clock::gui::SettingsDialog::on_img_color_btn_clicked() {
 
 void digital_clock::gui::SettingsDialog::on_level_slider_valueChanged(int value) {
   emit OptionChanged(OPT_COLORIZE_LEVEL, value / 100.);
+}
+
+void digital_clock::gui::SettingsDialog::on_align_left_rbtn_toggled(bool checked) {
+  if (checked) emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(CAlignment::A_LEFT));
+}
+
+void digital_clock::gui::SettingsDialog::on_align_right_rbtn_toggled(bool checked) {
+  if (checked) emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(CAlignment::A_RIGHT));
 }

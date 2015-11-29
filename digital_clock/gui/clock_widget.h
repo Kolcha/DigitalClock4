@@ -35,6 +35,9 @@ protected:
   void mouseReleaseEvent(QMouseEvent* event);
   void paintEvent(QPaintEvent* event);
 
+private slots:
+  void Update();
+
 private:
   void SetWindowFlag(Qt::WindowFlags flag, bool set);
 
@@ -44,6 +47,8 @@ private:
 
   QColor colorize_color_;
   qreal colorize_level_;
+
+  CAlignment cur_alignment_;
 };
 
 } // namespace gui

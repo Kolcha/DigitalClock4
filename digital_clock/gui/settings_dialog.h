@@ -72,6 +72,8 @@ private slots:
   void on_cust_colorize_toggled(bool checked);
   void on_img_color_btn_clicked();
   void on_level_slider_valueChanged(int value);
+  void on_align_left_rbtn_toggled(bool checked);
+  void on_align_right_rbtn_toggled(bool checked);
 
 private:
   Ui::SettingsDialog* ui;
