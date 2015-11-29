@@ -8,6 +8,7 @@
 #include "clock_widget.h"
 
 #define S_OPT_POSITION              "state/clock_position"
+#define S_OPT_ALIGNMENT             "state/last_alignment"
 
 namespace digital_clock {
 namespace gui {
@@ -17,14 +18,23 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent) {
   QGridLayout* main_layout = new QGridLayout(this);
   main_layout->addWidget(display_);
   setLayout(main_layout);
+  adjustSize();
 
   drawer_ = new ::skin_draw::SkinDrawer(this);
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
   connect(display_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
+  connect(display_, SIGNAL(changed()), this, SLOT(Update()));
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), display_, SLOT(DrawImage(QImage)));
 
   QSettings state;
-  move(state.value(S_OPT_POSITION, QPoint(50, 20)).toPoint());
+  QPoint last_pos = state.value(S_OPT_POSITION, QPoint(50, 20)).toPoint();
+
+  CAlignment last_align = static_cast<CAlignment>(state.value(S_OPT_ALIGNMENT, CAlignment::A_LEFT).toInt());
+  if (last_align == CAlignment::A_RIGHT) {
+    last_pos.setX(last_pos.x() - this->width());
+  }
+  cur_alignment_ = last_align;
+  this->move(last_pos);
 
   colorize_color_ = GetDefaultValue(OPT_COLORIZE_COLOR).value<QColor>();
   colorize_level_ = GetDefaultValue(OPT_COLORIZE_LEVEL).toReal();
@@ -59,6 +69,20 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
     case OPT_TIME_FORMAT:
       display_->SetTimeFormat(value.toString());
       break;
+
+    case OPT_ALIGNMENT:
+    {
+      cur_alignment_ = static_cast<CAlignment>(value.toInt());
+      if (!display_->pixmap()) break;
+      QSettings state;
+      state.setValue(S_OPT_ALIGNMENT, static_cast<int>(cur_alignment_));
+      QPoint cur_pos = this->pos();
+      if (cur_alignment_ == CAlignment::A_RIGHT) {
+        cur_pos = this->frameGeometry().topRight();
+      }
+      state.setValue(S_OPT_POSITION, cur_pos);
+      break;
+    }
 
     case OPT_ZOOM:
       drawer_->SetZoom(value.toReal());
@@ -156,7 +180,12 @@ void ClockWidget::mousePressEvent(QMouseEvent* event) {
 void ClockWidget::mouseReleaseEvent(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
     QSettings state;
-    state.setValue(S_OPT_POSITION, pos());
+    state.setValue(S_OPT_ALIGNMENT, static_cast<int>(cur_alignment_));
+    QPoint last_pos = this->pos();
+    if (cur_alignment_ == CAlignment::A_RIGHT) {
+      last_pos.setX(this->frameGeometry().right());
+    }
+    state.setValue(S_OPT_POSITION, last_pos);
     event->accept();
   }
 }
@@ -165,6 +194,15 @@ void ClockWidget::paintEvent(QPaintEvent* /*event*/) {
   QPainter p(this);
   p.setCompositionMode(QPainter::CompositionMode_Clear);
   p.fillRect(this->rect(), Qt::transparent);
+}
+
+void ClockWidget::Update() {
+  if (cur_alignment_ == CAlignment::A_RIGHT) {
+    QPoint cp = this->pos();
+    cp.setX(cp.x() + this->width() - 2 * this->layout()->margin() - display_->width());
+    this->move(cp);
+  }
+  this->adjustSize();
 }
 
 void ClockWidget::SetWindowFlag(Qt::WindowFlags flag, bool set) {

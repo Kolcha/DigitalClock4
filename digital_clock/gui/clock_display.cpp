@@ -20,7 +20,8 @@ ClockDisplay::~ClockDisplay() {
 
 void ClockDisplay::DrawImage(const QImage& image) {
   setPixmap(QPixmap::fromImage(image));
-  parentWidget()->adjustSize();
+  adjustSize();
+  emit changed();
 }
 
 void ClockDisplay::SetSeparatorFlash(bool set) {
