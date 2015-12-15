@@ -39,6 +39,12 @@ done
 
 IFS="$oldIFS"
 
+# copy some Qt plugins
+cp -r "$QT_PATH/../plugins/iconengines" "digital_clock/digital_clock.app/Contents/PlugIns/"
+rm -f "digital_clock/digital_clock.app/Contents/PlugIns/iconengines/*_debug.dylib"
+cp -r "$QT_PATH/../plugins/playlistformats" "digital_clock/digital_clock.app/Contents/PlugIns/"
+rm -f "digital_clock/digital_clock.app/Contents/PlugIns/playlistformats/*_debug.dylib"
+
 # copy resources
 cp -r $CLOCK_DATA_PATH/skins digital_clock/digital_clock.app/Contents/
 cp -r $CLOCK_DATA_PATH/textures digital_clock/digital_clock.app/Contents/

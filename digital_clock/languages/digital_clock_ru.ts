@@ -47,42 +47,47 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="112"/>
+        <location filename="../gui/about_dialog.ui" line="60"/>
+        <source>Info</source>
+        <translation>Информация</translation>
+    </message>
+    <message>
+        <location filename="../gui/about_dialog.ui" line="156"/>
         <source>Links</source>
         <translation>Ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="118"/>
-        <source>information:</source>
-        <translation>информация:</translation>
+        <location filename="../gui/about_dialog.ui" line="162"/>
+        <source>Useful links</source>
+        <translation>Полезные ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="138"/>
+        <location filename="../gui/about_dialog.ui" line="181"/>
+        <source>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;bug report/feature request&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;сообщить об ошибке/предложить функцию&lt;/a&gt;</translation>
+    </message>
+    <message>
+        <location filename="../gui/about_dialog.ui" line="194"/>
+        <source>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/&quot;&gt;view/get source code&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/&quot;&gt;посмотреть/загрузить исходный код&lt;/a&gt;</translation>
+    </message>
+    <message>
+        <location filename="../gui/about_dialog.ui" line="210"/>
+        <source>More info</source>
+        <translation>Информация на других сайтах</translation>
+    </message>
+    <message>
+        <location filename="../gui/about_dialog.ui" line="168"/>
         <source>&lt;a href=&quot;http://sourceforge.net/projects/digitalclock4/&quot;&gt;project home page&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;http://sourceforge.net/projects/digitalclock4/&quot;&gt;страница проекта&lt;/a&gt;</translation>
+        <translation>&lt;a href=&quot;http://sourceforge.net/projects/digitalclock4/&quot;&gt;домашняя страница проекта&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="151"/>
-        <source>source code:</source>
-        <translation>исходный код:</translation>
-    </message>
-    <message>
-        <location filename="../gui/about_dialog.ui" line="184"/>
-        <source>e-mail:</source>
-        <translation>e-mail:</translation>
-    </message>
-    <message>
-        <location filename="../gui/about_dialog.ui" line="248"/>
-        <source>Close</source>
-        <translation>Закрыть</translation>
-    </message>
-    <message>
-        <location filename="../gui/about_dialog.cpp" line="45"/>
+        <location filename="../gui/about_dialog.cpp" line="47"/>
         <source>version: %1 (%2)</source>
         <translation>версия: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="50"/>
+        <location filename="../gui/about_dialog.cpp" line="52"/>
         <source>build date: %1</source>
         <translatorcomment>дата компиляции приложения</translatorcomment>
         <translation>дата сборки: %1</translation>
