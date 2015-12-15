@@ -8,22 +8,21 @@ namespace gui {
 
 TrayControl::TrayControl(QWidget* parent) : QObject(parent) {
   QMenu* tray_menu = new QMenu(parent);
-  tray_menu->addAction(QIcon(":/clock/images/settings.svg"), tr("&Settings"),
+  tray_menu->addAction(QIcon(":/clock/images/settings.svg").pixmap(16), tr("&Settings"),
                        this, SIGNAL(ShowSettingsDlg()));
-  tray_menu->addAction(QIcon(":/clock/images/about.svg"), tr("&About"),
+  tray_menu->addAction(QIcon(":/clock/images/about.svg").pixmap(16), tr("&About"),
                        this, SIGNAL(ShowAboutDlg()));
   tray_menu->addSeparator();
-  tray_menu->addAction(QIcon(":/clock/images/update.svg"), tr("&Update"),
+  tray_menu->addAction(QIcon(":/clock/images/update.svg").pixmap(16), tr("&Update"),
                        this, SIGNAL(CheckForUpdates()));
   tray_menu->addSeparator();
-  tray_menu->addAction(QIcon(":/clock/images/quit.svg"), tr("&Quit"),
+  tray_menu->addAction(QIcon(":/clock/images/quit.svg").pixmap(16), tr("&Quit"),
                        this, SIGNAL(AppExit()));
 
-  tray_icon_ = new QSystemTrayIcon(this);
+  tray_icon_ = new QSystemTrayIcon(QApplication::windowIcon(), this);
+  tray_icon_->setVisible(true);
   tray_icon_->setContextMenu(tray_menu);
-  tray_icon_->setIcon(QIcon(":/clock/images/clock.svg"));
-  tray_icon_->setToolTip(qApp->applicationDisplayName() + " " + qApp->applicationVersion());
-  tray_icon_->show();
+  tray_icon_->setToolTip(QApplication::applicationDisplayName() + " " + QApplication::applicationVersion());
   connect(tray_icon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
           this, SLOT(TrayEventHandler(QSystemTrayIcon::ActivationReason)));
 }
