@@ -1,3 +1,5 @@
+#include <QGuiApplication>
+#include <QScreen>
 #include <QFile>
 #include <QList>
 #include <QPainter>
@@ -7,11 +9,12 @@ namespace skin_draw {
 
 SkinDrawer::SkinDrawer(QObject* parent)
   : QObject(parent), texture_(8, 8) {
+  device_pixel_ratio_ = QGuiApplication::primaryScreen()->devicePixelRatio();
   zoom_ = 1.0;
   txd_per_elem_ = false;
   preview_mode_ = false;
   cust_type_ = CT_COLOR;
-  space_ = 4;
+  space_ = 4 * device_pixel_ratio_;
 }
 
 void SkinDrawer::ApplySkin(ISkin::SkinPtr skin) {
@@ -75,7 +78,7 @@ void SkinDrawer::SetCustomizationType(CustomizationType type) {
 }
 
 void SkinDrawer::SetSpace(int new_space) {
-  space_ = new_space;
+  space_ = new_space * device_pixel_ratio_;
   Redraw();
 }
 
@@ -123,7 +126,7 @@ void SkinDrawer::Redraw() {
 
   // create result image
   QImage result(result_w, result_h, QImage::Format_ARGB32_Premultiplied);
-  result.setDevicePixelRatio(elements.front()->devicePixelRatio());
+  result.setDevicePixelRatio(device_pixel_ratio_);
   QPainter painter(&result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
   painter.fillRect(result.rect(), Qt::transparent);

@@ -119,6 +119,9 @@ private:
    */
   void DrawTexture(QPainter& painter, const QRect& rect);
 
+  /// device pixel ratio, see Qt documentation for details
+  qreal device_pixel_ratio_;
+
   ISkin::SkinPtr skin_;
   QString str_;
   qreal zoom_;

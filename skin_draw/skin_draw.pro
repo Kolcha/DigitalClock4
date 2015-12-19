@@ -30,5 +30,5 @@ HEADERS += \
     iskin.h
 
 win32:RC_FILE = skin_draw.rc
-unix:VERSION = 1.2.2
+unix:VERSION = 1.2.3
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
