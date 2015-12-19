@@ -148,6 +148,7 @@ void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings)
 
       case OPT_SPACING:
         ui->space_slider->setValue(value.toInt());
+        ui->space_slider->setToolTip(QString::number(value.toInt()));
         break;
 
       case OPT_COLORIZE_COLOR:
@@ -362,6 +363,7 @@ void SettingsDialog::on_check_for_beta_toggled(bool checked) {
 }
 
 void SettingsDialog::on_space_slider_valueChanged(int arg1) {
+  ui->space_slider->setToolTip(QString::number(arg1));
   emit OptionChanged(OPT_SPACING, arg1);
 }
 
