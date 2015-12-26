@@ -1,5 +1,8 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
+#ifdef Q_OS_LINUX
+#include <QSysInfo>
+#endif
 #include "http_client.h"
 
 namespace digital_clock {
@@ -16,7 +19,23 @@ void HttpClient::startRequest(QUrl url) {
   url_ = url;
   is_running_ = true;
   QNetworkRequest req(url);
-  req.setRawHeader("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0");
+#ifdef Q_OS_OSX
+  req.setRawHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:43.0) Gecko/20100101 Firefox/43.0");
+#endif
+#ifdef Q_OS_LINUX
+  if (QSysInfo::WordSize == 64) {
+    req.setRawHeader("User-Agent", "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:43.0) Gecko/20100101 Firefox/43.0");
+  } else {
+    req.setRawHeader("User-Agent", "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:43.0) Gecko/20100101 Firefox/43.0");
+  }
+#endif
+#ifdef Q_OS_WIN
+#ifdef Q_OS_WIN64
+  req.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0");
+#else
+  req.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.3; rv:43.0) Gecko/20100101 Firefox/43.0");
+#endif
+#endif
   reply_ = qnam_.get(req);
   connect(reply_, SIGNAL(finished()), this, SLOT(httpFinished()));
   connect(reply_, SIGNAL(readyRead()), this, SLOT(httpReadyRead()));
