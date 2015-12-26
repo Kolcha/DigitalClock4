@@ -37,6 +37,7 @@ protected:
 
 private slots:
   void Update();
+  void DrawImage(const QImage& image);
 
 private:
   void SetWindowFlag(Qt::WindowFlags flag, bool set);
@@ -47,6 +48,7 @@ private:
 
   QColor colorize_color_;
   qreal colorize_level_;
+  bool colorize_enabled_;
 
   CAlignment cur_alignment_;
 };
