@@ -2,10 +2,10 @@
 #include <QSettings>
 #include <QMouseEvent>
 #include <QPainter>
-#include <QGraphicsColorizeEffect>
 #include "skin_drawer.h"
 #include "clock_display.h"
 #include "clock_widget.h"
+#include "colorize_effect.h"
 
 #define S_OPT_POSITION              "state/clock_position"
 #define S_OPT_ALIGNMENT             "state/last_alignment"
@@ -24,7 +24,7 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent) {
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
   connect(display_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(display_, SIGNAL(changed()), this, SLOT(Update()));
-  connect(drawer_, SIGNAL(DrawingFinished(QImage)), display_, SLOT(DrawImage(QImage)));
+  connect(drawer_, SIGNAL(DrawingFinished(QImage)), this, SLOT(DrawImage(QImage)));
 
   QSettings state;
   QPoint last_pos = state.value(S_OPT_POSITION, QPoint(50, 20)).toPoint();
@@ -38,6 +38,7 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent) {
 
   colorize_color_ = GetDefaultValue(OPT_COLORIZE_COLOR).value<QColor>();
   colorize_level_ = GetDefaultValue(OPT_COLORIZE_LEVEL).toReal();
+  colorize_enabled_ = false;
 }
 
 ClockDisplay* ClockWidget::GetDisplay() const {
@@ -113,21 +114,20 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
       Customization cust = static_cast<Customization>(value.toInt());
       switch (cust) {
         case Customization::C_NONE:
-          this->setGraphicsEffect(0);
+          colorize_enabled_ = false;
           drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
           break;
 
         case Customization::C_TEXTURING:
-          this->setGraphicsEffect(0);
+          colorize_enabled_ = false;
+          if (!last_image_.isNull()) DrawImage(last_image_);
           break;
 
         case Customization::C_COLORIZE:
         {
           drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
-          QGraphicsColorizeEffect* effect = new QGraphicsColorizeEffect();
-          effect->setColor(colorize_color_);
-          effect->setStrength(colorize_level_);
-          this->setGraphicsEffect(effect);
+          colorize_enabled_ = true;
+          if (!last_image_.isNull()) DrawImage(last_image_);
           break;
         }
       }
@@ -139,20 +139,14 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
       break;
 
     case OPT_COLORIZE_COLOR:
-    {
       colorize_color_ = value.value<QColor>();
-      QGraphicsColorizeEffect* effect = qobject_cast<QGraphicsColorizeEffect*>(graphicsEffect());
-      if (effect) effect->setColor(colorize_color_);
+      if (!last_image_.isNull()) DrawImage(last_image_);
       break;
-    }
 
     case OPT_COLORIZE_LEVEL:
-    {
       colorize_level_ = value.toReal();
-      QGraphicsColorizeEffect* effect = qobject_cast<QGraphicsColorizeEffect*>(graphicsEffect());
-      if (effect) effect->setStrength(colorize_level_);
+      if (!last_image_.isNull()) DrawImage(last_image_);
       break;
-    }
 
     default:
       break;
@@ -203,6 +197,17 @@ void ClockWidget::Update() {
     this->move(cp);
   }
   this->adjustSize();
+}
+
+void ClockWidget::DrawImage(const QImage& image) {
+  if (colorize_enabled_) {
+    QImage dst_image;
+    colorize_image(image, dst_image, colorize_color_, colorize_level_);
+    display_->DrawImage(dst_image);
+  } else {
+    display_->DrawImage(image);
+  }
+  last_image_ = image;
 }
 
 void ClockWidget::SetWindowFlag(Qt::WindowFlags flag, bool set) {

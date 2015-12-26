@@ -26,6 +26,7 @@ SOURCES += main.cpp\
     core/http_client.cpp \
     gui/clock_widget.cpp \
     gui/clock_display.cpp \
+    gui/colorize_effect.cpp \
     gui/tray_control.cpp \
     gui/plugin_list_item_widget.cpp \
     core/manager_base.cpp \
@@ -47,6 +48,7 @@ HEADERS += \
     core/http_client.h \
     gui/clock_widget.h \
     gui/clock_display.h \
+    gui/colorize_effect.h \
     gui/tray_control.h \
     gui/plugin_list_item_widget.h \
     core/manager_base.h \
