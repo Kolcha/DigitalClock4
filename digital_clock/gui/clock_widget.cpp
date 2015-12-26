@@ -120,12 +120,14 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
 
         case Customization::C_TEXTURING:
           colorize_enabled_ = false;
+          if (!last_image_.isNull()) DrawImage(last_image_);
           break;
 
         case Customization::C_COLORIZE:
         {
           drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
           colorize_enabled_ = true;
+          if (!last_image_.isNull()) DrawImage(last_image_);
           break;
         }
       }
@@ -138,10 +140,12 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
 
     case OPT_COLORIZE_COLOR:
       colorize_color_ = value.value<QColor>();
+      if (!last_image_.isNull()) DrawImage(last_image_);
       break;
 
     case OPT_COLORIZE_LEVEL:
       colorize_level_ = value.toReal();
+      if (!last_image_.isNull()) DrawImage(last_image_);
       break;
 
     default:
@@ -203,6 +207,7 @@ void ClockWidget::DrawImage(const QImage& image) {
   } else {
     display_->DrawImage(image);
   }
+  last_image_ = image;
 }
 
 void ClockWidget::SetWindowFlag(Qt::WindowFlags flag, bool set) {

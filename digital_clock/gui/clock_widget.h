@@ -51,6 +51,8 @@ private:
   bool colorize_enabled_;
 
   CAlignment cur_alignment_;
+
+  QImage last_image_;
 };
 
 } // namespace gui
