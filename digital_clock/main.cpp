@@ -201,6 +201,9 @@ int main(int argc, char *argv[]) {
                        [&] () { dialog->SetCurrentSettings(settings->GetSettings()); });
       QObject::connect(settings.data(), &ClockSettings::SettingsImported, reload_plugins);
 
+      QObject::connect(dialog.data(), &SettingsDialog::CheckForUpdates,
+                       [=] () { updater->CheckForUpdates(true); });
+
       QObject::connect(dialog.data(), &SettingsDialog::destroyed, [=] () {
         clock_widget->PreviewMode(false);
         settings->TrackChanges(false);

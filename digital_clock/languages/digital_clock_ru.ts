@@ -4,29 +4,29 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="231"/>
-        <location filename="../main.cpp" line="239"/>
-        <location filename="../main.cpp" line="248"/>
+        <location filename="../main.cpp" line="234"/>
+        <location filename="../main.cpp" line="242"/>
+        <location filename="../main.cpp" line="251"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="232"/>
+        <location filename="../main.cpp" line="235"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="240"/>
+        <location filename="../main.cpp" line="243"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="249"/>
+        <location filename="../main.cpp" line="252"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="260"/>
+        <location filename="../main.cpp" line="263"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -318,12 +318,18 @@
         <translation>включить автообновление</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="722"/>
+        <location filename="../gui/settings_dialog.ui" line="728"/>
         <source>Check for updates every</source>
         <translation>Проверять обновления каждые</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="745"/>
+        <location filename="../gui/settings_dialog.ui" line="743"/>
+        <source>Check now!</source>
+        <translatorcomment>проверить наличие обновлений</translatorcomment>
+        <translation>Проверить!</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="756"/>
         <source>check for beta releases</source>
         <translation>обновляться до бета релизов</translation>
     </message>
@@ -338,7 +344,7 @@
         <translation>По умолчанию</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="769"/>
+        <location filename="../gui/settings_dialog.ui" line="780"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
@@ -363,33 +369,33 @@
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="207"/>
+        <location filename="../gui/settings_dialog.cpp" line="209"/>
         <source>unknown</source>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="302"/>
+        <location filename="../gui/settings_dialog.cpp" line="304"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="304"/>
+        <location filename="../gui/settings_dialog.cpp" line="306"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="371"/>
+        <location filename="../gui/settings_dialog.cpp" line="373"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="373"/>
-        <location filename="../gui/settings_dialog.cpp" line="380"/>
+        <location filename="../gui/settings_dialog.cpp" line="375"/>
+        <location filename="../gui/settings_dialog.cpp" line="382"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="378"/>
+        <location filename="../gui/settings_dialog.cpp" line="380"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>

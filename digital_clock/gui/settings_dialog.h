@@ -30,6 +30,7 @@ signals:
   void ExportSettings(const QString& filename);
   void ImportSettings(const QString& filename);
   void ResetSettings();
+  void CheckForUpdates();
 
 public slots:
   void SetSkinList(const QStringList& skins);

@@ -46,6 +46,8 @@ SettingsDialog::SettingsDialog(QWidget* parent)
   connect(this, &SettingsDialog::accepted, [this] () {
     SetAutoStart(this->ui->autostart->isChecked());
   });
+
+  connect(ui->check_upd_now_btn, SIGNAL(clicked(bool)), this, SIGNAL(CheckForUpdates()));
 }
 
 SettingsDialog::~SettingsDialog() {
