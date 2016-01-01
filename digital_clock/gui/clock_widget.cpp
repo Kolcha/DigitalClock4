@@ -2,6 +2,7 @@
 #include <QSettings>
 #include <QMouseEvent>
 #include <QPainter>
+#include <QDesktopWidget>
 #include "skin_drawer.h"
 #include "clock_display.h"
 #include "clock_widget.h"
@@ -78,8 +79,29 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
       QSettings state;
       state.setValue(S_OPT_ALIGNMENT, static_cast<int>(cur_alignment_));
       QPoint cur_pos = this->pos();
-      if (cur_alignment_ == CAlignment::A_RIGHT) {
-        cur_pos = this->frameGeometry().topRight();
+      switch (cur_alignment_) {
+        case CAlignment::A_LEFT:
+        {
+          if (cur_pos.x() < 0) {
+            cur_pos.setX(0);
+            this->move(cur_pos);
+          }
+          break;
+        }
+
+        case CAlignment::A_RIGHT:
+        {
+          cur_pos = this->frameGeometry().topRight();
+          QDesktopWidget desktop;
+          if (cur_pos.x() > desktop.screen()->width()) {
+            cur_pos.setX(desktop.screen()->width());
+            this->move(cur_pos.x() - this->width(), cur_pos.y());
+          }
+          break;
+        }
+
+        default:
+          Q_ASSERT(false);
       }
       state.setValue(S_OPT_POSITION, cur_pos);
       break;
