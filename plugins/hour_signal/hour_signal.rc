@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	2,1,0,47
+FILEVERSION	2,1,0,48
 PRODUCTVERSION	4,4,2,0
 FILEOS		0x4
 FILETYPE	0x2
@@ -11,9 +11,9 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Every hour signal"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "2.1.0.47"
+		VALUE "FileVersion", "2.1.0.48"
 		VALUE "InternalName", "hour_signal.dll"
-		VALUE "LegalCopyright", "© 2013-2015 Nick Korotysh"
+		VALUE "LegalCopyright", "© 2013-2016 Nick Korotysh"
 		VALUE "OriginalFilename", "hour_signal.dll"
 		VALUE "ProductName", "Digital Clock"
 		VALUE "ProductVersion", "4.4.2"
