@@ -1,3 +1,25 @@
+Whats new in 4.4.2:
+-------------------
+Core:
+ - Qt 5.5.1 on Win/Linux
+ - Qt 5.6.0 on Mac
+ - platform specific user-agent string in updater
+
+Features:
+ - right align support
+
+GUI:
+ - redesigned about dialog
+ - fixed space between digits on Mac
+ - fixed colorize effect on Retina Mac
+ - added tooltip for space between digits slider
+ - added check for updates button to settings dialog
+
+Installer:
+ - fixed/improved deployment on Mac
+ - changed windows installer creator tool: used WiX
+
+
 Whats new in 4.4.1:
 -------------------
 Core:
