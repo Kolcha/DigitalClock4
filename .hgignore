@@ -3,9 +3,8 @@ syntax: glob
 *.qm
 *.msi
 *.orig
-*.ba*
-installer/*-cache
-installer/Prerequisites
+*.wixobj
+*.wixpdb
 desktop.ini
 *.suo
 *.opensdf

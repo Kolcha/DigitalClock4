@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLDIR">
+            <Directory Id="dir280A744A3793B4E73B0B13172DB8683E" Name="plugins" />
+            <Directory Id="dirF1C5FA08924D46D2A43D5134DF70C0A8" Name="translations" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="QtFiles">
+            <Component Id="cmpF83098612A5B11C5398DBA3894ED590A" Directory="INSTALLDIR" Guid="{89523CD6-C577-49DE-80FB-22D339045943}">
+                <File Id="fil526FA994C1850220CFA7BD7FCD995C32" KeyPath="yes" Source="..\..\..\Qt files x86\D3Dcompiler_47.dll" />
+            </Component>
+            <Component Id="cmp5DDCF0CE56D406D1B8B1F93E988AED6B" Directory="INSTALLDIR" Guid="{B855E2C1-3C96-4157-BA92-8CC9C45BCDC8}">
+                <File Id="fil0F4CD3729AF07C1C460E292E0F081D0A" KeyPath="yes" Source="..\..\..\Qt files x86\libEGL.dll" />
+            </Component>
+            <Component Id="cmpB0CFEB9FF932521D6A75B6BE6F8D644F" Directory="INSTALLDIR" Guid="{A5623E34-B04D-4875-BFF4-0D10EEBDCDCE}">
+                <File Id="fil736048FE57EC840EA5DCE88625C38E8D" KeyPath="yes" Source="..\..\..\Qt files x86\libGLESv2.dll" />
+            </Component>
+            <Component Id="cmpEA16414E09FD1D5068139520966B49EB" Directory="INSTALLDIR" Guid="{1AA9D25F-AD66-4438-9029-6270F3069B6B}">
+                <File Id="filFC8C908E3AD35E8090AFF39C9B0FB744" KeyPath="yes" Source="..\..\..\Qt files x86\opengl32sw.dll" />
+            </Component>
+            <Component Id="cmp74392B787643A0F135CACCD11365E4FB" Directory="INSTALLDIR" Guid="{B9F63C64-0E94-49FC-B30B-BFCF4909228D}">
+                <File Id="fil6CB9C0F009ADC59844537D2147DF743F" KeyPath="yes" Source="..\..\..\Qt files x86\qt.conf" />
+            </Component>
+            <Component Id="cmp01229088A6F1DEA1BE391E6E7CC3D3EE" Directory="INSTALLDIR" Guid="{4815B61D-69BC-4687-B2D5-ABCDBEB50F02}">
+                <File Id="filAD80F4724AAE3D8B0682F5982CC2548D" KeyPath="yes" Source="..\..\..\Qt files x86\Qt5Core.dll" />
+            </Component>
+            <Component Id="cmp1658AEC83DA2CDD0D93D5BAAABBEAD46" Directory="INSTALLDIR" Guid="{03491A31-F34D-4396-AE26-7E933FB98281}">
+                <File Id="fil7E727B350B33C4EEEFE406E27624E057" KeyPath="yes" Source="..\..\..\Qt files x86\Qt5Gui.dll" />
+            </Component>
+            <Component Id="cmp7DA416773D48F08A51DA86C6F18A8138" Directory="INSTALLDIR" Guid="{08CCFDCD-CEE6-49DF-BB62-5CB99A1A870D}">
+                <File Id="filE492886A399EAA3D505F344B2658DD2C" KeyPath="yes" Source="..\..\..\Qt files x86\Qt5Multimedia.dll" />
+            </Component>
+            <Component Id="cmp2DE804C107C75B0C71470A93647D09B5" Directory="INSTALLDIR" Guid="{0FAB6A4D-FF60-4F3F-88DC-539EBEBF1FC9}">
+                <File Id="filD86C7802D20EDF450E8B03BC177BA71F" KeyPath="yes" Source="..\..\..\Qt files x86\Qt5Network.dll" />
+            </Component>
+            <Component Id="cmp82912105030EA0D2D7550CF8AC5677F6" Directory="INSTALLDIR" Guid="{07E1CC7D-8755-4D4A-A4D2-99107DF9728B}">
+                <File Id="fil6DA129DEAE11F969B17E1886F9AF9AA0" KeyPath="yes" Source="..\..\..\Qt files x86\Qt5Svg.dll" />
+            </Component>
+            <Component Id="cmp975651B71289ACA70B3EB154C08A27F0" Directory="INSTALLDIR" Guid="{C4582EB8-82A2-4FE8-9FB5-9F3EE1CA4DB4}">
+                <File Id="filE89B28CF105C7A7691C046E6516D540E" KeyPath="yes" Source="..\..\..\Qt files x86\Qt5Widgets.dll" />
+            </Component>
+            <Component Id="cmp0A3EA57EB677109190A07DB8452B32F6" Directory="dir0549B3D8BCB345376D7DA16235134304" Guid="{012938C0-C26C-4AD0-B9BA-A571BC1FA890}">
+                <File Id="fil053628F956B07B10E3C4E87C0CE8ABF7" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\audio\qtaudio_windows.dll" />
+            </Component>
+            <Component Id="cmpAA3D914703C06C9AB58FC4425223E6E8" Directory="dirD97694D95A5C47981248FBF5CBA0999C" Guid="{8E1FABFD-EC11-4AA3-B0F2-91B3E78780B7}">
+                <File Id="fil11A67234958E64E05DF7D434AD2C21BB" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\bearer\qgenericbearer.dll" />
+            </Component>
+            <Component Id="cmpF183D8CFFBD5B37BB5AD4ED65683ACFB" Directory="dirD97694D95A5C47981248FBF5CBA0999C" Guid="{973E6DD0-E815-4C44-9C4D-0D7C73A4E705}">
+                <File Id="fil723D25665013F184931C8ACAC2357D19" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\bearer\qnativewifibearer.dll" />
+            </Component>
+            <Component Id="cmp8868342A11EC1A5F0F368534A0870AAB" Directory="dir2C41C47317919F7F40F42C2D5CABDBDE" Guid="{CBA232B6-7E41-4B63-8CD0-972980B83AAD}">
+                <File Id="filACA0F8188FFBA3FCA53DDF584A3C92BA" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\iconengines\qsvgicon.dll" />
+            </Component>
+            <Component Id="cmp5E2F7AA881189E43475FAC5BE90DD0B8" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{B1BE31A5-56FD-4ECA-95FB-E9BD9EFF4A2F}">
+                <File Id="fil93477461E623F56FD06FC41F04B0989E" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qdds.dll" />
+            </Component>
+            <Component Id="cmp59F2CC1FC0003B3C2DC2E59B669C1485" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{FA202601-31D4-48FE-ACAB-826EC3FE6CF1}">
+                <File Id="fil706689E2C7B5A960108A3851CA1FFFB5" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qgif.dll" />
+            </Component>
+            <Component Id="cmp6FB78818D91522EEF11835938524CAA2" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{76117D26-30FB-44BB-A052-4CA2B3EA5E2E}">
+                <File Id="fil0A82059D502389A6C6F393F0DC857D8F" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qicns.dll" />
+            </Component>
+            <Component Id="cmp715C1286E8B00FFDC913B863D49664A7" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{D2352179-D600-490C-8299-BA69189057CB}">
+                <File Id="filA1C4CFCEA4776592E7A7B3708B0E39F5" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qico.dll" />
+            </Component>
+            <Component Id="cmp35D5592113BEE66ADF8D1E6B0F48ABA7" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{3E3096A4-CE33-47FF-B22A-5ACE3082F076}">
+                <File Id="fil31413A97607614363D02197272DA9C4F" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qjp2.dll" />
+            </Component>
+            <Component Id="cmp482273AFA3312C5FF80B304BD35D80BE" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{B215543E-3E41-4893-A346-39D638A0F4C5}">
+                <File Id="fil912762A8EB1F82029539A98F6A5D7B46" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qjpeg.dll" />
+            </Component>
+            <Component Id="cmp05B8A14018CD6129623D565D55DA4399" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{0688B060-128E-4789-A226-AC4251890CB0}">
+                <File Id="fil2680C35236BC0D0FC067BB88CCF2624E" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qmng.dll" />
+            </Component>
+            <Component Id="cmp75085EA01AF53C1C4393D459D1D6951C" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{671A70F6-5EE1-45CC-BF61-4BC3F281D72F}">
+                <File Id="filE9B34AC1DE1A10992341BF7A70583E2F" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qsvg.dll" />
+            </Component>
+            <Component Id="cmpE757721F807C2BF87C8E838648807E41" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{A84918B2-B765-4546-9FE4-71C238BF720C}">
+                <File Id="filD1501C8638A304E960D5BD13EC32B0C4" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qtga.dll" />
+            </Component>
+            <Component Id="cmp4532D35F12ACC340796CCC2898BAD222" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{402618D8-9EC0-407E-95AE-8B95D40FE9E3}">
+                <File Id="filFA0D58ADB1871DEFE58B2E38C8A20A54" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qtiff.dll" />
+            </Component>
+            <Component Id="cmpE361B2F2F2C313ABC3DC7CD756240FEA" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{9B7B8090-6434-48F9-BB7B-6B938A5F79EA}">
+                <File Id="fil56CF4E2EDC7A48235E689A8737B69AB8" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qwbmp.dll" />
+            </Component>
+            <Component Id="cmp55D3B5F14A47B895D41318BEF87A73BD" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{B1FEC90B-E3E4-4D64-B179-B1C1D27B3FA2}">
+                <File Id="filC417BF80A35F4D0348603D09CFB25E1B" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\imageformats\qwebp.dll" />
+            </Component>
+            <Component Id="cmp098B8555FD3ACDA25FC0E48FB8FA1724" Directory="dir38D1F3EF7754C1BA5FF82908E02510CA" Guid="{BC959892-63D9-4F7B-9841-965C9D8D4016}">
+                <File Id="filE27F3C57761005ED07CDF80E8245B303" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\mediaservice\dsengine.dll" />
+            </Component>
+            <Component Id="cmp9887ABF1BEE592C2B8D68293E2109B74" Directory="dir38D1F3EF7754C1BA5FF82908E02510CA" Guid="{C8588FF2-A0D1-4419-BAC2-7DCB8BA5B455}">
+                <File Id="filE09F520BD795B769A230A1834B3E444B" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\mediaservice\qtmedia_audioengine.dll" />
+            </Component>
+            <Component Id="cmpF404D47402B2D18DCD862E6C6776C7ED" Directory="dir38D1F3EF7754C1BA5FF82908E02510CA" Guid="{8A93A611-D200-437F-B5DC-BE3922496630}">
+                <File Id="fil4F9FF96439FAEFA29B2B9904EB2B56FE" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\mediaservice\wmfengine.dll" />
+            </Component>
+            <Component Id="cmp936AC238E2EA0F51E3BB91C5449A0A76" Directory="dir20F500013C22111CF35E03A6B87810E7" Guid="{F26A676A-1ECD-4FAC-BEE9-8252A9EE3C45}">
+                <File Id="filE49AA32C8913AE2348C59A5A35510458" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\platforms\qwindows.dll" />
+            </Component>
+            <Component Id="cmpBCB69B3F433ABDFA829622661FE097E9" Directory="dir714CDB49A7D3261D21A4321BF14039D2" Guid="{94CA2086-1F7A-4BFC-B7D3-913E8CF6D69C}">
+                <File Id="filA1DA4CDE70C942035990E426C4544B60" KeyPath="yes" Source="..\..\..\Qt files x86\plugins\playlistformats\qtmultimedia_m3u.dll" />
+            </Component>
+            <Component Id="cmpDAE87E8CC29C30A200A5D17D81DF1DE7" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{F495FED5-2D50-43B7-B655-82F68C1F2C92}">
+                <File Id="fil36E8A56D7DAEC62D31CEA91730D42174" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_ca.qm" />
+            </Component>
+            <Component Id="cmp719D62CCB63A2C08F22335557CBAB533" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{04760320-1B05-4A84-8E7C-E91046709F82}">
+                <File Id="fil5ECAF3F9F1940369AA594EE12825D0FB" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_cs.qm" />
+            </Component>
+            <Component Id="cmp56040A1BBEBE8A547F7D6672326FF4EE" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{FA963457-2ABC-4FEE-8666-EAC9CD9771EF}">
+                <File Id="fil0AA794E087CE581F4CA99D75C295092D" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_de.qm" />
+            </Component>
+            <Component Id="cmp42D4B2D8A4C91F9ED463DA42F3895E27" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{61997EE4-9EC9-4CBB-B202-5E6C08EF1870}">
+                <File Id="filAD08CEBCD34B84E90701D6248FDB5FA9" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_en.qm" />
+            </Component>
+            <Component Id="cmp7210C3ACD533D6A934BD5977AB16AF71" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{FAB51253-FE0F-4C73-853A-CB1682B0DDE2}">
+                <File Id="fil4B803C16DFCB1C5EA4D308AFD35049E3" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_fi.qm" />
+            </Component>
+            <Component Id="cmp0643210AD0A541FA765CE55469F22FBB" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{2CFB49EC-D8B9-4C76-BDCD-FDB6EE53F4AF}">
+                <File Id="fil65E050731B55F3764817B70B50D1F483" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_fr.qm" />
+            </Component>
+            <Component Id="cmp3666ECDFA614EA095AF7310AECCD44B7" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{4FF345E1-1460-45CA-8CA8-89A06CDFFFE8}">
+                <File Id="filD812B4BB739798D5C3BF25BEFBFBA938" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_he.qm" />
+            </Component>
+            <Component Id="cmpC4FA2671255E7459BD46070D88B76FF1" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{4C2E897A-22C8-4009-99C9-6DE0E024B696}">
+                <File Id="fil750345F0F25CC28174362BF42A332BFA" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_hu.qm" />
+            </Component>
+            <Component Id="cmp8D644C0D5E80E34EBCB6FC3643C879AF" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{AC9425E2-CF6C-407C-9A41-F6BB2E93A298}">
+                <File Id="filF6634E490610EB73E2D852D47B43255E" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_it.qm" />
+            </Component>
+            <Component Id="cmpA8DDE2BD9E1AB00C9631DE447CBAA11D" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{1E181EBA-0F5D-49A8-B29F-A1E8315CF19F}">
+                <File Id="fil493967A00B1FFB8D251F7A844D53A64A" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_ja.qm" />
+            </Component>
+            <Component Id="cmp23B3657EE14B0ED7D00B271AFF81187C" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{C5F0B08E-6614-4A72-88F2-0D320B79A7D1}">
+                <File Id="fil5A7EE1B788293556A515EAFFC95747DB" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_ko.qm" />
+            </Component>
+            <Component Id="cmp2D105F39980CF93A40405E25755346BB" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{F1B59FEA-D186-4AD9-A374-BF5AF709E5FC}">
+                <File Id="fil17B2A1B774381BBA3BF85AF1FFB636AA" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_lv.qm" />
+            </Component>
+            <Component Id="cmp43D57F897A909679308EFC03849D7E2E" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{808819E3-F4ED-4D7B-9E05-41F876AFC37C}">
+                <File Id="filADA551AF628F8CBA7E3D06EF76F2713A" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_ru.qm" />
+            </Component>
+            <Component Id="cmpF5EA7E37332E95C614BD2D7EAA933E5D" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{D9FBD19F-D59F-4B49-9C55-BE5BCF4868D8}">
+                <File Id="fil49E3CA421049811064612E40502A6147" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_sk.qm" />
+            </Component>
+            <Component Id="cmpA214B663A372012F5DCBA6A5CDAE421D" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{C3CB8518-559D-487B-800D-4D039F4E1192}">
+                <File Id="fil1380C741E2DBC1F60AA4DC32D66B1E6C" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_uk.qm" />
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
+            <Directory Id="dir0549B3D8BCB345376D7DA16235134304" Name="audio" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
+            <Directory Id="dir20F500013C22111CF35E03A6B87810E7" Name="platforms" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
+            <Directory Id="dir2C41C47317919F7F40F42C2D5CABDBDE" Name="iconengines" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
+            <Directory Id="dir38D1F3EF7754C1BA5FF82908E02510CA" Name="mediaservice" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
+            <Directory Id="dir714CDB49A7D3261D21A4321BF14039D2" Name="playlistformats" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
+            <Directory Id="dirC7D12466D9D4EFB37CFFCE0FE430D862" Name="imageformats" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
+            <Directory Id="dirD97694D95A5C47981248FBF5CBA0999C" Name="bearer" />
+        </DirectoryRef>
+    </Fragment>
+</Wix>
