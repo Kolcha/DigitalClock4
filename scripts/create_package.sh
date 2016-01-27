@@ -7,6 +7,16 @@ CLOCK_APP_NAME="Digital Clock 4"
 CLOCK_SRC_PATH="$HOME/Documents/Qt/digital_clock_4"
 CLOCK_DATA_PATH="$HOME/Documents/Qt/digital_clock_data"
 
+# some validation
+failed=0
+[ -d "$QT_PATH" ] || { failed=1; }
+[[ $failed == 1 ]] && echo "QT_PATH=$QT_PATH doesn't exists"
+[ -d "$CLOCK_SRC_PATH" ] || { failed=1; }
+[[ $failed == 1 ]] && echo "CLOCK_SRC_PATH=$CLOCK_SRC_PATH doesn't exists"
+[ -d "$CLOCK_DATA_PATH" ] || { failed=1; }
+[[ $failed == 1 ]] && echo "CLOCK_DATA_PATH=$CLOCK_DATA_PATH doesn't exists"
+[[ $failed == 1 ]] && exit 1
+
 cd "$CLOCK_SRC_PATH"
 
 $QT_PATH/lupdate -no-obsolete DigitalClock.pro
@@ -57,7 +67,6 @@ cp -r "$CLOCK_SRC_PATH" digital_clock_4-src
 cd digital_clock_4-src
 hg clean --all
 rm -rf .hg*
-rm -rf installer
 cd ..
 rm -f digital_clock_4-src.tar.xz
 tar cJvf digital_clock_4-src.tar.xz digital_clock_4-src
