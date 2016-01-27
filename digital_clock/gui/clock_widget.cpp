@@ -214,11 +214,16 @@ void ClockWidget::paintEvent(QPaintEvent* /*event*/) {
 
 void ClockWidget::Update() {
   if (cur_alignment_ == CAlignment::A_RIGHT) {
-    QPoint cp = this->pos();
-    cp.setX(cp.x() + this->width() - 2 * this->layout()->margin() - display_->width());
-    this->move(cp);
+    int old_width = this->frameGeometry().width();
+    this->adjustSize();
+    int new_width = this->frameGeometry().width();
+    QPoint cur_pos = this->pos();
+    cur_pos.setX(cur_pos.x() + old_width - new_width);
+    this->move(cur_pos);
+  } else {
+    Q_ASSERT(cur_alignment_ == CAlignment::A_LEFT);
+    this->adjustSize();
   }
-  this->adjustSize();
 }
 
 void ClockWidget::DrawImage(const QImage& image) {
