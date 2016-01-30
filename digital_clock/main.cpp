@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
   QList<QDir> default_skin_dirs;
   default_skin_dirs.append(QDir(":/clock/default_skins"));
 #ifdef Q_OS_OSX
-  default_skin_dirs.append(QDir(app.applicationDirPath() + "/../skins"));
+  default_skin_dirs.append(QDir(app.applicationDirPath() + "/../Resources/skins"));
 #else
   default_skin_dirs.append(QDir(app.applicationDirPath() + "/skins"));
 #endif

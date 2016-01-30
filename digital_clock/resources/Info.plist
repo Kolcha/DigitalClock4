@@ -12,10 +12,17 @@
 	<string>4.4.2</string>
 	<key>CFBundleSignature</key>
 	<string>NKDC</string>
+	<key>CFBundleVersion</key>
+	<string>608</string>
 	<key>CFBundleExecutable</key>
 	<string>digital_clock</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.sourceforge.digitalclock4</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>ru</string>
+	</array>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSHighResolutionCapable</key>

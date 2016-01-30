@@ -349,53 +349,53 @@
         <translation>Плагины</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="35"/>
+        <location filename="../gui/settings_dialog.cpp" line="36"/>
         <source>1 day</source>
         <translation>1 день</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="36"/>
+        <location filename="../gui/settings_dialog.cpp" line="37"/>
         <source>3 days</source>
         <translation>3 дня</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="37"/>
+        <location filename="../gui/settings_dialog.cpp" line="38"/>
         <source>1 week</source>
         <translation>1 неделя</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="38"/>
+        <location filename="../gui/settings_dialog.cpp" line="39"/>
         <source>2 weeks</source>
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="209"/>
+        <location filename="../gui/settings_dialog.cpp" line="210"/>
         <source>unknown</source>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="304"/>
+        <location filename="../gui/settings_dialog.cpp" line="305"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="306"/>
+        <location filename="../gui/settings_dialog.cpp" line="307"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="373"/>
+        <location filename="../gui/settings_dialog.cpp" line="374"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="375"/>
-        <location filename="../gui/settings_dialog.cpp" line="382"/>
+        <location filename="../gui/settings_dialog.cpp" line="376"/>
+        <location filename="../gui/settings_dialog.cpp" line="383"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="380"/>
+        <location filename="../gui/settings_dialog.cpp" line="381"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>

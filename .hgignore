@@ -13,3 +13,4 @@ desktop.ini
 [Rr]elease/
 .DS_Store
 *.dmg
+*.app/

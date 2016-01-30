@@ -13,7 +13,8 @@
 #define S_OPT_GEOMETRY_KEY                "state/settings_dialog_geometry"
 
 #ifdef Q_OS_OSX
-#define DEFAULT_TEXTURE_PATH              "../textures"
+#include <QApplication>
+#define DEFAULT_TEXTURE_PATH              (QApplication::applicationDirPath() + "/../Resources/textures")
 #else
 #define DEFAULT_TEXTURE_PATH              "textures"
 #endif
