@@ -1,9 +1,9 @@
 #ifndef DIGITAL_CLOCK_GUI_SETTINGS_DIALOG_H
 #define DIGITAL_CLOCK_GUI_SETTINGS_DIALOG_H
 
+#include <QDialog>
 #include <QListWidgetItem>
 #include "settings_keys.h"
-#include "centered_dialog.h"
 #include "../core/plugin_info.h"
 #include "../skin/clock_base_skin.h"
 
@@ -19,7 +19,7 @@ namespace Ui {
 class SettingsDialog;
 }
 
-class SettingsDialog : public CenteredDialog {
+class SettingsDialog : public QDialog {
   Q_OBJECT
 
 public:

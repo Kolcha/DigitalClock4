@@ -27,7 +27,7 @@ namespace digital_clock {
 namespace gui {
 
 SettingsDialog::SettingsDialog(core::ClockSettings* config, QWidget* parent) :
-  CenteredDialog(parent),
+  QDialog(parent),
   ui(new Ui::SettingsDialog),
   config_(config)
 {
