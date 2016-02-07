@@ -41,11 +41,8 @@ Updater::~Updater() {
   settings.setValue(S_OPT_LAST_UPDATE, last_update_);
 }
 
-void Updater::CheckForUpdates(bool force) {
-  force_update_ = force;
-  was_error_ = false;
-  data_.clear();
-  downloader_->startRequest(QUrl("http://digitalclock4.sourceforge.net/clock-version.json"));
+void Updater::CheckForUpdates() {
+  RunCheckForUpdates(true);
 }
 
 void Updater::SetCheckForBeta(bool check) {
@@ -56,13 +53,13 @@ void Updater::SetAutoupdate(bool update) {
   autoupdate_ = update;
 }
 
-void Updater::SetUpdatePeriod(qint64 period) {
+void Updater::SetUpdatePeriod(int period) {
   update_period_ = period;
 }
 
 void Updater::TimeoutHandler() {
   if (!autoupdate_ || was_error_ || (downloader_ && downloader_->isRunning())) return;
-  if (last_update_.daysTo(QDate::currentDate()) >= update_period_) CheckForUpdates(false);
+  if (last_update_.daysTo(QDate::currentDate()) >= update_period_) RunCheckForUpdates(false);
 }
 
 void Updater::ProcessData() {
@@ -96,6 +93,14 @@ void Updater::ProcessData() {
   }
   last_update_ = QDate::currentDate();
   data_.clear();
+}
+
+void Updater::RunCheckForUpdates(bool force)
+{
+  force_update_ = force;
+  was_error_ = false;
+  data_.clear();
+  downloader_->startRequest(QUrl("http://digitalclock4.sourceforge.net/clock-version.json"));
 }
 
 } // namespace core
