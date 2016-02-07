@@ -8,6 +8,11 @@
 #include "../skin/clock_base_skin.h"
 
 namespace digital_clock {
+
+namespace core {
+class ClockSettings;
+}
+
 namespace gui {
 
 namespace Ui {
@@ -18,7 +23,7 @@ class SettingsDialog : public CenteredDialog {
   Q_OBJECT
 
 public:
-  explicit SettingsDialog(QWidget* parent = 0);
+  explicit SettingsDialog(::digital_clock::core::ClockSettings* config, QWidget* parent = 0);
   ~SettingsDialog();
 
   void SetCurrentSettings(const QMap<Option, QVariant>& settings);
@@ -41,6 +46,8 @@ protected:
   void showEvent(QShowEvent* e);
 
 private slots:
+  void InitControls();
+
   void ChangePluginState(const QString& name, bool activated);
   void SaveState();
   void LoadState();
@@ -78,6 +85,9 @@ private slots:
 
 private:
   Ui::SettingsDialog* ui;
+
+  ::digital_clock::core::ClockSettings* config_;
+
   QColor last_color_;
   QString last_txd_path_;
   QStringList active_plugins_;

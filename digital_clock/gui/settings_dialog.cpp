@@ -9,6 +9,8 @@
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
+#include "core/clock_settings.h"
+
 #define S_OPT_LAST_TIME_FORMAT_KEY        "state/last_time_format"
 #define S_OPT_GEOMETRY_KEY                "state/settings_dialog_geometry"
 
@@ -24,11 +26,23 @@ using skin_draw::SkinDrawer;
 namespace digital_clock {
 namespace gui {
 
-SettingsDialog::SettingsDialog(QWidget* parent)
-  : CenteredDialog(parent), ui(new Ui::SettingsDialog) {
+SettingsDialog::SettingsDialog(core::ClockSettings* config, QWidget* parent) :
+  CenteredDialog(parent),
+  ui(new Ui::SettingsDialog),
+  config_(config)
+{
   ui->setupUi(this);
-  ui->skin_info_btn->setVisible(false);  // temporary, not implemented
+
+  setAttribute(Qt::WA_DeleteOnClose);
   setWindowIcon(QIcon(":/clock/images/settings.svg"));
+
+  ui->skin_info_btn->setVisible(false);  // temporary, not implemented
+
+  connect(config->GetBackend(), &SettingsStorage::reloaded, this, &Dialog::InitControls);
+
+  InitControls();
+
+
 
   connect(this, SIGNAL(accepted()), this, SLOT(SaveState()));
   connect(ui->defaults_bth, SIGNAL(clicked()), this, SIGNAL(ResetSettings()));
@@ -43,7 +57,7 @@ SettingsDialog::SettingsDialog(QWidget* parent)
   }
   is_loading_ = false;
 
-  ui->autostart->setChecked(IsAutoStartEnabled());
+  ui->autostart->setChecked(IsAutoStartEnabled());      // TODO: remove
   connect(this, &SettingsDialog::accepted, [this] () {
     SetAutoStart(this->ui->autostart->isChecked());
   });
@@ -61,23 +75,23 @@ void SettingsDialog::SetCurrentSettings(const QMap<Option, QVariant>& settings) 
     const Option& opt = iter.key();
     const QVariant& value = iter.value();
     switch (opt) {
-      case OPT_OPACITY:
+      case OPT_OPACITY:             // +
         ui->opacity_slider->setValue(int(value.toReal() * 100));
         break;
 
-      case OPT_STAY_ON_TOP:
+      case OPT_STAY_ON_TOP:         // +
         ui->stay_on_top->setChecked(value.toBool());
         break;
 
-      case OPT_TRANSP_FOR_INPUT:
+      case OPT_TRANSP_FOR_INPUT:    // +
         ui->transp_for_input->setChecked(value.toBool());
         break;
 
-      case OPT_SEPARATOR_FLASH:
+      case OPT_SEPARATOR_FLASH:     // +
         ui->sep_flash->setChecked(value.toBool());
         break;
 
-      case OPT_TIME_FORMAT:
+      case OPT_TIME_FORMAT:         // +
       {
         QString format = value.toString();
         bool is_system = (format == GetDefaultValue(OPT_TIME_FORMAT).toString());
@@ -87,7 +101,7 @@ void SettingsDialog::SetCurrentSettings(const QMap<Option, QVariant>& settings) 
         break;
       }
 
-      case OPT_ALIGNMENT:
+      case OPT_ALIGNMENT:           // +
       {
         CAlignment alignment = static_cast<CAlignment>(value.toInt());
         ui->align_left_rbtn->setChecked(alignment == CAlignment::A_LEFT);
@@ -95,32 +109,32 @@ void SettingsDialog::SetCurrentSettings(const QMap<Option, QVariant>& settings) 
         break;
       }
 
-      case OPT_SKIN_NAME:
+      case OPT_SKIN_NAME:           // +
         ui->skin_box->setCurrentText(value.toString());
         ui->use_skin->setChecked(value.toString() != "Text Skin");
         ui->use_font->setChecked(value.toString() == "Text Skin");
         break;
 
-      case OPT_FONT:
+      case OPT_FONT:                // +
         last_font_ = value.value<QFont>();
         break;
 
-      case OPT_ZOOM:
+      case OPT_ZOOM:                // +
         ui->zoom_slider->setValue(int(value.toReal() * 100));
         break;
 
-      case OPT_COLOR:
+      case OPT_COLOR:               // +
         last_color_ = value.value<QColor>();
         break;
 
-      case OPT_TEXTURE:
+      case OPT_TEXTURE:             // +
       {
         QString texture = value.toString();
         last_txd_path_ = texture.isEmpty() ? DEFAULT_TEXTURE_PATH : QFileInfo(texture).absolutePath();
         break;
       }
 
-      case OPT_TEXTURE_TYPE:
+      case OPT_TEXTURE_TYPE:        // +
       {
         SkinDrawer::CustomizationType type = static_cast<SkinDrawer::CustomizationType>(value.toInt());
         ui->type_color->setChecked(type == SkinDrawer::CT_COLOR);
@@ -128,11 +142,11 @@ void SettingsDialog::SetCurrentSettings(const QMap<Option, QVariant>& settings) 
         break;
       }
 
-      case OPT_TEXTURE_PER_ELEMENT:
+      case OPT_TEXTURE_PER_ELEMENT: // +
         ui->txd_per_elem->setChecked(value.toBool());
         break;
 
-      case OPT_TEXTURE_DRAW_MODE:
+      case OPT_TEXTURE_DRAW_MODE:   // +
       {
         SkinDrawer::DrawMode mode = (SkinDrawer::DrawMode)value.toInt();
         ui->mode_stretch->setChecked(mode == SkinDrawer::DM_STRETCH);
@@ -140,7 +154,7 @@ void SettingsDialog::SetCurrentSettings(const QMap<Option, QVariant>& settings) 
         break;
       }
 
-      case OPT_CUSTOMIZATION:
+      case OPT_CUSTOMIZATION:       // +
       {
         Customization cust = static_cast<Customization>(value.toInt());
         ui->cust_none->setChecked(cust == Customization::C_NONE);
@@ -149,20 +163,20 @@ void SettingsDialog::SetCurrentSettings(const QMap<Option, QVariant>& settings) 
         break;
       }
 
-      case OPT_SPACING:
+      case OPT_SPACING:             // +
         ui->space_slider->setValue(value.toInt());
         ui->space_slider->setToolTip(QString::number(value.toInt()));
         break;
 
-      case OPT_COLORIZE_COLOR:
+      case OPT_COLORIZE_COLOR:      // +
         last_colorize_color_ = value.value<QColor>();
         break;
 
-      case OPT_COLORIZE_LEVEL:
+      case OPT_COLORIZE_LEVEL:      // +
         ui->level_slider->setValue(static_cast<int>(value.toReal() * 100));
         break;
 
-      case  OPT_PLUGINS:
+      case  OPT_PLUGINS:            // +
         for (int i = 0; i < ui->plugins_list->count(); i++) {
           PluginListItemWidget* item = static_cast<PluginListItemWidget*>(
                 ui->plugins_list->itemWidget(ui->plugins_list->item(i)));
@@ -176,15 +190,15 @@ void SettingsDialog::SetCurrentSettings(const QMap<Option, QVariant>& settings) 
         active_plugins_ = value.toStringList();
         break;
 
-      case OPT_USE_AUTOUPDATE:
+      case OPT_USE_AUTOUPDATE:      // +
         ui->enable_autoupdate->setChecked(value.toBool());
         break;
 
-      case OPT_UPDATE_PERIOD:
+      case OPT_UPDATE_PERIOD:       // +
         ui->update_period_box->setCurrentText(update_periods_[value.value<qint64>()]);
         break;
 
-      case OPT_CHECK_FOR_BETA:
+      case OPT_CHECK_FOR_BETA:      // +
         ui->check_for_beta->setChecked(value.toBool());
         break;
     }
@@ -237,6 +251,89 @@ void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plug
 void SettingsDialog::showEvent(QShowEvent* e) {
   CenteredDialog::showEvent(e);
   LoadState();
+}
+
+void SettingsDialog::InitControls()
+{
+  Q_ASSERT(config_);
+  this->blockSignals(true);
+
+  // "Appearance" tab
+  ui->stay_on_top->setChecked(config_->GetValue(OPT_STAY_ON_TOP).toBool());
+  ui->transp_for_input->setChecked(config_->GetValue(OPT_TRANSP_FOR_INPUT).toBool());
+  ui->sep_flash->setChecked(config_->GetValue(OPT_SEPARATOR_FLASH).toBool());
+
+  ui->opacity_slider->setValue(100 * config_->GetValue(OPT_OPACITY).toReal());
+  ui->zoom_slider->setValue(100 * config_->GetValue(OPT_ZOOM).toReal());
+
+  QString skin_name = config_->GetValue(OPT_SKIN_NAME).toString();
+  ui->use_skin->setChecked(skin_name != "Text Skin");
+  // TODO: load all available skins and fill combobox
+  if (ui->use_skin->isChecked()) ui->skin_box->setCurrentText(skin_name);
+  ui->use_font->setChecked(skin_name == "Text Skin");
+  last_font_ = config_->GetValue(OPT_FONT).value<QFont>();
+
+  Customization cust = static_cast<Customization>(config_->GetValue(OPT_CUSTOMIZATION).toInt());
+  ui->cust_none->setChecked(cust == Customization::C_NONE);
+  ui->cust_texturing->setChecked(cust == Customization::C_TEXTURING);
+  ui->cust_colorize->setChecked(cust == Customization::C_COLORIZE);
+
+  SkinDrawer::CustomizationType txd_type = static_cast<SkinDrawer::CustomizationType>(config_->GetValue(OPT_TEXTURE_TYPE).toInt());
+  ui->type_color->setChecked(txd_type == SkinDrawer::CT_COLOR);
+  ui->type_image->setChecked(txd_type == SkinDrawer::CT_TEXTURE);
+  last_color_ = config_->GetValue(OPT_COLOR).value<QColor>();
+  QString texture = config_->GetValue(OPT_TEXTURE).toString();
+  last_txd_path_ = texture.isEmpty() ? DEFAULT_TEXTURE_PATH : QFileInfo(texture).absolutePath();
+
+  ui->txd_per_elem->setChecked(config_->GetValue(OPT_TEXTURE_PER_ELEMENT).toBool());
+  SkinDrawer::DrawMode mode = static_cast<SkinDrawer::DrawMode>(config_->GetValue(OPT_TEXTURE_DRAW_MODE).toInt());
+  ui->mode_stretch->setChecked(mode == SkinDrawer::DM_STRETCH);
+  ui->mode_tile->setChecked(mode == SkinDrawer::DM_TILE);
+
+  last_colorize_color_ = config_->GetValue(OPT_COLORIZE_COLOR).value<QColor>();
+  ui->level_slider->setValue(100 * config_->GetValue(OPT_COLORIZE_LEVEL).toReal());
+
+  // "Misc" tab
+  ui->autostart->setChecked(IsAutoStartEnabled());
+  ui->enable_autoupdate->setChecked(config_->GetValue(OPT_USE_AUTOUPDATE).toBool());
+
+  QString time_format = config_->GetValue(OPT_TIME_FORMAT).toString();
+  // TODO: reimplement
+  bool is_system = (time_format == GetDefaultValue(OPT_TIME_FORMAT).toString());
+  if (!is_system) ui->format_box->setCurrentText(time_format);
+  ui->system_format->setChecked(is_system);
+  ui->custom_format->setChecked(!is_system);
+
+  CAlignment alignment = static_cast<CAlignment>(config_->GetValue(OPT_ALIGNMENT).toInt());
+  ui->align_left_rbtn->setChecked(alignment == CAlignment::A_LEFT);
+  ui->align_right_rbtn->setChecked(alignment == CAlignment::A_RIGHT);
+
+  int spacing = config_->GetValue(OPT_SPACING).toInt();
+  ui->space_slider->setValue(spacing);
+  ui->space_slider->setToolTip(QString::number(spacing));
+
+  ui->update_period_box->clear();
+  // TODO: remove 'for' and 'update_periods_'
+  for (auto iter = update_periods_.begin(); iter != update_periods_.end(); ++iter) {
+    ui->update_period_box->addItem(iter.value(), iter.key());
+  }
+  ui->update_period_box->setCurrentText(update_periods_[config_->GetValue(OPT_UPDATE_PERIOD).toInt()]);
+  ui->check_for_beta->setChecked(config_->GetValue(OPT_CHECK_FOR_BETA).toBool());
+
+  // "Plugins" tab
+  // TODO: load all available plugins and fill listbox with them
+  // TODO: block signals from items during initialization
+  // TODO: remove 'active_plugins_'
+  // TODO: provide plugin state with other info and remove next 'for'
+  active_plugins_ = config_->GetValue(OPT_PLUGINS).toStringList();
+  for (int i = 0; i < ui->plugins_list->count(); i++) {
+    PluginListItemWidget* item_widget = dynamic_cast<PluginListItemWidget*>(
+          ui->plugins_list->itemWidget(ui->plugins_list->item(i)));
+    Q_ASSERT(item_widget);
+    item_widget->SetChecked(active_plugins_.contains(item_widget->GetName()));
+  }
+
+  this->blockSignals(false);
 }
 
 void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
