@@ -11,7 +11,6 @@
 #define SETTINGS_KEYS_H
 
 #include "clock_common_global.h"
-#include <QVariant>
 
 /*! skin customization types */
 enum class Customization {
@@ -57,11 +56,5 @@ enum Option {
   OPT_UPDATE_PERIOD,            /*!< how often to check for updates, qint64, days count */
   OPT_CHECK_FOR_BETA            /*!< check for beta releases, bool, true/false */
 };
-
-/*! Get default value for specified option.
- * @param opt - needed option
- * @return default value as QVariant, see Options description for type information
- */
-CLOCK_COMMON_EXPORT QVariant GetDefaultValue(Option opt);
 
 #endif // SETTINGS_KEYS_H
