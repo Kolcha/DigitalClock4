@@ -21,7 +21,7 @@ QuickNote::QuickNote() : avail_width_(0), last_zoom_(1.0) {
   InitIcon(":/quick_note/icon.svg");
 }
 
-void QuickNote::Init(const QMap<Options, QVariant>& current_settings) {
+void QuickNote::Init(const QMap<Option, QVariant>& current_settings) {
   for (auto iter = current_settings.begin(); iter != current_settings.end(); ++iter) {
     switch (iter.key()) {
       case OPT_FONT:
@@ -144,7 +144,7 @@ void QuickNote::Configure() {
   settings_dlg->show();
 }
 
-void QuickNote::SettingsListener(Options option, const QVariant& new_value) {
+void QuickNote::SettingsListener(Option option, const QVariant& new_value) {
   switch (option) {
     case OPT_SKIN_NAME:
       avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 16;

@@ -16,7 +16,7 @@ AnyZoom::AnyZoom() {
   InitIcon(":/any_zoom/icon.svg");
 }
 
-void AnyZoom::Init(const QMap<Options, QVariant>& current_settings) {
+void AnyZoom::Init(const QMap<Option, QVariant>& current_settings) {
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
@@ -76,7 +76,7 @@ void AnyZoom::RevertSettings() {
     emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
 }
 
-void AnyZoom::SettingsListener(Options option, const QVariant& value) {
+void AnyZoom::SettingsListener(Option option, const QVariant& value) {
   if (option == OPT_ZOOM && is_enabled_) {
     // ignore zoom changes from other plugins (and own change too)
     QString sender_name = sender()->metaObject()->className();

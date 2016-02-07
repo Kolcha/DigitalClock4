@@ -55,10 +55,10 @@ SettingsDialog::~SettingsDialog() {
   delete ui;
 }
 
-void SettingsDialog::SetCurrentSettings(const QMap<Options, QVariant>& settings) {
+void SettingsDialog::SetCurrentSettings(const QMap<Option, QVariant>& settings) {
   is_loading_ = true;
   for (auto iter = settings.begin(); iter != settings.end(); iter++) {
-    const Options& opt = iter.key();
+    const Option& opt = iter.key();
     const QVariant& value = iter.value();
     switch (opt) {
       case OPT_OPACITY:

@@ -12,28 +12,28 @@ class ClockSettings : public QObject {
 
 public:
   explicit ClockSettings(QObject* parent = 0);
-  const QVariant& GetOption(Options opt);
-  const QMap<Options, QVariant>& GetSettings();
+  const QVariant& GetOption(Option opt);
+  const QMap<Option, QVariant>& GetSettings();
 
   void ExportSettings(QSettings::SettingsMap* settings);
   void ImportSettings(const QSettings::SettingsMap& settings);
 
 signals:
-  void OptionChanged(Options opt, const QVariant& value);
+  void OptionChanged(Option opt, const QVariant& value);
   void SettingsExported();
   void SettingsImported();
 
 public slots:
   void Load();
   void Save();
-  void SetOption(Options opt, const QVariant& value);
+  void SetOption(Option opt, const QVariant& value);
   void TrackChanges(bool set);
   void EmitSettings();
   void LoadDefaults();
 
 private:
-  QMap<Options, QString> keys_;
-  QMap<Options, QVariant> values_;
+  QMap<Option, QString> keys_;
+  QMap<Option, QVariant> values_;
   QSettings settings_;
   bool track_change_;
 };

@@ -28,7 +28,7 @@ enum CAlignment {
 
 /*! clock settings keys */
 /*! @note Comments format: option description, type, possible values */
-enum Options {
+enum Option {
   // clock settings
   OPT_OPACITY,                  /*!< clock opacity, qreal, 0..1 */
   OPT_STAY_ON_TOP,              /*!< stay on top flag, bool, true/false */
@@ -62,6 +62,6 @@ enum Options {
  * @param opt - needed option
  * @return default value as QVariant, see Options description for type information
  */
-CLOCK_COMMON_EXPORT QVariant GetDefaultValue(Options opt);
+CLOCK_COMMON_EXPORT QVariant GetDefaultValue(Option opt);
 
 #endif // SETTINGS_KEYS_H

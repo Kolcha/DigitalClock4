@@ -75,7 +75,7 @@ signals:
    * @note This signal is a part of internal PluginManager logic.
    * @see settings_keys.h, Options, IClockPlugin
    */
-  void UpdateSettings(Options option, const QVariant& value);
+  void UpdateSettings(Option option, const QVariant& value);
 
 public slots:
   /*!

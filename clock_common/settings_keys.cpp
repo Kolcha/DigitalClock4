@@ -4,7 +4,7 @@
 #include <QLocale>
 #include "settings_keys.h"
 
-QVariant GetDefaultValue(Options opt) {
+QVariant GetDefaultValue(Option opt) {
   switch (opt) {
     // clock settings
     case OPT_OPACITY:               return 0.75;

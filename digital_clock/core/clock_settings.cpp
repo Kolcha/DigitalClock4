@@ -3,7 +3,7 @@
 namespace digital_clock {
 namespace core {
 
-void GetOptionsKeys(QMap<Options, QString>& opt_map) {
+void GetOptionsKeys(QMap<Option, QString>& opt_map) {
   // clock settings
   opt_map[OPT_OPACITY]              = "clock/opacity";
   opt_map[OPT_STAY_ON_TOP]          = "clock/stay_on_top";
@@ -37,11 +37,11 @@ ClockSettings::ClockSettings(QObject* parent)
   track_change_ = false;
 }
 
-const QVariant& ClockSettings::GetOption(Options opt) {
+const QVariant& ClockSettings::GetOption(Option opt) {
   return values_[opt];
 }
 
-const QMap<Options, QVariant>&ClockSettings::GetSettings() {
+const QMap<Option, QVariant>&ClockSettings::GetSettings() {
   return values_;
 }
 
@@ -77,7 +77,7 @@ void ClockSettings::Save() {
   }
 }
 
-void ClockSettings::SetOption(Options opt, const QVariant& value) {
+void ClockSettings::SetOption(Option opt, const QVariant& value) {
   values_[opt] = value;
   if (track_change_) emit OptionChanged(opt, value);
 }

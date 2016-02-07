@@ -21,10 +21,10 @@ public:
   explicit SettingsDialog(QWidget* parent = 0);
   ~SettingsDialog();
 
-  void SetCurrentSettings(const QMap<Options, QVariant>& settings);
+  void SetCurrentSettings(const QMap<Option, QVariant>& settings);
 
 signals:
-  void OptionChanged(Options opt, const QVariant& value);
+  void OptionChanged(Option opt, const QVariant& value);
   void PluginConfigureRequest(const QString& text);
   void PluginStateChanged(const QString& name, bool enabled);
   void ExportSettings(const QString& filename);

@@ -50,7 +50,7 @@ void ClockWidget::ApplySkin(skin_draw::ISkin::SkinPtr skin) {
   drawer_->ApplySkin(skin);
 }
 
-void ClockWidget::ApplyOption(Options option, const QVariant& value) {
+void ClockWidget::ApplyOption(Option option, const QVariant& value) {
   switch (option) {
     case OPT_OPACITY:
       setWindowOpacity(value.toReal());

@@ -23,7 +23,7 @@ Date::Date() : avail_width_(0), last_zoom_(1.0), last_date_("-") {
   InitIcon(":/date/icon.svg");
 }
 
-void Date::Init(const QMap<Options, QVariant>& current_settings) {
+void Date::Init(const QMap<Option, QVariant>& current_settings) {
   for (auto iter = current_settings.begin(); iter != current_settings.end(); ++iter) {
     switch (iter.key()) {
       case OPT_FONT:
@@ -130,7 +130,7 @@ void Date::Configure() {
   dialog->show();
 }
 
-void Date::SettingsListener(Options option, const QVariant& new_value) {
+void Date::SettingsListener(Option option, const QVariant& new_value) {
   if (!msg_label_) return;  // not started
 
   switch (option) {

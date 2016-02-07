@@ -160,8 +160,8 @@ int main(int argc, char *argv[]) {
       };
       using digital_clock::core::ClockSettings;
       // connect main logic signals: change/save/discard settings
-      QObject::connect(dialog.data(), SIGNAL(OptionChanged(Options,QVariant)),
-                       settings.data(), SLOT(SetOption(Options,QVariant)));
+      QObject::connect(dialog.data(), SIGNAL(OptionChanged(Option,QVariant)),
+                       settings.data(), SLOT(SetOption(Option,QVariant)));
       QObject::connect(dialog.data(), &SettingsDialog::PluginStateChanged,
                        plugin_manager.data(), &digital_clock::core::PluginManager::EnablePlugin);
       QObject::connect(dialog.data(), SIGNAL(PluginConfigureRequest(QString)),
@@ -267,7 +267,7 @@ int main(int argc, char *argv[]) {
   QObject::connect(settings.data(), &digital_clock::core::ClockSettings::OptionChanged,
                    clock_widget.data(), &digital_clock::gui::ClockWidget::ApplyOption);
   QObject::connect(settings.data(), &digital_clock::core::ClockSettings::OptionChanged,
-                   [=] (Options option, const QVariant& value) {
+                   [=] (Option option, const QVariant& value) {
     switch (option) {
       case OPT_SKIN_NAME:
         skin_manager->LoadSkin(value.toString());
