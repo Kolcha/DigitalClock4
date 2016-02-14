@@ -2,7 +2,7 @@
 #define DIGITAL_CLOCK_GUI_PLUGIN_INFO_DIALOG_H
 
 #include "centered_dialog.h"
-#include "../core/plugin_info.h"
+#include "core/plugin_info.h"
 
 namespace digital_clock {
 namespace gui {

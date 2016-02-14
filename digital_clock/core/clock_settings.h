@@ -4,6 +4,7 @@
 #include "config_base.h"
 
 #include <QMap>
+
 #include "settings_keys.h"
 
 namespace digital_clock {

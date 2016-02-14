@@ -1,9 +1,10 @@
 #ifndef DIGITAL_CLOCK_CORE_RASTER_SKIN_H
 #define DIGITAL_CLOCK_CORE_RASTER_SKIN_H
 
-#include <QDir>
 #include "raster_skin.h"
-#include "clock_base_skin.h"
+#include "skin/clock_base_skin.h"
+
+#include <QDir>
 
 namespace digital_clock {
 namespace core {

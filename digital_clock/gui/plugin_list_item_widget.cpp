@@ -1,6 +1,7 @@
-#include "plugin_info_dialog.h"
 #include "plugin_list_item_widget.h"
 #include "ui_plugin_list_item_widget.h"
+
+#include "gui/plugin_info_dialog.h"
 
 namespace digital_clock {
 namespace gui {

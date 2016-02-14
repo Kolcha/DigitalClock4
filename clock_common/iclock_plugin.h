@@ -31,9 +31,12 @@
 #ifndef ICLOCK_PLUGIN_H
 #define ICLOCK_PLUGIN_H
 
+#include "plugin_base.h"
+
 #include <QtPlugin>
 #include <QSettings>
-#include "plugin_base.h"
+
+#include "clock_common_global.h"
 #include "settings_keys.h"
 
 /*!

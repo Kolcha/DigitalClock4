@@ -1,7 +1,8 @@
+#include "tray_control.h"
+
 #include <QMenu>
 #include <QIcon>
 #include <QApplication>
-#include "tray_control.h"
 
 namespace digital_clock {
 namespace gui {

@@ -1,5 +1,6 @@
-#include <QSettings>
 #include "clock_raster_skin.h"
+
+#include <QSettings>
 
 namespace digital_clock {
 namespace core {

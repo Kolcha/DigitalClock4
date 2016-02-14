@@ -2,7 +2,9 @@
 #define PLUGIN_BASE_H
 
 #include "clock_common_global.h"
+#include <QObject>
 #include <QPixmap>
+#include <QString>
 
 /*!
  * @brief Translatable plugin info structure.

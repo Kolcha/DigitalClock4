@@ -2,10 +2,16 @@
 #define DIGITAL_CLOCK_GUI_SETTINGS_DIALOG_H
 
 #include <QDialog>
+
 #include <QListWidgetItem>
+#include <QColor>
+#include <QFont>
+#include <QMap>
+
 #include "settings_keys.h"
-#include "../core/plugin_info.h"
-#include "../skin/clock_base_skin.h"
+
+#include "core/plugin_info.h"
+#include "skin/clock_base_skin.h"
 
 namespace digital_clock {
 

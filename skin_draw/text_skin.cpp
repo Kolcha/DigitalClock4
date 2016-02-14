@@ -1,6 +1,7 @@
+#include "text_skin.h"
+
 #include <QPainter>
 #include <QFontMetrics>
-#include "text_skin.h"
 
 namespace skin_draw {
 

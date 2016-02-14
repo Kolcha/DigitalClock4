@@ -2,6 +2,7 @@
 #define PLUGIN_INFO_H
 
 #include <QMap>
+#include <QString>
 #include "plugin_base.h"
 
 /*! plugin metadata fields */

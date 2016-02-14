@@ -1,6 +1,8 @@
 #ifndef DIGITAL_CLOCK_CORE_HTTP_CLIENT_H
 #define DIGITAL_CLOCK_CORE_HTTP_CLIENT_H
 
+#include <QObject>
+
 #include <QUrl>
 #include <QNetworkAccessManager>
 

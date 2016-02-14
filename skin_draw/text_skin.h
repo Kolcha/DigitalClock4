@@ -1,8 +1,8 @@
 #ifndef TEXT_SKIN_H
 #define TEXT_SKIN_H
 
-#include <QFont>
 #include "base_skin.h"
+#include <QFont>
 
 namespace skin_draw {
 

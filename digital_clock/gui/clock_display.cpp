@@ -1,7 +1,8 @@
+#include "clock_display.h"
+
 #include <QTime>
 #include <QLocale>
 #include <QRegExp>
-#include "clock_display.h"
 
 namespace digital_clock {
 namespace gui {

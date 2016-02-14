@@ -2,6 +2,7 @@
 #define DIGITAL_CLOCK_GUI_COLORIZE_EFFECT_H
 
 #include <QImage>
+#include <QColor>
 
 namespace digital_clock {
 namespace gui {

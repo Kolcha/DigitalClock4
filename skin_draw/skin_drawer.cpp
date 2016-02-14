@@ -1,9 +1,10 @@
+#include "skin_drawer.h"
+
 #include <QGuiApplication>
 #include <QScreen>
 #include <QFile>
 #include <QList>
 #include <QPainter>
-#include "skin_drawer.h"
 
 namespace skin_draw {
 

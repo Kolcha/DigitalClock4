@@ -1,5 +1,7 @@
-#ifndef MANAGER_BASE_H
-#define MANAGER_BASE_H
+#ifndef DIGITAL_CLOCK_CORE_MANAGER_BASE_H
+#define DIGITAL_CLOCK_CORE_MANAGER_BASE_H
+
+#include <QObject>
 
 #include <QDir>
 #include <QList>
@@ -25,4 +27,4 @@ protected:
 } // namespace core
 } // namespace digital_clock
 
-#endif // MANAGER_BASE_H
+#endif // DIGITAL_CLOCK_CORE_MANAGER_BASE_H

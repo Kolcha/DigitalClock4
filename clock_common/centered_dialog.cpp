@@ -1,7 +1,8 @@
+#include "centered_dialog.h"
+
 #include <QShowEvent>
 #include <QApplication>
 #include <QDesktopWidget>
-#include "centered_dialog.h"
 
 CenteredDialog::CenteredDialog(QWidget* parent)
   : QDialog(parent) {

@@ -1,9 +1,12 @@
+#include "updater.h"
+
 #include <QSettings>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QCoreApplication>
-#include "../core/build_defs.h"
-#include "updater.h"
+
+#include "core/build_defs.h"
+#include "core/http_client.h"
 
 #define S_OPT_LAST_UPDATE        "state/last_update"
 

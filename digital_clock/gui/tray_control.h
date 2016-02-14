@@ -1,6 +1,7 @@
 #ifndef DIGITAL_CLOCK_GUI_TRAY_CONTROL_H
 #define DIGITAL_CLOCK_GUI_TRAY_CONTROL_H
 
+#include <QObject>
 #include <QSystemTrayIcon>
 
 namespace digital_clock {

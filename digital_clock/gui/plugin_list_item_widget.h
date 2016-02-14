@@ -2,7 +2,7 @@
 #define DIGITAL_CLOCK_GUI_PLUGIN_LIST_ITEM_WIDGET_H
 
 #include <QWidget>
-#include "../core/plugin_info.h"
+#include "core/plugin_info.h"
 
 namespace digital_clock {
 namespace gui {

@@ -1,5 +1,6 @@
-#include <QFontMetrics>
 #include "clock_text_skin.h"
+
+#include <QFontMetrics>
 
 namespace digital_clock {
 namespace core {

@@ -1,7 +1,8 @@
-#include "../skin/clock_raster_skin.h"
-#include "../skin/clock_vector_skin.h"
-#include "../skin/clock_text_skin.h"
 #include "skin_manager.h"
+
+#include "skin/clock_raster_skin.h"
+#include "skin/clock_vector_skin.h"
+#include "skin/clock_text_skin.h"
 
 namespace digital_clock {
 namespace core {

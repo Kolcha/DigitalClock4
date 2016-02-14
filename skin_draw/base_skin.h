@@ -1,8 +1,8 @@
 #ifndef BASE_SKIN_H
 #define BASE_SKIN_H
 
-#include <QMap>
 #include "iskin.h"
+#include <QMap>
 
 namespace skin_draw {
 

@@ -1,9 +1,10 @@
+#include "http_client.h"
+
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #ifdef Q_OS_LINUX
 #include <QSysInfo>
 #endif
-#include "http_client.h"
 
 namespace digital_clock {
 namespace core {

@@ -2,6 +2,10 @@
 #define DIGITAL_CLOCK_GUI_CLOCK_WIDGET_H
 
 #include <QWidget>
+
+#include <QColor>
+#include <QImage>
+
 #include "iskin.h"
 #include "settings_keys.h"
 

@@ -1,6 +1,7 @@
+#include "base_skin.h"
+
 #include <QGuiApplication>
 #include <QScreen>
-#include "base_skin.h"
 
 namespace skin_draw {
 

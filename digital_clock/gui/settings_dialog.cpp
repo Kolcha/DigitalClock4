@@ -1,16 +1,20 @@
+#include "settings_dialog.h"
+#include "ui_settings_dialog.h"
+
 #include <QColorDialog>
 #include <QFileDialog>
 #include <QFontDialog>
 #include <QFileInfo>
 #include <QSettings>
-#include "../core/autostart.h"
-#include "skin_drawer.h"
-#include "plugin_list_item_widget.h"
-#include "settings_dialog.h"
-#include "ui_settings_dialog.h"
 
-#include "core/clock_settings.h"
+#include "skin_drawer.h"
 #include "settings_storage.h"
+
+#include "core/autostart.h"
+#include "core/clock_settings.h"
+
+#include "gui/plugin_list_item_widget.h"
+
 
 #define S_OPT_LAST_TIME_FORMAT_KEY        "state/last_time_format"
 #define S_OPT_GEOMETRY_KEY                "state/settings_dialog_geometry"

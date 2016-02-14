@@ -13,6 +13,9 @@
 #define IPLUGIN_INIT_H
 
 #include <QtPlugin>
+#include <QMap>
+#include <QVariant>
+
 #include "settings_keys.h"
 
 /*!

@@ -1,11 +1,15 @@
 #ifndef DIGITAL_CLOCK_CORE_PLUGIN_MANAGER_H
 #define DIGITAL_CLOCK_CORE_PLUGIN_MANAGER_H
 
+#include "core/manager_base.h"
+
 #include <QMap>
 #include <QString>
+#include <QSettings>
+#include <QList>
+
 #include "iclock_plugin.h"
-#include "plugin_info.h"
-#include "manager_base.h"
+#include "core/plugin_info.h"
 
 class QPluginLoader;
 class QSystemTrayIcon;

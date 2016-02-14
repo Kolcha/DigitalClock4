@@ -2,7 +2,7 @@
 #define DIGITAL_CLOCK_CORE_TEXT_SKIN_H
 
 #include "text_skin.h"
-#include "clock_base_skin.h"
+#include "skin/clock_base_skin.h"
 
 namespace digital_clock {
 namespace core {

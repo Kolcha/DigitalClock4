@@ -1,8 +1,11 @@
 #ifndef PLUGIN_SETTINGS_H
 #define PLUGIN_SETTINGS_H
 
-#include "clock_common_global.h"
+#include <QObject>
+
 #include <QSettings>
+
+#include "clock_common_global.h"
 
 /*!
  * @brief Plugin settings save/load class.

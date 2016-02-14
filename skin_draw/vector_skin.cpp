@@ -1,7 +1,8 @@
+#include "vector_skin.h"
+
 #include <QFile>
 #include <QSvgRenderer>
 #include <QPainter>
-#include "vector_skin.h"
 
 namespace skin_draw {
 

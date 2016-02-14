@@ -1,11 +1,15 @@
+#include "plugin_manager.h"
+
 #include <QFile>
 #include <QJsonObject>
 #include <QPluginLoader>
+
 #include "iplugin_init.h"
-#include "clock_settings.h"
-#include "../gui/clock_display.h"
-#include "../gui/clock_widget.h"
-#include "plugin_manager.h"
+
+#include "core/clock_settings.h"
+
+#include "gui/clock_display.h"
+#include "gui/clock_widget.h"
 
 namespace digital_clock {
 namespace core {

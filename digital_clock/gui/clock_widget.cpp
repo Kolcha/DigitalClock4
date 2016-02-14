@@ -1,9 +1,12 @@
+#include "clock_widget.h"
+
 #include <QGridLayout>
 #include <QVariant>
+
 #include "skin_drawer.h"
-#include "clock_display.h"
-#include "clock_widget.h"
-#include "colorize_effect.h"
+
+#include "gui/clock_display.h"
+#include "gui/colorize_effect.h"
 
 namespace digital_clock {
 namespace gui {

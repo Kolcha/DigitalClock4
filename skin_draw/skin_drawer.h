@@ -1,6 +1,12 @@
 #ifndef SKIN_DRAWER_H
 #define SKIN_DRAWER_H
 
+#include <QObject>
+
+#include <QImage>
+#include <QColor>
+#include <QString>
+
 #include "iskin.h"
 
 namespace skin_draw {

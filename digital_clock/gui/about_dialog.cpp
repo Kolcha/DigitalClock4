@@ -1,7 +1,9 @@
 #include "about_dialog.h"
 #include "ui_about_dialog.h"
-#include "../core/build_defs.h"
+
 #include <QDate>
+
+#include "core/build_defs.h"
 
 namespace digital_clock {
 namespace gui {

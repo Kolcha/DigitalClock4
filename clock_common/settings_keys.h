@@ -10,8 +10,6 @@
 #ifndef SETTINGS_KEYS_H
 #define SETTINGS_KEYS_H
 
-#include "clock_common_global.h"
-
 /*! skin customization types */
 enum class Customization {
   C_NONE,         /*!< do not use any customization, display skin as is */

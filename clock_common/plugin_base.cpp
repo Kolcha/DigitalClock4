@@ -1,8 +1,9 @@
+#include "plugin_base.h"
+
 #include <QTranslator>
 #include <QLocale>
 #include <QApplication>
 #include <QIcon>
-#include "plugin_base.h"
 
 PluginBase::PluginBase() : translator_(0) {
 }

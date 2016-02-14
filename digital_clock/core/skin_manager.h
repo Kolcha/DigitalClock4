@@ -1,11 +1,15 @@
 #ifndef DIGITAL_CLOCK_CORE_SKIN_MANAGER_H
 #define DIGITAL_CLOCK_CORE_SKIN_MANAGER_H
 
+#include "manager_base.h"
+
 #include <QString>
 #include <QFont>
+#include <QMap>
+#include <QDir>
+
 #include "iskin.h"
-#include "../skin/clock_base_skin.h"
-#include "manager_base.h"
+#include "skin/clock_base_skin.h"
 
 namespace digital_clock {
 namespace core {

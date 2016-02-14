@@ -1,11 +1,16 @@
 #ifndef DIGITAL_CLOCK_CORE_UPDATER_H
 #define DIGITAL_CLOCK_CORE_UPDATER_H
 
+#include <QObject>
+
 #include <QDate>
-#include "http_client.h"
+#include <QString>
+#include <QByteArray>
 
 namespace digital_clock {
 namespace core {
+
+class HttpClient;
 
 class Updater : public QObject {
   Q_OBJECT
