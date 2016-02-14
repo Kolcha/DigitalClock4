@@ -14,11 +14,12 @@ TEMPLATE = lib
 DEFINES += CLOCK_COMMON_LIBRARY
 
 SOURCES += \
-    settings_keys.cpp \
     plugin_settings.cpp \
     centered_dialog.cpp \
     plugin_base.cpp \
-    message_box.cpp
+    message_box.cpp \
+    config_base.cpp \
+    settings_storage.cpp
 
 HEADERS += \
     settings_keys.h \
@@ -28,8 +29,10 @@ HEADERS += \
     centered_dialog.h \
     plugin_base.h \
     iplugin_init.h \
-    message_box.h
+    message_box.h \
+    config_base.h \
+    settings_storage.h
 
 win32:RC_FILE = clock_common.rc
-unix:VERSION = 1.0.8
+unix:VERSION = 1.1.0
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
