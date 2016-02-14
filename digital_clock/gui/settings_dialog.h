@@ -1,30 +1,33 @@
 #ifndef DIGITAL_CLOCK_GUI_SETTINGS_DIALOG_H
 #define DIGITAL_CLOCK_GUI_SETTINGS_DIALOG_H
 
+#include <QDialog>
 #include <QListWidgetItem>
 #include "settings_keys.h"
-#include "centered_dialog.h"
 #include "../core/plugin_info.h"
 #include "../skin/clock_base_skin.h"
 
 namespace digital_clock {
+
+namespace core {
+class ClockSettings;
+}
+
 namespace gui {
 
 namespace Ui {
 class SettingsDialog;
 }
 
-class SettingsDialog : public CenteredDialog {
+class SettingsDialog : public QDialog {
   Q_OBJECT
 
 public:
-  explicit SettingsDialog(QWidget* parent = 0);
+  explicit SettingsDialog(::digital_clock::core::ClockSettings* config, QWidget* parent = 0);
   ~SettingsDialog();
 
-  void SetCurrentSettings(const QMap<Options, QVariant>& settings);
-
 signals:
-  void OptionChanged(Options opt, const QVariant& value);
+  void OptionChanged(Option opt, const QVariant& value);
   void PluginConfigureRequest(const QString& text);
   void PluginStateChanged(const QString& name, bool enabled);
   void ExportSettings(const QString& filename);
@@ -41,6 +44,8 @@ protected:
   void showEvent(QShowEvent* e);
 
 private slots:
+  void InitControls();
+
   void ChangePluginState(const QString& name, bool activated);
   void SaveState();
   void LoadState();
@@ -62,6 +67,7 @@ private slots:
   void on_sel_font_btn_clicked();
   void on_apply_btn_clicked();
   void on_system_format_clicked();
+  void on_custom_format_clicked();
   void on_enable_autoupdate_toggled(bool checked);
   void on_update_period_box_currentIndexChanged(int index);
   void on_check_for_beta_toggled(bool checked);
@@ -78,12 +84,14 @@ private slots:
 
 private:
   Ui::SettingsDialog* ui;
+
+  ::digital_clock::core::ClockSettings* config_;
+
   QColor last_color_;
   QString last_txd_path_;
   QStringList active_plugins_;
   QFont last_font_;
   QMap<qint64, QString> update_periods_;
-  bool is_loading_;
   QColor last_colorize_color_;
 };
 

@@ -25,7 +25,7 @@ class QuickNote : public IClockPlugin,
 
 public:
   QuickNote();
-  void Init(const QMap<Options, QVariant>& current_settings);
+  void Init(const QMap<Option, QVariant>& current_settings);
   void Init(QWidget* main_wnd);
 
   void ExportSettings(QSettings::SettingsMap* settings);
@@ -35,7 +35,7 @@ public slots:
   void Start();
   void Stop();
   void Configure();
-  void SettingsListener(Options option, const QVariant& new_value);
+  void SettingsListener(Option option, const QVariant& new_value);
 
 private slots:
   void ApplyString(const QString& str);

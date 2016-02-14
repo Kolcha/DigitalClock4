@@ -9,7 +9,7 @@ SpectrumClock::SpectrumClock() {
   InitIcon(":/spectrum_clock/icon.png");
 }
 
-void SpectrumClock::Init(const QMap<Options, QVariant>& current_settings) {
+void SpectrumClock::Init(const QMap<Option, QVariant>& current_settings) {
   old_color_ = current_settings[OPT_COLOR].value<QColor>();
   cur_color_ = Qt::red;
 }

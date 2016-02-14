@@ -24,33 +24,28 @@ public:
 signals:
   void SeparatorsChanged(const QString& seps);
 
+  void changed();
+
 public slots:
   void ApplySkin(::skin_draw::ISkin::SkinPtr skin);
-  void ApplyOption(Options option, const QVariant& value);
+  void ApplyOption(Option option, const QVariant& value);
   void PreviewMode(bool enabled);
+  void EnablePreviewMode();
+  void DisablePreviewMode();
 
-protected:
-  void mouseMoveEvent(QMouseEvent* event);
-  void mousePressEvent(QMouseEvent* event);
-  void mouseReleaseEvent(QMouseEvent* event);
-  void paintEvent(QPaintEvent* event);
+  void TimeoutHandler();
 
 private slots:
   void Update();
   void DrawImage(const QImage& image);
 
 private:
-  void SetWindowFlag(Qt::WindowFlags flag, bool set);
-
   ClockDisplay* display_;
   ::skin_draw::SkinDrawer* drawer_;
-  QPoint drag_position_;
 
   QColor colorize_color_;
   qreal colorize_level_;
   bool colorize_enabled_;
-
-  CAlignment cur_alignment_;
 
   QImage last_image_;
 };

@@ -11,7 +11,6 @@
 #define SETTINGS_KEYS_H
 
 #include "clock_common_global.h"
-#include <QVariant>
 
 /*! skin customization types */
 enum class Customization {
@@ -28,7 +27,7 @@ enum CAlignment {
 
 /*! clock settings keys */
 /*! @note Comments format: option description, type, possible values */
-enum Options {
+enum Option {
   // clock settings
   OPT_OPACITY,                  /*!< clock opacity, qreal, 0..1 */
   OPT_STAY_ON_TOP,              /*!< stay on top flag, bool, true/false */
@@ -57,11 +56,5 @@ enum Options {
   OPT_UPDATE_PERIOD,            /*!< how often to check for updates, qint64, days count */
   OPT_CHECK_FOR_BETA            /*!< check for beta releases, bool, true/false */
 };
-
-/*! Get default value for specified option.
- * @param opt - needed option
- * @return default value as QVariant, see Options description for type information
- */
-CLOCK_COMMON_EXPORT QVariant GetDefaultValue(Options opt);
 
 #endif // SETTINGS_KEYS_H

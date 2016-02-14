@@ -74,7 +74,7 @@ public slots:
    * @param option - option which was changed. @see Options
    * @param new_value - new option value as QVariant
    */
-  virtual void SettingsListener(Options option, const QVariant& new_value) { Q_UNUSED(option); Q_UNUSED(new_value); }
+  virtual void SettingsListener(Option option, const QVariant& new_value) { Q_UNUSED(option); Q_UNUSED(new_value); }
   /*!
    * @brief Current time update listener.
    *
@@ -107,7 +107,7 @@ signals:
    * @param option - option which was changed. @see Options
    * @param value - new option value as QVariant
    */
-  void OptionChanged(Options option, const QVariant& value);
+  void OptionChanged(Option option, const QVariant& value);
 };
 
 /*! Settings plugin interface IID */

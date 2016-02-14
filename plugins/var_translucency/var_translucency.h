@@ -13,7 +13,7 @@ class VarTranslucency : public ISettingsPlugin, public ISettingsPluginInit {
 
 public:
   VarTranslucency();
-  void Init(const QMap<Options, QVariant>& current_settings);
+  void Init(const QMap<Option, QVariant>& current_settings);
 
 public slots:
   void Start();

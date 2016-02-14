@@ -140,8 +140,8 @@ void PluginManager::UnloadPlugin(const QString& name) {
   if (!loader) return;
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
-    disconnect(data_.settings, SIGNAL(OptionChanged(Options,QVariant)),
-               plugin, SLOT(SettingsListener(Options,QVariant)));
+    disconnect(data_.settings, SIGNAL(OptionChanged(Option,QVariant)),
+               plugin, SLOT(SettingsListener(Option,QVariant)));
     disconnect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
                plugin, SLOT(TimeUpdateListener()));
     plugin->Stop();
@@ -153,21 +153,21 @@ void PluginManager::UnloadPlugin(const QString& name) {
 void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
   // connect slots which are common for all plugins
   if (connected) {
-    connect(data_.settings, SIGNAL(OptionChanged(Options,QVariant)),
-            plugin, SLOT(SettingsListener(Options,QVariant)));
+    connect(data_.settings, SIGNAL(OptionChanged(Option,QVariant)),
+            plugin, SLOT(SettingsListener(Option,QVariant)));
     connect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
             plugin, SLOT(TimeUpdateListener()));
-    connect(this, SIGNAL(UpdateSettings(Options,QVariant)),
-            plugin, SLOT(SettingsListener(Options,QVariant)));
+    connect(this, SIGNAL(UpdateSettings(Option,QVariant)),
+            plugin, SLOT(SettingsListener(Option,QVariant)));
   }
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
   if (sp) {
     if (connected) {
-      connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
-              data_.window, SLOT(ApplyOption(Options,QVariant)));
-      connect(sp, SIGNAL(OptionChanged(Options,QVariant)),
-              this, SIGNAL(UpdateSettings(Options,QVariant)));
+      connect(sp, SIGNAL(OptionChanged(Option,QVariant)),
+              data_.window, SLOT(ApplyOption(Option,QVariant)));
+      connect(sp, SIGNAL(OptionChanged(Option,QVariant)),
+              this, SIGNAL(UpdateSettings(Option,QVariant)));
     }
   }
   ISettingsPluginInit* spi = qobject_cast<ISettingsPluginInit*>(plugin);

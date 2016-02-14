@@ -1,15 +1,9 @@
 #include <QGridLayout>
-#include <QSettings>
-#include <QMouseEvent>
-#include <QPainter>
-#include <QDesktopWidget>
+#include <QVariant>
 #include "skin_drawer.h"
 #include "clock_display.h"
 #include "clock_widget.h"
 #include "colorize_effect.h"
-
-#define S_OPT_POSITION              "state/clock_position"
-#define S_OPT_ALIGNMENT             "state/last_alignment"
 
 namespace digital_clock {
 namespace gui {
@@ -25,20 +19,9 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent) {
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
   connect(display_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(display_, SIGNAL(changed()), this, SLOT(Update()));
+  connect(display_, &ClockDisplay::changed, this, &ClockWidget::changed);
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), this, SLOT(DrawImage(QImage)));
 
-  QSettings state;
-  QPoint last_pos = state.value(S_OPT_POSITION, QPoint(50, 20)).toPoint();
-
-  CAlignment last_align = static_cast<CAlignment>(state.value(S_OPT_ALIGNMENT, CAlignment::A_LEFT).toInt());
-  if (last_align == CAlignment::A_RIGHT) {
-    last_pos.setX(last_pos.x() - this->width());
-  }
-  cur_alignment_ = last_align;
-  this->move(last_pos);
-
-  colorize_color_ = GetDefaultValue(OPT_COLORIZE_COLOR).value<QColor>();
-  colorize_level_ = GetDefaultValue(OPT_COLORIZE_LEVEL).toReal();
   colorize_enabled_ = false;
 }
 
@@ -50,20 +33,8 @@ void ClockWidget::ApplySkin(skin_draw::ISkin::SkinPtr skin) {
   drawer_->ApplySkin(skin);
 }
 
-void ClockWidget::ApplyOption(Options option, const QVariant& value) {
+void ClockWidget::ApplyOption(Option option, const QVariant& value) {
   switch (option) {
-    case OPT_OPACITY:
-      setWindowOpacity(value.toReal());
-      break;
-
-    case OPT_STAY_ON_TOP:
-      SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
-      break;
-
-    case OPT_TRANSP_FOR_INPUT:
-      SetWindowFlag(Qt::WindowTransparentForInput, value.toBool());
-      break;
-
     case OPT_SEPARATOR_FLASH:
       display_->SetSeparatorFlash(value.toBool());
       break;
@@ -71,41 +42,6 @@ void ClockWidget::ApplyOption(Options option, const QVariant& value) {
     case OPT_TIME_FORMAT:
       display_->SetTimeFormat(value.toString());
       break;
-
-    case OPT_ALIGNMENT:
-    {
-      cur_alignment_ = static_cast<CAlignment>(value.toInt());
-      if (!display_->pixmap()) break;
-      QSettings state;
-      state.setValue(S_OPT_ALIGNMENT, static_cast<int>(cur_alignment_));
-      QPoint cur_pos = this->pos();
-      switch (cur_alignment_) {
-        case CAlignment::A_LEFT:
-        {
-          if (cur_pos.x() < 0) {
-            cur_pos.setX(0);
-            this->move(cur_pos);
-          }
-          break;
-        }
-
-        case CAlignment::A_RIGHT:
-        {
-          cur_pos = this->frameGeometry().topRight();
-          QDesktopWidget desktop;
-          if (cur_pos.x() > desktop.screen()->width()) {
-            cur_pos.setX(desktop.screen()->width());
-            this->move(cur_pos.x() - this->width(), cur_pos.y());
-          }
-          break;
-        }
-
-        default:
-          Q_ASSERT(false);
-      }
-      state.setValue(S_OPT_POSITION, cur_pos);
-      break;
-    }
 
     case OPT_ZOOM:
       drawer_->SetZoom(value.toReal());
@@ -179,51 +115,23 @@ void ClockWidget::PreviewMode(bool enabled) {
   drawer_->SetPreviewMode(enabled);
 }
 
-void ClockWidget::mouseMoveEvent(QMouseEvent* event) {
-  if (event->buttons() & Qt::LeftButton) {
-    move(event->globalPos() - drag_position_);
-    event->accept();
-  }
+void ClockWidget::EnablePreviewMode()
+{
+  drawer_->SetPreviewMode(true);
 }
 
-void ClockWidget::mousePressEvent(QMouseEvent* event) {
-  if (event->button() == Qt::LeftButton) {
-    drag_position_ = event->globalPos() - frameGeometry().topLeft();
-    event->accept();
-  }
+void ClockWidget::DisablePreviewMode()
+{
+  drawer_->SetPreviewMode(false);
 }
 
-void ClockWidget::mouseReleaseEvent(QMouseEvent* event) {
-  if (event->button() == Qt::LeftButton) {
-    QSettings state;
-    state.setValue(S_OPT_ALIGNMENT, static_cast<int>(cur_alignment_));
-    QPoint last_pos = this->pos();
-    if (cur_alignment_ == CAlignment::A_RIGHT) {
-      last_pos.setX(this->frameGeometry().right());
-    }
-    state.setValue(S_OPT_POSITION, last_pos);
-    event->accept();
-  }
-}
-
-void ClockWidget::paintEvent(QPaintEvent* /*event*/) {
-  QPainter p(this);
-  p.setCompositionMode(QPainter::CompositionMode_Clear);
-  p.fillRect(this->rect(), Qt::transparent);
+void ClockWidget::TimeoutHandler()
+{
+  display_->TimeoutHandler();
 }
 
 void ClockWidget::Update() {
-  if (cur_alignment_ == CAlignment::A_RIGHT) {
-    int old_width = this->frameGeometry().width();
-    this->adjustSize();
-    int new_width = this->frameGeometry().width();
-    QPoint cur_pos = this->pos();
-    cur_pos.setX(cur_pos.x() + old_width - new_width);
-    this->move(cur_pos);
-  } else {
-    Q_ASSERT(cur_alignment_ == CAlignment::A_LEFT);
-    this->adjustSize();
-  }
+  this->adjustSize();
 }
 
 void ClockWidget::DrawImage(const QImage& image) {
@@ -235,13 +143,6 @@ void ClockWidget::DrawImage(const QImage& image) {
     display_->DrawImage(image);
   }
   last_image_ = image;
-}
-
-void ClockWidget::SetWindowFlag(Qt::WindowFlags flag, bool set) {
-  Qt::WindowFlags flags = windowFlags();
-  set ? flags |= flag : flags &= ~flag;
-  setWindowFlags(flags);
-  show();
 }
 
 } // namespace gui

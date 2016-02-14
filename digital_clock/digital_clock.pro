@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     gui/tray_control.cpp \
     gui/plugin_list_item_widget.cpp \
     core/manager_base.cpp \
-    core/autostart.cpp
+    core/autostart.cpp \
+    main_window.cpp
 
 HEADERS += \
     core/skin_manager.h \
@@ -53,7 +54,8 @@ HEADERS += \
     gui/plugin_list_item_widget.h \
     core/manager_base.h \
     core/autostart.h \
-    core/build_defs.h
+    core/build_defs.h \
+    main_window.h
 
 FORMS += \
     gui/settings_dialog.ui \

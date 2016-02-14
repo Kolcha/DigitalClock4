@@ -20,22 +20,24 @@ signals:
   void ErrorMessage(const QString& msg);
 
 public slots:
-  void CheckForUpdates(bool force);
+  void CheckForUpdates();
   void SetCheckForBeta(bool check);
   void SetAutoupdate(bool update);
-  void SetUpdatePeriod(qint64 period);
+  void SetUpdatePeriod(int period);
   void TimeoutHandler();
 
 private slots:
   void ProcessData();
 
 private:
+  void RunCheckForUpdates(bool force);
+
   HttpClient* downloader_;
   bool check_beta_;
   QByteArray data_;
   QDate last_update_;
   bool autoupdate_;
-  qint64 update_period_;
+  int update_period_;
   bool force_update_;
   bool was_error_;
 };

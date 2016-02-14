@@ -32,7 +32,7 @@ public:
    * Init plugin.
    * @param current_settings - map with all current clock settings
    */
-  virtual void Init(const QMap<Options, QVariant>& current_settings) = 0;
+  virtual void Init(const QMap<Option, QVariant>& current_settings) = 0;
 };
 
 /*! Settings plugin init interface IID */

@@ -1,41 +1,26 @@
 #ifndef DIGITAL_CLOCK_CORE_CLOCK_SETTINGS_H
 #define DIGITAL_CLOCK_CORE_CLOCK_SETTINGS_H
 
-#include <QSettings>
+#include "config_base.h"
+
+#include <QMap>
 #include "settings_keys.h"
 
 namespace digital_clock {
 namespace core {
 
-class ClockSettings : public QObject {
-  Q_OBJECT
-
+class ClockSettings : public ConfigBase
+{
 public:
-  explicit ClockSettings(QObject* parent = 0);
-  const QVariant& GetOption(Options opt);
-  const QMap<Options, QVariant>& GetSettings();
+  explicit ClockSettings(SettingsStorage* backend, QObject* parent = 0);
 
-  void ExportSettings(QSettings::SettingsMap* settings);
-  void ImportSettings(const QSettings::SettingsMap& settings);
+  // temporary added only for compatibility
+  // TODO: remove
+  QMap<Option, QVariant> GetSettings() const;
 
-signals:
-  void OptionChanged(Options opt, const QVariant& value);
-  void SettingsExported();
-  void SettingsImported();
-
-public slots:
-  void Load();
-  void Save();
-  void SetOption(Options opt, const QVariant& value);
-  void TrackChanges(bool set);
-  void EmitSettings();
-  void LoadDefaults();
-
-private:
-  QMap<Options, QString> keys_;
-  QMap<Options, QVariant> values_;
-  QSettings settings_;
-  bool track_change_;
+protected:
+  QString GetKey(const int id) const;
+  QVariant GetDefaultValue(const int id) const;
 };
 
 } // namespace core

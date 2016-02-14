@@ -55,7 +55,7 @@ void TrayColor::Configure() {
   settings_->Save();
 }
 
-void TrayColor::SettingsListener(Options opt, const QVariant& value) {
+void TrayColor::SettingsListener(Option opt, const QVariant& value) {
   if (opt == OPT_COLOR) RedrawTrayIcon(value.value<QColor>());
 }
 

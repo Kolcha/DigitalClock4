@@ -8,7 +8,7 @@ VarTranslucency::VarTranslucency() {
   info_.description = tr("Changes clock opacity level during time.");
 }
 
-void VarTranslucency::Init(const QMap<Options, QVariant>& current_settings) {
+void VarTranslucency::Init(const QMap<Option, QVariant>& current_settings) {
   old_opacity_ = current_settings[OPT_OPACITY].toReal();
   cur_opacity_ = 1.0;
   op_stap_ = -0.01;

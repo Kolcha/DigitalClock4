@@ -36,7 +36,7 @@ void SettingsDialog::SetTasks(const QMap<QTime, QString>& tasks) {
     int index = ui->tasks_table->rowCount();
     ui->tasks_table->setRowCount(index + 1);
     QTableWidgetItem* item1 = new QTableWidgetItem(
-          iter.key().toString(GetDefaultValue(OPT_TIME_FORMAT).toString()));
+          iter.key().toString("hh:mm"));
     item1->setData(Qt::UserRole, iter.key());
     QTableWidgetItem* item2 = new QTableWidgetItem(iter.value());
     ui->tasks_table->setItem(index, 0, item1);
