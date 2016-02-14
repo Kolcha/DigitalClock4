@@ -1,5 +1,7 @@
 #include "main_window.h"
 
+#include <functional>
+
 #include <QApplication>
 #include <QGridLayout>
 #include <QMouseEvent>
@@ -7,6 +9,8 @@
 #include <QPointer>
 #include <QSettings>
 #include <QDesktopWidget>
+#include <QMenu>
+#include <QDesktopServices>
 
 #include "settings_storage.h"
 
@@ -35,7 +39,9 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
   setWindowFlags(windowFlags() | Qt::Tool);
 #endif
   setAttribute(Qt::WA_TranslucentBackground);
+
   setContextMenuPolicy(Qt::CustomContextMenu);
+  connect(this, &MainWindow::customContextMenuRequested, this, &MainWindow::ShowContextMenu);
 
   config_backend_ = new SettingsStorage(this);
   app_config_ = new core::ClockSettings(config_backend_, config_backend_);
@@ -58,6 +64,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
   skin_manager_->SetFallbackSkin("Electronic (default)");
 
   updater_ = new core::Updater(this);
+  connect(&timer_, &QTimer::timeout, updater_, &core::Updater::TimeoutHandler);
 
   tray_control_ = new gui::TrayControl(this);
   connect(tray_control_, &gui::TrayControl::ShowSettingsDlg, this, &MainWindow::ShowSettingsDialog);
@@ -70,6 +77,8 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
   connect(clock_widget_, &gui::ClockWidget::SeparatorsChanged, skin_manager_, &core::SkinManager::SetSeparators);
   connect(&timer_, &QTimer::timeout, clock_widget_, &gui::ClockWidget::TimeoutHandler);
   connect(skin_manager_, &core::SkinManager::SkinLoaded, clock_widget_, &gui::ClockWidget::ApplySkin);
+
+  ConnectTrayMessages();
 
   QGridLayout* main_layout = new QGridLayout(this);
   main_layout->addWidget(clock_widget_);
@@ -266,6 +275,9 @@ void MainWindow::ShowSettingsDialog()
     // skins list
     connect(skin_manager_, &core::SkinManager::SearchFinished, dlg, &gui::SettingsDialog::SetSkinList);
     skin_manager_->ListSkins();
+    // 'preview mode' support
+    clock_widget_->EnablePreviewMode();
+    connect(dlg, &gui::SettingsDialog::destroyed, clock_widget_, &gui::ClockWidget::DisablePreviewMode);
 
     dlg->show();
   }
@@ -284,6 +296,11 @@ void MainWindow::ShowAboutDialog()
   dlg->activateWindow();
 }
 
+void MainWindow::ShowContextMenu(const QPoint& p)
+{
+  tray_control_->GetTrayIcon()->contextMenu()->exec(this->mapToParent(p));
+}
+
 void MainWindow::Update()
 {
   if (cur_alignment_ == CAlignment::A_RIGHT) {
@@ -297,6 +314,43 @@ void MainWindow::Update()
     Q_ASSERT(cur_alignment_ == CAlignment::A_LEFT);
     this->adjustSize();
   }
+}
+
+void MainWindow::ConnectTrayMessages()
+{
+  // updater messages
+  connect(updater_, &core::Updater::ErrorMessage, [this] (const QString& msg) {
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_control_->GetTrayIcon()->showMessage(
+          tr("%1 Update").arg(qApp->applicationName()),
+          tr("Update error. %1").arg(msg),
+          QSystemTrayIcon::Critical);
+  });
+
+  connect(updater_, &core::Updater::UpToDate, [this] () {
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_control_->GetTrayIcon()->showMessage(
+          tr("%1 Update").arg(qApp->applicationName()),
+          tr("You already have latest version (%1).").arg(qApp->applicationVersion()),
+          QSystemTrayIcon::Information);
+  });
+
+  connect(updater_, &core::Updater::NewVersion, [this] (const QString& version, const QString& link) {
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_control_->GetTrayIcon()->showMessage(
+          tr("%1 Update").arg(qApp->applicationName()),
+          tr("Update available (%1). Click this message to download.").arg(version),
+          QSystemTrayIcon::Warning);
+    connect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
+            [=] () { QDesktopServices::openUrl(link); });
+  });
+
+  // skin_manager messages
+  connect(skin_manager_, &core::SkinManager::ErrorMessage, [this] (const QString& msg) {
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_control_->GetTrayIcon()->showMessage(
+          tr("%1 Error").arg(qApp->applicationName()), msg, QSystemTrayIcon::Warning);
+  });
 }
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set)

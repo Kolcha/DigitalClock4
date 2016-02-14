@@ -48,9 +48,13 @@ private slots:
   void ShowSettingsDialog();
   void ShowAboutDialog();
 
+  void ShowContextMenu(const QPoint& p);
+
   void Update();
 
 private:
+  void ConnectTrayMessages();
+
   void SetWindowFlag(Qt::WindowFlags flag, bool set);
 
   SettingsStorage* config_backend_;
