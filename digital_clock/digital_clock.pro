@@ -16,7 +16,7 @@ SOURCES += main.cpp\
     core/clock_settings.cpp \
     gui/settings_dialog.cpp \
     gui/about_dialog.cpp \
-    core/plugin_manager.cpp \
+#    core/plugin_manager.cpp \
     skin/clock_vector_skin.cpp \
     skin/clock_raster_skin.cpp \
     skin/clock_text_skin.cpp \
@@ -30,14 +30,15 @@ SOURCES += main.cpp\
     gui/tray_control.cpp \
     gui/plugin_list_item_widget.cpp \
     core/manager_base.cpp \
-    core/autostart.cpp
+    core/autostart.cpp \
+    main_window.cpp
 
 HEADERS += \
     core/skin_manager.h \
     core/clock_settings.h \
     gui/settings_dialog.h \
     gui/about_dialog.h \
-    core/plugin_manager.h \
+#    core/plugin_manager.h \
     skin/clock_vector_skin.h \
     skin/clock_raster_skin.h \
     skin/clock_text_skin.h \
@@ -53,7 +54,8 @@ HEADERS += \
     gui/plugin_list_item_widget.h \
     core/manager_base.h \
     core/autostart.h \
-    core/build_defs.h
+    core/build_defs.h \
+    main_window.h
 
 FORMS += \
     gui/settings_dialog.ui \

@@ -1,0 +1,310 @@
+#include "main_window.h"
+
+#include <QApplication>
+#include <QGridLayout>
+#include <QMouseEvent>
+#include <QPainter>
+#include <QPointer>
+#include <QSettings>
+#include <QDesktopWidget>
+
+#include "settings_storage.h"
+
+#include "core/clock_settings.h"
+#include "core/skin_manager.h"
+#include "core/updater.h"
+
+#include "gui/tray_control.h"
+#include "gui/clock_widget.h"
+#include "gui/settings_dialog.h"
+#include "gui/about_dialog.h"
+
+
+#define S_OPT_POSITION              "state/clock_position"
+#define S_OPT_ALIGNMENT             "state/last_alignment"
+
+
+namespace digital_clock {
+
+MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
+{
+  setWindowFlags(Qt::FramelessWindowHint);
+#ifdef Q_OS_OSX
+  setWindowFlags(windowFlags() | Qt::NoDropShadowWindowHint);
+#else
+  setWindowFlags(windowFlags() | Qt::Tool);
+#endif
+  setAttribute(Qt::WA_TranslucentBackground);
+  setContextMenuPolicy(Qt::CustomContextMenu);
+
+  config_backend_ = new SettingsStorage(this);
+  app_config_ = new core::ClockSettings(config_backend_, config_backend_);
+
+  skin_manager_ = new core::SkinManager(this);
+  QList<QDir> default_skin_dirs;
+  default_skin_dirs.append(QDir(":/clock/default_skins"));
+#ifdef Q_OS_OSX
+  default_skin_dirs.append(QDir(qApp->applicationDirPath() + "/../Resources/skins"));
+#else
+  default_skin_dirs.append(QDir(qApp->applicationDirPath() + "/skins"));
+#endif
+#ifdef Q_OS_LINUX
+  default_skin_dirs.append(QDir("/usr/share/digital_clock/skins"));
+  default_skin_dirs.append(QDir("/usr/local/share/digital_clock/skins"));
+  default_skin_dirs.append(QDir(QDir::homePath() + "/.local/share/digital_clock/skins"));
+#endif
+  skin_manager_->ResetSearchDirs(default_skin_dirs);
+  skin_manager_->ListSkins();
+  skin_manager_->SetFallbackSkin("Electronic (default)");
+
+  updater_ = new core::Updater(this);
+
+  tray_control_ = new gui::TrayControl(this);
+  connect(tray_control_, &gui::TrayControl::ShowSettingsDlg, this, &MainWindow::ShowSettingsDialog);
+  connect(tray_control_, &gui::TrayControl::ShowAboutDlg, this, &MainWindow::ShowAboutDialog);
+  connect(tray_control_, &gui::TrayControl::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
+  connect(tray_control_, &gui::TrayControl::AppExit, qApp, &QApplication::quit);
+
+  clock_widget_ = new gui::ClockWidget(this);
+  connect(clock_widget_, &gui::ClockWidget::changed, this, &MainWindow::Update);
+  connect(clock_widget_, &gui::ClockWidget::SeparatorsChanged, skin_manager_, &core::SkinManager::SetSeparators);
+  connect(&timer_, &QTimer::timeout, clock_widget_, &gui::ClockWidget::TimeoutHandler);
+  connect(skin_manager_, &core::SkinManager::SkinLoaded, clock_widget_, &gui::ClockWidget::ApplySkin);
+
+  QGridLayout* main_layout = new QGridLayout(this);
+  main_layout->addWidget(clock_widget_);
+  setLayout(main_layout);
+  adjustSize();
+
+
+
+  QSettings state;
+  QPoint last_pos = state.value(S_OPT_POSITION, QPoint(50, 20)).toPoint();
+
+  CAlignment last_align = static_cast<CAlignment>(state.value(S_OPT_ALIGNMENT, CAlignment::A_LEFT).toInt());
+  if (last_align == CAlignment::A_RIGHT) {
+    last_pos.setX(last_pos.x() - this->width());
+  }
+  cur_alignment_ = last_align;
+  this->move(last_pos);
+
+
+
+  Reset();
+
+  timer_.setInterval(500);
+  timer_.setSingleShot(false);
+  timer_.start();
+}
+
+MainWindow::~MainWindow()
+{
+  timer_.stop();
+}
+
+void MainWindow::mousePressEvent(QMouseEvent* event)
+{
+  if (event->button() == Qt::LeftButton) {
+    drag_position_ = event->globalPos() - frameGeometry().topLeft();
+    event->accept();
+  }
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent* event)
+{
+  if (event->buttons() & Qt::LeftButton) {
+    move(event->globalPos() - drag_position_);
+    event->accept();
+  }
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent* event)
+{
+  if (event->button() == Qt::LeftButton) {
+    QSettings state;
+    state.setValue(S_OPT_ALIGNMENT, static_cast<int>(cur_alignment_));
+    QPoint last_pos = this->pos();
+    if (cur_alignment_ == CAlignment::A_RIGHT) {
+      last_pos.setX(this->frameGeometry().right());
+    }
+    state.setValue(S_OPT_POSITION, last_pos);
+    event->accept();
+  }
+}
+
+void MainWindow::paintEvent(QPaintEvent* /*event*/)
+{
+  QPainter p(this);
+  p.setCompositionMode(QPainter::CompositionMode_Clear);
+  p.fillRect(this->rect(), Qt::transparent);
+}
+
+void MainWindow::Reset()
+{
+  clock_widget_->blockSignals(true);
+  ApplyOption(OPT_SEPARATOR_FLASH, app_config_->GetValue(OPT_SEPARATOR_FLASH));
+  ApplyOption(OPT_TIME_FORMAT, app_config_->GetValue(OPT_TIME_FORMAT));
+  ApplyOption(OPT_ZOOM, app_config_->GetValue(OPT_ZOOM));
+  ApplyOption(OPT_COLOR, app_config_->GetValue(OPT_COLOR));
+  ApplyOption(OPT_TEXTURE, app_config_->GetValue(OPT_TEXTURE));
+  ApplyOption(OPT_TEXTURE_TYPE, app_config_->GetValue(OPT_TEXTURE_TYPE));
+  ApplyOption(OPT_TEXTURE_PER_ELEMENT, app_config_->GetValue(OPT_TEXTURE_PER_ELEMENT));
+  ApplyOption(OPT_TEXTURE_DRAW_MODE, app_config_->GetValue(OPT_TEXTURE_DRAW_MODE));
+  ApplyOption(OPT_CUSTOMIZATION, app_config_->GetValue(OPT_CUSTOMIZATION));
+  ApplyOption(OPT_SPACING, app_config_->GetValue(OPT_SPACING));
+  ApplyOption(OPT_COLORIZE_COLOR, app_config_->GetValue(OPT_COLORIZE_COLOR));
+  ApplyOption(OPT_COLORIZE_LEVEL, app_config_->GetValue(OPT_COLORIZE_LEVEL));
+
+  ApplyOption(OPT_FONT, app_config_->GetValue(OPT_FONT));
+  ApplyOption(OPT_SKIN_NAME, app_config_->GetValue(OPT_SKIN_NAME));
+  clock_widget_->blockSignals(false);
+
+  clock_widget_->TimeoutHandler();      // to apply changes
+
+  // widnow settings
+  ApplyOption(OPT_OPACITY, app_config_->GetValue(OPT_OPACITY));
+  ApplyOption(OPT_STAY_ON_TOP, app_config_->GetValue(OPT_STAY_ON_TOP));
+  ApplyOption(OPT_TRANSP_FOR_INPUT, app_config_->GetValue(OPT_TRANSP_FOR_INPUT));
+  ApplyOption(OPT_ALIGNMENT, app_config_->GetValue(OPT_ALIGNMENT));
+
+  // updater settings
+  ApplyOption(OPT_USE_AUTOUPDATE, app_config_->GetValue(OPT_USE_AUTOUPDATE));
+  ApplyOption(OPT_UPDATE_PERIOD, app_config_->GetValue(OPT_UPDATE_PERIOD));
+  ApplyOption(OPT_CHECK_FOR_BETA, app_config_->GetValue(OPT_CHECK_FOR_BETA));
+}
+
+void MainWindow::ApplyOption(const Option opt, const QVariant& value)
+{
+  switch (opt) {
+    case OPT_OPACITY:
+      setWindowOpacity(value.toReal());
+      break;
+
+    case OPT_STAY_ON_TOP:
+      SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
+      break;
+
+    case OPT_TRANSP_FOR_INPUT:
+      SetWindowFlag(Qt::WindowTransparentForInput, value.toBool());
+      break;
+
+    case OPT_ALIGNMENT:
+    {
+      cur_alignment_ = static_cast<CAlignment>(value.toInt());
+      QSettings state;
+      state.setValue(S_OPT_ALIGNMENT, static_cast<int>(cur_alignment_));
+      QPoint cur_pos = this->pos();
+      switch (cur_alignment_) {
+        case CAlignment::A_LEFT:
+        {
+          if (cur_pos.x() < 0) {
+            cur_pos.setX(0);
+            this->move(cur_pos);
+          }
+          break;
+        }
+
+        case CAlignment::A_RIGHT:
+        {
+          cur_pos = this->frameGeometry().topRight();
+          QDesktopWidget desktop;
+          if (cur_pos.x() > desktop.screen()->width()) {
+            cur_pos.setX(desktop.screen()->width());
+            this->move(cur_pos.x() - this->width(), cur_pos.y());
+          }
+          break;
+        }
+
+        default:
+          Q_ASSERT(false);
+      }
+      state.setValue(S_OPT_POSITION, cur_pos);
+      break;
+    }
+
+    case OPT_SKIN_NAME:
+      skin_manager_->LoadSkin(value.toString());
+      break;
+
+    case OPT_FONT:
+      skin_manager_->SetFont(value.value<QFont>());
+      break;
+
+    case OPT_USE_AUTOUPDATE:
+      updater_->SetAutoupdate(value.toBool());
+      break;
+
+    case OPT_UPDATE_PERIOD:
+      updater_->SetUpdatePeriod(value.toInt());
+      break;
+
+    case OPT_CHECK_FOR_BETA:
+      updater_->SetCheckForBeta(value.toBool());
+      break;
+
+    default:
+      clock_widget_->ApplyOption(opt, value);
+  }
+}
+
+void MainWindow::ShowSettingsDialog()
+{
+  static QPointer<gui::SettingsDialog> dlg;
+  if (!dlg) {
+    dlg = new gui::SettingsDialog(app_config_);
+    // main signals/slots: change options, apply and reset
+    connect(dlg, &gui::SettingsDialog::OptionChanged, this, &MainWindow::ApplyOption);
+    connect(dlg, &gui::SettingsDialog::OptionChanged, app_config_, &core::ClockSettings::SetValue);
+    connect(dlg, &gui::SettingsDialog::accepted, config_backend_, &SettingsStorage::Save);
+    connect(dlg, &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Load);
+    connect(config_backend_, &SettingsStorage::reloaded, this, &MainWindow::Reset);
+    // export/import
+    connect(dlg, &gui::SettingsDialog::ExportSettings, config_backend_, &SettingsStorage::Export);
+    connect(dlg, &gui::SettingsDialog::ImportSettings, config_backend_, &SettingsStorage::Import);
+    // check for updates
+    connect(dlg, &gui::SettingsDialog::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
+    // skins list
+    connect(skin_manager_, &core::SkinManager::SearchFinished, dlg, &gui::SettingsDialog::SetSkinList);
+    skin_manager_->ListSkins();
+
+    dlg->show();
+  }
+  dlg->raise();
+  dlg->activateWindow();
+}
+
+void MainWindow::ShowAboutDialog()
+{
+  static QPointer<gui::AboutDialog> dlg;
+  if (!dlg) {
+    dlg = new gui::AboutDialog();
+    dlg->show();
+  }
+  dlg->raise();
+  dlg->activateWindow();
+}
+
+void MainWindow::Update()
+{
+  if (cur_alignment_ == CAlignment::A_RIGHT) {
+    int old_width = this->frameGeometry().width();
+    this->adjustSize();
+    int new_width = this->frameGeometry().width();
+    QPoint cur_pos = this->pos();
+    cur_pos.setX(cur_pos.x() + old_width - new_width);
+    this->move(cur_pos);
+  } else {
+    Q_ASSERT(cur_alignment_ == CAlignment::A_LEFT);
+    this->adjustSize();
+  }
+}
+
+void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set)
+{
+  Qt::WindowFlags flags = windowFlags();
+  set ? flags |= flag : flags &= ~flag;
+  setWindowFlags(flags);
+  show();
+}
+
+} // namespace digital_clock

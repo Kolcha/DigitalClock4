@@ -26,8 +26,6 @@ public:
   explicit SettingsDialog(::digital_clock::core::ClockSettings* config, QWidget* parent = 0);
   ~SettingsDialog();
 
-  void SetCurrentSettings(const QMap<Option, QVariant>& settings);
-
 signals:
   void OptionChanged(Option opt, const QVariant& value);
   void PluginConfigureRequest(const QString& text);

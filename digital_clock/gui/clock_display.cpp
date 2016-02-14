@@ -9,13 +9,9 @@ namespace gui {
 ClockDisplay::ClockDisplay(QWidget* parent)
   : QLabel(parent), sep_visible_(false), sep_flashes_(true) {
   setAlignment(Qt::AlignCenter);
-  timer_.setInterval(500);
-  connect(&timer_, SIGNAL(timeout()), this, SLOT(TimeoutHandler()));
-  timer_.start();
 }
 
 ClockDisplay::~ClockDisplay() {
-  timer_.stop();
 }
 
 void ClockDisplay::DrawImage(const QImage& image) {

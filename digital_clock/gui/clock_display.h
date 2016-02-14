@@ -2,7 +2,6 @@
 #define DIGITAL_CLOCK_GUI_CLOCK_DISPLAY_H
 
 #include <QLabel>
-#include <QTimer>
 
 namespace digital_clock {
 namespace gui {
@@ -24,11 +23,9 @@ public slots:
   void SetSeparatorFlash(bool set);
   void SetTimeFormat(const QString& format);
 
-private slots:
   void TimeoutHandler();
 
 private:
-  QTimer timer_;
   bool sep_visible_;
   bool sep_flashes_;
   QString time_format_;
