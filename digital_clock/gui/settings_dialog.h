@@ -67,6 +67,7 @@ private slots:
   void on_sel_font_btn_clicked();
   void on_apply_btn_clicked();
   void on_system_format_clicked();
+  void on_custom_format_clicked();
   void on_enable_autoupdate_toggled(bool checked);
   void on_update_period_box_currentIndexChanged(int index);
   void on_check_for_beta_toggled(bool checked);

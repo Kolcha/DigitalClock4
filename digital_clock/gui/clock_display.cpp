@@ -34,7 +34,16 @@ void ClockDisplay::SetTimeFormat(const QString& format) {
 }
 
 void ClockDisplay::TimeoutHandler() {
-  if (time_format_.isEmpty()) SetTimeFormat(QLocale::system().timeFormat());
+  if (time_format_.isEmpty()) {
+    QString sys_time_format = QLocale::system().timeFormat();
+    int sep_pos = sys_time_format.indexOf(':');
+    QString time_format = sys_time_format.mid(0, sys_time_format.indexOf(':', sep_pos + 1));
+
+    if (sys_time_format.contains('A', Qt::CaseInsensitive)) {
+      time_format += 'A';
+    }
+    SetTimeFormat(time_format);
+  }
   QString str_time = QTime::currentTime().toString(time_format_);
 
   QList<int> seps_pos;

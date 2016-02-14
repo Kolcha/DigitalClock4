@@ -160,8 +160,7 @@ void SettingsDialog::InitControls()
   ui->enable_autoupdate->setChecked(config_->GetValue(OPT_USE_AUTOUPDATE).toBool());
 
   QString time_format = config_->GetValue(OPT_TIME_FORMAT).toString();
-  // TODO: reimplement
-  bool is_system = false; // (time_format == GetDefaultValue(OPT_TIME_FORMAT).toString());
+  bool is_system = time_format.isEmpty();
   if (!is_system) ui->format_box->setCurrentText(time_format);
   ui->system_format->setChecked(is_system);
   ui->custom_format->setChecked(!is_system);
@@ -214,10 +213,11 @@ void SettingsDialog::SaveState() {
 }
 
 void SettingsDialog::LoadState() {
-  QSettings settings;
-//  ui->format_box->setCurrentText(settings.value(S_OPT_LAST_TIME_FORMAT_KEY,
-//                                                GetDefaultValue(OPT_TIME_FORMAT)).toString());
-  restoreGeometry(settings.value(S_OPT_GEOMETRY_KEY).toByteArray());
+  QSettings state;
+  QVariant last_format = state.value(S_OPT_LAST_TIME_FORMAT_KEY);
+  if (last_format.isValid()) ui->format_box->setCurrentText(last_format.toString());
+  QVariant last_geometry = state.value(S_OPT_GEOMETRY_KEY);
+  if (last_geometry.isValid()) restoreGeometry(last_geometry.toByteArray());
 }
 
 void SettingsDialog::on_stay_on_top_toggled(bool checked) {
@@ -307,8 +307,12 @@ void SettingsDialog::on_apply_btn_clicked() {
 }
 
 void SettingsDialog::on_system_format_clicked() {
-  // TODO: reimplement
-//  emit OptionChanged(OPT_TIME_FORMAT, GetDefaultValue(OPT_TIME_FORMAT).toString());
+  emit OptionChanged(OPT_TIME_FORMAT, QString());
+}
+
+void SettingsDialog::on_custom_format_clicked()
+{
+  emit OptionChanged(OPT_TIME_FORMAT, ui->format_box->currentText());
 }
 
 void SettingsDialog::on_enable_autoupdate_toggled(bool checked) {
