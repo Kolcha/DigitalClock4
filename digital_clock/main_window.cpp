@@ -148,6 +148,12 @@ void MainWindow::paintEvent(QPaintEvent* /*event*/)
 
 void MainWindow::Reset()
 {
+  // widnow settings
+  ApplyOption(OPT_OPACITY, app_config_->GetValue(OPT_OPACITY));
+  ApplyOption(OPT_STAY_ON_TOP, app_config_->GetValue(OPT_STAY_ON_TOP));
+  ApplyOption(OPT_TRANSP_FOR_INPUT, app_config_->GetValue(OPT_TRANSP_FOR_INPUT));
+  ApplyOption(OPT_ALIGNMENT, app_config_->GetValue(OPT_ALIGNMENT));
+
   clock_widget_->blockSignals(true);
   ApplyOption(OPT_SEPARATOR_FLASH, app_config_->GetValue(OPT_SEPARATOR_FLASH));
   ApplyOption(OPT_TIME_FORMAT, app_config_->GetValue(OPT_TIME_FORMAT));
@@ -167,12 +173,6 @@ void MainWindow::Reset()
   clock_widget_->blockSignals(false);
 
   clock_widget_->TimeoutHandler();      // to apply changes
-
-  // widnow settings
-  ApplyOption(OPT_OPACITY, app_config_->GetValue(OPT_OPACITY));
-  ApplyOption(OPT_STAY_ON_TOP, app_config_->GetValue(OPT_STAY_ON_TOP));
-  ApplyOption(OPT_TRANSP_FOR_INPUT, app_config_->GetValue(OPT_TRANSP_FOR_INPUT));
-  ApplyOption(OPT_ALIGNMENT, app_config_->GetValue(OPT_ALIGNMENT));
 
   // updater settings
   ApplyOption(OPT_USE_AUTOUPDATE, app_config_->GetValue(OPT_USE_AUTOUPDATE));
@@ -263,6 +263,7 @@ void MainWindow::ShowSettingsDialog()
     connect(dlg, &gui::SettingsDialog::OptionChanged, app_config_, &core::ClockSettings::SetValue);
     connect(dlg, &gui::SettingsDialog::accepted, config_backend_, &SettingsStorage::Save);
     connect(dlg, &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Load);
+    connect(dlg, &gui::SettingsDialog::ResetSettings, config_backend_, &SettingsStorage::Reset);
     connect(config_backend_, &SettingsStorage::reloaded, this, &MainWindow::Reset);
     // export/import
     connect(dlg, &gui::SettingsDialog::ExportSettings, config_backend_, &SettingsStorage::Export);

@@ -31,6 +31,7 @@ public slots:
 private:
   QSettings settings_;
   QSettings::SettingsMap current_values_;
+  QSettings::SettingsMap default_values_;
 };
 
 #endif // SETTINGS_STORAGE_H

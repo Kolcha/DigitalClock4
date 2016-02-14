@@ -11,6 +11,7 @@ const QVariant& SettingsStorage::GetValue(const QString& key, const QVariant& de
 {
   auto iter = current_values_.find(key);
   if (iter != current_values_.end()) return iter.value();
+  default_values_[key] = default_value;
   QVariant& value = current_values_[key];
   value = settings_.value(key, default_value);
   return value;
@@ -44,7 +45,7 @@ void SettingsStorage::Save()
 
 void SettingsStorage::Reset()
 {
-  current_values_.clear();
+  current_values_ = default_values_;
   emit reloaded();
 }
 
