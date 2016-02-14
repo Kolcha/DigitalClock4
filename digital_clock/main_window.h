@@ -16,6 +16,7 @@ namespace core {
 class ClockSettings;
 class SkinManager;
 class Updater;
+class PluginManager;
 }
 
 namespace gui {
@@ -52,6 +53,10 @@ private slots:
 
   void Update();
 
+  // temporary, will be changed later
+  void InitPluginSystem();
+  void ShutdownPluginSystem();
+
 private:
   void ConnectTrayMessages();
 
@@ -62,6 +67,7 @@ private:
   core::ClockSettings* app_config_;
   core::SkinManager* skin_manager_;
   core::Updater* updater_;
+  core::PluginManager* plugin_manager_;
 
   gui::TrayControl* tray_control_;
   gui::ClockWidget* clock_widget_;

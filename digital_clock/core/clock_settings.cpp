@@ -13,6 +13,34 @@ ClockSettings::ClockSettings(SettingsStorage* backend, QObject* parent) : Config
 {
 }
 
+QMap<Option, QVariant> ClockSettings::GetSettings() const
+{
+  QMap<Option, QVariant> all_settings;
+  all_settings[OPT_OPACITY]               = GetValue(OPT_OPACITY);
+  all_settings[OPT_STAY_ON_TOP]           = GetValue(OPT_STAY_ON_TOP);
+  all_settings[OPT_TRANSP_FOR_INPUT]      = GetValue(OPT_TRANSP_FOR_INPUT);
+  all_settings[OPT_SEPARATOR_FLASH]       = GetValue(OPT_SEPARATOR_FLASH);
+  all_settings[OPT_PLUGINS]               = GetValue(OPT_PLUGINS);
+  all_settings[OPT_TIME_FORMAT]           = GetValue(OPT_TIME_FORMAT);
+  all_settings[OPT_ALIGNMENT]             = GetValue(OPT_ALIGNMENT);
+  all_settings[OPT_SKIN_NAME]             = GetValue(OPT_SKIN_NAME);
+  all_settings[OPT_FONT]                  = GetValue(OPT_FONT);
+  all_settings[OPT_ZOOM]                  = GetValue(OPT_ZOOM);
+  all_settings[OPT_COLOR]                 = GetValue(OPT_COLOR);
+  all_settings[OPT_TEXTURE]               = GetValue(OPT_TEXTURE);
+  all_settings[OPT_TEXTURE_TYPE]          = GetValue(OPT_TEXTURE_TYPE);
+  all_settings[OPT_TEXTURE_PER_ELEMENT]   = GetValue(OPT_TEXTURE_PER_ELEMENT);
+  all_settings[OPT_TEXTURE_DRAW_MODE]     = GetValue(OPT_TEXTURE_DRAW_MODE);
+  all_settings[OPT_CUSTOMIZATION]         = GetValue(OPT_CUSTOMIZATION);
+  all_settings[OPT_SPACING]               = GetValue(OPT_SPACING);
+  all_settings[OPT_COLORIZE_COLOR]        = GetValue(OPT_COLORIZE_COLOR);
+  all_settings[OPT_COLORIZE_LEVEL]        = GetValue(OPT_COLORIZE_LEVEL);
+  all_settings[OPT_USE_AUTOUPDATE]        = GetValue(OPT_USE_AUTOUPDATE);
+  all_settings[OPT_UPDATE_PERIOD]         = GetValue(OPT_UPDATE_PERIOD);
+  all_settings[OPT_CHECK_FOR_BETA]        = GetValue(OPT_CHECK_FOR_BETA);
+  return all_settings;
+}
+
 QString ClockSettings::GetKey(const int id) const
 {
   switch (static_cast<Option>(id)) {

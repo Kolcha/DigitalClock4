@@ -16,7 +16,7 @@ SOURCES += main.cpp\
     core/clock_settings.cpp \
     gui/settings_dialog.cpp \
     gui/about_dialog.cpp \
-#    core/plugin_manager.cpp \
+    core/plugin_manager.cpp \
     skin/clock_vector_skin.cpp \
     skin/clock_raster_skin.cpp \
     skin/clock_text_skin.cpp \
@@ -38,7 +38,7 @@ HEADERS += \
     core/clock_settings.h \
     gui/settings_dialog.h \
     gui/about_dialog.h \
-#    core/plugin_manager.h \
+    core/plugin_manager.h \
     skin/clock_vector_skin.h \
     skin/clock_raster_skin.h \
     skin/clock_text_skin.h \

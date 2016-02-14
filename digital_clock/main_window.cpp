@@ -17,6 +17,7 @@
 #include "core/clock_settings.h"
 #include "core/skin_manager.h"
 #include "core/updater.h"
+#include "core/plugin_manager.h"
 
 #include "gui/tray_control.h"
 #include "gui/clock_widget.h"
@@ -69,6 +70,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
   connect(tray_control_, &gui::TrayControl::ShowSettingsDlg, this, &MainWindow::ShowSettingsDialog);
   connect(tray_control_, &gui::TrayControl::ShowAboutDlg, this, &MainWindow::ShowAboutDialog);
   connect(tray_control_, &gui::TrayControl::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
+  connect(tray_control_, &gui::TrayControl::AppExit, this, &MainWindow::ShutdownPluginSystem);
   connect(tray_control_, &gui::TrayControl::AppExit, qApp, &QApplication::quit);
 
   clock_widget_ = new gui::ClockWidget(this);
@@ -98,6 +100,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 
 
 
+  InitPluginSystem();
   Reset();
 
   timer_.setInterval(500);
@@ -178,6 +181,9 @@ void MainWindow::Reset()
   ApplyOption(OPT_USE_AUTOUPDATE, app_config_->GetValue(OPT_USE_AUTOUPDATE));
   ApplyOption(OPT_UPDATE_PERIOD, app_config_->GetValue(OPT_UPDATE_PERIOD));
   ApplyOption(OPT_CHECK_FOR_BETA, app_config_->GetValue(OPT_CHECK_FOR_BETA));
+
+  plugin_manager_->UnloadPlugins();
+  plugin_manager_->LoadPlugins(app_config_->GetValue(OPT_PLUGINS).toStringList());
 }
 
 void MainWindow::ApplyOption(const Option opt, const QVariant& value)
@@ -277,6 +283,15 @@ void MainWindow::ShowSettingsDialog()
     clock_widget_->EnablePreviewMode();
     connect(dlg, &gui::SettingsDialog::destroyed, clock_widget_, &gui::ClockWidget::DisablePreviewMode);
 
+    // plugins engine
+    connect(dlg, &gui::SettingsDialog::OptionChanged, plugin_manager_, &core::PluginManager::UpdateSettings);
+    // plugins list
+    connect(plugin_manager_, &core::PluginManager::SearchFinished, dlg, &gui::SettingsDialog::SetPluginsList);
+    plugin_manager_->ListAvailable();
+    // enable/disable plugin, configure plugin
+    connect(dlg, &gui::SettingsDialog::PluginStateChanged, plugin_manager_, &core::PluginManager::EnablePlugin);
+    connect(dlg, &gui::SettingsDialog::PluginConfigureRequest, plugin_manager_, &core::PluginManager::ConfigurePlugin);
+
     dlg->show();
   }
   dlg->raise();
@@ -312,6 +327,37 @@ void MainWindow::Update()
     Q_ASSERT(cur_alignment_ == CAlignment::A_LEFT);
     this->adjustSize();
   }
+}
+
+void MainWindow::InitPluginSystem()
+{
+  plugin_manager_ = new core::PluginManager(this);
+
+  QList<QDir> default_plugin_dirs;
+#ifdef Q_OS_OSX
+  default_plugin_dirs.append(QDir(qApp->applicationDirPath() + "/../PlugIns"));
+#else
+  default_plugin_dirs.append(QDir(qApp->applicationDirPath() + "/plugins"));
+#endif
+#ifdef Q_OS_LINUX
+  default_plugin_dirs.append(QDir("/usr/share/digital_clock/plugins"));
+  default_plugin_dirs.append(QDir("/usr/local/share/digital_clock/plugins"));
+  default_plugin_dirs.append(QDir(QDir::homePath() + "/.local/share/digital_clock/plugins"));
+#endif
+  plugin_manager_->ResetSearchDirs(default_plugin_dirs);
+  plugin_manager_->ListAvailable();
+
+  core::TPluginData plugin_data;
+  plugin_data.settings = app_config_;
+  plugin_data.tray = tray_control_->GetTrayIcon();
+  plugin_data.window = clock_widget_;
+
+  plugin_manager_->SetInitData(plugin_data);
+}
+
+void MainWindow::ShutdownPluginSystem()
+{
+  plugin_manager_->UnloadPlugins();
 }
 
 void MainWindow::ConnectTrayMessages()

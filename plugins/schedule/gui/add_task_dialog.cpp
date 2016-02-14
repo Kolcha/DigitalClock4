@@ -13,7 +13,7 @@ AddTaskDialog::AddTaskDialog(Qt::DateFormat date_format, QWidget* parent)
       date_format == Qt::SystemLocaleLongDate ? QLocale::LongFormat : QLocale::ShortFormat;
   ui->date_edit->setDisplayFormat(QLocale::system().dateFormat(format_type));
   ui->date_edit->setDate(QDate::currentDate());
-  ui->time_edit->setDisplayFormat(GetDefaultValue(OPT_TIME_FORMAT).toString());
+  ui->time_edit->setDisplayFormat("hh:mm");
   ui->time_edit->setTime(QTime::currentTime());
 }
 

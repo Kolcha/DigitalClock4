@@ -56,7 +56,6 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, QWidget* parent) :
   for (auto iter = update_periods_.begin(); iter != update_periods_.end(); ++iter) {
     ui->update_period_box->addItem(iter.value(), iter.key());
   }
-  is_loading_ = false;
 
   ui->autostart->setChecked(IsAutoStartEnabled());      // TODO: remove
   connect(this, &SettingsDialog::accepted, [this] () {
@@ -90,13 +89,13 @@ void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::BaseSkin::TSki
 }
 
 void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins) {
-  is_loading_ = true;
   ui->plugins_list->clear();
   for (auto& plugin : plugins) {
     QListWidgetItem* item = new QListWidgetItem();
     PluginListItemWidget* widget = new PluginListItemWidget(ui->plugins_list);
     widget->SetInfo(plugin.first);
     widget->SetConfigurable(plugin.second);
+    widget->SetChecked(active_plugins_.contains(widget->GetName()));
     item->setSizeHint(widget->sizeHint());
     ui->plugins_list->addItem(item);
     ui->plugins_list->setItemWidget(item, widget);
@@ -107,7 +106,6 @@ void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plug
     connect(widget, SIGNAL(ConfigureRequested(QString)),
             this, SIGNAL(PluginConfigureRequest(QString)));
   }
-  is_loading_ = false;
 }
 
 void SettingsDialog::showEvent(QShowEvent* e) {
@@ -182,23 +180,12 @@ void SettingsDialog::InitControls()
   ui->check_for_beta->setChecked(config_->GetValue(OPT_CHECK_FOR_BETA).toBool());
 
   // "Plugins" tab
-  // TODO: load all available plugins and fill listbox with them
-  // TODO: block signals from items during initialization
-  // TODO: remove 'active_plugins_'
-  // TODO: provide plugin state with other info and remove next 'for'
   active_plugins_ = config_->GetValue(OPT_PLUGINS).toStringList();
-  for (int i = 0; i < ui->plugins_list->count(); i++) {
-    PluginListItemWidget* item_widget = dynamic_cast<PluginListItemWidget*>(
-          ui->plugins_list->itemWidget(ui->plugins_list->item(i)));
-    Q_ASSERT(item_widget);
-    item_widget->SetChecked(active_plugins_.contains(item_widget->GetName()));
-  }
 
   this->blockSignals(false);
 }
 
 void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
-  if (is_loading_) return;
   if (activated)
     active_plugins_.append(name);
   else

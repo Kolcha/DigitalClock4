@@ -8,7 +8,7 @@ namespace power_off {
 SettingsDialog::SettingsDialog(QWidget* parent)
   : QDialog(parent), ui(new Ui::SettingsDialog) {
   ui->setupUi(this);
-  ui->time_edit->setDisplayFormat(GetDefaultValue(OPT_TIME_FORMAT).toString());
+  ui->time_edit->setDisplayFormat("hh:mm");
 }
 
 SettingsDialog::~SettingsDialog() {

@@ -3,6 +3,9 @@
 
 #include "config_base.h"
 
+#include <QMap>
+#include "settings_keys.h"
+
 namespace digital_clock {
 namespace core {
 
@@ -10,6 +13,10 @@ class ClockSettings : public ConfigBase
 {
 public:
   explicit ClockSettings(SettingsStorage* backend, QObject* parent = 0);
+
+  // temporary added only for compatibility
+  // TODO: remove
+  QMap<Option, QVariant> GetSettings() const;
 
 protected:
   QString GetKey(const int id) const;

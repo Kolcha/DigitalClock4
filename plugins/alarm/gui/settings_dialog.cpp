@@ -12,7 +12,7 @@ SettingsDialog::SettingsDialog(QWidget* parent)
   : QDialog(parent), ui(new Ui::SettingsDialog) {
   setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
-  ui->time_edit->setDisplayFormat(GetDefaultValue(OPT_TIME_FORMAT).toString());
+  ui->time_edit->setDisplayFormat("hh:mm");
 
   player_ = new QMediaPlayer(this);
   connect(player_, SIGNAL(stateChanged(QMediaPlayer::State)),

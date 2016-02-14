@@ -92,7 +92,6 @@ private:
   QStringList active_plugins_;
   QFont last_font_;
   QMap<qint64, QString> update_periods_;
-  bool is_loading_;
   QColor last_colorize_color_;
 };
 
