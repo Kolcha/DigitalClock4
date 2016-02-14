@@ -282,7 +282,7 @@ void SettingsDialog::on_type_image_toggled(bool checked) {
 }
 
 void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
-  if (!arg1.isEmpty() && !is_loading_) emit OptionChanged(OPT_SKIN_NAME, arg1);
+  if (!arg1.isEmpty()) emit OptionChanged(OPT_SKIN_NAME, arg1);
 }
 
 void SettingsDialog::on_use_skin_toggled(bool checked) {

@@ -25,7 +25,6 @@
 
 
 #define S_OPT_POSITION              "state/clock_position"
-#define S_OPT_ALIGNMENT             "state/last_alignment"
 
 
 namespace digital_clock {
@@ -90,7 +89,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
   QSettings state;
   QPoint last_pos = state.value(S_OPT_POSITION, QPoint(50, 20)).toPoint();
 
-  CAlignment last_align = static_cast<CAlignment>(state.value(S_OPT_ALIGNMENT, CAlignment::A_LEFT).toInt());
+  CAlignment last_align = static_cast<CAlignment>(app_config_->GetValue(OPT_ALIGNMENT).toInt());
   if (last_align == CAlignment::A_RIGHT) {
     last_pos.setX(last_pos.x() - this->width());
   }
@@ -130,12 +129,11 @@ void MainWindow::mouseMoveEvent(QMouseEvent* event)
 void MainWindow::mouseReleaseEvent(QMouseEvent* event)
 {
   if (event->button() == Qt::LeftButton) {
-    QSettings state;
-    state.setValue(S_OPT_ALIGNMENT, static_cast<int>(cur_alignment_));
     QPoint last_pos = this->pos();
     if (cur_alignment_ == CAlignment::A_RIGHT) {
       last_pos.setX(this->frameGeometry().right());
     }
+    QSettings state;
     state.setValue(S_OPT_POSITION, last_pos);
     event->accept();
   }
@@ -200,8 +198,6 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
     case OPT_ALIGNMENT:
     {
       cur_alignment_ = static_cast<CAlignment>(value.toInt());
-      QSettings state;
-      state.setValue(S_OPT_ALIGNMENT, static_cast<int>(cur_alignment_));
       QPoint cur_pos = this->pos();
       switch (cur_alignment_) {
         case CAlignment::A_LEFT:
@@ -227,6 +223,7 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
         default:
           Q_ASSERT(false);
       }
+      QSettings state;
       state.setValue(S_OPT_POSITION, cur_pos);
       break;
     }
