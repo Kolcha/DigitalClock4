@@ -26,7 +26,7 @@ class ClockSettings;
 /*! Data to init plugins. */
 struct TPluginData {
   ClockSettings* settings;                    /*!< clock settings object */
-  ::digital_clock::gui::ClockWidget* window;  /*!< clock widget */
+  gui::ClockWidget* window;                   /*!< clock widget */
   QSystemTrayIcon* tray;                      /*!< tray icon object */
 };
 

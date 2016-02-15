@@ -3,7 +3,6 @@
 
 #include <QPixmap>
 #include <QSharedPointer>
-#include "skin_draw_global.h"
 
 namespace skin_draw {
 
@@ -18,7 +17,7 @@ namespace skin_draw {
  * This interface is used by skin draw engine.
  * @see RasterSkin, VectorSkin, TextSkin, SkinDrawer
  */
-class SKIN_DRAWSHARED_EXPORT ISkin {
+class ISkin {
 public:
   /*! Virtual destructor. */
   virtual ~ISkin() {}

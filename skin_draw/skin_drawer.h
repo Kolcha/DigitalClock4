@@ -8,6 +8,7 @@
 #include <QString>
 
 #include "iskin.h"
+#include "skin_draw_global.h"
 
 namespace skin_draw {
 

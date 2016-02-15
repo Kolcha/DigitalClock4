@@ -29,7 +29,7 @@ class SettingsDialog : public QDialog {
   Q_OBJECT
 
 public:
-  explicit SettingsDialog(::digital_clock::core::ClockSettings* config, QWidget* parent = 0);
+  explicit SettingsDialog(core::ClockSettings* config, QWidget* parent = 0);
   ~SettingsDialog();
 
 signals:
@@ -43,7 +43,7 @@ signals:
 
 public slots:
   void SetSkinList(const QStringList& skins);
-  void DisplaySkinInfo(const ::digital_clock::core::BaseSkin::TSkinInfo& info);
+  void DisplaySkinInfo(const core::BaseSkin::TSkinInfo& info);
   void SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins);
 
 protected:
@@ -91,7 +91,7 @@ private slots:
 private:
   Ui::SettingsDialog* ui;
 
-  ::digital_clock::core::ClockSettings* config_;
+  core::ClockSettings* config_;
 
   QColor last_color_;
   QString last_txd_path_;

@@ -81,8 +81,8 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
   this->blockSignals(false);
 }
 
-void SettingsDialog::DisplaySkinInfo(const ::digital_clock::core::BaseSkin::TSkinInfo& info) {
-  using ::digital_clock::core::BaseSkin;
+void SettingsDialog::DisplaySkinInfo(const core::BaseSkin::TSkinInfo& info) {
+  using core::BaseSkin;
   if (info[BaseSkin::SI_NAME] == "Text Skin") return;
   BaseSkin::TSkinInfo l_info = info;
   for (auto iter = l_info.begin(); iter != l_info.end(); ++iter) {

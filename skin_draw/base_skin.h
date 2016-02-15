@@ -3,6 +3,7 @@
 
 #include "iskin.h"
 #include <QMap>
+#include "skin_draw_global.h"
 
 namespace skin_draw {
 
