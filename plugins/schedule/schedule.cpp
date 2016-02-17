@@ -23,19 +23,6 @@ Schedule::Schedule() {
   InitIcon(":/schedule/schedule.svg");
 }
 
-void Schedule::ExportSettings(QSettings::SettingsMap* settings) {
-  if (!settings) return;
-  *settings = settings_->GetSettingsMap();
-  manager_->ExportTasks(settings);
-}
-
-void Schedule::ImportSettings(const QSettings::SettingsMap& settings) {
-  settings_->SetValues(settings);
-  settings_->Save();
-  manager_->ImportTasks(settings);
-}
-
-
 void Schedule::Start() {
   tray_icon_ = new QSystemTrayIcon(QIcon(":/schedule/schedule.svg"));
   tray_menu_ = new QMenu();

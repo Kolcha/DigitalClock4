@@ -20,9 +20,6 @@ public:
   Alarm();
   void Init(QSystemTrayIcon* tray_icon);
 
-  void ExportSettings(QSettings::SettingsMap* settings);
-  void ImportSettings(const QSettings::SettingsMap& settings);
-
 public slots:
   void Start();
   void Stop();

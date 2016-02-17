@@ -26,16 +26,6 @@ void TrayColor::Init(QSystemTrayIcon* tray_icon) {
   settings_->Load();
 }
 
-void TrayColor::ExportSettings(QSettings::SettingsMap* settings) {
-  if (!settings) return;
-  *settings = settings_->GetSettingsMap();
-}
-
-void TrayColor::ImportSettings(const QSettings::SettingsMap& settings) {
-  settings_->SetValues(settings);
-  settings_->Save();
-}
-
 void TrayColor::Start() {
   is_enabled_ = true;
   RedrawTrayIcon(settings_->GetOption(OPT_TRAY_COLOR).value<QColor>());

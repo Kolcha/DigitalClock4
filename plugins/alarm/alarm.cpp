@@ -28,16 +28,6 @@ void Alarm::Init(QSystemTrayIcon* tray_icon) {
   settings_->Load();
 }
 
-void Alarm::ExportSettings(QSettings::SettingsMap* settings) {
-  if (!settings) return;
-  *settings = settings_->GetSettingsMap();
-}
-
-void Alarm::ImportSettings(const QSettings::SettingsMap& settings) {
-  settings_->SetValues(settings);
-  settings_->Save();
-}
-
 void Alarm::Start() {
   if (!settings_->GetOption(OPT_ENABLED).toBool()) return;
 

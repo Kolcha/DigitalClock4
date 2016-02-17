@@ -39,16 +39,6 @@ void MoveClock::Init(QWidget* main_wnd) {
   settings_->TrackChanges(true);
 }
 
-void MoveClock::ExportSettings(QSettings::SettingsMap* settings) {
-  if (!settings) return;
-  *settings = settings_->GetSettingsMap();
-}
-
-void MoveClock::ImportSettings(const QSettings::SettingsMap& settings) {
-  settings_->SetValues(settings);
-  settings_->Save();
-}
-
 void MoveClock::Start() {
   settings_->Load();
   timer_.start();

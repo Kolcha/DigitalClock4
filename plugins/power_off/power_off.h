@@ -15,9 +15,6 @@ class PowerOff : public IClockPlugin {
 public:
   PowerOff();
 
-  void ExportSettings(QSettings::SettingsMap* settings);
-  void ImportSettings(const QSettings::SettingsMap& settings);
-
 public slots:
   void Start();
   void Configure();

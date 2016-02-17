@@ -25,16 +25,6 @@ void AnyZoom::Init(const QMap<Option, QVariant>& current_settings) {
   last_zoom_ = current_settings[OPT_ZOOM].toReal();
 }
 
-void AnyZoom::ExportSettings(QSettings::SettingsMap* settings) {
-  if (!settings) return;
-  *settings = settings_->GetSettingsMap();
-}
-
-void AnyZoom::ImportSettings(const QSettings::SettingsMap& settings) {
-  settings_->SetValues(settings);
-  settings_->Save();
-}
-
 void AnyZoom::Start() {
   is_enabled_ = true;
   emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
