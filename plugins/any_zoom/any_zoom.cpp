@@ -6,7 +6,6 @@
 namespace any_zoom {
 
 AnyZoom::AnyZoom() {
-  settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   is_enabled_ = false;
   last_zoom_ = 1.0;
 

@@ -7,7 +7,6 @@
 #include "iplugin_init.h"
 
 class QGridLayout;
-class PluginSettings;
 namespace skin_draw {
 class SkinDrawer;
 }
@@ -38,7 +37,6 @@ private slots:
   void ApplyString(const QString& str);
 
 private:
-  PluginSettings* settings_;
   QGridLayout* main_layout_;
   QWidget* main_wnd_;
   QPointer<MessageWidget> msg_label_;

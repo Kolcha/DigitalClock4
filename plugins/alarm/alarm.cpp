@@ -9,7 +9,6 @@
 namespace alarm {
 
 Alarm::Alarm() {
-  settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   icon_changed_ = false;
 
   InitTranslator(QLatin1String(":/alarm/alarm_"));

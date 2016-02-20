@@ -7,7 +7,7 @@
 
 #include "plugin_settings.h"
 
-PluginBase::PluginBase() : translator_(0) {
+PluginBase::PluginBase() : settings_(0), translator_(0) {
 }
 
 PluginBase::~PluginBase() {
@@ -21,7 +21,7 @@ const TPluginGUIInfo& PluginBase::GetInfo() const {
 void PluginBase::InitSettings(SettingsStorage* backend)
 {
   Q_ASSERT(backend);
-  config_ = new PluginSettings(backend, this);
+  settings_ = new PluginSettings(backend, this);
 }
 
 void PluginBase::InitTranslator(const QLatin1String& prefix) {

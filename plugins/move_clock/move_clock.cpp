@@ -16,7 +16,6 @@ double y(double c, double k, double a, double n, double t) {
 }
 
 MoveClock::MoveClock() : t_(0.0), dx_(0), dy_(0) {
-  settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
           this, SLOT(SettingsListener(QString,QVariant)));
 

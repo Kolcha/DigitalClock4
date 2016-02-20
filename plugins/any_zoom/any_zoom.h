@@ -4,8 +4,6 @@
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
 
-class PluginSettings;
-
 namespace any_zoom {
 
 class AnyZoom : public ISettingsPlugin, ISettingsPluginInit {
@@ -28,7 +26,6 @@ private slots:
   void RevertSettings();
 
 private:
-  PluginSettings* settings_;
   bool is_enabled_;
   qreal last_zoom_;
 };

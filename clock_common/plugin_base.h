@@ -63,7 +63,7 @@ protected:
   /// Structure with translatable plugin info. This must be filled in child constructor.
   TPluginGUIInfo info_;
   /// PluginSettings object, will be available only if plugin is configurable
-  PluginSettings* config_;
+  PluginSettings* settings_;
 
 private:
   QTranslator* translator_;

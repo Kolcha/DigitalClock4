@@ -1,6 +1,6 @@
 {
     "name" : "alarm",
-    "version" : "2.2.0",
+    "version" : "2.2.1",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
     "configurable" : true,

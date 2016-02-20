@@ -7,7 +7,6 @@
 #include "gui/settings_dialog.h"
 
 class TaskManager;
-class PluginSettings;
 
 namespace schedule {
 
@@ -34,7 +33,6 @@ private:
   QMenu* tray_menu_;
   TaskManager* manager_;
   QPointer<SettingsDialog> settings_dlg_;
-  PluginSettings* settings_;
 };
 
 } // namespace schedule

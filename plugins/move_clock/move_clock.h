@@ -6,8 +6,6 @@
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
 
-class PluginSettings;
-
 namespace move_clock {
 
 class MoveClock : public IClockPlugin, public IWidgetPluginInit {
@@ -29,7 +27,6 @@ private slots:
   void TimeoutHandler();
 
 private:
-  PluginSettings* settings_;
   QWidget* clock_wnd_;
   QDesktopWidget desktop_;
   QPoint old_pos_;

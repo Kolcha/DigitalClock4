@@ -7,8 +7,6 @@
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
 
-class PluginSettings;
-
 namespace alarm {
 
 class Alarm : public IClockPlugin, public ITrayPluginInit {
@@ -29,7 +27,6 @@ public slots:
 private:
   QSystemTrayIcon* tray_icon_;
   QIcon old_icon_;
-  PluginSettings* settings_;
   QPointer<QMediaPlayer> player_;
   bool icon_changed_;
 };

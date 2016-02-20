@@ -7,7 +7,6 @@
 namespace schedule {
 
 Schedule::Schedule() {
-  settings_ = new PluginSettings(ORG_NAME, APP_NAME, this);
   manager_ = new TaskManager(this);
 
   QSettings::SettingsMap defaults;
