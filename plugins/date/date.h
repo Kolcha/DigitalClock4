@@ -10,7 +10,6 @@ class QLabel;
 namespace skin_draw {
 class SkinDrawer;
 }
-class PluginSettings;
 
 namespace date {
 
@@ -47,7 +46,6 @@ private:
   qreal last_zoom_;
   QString last_date_;
   ::skin_draw::SkinDrawer* drawer_;
-  PluginSettings* settings_;
 };
 
 } // namespace date

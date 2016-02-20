@@ -9,13 +9,6 @@
 namespace power_off {
 
 PowerOff::PowerOff() : active_(false) {
-  settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
-
-  QSettings::SettingsMap defaults;
-  InitDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-  settings_->Load();
-
   InitTranslator(QLatin1String(":/power_off/power_off_"));
   info_.display_name = tr("Auto power off");
   info_.description = tr("Shutdown system at specified time.");
@@ -23,6 +16,11 @@ PowerOff::PowerOff() : active_(false) {
 }
 
 void PowerOff::Start() {
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->Load();
+
   HANDLE hToken;
   TOKEN_PRIVILEGES* NewState;
   OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES, &hToken);
@@ -40,6 +38,9 @@ void PowerOff::Configure() {
   // load current settings to dialog
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
           dialog, SLOT(SettingsListener(QString,QVariant)));
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
   settings_->TrackChanges(true);
   settings_->Load();
   settings_->TrackChanges(false);

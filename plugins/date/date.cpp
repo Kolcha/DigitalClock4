@@ -13,9 +13,6 @@ namespace date {
 
 Date::Date() : avail_width_(0), last_zoom_(1.0), last_date_("-") {
   drawer_ = new skin_draw::SkinDrawer(this);
-  settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
-  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
-          this, SLOT(SettingsListener(QString,QVariant)));
 
   InitTranslator(QLatin1String(":/date/date_"));
   info_.display_name = tr("Date");
@@ -82,6 +79,9 @@ void Date::Init(QWidget* main_wnd) {
   last_main_wnd_size_ = main_wnd->size();
   avail_width_ = main_layout_->cellRect(0, 0).width() / last_zoom_ - 7;
 
+  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
+          this, SLOT(SettingsListener(QString,QVariant)));
+
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
@@ -111,7 +111,12 @@ void Date::Stop() {
 void Date::Configure() {
   SettingsDialog* dialog = new SettingsDialog();
   // load current settings to dialog
-  dialog->Init(settings_->GetSettingsMap());
+  QSettings::SettingsMap curr_settings;
+  InitDefaults(&curr_settings);
+  for (auto iter = curr_settings.begin(); iter != curr_settings.end(); ++iter) {
+    *iter = settings_->GetOption(iter.key());
+  }
+  dialog->Init(curr_settings);
   // connect main signals/slots
   connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
           settings_, SLOT(SetOption(QString,QVariant)));

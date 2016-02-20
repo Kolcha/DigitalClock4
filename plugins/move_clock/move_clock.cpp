@@ -16,9 +16,6 @@ double y(double c, double k, double a, double n, double t) {
 }
 
 MoveClock::MoveClock() : t_(0.0), dx_(0), dy_(0) {
-  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
-          this, SLOT(SettingsListener(QString,QVariant)));
-
   timer_.setSingleShot(false);
   connect(&timer_, SIGNAL(timeout()), this, SLOT(TimeoutHandler()));
 
@@ -31,6 +28,9 @@ MoveClock::MoveClock() : t_(0.0), dx_(0), dy_(0) {
 void MoveClock::Init(QWidget* main_wnd) {
   clock_wnd_ = main_wnd;
   old_pos_ = main_wnd->pos();
+
+  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
+          this, SLOT(SettingsListener(QString,QVariant)));
 
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);

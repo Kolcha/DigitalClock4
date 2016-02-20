@@ -3,8 +3,6 @@
 
 #include "iclock_plugin.h"
 
-class PluginSettings;
-
 namespace power_off {
 
 class PowerOff : public IClockPlugin {
@@ -21,7 +19,6 @@ public slots:
   void TimeUpdateListener();
 
 private:
-  PluginSettings* settings_;
   bool active_;
 };
 

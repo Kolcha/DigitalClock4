@@ -9,13 +9,6 @@ namespace schedule {
 Schedule::Schedule() {
   manager_ = new TaskManager(this);
 
-  QSettings::SettingsMap defaults;
-  InitDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-
-  settings_->Load();
-  manager_->LoadTasks();
-
   InitTranslator(QLatin1String(":/schedule/schedule_"));
   info_.display_name = tr("Scheduler");
   info_.description = tr("Allow to schedule a task and display notification at specified time.");
@@ -23,6 +16,13 @@ Schedule::Schedule() {
 }
 
 void Schedule::Start() {
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+
+  settings_->Load();
+  manager_->LoadTasks();
+
   tray_icon_ = new QSystemTrayIcon(QIcon(":/schedule/schedule.svg"));
   tray_menu_ = new QMenu();
   tray_menu_->addAction(QIcon(":/schedule/settings.svg"), "Settings", this, SLOT(Configure()));
@@ -44,6 +44,10 @@ void Schedule::Configure() {
   if (settings_dlg_) {
     settings_dlg_->activateWindow();
   } else {
+    QSettings::SettingsMap defaults;
+    InitDefaults(&defaults);
+    settings_->SetDefaultValues(defaults);
+
     settings_dlg_ = new SettingsDialog();
     // load current settings to dialog
     connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
