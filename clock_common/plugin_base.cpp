@@ -5,6 +5,8 @@
 #include <QApplication>
 #include <QIcon>
 
+#include "plugin_settings.h"
+
 PluginBase::PluginBase() : translator_(0) {
 }
 
@@ -14,6 +16,12 @@ PluginBase::~PluginBase() {
 
 const TPluginGUIInfo& PluginBase::GetInfo() const {
   return info_;
+}
+
+void PluginBase::InitSettings(SettingsStorage* backend)
+{
+  Q_ASSERT(backend);
+  config_ = new PluginSettings(backend, this);
 }
 
 void PluginBase::InitTranslator(const QLatin1String& prefix) {

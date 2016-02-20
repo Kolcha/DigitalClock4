@@ -7,6 +7,9 @@
 
 #include "clock_common_global.h"
 
+
+class SettingsStorage;
+
 /*!
  * @brief Plugin settings save/load class.
  *
@@ -22,11 +25,10 @@ class CLOCK_COMMON_EXPORT PluginSettings : public QObject {
 public:
   /*!
    * Constructor.
-   * @param org_name - organization/developer name (same as for QSettings)
-   * @param app_name - application name (same as for QSettings)
+   * @param backend - storage backend
    * @param parent - parent object
    */
-  PluginSettings(const QString& org_name, const QString& app_name, QObject* parent = 0);
+  PluginSettings(SettingsStorage* backend, QObject* parent = 0);
 
   /*!
    * Init all options with default values.
@@ -35,21 +37,11 @@ public:
    */
   void SetDefaultValues(const QSettings::SettingsMap& values);
   /*!
-   * Replace all current option values with given.
-   * @param values - map<QString, QVariant> with option names and their values
-   */
-  void SetValues(const QSettings::SettingsMap& values);
-  /*!
    * Get option value.
    * @param key - option name
    * @return option value as QVariant object
    */
   const QVariant& GetOption(const QString& key) const;
-  /*!
-   * Get all settings map.
-   * @return map with all settings (key - value)
-   */
-  const QSettings::SettingsMap& GetSettingsMap() const;
 
 public slots:
   /*! Load settings. */
@@ -80,8 +72,7 @@ signals:
   void OptionChanged(const QString& key, const QVariant& value);
 
 private:
-  QSettings settings_;
-  QSettings::SettingsMap settings_map_;
+  SettingsStorage* backend_;
   QSettings::SettingsMap default_map_;
   bool track_changes_;
 };
