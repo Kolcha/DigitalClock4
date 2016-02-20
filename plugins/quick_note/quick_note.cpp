@@ -120,15 +120,17 @@ void QuickNote::Configure() {
   settings_dlg->setInputMode(QInputDialog::TextInput);
   settings_dlg->setTextValue(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
 
-  connect(settings_dlg, &QInputDialog::textValueSelected, [=] (const QString& str) {
-    settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
-    settings_->Save();
-    msg_label_->setText(str);
-  });
-  connect(settings_dlg, &QInputDialog::rejected, [=] () {
-    settings_->Load();
-    msg_label_->setText(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
-  });
+  if (msg_label_) {
+    connect(settings_dlg, &QInputDialog::textValueSelected, [=] (const QString& str) {
+      settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
+      settings_->Save();
+      msg_label_->setText(str);
+    });
+    connect(settings_dlg, &QInputDialog::rejected, [=] () {
+      settings_->Load();
+      msg_label_->setText(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
+    });
+  }
 
   settings_dlg->show();
 }

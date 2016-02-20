@@ -34,6 +34,7 @@
 #include "plugin_base.h"
 
 #include <QtPlugin>
+#include <QVariant>
 
 #include "clock_common_global.h"
 #include "settings_keys.h"
