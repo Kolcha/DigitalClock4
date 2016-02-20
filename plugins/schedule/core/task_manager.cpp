@@ -5,7 +5,8 @@
 
 namespace schedule {
 
-TaskManager::TaskManager(QObject* parent) : QObject(parent) {
+TaskManager::TaskManager(QObject* parent) : QObject(parent)
+{
 }
 
 void TaskManager::ExportTasks(QSettings::SettingsMap* settings) {

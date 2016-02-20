@@ -1,7 +1,9 @@
 #include "plugin_settings.h"
 
-PluginSettings::PluginSettings(const QString& org_name, const QString& app_name, QObject* parent)
-  : QObject(parent), settings_(org_name, app_name), track_changes_(false) {
+PluginSettings::PluginSettings(const QString& org_name, const QString& app_name, QObject* parent) :
+  QObject(parent),
+  settings_(org_name, app_name), track_changes_(false)
+{
 }
 
 void PluginSettings::SetDefaultValues(const QSettings::SettingsMap& values) {

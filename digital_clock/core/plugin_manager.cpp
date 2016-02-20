@@ -14,7 +14,8 @@
 namespace digital_clock {
 namespace core {
 
-PluginManager::PluginManager(QObject *parent) : ManagerBase(parent) {
+PluginManager::PluginManager(QObject *parent) : ManagerBase(parent)
+{
 }
 
 void PluginManager::SetInitData(const TPluginData& data) {

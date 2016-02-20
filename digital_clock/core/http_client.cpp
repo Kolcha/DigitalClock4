@@ -9,7 +9,10 @@
 namespace digital_clock {
 namespace core {
 
-HttpClient::HttpClient(QObject* parent) : QObject(parent), is_running_(false) {
+HttpClient::HttpClient(QObject* parent) :
+  QObject(parent),
+  is_running_(false)
+{
 }
 
 HttpClient::~HttpClient() {

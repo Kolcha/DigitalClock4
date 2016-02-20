@@ -11,7 +11,8 @@
 
 namespace quick_note {
 
-QuickNote::QuickNote() : avail_width_(0), last_zoom_(1.0) {
+QuickNote::QuickNote() : avail_width_(0), last_zoom_(1.0)
+{
   settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   drawer_ = new skin_draw::SkinDrawer(this);
 

@@ -11,7 +11,8 @@
 namespace digital_clock {
 namespace gui {
 
-ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent) {
+ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent)
+{
   display_ = new ClockDisplay(this);
   QGridLayout* main_layout = new QGridLayout(this);
   main_layout->addWidget(display_);

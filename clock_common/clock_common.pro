@@ -14,23 +14,23 @@ TEMPLATE = lib
 DEFINES += CLOCK_COMMON_LIBRARY
 
 SOURCES += \
-    plugin_settings.cpp \
     centered_dialog.cpp \
-    plugin_base.cpp \
-    message_box.cpp \
     config_base.cpp \
+    message_box.cpp \
+    plugin_base.cpp \
+    plugin_settings.cpp \
     settings_storage.cpp
 
 HEADERS += \
-    settings_keys.h \
-    iclock_plugin.h \
-    plugin_settings.h \
-    clock_common_global.h \
     centered_dialog.h \
-    plugin_base.h \
+    clock_common_global.h \
+    config_base.h \
+    iclock_plugin.h \
     iplugin_init.h \
     message_box.h \
-    config_base.h \
+    plugin_base.h \
+    plugin_settings.h \
+    settings_keys.h \
     settings_storage.h
 
 win32:RC_FILE = clock_common.rc

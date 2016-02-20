@@ -7,8 +7,10 @@
 namespace digital_clock {
 namespace gui {
 
-ClockDisplay::ClockDisplay(QWidget* parent)
-  : QLabel(parent), sep_visible_(false), sep_flashes_(true) {
+ClockDisplay::ClockDisplay(QWidget* parent) :
+  QLabel(parent),
+  sep_visible_(false), sep_flashes_(true)
+{
   setAlignment(Qt::AlignCenter);
 }
 

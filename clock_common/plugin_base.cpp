@@ -5,7 +5,8 @@
 #include <QApplication>
 #include <QIcon>
 
-PluginBase::PluginBase() : translator_(0) {
+PluginBase::PluginBase() : translator_(0)
+{
 }
 
 PluginBase::~PluginBase() {
