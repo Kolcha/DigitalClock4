@@ -12,6 +12,7 @@
 #include <QMenu>
 #include <QDesktopServices>
 
+#include "config_manager.h"
 #include "settings_storage.h"
 
 #include "core/clock_settings.h"
@@ -43,7 +44,9 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
   setContextMenuPolicy(Qt::CustomContextMenu);
   connect(this, &MainWindow::customContextMenuRequested, this, &MainWindow::ShowContextMenu);
 
-  config_backend_ = new SettingsStorage(this);
+  config_manager_ = new ConfigManager(this);
+  config_backend_ = new SettingsStorage(0, this);
+  config_manager_->AddConfig(config_backend_);
   app_config_ = new core::ClockSettings(config_backend_, config_backend_);
 
   skin_manager_ = new core::SkinManager(this);
@@ -70,7 +73,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
   connect(tray_control_, &gui::TrayControl::ShowSettingsDlg, this, &MainWindow::ShowSettingsDialog);
   connect(tray_control_, &gui::TrayControl::ShowAboutDlg, this, &MainWindow::ShowAboutDialog);
   connect(tray_control_, &gui::TrayControl::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
-  connect(tray_control_, &gui::TrayControl::AppExit, this, &MainWindow::ShutdownPluginSystem);
+  connect(tray_control_, &gui::TrayControl::AppExit, this, &MainWindow::Shutdown);
   connect(tray_control_, &gui::TrayControl::AppExit, qApp, &QApplication::quit);
 
   clock_widget_ = new gui::ClockWidget(this);
@@ -272,8 +275,8 @@ void MainWindow::ShowSettingsDialog()
     connect(dlg, &gui::SettingsDialog::ResetSettings, config_backend_, &SettingsStorage::Reset);
     connect(config_backend_, &SettingsStorage::reloaded, this, &MainWindow::Reset);
     // export/import
-    connect(dlg, &gui::SettingsDialog::ExportSettings, config_backend_, &SettingsStorage::Export);
-    connect(dlg, &gui::SettingsDialog::ImportSettings, config_backend_, &SettingsStorage::Import);
+    connect(dlg, &gui::SettingsDialog::ExportSettings, config_manager_, &ConfigManager::Export);
+    connect(dlg, &gui::SettingsDialog::ImportSettings, config_manager_, &ConfigManager::Import);
     // check for updates
     connect(dlg, &gui::SettingsDialog::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
     // skins list
@@ -355,9 +358,10 @@ void MainWindow::InitPluginSystem()
   plugin_manager_->SetInitData(plugin_data);
 }
 
-void MainWindow::ShutdownPluginSystem()
+void MainWindow::Shutdown()
 {
   plugin_manager_->UnloadPlugins();
+  config_manager_->RemoveConfig(config_backend_);
 }
 
 void MainWindow::ConnectTrayMessages()
