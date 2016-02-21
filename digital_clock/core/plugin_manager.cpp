@@ -109,8 +109,6 @@ void PluginManager::UnloadPlugin(const QString& name) {
   if (!loader) return;
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
-    disconnect(data_.settings, SIGNAL(OptionChanged(Option,QVariant)),
-               plugin, SLOT(SettingsListener(Option,QVariant)));
     disconnect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
                plugin, SLOT(TimeUpdateListener()));
     plugin->Stop();
@@ -122,8 +120,6 @@ void PluginManager::UnloadPlugin(const QString& name) {
 void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
   // connect slots which are common for all plugins
   if (connected) {
-    connect(data_.settings, SIGNAL(OptionChanged(Option,QVariant)),
-            plugin, SLOT(SettingsListener(Option,QVariant)));
     connect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
             plugin, SLOT(TimeUpdateListener()));
     connect(this, SIGNAL(UpdateSettings(Option,QVariant)),

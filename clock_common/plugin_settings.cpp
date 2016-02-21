@@ -2,8 +2,11 @@
 
 #include "settings_storage.h"
 
-PluginSettings::PluginSettings(SettingsStorage* backend, QObject* parent)
-  : QObject(parent), backend_(backend), track_changes_(false) {
+PluginSettings::PluginSettings(SettingsStorage* backend, QObject* parent) :
+  QObject(parent),
+  backend_(backend), track_changes_(false)
+{
+  connect(backend_, &SettingsStorage::reloaded, this, &PluginSettings::Load);
 }
 
 void PluginSettings::SetDefaultValues(const QSettings::SettingsMap& values) {
@@ -22,11 +25,13 @@ void PluginSettings::Load() {
 }
 
 void PluginSettings::Save() {
-  backend_->Save();     // TODO: save only specific section
+  for (auto iter = default_map_.begin(); iter != default_map_.end(); ++iter) {
+    backend_->SetValue(iter.key(), iter.value());
+  }
 }
 
 void PluginSettings::SetOption(const QString& key, const QVariant& value) {
-  backend_->SetValue(key, value);       // TODO: add some key prefix (plugins/<plugin name>)
+  default_map_[key] = value;       // TODO: add some key prefix (plugins/<plugin name>)
   if (track_changes_) emit OptionChanged(key, value);
 }
 
