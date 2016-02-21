@@ -81,7 +81,7 @@ void PluginManager::ConfigurePlugin(const QString& name) {
     QPluginLoader* loader = new QPluginLoader(file, this);
     IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
     if (plugin) {
-      plugin->InitSettings(data_.conf_manager);
+      plugin->InitSettings(data_.settings->GetBackend());
       InitPlugin(plugin, false);
       plugin->Configure();
     }
@@ -96,7 +96,7 @@ void PluginManager::LoadPlugin(const QString& name) {
   if (plugin) {
     QJsonObject metadata = loader->metaData().value("MetaData").toObject();
     if (metadata.value("configurable").toBool()) {
-      plugin->InitSettings(data_.conf_manager);
+      plugin->InitSettings(data_.settings->GetBackend());
     }
     InitPlugin(plugin, true);
     plugin->Start();

@@ -351,7 +351,6 @@ void MainWindow::InitPluginSystem()
   plugin_manager_->ListAvailable();
 
   core::TPluginData plugin_data;
-  plugin_data.conf_manager = config_manager_;
   plugin_data.settings = app_config_;
   plugin_data.tray = tray_control_->GetTrayIcon();
   plugin_data.window = clock_widget_;

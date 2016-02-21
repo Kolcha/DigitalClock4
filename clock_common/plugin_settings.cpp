@@ -2,11 +2,8 @@
 
 #include "settings_storage.h"
 
-PluginSettings::PluginSettings(ConfigManager* manager, QObject* parent) :
-  QObject(parent),
-  track_changes_(false)
-{
-  backend_ = new SettingsStorage(manager, this);
+PluginSettings::PluginSettings(SettingsStorage* backend, QObject* parent)
+  : QObject(parent), backend_(backend), track_changes_(false) {
 }
 
 void PluginSettings::SetDefaultValues(const QSettings::SettingsMap& values) {
@@ -25,7 +22,7 @@ void PluginSettings::Load() {
 }
 
 void PluginSettings::Save() {
-  backend_->Save();
+  backend_->Save();     // TODO: save only specific section
 }
 
 void PluginSettings::SetOption(const QString& key, const QVariant& value) {

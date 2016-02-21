@@ -20,7 +20,7 @@ struct TPluginGUIInfo {
 };
 
 class QTranslator;
-class ConfigManager;
+class SettingsStorage;
 class PluginSettings;
 
 /*!
@@ -44,9 +44,9 @@ public:
   const TPluginGUIInfo& GetInfo() const;
   /*!
    * Create PluginSettings object.
-   * @param manager - ConfigManager object
+   * @param backend - storage backend
    */
-  void InitSettings(ConfigManager* manager);
+  void InitSettings(SettingsStorage* backend);
 
 protected:
   /*!
