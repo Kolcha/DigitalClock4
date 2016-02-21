@@ -5,7 +5,8 @@
 
 namespace skin_draw {
 
-TextSkin::TextSkin(const QFont& font) : font_(font) {
+TextSkin::TextSkin(const QFont& font) : font_(font)
+{
 }
 
 ISkin::QPixmapPtr TextSkin::ResizeImage(QChar ch, qreal zoom) {

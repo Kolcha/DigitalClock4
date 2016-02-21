@@ -2,8 +2,10 @@
 #include <QPushButton>
 #include <QTimer>
 
-TMessageBox::TMessageBox(QWidget* parent) : QMessageBox(parent),
-  auto_close_(false), timeout_(30), timer_(0) {
+TMessageBox::TMessageBox(QWidget* parent) :
+  QMessageBox(parent),
+  auto_close_(false), timeout_(30), timer_(0)
+{
 }
 
 TMessageBox::TMessageBox(QMessageBox::Icon icon, const QString& title, const QString& text,

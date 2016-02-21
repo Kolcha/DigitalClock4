@@ -8,8 +8,10 @@
 
 namespace skin_draw {
 
-SkinDrawer::SkinDrawer(QObject* parent)
-  : QObject(parent), texture_(8, 8) {
+SkinDrawer::SkinDrawer(QObject* parent) :
+  QObject(parent),
+  texture_(8, 8)
+{
   device_pixel_ratio_ = QGuiApplication::primaryScreen()->devicePixelRatio();
   zoom_ = 1.0;
   txd_per_elem_ = false;

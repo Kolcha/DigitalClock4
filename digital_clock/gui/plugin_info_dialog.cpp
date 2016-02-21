@@ -4,8 +4,10 @@
 namespace digital_clock {
 namespace gui {
 
-PluginInfoDialog::PluginInfoDialog(QWidget* parent)
-  : CenteredDialog(parent), ui(new Ui::PluginInfoDialog) {
+PluginInfoDialog::PluginInfoDialog(QWidget* parent) :
+  CenteredDialog(parent),
+  ui(new Ui::PluginInfoDialog)
+{
   ui->setupUi(this);
 }
 

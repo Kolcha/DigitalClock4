@@ -11,57 +11,57 @@ include(../config.pri)
 TARGET   = digital_clock
 TEMPLATE = app
 
-SOURCES += main.cpp\
-    core/skin_manager.cpp \
+SOURCES += main.cpp \
+    core/autostart.cpp \
     core/clock_settings.cpp \
-    gui/settings_dialog.cpp \
-    gui/about_dialog.cpp \
+    core/http_client.cpp \
+    core/manager_base.cpp \
     core/plugin_manager.cpp \
-    skin/clock_vector_skin.cpp \
+    core/skin_manager.cpp \
+    core/updater.cpp \
+    gui/about_dialog.cpp \
+    gui/clock_display.cpp \
+    gui/clock_widget.cpp \
+    gui/colorize_effect.cpp \
+    gui/plugin_info_dialog.cpp \
+    gui/plugin_list_item_widget.cpp \
+    gui/settings_dialog.cpp \
+    gui/tray_control.cpp \
+    skin/clock_base_skin.cpp \
     skin/clock_raster_skin.cpp \
     skin/clock_text_skin.cpp \
-    skin/clock_base_skin.cpp \
-    gui/plugin_info_dialog.cpp \
-    core/updater.cpp \
-    core/http_client.cpp \
-    gui/clock_widget.cpp \
-    gui/clock_display.cpp \
-    gui/colorize_effect.cpp \
-    gui/tray_control.cpp \
-    gui/plugin_list_item_widget.cpp \
-    core/manager_base.cpp \
-    core/autostart.cpp \
+    skin/clock_vector_skin.cpp \
     main_window.cpp
 
 HEADERS += \
-    core/skin_manager.h \
-    core/clock_settings.h \
-    gui/settings_dialog.h \
-    gui/about_dialog.h \
-    core/plugin_manager.h \
-    skin/clock_vector_skin.h \
-    skin/clock_raster_skin.h \
-    skin/clock_text_skin.h \
-    skin/clock_base_skin.h \
-    core/plugin_info.h \
-    gui/plugin_info_dialog.h \
-    core/updater.h \
-    core/http_client.h \
-    gui/clock_widget.h \
-    gui/clock_display.h \
-    gui/colorize_effect.h \
-    gui/tray_control.h \
-    gui/plugin_list_item_widget.h \
-    core/manager_base.h \
     core/autostart.h \
     core/build_defs.h \
+    core/clock_settings.h \
+    core/http_client.h \
+    core/manager_base.h \
+    core/plugin_info.h \
+    core/plugin_manager.h \
+    core/skin_manager.h \
+    core/updater.h \
+    gui/about_dialog.h \
+    gui/clock_display.h \
+    gui/clock_widget.h \
+    gui/colorize_effect.h \
+    gui/plugin_info_dialog.h \
+    gui/plugin_list_item_widget.h \
+    gui/settings_dialog.h \
+    gui/tray_control.h \
+    skin/clock_base_skin.h \
+    skin/clock_raster_skin.h \
+    skin/clock_text_skin.h \
+    skin/clock_vector_skin.h \
     main_window.h
 
 FORMS += \
-    gui/settings_dialog.ui \
     gui/about_dialog.ui \
     gui/plugin_info_dialog.ui \
-    gui/plugin_list_item_widget.ui
+    gui/plugin_list_item_widget.ui \
+    gui/settings_dialog.ui
 
 TRANSLATIONS += \
     languages/digital_clock_ru.ts

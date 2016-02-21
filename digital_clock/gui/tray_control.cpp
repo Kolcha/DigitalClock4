@@ -7,7 +7,8 @@
 namespace digital_clock {
 namespace gui {
 
-TrayControl::TrayControl(QWidget* parent) : QObject(parent) {
+TrayControl::TrayControl(QWidget* parent) : QObject(parent)
+{
   QMenu* tray_menu = new QMenu(parent);
   tray_menu->addAction(QIcon(":/clock/images/settings.svg").pixmap(16), tr("&Settings"),
                        this, SIGNAL(ShowSettingsDlg()));

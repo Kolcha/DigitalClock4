@@ -5,8 +5,10 @@
 
 namespace schedule {
 
-AddTaskDialog::AddTaskDialog(Qt::DateFormat date_format, QWidget* parent)
-  : QDialog(parent), ui(new Ui::AddTaskDialog) {
+AddTaskDialog::AddTaskDialog(Qt::DateFormat date_format, QWidget* parent) :
+  QDialog(parent),
+  ui(new Ui::AddTaskDialog)
+{
   setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
   QLocale::FormatType format_type =

@@ -14,20 +14,20 @@ TEMPLATE = lib
 DEFINES += SKIN_DRAW_LIBRARY
 
 SOURCES += \
-    skin_drawer.cpp \
-    vector_skin.cpp \
-    raster_skin.cpp \
     base_skin.cpp \
-    text_skin.cpp
+    raster_skin.cpp \
+    skin_drawer.cpp \
+    text_skin.cpp \
+    vector_skin.cpp
 
 HEADERS += \
-    skin_drawer.h \
-    skin_draw_global.h \
-    vector_skin.h \
-    raster_skin.h \
     base_skin.h \
+    iskin.h \
+    raster_skin.h \
+    skin_draw_global.h \
+    skin_drawer.h \
     text_skin.h \
-    iskin.h
+    vector_skin.h
 
 win32:RC_FILE = skin_draw.rc
 unix:VERSION = 1.2.3

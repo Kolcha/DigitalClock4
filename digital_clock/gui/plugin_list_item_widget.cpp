@@ -6,8 +6,10 @@
 namespace digital_clock {
 namespace gui {
 
-PluginListItemWidget::PluginListItemWidget(QWidget* parent)
-  : QWidget(parent), ui(new Ui::PluginListItemWidget) {
+PluginListItemWidget::PluginListItemWidget(QWidget* parent) :
+  QWidget(parent),
+  ui(new Ui::PluginListItemWidget)
+{
   ui->setupUi(this);
 }
 

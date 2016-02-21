@@ -5,7 +5,8 @@
 
 namespace skin_draw {
 
-BaseSkin::BaseSkin() : cached_zoom_(1.0) {
+BaseSkin::BaseSkin() : cached_zoom_(1.0)
+{
   device_pixel_ratio_ = QGuiApplication::primaryScreen()->devicePixelRatio();
 }
 

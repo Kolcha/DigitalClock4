@@ -6,9 +6,11 @@
 
 namespace schedule {
 
-SettingsDialog::SettingsDialog(QWidget* parent)
-  : QDialog(parent), ui(new Ui::SettingsDialog),
-    date_format_(Qt::SystemLocaleShortDate) {
+SettingsDialog::SettingsDialog(QWidget* parent) :
+  QDialog(parent),
+  ui(new Ui::SettingsDialog),
+  date_format_(Qt::SystemLocaleShortDate)
+{
   setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
 

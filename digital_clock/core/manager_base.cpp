@@ -3,7 +3,8 @@
 namespace digital_clock {
 namespace core {
 
-ManagerBase::ManagerBase(QObject* parent) : QObject(parent) {
+ManagerBase::ManagerBase(QObject* parent) : QObject(parent)
+{
 }
 
 void ManagerBase::AddSearchDir(const QDir& dir) {

@@ -4,8 +4,8 @@
 #include <QApplication>
 #include <QDesktopWidget>
 
-CenteredDialog::CenteredDialog(QWidget* parent)
-  : QDialog(parent) {
+CenteredDialog::CenteredDialog(QWidget* parent) : QDialog(parent)
+{
   setAttribute(Qt::WA_DeleteOnClose);
 }
 

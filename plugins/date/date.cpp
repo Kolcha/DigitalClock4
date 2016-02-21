@@ -11,7 +11,8 @@
 
 namespace date {
 
-Date::Date() : avail_width_(0), last_zoom_(1.0), last_date_("-") {
+Date::Date() : avail_width_(0), last_zoom_(1.0), last_date_("-")
+{
   drawer_ = new skin_draw::SkinDrawer(this);
 
   InitTranslator(QLatin1String(":/date/date_"));

@@ -15,7 +15,8 @@ double y(double c, double k, double a, double n, double t) {
   return c + k*t + a*sin(n*t);
 }
 
-MoveClock::MoveClock() : t_(0.0), dx_(0), dy_(0) {
+MoveClock::MoveClock() : t_(0.0), dx_(0), dy_(0)
+{
   timer_.setSingleShot(false);
   connect(&timer_, SIGNAL(timeout()), this, SLOT(TimeoutHandler()));
 

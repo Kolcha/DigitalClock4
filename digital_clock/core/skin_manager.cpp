@@ -22,7 +22,8 @@ ClockSkinPtr CreateSkin(const QFont& font) {
 }
 
 
-SkinManager::SkinManager(QObject* parent) : ManagerBase(parent) {
+SkinManager::SkinManager(QObject* parent) : ManagerBase(parent)
+{
 }
 
 ClockSkinPtr SkinManager::CurrentSkin() const {
