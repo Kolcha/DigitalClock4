@@ -29,6 +29,8 @@ public:
    * @param parent - parent object
    */
   PluginSettings(SettingsStorage* backend, QObject* parent = 0);
+  /*! Destructor. */
+  ~PluginSettings();
 
   /*!
    * Init all options with default values.

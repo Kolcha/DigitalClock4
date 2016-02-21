@@ -9,6 +9,13 @@ PluginSettings::PluginSettings(SettingsStorage* backend, QObject* parent) :
   connect(backend_, &SettingsStorage::reloaded, this, &PluginSettings::Load);
 }
 
+PluginSettings::~PluginSettings()
+{
+  for (auto iter = default_map_.begin(); iter != default_map_.end(); ++iter) {
+    backend_->Remove(iter.key());
+  }
+}
+
 void PluginSettings::SetDefaultValues(const QSettings::SettingsMap& values) {
   default_map_ = values;
 }

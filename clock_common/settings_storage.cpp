@@ -23,6 +23,12 @@ void SettingsStorage::SetValue(const QString& key, const QVariant& value)
   settings_.setValue(key, value);
 }
 
+void SettingsStorage::Remove(const QString& key)
+{
+  current_values_.remove(key);
+  default_values_.remove(key);
+}
+
 void SettingsStorage::Load()
 {
   for (auto iter = current_values_.begin(); iter != current_values_.end();) {
