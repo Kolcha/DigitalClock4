@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	2,1,1,103
-PRODUCTVERSION	4,4,2,0
+FILEVERSION	2,1,1,104
+PRODUCTVERSION	4,4,3,0
 FILEOS		0x4
 FILETYPE	0x2
 {
@@ -11,12 +11,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Schedule"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "2.1.1.103"
+		VALUE "FileVersion", "2.1.1.104"
 		VALUE "InternalName", "schedule.dll"
 		VALUE "LegalCopyright", "© 2013-2016 Nick Korotysh"
 		VALUE "OriginalFilename", "schedule.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.4.2"
+		VALUE "ProductVersion", "4.4.3"
 	}
 }
 
