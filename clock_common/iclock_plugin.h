@@ -34,7 +34,7 @@
 #include "plugin_base.h"
 
 #include <QtPlugin>
-#include <QSettings>
+#include <QVariant>
 
 #include "clock_common_global.h"
 #include "settings_keys.h"
@@ -46,22 +46,6 @@
  */
 class CLOCK_COMMON_EXPORT IClockPlugin : public PluginBase {
   Q_OBJECT
-
-public:
-  /*!
-   * @brief Export plugin settings.
-   *
-   * This method will be called when user asked to export clock settings.
-   * @param settings - map where all plugin options will be saved
-   */
-  virtual void ExportSettings(QSettings::SettingsMap* settings) { Q_UNUSED(settings); }
-  /*!
-   * @brief Import plugin settings.
-   *
-   * This method will be called when user asked to import clock settings.
-   * @param settings - map with loaded options
-   */
-  virtual void ImportSettings(const QSettings::SettingsMap& settings) { Q_UNUSED(settings); }
 
 public slots:
   /*! Start plugin activity. */

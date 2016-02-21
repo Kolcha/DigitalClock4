@@ -4,6 +4,7 @@
 #include <QObject>
 
 #include <QVariant>
+#include <QMap>
 
 #include "clock_common_global.h"
 
@@ -14,15 +15,20 @@ class CLOCK_COMMON_EXPORT ConfigBase : public QObject
   Q_OBJECT
 public:
   explicit ConfigBase(SettingsStorage* backend, QObject *parent = 0);
+  virtual ~ConfigBase() {}
 
   SettingsStorage* GetBackend() const { return backend_; }
 
   const QVariant& GetValue(const int id) const;
 
 signals:
+  void reloaded();
 
 public slots:
   void SetValue(const int id, const QVariant& value);
+
+  void Load();
+  void Save();
 
 protected:
   virtual QString GetKey(const int id) const = 0;
@@ -30,6 +36,7 @@ protected:
 
 private:
   SettingsStorage* backend_;
+  QMap<int, QVariant> current_values_;
 };
 
 #endif // CONFIGBASE_H

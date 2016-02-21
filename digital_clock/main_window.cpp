@@ -267,10 +267,12 @@ void MainWindow::ShowSettingsDialog()
     // main signals/slots: change options, apply and reset
     connect(dlg, &gui::SettingsDialog::OptionChanged, this, &MainWindow::ApplyOption);
     connect(dlg, &gui::SettingsDialog::OptionChanged, app_config_, &core::ClockSettings::SetValue);
+    connect(dlg, &gui::SettingsDialog::accepted, app_config_, &core::ClockSettings::Save);
+    connect(dlg, &gui::SettingsDialog::rejected, app_config_, &core::ClockSettings::Load);
     connect(dlg, &gui::SettingsDialog::accepted, config_backend_, &SettingsStorage::Save);
     connect(dlg, &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Load);
     connect(dlg, &gui::SettingsDialog::ResetSettings, config_backend_, &SettingsStorage::Reset);
-    connect(config_backend_, &SettingsStorage::reloaded, this, &MainWindow::Reset);
+    connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::Reset);
     // export/import
     connect(dlg, &gui::SettingsDialog::ExportSettings, config_backend_, &SettingsStorage::Export);
     connect(dlg, &gui::SettingsDialog::ImportSettings, config_backend_, &SettingsStorage::Import);

@@ -10,7 +10,6 @@ class QLabel;
 namespace skin_draw {
 class SkinDrawer;
 }
-class PluginSettings;
 
 namespace date {
 
@@ -25,9 +24,6 @@ public:
   Date();
   void Init(const QMap<Option, QVariant>& current_settings);
   void Init(QWidget* main_wnd);
-
-  void ExportSettings(QSettings::SettingsMap* settings);
-  void ImportSettings(const QSettings::SettingsMap& settings);
 
 public slots:
   void Start();
@@ -50,7 +46,6 @@ private:
   qreal last_zoom_;
   QString last_date_;
   ::skin_draw::SkinDrawer* drawer_;
-  PluginSettings* settings_;
 };
 
 } // namespace date

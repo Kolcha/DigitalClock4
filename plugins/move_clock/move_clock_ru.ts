@@ -4,12 +4,12 @@
 <context>
     <name>move_clock::MoveClock</name>
     <message>
-        <location filename="move_clock.cpp" line="27"/>
+        <location filename="move_clock.cpp" line="24"/>
         <source>Moving clock</source>
         <translation>Движущиеся часы</translation>
     </message>
     <message>
-        <location filename="move_clock.cpp" line="28"/>
+        <location filename="move_clock.cpp" line="25"/>
         <source>Moves the clock.</source>
         <translation>Перемещает часы по экрану.</translation>
     </message>

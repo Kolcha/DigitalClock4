@@ -20,6 +20,13 @@ const QVariant& SettingsStorage::GetValue(const QString& key, const QVariant& de
 void SettingsStorage::SetValue(const QString& key, const QVariant& value)
 {
   current_values_[key] = value;
+  settings_.setValue(key, value);
+}
+
+void SettingsStorage::Remove(const QString& key)
+{
+  current_values_.remove(key);
+  default_values_.remove(key);
 }
 
 void SettingsStorage::Load()

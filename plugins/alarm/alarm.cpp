@@ -9,7 +9,6 @@
 namespace alarm {
 
 Alarm::Alarm() {
-  settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   icon_changed_ = false;
 
   InitTranslator(QLatin1String(":/alarm/alarm_"));
@@ -26,16 +25,6 @@ void Alarm::Init(QSystemTrayIcon* tray_icon) {
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
   settings_->Load();
-}
-
-void Alarm::ExportSettings(QSettings::SettingsMap* settings) {
-  if (!settings) return;
-  *settings = settings_->GetSettingsMap();
-}
-
-void Alarm::ImportSettings(const QSettings::SettingsMap& settings) {
-  settings_->SetValues(settings);
-  settings_->Save();
 }
 
 void Alarm::Start() {

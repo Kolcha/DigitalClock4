@@ -16,6 +16,8 @@ public:
   const QVariant& GetValue(const QString& key, const QVariant& default_value = QVariant());
   void SetValue(const QString& key, const QVariant& value);
 
+  void Remove(const QString& key);
+
 signals:
   void reloaded();
 

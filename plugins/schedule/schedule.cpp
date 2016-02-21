@@ -7,15 +7,7 @@
 namespace schedule {
 
 Schedule::Schedule() {
-  settings_ = new PluginSettings(ORG_NAME, APP_NAME, this);
   manager_ = new TaskManager(this);
-
-  QSettings::SettingsMap defaults;
-  InitDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-
-  settings_->Load();
-  manager_->LoadTasks();
 
   InitTranslator(QLatin1String(":/schedule/schedule_"));
   info_.display_name = tr("Scheduler");
@@ -23,20 +15,14 @@ Schedule::Schedule() {
   InitIcon(":/schedule/schedule.svg");
 }
 
-void Schedule::ExportSettings(QSettings::SettingsMap* settings) {
-  if (!settings) return;
-  *settings = settings_->GetSettingsMap();
-  manager_->ExportTasks(settings);
-}
-
-void Schedule::ImportSettings(const QSettings::SettingsMap& settings) {
-  settings_->SetValues(settings);
-  settings_->Save();
-  manager_->ImportTasks(settings);
-}
-
-
 void Schedule::Start() {
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+
+  settings_->Load();
+  manager_->LoadTasks();
+
   tray_icon_ = new QSystemTrayIcon(QIcon(":/schedule/schedule.svg"));
   tray_menu_ = new QMenu();
   tray_menu_->addAction(QIcon(":/schedule/settings.svg"), "Settings", this, SLOT(Configure()));
@@ -58,6 +44,10 @@ void Schedule::Configure() {
   if (settings_dlg_) {
     settings_dlg_->activateWindow();
   } else {
+    QSettings::SettingsMap defaults;
+    InitDefaults(&defaults);
+    settings_->SetDefaultValues(defaults);
+
     settings_dlg_ = new SettingsDialog();
     // load current settings to dialog
     connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),

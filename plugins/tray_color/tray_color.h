@@ -4,8 +4,6 @@
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
 
-class PluginSettings;
-
 namespace tray_color {
 
 class TrayColor : public IClockPlugin, public ITrayPluginInit {
@@ -17,9 +15,6 @@ public:
   TrayColor();
   void Init(QSystemTrayIcon* tray_icon);
 
-  void ExportSettings(QSettings::SettingsMap* settings);
-  void ImportSettings(const QSettings::SettingsMap& settings);
-
 public slots:
   void Start();
   void Stop();
@@ -30,7 +25,6 @@ private:
   void RedrawTrayIcon(const QColor& color);
 
   QSystemTrayIcon* tray_icon_;
-  PluginSettings* settings_;
 
   bool is_enabled_;
 };

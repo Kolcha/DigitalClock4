@@ -20,6 +20,8 @@ struct TPluginGUIInfo {
 };
 
 class QTranslator;
+class SettingsStorage;
+class PluginSettings;
 
 /*!
  * @brief Base class for plugins.
@@ -40,6 +42,11 @@ public:
    * @return structure with plugin info
    */
   const TPluginGUIInfo& GetInfo() const;
+  /*!
+   * Create PluginSettings object.
+   * @param backend - storage backend
+   */
+  void InitSettings(SettingsStorage* backend);
 
 protected:
   /*!
@@ -55,6 +62,8 @@ protected:
   void InitIcon(const QString& file_path);
   /// Structure with translatable plugin info. This must be filled in child constructor.
   TPluginGUIInfo info_;
+  /// PluginSettings object, will be available only if plugin is configurable
+  PluginSettings* settings_;
 
 private:
   QTranslator* translator_;

@@ -6,7 +6,6 @@
 namespace any_zoom {
 
 AnyZoom::AnyZoom() {
-  settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   is_enabled_ = false;
   last_zoom_ = 1.0;
 
@@ -23,16 +22,6 @@ void AnyZoom::Init(const QMap<Option, QVariant>& current_settings) {
 
   settings_->Load();
   last_zoom_ = current_settings[OPT_ZOOM].toReal();
-}
-
-void AnyZoom::ExportSettings(QSettings::SettingsMap* settings) {
-  if (!settings) return;
-  *settings = settings_->GetSettingsMap();
-}
-
-void AnyZoom::ImportSettings(const QSettings::SettingsMap& settings) {
-  settings_->SetValues(settings);
-  settings_->Save();
 }
 
 void AnyZoom::Start() {

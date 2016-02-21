@@ -13,7 +13,6 @@ namespace quick_note {
 
 QuickNote::QuickNote() : avail_width_(0), last_zoom_(1.0)
 {
-  settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   drawer_ = new skin_draw::SkinDrawer(this);
 
   InitTranslator(QLatin1String(":/quick_note/quick_note_"));
@@ -88,16 +87,6 @@ void QuickNote::Init(QWidget* main_wnd) {
   settings_->Load();
 }
 
-void QuickNote::ExportSettings(QSettings::SettingsMap* settings) {
-  if (!settings) return;
-  *settings = settings_->GetSettingsMap();
-}
-
-void QuickNote::ImportSettings(const QSettings::SettingsMap& settings) {
-  settings_->SetValues(settings);
-  settings_->Save();
-}
-
 void QuickNote::Start() {
   msg_label_ = new MessageWidget();
   main_layout_->addWidget(msg_label_, main_layout_->rowCount(), 0, 1, main_layout_->columnCount());
@@ -132,15 +121,17 @@ void QuickNote::Configure() {
   settings_dlg->setInputMode(QInputDialog::TextInput);
   settings_dlg->setTextValue(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
 
-  connect(settings_dlg, &QInputDialog::textValueSelected, [=] (const QString& str) {
-    settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
-    settings_->Save();
-    msg_label_->setText(str);
-  });
-  connect(settings_dlg, &QInputDialog::rejected, [=] () {
-    settings_->Load();
-    msg_label_->setText(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
-  });
+  if (msg_label_) {
+    connect(settings_dlg, &QInputDialog::textValueSelected, [=] (const QString& str) {
+      settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
+      settings_->Save();
+      msg_label_->setText(str);
+    });
+    connect(settings_dlg, &QInputDialog::rejected, [=] () {
+      settings_->Load();
+      msg_label_->setText(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
+    });
+  }
 
   settings_dlg->show();
 }

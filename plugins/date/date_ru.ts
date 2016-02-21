@@ -4,12 +4,12 @@
 <context>
     <name>date::Date</name>
     <message>
-        <location filename="date.cpp" line="21"/>
+        <location filename="date.cpp" line="19"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="date.cpp" line="22"/>
+        <location filename="date.cpp" line="20"/>
         <source>Allows to display current date under clock.</source>
         <translation>Отображает текущую дату под часами.</translation>
     </message>
@@ -68,17 +68,17 @@
         <translation>использовать масштаб часов</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.cpp" line="13"/>
+        <location filename="gui/settings_dialog.cpp" line="15"/>
         <source>default</source>
         <translation>по умолчанию</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.cpp" line="15"/>
+        <location filename="gui/settings_dialog.cpp" line="17"/>
         <source>short</source>
         <translation>короткий</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.cpp" line="16"/>
+        <location filename="gui/settings_dialog.cpp" line="18"/>
         <source>long</source>
         <translation>длинный</translation>
     </message>

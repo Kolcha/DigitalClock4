@@ -22,47 +22,6 @@ void PluginManager::SetInitData(const TPluginData& data) {
   data_ = data;
 }
 
-void PluginManager::ExportPluginsSettings(QMap<QString, QSettings::SettingsMap>* settings) {
-  Q_ASSERT(settings);
-  for (auto i = available_.cbegin(); i != available_.cend(); ++i) {
-    QSettings::SettingsMap& plugin_settings = (*settings)[i.key()];
-    if (loaded_.contains(i.key())) {
-      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loaded_[i.key()]->instance());
-      if (plugin) plugin->ExportSettings(&plugin_settings);
-    } else {
-      QString file = i.value();
-      if (!QFile::exists(file)) continue;
-      QPluginLoader* loader = new QPluginLoader(file, this);
-      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
-      if (plugin) {
-        InitPlugin(plugin, false);
-        plugin->ExportSettings(&plugin_settings);
-      }
-    }
-  }
-}
-
-void PluginManager::ImportPluginsSettings(const QMap<QString, QSettings::SettingsMap>& settings) {
-  for (auto i = available_.cbegin(); i != available_.cend(); ++i) {
-    auto s_iter = settings.find(i.key());
-    if (s_iter == settings.cend()) continue;
-    const QSettings::SettingsMap& plugin_settings = s_iter.value();
-    if (loaded_.contains(i.key())) {
-      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loaded_[i.key()]->instance());
-      if (plugin) plugin->ImportSettings(plugin_settings);
-    } else {
-      QString file = i.value();
-      if (!QFile::exists(file)) continue;
-      QPluginLoader* loader = new QPluginLoader(file, this);
-      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
-      if (plugin) {
-        InitPlugin(plugin, false);
-        plugin->ImportSettings(plugin_settings);
-      }
-    }
-  }
-}
-
 void PluginManager::ListAvailable() {
   available_.clear();
   QList<QPair<TPluginInfo, bool> > plugins;
@@ -122,6 +81,7 @@ void PluginManager::ConfigurePlugin(const QString& name) {
     QPluginLoader* loader = new QPluginLoader(file, this);
     IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
     if (plugin) {
+      plugin->InitSettings(data_.settings->GetBackend());
       InitPlugin(plugin, false);
       plugin->Configure();
     }
@@ -134,6 +94,10 @@ void PluginManager::LoadPlugin(const QString& name) {
   QPluginLoader* loader = new QPluginLoader(file, this);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
+    QJsonObject metadata = loader->metaData().value("MetaData").toObject();
+    if (metadata.value("configurable").toBool()) {
+      plugin->InitSettings(data_.settings->GetBackend());
+    }
     InitPlugin(plugin, true);
     plugin->Start();
     loaded_[name] = loader;
@@ -145,8 +109,6 @@ void PluginManager::UnloadPlugin(const QString& name) {
   if (!loader) return;
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
-    disconnect(data_.settings, SIGNAL(OptionChanged(Option,QVariant)),
-               plugin, SLOT(SettingsListener(Option,QVariant)));
     disconnect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
                plugin, SLOT(TimeUpdateListener()));
     plugin->Stop();
@@ -158,8 +120,6 @@ void PluginManager::UnloadPlugin(const QString& name) {
 void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
   // connect slots which are common for all plugins
   if (connected) {
-    connect(data_.settings, SIGNAL(OptionChanged(Option,QVariant)),
-            plugin, SLOT(SettingsListener(Option,QVariant)));
     connect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
             plugin, SLOT(TimeUpdateListener()));
     connect(this, SIGNAL(UpdateSettings(Option,QVariant)),

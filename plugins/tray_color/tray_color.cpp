@@ -8,7 +8,6 @@
 namespace tray_color {
 
 TrayColor::TrayColor() {
-  settings_ = new PluginSettings("Nick Korotysh", "Digital Clock", this);
   is_enabled_ = false;
 
   InitTranslator(QLatin1String(":/tray_color/tray_color_"));
@@ -24,16 +23,6 @@ void TrayColor::Init(QSystemTrayIcon* tray_icon) {
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
   settings_->Load();
-}
-
-void TrayColor::ExportSettings(QSettings::SettingsMap* settings) {
-  if (!settings) return;
-  *settings = settings_->GetSettingsMap();
-}
-
-void TrayColor::ImportSettings(const QSettings::SettingsMap& settings) {
-  settings_->SetValues(settings);
-  settings_->Save();
 }
 
 void TrayColor::Start() {

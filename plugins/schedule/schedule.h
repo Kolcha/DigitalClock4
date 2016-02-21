@@ -7,7 +7,6 @@
 #include "gui/settings_dialog.h"
 
 class TaskManager;
-class PluginSettings;
 
 namespace schedule {
 
@@ -18,9 +17,6 @@ class Schedule : public IClockPlugin {
 
 public:
   Schedule();
-
-  void ExportSettings(QSettings::SettingsMap* settings);
-  void ImportSettings(const QSettings::SettingsMap& settings);
 
 public slots:
   void Start();
@@ -37,7 +33,6 @@ private:
   QMenu* tray_menu_;
   TaskManager* manager_;
   QPointer<SettingsDialog> settings_dlg_;
-  PluginSettings* settings_;
 };
 
 } // namespace schedule
