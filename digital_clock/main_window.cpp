@@ -265,34 +265,34 @@ void MainWindow::ShowSettingsDialog()
   if (!dlg) {
     dlg = new gui::SettingsDialog(app_config_);
     // main signals/slots: change options, apply and reset
-    connect(dlg, &gui::SettingsDialog::OptionChanged, this, &MainWindow::ApplyOption);
-    connect(dlg, &gui::SettingsDialog::OptionChanged, app_config_, &core::ClockSettings::SetValue);
-    connect(dlg, &gui::SettingsDialog::accepted, app_config_, &core::ClockSettings::Save);
-    connect(dlg, &gui::SettingsDialog::rejected, app_config_, &core::ClockSettings::Load);
-    connect(dlg, &gui::SettingsDialog::accepted, config_backend_, &SettingsStorage::Save);
-    connect(dlg, &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Load);
-    connect(dlg, &gui::SettingsDialog::ResetSettings, config_backend_, &SettingsStorage::Reset);
+    connect(dlg.data(), &gui::SettingsDialog::OptionChanged, this, &MainWindow::ApplyOption);
+    connect(dlg.data(), &gui::SettingsDialog::OptionChanged, app_config_, &core::ClockSettings::SetValue);
+    connect(dlg.data(), &gui::SettingsDialog::accepted, app_config_, &core::ClockSettings::Save);
+    connect(dlg.data(), &gui::SettingsDialog::rejected, app_config_, &core::ClockSettings::Load);
+    connect(dlg.data(), &gui::SettingsDialog::accepted, config_backend_, &SettingsStorage::Save);
+    connect(dlg.data(), &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Load);
+    connect(dlg.data(), &gui::SettingsDialog::ResetSettings, config_backend_, &SettingsStorage::Reset);
     connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::Reset);
     // export/import
-    connect(dlg, &gui::SettingsDialog::ExportSettings, config_backend_, &SettingsStorage::Export);
-    connect(dlg, &gui::SettingsDialog::ImportSettings, config_backend_, &SettingsStorage::Import);
+    connect(dlg.data(), &gui::SettingsDialog::ExportSettings, config_backend_, &SettingsStorage::Export);
+    connect(dlg.data(), &gui::SettingsDialog::ImportSettings, config_backend_, &SettingsStorage::Import);
     // check for updates
-    connect(dlg, &gui::SettingsDialog::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
+    connect(dlg.data(), &gui::SettingsDialog::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
     // skins list
-    connect(skin_manager_, &core::SkinManager::SearchFinished, dlg, &gui::SettingsDialog::SetSkinList);
+    connect(skin_manager_, &core::SkinManager::SearchFinished, dlg.data(), &gui::SettingsDialog::SetSkinList);
     skin_manager_->ListSkins();
     // 'preview mode' support
     clock_widget_->EnablePreviewMode();
-    connect(dlg, &gui::SettingsDialog::destroyed, clock_widget_, &gui::ClockWidget::DisablePreviewMode);
+    connect(dlg.data(), &gui::SettingsDialog::destroyed, clock_widget_, &gui::ClockWidget::DisablePreviewMode);
 
     // plugins engine
-    connect(dlg, &gui::SettingsDialog::OptionChanged, plugin_manager_, &core::PluginManager::UpdateSettings);
+    connect(dlg.data(), &gui::SettingsDialog::OptionChanged, plugin_manager_, &core::PluginManager::UpdateSettings);
     // plugins list
-    connect(plugin_manager_, &core::PluginManager::SearchFinished, dlg, &gui::SettingsDialog::SetPluginsList);
+    connect(plugin_manager_, &core::PluginManager::SearchFinished, dlg.data(), &gui::SettingsDialog::SetPluginsList);
     plugin_manager_->ListAvailable();
     // enable/disable plugin, configure plugin
-    connect(dlg, &gui::SettingsDialog::PluginStateChanged, plugin_manager_, &core::PluginManager::EnablePlugin);
-    connect(dlg, &gui::SettingsDialog::PluginConfigureRequest, plugin_manager_, &core::PluginManager::ConfigurePlugin);
+    connect(dlg.data(), &gui::SettingsDialog::PluginStateChanged, plugin_manager_, &core::PluginManager::EnablePlugin);
+    connect(dlg.data(), &gui::SettingsDialog::PluginConfigureRequest, plugin_manager_, &core::PluginManager::ConfigurePlugin);
 
     dlg->show();
   }
