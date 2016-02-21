@@ -13,6 +13,8 @@
 class QPluginLoader;
 class QSystemTrayIcon;
 
+class ConfigManager;
+
 namespace digital_clock {
 namespace gui {
 class ClockWidget;
@@ -24,6 +26,7 @@ class ClockSettings;
 
 /*! Data to init plugins. */
 struct TPluginData {
+  ConfigManager* conf_manager;                /*!< ConfigManager object */
   ClockSettings* settings;                    /*!< clock settings object */
   gui::ClockWidget* window;                   /*!< clock widget */
   QSystemTrayIcon* tray;                      /*!< tray icon object */

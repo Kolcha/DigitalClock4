@@ -19,10 +19,10 @@ const TPluginGUIInfo& PluginBase::GetInfo() const {
   return info_;
 }
 
-void PluginBase::InitSettings(SettingsStorage* backend)
+void PluginBase::InitSettings(ConfigManager* manager)
 {
-  Q_ASSERT(backend);
-  settings_ = new PluginSettings(backend, this);
+  Q_ASSERT(manager);
+  settings_ = new PluginSettings(manager, this);
 }
 
 void PluginBase::InitTranslator(const QLatin1String& prefix) {

@@ -8,6 +8,7 @@
 #include "clock_common_global.h"
 
 
+class ConfigManager;
 class SettingsStorage;
 
 /*!
@@ -28,7 +29,7 @@ public:
    * @param backend - storage backend
    * @param parent - parent object
    */
-  PluginSettings(SettingsStorage* backend, QObject* parent = 0);
+  PluginSettings(ConfigManager* manager, QObject* parent = 0);
 
   /*!
    * Init all options with default values.
