@@ -7,20 +7,14 @@
 
 #include "clock_common_global.h"
 
-class ConfigManager;
-
 class CLOCK_COMMON_EXPORT SettingsStorage : public QObject
 {
   Q_OBJECT
 public:
-  explicit SettingsStorage(ConfigManager* manager, QObject *parent = 0);
-  virtual ~SettingsStorage();
+  explicit SettingsStorage(QObject *parent = 0);
 
   const QVariant& GetValue(const QString& key, const QVariant& default_value = QVariant());
   void SetValue(const QString& key, const QVariant& value);
-
-  void Export(QSettings::SettingsMap* m) const;
-  void Import(const QSettings::SettingsMap& m);
 
 signals:
   void reloaded();
@@ -31,8 +25,10 @@ public slots:
 
   void Reset();
 
+  void Export(const QString& filename);
+  void Import(const QString& filename);
+
 private:
-  ConfigManager* manager_;
   QSettings settings_;
   QSettings::SettingsMap current_values_;
   QSettings::SettingsMap default_values_;

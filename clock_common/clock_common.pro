@@ -16,7 +16,6 @@ DEFINES += CLOCK_COMMON_LIBRARY
 SOURCES += \
     centered_dialog.cpp \
     config_base.cpp \
-    config_manager.cpp \
     message_box.cpp \
     plugin_base.cpp \
     plugin_settings.cpp \
@@ -26,7 +25,6 @@ HEADERS += \
     centered_dialog.h \
     clock_common_global.h \
     config_base.h \
-    config_manager.h \
     iclock_plugin.h \
     iplugin_init.h \
     message_box.h \
