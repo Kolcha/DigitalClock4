@@ -1,10 +1,17 @@
 #include "settings_storage.h"
 
-#include <QFile>
-#include <QDataStream>
+#include "config_manager.h"
 
-SettingsStorage::SettingsStorage(QObject *parent) : QObject(parent)
+SettingsStorage::SettingsStorage(ConfigManager* manager, QObject *parent) :
+  QObject(parent),
+  manager_(manager)
 {
+  if (manager_) manager_->AddConfig(this);
+}
+
+SettingsStorage::~SettingsStorage()
+{
+  if (manager_) manager_->RemoveConfig(this);
 }
 
 const QVariant& SettingsStorage::GetValue(const QString& key, const QVariant& default_value)
@@ -20,6 +27,23 @@ const QVariant& SettingsStorage::GetValue(const QString& key, const QVariant& de
 void SettingsStorage::SetValue(const QString& key, const QVariant& value)
 {
   current_values_[key] = value;
+}
+
+void SettingsStorage::Export(QSettings::SettingsMap* m) const
+{
+  for (auto iter = current_values_.begin(); iter != current_values_.end(); ++iter) {
+    m->insert(iter.key(), iter.value());
+  }
+}
+
+void SettingsStorage::Import(const QSettings::SettingsMap& m)
+{
+  for (auto iter = current_values_.begin(); iter != current_values_.end(); ++iter) {
+    auto m_iter = m.find(iter.key());
+    if (m_iter == m.end()) continue;
+    *iter = m_iter.value();
+  }
+  emit reloaded();
 }
 
 void SettingsStorage::Load()
@@ -46,24 +70,5 @@ void SettingsStorage::Save()
 void SettingsStorage::Reset()
 {
   current_values_ = default_values_;
-  emit reloaded();
-}
-
-void SettingsStorage::Export(const QString& filename)
-{
-  QFile file(filename);
-  if (!file.open(QIODevice::WriteOnly)) return;
-  QDataStream stream(&file);
-  stream << current_values_;
-  file.close();
-}
-
-void SettingsStorage::Import(const QString& filename)
-{
-  QFile file(filename);
-  if (!file.open(QIODevice::ReadOnly)) return;
-  QDataStream stream(&file);
-  stream >> current_values_;
-  file.close();
   emit reloaded();
 }

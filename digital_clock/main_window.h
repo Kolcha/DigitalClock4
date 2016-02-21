@@ -7,6 +7,7 @@
 
 #include "settings_keys.h"
 
+class ConfigManager;
 class SettingsStorage;
 
 
@@ -55,13 +56,14 @@ private slots:
 
   // temporary, will be changed later
   void InitPluginSystem();
-  void ShutdownPluginSystem();
+  void Shutdown();
 
 private:
   void ConnectTrayMessages();
 
   void SetWindowFlag(Qt::WindowFlags flag, bool set);
 
+  ConfigManager* config_manager_;
   SettingsStorage* config_backend_;
 
   core::ClockSettings* app_config_;

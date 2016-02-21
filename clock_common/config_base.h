@@ -1,5 +1,5 @@
-#ifndef CONFIGBASE_H
-#define CONFIGBASE_H
+#ifndef CONFIG_BASE_H
+#define CONFIG_BASE_H
 
 #include <QObject>
 
@@ -14,6 +14,7 @@ class CLOCK_COMMON_EXPORT ConfigBase : public QObject
   Q_OBJECT
 public:
   explicit ConfigBase(SettingsStorage* backend, QObject *parent = 0);
+  virtual ~ConfigBase() {}
 
   SettingsStorage* GetBackend() const { return backend_; }
 
@@ -32,4 +33,4 @@ private:
   SettingsStorage* backend_;
 };
 
-#endif // CONFIGBASE_H
+#endif // CONFIG_BASE_H
