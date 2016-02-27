@@ -23,6 +23,7 @@ public:
 
 signals:
   void reloaded();
+  void saved();
 
 public slots:
   void SetValue(const int id, const QVariant& value);

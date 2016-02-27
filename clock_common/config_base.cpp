@@ -22,7 +22,7 @@ void ConfigBase::SetValue(const int id, const QVariant& value)
 void ConfigBase::Load()
 {
   for (auto iter = current_values_.begin(); iter != current_values_.end(); ++iter) {
-    *iter = backend_->GetValue(GetKey(iter.key()));
+    *iter = backend_->GetValue(GetKey(iter.key()), GetDefaultValue(iter.key()));
   }
   emit reloaded();
 }
@@ -32,4 +32,5 @@ void ConfigBase::Save()
   for (auto iter = current_values_.begin(); iter != current_values_.end(); ++iter) {
     backend_->SetValue(GetKey(iter.key()), iter.value());
   }
+  emit saved();
 }

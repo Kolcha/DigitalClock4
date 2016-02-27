@@ -268,8 +268,7 @@ void MainWindow::ShowSettingsDialog()
     connect(dlg.data(), &gui::SettingsDialog::OptionChanged, this, &MainWindow::ApplyOption);
     connect(dlg.data(), &gui::SettingsDialog::OptionChanged, app_config_, &core::ClockSettings::SetValue);
     connect(dlg.data(), &gui::SettingsDialog::accepted, app_config_, &core::ClockSettings::Save);
-    connect(dlg.data(), &gui::SettingsDialog::rejected, app_config_, &core::ClockSettings::Load);
-    connect(dlg.data(), &gui::SettingsDialog::accepted, config_backend_, &SettingsStorage::Save);
+    connect(app_config_, &core::ClockSettings::saved, config_backend_, &SettingsStorage::Save);
     connect(dlg.data(), &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Load);
     connect(dlg.data(), &gui::SettingsDialog::ResetSettings, config_backend_, &SettingsStorage::Reset);
     connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::Reset);
