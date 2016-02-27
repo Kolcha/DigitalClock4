@@ -37,6 +37,13 @@ int main(int argc, char *argv[])
     } else if (locale.startsWith(QLatin1String("en")) /* "English" is built-in */) {
       // use built-in
       break;
+    } else if (locale.contains("ua", Qt::CaseInsensitive)) /* Ukrainian, use russian */ {
+      app_translator.load(QLatin1String(":/clock/languages/digital_clock_ru"));
+      qt_translator.load(QLatin1String("qt_ru"),
+                         QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+      app.installTranslator(&app_translator);
+      app.installTranslator(&qt_translator);
+      break;
     }
   }
 
