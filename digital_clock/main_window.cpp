@@ -47,19 +47,6 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
   app_config_ = new core::ClockSettings(config_backend_, config_backend_);
 
   skin_manager_ = new core::SkinManager(this);
-  QList<QDir> default_skin_dirs;
-  default_skin_dirs.append(QDir(":/clock/default_skins"));
-#ifdef Q_OS_OSX
-  default_skin_dirs.append(QDir(qApp->applicationDirPath() + "/../Resources/skins"));
-#else
-  default_skin_dirs.append(QDir(qApp->applicationDirPath() + "/skins"));
-#endif
-#ifdef Q_OS_LINUX
-  default_skin_dirs.append(QDir("/usr/share/digital_clock/skins"));
-  default_skin_dirs.append(QDir("/usr/local/share/digital_clock/skins"));
-  default_skin_dirs.append(QDir(QDir::homePath() + "/.local/share/digital_clock/skins"));
-#endif
-  skin_manager_->ResetSearchDirs(default_skin_dirs);
   skin_manager_->ListSkins();
   skin_manager_->SetFallbackSkin("Electronic (default)");
 
@@ -333,19 +320,6 @@ void MainWindow::Update()
 void MainWindow::InitPluginSystem()
 {
   plugin_manager_ = new core::PluginManager(this);
-
-  QList<QDir> default_plugin_dirs;
-#ifdef Q_OS_OSX
-  default_plugin_dirs.append(QDir(qApp->applicationDirPath() + "/../PlugIns"));
-#else
-  default_plugin_dirs.append(QDir(qApp->applicationDirPath() + "/plugins"));
-#endif
-#ifdef Q_OS_LINUX
-  default_plugin_dirs.append(QDir("/usr/share/digital_clock/plugins"));
-  default_plugin_dirs.append(QDir("/usr/local/share/digital_clock/plugins"));
-  default_plugin_dirs.append(QDir(QDir::homePath() + "/.local/share/digital_clock/plugins"));
-#endif
-  plugin_manager_->ResetSearchDirs(default_plugin_dirs);
   plugin_manager_->ListAvailable();
 
   core::TPluginData plugin_data;

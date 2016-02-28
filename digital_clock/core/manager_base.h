@@ -5,6 +5,7 @@
 
 #include <QDir>
 #include <QList>
+#include <QString>
 
 namespace digital_clock {
 namespace core {
@@ -16,9 +17,8 @@ public:
   explicit ManagerBase(QObject* parent = 0);
 
 public slots:
-  void AddSearchDir(const QDir& dir);
-  void DelSearchDir(const QDir& dir);
-  void ResetSearchDirs(const QList<QDir>& new_list = QList<QDir>());
+  void AddSearchPath(const QString& path);
+  void DelSearchPath(const QString& path);
 
 protected:
   QList<QDir> search_dirs_;

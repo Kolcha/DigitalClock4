@@ -1,5 +1,8 @@
 #include "skin_manager.h"
 
+#include <QDir>
+#include <QApplication>
+
 #include "skin/clock_raster_skin.h"
 #include "skin/clock_vector_skin.h"
 #include "skin/clock_text_skin.h"
@@ -24,6 +27,17 @@ ClockSkinPtr CreateSkin(const QFont& font) {
 
 SkinManager::SkinManager(QObject* parent) : ManagerBase(parent)
 {
+  this->AddSearchPath(":/clock/default_skins");
+#ifdef Q_OS_OSX
+  this->AddSearchPath(qApp->applicationDirPath() + "/../Resources/skins");
+#else
+  this->AddSearchPath(qApp->applicationDirPath() + "/skins");
+#endif
+#ifdef Q_OS_LINUX
+  this->AddSearchPath("/usr/share/digital_clock/skins");
+  this->AddSearchPath("/usr/local/share/digital_clock/skins");
+  this->AddSearchPath(QDir::homePath() + "/.local/share/digital_clock/skins");
+#endif
 }
 
 ClockSkinPtr SkinManager::CurrentSkin() const {

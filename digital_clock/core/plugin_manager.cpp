@@ -1,7 +1,9 @@
 #include "plugin_manager.h"
 
+#include <QDir>
 #include <QFile>
 #include <QJsonObject>
+#include <QApplication>
 #include <QPluginLoader>
 
 #include "iplugin_init.h"
@@ -16,6 +18,16 @@ namespace core {
 
 PluginManager::PluginManager(QObject *parent) : ManagerBase(parent)
 {
+#ifdef Q_OS_OSX
+  this->AddSearchPath(qApp->applicationDirPath() + "/../PlugIns");
+#else
+  this->AddSearchPath(qApp->applicationDirPath() + "/plugins");
+#endif
+#ifdef Q_OS_LINUX
+  this->AddSearchPath("/usr/share/digital_clock/plugins");
+  this->AddSearchPath("/usr/local/share/digital_clock/plugins");
+  this->AddSearchPath(QDir::homePath() + "/.local/share/digital_clock/plugins");
+#endif
 }
 
 void PluginManager::SetInitData(const TPluginData& data) {

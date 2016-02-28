@@ -7,16 +7,12 @@ ManagerBase::ManagerBase(QObject* parent) : QObject(parent)
 {
 }
 
-void ManagerBase::AddSearchDir(const QDir& dir) {
-  if (!search_dirs_.contains(dir)) search_dirs_.append(dir);
+void ManagerBase::AddSearchPath(const QString& path) {
+  if (!search_dirs_.contains(path)) search_dirs_.append(QDir(path));
 }
 
-void ManagerBase::DelSearchDir(const QDir& dir) {
-  search_dirs_.removeOne(dir);
-}
-
-void ManagerBase::ResetSearchDirs(const QList<QDir>& new_list) {
-  search_dirs_ = new_list;
+void ManagerBase::DelSearchPath(const QString& path) {
+  search_dirs_.removeOne(QDir(path));
 }
 
 } // namespace core
