@@ -5,10 +5,13 @@ namespace digital_clock {
 namespace gui {
 
 PluginInfoDialog::PluginInfoDialog(QWidget* parent) :
-  CenteredDialog(parent),
+  QDialog(parent),
   ui(new Ui::PluginInfoDialog)
 {
   ui->setupUi(this);
+
+  setAttribute(Qt::WA_DeleteOnClose);
+  setWindowIcon(QIcon(":/clock/images/about.svg"));
 }
 
 PluginInfoDialog::~PluginInfoDialog() {

@@ -1,7 +1,7 @@
 #ifndef DIGITAL_CLOCK_GUI_PLUGIN_INFO_DIALOG_H
 #define DIGITAL_CLOCK_GUI_PLUGIN_INFO_DIALOG_H
 
-#include "centered_dialog.h"
+#include <QDialog>
 #include "core/plugin_info.h"
 
 namespace digital_clock {
@@ -11,7 +11,7 @@ namespace Ui {
 class PluginInfoDialog;
 }
 
-class PluginInfoDialog : public CenteredDialog {
+class PluginInfoDialog : public QDialog {
   Q_OBJECT
 
 public:

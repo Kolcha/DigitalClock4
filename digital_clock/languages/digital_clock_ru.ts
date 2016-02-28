@@ -106,7 +106,7 @@
         <translation>автор:</translation>
     </message>
     <message>
-        <location filename="../gui/plugin_info_dialog.cpp" line="20"/>
+        <location filename="../gui/plugin_info_dialog.cpp" line="23"/>
         <source>version: %1</source>
         <translation>версия: %1</translation>
     </message>
