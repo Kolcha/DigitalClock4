@@ -15,7 +15,6 @@ SOURCES += main.cpp \
     core/autostart.cpp \
     core/clock_settings.cpp \
     core/http_client.cpp \
-    core/manager_base.cpp \
     core/plugin_manager.cpp \
     core/skin_manager.cpp \
     core/updater.cpp \
@@ -38,7 +37,6 @@ HEADERS += \
     core/build_defs.h \
     core/clock_settings.h \
     core/http_client.h \
-    core/manager_base.h \
     core/plugin_info.h \
     core/plugin_manager.h \
     core/skin_manager.h \

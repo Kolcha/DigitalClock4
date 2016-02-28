@@ -16,17 +16,17 @@
 namespace digital_clock {
 namespace core {
 
-PluginManager::PluginManager(QObject *parent) : ManagerBase(parent)
+PluginManager::PluginManager(QObject *parent) : QObject(parent)
 {
 #ifdef Q_OS_OSX
-  this->AddSearchPath(qApp->applicationDirPath() + "/../PlugIns");
+  search_paths_.append(qApp->applicationDirPath() + "/../PlugIns");
 #else
-  this->AddSearchPath(qApp->applicationDirPath() + "/plugins");
+  search_paths_.append(qApp->applicationDirPath() + "/plugins");
 #endif
 #ifdef Q_OS_LINUX
-  this->AddSearchPath("/usr/share/digital_clock/plugins");
-  this->AddSearchPath("/usr/local/share/digital_clock/plugins");
-  this->AddSearchPath(QDir::homePath() + "/.local/share/digital_clock/plugins");
+  search_paths_.append("/usr/share/digital_clock/plugins");
+  search_paths_.append("/usr/local/share/digital_clock/plugins");
+  search_paths_.append(QDir::homePath() + "/.local/share/digital_clock/plugins");
 #endif
 }
 
@@ -37,7 +37,8 @@ void PluginManager::SetInitData(const TPluginData& data) {
 void PluginManager::ListAvailable() {
   available_.clear();
   QList<QPair<TPluginInfo, bool> > plugins;
-  for (auto& dir : search_dirs_) {
+  for (auto& path : search_paths_) {
+    QDir dir(path);
     QStringList files = dir.entryList(QDir::Files);
     for (auto& file : files) {
       QString abs_path = dir.filePath(file);

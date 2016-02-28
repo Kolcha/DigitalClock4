@@ -1,7 +1,7 @@
 #ifndef DIGITAL_CLOCK_CORE_PLUGIN_MANAGER_H
 #define DIGITAL_CLOCK_CORE_PLUGIN_MANAGER_H
 
-#include "core/manager_base.h"
+#include <QObject>
 
 #include <QMap>
 #include <QString>
@@ -36,7 +36,7 @@ struct TPluginData {
  * This class provides plugin management system. It loads/unloads plugins.
  * It distinguishes plugin types and int them with appropriate data.
  */
-class PluginManager : public ManagerBase {
+class PluginManager : public QObject {
   Q_OBJECT
 
 public:
@@ -117,6 +117,7 @@ private:
    */
   void InitPlugin(IClockPlugin* plugin, bool connected);
 
+  QStringList search_paths_;
   QMap<QString, QString> available_;
   QMap<QString, QPluginLoader*> loaded_;
   TPluginData data_;

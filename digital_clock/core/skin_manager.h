@@ -1,7 +1,7 @@
 #ifndef DIGITAL_CLOCK_CORE_SKIN_MANAGER_H
 #define DIGITAL_CLOCK_CORE_SKIN_MANAGER_H
 
-#include "manager_base.h"
+#include <QObject>
 
 #include <QString>
 #include <QFont>
@@ -14,7 +14,7 @@
 namespace digital_clock {
 namespace core {
 
-class SkinManager : public ManagerBase {
+class SkinManager : public QObject {
   Q_OBJECT
 
 public:
@@ -35,6 +35,7 @@ public slots:
   void SetFallbackSkin(const QString& skin_name);
 
 private:
+  QStringList search_paths_;
   QMap<QString, QDir> skins_;
   QFont font_;
   QString seps_;

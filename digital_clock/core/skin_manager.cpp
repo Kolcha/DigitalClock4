@@ -25,18 +25,18 @@ ClockSkinPtr CreateSkin(const QFont& font) {
 }
 
 
-SkinManager::SkinManager(QObject* parent) : ManagerBase(parent)
+SkinManager::SkinManager(QObject* parent) : QObject(parent)
 {
-  this->AddSearchPath(":/clock/default_skins");
+  search_paths_.append(":/clock/default_skins");
 #ifdef Q_OS_OSX
-  this->AddSearchPath(qApp->applicationDirPath() + "/../Resources/skins");
+  search_paths_.append(qApp->applicationDirPath() + "/../Resources/skins");
 #else
-  this->AddSearchPath(qApp->applicationDirPath() + "/skins");
+  search_paths_.append(qApp->applicationDirPath() + "/skins");
 #endif
 #ifdef Q_OS_LINUX
-  this->AddSearchPath("/usr/share/digital_clock/skins");
-  this->AddSearchPath("/usr/local/share/digital_clock/skins");
-  this->AddSearchPath(QDir::homePath() + "/.local/share/digital_clock/skins");
+  search_paths_.append("/usr/share/digital_clock/skins");
+  search_paths_.append("/usr/local/share/digital_clock/skins");
+  search_paths_.append(QDir::homePath() + "/.local/share/digital_clock/skins");
 #endif
 }
 
@@ -46,7 +46,8 @@ ClockSkinPtr SkinManager::CurrentSkin() const {
 
 void SkinManager::ListSkins() {
   skins_.clear();
-  for (auto& s_dir : search_dirs_) {
+  for (auto& s_path : search_paths_) {
+    QDir s_dir(s_path);
     QStringList f_dirs = s_dir.entryList(QDir::NoDotAndDotDot | QDir::AllDirs);
     for (auto& f_dir : f_dirs) {
       QDir skin_root(s_dir.filePath(f_dir));
