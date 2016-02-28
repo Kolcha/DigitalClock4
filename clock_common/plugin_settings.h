@@ -76,6 +76,7 @@ signals:
 private:
   SettingsStorage* backend_;
   QSettings::SettingsMap default_map_;
+  QSettings::SettingsMap current_map_;
   bool track_changes_;
 };
 
