@@ -1,8 +1,10 @@
-#include "settings_keys.h"
-#include "../core/schedule_settings.h"
-#include "add_task_dialog.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
+
+#include "settings_keys.h"
+
+#include "core/schedule_settings.h"
+#include "gui/add_task_dialog.h"
 
 namespace schedule {
 

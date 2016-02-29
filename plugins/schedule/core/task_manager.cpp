@@ -1,30 +1,14 @@
-#include <QStringList>
-#include <QDataStream>
-#include "schedule_settings.h"
 #include "task_manager.h"
+
+#include <QStringList>
+#include <QSettings>
+
+#include "schedule_settings.h"
 
 namespace schedule {
 
 TaskManager::TaskManager(QObject* parent) : QObject(parent)
 {
-}
-
-void TaskManager::ExportTasks(QSettings::SettingsMap* settings) {
-  if (!settings) return;
-  QByteArray buffer;
-  QDataStream stream(&buffer, QIODevice::WriteOnly);
-  stream << tasks_;
-  settings->insert("serialized_tasks", buffer);
-}
-
-void TaskManager::ImportTasks(const QSettings::SettingsMap& settings) {
-  auto t_iter = settings.find("serialized_tasks");
-  if (t_iter == settings.cend()) return;
-  QByteArray buffer = t_iter.value().toByteArray();
-  QDataStream stream(buffer);
-  stream >> tasks_;
-  SaveTasks();
-  emit DatesUpdated(tasks_.keys());
 }
 
 void TaskManager::AddTask(const Task& task) {

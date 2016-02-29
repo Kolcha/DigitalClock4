@@ -2,7 +2,8 @@
 #define SCHEDULE_SETTINGS_DIALOG_H
 
 #include <QDialog>
-#include "../core/task.h"
+
+#include "core/task.h"
 
 namespace schedule {
 
