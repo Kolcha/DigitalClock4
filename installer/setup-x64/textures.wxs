@@ -7,6 +7,21 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="textures">
+            <Component Id="cmp1E19C62F5EA916134C005CACC57C2522" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{6A11F532-1361-4D82-B6E3-C38621744764}" Win64="yes">
+                <File Id="fil0900958C8B13D1E1C9577DDA593CC959" KeyPath="yes" Source="..\..\..\data\textures\flowers_texture_1.jpg" />
+            </Component>
+            <Component Id="cmp7FCF67241591A9882DFFC9DEDB510DB7" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{86DBFC15-93B3-41FE-BA68-C6EB7568740E}" Win64="yes">
+                <File Id="fil13408F2280D7ED5760783898939F120A" KeyPath="yes" Source="..\..\..\data\textures\flowers_texture_2.jpg" />
+            </Component>
+            <Component Id="cmp7C95D532887926916A568FE1AA1CAF4B" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{9E0BEBDE-1870-4725-86B3-0A4FF499A4B9}" Win64="yes">
+                <File Id="fil68A06422FA3BD8B6DCC9089D12863664" KeyPath="yes" Source="..\..\..\data\textures\flowers_texture_3.jpg" />
+            </Component>
+            <Component Id="cmp71A69874FB04E624970D14189D89AB98" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{6183AB8A-E5C1-4DE4-A3B9-77E6B94991DE}" Win64="yes">
+                <File Id="fil2C0AA8AC5D1751B92C83C7971D908B52" KeyPath="yes" Source="..\..\..\data\textures\flowers_texture_4.jpg" />
+            </Component>
+            <Component Id="cmp1C12D651CAD20FC727CB3103CB1AEA82" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{C326210B-488D-4D53-B754-1D0E957B0701}" Win64="yes">
+                <File Id="fil607BA07AB7E82D7B66C9B1BDD2EDFBCF" KeyPath="yes" Source="..\..\..\data\textures\flowers_texture_5.jpg" />
+            </Component>
             <Component Id="cmpE2E13EACF9F2B8E3F11D7847A5E53675" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{1DC7D174-61DA-4B3E-9B8C-340E06D21F60}" Win64="yes">
                 <File Id="fil02828A9F1C3263AC432D08BAB57920A0" KeyPath="yes" Source="..\..\..\data\textures\texture_001_128.jpg" />
             </Component>

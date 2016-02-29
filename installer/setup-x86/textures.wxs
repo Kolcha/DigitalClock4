@@ -7,6 +7,21 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="textures">
+            <Component Id="cmp1E19C62F5EA916134C005CACC57C2522" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{E655FF5E-360A-4BD9-BC81-C0D2992DFAEC}">
+                <File Id="fil0900958C8B13D1E1C9577DDA593CC959" KeyPath="yes" Source="..\..\..\data\textures\flowers_texture_1.jpg" />
+            </Component>
+            <Component Id="cmp7FCF67241591A9882DFFC9DEDB510DB7" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{84333B06-4380-42FE-9746-3E6666632138}">
+                <File Id="fil13408F2280D7ED5760783898939F120A" KeyPath="yes" Source="..\..\..\data\textures\flowers_texture_2.jpg" />
+            </Component>
+            <Component Id="cmp7C95D532887926916A568FE1AA1CAF4B" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{9F40A9CC-F7A7-48F2-8AD9-77CA8D157A5F}">
+                <File Id="fil68A06422FA3BD8B6DCC9089D12863664" KeyPath="yes" Source="..\..\..\data\textures\flowers_texture_3.jpg" />
+            </Component>
+            <Component Id="cmp71A69874FB04E624970D14189D89AB98" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{23FC28A0-FE44-414C-94C3-08B4D0E0FCCA}">
+                <File Id="fil2C0AA8AC5D1751B92C83C7971D908B52" KeyPath="yes" Source="..\..\..\data\textures\flowers_texture_4.jpg" />
+            </Component>
+            <Component Id="cmp1C12D651CAD20FC727CB3103CB1AEA82" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{BA9CED25-A299-44B1-973C-F0678D09C8FE}">
+                <File Id="fil607BA07AB7E82D7B66C9B1BDD2EDFBCF" KeyPath="yes" Source="..\..\..\data\textures\flowers_texture_5.jpg" />
+            </Component>
             <Component Id="cmpE2E13EACF9F2B8E3F11D7847A5E53675" Directory="dirE12C968B8EFCD78D493FB5BA88BD3393" Guid="{C60DCA78-DCB8-44B6-8CA0-0C0686B527B3}">
                 <File Id="fil02828A9F1C3263AC432D08BAB57920A0" KeyPath="yes" Source="..\..\..\data\textures\texture_001_128.jpg" />
             </Component>
