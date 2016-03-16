@@ -6,6 +6,7 @@
 #ifdef Q_OS_LINUX
 #include <QFile>
 #include <QFileInfo>
+#include <QSettings>
 
 static QString GetAppFileName() {
   QFileInfo fi(QApplication::applicationFilePath());

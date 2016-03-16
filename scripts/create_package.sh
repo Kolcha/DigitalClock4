@@ -22,11 +22,13 @@ cd "$CLOCK_SRC_PATH"
 $QT_PATH/lupdate -no-obsolete DigitalClock.pro
 $QT_PATH/qmake -config release
 make
+[[ $? == 0 ]] || exit 1
 
 # create targer folder
 TARGET_APP_FOLDER="$CLOCK_SRC_PATH/../$CLOCK_APP_NAME"
 rm -rf "$TARGET_APP_FOLDER"
 mkdir "$TARGET_APP_FOLDER"
+[[ $? == 0 ]] || exit 1
 
 # copy Qt runtime files
 cp -r "$CLOCK_DATA_PATH/qt_linux/"* "$TARGET_APP_FOLDER/"
@@ -61,6 +63,7 @@ make distclean
 cd "$TARGET_APP_FOLDER/.."
 rm -f digital_clock_4-linux.tar.xz
 tar cJvf digital_clock_4-linux.tar.xz "$CLOCK_APP_NAME"
+[[ $? == 0 ]] || exit 1
 
 # create source tarball
 cp -r "$CLOCK_SRC_PATH" digital_clock_4-src
@@ -70,4 +73,5 @@ rm -rf .hg*
 cd ..
 rm -f digital_clock_4-src.tar.xz
 tar cJvf digital_clock_4-src.tar.xz digital_clock_4-src
+[[ $? == 0 ]] || exit 1
 rm -rf digital_clock_4-src
