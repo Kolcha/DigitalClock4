@@ -7,9 +7,7 @@
 
     <ComponentGroup Id="ClockFiles">
       <Component Id="main_exe" Directory="INSTALLDIR" Guid="{217B5368-FD6C-4CA6-866A-7C45B2B17AAB}">
-        <File Id="digital_clock.exe" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_5_1_MSVC2013_32bit-Release\digital_clock\release\digital_clock.exe">
-          <Shortcut Id="startmenuDigitalClock" Directory="ProgramMenuDir" Name="Digital Clock 4" WorkingDirectory="INSTALLDIR" Icon="app_icon.ico"  Advertise="yes" />
-        </File>
+        <File Id="digital_clock.exe" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_5_1_MSVC2013_32bit-Release\digital_clock\release\digital_clock.exe" />
       </Component>
       <Component Id="dll_lib1" Directory="INSTALLDIR" Guid="{D73EECC9-2DFD-43CC-9E2B-10D6E4F5ABC9}">
         <File Id="clock_common.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_5_1_MSVC2013_32bit-Release\clock_common\release\clock_common.dll" />
@@ -65,6 +63,16 @@
           <RegistryValue Type="string" Name="[ProductName]" Value="[INSTALLDIR]digital_clock.exe" KeyPath="yes" />
         </RegistryKey>
       </Component>
+
+      <ComponentRef Id="clock_shortcuts" />
     </ComponentGroup>
+
+    <DirectoryRef Id="ProgramMenuDir">
+      <Component Id="clock_shortcuts" Guid="{FAF69DE4-37FB-40C5-BDC7-8FFD5391D0AD}">
+        <Shortcut Id="main_exe_shortcut" Name="Digital Clock 4" Target="[#digital_clock.exe]" WorkingDirectory="INSTALLDIR" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="app_shortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
   </Fragment>
 </Wix>

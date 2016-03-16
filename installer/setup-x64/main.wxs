@@ -30,7 +30,7 @@
         </Directory>
       </Directory>
 
-      <Directory Id="ProgramMenuFolder" Name="Programs">
+      <Directory Id="ProgramMenuFolder">
         <Directory Id="ProgramMenuDir" Name="Digital Clock">
           <Component Id="ProgramMenuDir" Guid="{C66DCABA-A806-4A20-9744-76945BE1FFA5}" Win64="yes">
             <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
