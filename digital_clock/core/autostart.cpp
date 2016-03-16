@@ -21,20 +21,29 @@ static QString GetDesktopFile() {
   return auto_start_dir.absoluteFilePath(GetAppFileName() + ".desktop");
 }
 
+static QString GetExecPath() {
+  QString exec_path = QApplication::applicationFilePath() + ".sh";
+  exec_path.replace(' ', "\\ ");
+  return exec_path;
+}
+
+static bool IsFileCorrect(const QString& desktop_file) {
+  QSettings startup_file(desktop_file, QSettings::IniFormat);
+  return startup_file.value("Desktop Entry/Exec").toString() == GetExecPath();
+}
+
 
 bool IsAutoStartEnabled() {
-  return QFile::exists(GetDesktopFile());
+  QString desktop_file = GetDesktopFile();
+  return QFile::exists(desktop_file) && IsFileCorrect(desktop_file);
 }
 
 void SetAutoStart(bool enable) {
   QString desktop_file = GetDesktopFile();
   if (enable) {
-    if (QFile::exists(desktop_file)) return;
+    if (QFile::exists(desktop_file) && IsFileCorrect(desktop_file)) return;
     QString startup_dir = GetAutoStartDir();
     if (!QFile::exists(startup_dir)) QDir::home().mkpath(startup_dir);
-
-    QString exec_path = QApplication::applicationFilePath() + ".sh";
-    exec_path.replace(' ', "\\ ");
 
     QString desktop_data = QString(
           "[Desktop Entry]\n"
@@ -48,7 +57,7 @@ void SetAutoStart(bool enable) {
         .arg(
           QApplication::applicationName(),
           QApplication::applicationName() + " " + QApplication::applicationVersion() + " by " + QApplication::organizationName(),
-          exec_path,
+          GetExecPath(),
           QApplication::applicationFilePath() + ".svg");
 
     QFile file(desktop_file);
@@ -120,7 +129,7 @@ void SetAutoStart(bool enable) {
 
 bool IsAutoStartEnabled() {
   QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
-  return settings.allKeys().count(QApplication::applicationName()) != 0;
+  return settings.value(QApplication::applicationName()).toString() == QDir::toNativeSeparators(QApplication::applicationFilePath());
 }
 
 void SetAutoStart(bool enable) {
