@@ -35,9 +35,9 @@ void HttpClient::startRequest(QUrl url) {
 #endif
 #ifdef Q_OS_WIN
 #ifdef Q_OS_WIN64
-  req.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0");
+  req.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:45.0) Gecko/20100101 Firefox/45.0");
 #else
-  req.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.3; rv:43.0) Gecko/20100101 Firefox/43.0");
+  req.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.3; rv:45.0) Gecko/20100101 Firefox/45.0");
 #endif
 #endif
   reply_ = qnam_.get(req);
