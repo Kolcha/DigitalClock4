@@ -39,6 +39,9 @@ void PluginBase::InitTranslator(const QLatin1String& prefix) {
     } else if (locale.startsWith(QLatin1String("en")) /* "English" is built-in */) {
       // use built-in
       break;
+    } else if (locale.contains("ua", Qt::CaseInsensitive)) /* Ukrainian, use russian */ {
+      if (translator_->load(prefix + "ru")) QApplication::installTranslator(translator_);
+      break;
     }
   }
 }
