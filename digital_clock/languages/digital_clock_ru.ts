@@ -68,11 +68,17 @@
     </message>
     <message>
         <location filename="../gui/about_dialog.ui" line="194"/>
-        <source>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/&quot;&gt;view/get source code&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/&quot;&gt;посмотреть/загрузить исходный код&lt;/a&gt;</translation>
+        <source>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;view full changelog&lt;/a&gt;</source>
+        <translatorcomment>просмотреть историю изменений</translatorcomment>
+        <translation>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;полный список изменений&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="210"/>
+        <location filename="../gui/about_dialog.ui" line="207"/>
+        <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;how to create own skin&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;как создать собственный стиль&lt;/a&gt;</translation>
+    </message>
+    <message>
+        <location filename="../gui/about_dialog.ui" line="223"/>
         <source>More info</source>
         <translation>Информация на других сайтах</translation>
     </message>

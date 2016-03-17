@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>378</width>
+    <height>304</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -189,9 +189,22 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="source_lbl">
+           <widget class="QLabel" name="changelog_lbl">
             <property name="text">
-             <string>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/&quot;&gt;view/get source code&lt;/a&gt;</string>
+             <string>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;view full changelog&lt;/a&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="openExternalLinks">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="wiki_lbl">
+            <property name="text">
+             <string>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;how to create own skin&lt;/a&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
