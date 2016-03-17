@@ -73,6 +73,9 @@ signals:
    */
   void OptionChanged(const QString& key, const QVariant& value);
 
+private slots:
+  void Reload();
+
 private:
   SettingsStorage* backend_;
   QSettings::SettingsMap default_map_;

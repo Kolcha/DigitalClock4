@@ -20,6 +20,10 @@ const QVariant& SettingsStorage::GetValue(const QString& key, const QVariant& de
 void SettingsStorage::SetValue(const QString& key, const QVariant& value)
 {
   current_values_[key] = value;
+}
+
+void SettingsStorage::CommitValue(const QString& key, const QVariant& value)
+{
   settings_.setValue(key, value);
 }
 
