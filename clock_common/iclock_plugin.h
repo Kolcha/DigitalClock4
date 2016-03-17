@@ -58,7 +58,7 @@ public slots:
    * @brief Clock settings changes listener.
    *
    * This slot will be called when any clock option will changed.
-   * @param option - option which was changed. @see Options
+   * @param option - option which was changed. @see Option
    * @param new_value - new option value as QVariant
    */
   virtual void SettingsListener(Option option, const QVariant& new_value) { Q_UNUSED(option); Q_UNUSED(new_value); }
@@ -91,7 +91,7 @@ class CLOCK_COMMON_EXPORT ISettingsPlugin : public IClockPlugin {
 signals:
   /*!
    * Signal to notify clock that option have changed.
-   * @param option - option which was changed. @see Options
+   * @param option - option which was changed. @see Option
    * @param value - new option value as QVariant
    */
   void OptionChanged(Option option, const QVariant& value);

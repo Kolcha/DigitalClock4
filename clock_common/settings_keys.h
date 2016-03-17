@@ -4,7 +4,7 @@
  * @brief All clock options and their possible values.
  *
  * You can find any clock option description, its possible values and value type in this file.
- * @see Options, GetDefaultValue()
+ * @see Option
  */
 
 #ifndef SETTINGS_KEYS_H

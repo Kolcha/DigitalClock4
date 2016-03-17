@@ -66,7 +66,7 @@ signals:
    * @param option - changed option
    * @param value - new option's value
    * @note This signal is a part of internal PluginManager logic.
-   * @see settings_keys.h, Options, IClockPlugin
+   * @see settings_keys.h, Option, IClockPlugin
    */
   void UpdateSettings(Option option, const QVariant& value);
 
