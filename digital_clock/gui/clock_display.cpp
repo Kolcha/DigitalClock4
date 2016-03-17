@@ -47,7 +47,8 @@ void ClockDisplay::TimeoutHandler() {
     }
     SetTimeFormat(time_format);
   }
-  QString str_time = QTime::currentTime().toString(time_format_);
+  QLocale c_locale(QLocale::C, QLocale::AnyCountry);
+  QString str_time = c_locale.toString(QTime::currentTime(), time_format_);
 
   QList<int> seps_pos;
   for (int i = 0; i < str_time.length(); ++i) {
