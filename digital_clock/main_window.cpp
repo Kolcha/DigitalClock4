@@ -381,10 +381,12 @@ void MainWindow::ConnectTrayMessages()
 
 void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set)
 {
+  QWidget* aw = QApplication::activeWindow();
   Qt::WindowFlags flags = windowFlags();
   set ? flags |= flag : flags &= ~flag;
   setWindowFlags(flags);
   show();
+  if (aw) aw->activateWindow();
 }
 
 } // namespace digital_clock
