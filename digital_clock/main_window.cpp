@@ -315,6 +315,13 @@ void MainWindow::Update()
     Q_ASSERT(cur_alignment_ == CAlignment::A_LEFT);
     this->adjustSize();
   }
+#ifdef Q_OS_WIN
+  // always on top problem workaround
+  // https://forum.qt.io/topic/28739/flags-windows-7-window-always-on-top-including-the-win7-taskbar-custom-error/4
+  if (app_config_->GetValue(OPT_STAY_ON_TOP).toBool() && !this->isActiveWindow()) {
+    this->raise();
+  }
+#endif
 }
 
 void MainWindow::InitPluginSystem()
