@@ -11,6 +11,8 @@ ConfigBase::ConfigBase(SettingsStorage* backend, QObject *parent) :
 
 const QVariant& ConfigBase::GetValue(const int id) const
 {
+  auto c_iter = current_values_.find(id);
+  if (c_iter != current_values_.end()) return c_iter.value();
   return backend_->GetValue(GetKey(id), GetDefaultValue(id));
 }
 
