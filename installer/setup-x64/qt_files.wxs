@@ -65,14 +65,8 @@
             <Component Id="cmp715C1286E8B00FFDC913B863D49664A7" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{5723A27D-65E1-43CB-979D-BF8A9B8C437F}" Win64="yes">
                 <File Id="filA1C4CFCEA4776592E7A7B3708B0E39F5" KeyPath="yes" Source="..\..\..\Qt files x64\plugins\imageformats\qico.dll" />
             </Component>
-            <Component Id="cmp35D5592113BEE66ADF8D1E6B0F48ABA7" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{5E34AB27-2347-4514-AF2D-C682DDA7192C}" Win64="yes">
-                <File Id="fil31413A97607614363D02197272DA9C4F" KeyPath="yes" Source="..\..\..\Qt files x64\plugins\imageformats\qjp2.dll" />
-            </Component>
             <Component Id="cmp482273AFA3312C5FF80B304BD35D80BE" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{DA323D30-6C17-41F3-92B6-3BEE5FAE09F5}" Win64="yes">
                 <File Id="fil912762A8EB1F82029539A98F6A5D7B46" KeyPath="yes" Source="..\..\..\Qt files x64\plugins\imageformats\qjpeg.dll" />
-            </Component>
-            <Component Id="cmp05B8A14018CD6129623D565D55DA4399" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{8EB4440B-32ED-46E3-8CC3-0232E7FD688A}" Win64="yes">
-                <File Id="fil2680C35236BC0D0FC067BB88CCF2624E" KeyPath="yes" Source="..\..\..\Qt files x64\plugins\imageformats\qmng.dll" />
             </Component>
             <Component Id="cmp75085EA01AF53C1C4393D459D1D6951C" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{AFC7C1D7-FB06-4283-A458-959741B909E9}" Win64="yes">
                 <File Id="filE9B34AC1DE1A10992341BF7A70583E2F" KeyPath="yes" Source="..\..\..\Qt files x64\plugins\imageformats\qsvg.dll" />
@@ -94,9 +88,6 @@
             </Component>
             <Component Id="cmp9887ABF1BEE592C2B8D68293E2109B74" Directory="dir38D1F3EF7754C1BA5FF82908E02510CA" Guid="{1BF897FB-093B-437E-8959-FA4F9202D1CE}" Win64="yes">
                 <File Id="filE09F520BD795B769A230A1834B3E444B" KeyPath="yes" Source="..\..\..\Qt files x64\plugins\mediaservice\qtmedia_audioengine.dll" />
-            </Component>
-            <Component Id="cmpF404D47402B2D18DCD862E6C6776C7ED" Directory="dir38D1F3EF7754C1BA5FF82908E02510CA" Guid="{CC2A4E14-C528-4E26-8E9E-8405C09F4DC9}" Win64="yes">
-                <File Id="fil4F9FF96439FAEFA29B2B9904EB2B56FE" KeyPath="yes" Source="..\..\..\Qt files x64\plugins\mediaservice\wmfengine.dll" />
             </Component>
             <Component Id="cmp936AC238E2EA0F51E3BB91C5449A0A76" Directory="dir20F500013C22111CF35E03A6B87810E7" Guid="{BCEE2524-757E-4074-B1C5-47F87CD7F566}" Win64="yes">
                 <File Id="filE49AA32C8913AE2348C59A5A35510458" KeyPath="yes" Source="..\..\..\Qt files x64\plugins\platforms\qwindows.dll" />
