@@ -1,3 +1,39 @@
+Whats new in 4.4.3:
+-------------------
+Core:
+ - improved time format switching
+ - improved settings cancel (revert to previous state)
+ - reimplemented export/import settings
+ - fixed some bugs with default settings loading
+ - improved skin and plugin system initialization
+ - fixed plugin settings loading
+ - updated win user-agent strings
+ - fixed/improved autostart feature
+ - compiled with Qt 5.6.0
+
+Features:
+ - added runtime (not currently applied) settings export
+
+GUI:
+ - "italic dots" for "electronic italic" skin
+ - used russian for ukrainian locale
+ - added 5 flowers textures
+ - added link to changelog to about dialog
+ - added link to 'how create skin' article to about dialog
+ - added some workaround to support always on top including taskbar [win only]
+ - fixed Settings dialog lost focus after applying some options
+ - fixed AM/PM support on not US systems
+
+Plugins:
+ - fixed "quick note" plugin configuration
+ - used russian for ukrainian locale
+ - improved/fixed plugin options export/import
+
+SDK:
+ - removed CenteredDialog
+ - update documentation
+
+
 Whats new in 4.4.2:
 -------------------
 Core:
