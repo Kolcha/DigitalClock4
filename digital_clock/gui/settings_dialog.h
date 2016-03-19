@@ -6,7 +6,6 @@
 #include <QListWidgetItem>
 #include <QColor>
 #include <QFont>
-#include <QMap>
 
 #include "settings_keys.h"
 
@@ -97,7 +96,6 @@ private:
   QString last_txd_path_;
   QStringList active_plugins_;
   QFont last_font_;
-  QMap<qint64, QString> update_periods_;
   QColor last_colorize_color_;
 };
 

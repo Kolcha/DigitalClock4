@@ -52,15 +52,6 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, QWidget* parent) :
   connect(this, SIGNAL(accepted()), this, SLOT(SaveState()));
   connect(ui->defaults_bth, SIGNAL(clicked()), this, SIGNAL(ResetSettings()));
 
-  update_periods_[1] = tr("1 day");
-  update_periods_[3] = tr("3 days");
-  update_periods_[7] = tr("1 week");
-  update_periods_[14] = tr("2 weeks");
-  ui->update_period_box->clear();
-  for (auto iter = update_periods_.begin(); iter != update_periods_.end(); ++iter) {
-    ui->update_period_box->addItem(iter.value(), iter.key());
-  }
-
   ui->autostart->setChecked(IsAutoStartEnabled());      // TODO: remove
   connect(this, &SettingsDialog::accepted, [this] () {
     SetAutoStart(this->ui->autostart->isChecked());
@@ -177,10 +168,15 @@ void SettingsDialog::InitControls()
 
   ui->update_period_box->clear();
   // TODO: remove 'for' and 'update_periods_'
-  for (auto iter = update_periods_.begin(); iter != update_periods_.end(); ++iter) {
+  QMap<qint64, QString> update_periods;
+  update_periods[1] = tr("1 day");
+  update_periods[3] = tr("3 days");
+  update_periods[7] = tr("1 week");
+  update_periods[14] = tr("2 weeks");
+  for (auto iter = update_periods.begin(); iter != update_periods.end(); ++iter) {
     ui->update_period_box->addItem(iter.value(), iter.key());
   }
-  ui->update_period_box->setCurrentText(update_periods_[config_->GetValue(OPT_UPDATE_PERIOD).toInt()]);
+  ui->update_period_box->setCurrentText(update_periods[config_->GetValue(OPT_UPDATE_PERIOD).toInt()]);
   ui->check_for_beta->setChecked(config_->GetValue(OPT_CHECK_FOR_BETA).toBool());
 
   // "Plugins" tab
