@@ -5,7 +5,7 @@
 
     <Package Id="*" Keywords="Installer" Platform="x64" Description="Digital Clock"
       Comments="Digital Clock 4.4.3 x64 Installer" Manufacturer="Nick Korotysh"
-      InstallerVersion="200" Languages="1033" Compressed="yes" SummaryCodepage="1252" />
+      InstallerVersion="405" Languages="1033" Compressed="yes" SummaryCodepage="1252" />
 
     <Property Id="ARPCONTACT">mailto:nick.korotysh@gmail.com</Property>
     <Property Id="ARPHELPLINK">http://sourceforge.net/projects/digitalclock4/support</Property>
@@ -42,6 +42,13 @@
       <Directory Id="DesktopFolder" Name="Desktop" />
     </Directory>
 
+    <DirectoryRef Id="TARGETDIR">
+      <Merge Id="VCRedist" SourceFile="c:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC120_CRT_x64.msm" DiskId="1" Language="0" />
+    </DirectoryRef>
+
+    <Feature Id="VCRedist" Title="Visual C++ 12.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
+      <MergeRef Id="VCRedist" />
+    </Feature>
     <Feature Id="Complete" Level="1">
       <ComponentGroupRef Id="QtFiles" />
       <ComponentGroupRef Id="ClockFiles" />
