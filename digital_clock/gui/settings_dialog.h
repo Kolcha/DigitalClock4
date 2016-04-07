@@ -86,6 +86,8 @@ private slots:
   void on_level_slider_valueChanged(int value);
   void on_align_left_rbtn_toggled(bool checked);
   void on_align_right_rbtn_toggled(bool checked);
+  void on_background_enabled_toggled(bool checked);
+  void on_background_color_btn_clicked();
 
 private:
   Ui::SettingsDialog* ui;
@@ -97,6 +99,7 @@ private:
   QStringList active_plugins_;
   QFont last_font_;
   QColor last_colorize_color_;
+  QColor last_background_color_;
 };
 
 } // namespace gui
