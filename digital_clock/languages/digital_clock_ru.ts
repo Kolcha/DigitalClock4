@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::MainWindow</name>
     <message>
-        <location filename="../main_window.cpp" line="351"/>
-        <location filename="../main_window.cpp" line="359"/>
         <location filename="../main_window.cpp" line="367"/>
+        <location filename="../main_window.cpp" line="375"/>
+        <location filename="../main_window.cpp" line="383"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="352"/>
+        <location filename="../main_window.cpp" line="368"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="360"/>
+        <location filename="../main_window.cpp" line="376"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="368"/>
+        <location filename="../main_window.cpp" line="384"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="378"/>
+        <location filename="../main_window.cpp" line="394"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -360,22 +360,22 @@
         <translation>Плагины</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="172"/>
+        <location filename="../gui/settings_dialog.cpp" line="177"/>
         <source>1 day</source>
         <translation>1 день</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="173"/>
+        <location filename="../gui/settings_dialog.cpp" line="178"/>
         <source>3 days</source>
         <translation>3 дня</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="174"/>
+        <location filename="../gui/settings_dialog.cpp" line="179"/>
         <source>1 week</source>
         <translation>1 неделя</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="175"/>
+        <location filename="../gui/settings_dialog.cpp" line="180"/>
         <source>2 weeks</source>
         <translation>2 недели</translation>
     </message>
@@ -385,28 +385,28 @@
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="251"/>
+        <location filename="../gui/settings_dialog.cpp" line="256"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="253"/>
+        <location filename="../gui/settings_dialog.cpp" line="258"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="323"/>
+        <location filename="../gui/settings_dialog.cpp" line="328"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="325"/>
-        <location filename="../gui/settings_dialog.cpp" line="332"/>
+        <location filename="../gui/settings_dialog.cpp" line="330"/>
+        <location filename="../gui/settings_dialog.cpp" line="337"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="330"/>
+        <location filename="../gui/settings_dialog.cpp" line="335"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>
