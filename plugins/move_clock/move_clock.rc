@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	2,1,1,51
-PRODUCTVERSION	4,4,3,0
+FILEVERSION	2,1,1,52
+PRODUCTVERSION	4,4,4,0
 FILEOS		0x4
 FILETYPE	0x2
 {
@@ -11,12 +11,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Moving clock"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "2.1.1.51"
+		VALUE "FileVersion", "2.1.1.52"
 		VALUE "InternalName", "move_clock.dll"
 		VALUE "LegalCopyright", "© 2014-2016 Nick Korotysh"
 		VALUE "OriginalFilename", "move_clock.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.4.3"
+		VALUE "ProductVersion", "4.4.4"
 	}
 }
 
