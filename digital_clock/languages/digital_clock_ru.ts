@@ -232,7 +232,7 @@
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="316"/>
-        <location filename="../gui/settings_dialog.ui" line="426"/>
+        <location filename="../gui/settings_dialog.ui" line="455"/>
         <source>colorize</source>
         <translation>раскрасить</translation>
     </message>
@@ -247,100 +247,105 @@
         <translation>метод наложения</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="432"/>
-        <source>color</source>
-        <translation>цвет</translation>
+        <location filename="../gui/settings_dialog.ui" line="439"/>
+        <source>Current background color</source>
+        <translation>Текущий цвет фона</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="465"/>
-        <source>level</source>
-        <translation>уровень</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="503"/>
+        <location filename="../gui/settings_dialog.ui" line="515"/>
         <source>Misc</source>
         <translation>Разное</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="539"/>
+        <location filename="../gui/settings_dialog.ui" line="551"/>
         <source>Time format</source>
         <translation>Формат времени</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="557"/>
+        <location filename="../gui/settings_dialog.ui" line="569"/>
         <source>system</source>
         <translation>системный</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="567"/>
+        <location filename="../gui/settings_dialog.ui" line="579"/>
         <source>custom</source>
         <translation>другой</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="638"/>
+        <location filename="../gui/settings_dialog.ui" line="650"/>
         <source>Apply</source>
         <translation>Применить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="648"/>
+        <location filename="../gui/settings_dialog.ui" line="660"/>
         <source>Alignment</source>
         <translation>Выравнивание</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="654"/>
+        <location filename="../gui/settings_dialog.ui" line="666"/>
         <source>left</source>
         <translatorcomment>выравнивание по левому краю</translatorcomment>
         <translation>по левому</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="664"/>
+        <location filename="../gui/settings_dialog.ui" line="676"/>
         <source>right</source>
         <translatorcomment>выравнивание по правому краю</translatorcomment>
         <translation>по правому</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="674"/>
+        <location filename="../gui/settings_dialog.ui" line="686"/>
         <source>Space between digits</source>
         <translation>расстояние между цифрами</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="680"/>
+        <location filename="../gui/settings_dialog.ui" line="692"/>
         <source>less</source>
         <translation>меньше</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="706"/>
+        <location filename="../gui/settings_dialog.ui" line="718"/>
         <source>more</source>
         <translation>больше</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="716"/>
+        <location filename="../gui/settings_dialog.ui" line="728"/>
         <source>Autoupdate</source>
         <translation>автообновление</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="527"/>
+        <location filename="../gui/settings_dialog.ui" line="539"/>
         <source>enable autoupdate</source>
         <translation>включить автообновление</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="728"/>
+        <location filename="../gui/settings_dialog.ui" line="423"/>
+        <source>background color</source>
+        <translation>цвет фона</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="429"/>
+        <source>enable</source>
+        <translation>включить</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="740"/>
         <source>Check for updates every</source>
         <translation>Проверять обновления каждые</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="743"/>
+        <location filename="../gui/settings_dialog.ui" line="755"/>
         <source>Check now!</source>
         <translatorcomment>проверить наличие обновлений</translatorcomment>
         <translation>Проверить!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="756"/>
+        <location filename="../gui/settings_dialog.ui" line="768"/>
         <source>check for beta releases</source>
         <translation>обновляться до бета релизов</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="520"/>
+        <location filename="../gui/settings_dialog.ui" line="532"/>
         <source>start on system startup</source>
         <translation>запускать при старте системы</translation>
     </message>
@@ -350,7 +355,7 @@
         <translation>По умолчанию</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="780"/>
+        <location filename="../gui/settings_dialog.ui" line="792"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
