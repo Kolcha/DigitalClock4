@@ -145,7 +145,12 @@ void SettingsDialog::InitControls()
   ui->mode_stretch->setChecked(mode == SkinDrawer::DM_STRETCH);
   ui->mode_tile->setChecked(mode == SkinDrawer::DM_TILE);
 
+  ui->background_enabled->setChecked(config_->GetValue(OPT_BACKGROUND_ENABLED).toBool());
+  last_background_color_ = config_->GetValue(OPT_BACKGROUND_COLOR).value<QColor>();
+  ui->background_color_btn->setColor(last_background_color_);
+
   last_colorize_color_ = config_->GetValue(OPT_COLORIZE_COLOR).value<QColor>();
+  ui->img_color_btn->setColor(last_colorize_color_);
   ui->level_slider->setValue(100 * config_->GetValue(OPT_COLORIZE_LEVEL).toReal());
 
   // "Misc" tab
@@ -362,6 +367,7 @@ void digital_clock::gui::SettingsDialog::on_cust_colorize_toggled(bool checked) 
 void digital_clock::gui::SettingsDialog::on_img_color_btn_clicked() {
   QColor color = QColorDialog::getColor(last_colorize_color_, this);
   if (color.isValid()) {
+    ui->img_color_btn->setColor(color);
     emit OptionChanged(OPT_COLORIZE_COLOR, color);
     last_colorize_color_ = color;
   }
@@ -377,4 +383,19 @@ void digital_clock::gui::SettingsDialog::on_align_left_rbtn_toggled(bool checked
 
 void digital_clock::gui::SettingsDialog::on_align_right_rbtn_toggled(bool checked) {
   if (checked) emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(CAlignment::A_RIGHT));
+}
+
+void digital_clock::gui::SettingsDialog::on_background_enabled_toggled(bool checked)
+{
+  emit OptionChanged(OPT_BACKGROUND_ENABLED, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_background_color_btn_clicked()
+{
+  QColor color = QColorDialog::getColor(last_background_color_, this);
+  if (color.isValid()) {
+    ui->background_color_btn->setColor(color);
+    emit OptionChanged(OPT_BACKGROUND_COLOR, color);
+    last_background_color_ = color;
+  }
 }

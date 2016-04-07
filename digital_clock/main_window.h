@@ -76,6 +76,8 @@ private:
 
   QPoint drag_position_;
   CAlignment cur_alignment_;
+
+  QColor bg_color_;
 };
 
 } // namespace digital_clock

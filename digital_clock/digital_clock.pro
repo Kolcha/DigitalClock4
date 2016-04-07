@@ -22,6 +22,7 @@ SOURCES += main.cpp \
     gui/clock_display.cpp \
     gui/clock_widget.cpp \
     gui/colorize_effect.cpp \
+    gui/led_tool_button.cpp \
     gui/plugin_info_dialog.cpp \
     gui/plugin_list_item_widget.cpp \
     gui/settings_dialog.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     gui/clock_display.h \
     gui/clock_widget.h \
     gui/colorize_effect.h \
+    gui/led_tool_button.h \
     gui/plugin_info_dialog.h \
     gui/plugin_list_item_widget.h \
     gui/settings_dialog.h \

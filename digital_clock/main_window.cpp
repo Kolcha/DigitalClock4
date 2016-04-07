@@ -134,6 +134,10 @@ void MainWindow::paintEvent(QPaintEvent* /*event*/)
   QPainter p(this);
   p.setCompositionMode(QPainter::CompositionMode_Clear);
   p.fillRect(this->rect(), Qt::transparent);
+  if (!testAttribute(Qt::WA_TranslucentBackground)) {
+    p.setCompositionMode(QPainter::CompositionMode_Source);
+    p.fillRect(this->rect(), bg_color_);
+  }
 }
 
 void MainWindow::Reset()
@@ -143,6 +147,8 @@ void MainWindow::Reset()
   ApplyOption(OPT_STAY_ON_TOP, app_config_->GetValue(OPT_STAY_ON_TOP));
   ApplyOption(OPT_TRANSP_FOR_INPUT, app_config_->GetValue(OPT_TRANSP_FOR_INPUT));
   ApplyOption(OPT_ALIGNMENT, app_config_->GetValue(OPT_ALIGNMENT));
+  ApplyOption(OPT_BACKGROUND_COLOR, app_config_->GetValue(OPT_BACKGROUND_COLOR));
+  ApplyOption(OPT_BACKGROUND_ENABLED, app_config_->GetValue(OPT_BACKGROUND_ENABLED));
 
   clock_widget_->blockSignals(true);
   ApplyOption(OPT_SEPARATOR_FLASH, app_config_->GetValue(OPT_SEPARATOR_FLASH));
@@ -220,6 +226,16 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
       state.setValue(S_OPT_POSITION, cur_pos);
       break;
     }
+
+    case OPT_BACKGROUND_ENABLED:
+      this->setAttribute(Qt::WA_TranslucentBackground, !value.toBool());
+      this->repaint();
+      break;
+
+    case OPT_BACKGROUND_COLOR:
+      bg_color_ = value.value<QColor>();
+      this->repaint();
+      break;
 
     case OPT_SKIN_NAME:
       skin_manager_->LoadSkin(value.toString());

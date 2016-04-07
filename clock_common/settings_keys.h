@@ -34,6 +34,8 @@ enum Option {
   OPT_PLUGINS,                  /*!< plugins to load, QStringList, list of plugin names */
   OPT_TIME_FORMAT,              /*!< time format, QString, any valid time format string */
   OPT_ALIGNMENT,                /*!< clock alignment, CAlignment, A_LEFT/A_RIGHT */
+  OPT_BACKGROUND_ENABLED,       /*!< is background color will be used, bool, true/false */
+  OPT_BACKGROUND_COLOR,         /*!< clock background color, QColor, any color */
   // skin settings
   OPT_SKIN_NAME,                /*!< skin name to use, QString, skin name */
   OPT_FONT,                     /*!< font to use, QFont, any available font */
