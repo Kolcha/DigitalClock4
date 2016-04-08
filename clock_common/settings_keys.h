@@ -54,7 +54,11 @@ enum Option {
   // updater settings
   OPT_USE_AUTOUPDATE,           /*!< enable/disable autoupdate, bool, true/false */
   OPT_UPDATE_PERIOD,            /*!< how often to check for updates, qint64, days count */
-  OPT_CHECK_FOR_BETA            /*!< check for beta releases, bool, true/false */
+  OPT_CHECK_FOR_BETA,           /*!< check for beta releases, bool, true/false */
+
+  // misc settings
+  OPT_CLOCK_URL_ENABLED,        /*!< enable/disable quick URL feature, bool, true/false */
+  OPT_CLOCK_URL_STRING          /*!< URL value for quick URL feature, QString, any URL */
 };
 
 #endif // SETTINGS_KEYS_H

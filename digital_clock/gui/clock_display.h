@@ -23,13 +23,25 @@ public slots:
   void SetSeparatorFlash(bool set);
   void SetTimeFormat(const QString& format);
 
+  void SetURLEnabled(bool enable);
+  void SetURL(const QString& url);
+
   void TimeoutHandler();
+
+protected:
+  void mousePressEvent(QMouseEvent* event);
+  void mouseReleaseEvent(QMouseEvent* event);
 
 private:
   bool sep_visible_;
   bool sep_flashes_;
   QString time_format_;
   QString seps_;
+
+  bool url_enabled_;
+  QString url_string_;
+
+  QPoint drag_position_;
 };
 
 } // namespace gui

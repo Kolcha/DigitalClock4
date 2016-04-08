@@ -40,6 +40,8 @@ QMap<Option, QVariant> ClockSettings::GetSettings() const
   all_settings[OPT_USE_AUTOUPDATE]        = GetValue(OPT_USE_AUTOUPDATE);
   all_settings[OPT_UPDATE_PERIOD]         = GetValue(OPT_UPDATE_PERIOD);
   all_settings[OPT_CHECK_FOR_BETA]        = GetValue(OPT_CHECK_FOR_BETA);
+  all_settings[OPT_CLOCK_URL_ENABLED]     = GetValue(OPT_CLOCK_URL_ENABLED);
+  all_settings[OPT_CLOCK_URL_STRING]      = GetValue(OPT_CLOCK_URL_STRING);
   return all_settings;
 }
 
@@ -73,6 +75,9 @@ QString ClockSettings::GetKey(const int id) const
     case OPT_USE_AUTOUPDATE:        return "updater/autoupdate";
     case OPT_UPDATE_PERIOD:         return "updater/update_period";
     case OPT_CHECK_FOR_BETA:        return "updater/check_for_beta";
+    // misc settings
+    case OPT_CLOCK_URL_ENABLED:     return "misc/clock_url_enabled";
+    case OPT_CLOCK_URL_STRING:      return "misc/clock_url_string";
   }
   Q_ASSERT(false);
   return QString();
@@ -108,6 +113,9 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_USE_AUTOUPDATE:        return true;
     case OPT_UPDATE_PERIOD:         return 3;
     case OPT_CHECK_FOR_BETA:        return false;
+    // misc settings
+    case OPT_CLOCK_URL_ENABLED:     return false;
+    case OPT_CLOCK_URL_STRING:      return QString("http://digitalclock4.sourceforge.net/");
   }
   return QVariant();
 }

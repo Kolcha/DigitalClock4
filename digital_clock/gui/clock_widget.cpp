@@ -110,6 +110,14 @@ void ClockWidget::ApplyOption(Option option, const QVariant& value) {
       if (!last_image_.isNull()) DrawImage(last_image_);
       break;
 
+    case OPT_CLOCK_URL_ENABLED:
+      display_->SetURLEnabled(value.toBool());
+      break;
+
+    case OPT_CLOCK_URL_STRING:
+      display_->SetURL(value.toString());
+      break;
+
     default:
       break;
   }

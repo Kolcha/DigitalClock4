@@ -184,6 +184,9 @@ void SettingsDialog::InitControls()
   ui->update_period_box->setCurrentText(update_periods[config_->GetValue(OPT_UPDATE_PERIOD).toInt()]);
   ui->check_for_beta->setChecked(config_->GetValue(OPT_CHECK_FOR_BETA).toBool());
 
+  ui->clock_url_enabled->setChecked(config_->GetValue(OPT_CLOCK_URL_ENABLED).toBool());
+  ui->clock_url_edit->setText(config_->GetValue(OPT_CLOCK_URL_STRING).toString());
+
   // "Plugins" tab
   active_plugins_ = config_->GetValue(OPT_PLUGINS).toStringList();
 
@@ -398,4 +401,14 @@ void digital_clock::gui::SettingsDialog::on_background_color_btn_clicked()
     emit OptionChanged(OPT_BACKGROUND_COLOR, color);
     last_background_color_ = color;
   }
+}
+
+void digital_clock::gui::SettingsDialog::on_clock_url_enabled_toggled(bool checked)
+{
+  emit OptionChanged(OPT_CLOCK_URL_ENABLED, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_clock_url_edit_textEdited(const QString &arg1)
+{
+  emit OptionChanged(OPT_CLOCK_URL_STRING, arg1);
 }

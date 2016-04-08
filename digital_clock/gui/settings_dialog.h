@@ -88,6 +88,8 @@ private slots:
   void on_align_right_rbtn_toggled(bool checked);
   void on_background_enabled_toggled(bool checked);
   void on_background_color_btn_clicked();
+  void on_clock_url_enabled_toggled(bool checked);
+  void on_clock_url_edit_textEdited(const QString &arg1);
 
 private:
   Ui::SettingsDialog* ui;
