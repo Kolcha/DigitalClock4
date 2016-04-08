@@ -175,6 +175,10 @@ void MainWindow::Reset()
   ApplyOption(OPT_UPDATE_PERIOD, app_config_->GetValue(OPT_UPDATE_PERIOD));
   ApplyOption(OPT_CHECK_FOR_BETA, app_config_->GetValue(OPT_CHECK_FOR_BETA));
 
+  // misc settings
+  ApplyOption(OPT_CLOCK_URL_ENABLED, app_config_->GetValue(OPT_CLOCK_URL_ENABLED));
+  ApplyOption(OPT_CLOCK_URL_STRING, app_config_->GetValue(OPT_CLOCK_URL_STRING));
+
   plugin_manager_->UnloadPlugins();
   plugin_manager_->LoadPlugins(app_config_->GetValue(OPT_PLUGINS).toStringList());
 }

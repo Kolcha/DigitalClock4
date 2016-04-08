@@ -3,6 +3,8 @@
 #include <QTime>
 #include <QLocale>
 #include <QRegExp>
+#include <QMouseEvent>
+#include <QDesktopServices>
 
 namespace digital_clock {
 namespace gui {
@@ -36,6 +38,16 @@ void ClockDisplay::SetTimeFormat(const QString& format) {
   TimeoutHandler(); // to emit redraw request
 }
 
+void ClockDisplay::SetURLEnabled(bool enable)
+{
+  url_enabled_ = enable;
+}
+
+void ClockDisplay::SetURL(const QString& url)
+{
+  url_string_ = url;
+}
+
 void ClockDisplay::TimeoutHandler() {
   if (time_format_.isEmpty()) {
     QString sys_time_format = QLocale::system().timeFormat();
@@ -62,6 +74,23 @@ void ClockDisplay::TimeoutHandler() {
     sep_visible_ = !sep_visible_;
   }
   emit ImageNeeded(str_time);
+}
+
+void ClockDisplay::mousePressEvent(QMouseEvent* event)
+{
+  if (event->button() == Qt::LeftButton) {
+    drag_position_ = event->globalPos();
+  }
+  event->ignore();
+}
+
+void ClockDisplay::mouseReleaseEvent(QMouseEvent* event)
+{
+  if (url_enabled_ && event->button() == Qt::LeftButton &&
+      event->globalPos() == drag_position_) {
+    QDesktopServices::openUrl(url_string_);
+  }
+  event->ignore();
 }
 
 } // namespace gui
