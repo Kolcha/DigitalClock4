@@ -4,12 +4,12 @@
 <context>
     <name>quick_note::MessageWidget</name>
     <message>
-        <location filename="gui/message_widget.cpp" line="54"/>
+        <location filename="gui/message_widget.cpp" line="59"/>
         <source>Edit note</source>
         <translation>Редактировать</translation>
     </message>
     <message>
-        <location filename="gui/message_widget.cpp" line="54"/>
+        <location filename="gui/message_widget.cpp" line="59"/>
         <source>text:</source>
         <translation>текст:</translation>
     </message>
@@ -32,12 +32,12 @@
         <translation>Отображает короткое сообщение под часами.</translation>
     </message>
     <message>
-        <location filename="quick_note.cpp" line="118"/>
+        <location filename="quick_note.cpp" line="119"/>
         <source>Quick note settings</source>
         <translation>Заметка - настройки</translation>
     </message>
     <message>
-        <location filename="quick_note.cpp" line="119"/>
+        <location filename="quick_note.cpp" line="120"/>
         <source>message:</source>
         <translation>заметка:</translation>
     </message>
