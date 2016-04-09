@@ -101,6 +101,7 @@ void QuickNote::Start() {
     settings_->Save();
   });
   msg_label_->setText(settings_->GetOption(OPT_QUICK_NOTE_MSG).toString());
+  msg_label_->ShowEditButton(settings_->GetOption(OPT_SHOW_EDIT_BTN).toBool());
 }
 
 void QuickNote::Stop() {

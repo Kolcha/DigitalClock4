@@ -27,6 +27,8 @@ public slots:
   void setText(const QString& new_text);
   void setPixmap(const QPixmap& img);
 
+  void ShowEditButton(bool show);
+
 protected:
   void mousePressEvent(QMouseEvent* event);
   void mouseReleaseEvent(QMouseEvent* event);

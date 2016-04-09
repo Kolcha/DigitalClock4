@@ -31,6 +31,11 @@ void MessageWidget::setPixmap(const QPixmap& img)
   ui->msg_label->setPixmap(img);
 }
 
+void MessageWidget::ShowEditButton(bool show)
+{
+  ui->edit_btn->setVisible(show);
+}
+
 void MessageWidget::mousePressEvent(QMouseEvent* event)
 {
   if (event->button() == Qt::LeftButton) {
