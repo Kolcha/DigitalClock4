@@ -3,6 +3,7 @@
 
 #include <QInputDialog>
 #include <QPainter>
+#include <QMouseEvent>
 
 namespace quick_note {
 
@@ -28,6 +29,23 @@ void MessageWidget::setText(const QString& new_text)
 void MessageWidget::setPixmap(const QPixmap& img)
 {
   ui->msg_label->setPixmap(img);
+}
+
+void MessageWidget::mousePressEvent(QMouseEvent* event)
+{
+  if (event->button() == Qt::LeftButton) {
+    drag_position_ = event->globalPos();
+  }
+  event->ignore();
+}
+
+void MessageWidget::mouseReleaseEvent(QMouseEvent* event)
+{
+  if (event->button() == Qt::LeftButton &&
+      event->globalPos() == drag_position_) {
+    ui->edit_btn->click();
+  }
+  event->ignore();
 }
 
 void MessageWidget::on_edit_btn_clicked()
