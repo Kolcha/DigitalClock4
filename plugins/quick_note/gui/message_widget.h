@@ -27,6 +27,12 @@ public slots:
   void setText(const QString& new_text);
   void setPixmap(const QPixmap& img);
 
+  void ShowEditButton(bool show);
+
+protected:
+  void mousePressEvent(QMouseEvent* event);
+  void mouseReleaseEvent(QMouseEvent* event);
+
 private slots:
   void on_edit_btn_clicked();
 
@@ -34,6 +40,7 @@ private:
   Ui::MessageWidget *ui;
   QString curr_text_;
   QIcon edit_icon_;
+  QPoint drag_position_;
 };
 
 }  // namespace quick_note
