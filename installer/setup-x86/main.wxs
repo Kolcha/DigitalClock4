@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Name="Digital Clock" Id="{DC0DA823-CEFF-4DF3-A74B-66F51C88E340}" UpgradeCode="{45370215-2AE9-449A-809D-6DD0D171B5FB}"
-    Language="1033" Codepage="1252" Version="4.4.3" Manufacturer="Nick Korotysh">
+  <Product Name="Digital Clock" Id="*" UpgradeCode="{19300332-9971-4ECE-B0AA-2D4ABF2DFC7D}"
+    Language="1033" Codepage="1252" Version="4.4.4" Manufacturer="Nick Korotysh">
 
     <Package Id="*" Keywords="Installer" Platform="x86" Description="Digital Clock"
-      Comments="Digital Clock 4.4.3 x86 Installer" Manufacturer="Nick Korotysh"
-      InstallerVersion="405" Languages="1033" Compressed="yes" SummaryCodepage="1252" />
+      Comments="Digital Clock 4.4.4 x86 Installer" Manufacturer="Nick Korotysh"
+      InstallerVersion="405" InstallScope="perMachine" Compressed="yes" Languages="1033" SummaryCodepage="1252" />
 
     <Property Id="ARPCONTACT">mailto:nick.korotysh@gmail.com</Property>
     <Property Id="ARPHELPLINK">http://sourceforge.net/projects/digitalclock4/support</Property>
@@ -18,6 +18,13 @@
 
     <Condition Message="Windows 7 SP1 or higher is required"><![CDATA[VersionNT AND WindowsBuild > 7600]]></Condition>
     <Condition Message="32 bits per pixel color is required"><![CDATA[ColorBits = 32]]></Condition>
+
+    <Upgrade Id="{19300332-9971-4ECE-B0AA-2D4ABF2DFC7D}">
+      <UpgradeVersion
+        Minimum="4.4.0" Maximum="4.4.4"
+        Property="PREVIOUSVERSIONSINSTALLED"
+        IncludeMinimum="yes" IncludeMaximum="yes" />
+    </Upgrade>
 
     <Media Id="1" Cabinet="_data1.cab" EmbedCab="yes" DiskPrompt="CD-ROM #1" />
     <Property Id="DiskPrompt" Value="Digital Clock 4 Installation [1]" />
@@ -49,6 +56,7 @@
     <Feature Id="VCRedist" Title="Visual C++ 12.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
       <MergeRef Id="VCRedist" />
     </Feature>
+
     <Feature Id="Complete" Level="1">
       <ComponentGroupRef Id="QtFiles" />
       <ComponentGroupRef Id="ClockFiles" />
@@ -58,6 +66,15 @@
     </Feature>
 
     <Icon Id="app_icon.ico" SourceFile="..\..\digital_clock\resources\1372595747_103169.ico" />
+
+    <CustomAction Id="export_settings" Directory="TARGETDIR" ExeCommand="reg.exe export &quot;HKCU\Software\Nick Korotysh\Digital Clock&quot; &quot;[%TMP]\nick-clock-settings.reg&quot; /y" Return="check" />
+    <CustomAction Id="import_settings" Directory="TARGETDIR" ExeCommand="reg.exe import &quot;[%TMP]\nick-clock-settings.reg&quot;" Return="check" />
+
+    <InstallExecuteSequence>
+      <Custom Action='export_settings' Before='RemoveExistingProducts'>PREVIOUSVERSIONSINSTALLED OR REINSTALL</Custom>
+      <Custom Action='import_settings' After='InstallFinalize'>PREVIOUSVERSIONSINSTALLED OR REINSTALL</Custom>
+      <RemoveExistingProducts Before="InstallInitialize" />
+    </InstallExecuteSequence>
 
   </Product>
 </Wix>
