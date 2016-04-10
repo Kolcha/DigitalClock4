@@ -10,7 +10,8 @@ SUBDIRS += \
     schedule \
     quick_note \
     date \
-    move_clock
+    move_clock \
+    tower_clock_signal
 
 windows {
 SUBDIRS += \
