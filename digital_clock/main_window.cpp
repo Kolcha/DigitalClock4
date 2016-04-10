@@ -70,6 +70,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 
   QGridLayout* main_layout = new QGridLayout(this);
   main_layout->addWidget(clock_widget_);
+  main_layout->setMargin(2);
   setLayout(main_layout);
   adjustSize();
 
