@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/tower_clock_signal">
+        <file alias="bell.wav">bigben-1m.wav</file>
+    </qresource>
+</RCC>
