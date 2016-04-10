@@ -12,7 +12,10 @@ TowerCLockSignal::TowerCLockSignal()
   info_.display_name = tr("Tower clock hour signal (bell per hour)");
   info_.description = tr("Plays bell strikes every hour like tower clock.");
   InitIcon(":/tower_clock_signal/icon.svg");
+}
 
+void TowerCLockSignal::Start()
+{
   bell_sound_ = new QSound(":/tower_clock_signal/bell.wav", this);
 }
 

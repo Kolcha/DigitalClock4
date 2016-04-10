@@ -18,6 +18,7 @@ public:
   TowerCLockSignal();
 
 public slots:
+  void Start();
   void Stop();
 
   void TimeUpdateListener();
