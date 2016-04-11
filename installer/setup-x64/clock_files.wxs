@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
@@ -51,6 +51,9 @@
       </Component>
       <Component Id="plugin_dll12" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{3E7215E9-E6C5-421B-9ADC-6D7369E8069C}" Win64="yes">
         <File Id="win_on_top.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_6_0_MSVC2013_64bit-Release\plugins\win_on_top\release\win_on_top.dll" />
+      </Component>
+      <Component Id="plugin_dll13" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{BE1F41D1-0C71-4515-994C-241EDE765138}" Win64="yes">
+        <File Id="tower_clock_signal.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_6_0_MSVC2013_64bit-Release\plugins\tower_clock_signal\release\tower_clock_signal.dll" />
       </Component>
 
       <Component Id="win_on_top_ext" Directory="plugins_special" Guid="{FD532380-2989-4BA0-8649-36AC73C64839}" Win64="yes">
