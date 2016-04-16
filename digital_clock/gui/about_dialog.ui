@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>378</width>
-    <height>304</height>
+    <height>323</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -165,7 +165,7 @@
           <item>
            <widget class="QLabel" name="homepage_lbl">
             <property name="text">
-             <string>&lt;a href=&quot;http://sourceforge.net/projects/digitalclock4/&quot;&gt;project home page&lt;/a&gt;</string>
+             <string>&lt;a href=&quot;http://digitalclock4.sourceforge.net/&quot;&gt;project home page&lt;/a&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -223,6 +223,19 @@
           <string>More info</string>
          </property>
          <layout class="QVBoxLayout" name="info_group_layout">
+          <item>
+           <widget class="QLabel" name="lnk_lbl_4">
+            <property name="text">
+             <string notr="true">&lt;a href=&quot;https://showroom.qt.io/digital-clock/&quot;&gt;showroom.qt.io&lt;/a&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="openExternalLinks">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QLabel" name="lnk_lbl_1">
             <property name="text">

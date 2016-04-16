@@ -62,6 +62,11 @@
         <translation>Полезные ссылки</translation>
     </message>
     <message>
+        <location filename="../gui/about_dialog.ui" line="168"/>
+        <source>&lt;a href=&quot;http://digitalclock4.sourceforge.net/&quot;&gt;project home page&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;http://digitalclock4.sourceforge.net/&quot;&gt;домашняя страница проекта&lt;/a&gt;</translation>
+    </message>
+    <message>
         <location filename="../gui/about_dialog.ui" line="181"/>
         <source>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;bug report/feature request&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;сообщить об ошибке/предложить функцию&lt;/a&gt;</translation>
@@ -81,11 +86,6 @@
         <location filename="../gui/about_dialog.ui" line="223"/>
         <source>More info</source>
         <translation>Информация на других сайтах</translation>
-    </message>
-    <message>
-        <location filename="../gui/about_dialog.ui" line="168"/>
-        <source>&lt;a href=&quot;http://sourceforge.net/projects/digitalclock4/&quot;&gt;project home page&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;http://sourceforge.net/projects/digitalclock4/&quot;&gt;домашняя страница проекта&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../gui/about_dialog.cpp" line="53"/>
