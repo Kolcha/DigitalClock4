@@ -41,8 +41,6 @@ Updater::Updater(QObject* parent) :
 
 Updater::~Updater() {
   if (downloader_->isRunning()) downloader_->cancel();
-  QSettings settings;
-  settings.setValue(S_OPT_LAST_UPDATE, last_update_);
 }
 
 void Updater::CheckForUpdates() {
@@ -62,7 +60,7 @@ void Updater::SetUpdatePeriod(int period) {
 }
 
 void Updater::TimeoutHandler() {
-  if (!autoupdate_ || was_error_ || (downloader_ && downloader_->isRunning())) return;
+  if (!autoupdate_ || (downloader_ && downloader_->isRunning())) return;
   if (last_update_.daysTo(QDate::currentDate()) >= update_period_) RunCheckForUpdates(false);
 }
 
@@ -96,8 +94,9 @@ void Updater::ProcessData() {
   } else {
     if (force_update_) emit UpToDate();
   }
-  last_update_ = QDate::currentDate();
   data_.clear();
+  QSettings settings;
+  settings.setValue(S_OPT_LAST_UPDATE, last_update_);
 }
 
 void Updater::RunCheckForUpdates(bool force)
@@ -105,7 +104,8 @@ void Updater::RunCheckForUpdates(bool force)
   force_update_ = force;
   was_error_ = false;
   data_.clear();
-  downloader_->startRequest(QUrl("http://digitalclock4.sourceforge.net/clock-version.json"));
+  last_update_ = QDate::currentDate();
+  downloader_->startRequest(QUrl("http://digitalclock4.sourceforge.net/cgi-bin/update.py"));
 }
 
 } // namespace core
