@@ -71,6 +71,7 @@ void Updater::ProcessData() {
   QJsonParseError err;
   QJsonDocument js_doc = QJsonDocument::fromJson(data_, &err);
   if (err.error != QJsonParseError::NoError) {
+    was_error_ = true;
     emit ErrorMessage(err.errorString());
     return;
   }

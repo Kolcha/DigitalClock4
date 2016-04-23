@@ -76,7 +76,9 @@ void HttpClient::httpFinished() {
 
 void HttpClient::httpReadyRead() {
   // this slot gets called every time the QNetworkReply has new data.
-  emit DataDownloaded(reply_->readAll());
+  if (reply_->attribute(QNetworkRequest::RedirectionTargetAttribute).isNull()) {
+    emit DataDownloaded(reply_->readAll());
+  }
 }
 
 } // namespace core
