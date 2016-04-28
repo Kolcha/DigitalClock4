@@ -1,3 +1,26 @@
+Whats new in 4.4.4:
+-------------------
+Core:
+ - updater: small bugfixes
+
+Features:
+ - background color support
+ - quick URL on clock
+
+GUI:
+ - decreased empty space (especially if background is used)
+ - updated links in about dialog
+
+Plugins:
+ - quick note: edit on click
+ - quick note: hide edit button (pencil)
+ - added "tower clock hour signal" plugin
+
+Installer:
+ - install VC Redist if needed
+ - export/import settings (upgrade support)
+
+
 Whats new in 4.4.3:
 -------------------
 Core:
