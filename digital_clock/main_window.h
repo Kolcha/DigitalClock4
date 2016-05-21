@@ -46,6 +46,9 @@ private slots:
   void Reset();
   void ApplyOption(const Option opt, const QVariant& value);
 
+  void EnsureVisible();
+  void RestoreVisibility();
+
   void ShowSettingsDialog();
   void ShowAboutDialog();
 
@@ -78,6 +81,8 @@ private:
   CAlignment cur_alignment_;
 
   QColor bg_color_;
+
+  bool last_visibility_;
 };
 
 } // namespace digital_clock

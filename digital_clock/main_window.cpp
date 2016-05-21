@@ -54,6 +54,8 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
   connect(&timer_, &QTimer::timeout, updater_, &core::Updater::TimeoutHandler);
 
   tray_control_ = new gui::TrayControl(this);
+  connect(tray_control_, &gui::TrayControl::VisibilityChanged, this, &MainWindow::setVisible);
+  connect(tray_control_, &gui::TrayControl::ShowSettingsDlg, this, &MainWindow::EnsureVisible);
   connect(tray_control_, &gui::TrayControl::ShowSettingsDlg, this, &MainWindow::ShowSettingsDialog);
   connect(tray_control_, &gui::TrayControl::ShowAboutDlg, this, &MainWindow::ShowAboutDialog);
   connect(tray_control_, &gui::TrayControl::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
@@ -73,6 +75,8 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
   main_layout->setMargin(2);
   setLayout(main_layout);
   adjustSize();
+
+  last_visibility_ = true;
 
 
 
@@ -267,6 +271,19 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
   }
 }
 
+void MainWindow::EnsureVisible()
+{
+  last_visibility_ = this->isVisible();
+  if (!this->isVisible()) this->setVisible(true);
+  tray_control_->GetShowHideAction()->setDisabled(true);
+}
+
+void MainWindow::RestoreVisibility()
+{
+  this->setVisible(last_visibility_);
+  tray_control_->GetShowHideAction()->setEnabled(true);
+}
+
 void MainWindow::ShowSettingsDialog()
 {
   static QPointer<gui::SettingsDialog> dlg;
@@ -280,6 +297,9 @@ void MainWindow::ShowSettingsDialog()
     connect(dlg.data(), &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Load);
     connect(dlg.data(), &gui::SettingsDialog::ResetSettings, config_backend_, &SettingsStorage::Reset);
     connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::Reset);
+    // restore clock visibility
+    connect(dlg.data(), &gui::SettingsDialog::accepted, this, &MainWindow::RestoreVisibility);
+    connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::RestoreVisibility);
     // export/import
     connect(dlg.data(), &gui::SettingsDialog::ExportSettings, config_backend_, &SettingsStorage::Export);
     connect(dlg.data(), &gui::SettingsDialog::ImportSettings, config_backend_, &SettingsStorage::Import);

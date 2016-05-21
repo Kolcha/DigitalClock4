@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QSystemTrayIcon>
 
+class QAction;
+
 namespace digital_clock {
 namespace gui {
 
@@ -12,9 +14,11 @@ class TrayControl : public QObject {
 
 public:
   explicit TrayControl(QWidget* parent = 0);
-  QSystemTrayIcon* GetTrayIcon();
+  QSystemTrayIcon* GetTrayIcon() const;
+  QAction* GetShowHideAction() const;
 
 signals:
+  void VisibilityChanged(bool visible);
   void ShowSettingsDlg();
   void ShowAboutDlg();
   void CheckForUpdates();
@@ -22,9 +26,11 @@ signals:
 
 private slots:
   void TrayEventHandler(QSystemTrayIcon::ActivationReason reason);
+  void ShowHideHandler();
 
 private:
   QSystemTrayIcon* tray_icon_;
+  QAction* show_hide_action_;
 };
 
 } // namespace gui
