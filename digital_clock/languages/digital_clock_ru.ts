@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::MainWindow</name>
     <message>
-        <location filename="../main_window.cpp" line="392"/>
-        <location filename="../main_window.cpp" line="400"/>
-        <location filename="../main_window.cpp" line="408"/>
+        <location filename="../main_window.cpp" line="404"/>
+        <location filename="../main_window.cpp" line="412"/>
+        <location filename="../main_window.cpp" line="420"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="393"/>
+        <location filename="../main_window.cpp" line="405"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="401"/>
+        <location filename="../main_window.cpp" line="413"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="409"/>
+        <location filename="../main_window.cpp" line="421"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="419"/>
+        <location filename="../main_window.cpp" line="431"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -396,28 +396,28 @@
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="259"/>
+        <location filename="../gui/settings_dialog.cpp" line="257"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="261"/>
+        <location filename="../gui/settings_dialog.cpp" line="259"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="331"/>
+        <location filename="../gui/settings_dialog.cpp" line="329"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="333"/>
-        <location filename="../gui/settings_dialog.cpp" line="340"/>
+        <location filename="../gui/settings_dialog.cpp" line="331"/>
+        <location filename="../gui/settings_dialog.cpp" line="338"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="338"/>
+        <location filename="../gui/settings_dialog.cpp" line="336"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>

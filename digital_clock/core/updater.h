@@ -10,13 +10,14 @@
 namespace digital_clock {
 namespace core {
 
+class ClockState;
 class HttpClient;
 
 class Updater : public QObject {
   Q_OBJECT
 
 public:
-  explicit Updater(QObject* parent = 0);
+  explicit Updater(ClockState* state, QObject* parent = 0);
   ~Updater();
 
 signals:
@@ -37,6 +38,7 @@ private slots:
 private:
   void RunCheckForUpdates(bool force);
 
+  ClockState* state_;
   HttpClient* downloader_;
   bool check_beta_;
   QByteArray data_;

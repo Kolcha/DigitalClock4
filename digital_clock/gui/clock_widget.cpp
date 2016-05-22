@@ -29,6 +29,7 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent)
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), this, SLOT(DrawImage(QImage)));
 
   colorize_enabled_ = false;
+  preview_mode_ = false;
 }
 
 ClockDisplay* ClockWidget::GetDisplay() const {
@@ -125,17 +126,15 @@ void ClockWidget::ApplyOption(Option option, const QVariant& value) {
   }
 }
 
-void ClockWidget::PreviewMode(bool enabled) {
-  drawer_->SetPreviewMode(enabled);
-}
-
 void ClockWidget::EnablePreviewMode()
 {
+  preview_mode_ = true;
   drawer_->SetPreviewMode(true);
 }
 
 void ClockWidget::DisablePreviewMode()
 {
+  preview_mode_ = false;
   drawer_->SetPreviewMode(false);
 }
 

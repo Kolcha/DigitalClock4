@@ -5,19 +5,19 @@
 #include <QFileDialog>
 #include <QFontDialog>
 #include <QFileInfo>
-#include <QSettings>
 
 #include "skin_drawer.h"
 #include "settings_storage.h"
 
 #include "core/autostart.h"
 #include "core/clock_settings.h"
+#include "core/clock_state.h"
 
 #include "gui/plugin_list_item_widget.h"
 
 
-#define S_OPT_LAST_TIME_FORMAT_KEY        "state/last_time_format"
-#define S_OPT_GEOMETRY_KEY                "state/settings_dialog_geometry"
+#define S_OPT_LAST_TIME_FORMAT_KEY        "last_time_format"
+#define S_OPT_GEOMETRY_KEY                "settings_dialog_geometry"
 
 #ifdef Q_OS_OSX
 #include <QApplication>
@@ -31,10 +31,10 @@ using skin_draw::SkinDrawer;
 namespace digital_clock {
 namespace gui {
 
-SettingsDialog::SettingsDialog(core::ClockSettings* config, QWidget* parent) :
+SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* state, QWidget* parent) :
   QDialog(parent),
   ui(new Ui::SettingsDialog),
-  config_(config)
+  config_(config), state_(state)
 {
   ui->setupUi(this);
 
@@ -202,16 +202,14 @@ void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
 }
 
 void SettingsDialog::SaveState() {
-  QSettings settings;
-  settings.setValue(S_OPT_LAST_TIME_FORMAT_KEY, ui->format_box->currentText());
-  settings.setValue(S_OPT_GEOMETRY_KEY, saveGeometry());
+  state_->SetVariable(S_OPT_LAST_TIME_FORMAT_KEY, ui->format_box->currentText());
+  state_->SetVariable(S_OPT_GEOMETRY_KEY, saveGeometry());
 }
 
 void SettingsDialog::LoadState() {
-  QSettings state;
-  QVariant last_format = state.value(S_OPT_LAST_TIME_FORMAT_KEY);
+  QVariant last_format = state_->GetVariable(S_OPT_LAST_TIME_FORMAT_KEY);
   if (last_format.isValid()) ui->format_box->setCurrentText(last_format.toString());
-  QVariant last_geometry = state.value(S_OPT_GEOMETRY_KEY);
+  QVariant last_geometry = state_->GetVariable(S_OPT_GEOMETRY_KEY);
   if (last_geometry.isValid()) restoreGeometry(last_geometry.toByteArray());
 }
 

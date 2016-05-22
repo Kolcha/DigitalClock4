@@ -1,14 +1,14 @@
 #include "updater.h"
 
-#include <QSettings>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QCoreApplication>
 
 #include "core/build_defs.h"
+#include "core/clock_state.h"
 #include "core/http_client.h"
 
-#define S_OPT_LAST_UPDATE        "state/last_update"
+#define S_OPT_LAST_UPDATE       "last_update"
 
 namespace digital_clock {
 namespace core {
@@ -22,13 +22,13 @@ const char c_build_date[] = {
   '\0'
 };
 
-Updater::Updater(QObject* parent) :
+Updater::Updater(ClockState* state, QObject* parent) :
   QObject(parent),
+  state_(state),
   check_beta_(false), autoupdate_(true), update_period_(3),
   force_update_(false), was_error_(false)
 {
-  QSettings settings;
-  last_update_ = settings.value(S_OPT_LAST_UPDATE, QDate(2013, 6, 18)).value<QDate>();
+  last_update_ = state_->GetVariable(S_OPT_LAST_UPDATE, QDate(2013, 6, 18)).value<QDate>();
   downloader_ = new HttpClient(this);
   connect(downloader_, &HttpClient::ErrorMessage, [=] (const QString& msg) {
     was_error_ = true;
@@ -95,8 +95,7 @@ void Updater::ProcessData() {
     if (force_update_) emit UpToDate();
   }
   data_.clear();
-  QSettings settings;
-  settings.setValue(S_OPT_LAST_UPDATE, last_update_);
+  state_->SetVariable(S_OPT_LAST_UPDATE, last_update_);
 }
 
 void Updater::RunCheckForUpdates(bool force)

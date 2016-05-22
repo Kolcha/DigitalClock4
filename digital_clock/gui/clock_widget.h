@@ -25,6 +25,8 @@ public:
   explicit ClockWidget(QWidget* parent = 0);
   ClockDisplay* GetDisplay() const;
 
+  bool preview() const { return preview_mode_; }
+
 signals:
   void SeparatorsChanged(const QString& seps);
 
@@ -33,7 +35,6 @@ signals:
 public slots:
   void ApplySkin(::skin_draw::ISkin::SkinPtr skin);
   void ApplyOption(Option option, const QVariant& value);
-  void PreviewMode(bool enabled);
   void EnablePreviewMode();
   void DisablePreviewMode();
 
@@ -50,6 +51,7 @@ private:
   QColor colorize_color_;
   qreal colorize_level_;
   bool colorize_enabled_;
+  bool preview_mode_;
 
   QImage last_image_;
 };

@@ -16,6 +16,7 @@ namespace digital_clock {
 
 namespace core {
 class ClockSettings;
+class ClockState;
 }
 
 namespace gui {
@@ -28,7 +29,7 @@ class SettingsDialog : public QDialog {
   Q_OBJECT
 
 public:
-  explicit SettingsDialog(core::ClockSettings* config, QWidget* parent = 0);
+  SettingsDialog(core::ClockSettings* config, core::ClockState* state, QWidget* parent = 0);
   ~SettingsDialog();
 
 signals:
@@ -95,6 +96,7 @@ private:
   Ui::SettingsDialog* ui;
 
   core::ClockSettings* config_;
+  core::ClockState* state_;
 
   QColor last_color_;
   QString last_txd_path_;

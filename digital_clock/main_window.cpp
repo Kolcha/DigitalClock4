@@ -15,6 +15,7 @@
 #include "settings_storage.h"
 
 #include "core/clock_settings.h"
+#include "core/clock_state.h"
 #include "core/skin_manager.h"
 #include "core/updater.h"
 #include "core/plugin_manager.h"
@@ -25,7 +26,7 @@
 #include "gui/about_dialog.h"
 
 
-#define S_OPT_POSITION              "state/clock_position"
+#define S_OPT_POSITION              "clock_position"
 
 
 namespace digital_clock {
@@ -45,12 +46,13 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 
   config_backend_ = new SettingsStorage(this);
   app_config_ = new core::ClockSettings(config_backend_, config_backend_);
+  state_ = new core::ClockState(config_backend_);
 
   skin_manager_ = new core::SkinManager(this);
   skin_manager_->ListSkins();
   skin_manager_->SetFallbackSkin("Electronic (default)");
 
-  updater_ = new core::Updater(this);
+  updater_ = new core::Updater(state_, this);
   connect(&timer_, &QTimer::timeout, updater_, &core::Updater::TimeoutHandler);
 
   tray_control_ = new gui::TrayControl(this);
@@ -80,8 +82,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 
 
 
-  QSettings state;
-  QPoint last_pos = state.value(S_OPT_POSITION, QPoint(50, 20)).toPoint();
+  QPoint last_pos = state_->GetVariable(S_OPT_POSITION, QPoint(50, 20)).toPoint();
 
   CAlignment last_align = static_cast<CAlignment>(app_config_->GetValue(OPT_ALIGNMENT).toInt());
   if (last_align == CAlignment::A_RIGHT) {
@@ -103,6 +104,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 MainWindow::~MainWindow()
 {
   timer_.stop();
+  delete state_;
 }
 
 void MainWindow::mousePressEvent(QMouseEvent* event)
@@ -128,8 +130,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event)
     if (cur_alignment_ == CAlignment::A_RIGHT) {
       last_pos.setX(this->frameGeometry().right());
     }
-    QSettings state;
-    state.setValue(S_OPT_POSITION, last_pos);
+    state_->SetVariable(S_OPT_POSITION, last_pos, !clock_widget_->preview());
     event->accept();
   }
 }
@@ -231,8 +232,6 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
         default:
           Q_ASSERT(false);
       }
-      QSettings state;
-      state.setValue(S_OPT_POSITION, cur_pos);
       break;
     }
 
@@ -284,18 +283,31 @@ void MainWindow::RestoreVisibility()
   tray_control_->GetShowHideAction()->setEnabled(true);
 }
 
+void MainWindow::LoadState()
+{
+  QVariant saved_pos = state_->GetVariable(S_OPT_POSITION);
+  if (saved_pos.isValid()) this->move(saved_pos.toPoint());
+}
+
+void MainWindow::SaveState()
+{
+  state_->SetVariable(S_OPT_POSITION, this->pos());
+}
+
 void MainWindow::ShowSettingsDialog()
 {
   static QPointer<gui::SettingsDialog> dlg;
   if (!dlg) {
-    dlg = new gui::SettingsDialog(app_config_);
+    dlg = new gui::SettingsDialog(app_config_, state_);
     // main signals/slots: change options, apply and reset
     connect(dlg.data(), &gui::SettingsDialog::OptionChanged, this, &MainWindow::ApplyOption);
     connect(dlg.data(), &gui::SettingsDialog::OptionChanged, app_config_, &core::ClockSettings::SetValue);
     connect(dlg.data(), &gui::SettingsDialog::accepted, app_config_, &core::ClockSettings::Save);
     connect(app_config_, &core::ClockSettings::saved, config_backend_, &SettingsStorage::Save);
+    connect(app_config_, &core::ClockSettings::saved, this, &MainWindow::SaveState);
     connect(dlg.data(), &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Load);
     connect(dlg.data(), &gui::SettingsDialog::ResetSettings, config_backend_, &SettingsStorage::Reset);
+    connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::LoadState);
     connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::Reset);
     // restore clock visibility
     connect(dlg.data(), &gui::SettingsDialog::accepted, this, &MainWindow::RestoreVisibility);

@@ -14,6 +14,7 @@ TEMPLATE = app
 SOURCES += main.cpp \
     core/autostart.cpp \
     core/clock_settings.cpp \
+    core/clock_state.cpp \
     core/http_client.cpp \
     core/plugin_manager.cpp \
     core/skin_manager.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     core/autostart.h \
     core/build_defs.h \
     core/clock_settings.h \
+    core/clock_state.h \
     core/http_client.h \
     core/plugin_info.h \
     core/plugin_manager.h \

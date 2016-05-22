@@ -14,6 +14,7 @@ namespace digital_clock {
 
 namespace core {
 class ClockSettings;
+class ClockState;
 class SkinManager;
 class Updater;
 class PluginManager;
@@ -49,6 +50,9 @@ private slots:
   void EnsureVisible();
   void RestoreVisibility();
 
+  void LoadState();
+  void SaveState();
+
   void ShowSettingsDialog();
   void ShowAboutDialog();
 
@@ -68,6 +72,7 @@ private:
   SettingsStorage* config_backend_;
 
   core::ClockSettings* app_config_;
+  core::ClockState* state_;
   core::SkinManager* skin_manager_;
   core::Updater* updater_;
   core::PluginManager* plugin_manager_;
