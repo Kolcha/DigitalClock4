@@ -3,9 +3,25 @@
 #include <QFile>
 #include <QDataStream>
 
+#ifdef PORTABLE_VERSION
+#include <QApplication>
+#include <QDir>
+
+static QString GetConfigFileName() {
+  QDir app_dir(QApplication::applicationDirPath());
+  return app_dir.filePath("settings.ini");
+}
+
+SettingsStorage::SettingsStorage(QObject *parent) :
+  QObject(parent),
+  settings_(GetConfigFileName(), QSettings::IniFormat)
+{
+}
+#else
 SettingsStorage::SettingsStorage(QObject *parent) : QObject(parent)
 {
 }
+#endif
 
 const QVariant& SettingsStorage::GetValue(const QString& key, const QVariant& default_value)
 {
