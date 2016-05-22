@@ -15,6 +15,10 @@ SUBDIRS += \
 
 windows {
 SUBDIRS += \
-    power_off \
+    power_off
+
+win32-msvc* {
+SUBDIRS += \
     win_on_top
+}
 }
