@@ -145,8 +145,6 @@ void ClockWidget::TimeoutHandler()
 
 void ClockWidget::Update() {
   this->adjustSize();
-  QWidget* p = this->parentWidget();
-  if (p) p->adjustSize();
 }
 
 void ClockWidget::DrawImage(const QImage& image) {

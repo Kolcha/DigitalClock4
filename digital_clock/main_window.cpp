@@ -286,12 +286,22 @@ void MainWindow::RestoreVisibility()
 void MainWindow::LoadState()
 {
   QVariant saved_pos = state_->GetVariable(S_OPT_POSITION);
-  if (saved_pos.isValid()) this->move(saved_pos.toPoint());
+  if (!saved_pos.isValid()) return;
+
+  QPoint last_pos = saved_pos.toPoint();
+  if (cur_alignment_ == CAlignment::A_RIGHT) {
+    last_pos.setX(last_pos.x() - this->width());
+  }
+  this->move(last_pos);
 }
 
 void MainWindow::SaveState()
 {
-  state_->SetVariable(S_OPT_POSITION, this->pos());
+  QPoint last_pos = this->pos();
+  if (cur_alignment_ == CAlignment::A_RIGHT) {
+    last_pos.setX(this->frameGeometry().right());
+  }
+  state_->SetVariable(S_OPT_POSITION, last_pos);
 }
 
 void MainWindow::ShowSettingsDialog()
@@ -307,8 +317,8 @@ void MainWindow::ShowSettingsDialog()
     connect(app_config_, &core::ClockSettings::saved, this, &MainWindow::SaveState);
     connect(dlg.data(), &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Load);
     connect(dlg.data(), &gui::SettingsDialog::ResetSettings, config_backend_, &SettingsStorage::Reset);
-    connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::LoadState);
     connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::Reset);
+    connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::LoadState);
     // restore clock visibility
     connect(dlg.data(), &gui::SettingsDialog::accepted, this, &MainWindow::RestoreVisibility);
     connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::RestoreVisibility);
