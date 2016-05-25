@@ -22,8 +22,15 @@ function deploy_qt() {
 cd $CLOCK_SRC_PATH
 
 $QT_ROOT/bin/lupdate -no-obsolete DigitalClock.pro
-$QT_ROOT/bin/qmake QMAKE_MAC_SDK=macosx10.9 -config release
-make
+
+build_dir="$CLOCK_SRC_PATH/../build"
+rm -rf "$build_dir"
+mkdir "$build_dir"
+cd "$build_dir"
+
+$QT_ROOT/bin/qmake QMAKE_MAC_SDK=macosx10.9 -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
+make -j4
+[[ $? == 0 ]] || exit 1
 
 # create directories
 mkdir -p digital_clock/digital_clock.app/Contents/Frameworks
@@ -59,19 +66,24 @@ do
 done
 
 # copy resources
-cp -r $CLOCK_DATA_PATH/skins digital_clock/digital_clock.app/Contents/Resources
-cp -r $CLOCK_DATA_PATH/textures digital_clock/digital_clock.app/Contents/Resources
-cp -r $CLOCK_DATA_PATH/translations digital_clock/digital_clock.app/Contents/
-cp -f $CLOCK_DATA_PATH/qt.conf digital_clock/digital_clock.app/Contents/Resources/
+cp -r $CLOCK_DATA_PATH/skins digital_clock/digital_clock.app/Contents/Resources/
+cp -r $CLOCK_DATA_PATH/textures digital_clock/digital_clock.app/Contents/Resources/
+cp -r $CLOCK_DATA_PATH/translations digital_clock/digital_clock.app/Contents/Resources/
+
+# update generated qt.conf
+echo "Translations = Resources/translations" >> digital_clock/digital_clock.app/Contents/Resources/qt.conf
 
 # deploy Qt for app and create .dmg file
 cd digital_clock
-rm -f *.dmg
-rm -rf "$CLOCK_APP_NAME.app"
 mv digital_clock.app "$CLOCK_APP_NAME.app"
 $QT_ROOT/bin/macdeployqt "$CLOCK_APP_NAME.app" -dmg
-mv "$CLOCK_APP_NAME.dmg" digital_clock_4-macosx.dmg
+
+rm -f $build_dir/../*.dmg
+rm -rf "$build_dir/../$CLOCK_APP_NAME.app"
+mv "$CLOCK_APP_NAME.app" "$build_dir/../"
+mv "$CLOCK_APP_NAME.dmg" "$build_dir/../digital_clock_4-macosx.dmg"
 cd ..
 
 # cleanup
-make distclean
+cd "$build_dir/.."
+rm -rf "$build_dir"
