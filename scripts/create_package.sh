@@ -79,6 +79,7 @@ cp "$CLOCK_SRC_PATH/scripts/digital_clock.sh" "$TARGET_APP_FOLDER/"
 cp "$CLOCK_SRC_PATH/scripts/config_desktop.sh" "$TARGET_APP_FOLDER/"
 cp -r "$CLOCK_DATA_PATH/skins" "$TARGET_APP_FOLDER/"
 cp -r "$CLOCK_DATA_PATH/textures" "$TARGET_APP_FOLDER/"
+[[ -d "$CLOCK_DATA_PATH/translations" ]] && cp -r "$CLOCK_DATA_PATH/translations" "$TARGET_APP_FOLDER/"
 
 cd "$TARGET_APP_FOLDER/.."
 
