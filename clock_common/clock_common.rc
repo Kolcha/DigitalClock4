@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	1,1,0,94
-PRODUCTVERSION	4,4,4,0
+FILEVERSION	1,1,0,95
+PRODUCTVERSION	4,4,5,0
 FILEOS		0x4
 FILETYPE	0x2
 {
@@ -11,12 +11,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Digital Clock common library"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Common clock library"
-		VALUE "FileVersion", "1.1.0.94"
+		VALUE "FileVersion", "1.1.0.95"
 		VALUE "InternalName", "clock_common.dll"
 		VALUE "LegalCopyright", "© 2013-2016 Nick Korotysh"
 		VALUE "OriginalFilename", "clock_common.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.4.4"
+		VALUE "ProductVersion", "4.4.5"
 	}
 }
 
