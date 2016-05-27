@@ -1,6 +1,6 @@
 {
     "name" : "spectrum_clock",
-    "version" : "2.1.0",
+    "version" : "2.1.1",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
     "configurable" : false,

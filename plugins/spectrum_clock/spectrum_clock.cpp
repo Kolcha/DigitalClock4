@@ -11,15 +11,18 @@ SpectrumClock::SpectrumClock() {
 
 void SpectrumClock::Init(const QMap<Option, QVariant>& current_settings) {
   old_color_ = current_settings[OPT_COLOR].value<QColor>();
+  old_colorize_color_ = current_settings[OPT_COLORIZE_COLOR].value<QColor>();
   cur_color_ = Qt::red;
 }
 
 void SpectrumClock::Start() {
   emit OptionChanged(OPT_COLOR, cur_color_);
+  emit OptionChanged(OPT_COLORIZE_COLOR, cur_color_);
 }
 
 void SpectrumClock::Stop() {
   emit OptionChanged(OPT_COLOR, old_color_);
+  emit OptionChanged(OPT_COLORIZE_COLOR, old_colorize_color_);
 }
 
 void SpectrumClock::TimeUpdateListener() {
@@ -37,6 +40,7 @@ void SpectrumClock::TimeUpdateListener() {
 
   cur_color_.setRgb(r, g, b);
   emit OptionChanged(OPT_COLOR, cur_color_);
+  emit OptionChanged(OPT_COLORIZE_COLOR, cur_color_);
 }
 
 } // namespace spectrum_clock

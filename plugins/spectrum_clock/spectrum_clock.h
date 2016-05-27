@@ -23,6 +23,7 @@ public slots:
 
 private:
   QColor old_color_;
+  QColor old_colorize_color_;
   QColor cur_color_;
 };
 
