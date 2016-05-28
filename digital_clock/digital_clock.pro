@@ -75,7 +75,7 @@ RESOURCES += \
 
 win32:RC_FILE = digital_clock.rc
 macx {
-    ICON = resources/1400320218_103169.icns
+    ICON = resources/clock-icon-mac.icns
     QMAKE_INFO_PLIST = resources/Info.plist
 }
 
