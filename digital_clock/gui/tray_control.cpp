@@ -10,7 +10,8 @@ namespace gui {
 TrayControl::TrayControl(QWidget* parent) : QObject(parent)
 {
   QMenu* tray_menu = new QMenu(parent);
-  show_hide_action_ = tray_menu->addAction(tr("&Hide Clock"), this, SLOT(ShowHideHandler()));
+  show_hide_action_ = tray_menu->addAction(
+        QApplication::windowIcon().pixmap(16), tr("&Hide Clock"), this, SLOT(ShowHideHandler()));
   show_hide_action_->setData(false);
   tray_menu->addSeparator();
   tray_menu->addAction(QIcon(":/clock/images/settings.svg").pixmap(16), tr("&Settings"),
