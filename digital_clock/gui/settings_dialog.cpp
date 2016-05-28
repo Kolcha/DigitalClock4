@@ -406,7 +406,13 @@ void digital_clock::gui::SettingsDialog::on_clock_url_enabled_toggled(bool check
   emit OptionChanged(OPT_CLOCK_URL_ENABLED, checked);
 }
 
-void digital_clock::gui::SettingsDialog::on_clock_url_edit_textEdited(const QString &arg1)
+void digital_clock::gui::SettingsDialog::on_clock_url_edit_textChanged(const QString &arg1)
 {
   emit OptionChanged(OPT_CLOCK_URL_STRING, arg1);
+}
+
+void digital_clock::gui::SettingsDialog::on_browse_url_file_btn_clicked()
+{
+  QUrl url = QFileDialog::getOpenFileUrl(this);
+  if (url.isValid()) ui->clock_url_edit->setText(url.toString());
 }

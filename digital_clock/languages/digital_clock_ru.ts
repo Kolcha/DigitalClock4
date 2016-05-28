@@ -366,7 +366,12 @@
         <translation>ссылка на часах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="821"/>
+        <location filename="../gui/settings_dialog.ui" line="807"/>
+        <source>Browse for local file instead of URL</source>
+        <translation>Выбрать локальный файл вместо URL</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="834"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
