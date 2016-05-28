@@ -8,20 +8,11 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="QtFiles">
-            <Component Id="cmpF83098612A5B11C5398DBA3894ED590A" Directory="INSTALLDIR" Guid="{9BA22954-24B5-4118-8863-CCB368E1F756}" Win64="yes">
-                <File Id="fil526FA994C1850220CFA7BD7FCD995C32" KeyPath="yes" Source="..\..\..\Qt files x64\D3Dcompiler_47.dll" />
-            </Component>
             <Component Id="cmp5DDCF0CE56D406D1B8B1F93E988AED6B" Directory="INSTALLDIR" Guid="{D4DF0E3E-493C-43C4-B219-334ACC636621}" Win64="yes">
                 <File Id="fil0F4CD3729AF07C1C460E292E0F081D0A" KeyPath="yes" Source="..\..\..\Qt files x64\libEGL.dll" />
             </Component>
             <Component Id="cmp936F93A6D920FB403211F0AE426037A0" Directory="INSTALLDIR" Guid="{F73ECF9E-C4BF-43ED-86B8-F1AC6D86678C}" Win64="yes">
                 <File Id="filAF89F998C93BD10CB677322009EB192E" KeyPath="yes" Source="..\..\..\Qt files x64\libGLESV2.dll" />
-            </Component>
-            <Component Id="cmpEA16414E09FD1D5068139520966B49EB" Directory="INSTALLDIR" Guid="{72CEA455-9787-42EC-BA6F-C9A0C38F6A50}" Win64="yes">
-                <File Id="filFC8C908E3AD35E8090AFF39C9B0FB744" KeyPath="yes" Source="..\..\..\Qt files x64\opengl32sw.dll" />
-            </Component>
-            <Component Id="cmp74392B787643A0F135CACCD11365E4FB" Directory="INSTALLDIR" Guid="{555942BE-0A35-4753-AF57-0C457935A6DF}" Win64="yes">
-                <File Id="fil6CB9C0F009ADC59844537D2147DF743F" KeyPath="yes" Source="..\..\..\Qt files x64\qt.conf" />
             </Component>
             <Component Id="cmp01229088A6F1DEA1BE391E6E7CC3D3EE" Directory="INSTALLDIR" Guid="{F9BBEDBB-99ED-41D4-A8E5-4AA5CC4C4423}" Win64="yes">
                 <File Id="filAD80F4724AAE3D8B0682F5982CC2548D" KeyPath="yes" Source="..\..\..\Qt files x64\Qt5Core.dll" />

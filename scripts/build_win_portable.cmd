@@ -2,7 +2,7 @@
 
 set src_path=%cd%
 
-set src_root=%~dp0\..
+set src_root=%~dp0..
 set data_dir=%src_root%\..\data
 set dst_path=%src_root%\..\Digital Clock 4
 
@@ -36,14 +36,16 @@ for /d %%g in (*) do (
 )
 cd ..
 
-
 cd "%dst_path%"
-windeployqt --libdir . --plugindir "plugins" "clock_common.dll"
-windeployqt --libdir . --plugindir "plugins" "digital_clock.exe"
-windeployqt --libdir . --plugindir "plugins" "skin_draw.dll"
+
+set deploy_flags=--libdir . --plugindir "plugins" --no-system-d3d-compiler --no-opengl-sw
+
+windeployqt %deploy_flags% "clock_common.dll"
+windeployqt %deploy_flags% "digital_clock.exe"
+windeployqt %deploy_flags% "skin_draw.dll"
 
 for %%f in ("plugins\*.dll") do (
-  windeployqt --libdir . --plugindir "plugins" --no-translations "%%f"
+  windeployqt %deploy_flags% --no-translations "%%f"
 )
 
 xcopy /s /y "%data_dir%\textures" "%dst_path%\textures\"
