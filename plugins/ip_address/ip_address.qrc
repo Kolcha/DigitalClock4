@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/ip_address">
+        <file>ip_address_ru.qm</file>
+        <file alias="icon.svg">1464367266_Connection.svg</file>
+    </qresource>
+</RCC>

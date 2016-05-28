@@ -11,7 +11,9 @@ SUBDIRS += \
     quick_note \
     date \
     move_clock \
-    tower_clock_signal
+    tower_clock_signal \
+    ip_address \
+    quarter_hour_signal
 
 windows {
 SUBDIRS += \

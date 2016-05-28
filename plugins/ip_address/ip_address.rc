@@ -1,0 +1,27 @@
+1	VERSIONINFO
+FILEVERSION	1,0,0,3
+PRODUCTVERSION	4,4,5,0
+FILEOS		0x4
+FILETYPE	0x2
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "Comments", "IP address"
+		VALUE "CompanyName", "Nick Korotysh"
+		VALUE "FileDescription", "Digital Clock Plugin"
+		VALUE "FileVersion", "1.0.0.3"
+		VALUE "InternalName", "ip_address.dll"
+		VALUE "LegalCopyright", "© 2016 Nick Korotysh"
+		VALUE "OriginalFilename", "ip_address.dll"
+		VALUE "ProductName", "Digital Clock"
+		VALUE "ProductVersion", "4.4.5"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409, 0x04B0
+}
+}
