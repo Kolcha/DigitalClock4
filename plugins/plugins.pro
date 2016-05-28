@@ -12,7 +12,8 @@ SUBDIRS += \
     date \
     move_clock \
     tower_clock_signal \
-    ip_address
+    ip_address \
+    quarter_hour_signal
 
 windows {
 SUBDIRS += \
