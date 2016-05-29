@@ -1,14 +1,17 @@
-#ifndef SCHEDULE_H
-#define SCHEDULE_H
+#ifndef SCHEDULE_SCHEDULE_H
+#define SCHEDULE_SCHEDULE_H
 
-#include <QSystemTrayIcon>
-#include <QPointer>
 #include "iclock_plugin.h"
-#include "gui/settings_dialog.h"
 
-class TaskManager;
+#include <QPointer>
+#include <QSystemTrayIcon>
+
+#include "core/task.h"
 
 namespace schedule {
+
+class TasksStorage;
+class TasksInvoker;
 
 class Schedule : public IClockPlugin {
   Q_OBJECT
@@ -22,19 +25,19 @@ public slots:
   void Start();
   void Stop();
   void Configure();
-  void TimeUpdateListener();
 
 private slots:
   void TrayActivated(QSystemTrayIcon::ActivationReason reason);
-  void ShowMessage(const QString& message);
+  void TaskCompleted(const TaskPtr& task);
 
 private:
   QPointer<QSystemTrayIcon> tray_icon_;
   QMenu* tray_menu_;
-  TaskManager* manager_;
-  QPointer<SettingsDialog> settings_dlg_;
+
+  TasksStorage* backend_;
+  TasksInvoker* invoker_;
 };
 
 } // namespace schedule
 
-#endif // SCHEDULE_H
+#endif // SCHEDULE_SCHEDULE_H

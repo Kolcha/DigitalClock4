@@ -11,20 +11,24 @@ include(../common.pri)
 TARGET = schedule
 
 SOURCES += schedule.cpp \
-    core/task_manager.cpp \
-    gui/settings_dialog.cpp \
-    gui/add_task_dialog.cpp
+    core/daily_tasks_provider.cpp \
+    core/task.cpp \
+    core/tasks_invoker.cpp \
+    core/tasks_storage.cpp \
+    gui/schedule_dialog.cpp \
+    gui/task_edit_dialog.cpp
 
 HEADERS += schedule.h \
+    core/daily_tasks_provider.h \
     core/task.h \
-    core/task_manager.h \
-    core/schedule_settings.h \
-    gui/settings_dialog.h \
-    gui/add_task_dialog.h
+    core/tasks_invoker.h \
+    core/tasks_storage.h \
+    gui/schedule_dialog.h \
+    gui/task_edit_dialog.h
 
 FORMS += \
-    gui/settings_dialog.ui \
-    gui/add_task_dialog.ui
+    gui/schedule_dialog.ui \
+    gui/task_edit_dialog.ui
 
 TRANSLATIONS += \
     schedule_ru.ts
