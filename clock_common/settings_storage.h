@@ -4,6 +4,8 @@
 #include <QObject>
 
 #include <QSettings>
+#include <QSet>
+#include <QStringList>
 
 #include "clock_common_global.h"
 
@@ -57,6 +59,18 @@ public:
    */
   void Remove(const QString& key);
 
+  /*!
+   * Permanently remove given @a key and its child elements.
+   * @note data will removed actually only on Save()
+   */
+  void Delete(const QString& key);
+
+  /*!
+   * Get all child elements for specified @a key.
+   * @return list of child elements
+   */
+  QStringList ListChildren(const QString& key);
+
 signals:
   /*! Notifies about whole runtime storage change */
   void reloaded();
@@ -76,12 +90,25 @@ public slots:
   void Import(const QString& filename);
 
 private:
+  /*!
+   * Checks is given @a key deleted.
+   * @return true if key was deleted
+   */
+  bool isDeleted(const QString& key);
+  /*!
+   * Helper function to find all child keys for given @a key in given map @a m.
+   * @return list of child keys if they were found
+   */
+  static QStringList findKeyChildren(const QString& key, const QSettings::SettingsMap& m);
+
   /// permanent storage (QSettings backend)
   QSettings settings_;
   /// runtime storage
   QSettings::SettingsMap current_values_;
   /// default values storage
   QSettings::SettingsMap default_values_;
+  /// removed keys storage, will be cleared on Load() or Save()
+  QSet<QString> removed_keys_;
 };
 
 #endif // SETTINGS_STORAGE_H
