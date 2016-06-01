@@ -16,7 +16,7 @@ void TasksStorage::loadDates()
 void TasksStorage::LoadTasks(const QDate& dt)
 {
   QList<TaskPtr> tasks;
-  QString date_key = QString("schedule/tasks/%1").arg(dt.toString("dd-MM-yyyy"));
+  QString date_key = QString("plugins/schedule/tasks/%1").arg(dt.toString("dd-MM-yyyy"));
   QStringList items = this->GetBackend()->ListChildren(date_key);
   for (auto& i : items) {
     bool id_ok = false;
@@ -35,9 +35,9 @@ void TasksStorage::LoadTasks(const QDate& dt)
 
 void TasksStorage::addTask(const TaskPtr& task)
 {
-  if (!task->isValid()) return;
+  if (task->note().isEmpty()) return;
 
-  QString date_key = QString("schedule/tasks/%1").arg(task->date().toString("dd-MM-yyyy"));
+  QString date_key = QString("plugins/schedule/tasks/%1").arg(task->date().toString("dd-MM-yyyy"));
   QStringList items = this->GetBackend()->ListChildren(date_key);
   std::sort(items.begin(), items.end());
   task->setId(items.isEmpty() ? 1 : items.back().toInt() + 1);
@@ -54,7 +54,7 @@ void TasksStorage::addTask(const TaskPtr& task)
 
 void TasksStorage::delTask(const TaskPtr& task)
 {
-  QString date_key = QString("schedule/tasks/%1").arg(task->date().toString("dd-MM-yyyy"));
+  QString date_key = QString("plugins/schedule/tasks/%1").arg(task->date().toString("dd-MM-yyyy"));
   QString task_key = QString("%1/%2").arg(date_key).arg(task->id());
   this->remove(task_key);
   if (GetBackend()->ListChildren(date_key).isEmpty()) {
@@ -75,7 +75,7 @@ void TasksStorage::reject()
 QList<QDate> TasksStorage::listDates() const
 {
   QList<QDate> dates;
-  QStringList items = this->GetBackend()->ListChildren("schedule/tasks");
+  QStringList items = this->GetBackend()->ListChildren("plugins/schedule/tasks");
   for (auto& i : items) {
     QDate dt = QDate::fromString(i, "dd-MM-yyyy");
     if (!dt.isValid()) continue;
