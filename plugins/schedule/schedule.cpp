@@ -10,13 +10,17 @@
 namespace schedule {
 
 Schedule::Schedule() {
-  backend_ = new TasksStorage(this);
   invoker_ = nullptr;
 
   InitTranslator(QLatin1String(":/schedule/schedule_"));
   info_.display_name = tr("Scheduler");
   info_.description = tr("Allow to schedule a task and display notification at specified time.");
   InitIcon(":/schedule/schedule.svg");
+}
+
+void Schedule::InitSettings(SettingsStorage* backend)
+{
+  backend_ = new TasksStorage(backend, this);
 }
 
 void Schedule::Start() {

@@ -1,86 +1,87 @@
 #include "tasks_storage.h"
 
+#include "settings_storage.h"
+
 namespace schedule {
 
-TasksStorage::TasksStorage(QObject *parent) : QObject(parent)
+TasksStorage::TasksStorage(SettingsStorage* backend, QObject *parent) : SettingsStorageWrapper(backend, parent)
 {
-  QList<QDate> dates;
-  QDate today = QDate::currentDate();
-  dates.append(today);
-  dates.append(today.addDays(1));
-  dates.append(today.addDays(2));
-  for (auto& dt : dates) {
-    QList<TaskPtr>& tasks = permanent_[dt];
-    for (int i = 0; i < 10; i++) {
-      QTime now = QTime::currentTime();
-      TaskPtr tsk(new Task());
-      tsk->setDate(dt);
-      tsk->setTime(now.addSecs(3600*(2+i) + 60*45));
-      tsk->setNote(QString("task %1 %2").arg(tsk->date().toString(), tsk->time().toString()));
-      tasks.append(tsk);
-    }
-  }
-  reject();
 }
 
 void TasksStorage::loadDates()
 {
-  emit datesLoaded(runtime_.keys());
+  emit datesLoaded(listDates());
 }
 
 void TasksStorage::LoadTasks(const QDate& dt)
 {
-  emit tasksLoaded(runtime_[dt]);
+  QList<TaskPtr> tasks;
+  QString date_key = QString("schedule/tasks/%1").arg(dt.toString("dd-MM-yyyy"));
+  QStringList items = this->GetBackend()->ListChildren(date_key);
+  for (auto& i : items) {
+    bool id_ok = false;
+    int id = i.toInt(&id_ok);
+    if (!id_ok) continue;
+    QString task_key = QString("%1/%2").arg(date_key).arg(id);
+    TaskPtr task(new Task());
+    task->setId(id);
+    task->setDate(dt);
+    task->setTime(this->getValue(QString("%1/%2").arg(task_key, "time")).toTime());
+    task->setNote(this->getValue(QString("%1/%2").arg(task_key, "note")).toString());
+    if (task->isValid()) tasks.append(task);
+  }
+  emit tasksLoaded(tasks);
 }
 
-void TasksStorage::addTask(const TaskPtr& tsk)
+void TasksStorage::addTask(const TaskPtr& task)
 {
-  int old_count = runtime_.size();
-  runtime_[tsk->date()].append(tsk);
-  if (runtime_.size() != old_count) emit datesLoaded(runtime_.keys());
+  if (!task->isValid()) return;
+
+  QString date_key = QString("schedule/tasks/%1").arg(task->date().toString("dd-MM-yyyy"));
+  QStringList items = this->GetBackend()->ListChildren(date_key);
+  std::sort(items.begin(), items.end());
+  task->setId(items.isEmpty() ? 1 : items.back().toInt() + 1);
+
+  int old_count = listDates().size();
+
+  QString task_key = QString("%1/%2").arg(date_key).arg(task->id());
+  this->setValue(QString("%1/%2").arg(task_key, "time"), task->time());
+  this->setValue(QString("%1/%2").arg(task_key, "note"), task->note());
+
+  QList<QDate> new_dates = listDates();
+  if (new_dates.size() != old_count) emit datesLoaded(new_dates);
 }
 
-void TasksStorage::delTask(const TaskPtr& tsk)
+void TasksStorage::delTask(const TaskPtr& task)
 {
-  auto dt_iter = runtime_.find(tsk->date());
-  Q_ASSERT(dt_iter != runtime_.end());
-  Q_ASSERT(!dt_iter.value().isEmpty());
-  auto tsk_iter = std::find(dt_iter->begin(), dt_iter->end(), tsk);
-  Q_ASSERT(tsk_iter != dt_iter->end());
-  dt_iter->erase(tsk_iter);
-  if (dt_iter.value().isEmpty()) {
-    Q_ASSERT(dt_iter->isEmpty());
-    runtime_.erase(dt_iter);
-    emit datesLoaded(runtime_.keys());
+  QString date_key = QString("schedule/tasks/%1").arg(task->date().toString("dd-MM-yyyy"));
+  QString task_key = QString("%1/%2").arg(date_key).arg(task->id());
+  this->remove(task_key);
+  if (GetBackend()->ListChildren(date_key).isEmpty()) {
+    this->remove(date_key);
   }
 }
 
 void TasksStorage::commit()
 {
-  permanent_.clear();
-  for (auto di = runtime_.begin(); di != runtime_.end(); ++di) {
-    QList<TaskPtr>& p_list = permanent_[di.key()];
-    p_list.clear();
-    for (auto& ti : di.value()) {
-      TaskPtr tsk(new Task());
-      *tsk = *ti;
-      p_list.append(tsk);
-    }
-  }
+  this->Accept();
 }
 
 void TasksStorage::reject()
 {
-  runtime_.clear();
-  for (auto di = permanent_.begin(); di != permanent_.end(); ++di) {
-    QList<TaskPtr>& r_list = runtime_[di.key()];
-    r_list.clear();
-    for (auto& ti : di.value()) {
-      TaskPtr tsk(new Task());
-      *tsk = *ti;
-      r_list.append(tsk);
-    }
+  this->Reject();
+}
+
+QList<QDate> TasksStorage::listDates() const
+{
+  QList<QDate> dates;
+  QStringList items = this->GetBackend()->ListChildren("schedule/tasks");
+  for (auto& i : items) {
+    QDate dt = QDate::fromString(i, "dd-MM-yyyy");
+    if (!dt.isValid()) continue;
+    dates.append(dt);
   }
+  return dates;
 }
 
 } // namespace schedule

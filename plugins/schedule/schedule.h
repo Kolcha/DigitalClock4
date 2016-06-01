@@ -21,10 +21,13 @@ class Schedule : public IClockPlugin {
 public:
   Schedule();
 
+  void InitSettings(SettingsStorage* backend) override;
+
 public slots:
-  void Start();
-  void Stop();
-  void Configure();
+  void Start()     override;
+  void Stop()      override;
+
+  void Configure() override;
 
 private slots:
   void TrayActivated(QSystemTrayIcon::ActivationReason reason);
