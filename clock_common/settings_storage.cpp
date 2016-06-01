@@ -138,6 +138,7 @@ void SettingsStorage::Reject()
   QStringList keys = imported_.keys();
   imported_.clear();
   for (auto& key : keys) this->Revert(key);
+  emit reloaded();
 }
 
 void SettingsStorage::Reset()

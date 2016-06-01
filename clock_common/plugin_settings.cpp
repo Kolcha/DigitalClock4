@@ -29,6 +29,7 @@ QVariant PluginSettings::GetOption(const QString& key) const {
 void PluginSettings::Load() {
   current_map_.clear();
   for (auto iter = default_map_.begin(); iter != default_map_.end(); ++iter) {
+    backend_->Revert(iter.key());
     QVariant value = backend_->GetValue(iter.key(), iter.value());
     if (track_changes_) emit OptionChanged(iter.key(), value);
   }

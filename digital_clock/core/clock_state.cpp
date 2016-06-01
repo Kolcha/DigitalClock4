@@ -14,7 +14,7 @@ void ClockState::SetVariable(const QString& key, const QVariant& value, bool com
 {
   QString full_key = AddKeyPrefix(key);
   backend_->SetValue(full_key, value);
-  if (commit) backend_->CommitValue(full_key, value);
+  if (commit) backend_->Commit(full_key);
 }
 
 QVariant ClockState::GetVariable(const QString& key, const QVariant& default_value)
