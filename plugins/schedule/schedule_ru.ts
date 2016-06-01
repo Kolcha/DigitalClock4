@@ -4,17 +4,17 @@
 <context>
     <name>schedule::Schedule</name>
     <message>
-        <location filename="schedule.cpp" line="17"/>
+        <location filename="schedule.cpp" line="16"/>
         <source>Scheduler</source>
         <translation>Планировщик</translation>
     </message>
     <message>
-        <location filename="schedule.cpp" line="18"/>
+        <location filename="schedule.cpp" line="17"/>
         <source>Allow to schedule a task and display notification at specified time.</source>
         <translation>Позволяет запланировать задание и отображает уведомление в указанное время.</translation>
     </message>
     <message>
-        <location filename="schedule.cpp" line="83"/>
+        <location filename="schedule.cpp" line="87"/>
         <source>Scheduled task</source>
         <translation>Запланированое задание</translation>
     </message>
