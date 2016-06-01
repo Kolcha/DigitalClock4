@@ -43,7 +43,7 @@ public:
    * @param key - option name
    * @return option value as QVariant object
    */
-  const QVariant& GetOption(const QString& key) const;
+  QVariant GetOption(const QString& key) const;
 
 public slots:
   /*! Load settings. */

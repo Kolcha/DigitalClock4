@@ -14,7 +14,7 @@ static QString GetConfigFileName() {
 
 SettingsStorage::SettingsStorage(QObject *parent) :
   QObject(parent),
-  settings_(GetConfigFileName(), QSettings::IniFormat)
+  storage_(GetConfigFileName(), QSettings::IniFormat)
 {
 }
 #else
@@ -23,57 +23,87 @@ SettingsStorage::SettingsStorage(QObject *parent) : QObject(parent)
 }
 #endif
 
-const QVariant& SettingsStorage::GetValue(const QString& key, const QVariant& default_value)
-{
-  auto iter = current_values_.find(key);
-  if (iter != current_values_.end()) return iter.value();
-  default_values_[key] = default_value;
-  QVariant& value = current_values_[key];
-  value = settings_.value(key, default_value);
-  return value;
-}
-
 void SettingsStorage::SetValue(const QString& key, const QVariant& value)
 {
-  current_values_[key] = value;
+  current_[key] = value;
 }
 
-void SettingsStorage::CommitValue(const QString& key, const QVariant& value)
+QVariant SettingsStorage::GetValue(const QString& key, const QVariant& default_value) const
 {
-  settings_.setValue(key, value);
+  auto c_iter = current_.find(key);
+  if (c_iter != current_.end()) return c_iter.value();
+
+  if (isDeleted(key)) return default_value;
+
+  auto i_iter = imported_.find(key);
+  if (i_iter != imported_.end()) return i_iter.value();
+
+  return storage_.value(key, default_value);
 }
 
 void SettingsStorage::Remove(const QString& key)
 {
-  current_values_.remove(key);
-  default_values_.remove(key);
+  QStringList children = findKeyChildren(key, current_);
+  for (auto& c : children) {
+    this->Remove(QString("%1/%2").arg(key, c));
+  }
+  removed_keys_.insert(key);
+  current_.remove(key);
 }
 
-void SettingsStorage::Load()
+QStringList SettingsStorage::ListChildren(const QString& key)
 {
-  for (auto iter = current_values_.begin(); iter != current_values_.end();) {
-    QVariant value = settings_.value(iter.key());
-    if (value.isValid()) {
-      *iter = value;
-      ++iter;
-    } else {
-      current_values_.erase(iter++);
+  QStringList result = findKeyChildren(key, current_);
+  QStringList p_keys;
+  storage_.beginGroup(key);
+  p_keys.append(storage_.childGroups());
+  p_keys.append(storage_.childKeys());
+  storage_.endGroup();
+  for (auto& c : p_keys) {
+    if (!isDeleted(QString("%1/%2").arg(key, c)) && !result.contains(c)) {
+      result.append(c);
     }
   }
-  emit reloaded();
+  return result;
 }
 
-void SettingsStorage::Save()
+void SettingsStorage::Commit(const QString& key)
 {
-  for (auto iter = current_values_.cbegin(); iter != current_values_.cend(); ++iter) {
-    settings_.setValue(iter.key(), iter.value());
+  if (isDeleted(key)) {
+    QString min_parent;
+    for (auto iter = removed_keys_.begin(); iter != removed_keys_.end();) {
+      if (key.mid(0, iter->length()) == *iter) {
+        if (min_parent.isEmpty()) min_parent = *iter;
+        if (iter->length() < min_parent.length()) min_parent = *iter;
+        removed_keys_.erase(iter++);
+      } else {
+        ++iter;
+      }
+    }
+    storage_.remove(min_parent);
   }
+  auto iter = current_.find(key);
+  if (iter == current_.end()) return;
+  storage_.setValue(iter.key(), iter.value());
 }
 
-void SettingsStorage::Reset()
+void SettingsStorage::Revert(const QString& key)
 {
-  current_values_ = default_values_;
-  emit reloaded();
+  if (isDeleted(key)) {
+    for (auto iter = removed_keys_.begin(); iter != removed_keys_.end();) {
+      if (iter->mid(0, key.length()) == key) {
+        removed_keys_.erase(iter++);
+      } else {
+        ++iter;
+      }
+    }
+  }
+  current_.remove(key);
+}
+
+void SettingsStorage::Forget(const QString& key)
+{
+  current_.remove(key);
 }
 
 void SettingsStorage::Export(const QString& filename)
@@ -81,7 +111,7 @@ void SettingsStorage::Export(const QString& filename)
   QFile file(filename);
   if (!file.open(QIODevice::WriteOnly)) return;
   QDataStream stream(&file);
-  stream << current_values_;
+  stream << current_;
   file.close();
 }
 
@@ -90,7 +120,53 @@ void SettingsStorage::Import(const QString& filename)
   QFile file(filename);
   if (!file.open(QIODevice::ReadOnly)) return;
   QDataStream stream(&file);
-  stream >> current_values_;
+  stream >> imported_;
   file.close();
+  for (auto i = imported_.begin(); i != imported_.end(); ++i) {
+    this->SetValue(i.key(), i.value());
+  }
   emit reloaded();
+}
+
+void SettingsStorage::Accept()
+{
+  for (auto& key : imported_.keys()) this->Commit(key);
+}
+
+void SettingsStorage::Reject()
+{
+  QStringList keys = imported_.keys();
+  imported_.clear();
+  for (auto& key : keys) this->Revert(key);
+  emit reloaded();
+}
+
+void SettingsStorage::Reset()
+{
+  // TODO: implement
+}
+
+bool SettingsStorage::isDeleted(const QString& key) const
+{
+  for (auto& i : removed_keys_) {
+    if (key.mid(0, i.length()) == i) return true;
+  }
+  return false;
+}
+
+QStringList SettingsStorage::findKeyChildren(const QString& key, const QSettings::SettingsMap& m)
+{
+  QStringList result;
+  QString path = key + "/";
+  auto iter = m.lowerBound(path);
+  if (iter == m.end()) return result;
+  while (iter != m.end() && iter.key().mid(0, path.length()) == path) {
+    int sep_pos = iter.key().indexOf('/', path.length());
+    int len = -1;
+    if (sep_pos != -1) len = sep_pos - path.length();
+    result.append(iter.key().mid(path.length(), len));
+    ++iter;
+  }
+  result.removeDuplicates();
+  return result;
 }

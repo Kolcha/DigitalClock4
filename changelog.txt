@@ -1,3 +1,26 @@
+Whats new in 4.4.5:
+-------------------
+Core:
+ - local files/programs can be opened using 'clock URL' feature
+ - compiled with GCC 5.3.1 [linux only]
+
+Features:
+ - show/hide clock
+ -  windows portable version
+
+GUI:
+ - replaced app icon
+ - added default export/import filename
+
+Plugins:
+ - 'spectrum clock' now works with colorize effect too
+ - added 'ip address' plugin
+ - added plugin for chiming on every quarter of an hour
+
+Installer:
+ - significantly decreased installed size
+
+
 Whats new in 4.4.4:
 -------------------
 Core:

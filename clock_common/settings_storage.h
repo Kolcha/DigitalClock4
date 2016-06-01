@@ -3,7 +3,9 @@
 
 #include <QObject>
 
+#include <QStringList>
 #include <QSettings>
+#include <QSet>
 
 #include "clock_common_global.h"
 
@@ -28,6 +30,12 @@ public:
   explicit SettingsStorage(QObject *parent = 0);
 
   /*!
+   * Change option value only in runtime storage.
+   * @param key - key to change
+   * @param value - option value
+   */
+  void SetValue(const QString& key, const QVariant& value);
+  /*!
    * @brief Get option value.
    *
    * First of it tries to get value from runtime storage, if have no success it tries
@@ -37,51 +45,80 @@ public:
    * @return option value
    * @note given @a default_value will be saved for internal usage
    */
-  const QVariant& GetValue(const QString& key, const QVariant& default_value = QVariant());
+  QVariant GetValue(const QString& key, const QVariant& default_value = QVariant()) const;
+
   /*!
-   * Change option value only in runtime storage.
-   * @param key - key to change
-   * @param value - option value
+   * @brief Remove @a key and all its child elements.
+   *
+   * @a key will removed from runtime storage, actual remove will happen only after Commit().
+   * Until remove in not committed, removed @a key can be restored with Revert().
+   * @see Commit(), Revert(), Accept(), Reject()
    */
-  void SetValue(const QString& key, const QVariant& value);
+  void Remove(const QString& key);
+
   /*!
-   * Writes (commits) option from runtime storage to permanent storage.
-   * @param key - option key
-   * @param value - option value
+   * @brief Find and list all one-level child elements for given @a key.
+   * @return list of child elements (NOT including parent path)
    */
-  void CommitValue(const QString& key, const QVariant& value);
+  QStringList ListChildren(const QString& key);
+
+  /*!
+   * @brief Write all @a key changes to permanent storage.
+   * @see Revert(), Accept(), Reject()
+   */
+  void Commit(const QString& key);
+  /*!
+   * @brief Restore @a key value from permanent storage.
+   * @see Commit(), Accept(), Reject()
+   */
+  void Revert(const QString& key);
 
   /*!
    * Remove option with given @a key from runtime storage.
    * @note value in permanent storage is not changed
    */
-  void Remove(const QString& key);
+  void Forget(const QString& key);
 
 signals:
   /*! Notifies about whole runtime storage change */
   void reloaded();
 
 public slots:
-  /*! Load settings from permanent storage to runtime storage */
-  void Load();
-  /*! Save current settings in runtime storage to permanent storage */
-  void Save();
-
-  /*! Reset current settings to their default values */
-  void Reset();
-
   /*! Export current settings to file */
   void Export(const QString& filename);
   /*! Import current settings from file */
   void Import(const QString& filename);
 
+  /*! Save current settings in runtime storage to permanent storage */
+  void Accept();
+  /*! Load settings from permanent storage to runtime storage */
+  void Reject();
+
+  /*! Reset current settings to their default values */
+  void Reset();  // TODO: implement
+
 private:
+  /*!
+   * @brief Checks is @a key deleted.
+   * @return true if @a key was removed, otherwise returns false
+   * @see Remove()
+   */
+  bool isDeleted(const QString& key) const;
+  /*!
+   * @brief Finds all child elements for @a key in given map @a m.
+   * @return list of child elements
+   */
+  static QStringList findKeyChildren(const QString& key, const QSettings::SettingsMap& m);
+
   /// permanent storage (QSettings backend)
-  QSettings settings_;
+  QSettings storage_;
+  /// temporary container for imported values
+  /// @see Import(), Export()
+  QSettings::SettingsMap imported_;
   /// runtime storage
-  QSettings::SettingsMap current_values_;
-  /// default values storage
-  QSettings::SettingsMap default_values_;
+  QSettings::SettingsMap current_;
+  /// runtime list of removed keys
+  QSet<QString> removed_keys_;
 };
 
 #endif // SETTINGS_STORAGE_H

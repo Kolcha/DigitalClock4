@@ -65,7 +65,7 @@
       <ComponentRef Id="ProgramMenuDir" />
     </Feature>
 
-    <Icon Id="app_icon.ico" SourceFile="..\..\digital_clock\resources\1372595747_103169.ico" />
+    <Icon Id="app_icon.ico" SourceFile="..\..\digital_clock\resources\clock_icon_win.ico" />
 
     <CustomAction Id="export_settings" Directory="TARGETDIR" ExeCommand="reg.exe export &quot;HKCU\Software\Nick Korotysh\Digital Clock&quot; &quot;[%TMP]\nick-clock-settings.reg&quot; /y" Return="check" />
     <CustomAction Id="import_settings" Directory="TARGETDIR" ExeCommand="reg.exe import &quot;[%TMP]\nick-clock-settings.reg&quot;" Return="check" />

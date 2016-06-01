@@ -18,7 +18,8 @@ SOURCES += \
     message_box.cpp \
     plugin_base.cpp \
     plugin_settings.cpp \
-    settings_storage.cpp
+    settings_storage.cpp \
+    settings_storage_wrapper.cpp
 
 HEADERS += \
     clock_common_global.h \
@@ -29,8 +30,9 @@ HEADERS += \
     plugin_base.h \
     plugin_settings.h \
     settings_keys.h \
-    settings_storage.h
+    settings_storage.h \
+    settings_storage_wrapper.h
 
 win32:RC_FILE = clock_common.rc
-unix:VERSION = 1.1.0
+unix:VERSION = 1.1.1
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/

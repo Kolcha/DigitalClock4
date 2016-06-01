@@ -312,16 +312,16 @@ void MainWindow::ShowSettingsDialog()
     // main signals/slots: change options, apply and reset
     connect(dlg.data(), &gui::SettingsDialog::OptionChanged, this, &MainWindow::ApplyOption);
     connect(dlg.data(), &gui::SettingsDialog::OptionChanged, app_config_, &core::ClockSettings::SetValue);
-    connect(dlg.data(), &gui::SettingsDialog::accepted, app_config_, &core::ClockSettings::Save);
-    connect(app_config_, &core::ClockSettings::saved, config_backend_, &SettingsStorage::Save);
-    connect(app_config_, &core::ClockSettings::saved, this, &MainWindow::SaveState);
-    connect(dlg.data(), &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Load);
+    connect(dlg.data(), &gui::SettingsDialog::accepted, app_config_, &core::ClockSettings::Accept);
+    connect(app_config_, &core::ClockSettings::accepted, config_backend_, &SettingsStorage::Accept);
+    connect(app_config_, &core::ClockSettings::accepted, this, &MainWindow::SaveState);
+    connect(dlg.data(), &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Reject);
     connect(dlg.data(), &gui::SettingsDialog::ResetSettings, config_backend_, &SettingsStorage::Reset);
-    connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::Reset);
-    connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::LoadState);
+    connect(app_config_, &core::ClockSettings::rejected, this, &MainWindow::Reset);
+    connect(app_config_, &core::ClockSettings::rejected, this, &MainWindow::LoadState);
     // restore clock visibility
     connect(dlg.data(), &gui::SettingsDialog::accepted, this, &MainWindow::RestoreVisibility);
-    connect(app_config_, &core::ClockSettings::reloaded, this, &MainWindow::RestoreVisibility);
+    connect(app_config_, &core::ClockSettings::rejected, this, &MainWindow::RestoreVisibility);
     // export/import
     connect(dlg.data(), &gui::SettingsDialog::ExportSettings, config_backend_, &SettingsStorage::Export);
     connect(dlg.data(), &gui::SettingsDialog::ImportSettings, config_backend_, &SettingsStorage::Import);
