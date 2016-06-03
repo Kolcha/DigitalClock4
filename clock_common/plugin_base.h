@@ -46,7 +46,7 @@ public:
    * Create PluginSettings object.
    * @param backend - storage backend
    */
-  void InitSettings(SettingsStorage* backend);
+  virtual void InitSettings(SettingsStorage* backend);
 
 protected:
   /*!

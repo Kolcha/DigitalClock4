@@ -1,13 +1,16 @@
-#include <QMenu>
-#include "plugin_settings.h"
-#include "core/schedule_settings.h"
-#include "core/task_manager.h"
 #include "schedule.h"
+
+#include <QMenu>
+
+#include "core/tasks_storage.h"
+#include "core/tasks_invoker.h"
+
+#include "gui/schedule_dialog.h"
 
 namespace schedule {
 
 Schedule::Schedule() {
-  manager_ = new TaskManager(this);
+  invoker_ = nullptr;
 
   InitTranslator(QLatin1String(":/schedule/schedule_"));
   info_.display_name = tr("Scheduler");
@@ -15,14 +18,12 @@ Schedule::Schedule() {
   InitIcon(":/schedule/schedule.svg");
 }
 
+void Schedule::InitSettings(SettingsStorage* backend)
+{
+  backend_ = new TasksStorage(backend, this);
+}
+
 void Schedule::Start() {
-  QSettings::SettingsMap defaults;
-  InitDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-
-  settings_->Load();
-  manager_->LoadTasks();
-
   tray_icon_ = new QSystemTrayIcon(QIcon(":/schedule/schedule.svg"));
   tray_menu_ = new QMenu();
   tray_menu_->addAction(QIcon(":/schedule/settings.svg"), "Settings", this, SLOT(Configure()));
@@ -31,53 +32,47 @@ void Schedule::Start() {
   tray_icon_->setVisible(true);
   connect(tray_icon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
           this, SLOT(TrayActivated(QSystemTrayIcon::ActivationReason)));
-  connect(manager_, SIGNAL(TaskFound(QString)), this, SLOT(ShowMessage(QString)));
+
+  invoker_ = new TasksInvoker(this);
+
+  connect(backend_, &TasksStorage::tasksLoaded, invoker_, &TasksInvoker::setDailyTasks);
+  connect(invoker_, &TasksInvoker::dateChanged, backend_, &TasksStorage::LoadTasks);
+  connect(invoker_, &TasksInvoker::completed, backend_, &TasksStorage::delTask);
+  connect(invoker_, &TasksInvoker::done, backend_, &TasksStorage::commit);
+  connect(invoker_, &TasksInvoker::completed, this, &Schedule::TaskCompleted);
+
+  invoker_->start();
 }
 
 void Schedule::Stop() {
+  invoker_->stop();
+
   tray_icon_->setVisible(false);
   delete tray_icon_;
   delete tray_menu_;
 }
 
 void Schedule::Configure() {
-  if (settings_dlg_) {
-    settings_dlg_->activateWindow();
-  } else {
-    QSettings::SettingsMap defaults;
-    InitDefaults(&defaults);
-    settings_->SetDefaultValues(defaults);
+  ScheduleDialog* dlg = new ScheduleDialog();
+  connect(backend_, &TasksStorage::datesLoaded, dlg, &ScheduleDialog::setDates);
+  connect(backend_, &TasksStorage::tasksLoaded, dlg, &ScheduleDialog::setTasks);
+  connect(dlg, &ScheduleDialog::dateChanged, backend_, &TasksStorage::LoadTasks);
+  connect(dlg, &ScheduleDialog::taskCreated, backend_, &TasksStorage::addTask);
+  connect(dlg, &ScheduleDialog::taskDeleted, backend_, &TasksStorage::delTask);
+  connect(dlg, &ScheduleDialog::accepted, backend_, &TasksStorage::commit);
+  connect(dlg, &ScheduleDialog::rejected, backend_, &TasksStorage::reject);
 
-    settings_dlg_ = new SettingsDialog();
-    // load current settings to dialog
-    connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
-            settings_dlg_, SLOT(SettingsListener(QString,QVariant)));
-    settings_->TrackChanges(true);
-    settings_->Load();
-    settings_->TrackChanges(false);
-    // connect main signals/slots
-    connect(manager_, SIGNAL(DatesUpdated(QList<QDate>)),
-            settings_dlg_, SLOT(SetDates(QList<QDate>)));
-    connect(manager_, SIGNAL(TasksUpdated(QMap<QTime,QString>)),
-            settings_dlg_, SLOT(SetTasks(QMap<QTime,QString>)));
-    connect(settings_dlg_, SIGNAL(TaskAdded(Task)), manager_, SLOT(AddTask(Task)));
-    connect(settings_dlg_, SIGNAL(TaskRemoved(Task)), manager_, SLOT(RemoveTask(Task)));
-    connect(settings_dlg_, SIGNAL(DateChanged(QDate)), manager_, SLOT(SetCurrentDate(QDate)));
-    connect(settings_dlg_, SIGNAL(accepted()), manager_, SLOT(SaveTasks()));
-    connect(settings_dlg_, SIGNAL(rejected()), manager_, SLOT(LoadTasks()));
-    connect(settings_dlg_, SIGNAL(OptionChanged(QString,QVariant)),
-            settings_, SLOT(SetOption(QString,QVariant)));
-    connect(settings_dlg_, SIGNAL(accepted()), settings_, SLOT(Save()));
-    connect(settings_dlg_, SIGNAL(rejected()), settings_, SLOT(Load()));
-    manager_->LoadTasks();
-    settings_dlg_->show();
+  connect(dlg, &ScheduleDialog::accepted, dlg, &ScheduleDialog::deleteLater);
+  connect(dlg, &ScheduleDialog::rejected, dlg, &ScheduleDialog::deleteLater);
+
+  if (invoker_) {
+    invoker_->stop();
+    connect(dlg, &ScheduleDialog::destroyed, invoker_, &TasksInvoker::start);
   }
-}
 
-void Schedule::TimeUpdateListener() {
-  QDateTime now = QDateTime::currentDateTime();
-  manager_->CheckTime(now.addSecs(-now.time().second()).addMSecs(-now.time().msec()),
-                      settings_->GetOption(OPT_TASK_DELETE).toBool());
+  backend_->loadDates();
+  dlg->setModal(true);
+  dlg->show();
 }
 
 void Schedule::TrayActivated(QSystemTrayIcon::ActivationReason reason) {
@@ -86,9 +81,10 @@ void Schedule::TrayActivated(QSystemTrayIcon::ActivationReason reason) {
   }
 }
 
-void Schedule::ShowMessage(const QString& message) {
+void Schedule::TaskCompleted(const TaskPtr& task)
+{
   if (!tray_icon_) return;
-  tray_icon_->showMessage(tr("Scheduled task"), message);
+  tray_icon_->showMessage(tr("Scheduled task"), task->note());
 }
 
 } // namespace schedule
