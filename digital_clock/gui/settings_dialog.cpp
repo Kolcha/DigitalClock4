@@ -42,6 +42,7 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* st
   setWindowIcon(QIcon(":/clock/images/settings.svg"));
 
   ui->skin_info_btn->setVisible(false);  // temporary, not implemented
+  ui->defaults_bth->setVisible(false);   // temporary, not implemented
 
   connect(config->GetBackend(), &SettingsStorage::reloaded, this, &SettingsDialog::InitControls);
 
