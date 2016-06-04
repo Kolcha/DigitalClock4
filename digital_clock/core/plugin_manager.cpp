@@ -77,6 +77,10 @@ void PluginManager::UnloadPlugins(const QStringList& names) {
   } else {
     QList<QString> plugins = loaded_.keys();
     for (auto& plugin : plugins) UnloadPlugin(plugin);
+    for (auto i = tmp_loaded_.begin(); i != tmp_loaded_.end(); ++i) {
+      i.value()->unload();
+    }
+    tmp_loaded_.clear();
   }
 }
 
@@ -85,23 +89,33 @@ void PluginManager::EnablePlugin(const QString& name, bool enable) {
 }
 
 void PluginManager::ConfigurePlugin(const QString& name) {
-  if (loaded_.contains(name)) {
-    IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loaded_[name]->instance());
+  auto iter = loaded_.find(name);
+  if (iter != loaded_.end()) {
+    IClockPlugin* plugin = qobject_cast<IClockPlugin*>(iter.value()->instance());
     if (plugin) plugin->Configure();
   } else {
-    QString file = available_[name];
-    if (!QFile::exists(file)) return;
-    QPluginLoader* loader = new QPluginLoader(file, this);
-    IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
-    if (plugin) {
-      plugin->InitSettings(data_.settings->GetBackend());
-      InitPlugin(plugin, false);
-      plugin->Configure();
+    auto iter = tmp_loaded_.find(name);
+    if (iter != tmp_loaded_.end()) {
+      QPluginLoader* loader = iter.value();
+      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
+      if (plugin) plugin->Configure();
+    } else {
+      QString file = available_[name];
+      if (!QFile::exists(file)) return;
+      QPluginLoader* loader = new QPluginLoader(file, this);
+      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
+      if (plugin) {
+        plugin->InitSettings(data_.settings->GetBackend());
+        InitPlugin(plugin, false);
+        plugin->Configure();
+      }
+      tmp_loaded_[name] = loader;
     }
   }
 }
 
 void PluginManager::LoadPlugin(const QString& name) {
+  if (loaded_.contains(name)) return;
   QString file = available_[name];
   if (!QFile::exists(file)) return;
   QPluginLoader* loader = new QPluginLoader(file, this);
@@ -118,15 +132,17 @@ void PluginManager::LoadPlugin(const QString& name) {
 }
 
 void PluginManager::UnloadPlugin(const QString& name) {
-  QPluginLoader* loader = loaded_[name];
-  if (!loader) return;
+  auto iter = loaded_.find(name);
+  if (iter == loaded_.end()) return;
+  QPluginLoader* loader = iter.value();
+  Q_ASSERT(loader);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
     disconnect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
                plugin, SLOT(TimeUpdateListener()));
     plugin->Stop();
     loader->unload();
-    loaded_.remove(name);
+    loaded_.erase(iter);
   }
 }
 
