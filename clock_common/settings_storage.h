@@ -45,7 +45,7 @@ public:
    * @return option value
    * @note given @a default_value will be saved for internal usage
    */
-  QVariant GetValue(const QString& key, const QVariant& default_value = QVariant()) const;
+  QVariant GetValue(const QString& key, const QVariant& default_value = QVariant());
 
   /*!
    * @brief Remove @a key and all its child elements.

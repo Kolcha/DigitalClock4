@@ -189,6 +189,14 @@ void SettingsDialog::InitControls()
 
   // "Plugins" tab
   active_plugins_ = config_->GetValue(OPT_PLUGINS).toStringList();
+  for (int i = 0; i < ui->plugins_list->count(); i++) {
+    QListWidgetItem* item = ui->plugins_list->item(i);
+    PluginListItemWidget* widget = qobject_cast<PluginListItemWidget*>(ui->plugins_list->itemWidget(item));
+    Q_ASSERT(widget);
+    widget->blockSignals(true);
+    widget->SetChecked(active_plugins_.contains(widget->GetName()));
+    widget->blockSignals(false);
+  }
 
   this->blockSignals(false);
 }

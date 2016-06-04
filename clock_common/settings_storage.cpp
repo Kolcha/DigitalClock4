@@ -28,7 +28,7 @@ void SettingsStorage::SetValue(const QString& key, const QVariant& value)
   current_[key] = value;
 }
 
-QVariant SettingsStorage::GetValue(const QString& key, const QVariant& default_value) const
+QVariant SettingsStorage::GetValue(const QString& key, const QVariant& default_value)
 {
   auto c_iter = current_.find(key);
   if (c_iter != current_.end()) return c_iter.value();
@@ -38,7 +38,9 @@ QVariant SettingsStorage::GetValue(const QString& key, const QVariant& default_v
   auto i_iter = imported_.find(key);
   if (i_iter != imported_.end()) return i_iter.value();
 
-  return storage_.value(key, default_value);
+  QVariant value = storage_.value(key, default_value);
+  current_[key] = value;
+  return value;
 }
 
 void SettingsStorage::Remove(const QString& key)
