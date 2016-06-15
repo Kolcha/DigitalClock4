@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	1,0,1,13
+FILEVERSION	1,0,1,14
 PRODUCTVERSION	1,0,1,0
 FILEOS		0x4
 FILETYPE	0x2
@@ -11,7 +11,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Adds 'Always on top' menu item"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Win on Top hook library"
-		VALUE "FileVersion", "1.0.1.13"
+		VALUE "FileVersion", "1.0.1.14"
 		VALUE "InternalName", "win_on_top_hook.dll"
 		VALUE "LegalCopyright", "© 2014-2016 Nick Korotysh"
 		VALUE "OriginalFilename", "win_on_top_hook.dll"

@@ -14,3 +14,5 @@ desktop.ini
 .DS_Store
 *.dmg
 *.app/
+.vs
+*.VC.*
