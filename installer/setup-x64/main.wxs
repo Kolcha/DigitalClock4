@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Name="Digital Clock" Id="*" UpgradeCode="{64E0CE3B-F6E2-4CC9-ACD2-A24E812DF339}"
-    Language="1033" Codepage="1252" Version="4.4.5" Manufacturer="Nick Korotysh">
+    Language="1033" Codepage="1252" Version="4.4.6" Manufacturer="Nick Korotysh">
 
     <Package Id="*" Keywords="Installer" Platform="x64" Description="Digital Clock"
-      Comments="Digital Clock 4.4.5 x64 Installer" Manufacturer="Nick Korotysh"
+      Comments="Digital Clock 4.4.6 x64 Installer" Manufacturer="Nick Korotysh"
       InstallerVersion="405" InstallScope="perMachine" Compressed="yes" Languages="1033" SummaryCodepage="1252" />
 
     <Property Id="ARPCONTACT">mailto:nick.korotysh@gmail.com</Property>
@@ -21,7 +21,7 @@
 
     <Upgrade Id="{64E0CE3B-F6E2-4CC9-ACD2-A24E812DF339}">
       <UpgradeVersion
-        Minimum="4.4.0" Maximum="4.4.5"
+        Minimum="4.4.0" Maximum="4.4.6"
         Property="PREVIOUSVERSIONSINSTALLED"
         IncludeMinimum="yes" IncludeMaximum="yes" />
     </Upgrade>
@@ -50,10 +50,10 @@
     </Directory>
 
     <DirectoryRef Id="TARGETDIR">
-      <Merge Id="VCRedist" SourceFile="c:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC120_CRT_x64.msm" DiskId="1" Language="0" />
+      <Merge Id="VCRedist" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC140_CRT_x64.msm" DiskId="1" Language="0" />
     </DirectoryRef>
 
-    <Feature Id="VCRedist" Title="Visual C++ 12.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
+    <Feature Id="VCRedist" Title="Visual C++ 14.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
       <MergeRef Id="VCRedist" />
     </Feature>
 

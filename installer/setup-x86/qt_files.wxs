@@ -11,8 +11,8 @@
             <Component Id="cmp5DDCF0CE56D406D1B8B1F93E988AED6B" Directory="INSTALLDIR" Guid="{B855E2C1-3C96-4157-BA92-8CC9C45BCDC8}">
                 <File Id="fil0F4CD3729AF07C1C460E292E0F081D0A" KeyPath="yes" Source="..\..\..\Qt files x86\libEGL.dll" />
             </Component>
-            <Component Id="cmpB0CFEB9FF932521D6A75B6BE6F8D644F" Directory="INSTALLDIR" Guid="{A5623E34-B04D-4875-BFF4-0D10EEBDCDCE}">
-                <File Id="fil736048FE57EC840EA5DCE88625C38E8D" KeyPath="yes" Source="..\..\..\Qt files x86\libGLESv2.dll" />
+            <Component Id="cmp936F93A6D920FB403211F0AE426037A0" Directory="INSTALLDIR" Guid="{A5623E34-B04D-4875-BFF4-0D10EEBDCDCE}">
+                <File Id="filAF89F998C93BD10CB677322009EB192E" KeyPath="yes" Source="..\..\..\Qt files x86\libGLESv2.dll" />
             </Component>
             <Component Id="cmp01229088A6F1DEA1BE391E6E7CC3D3EE" Directory="INSTALLDIR" Guid="{4815B61D-69BC-4687-B2D5-ABCDBEB50F02}">
                 <File Id="filAD80F4724AAE3D8B0682F5982CC2548D" KeyPath="yes" Source="..\..\..\Qt files x86\Qt5Core.dll" />
@@ -121,6 +121,9 @@
             </Component>
             <Component Id="cmp2D105F39980CF93A40405E25755346BB" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{F1B59FEA-D186-4AD9-A374-BF5AF709E5FC}">
                 <File Id="fil17B2A1B774381BBA3BF85AF1FFB636AA" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_lv.qm" />
+            </Component>
+            <Component Id="cmpC3CB042567F53DD612D309E9CA2E10A6" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{27DDAD69-4630-4F79-BD47-993A5EAA8B9F}">
+                <File Id="filC674EE989D2B9719C388F537FC8EFFCF" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_pl.qm" />
             </Component>
             <Component Id="cmp43D57F897A909679308EFC03849D7E2E" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{808819E3-F4ED-4D7B-9E05-41F876AFC37C}">
                 <File Id="filADA551AF628F8CBA7E3D06EF76F2713A" KeyPath="yes" Source="..\..\..\Qt files x86\translations\qt_ru.qm" />

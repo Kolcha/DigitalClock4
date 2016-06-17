@@ -122,6 +122,9 @@
             <Component Id="cmp2D105F39980CF93A40405E25755346BB" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{D28205ED-7EE3-423D-8F0F-9EFECCF219CE}" Win64="yes">
                 <File Id="fil17B2A1B774381BBA3BF85AF1FFB636AA" KeyPath="yes" Source="..\..\..\Qt files x64\translations\qt_lv.qm" />
             </Component>
+            <Component Id="cmpC3CB042567F53DD612D309E9CA2E10A6" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{06630EB2-8D5A-4060-B849-E8A6741DDB5B}" Win64="yes">
+                <File Id="filC674EE989D2B9719C388F537FC8EFFCF" KeyPath="yes" Source="..\..\..\Qt files x64\translations\qt_pl.qm" />
+            </Component>
             <Component Id="cmp43D57F897A909679308EFC03849D7E2E" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{57253501-3F22-4D7C-92AA-C64C33E4634C}" Win64="yes">
                 <File Id="filADA551AF628F8CBA7E3D06EF76F2713A" KeyPath="yes" Source="..\..\..\Qt files x64\translations\qt_ru.qm" />
             </Component>
