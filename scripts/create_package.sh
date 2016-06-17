@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export QT_ROOT="$HOME/Qt/5.7/gcc_64"
+export QT_ROOT="$HOME/Qt/5.6/gcc_64"
 
 CLOCK_APP_NAME="Digital Clock 4"
 
@@ -27,7 +27,8 @@ mkdir "$build_dir"
 cd "$build_dir"
 
 $QT_ROOT/bin/qmake -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
-make -j4
+cores=`cat /proc/cpuinfo | grep "processor" | wc -l`
+make -j$cores
 [[ $? == 0 ]] || exit 1
 
 # create targer folder
