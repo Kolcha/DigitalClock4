@@ -1,3 +1,18 @@
+Whats new in 4.4.6:
+-------------------
+Core:
+ - compiled with Qt 5.7.0 (Windows/Mac)
+ - compiled with MSVC2015 (win installer)
+ - compiled with Qt 5.6.1 (Linux x64/Win portable)
+ - improved plugin load/unload
+
+GUI:
+ - changed icons color to make them visible on Win 10 taskbar
+
+Plugins:
+ - reimplemented 'schedule' plugin
+
+
 Whats new in 4.4.5:
 -------------------
 Core:
