@@ -46,6 +46,96 @@
             <Component Id="cmp7E46B18753B6D07AF6D71ABD1FC7346C" Directory="dir3AE53DBD152E3DC4B5BCD7BF7F372630" Guid="{B3504BFF-2C41-42F1-9A91-127A97C3EE6C}">
                 <File Id="fil3A3B5E7018434AADCA332ADFACE45083" KeyPath="yes" Source="..\..\..\data\skins\bin-clock\skin.ini" />
             </Component>
+            <Component Id="cmp72BFA96C0D08546C1D4CBBCF5A6B5A4B" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{2F373457-DB21-426A-8CE3-3DADC141F1E6}">
+                <File Id="fil020B43B739AC976310D402D23D35213E" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-am.png" />
+            </Component>
+            <Component Id="cmp8456F01835B1EA8FFD2450D623FEB8A7" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{8D2AC931-0A6A-42F4-8BC2-87B882389AE7}">
+                <File Id="fil48DE05479BE010DFC6216FB7D74AD6CF" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-dot.png" />
+            </Component>
+            <Component Id="cmpC05370E1B75E1EDEB04FA4D928050EC9" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{0C758528-657C-42AD-BB38-AE90344A74B4}">
+                <File Id="filBE886C5299F7717F54F3FBC961E2843F" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-empty.png" />
+            </Component>
+            <Component Id="cmpAA2342767A8C3DA1C4ECA10B64714541" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{19B04D02-B8C3-4033-9031-DDBEDB53E31B}">
+                <File Id="filB888465A400C429A50278D0A98DC314A" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-number-0.png" />
+            </Component>
+            <Component Id="cmp439A8626C737035F1B1230878BDD3D62" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{59B19170-FFF3-4B02-BE02-A004E3F4F550}">
+                <File Id="fil626E30652049767F191CB41B7111EE07" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-number-1.png" />
+            </Component>
+            <Component Id="cmp537509561969EE01BFA9B7814460CC47" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{70E875CF-7118-40E0-9CCC-4094325CB85E}">
+                <File Id="fil9234C9A42D9E32F2BE6520C7706426C4" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-number-2.png" />
+            </Component>
+            <Component Id="cmp47E95559F5E8328ED6E9D78F88821DC4" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{B416A6F8-95B2-4604-88E8-94B1B43AEBA5}">
+                <File Id="fil2FDC8F1552BE90A1230D37B1862C5B63" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-number-3.png" />
+            </Component>
+            <Component Id="cmpE469F87C6A6BBC2C1A507986073CE812" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{CC90D9E9-0281-443A-98B2-8DE8E0B0432E}">
+                <File Id="filE2C14E695CCDE2228CDAE82736131FCE" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-number-4.png" />
+            </Component>
+            <Component Id="cmp014975F2F64228EC45AD7CBEC1E4C8B2" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{552F5B7E-B8C6-4C5B-93EE-F83484011AFC}">
+                <File Id="fil23438A0D3F04D40B11AA4885FDC4B506" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-number-5.png" />
+            </Component>
+            <Component Id="cmpB724FFF91B1E6F91C303114A5652F2C1" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{1FCBCDC8-71AC-4877-B4B8-F9D2C4558C38}">
+                <File Id="fil2027F206B4157FA074192E9A36B658D3" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-number-6.png" />
+            </Component>
+            <Component Id="cmp94A9CFA35A8B7CEFD0123400FF1EC35C" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{B9C59956-AAFB-4F6F-8D89-DDC63D523B8E}">
+                <File Id="fil4D5D1A4B0F0087726C5772CD009E83A8" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-number-7.png" />
+            </Component>
+            <Component Id="cmpAB3F624BFFDD9954A632C72141CD7552" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{BDB1163F-3CEE-493A-BFE9-46396FC3EB0D}">
+                <File Id="fil7E716CE09B84405E4FB3A5EF7621935A" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-number-8.png" />
+            </Component>
+            <Component Id="cmp0E81E109725573D37BCEF820B853C3EF" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{04E87C5A-1CCF-4A26-A01F-A6B293D669D3}">
+                <File Id="filF2BEB27D26E7AEBB1B733A469C8E6238" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-number-9.png" />
+            </Component>
+            <Component Id="cmp35D002F437B6D924BE9BB229B46D33F4" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{1C2E54BF-E8CD-43AD-844E-837F402EB3BB}">
+                <File Id="fil7FA246CC256254B6378D6D589D1F6FD4" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\Creative-Christmas-Tree-pm.png" />
+            </Component>
+            <Component Id="cmpD17BF7128592DEF45E85C5F39E2377CD" Directory="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Guid="{B1E67511-640D-4325-8CF9-8B3A452719E0}">
+                <File Id="filFD432D6009E3BD55EA286B272B38C18E" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_b\skin.ini" />
+            </Component>
+            <Component Id="cmp55D42BA12088BC73AEB0242DC84FD690" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{CFFA030D-1710-49EC-8D6F-25EA5B800CF9}">
+                <File Id="filAC42CBF97AB2A45F2921441373B23F9B" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-am.png" />
+            </Component>
+            <Component Id="cmp4409767FC5DF441AC27F103F3A9DB72F" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{1FB004FE-A44A-469C-AAD4-6BB9779C1FAB}">
+                <File Id="fil3A785752A98937BE5A71BE26CD9ADF93" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-dot.png" />
+            </Component>
+            <Component Id="cmpBAD2F0FD942D9D999B4AF7285325317B" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{3EDEA218-8C14-40E4-8AD4-26A521F79F04}">
+                <File Id="fil87AB8DA7B06840A09D8E12554602A5D9" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-empty.png" />
+            </Component>
+            <Component Id="cmpF3B129759F809B8088D71CAD660FCBB7" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{619A869E-B368-4F9F-ADC2-C0E5DB9A4460}">
+                <File Id="fil5A0EC5A5F1A986485DAAF409A4A4B11D" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-number-0.png" />
+            </Component>
+            <Component Id="cmpEAA4074A76EAC0044E9EFC84DE9C3046" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{D941E137-4D7C-4E6A-B1E2-7A8DB7065FDF}">
+                <File Id="fil04897C7BFFE2DB1D6E8F6E77F44AB370" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-number-1.png" />
+            </Component>
+            <Component Id="cmp3D166C15BF3CE3213160A848A0A815A6" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{14A373BD-F68E-4967-BB90-B6924DC4D035}">
+                <File Id="filF1496D5A99836226971F39A04B143552" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-number-2.png" />
+            </Component>
+            <Component Id="cmpF1B4088E629386BF271CC11E70E85975" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{5C310129-01F7-4EB5-B5A9-CE75A23FD585}">
+                <File Id="fil44FA6F9EB9778E6CEDBCC55690A21E7A" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-number-3.png" />
+            </Component>
+            <Component Id="cmp245E11C740316050211962BD04C49883" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{869A8D5E-5522-46CC-977B-43DA8B7E12DF}">
+                <File Id="fil1EE3689DD53E3BE81927900B2C1260D1" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-number-4.png" />
+            </Component>
+            <Component Id="cmp70B6393C5D71911470351EC2F9D24FD5" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{A740AF99-8194-4E48-9635-2B3D51BBF9FB}">
+                <File Id="filB4C9C678D2FED439D05994643112FEFF" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-number-5.png" />
+            </Component>
+            <Component Id="cmpA3D035539CAADE8877A2936CA26CB6BC" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{F3890ED4-2AE2-4521-B0AA-31018E53BF56}">
+                <File Id="filD97CD2178D915A5E90DC887784C0FED2" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-number-6.png" />
+            </Component>
+            <Component Id="cmpE5E899CD70AD50715F3B7840B5EA7485" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{6328CAF2-4D0C-4E70-B0A6-28BC0FB43106}">
+                <File Id="fil47D9A6B81179F40F5DA931D75E81442B" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-number-7.png" />
+            </Component>
+            <Component Id="cmpC56E09F671B4276F11826F97F946FE3F" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{6B1DB024-F064-48A2-B3FF-4A7A1DD6F9DD}">
+                <File Id="filC5710631DFFE0BB9FF1DBE29CA5CD688" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-number-8.png" />
+            </Component>
+            <Component Id="cmp25DD19F5B893751E5C84ADD1E3784782" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{4F458574-77D0-4B92-9EC9-CDE54EFE075E}">
+                <File Id="fil3829DE0D5233F6E216F54EE1CD170A4D" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-number-9.png" />
+            </Component>
+            <Component Id="cmp50EA67225CC10C5CED36304CD8200C63" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{547B093D-B169-48F5-BE42-26FB8BF3BD8B}">
+                <File Id="fil675CA68F764240FADD0173FBB2CA2D1F" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\Creative-Christmas-Tree-pm.png" />
+            </Component>
+            <Component Id="cmp609D3F74BFC3B3DCEE0E3C6EFD130D8D" Directory="dir61051AD238C736D7DEC7C9DF6BA94903" Guid="{7EBD72D8-EB15-42B0-82BD-2CE35F021D9B}">
+                <File Id="fil98BBF1204F75D04CF669908875CEF7D8" KeyPath="yes" Source="..\..\..\data\skins\christmas_tree_r\skin.ini" />
+            </Component>
             <Component Id="cmpA078FCAB59113D55B5AD1442CB9DC190" Directory="dirD82BBC9C02D7F89B004744A961FBA364" Guid="{31C0D489-7845-4327-912F-1F2C7FD2BFAE}">
                 <File Id="fil22CC4900D7647CB759D90517FDB3D5D0" KeyPath="yes" Source="..\..\..\data\skins\comic\0.png" />
             </Component>
@@ -367,44 +457,44 @@
             <Component Id="cmp7FC7586E6EAAE4111709C50AFA670447" Directory="dir6250518AB78C0C3A53D324494C86EDF9" Guid="{1506DB24-A882-424E-BC11-77CF37DE37B1}">
                 <File Id="fil42D64FE8D937C89D1FD88124F8E559A5" KeyPath="yes" Source="..\..\..\data\skins\hearts-simple\skin.ini" />
             </Component>
-            <Component Id="cmp628D030CA3B5CCAF0006CD60C30984E9" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{165A3992-B712-4A6A-B084-04B0B3825FF9}">
-                <File Id="fil1D299DF459C0BF46A2FD0A6339026D73" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-0.png" />
+            <Component Id="cmpEABFBE364B8B4C1E33FE8B3A5C7B6F9E" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{A95B1B25-59FE-42B3-B843-88AF0CA010F6}">
+                <File Id="fil8A081FC08BF8C998576F0409C673B170" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\skin.ini" />
             </Component>
-            <Component Id="cmpC1DBD2657B48C25312C4B3757DD2971E" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{899A0E7D-FFA0-4242-99C4-9D15083A20D2}">
-                <File Id="fil7244EB7E84FEE94FABCB7ED58CCDDE08" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-1.png" />
+            <Component Id="cmp4400C91B5AF2803690B537B775CC22B2" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{F1D8FE98-FDE6-42CD-A130-746266EAF449}">
+                <File Id="fil5268524750233060EB55DBB8BC1E7881" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-0.png" />
             </Component>
-            <Component Id="cmp593BC979617C6C1167B30D50793D9CF6" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{5BCABC35-FBE5-4D70-8E61-267D91272815}">
-                <File Id="filB90EC1BB76ABA7758C832EE158671A57" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-2.png" />
+            <Component Id="cmpB41510C0057A38355351D889A56E4E90" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{A4897F23-590B-433F-A603-D03751BAE1AD}">
+                <File Id="fil6E0BFEFE875A3C575175EAB2BE0F97DE" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-1.png" />
             </Component>
-            <Component Id="cmp0CA59394D9F639A61CDA7DE667F33F25" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{4620074E-5022-464B-AFF8-3C467EC13A3B}">
-                <File Id="fil9FA2F5FBE552BC17EBD618742F843E39" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-3.png" />
+            <Component Id="cmp4CFB8BF864BD0F6293FD909845E67C7A" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{0B3CF2C1-7335-4F83-A3DB-3E0768BED229}">
+                <File Id="fil5AF3C0A53D6ABFE4744D83B6C15E4120" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-2.png" />
             </Component>
-            <Component Id="cmpE447A166EB6E91BD4A6C2FA99FC31601" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{0907B8DA-79C1-4116-8296-3630656B8471}">
-                <File Id="fil85E6CD6EAB607E72286615378D3AD52A" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-4.png" />
+            <Component Id="cmpCA779A7114E13132CADBAAA2DF028AF3" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{E202F3C3-178B-4F28-A645-D7D2BCB861EB}">
+                <File Id="filCC8C1307F3400A475898A4CAF8D69F21" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-3.png" />
             </Component>
-            <Component Id="cmp935DEA89485489F73C93FB332168B81F" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{91326748-5682-48A3-A513-A918D40DAE68}">
-                <File Id="fil6A1BEEED911720116AD245E9FEF7F60C" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-5.png" />
+            <Component Id="cmpFD7D2728E9E105E234ACC4534C35D244" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{8A7B15F0-19E4-417E-92A8-3FD21162A71B}">
+                <File Id="fil35F1706D0ABB9C4D52AD3E9FB2AE87A4" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-4.png" />
             </Component>
-            <Component Id="cmpDDEE57D6D3F7F1B432D47AAB1CC4CC85" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{D36AAE03-3BAA-4CF6-B32C-19BD8F52DEF5}">
-                <File Id="filA97552094232EFBC3FBE5830F3ED0B0E" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-6.png" />
+            <Component Id="cmpAA9F2FBD871FC13C5FBB6786E1C141FE" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{D3E1E9C6-ABCB-4ABE-BD73-DFEB21F1AF19}">
+                <File Id="fil66DCD982CE636FBC09C614992F28B604" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-5.png" />
             </Component>
-            <Component Id="cmp3B13F1DD3908B960E0AA689C149D20A1" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{3B21BFC3-0917-45F0-B101-1533E0AC99B3}">
-                <File Id="fil1BBB5B1D4711AC6ABD5E74997F85EAE9" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-7.png" />
+            <Component Id="cmpEF2E643197E03A0875D92E73664DA823" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{288E2738-8FC3-4617-9746-2050563C68B7}">
+                <File Id="filC1ED2ECDCC96A721059FCC3E2E523035" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-6.png" />
             </Component>
-            <Component Id="cmp0D049DB38CEDC69FE7D013ED31E72F8C" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{0A464E35-1067-492D-AFF7-A7A1B0BE6861}">
-                <File Id="fil62F1B927C33266470946EF7C89AFDDEE" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-8.png" />
+            <Component Id="cmp8572DD92001D5A50184B153730DB2310" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{3CBE0A78-9E50-45CB-BF7C-73815DEB1E54}">
+                <File Id="filC8F4288F356849E63A84EBF2A92F5264" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-7.png" />
             </Component>
-            <Component Id="cmp28E926D8E70823D863E5D4AAC68705C9" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{A5F304D5-915F-4AAF-82C2-21235E6BB15A}">
-                <File Id="fil7B3127BCC214105D1A8D8FBA87D9E407" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-9.png" />
+            <Component Id="cmpAB05B16C4BB123BAC00333133A15F7B3" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{04A08F7F-5B8A-417D-BB53-0057B7675048}">
+                <File Id="filCB5D106EC63B1B44432D01B92D4D450D" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-8.png" />
             </Component>
-            <Component Id="cmp6165C68209BECAE418A2597DB5C766A6" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{03649677-1CFE-441A-BF69-A991020DF267}">
-                <File Id="filC52F73398F3E21F6556D33F86BA11F9E" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-dot.png" />
+            <Component Id="cmp7D73EE3CC8C0C40B788C6D5B0DFEC937" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{A48BFA56-862A-4E06-A534-B6DDF2EF6E65}">
+                <File Id="fil928C75171CB3DB2E2082A040BED3A51D" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-9.png" />
             </Component>
-            <Component Id="cmp017BAA4AFECD94CB4CAC1DD4937E97AA" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{2981E647-580D-44DA-801F-F0F601DF5792}">
-                <File Id="fil06DE40D0E24FCD452D6D532CBD4411B0" KeyPath="yes" Source="..\..\..\data\skins\new_year\NY-empty.png" />
+            <Component Id="cmp8B76AE786DDBD32E368D0E38574B55BE" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{840B5001-544E-4847-B411-4422EED876D1}">
+                <File Id="fil48C2E5BCCD133C2A9BA7965559467789" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-dots.png" />
             </Component>
-            <Component Id="cmp22AB607A48A13BF3A6667A19AD13DF61" Directory="dir3DA07A840D6A4E29E119BF930E69FD25" Guid="{93678190-D89A-415C-ACA4-C03BACFDA67B}">
-                <File Id="fil93DAEFC34DA530E4DD9DEF6180A8E15A" KeyPath="yes" Source="..\..\..\data\skins\new_year\skin.ini" />
+            <Component Id="cmpFDDC2CC18DA56EEF01A2F41ABA8E02D9" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{F07F122A-9FFA-4E7B-9F78-57FB1E649AC4}">
+                <File Id="fil1E71C8D06BDA153D765084393CEB0EB0" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-empty.png" />
             </Component>
             <Component Id="cmpAFFD985498A870BE968140E7C070DADA" Directory="dir16DA5A7CF07BD03F2472E24FD1539B19" Guid="{0FF82F60-BB7E-424A-BE4A-DF8991410D24}">
                 <File Id="fil8A334B5560219770DDF5A6D1BDEBFB9F" KeyPath="yes" Source="..\..\..\data\skins\origami_style\0.png" />
@@ -535,6 +625,90 @@
             <Component Id="cmp4ED3A3C8C17A92438092D23F0B8350FB" Directory="dir772A8BDEFFFC1C26B73A21A59340048D" Guid="{257A8FD8-3FAD-4EB2-9C3D-1536D3EEE311}">
                 <File Id="fil902FE2243EFEBD97A4AE76EDD7C40239" KeyPath="yes" Source="..\..\..\data\skins\qsn_cp_clock_digital_new\skin.ini" />
             </Component>
+            <Component Id="cmp5F046307F1D44E4DC2D93B3F2272D2C7" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{DD01223E-B0BB-4CC8-9534-D4248BB0EF68}">
+                <File Id="filD9DB7C9CE01B2E0D8F9AA18C3B948C4A" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector [dots].svg" />
+            </Component>
+            <Component Id="cmp8EED6E590B792F73073D866102BC4A21" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{10BA7079-9118-4D44-9AD7-CC7E9F4EC70E}">
+                <File Id="filD22E10DFAC98AA0FE483CC027C7422D2" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector [space].svg" />
+            </Component>
+            <Component Id="cmp4616BD0A3C3AEF4E0DA257007C525F61" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{42E69E97-3660-49EF-86CC-9EC9C38A85F6}">
+                <File Id="filF2E86DF7845AACA25F4A50E28881A0A4" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector_524195.svg" />
+            </Component>
+            <Component Id="cmpAC3BC47DFD220AF22BFBB73A1C74EB73" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{1ECB785C-95C9-4CD5-8245-A0F1056B8D64}">
+                <File Id="fil4329B8A62B334403750C6EFD90DDF97E" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector_524196.svg" />
+            </Component>
+            <Component Id="cmp662EB4A38A9D0A7F515C6F2AE4DDB3BC" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{21861738-2F4A-4ABF-969D-C0ACE9C2CBB2}">
+                <File Id="filCAE2CB76532A086B013E05583D0D3FF0" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector_524197.svg" />
+            </Component>
+            <Component Id="cmp6DC30FE8863B52EEE18D3C77F2A8233D" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{81F93E87-9C18-42D8-815A-3552663F1A90}">
+                <File Id="fil3E893E25632B4500A00F5DC505B6C66A" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector_524198.svg" />
+            </Component>
+            <Component Id="cmp6595A55230D2AA46E4F8A3A0A4852867" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{CA1D7404-E619-4C20-AE75-74EE59A024D6}">
+                <File Id="fil7EFBF1D61CC7C2D1589013F74DFCAD21" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector_524199.svg" />
+            </Component>
+            <Component Id="cmpFADE3B6FAB006B7130FFACECDAFB06D4" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{3BD538E5-0D0F-46B1-AD03-A1D622FEF5F1}">
+                <File Id="fil893BE31E725C2EBCFAC8F9C1F938CC4E" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector_524200.svg" />
+            </Component>
+            <Component Id="cmpBBE4CE26A16878CB17BD8CFD4F6449A6" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{0DE9F80B-73F6-4EFC-B3D8-5136558298E8}">
+                <File Id="fil83878EC8D0ECC4BF7C75068393091426" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector_524201.svg" />
+            </Component>
+            <Component Id="cmp00046800617172ED1DD4D8AB5EFC649F" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{D0AADDFC-8758-4A40-BFCF-78C02F6D2B87}">
+                <File Id="fil2EF8D39B3B8FCCC69A68EA4CF110544E" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector_524202.svg" />
+            </Component>
+            <Component Id="cmp60055AD2BEDFDA54AFBC50E12A48545E" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{DEAAAF50-225C-4985-B0D9-2B7C6B5695F1}">
+                <File Id="fil0F35BD2C60262A4D843DEEADD2989867" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector_524203.svg" />
+            </Component>
+            <Component Id="cmpC8D9E3A1E523E0240DEAEC4C6DD44CBB" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{00C13D76-D19A-42E2-8EB2-7005E642F163}">
+                <File Id="filD61EF5DC2213EAD8B7A2E569A969F1E6" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\set_of_rainbow_numbers_elements_vector_524204.svg" />
+            </Component>
+            <Component Id="cmp26F9F93CF93D51FA8C01FA3E830D19AD" Directory="dirC17D44BF5B553B0D46EC927A9A939290" Guid="{6BEEB91F-0B14-44CE-842D-456655D8F8FE}">
+                <File Id="filA007B70288674149CC65997F4CD4B899" KeyPath="yes" Source="..\..\..\data\skins\rainbow_numbers\skin.ini" />
+            </Component>
+            <Component Id="cmpE58F4F9EA68D186515B6C8D08E419367" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{F190AA9F-EC01-499E-8C66-EF0221089273}">
+                <File Id="filDB43CABF0947B6CC9715C9A30E7A9006" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-27.svg" />
+            </Component>
+            <Component Id="cmpB183CC11AC41C6BDEA1C18A96C7C3A36" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{3A4D7A47-729B-4040-8E79-E2454DE9E90C}">
+                <File Id="filC6943D8F9008D7F18ADBC64BB8605D05" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-28.svg" />
+            </Component>
+            <Component Id="cmpE80A70021977D786A812FE66246C2C51" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{186D5313-E58E-4A31-B49C-B9499B505020}">
+                <File Id="fil55B13199AA9AF61F13D1FA3E75932950" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-29.svg" />
+            </Component>
+            <Component Id="cmp0EEC3F49D3F90A45E0C1AB542D0CFC69" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{BC01D9AA-5A5E-4039-857C-BA96373610ED}">
+                <File Id="fil75FEC53B8A5A8AFF0C8C8F376D9544AE" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-30.svg" />
+            </Component>
+            <Component Id="cmp6D92FAF75E6D7F9BD899C3DC7D7606E8" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{47AD5FEF-EAEB-4C00-BD0E-769E20256D58}">
+                <File Id="fil1BFC485C4B0308AFE45DBDA27EF03BD8" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-31.svg" />
+            </Component>
+            <Component Id="cmp4312856737CBB9614CB7158B9704112F" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{74D52D65-C9A3-4454-9CEB-021E0F76CAB2}">
+                <File Id="filC39EB4D161038B6C9D4119DB0DA3B8DA" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-32.svg" />
+            </Component>
+            <Component Id="cmpB200CDF217C162982345784C4E4186BA" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{98D66C8A-3DFB-4B24-8E2D-D304D1CB55B5}">
+                <File Id="fil15DC569A50E5B986A149205EF6279C72" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-33.svg" />
+            </Component>
+            <Component Id="cmp64B1CE3CC50AA77BB3A1DBF5CBAAA5B7" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{0C376FCD-690A-432B-A3A0-D1A51F24C4AA}">
+                <File Id="filCD7D8A037E747BDB369CEFF59661DBFB" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-34.svg" />
+            </Component>
+            <Component Id="cmpE21DDC9C9463EC5A7A58C6300045797C" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{21AA2236-0BD2-46CA-A011-31BCFAC34572}">
+                <File Id="filF52CE20B96DFB4BD00F2AD752EFB0C3B" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-35.svg" />
+            </Component>
+            <Component Id="cmpCD46F3AC496B316696BF74B128E5D714" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{BD406F55-44D5-4FF0-B6DB-C841828D9CE3}">
+                <File Id="fil131FB88F20B3AC3537628442C9A86397" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-36.svg" />
+            </Component>
+            <Component Id="cmp3E429C2A2C87D2B9155AB15CD64813D3" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{67847800-BE6B-4EB5-A914-199D6376055C}">
+                <File Id="fil4A79530989ABC803A4013E79103BE37D" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-am.svg" />
+            </Component>
+            <Component Id="cmp4B9245B3ECF8A0A3426F2A3E41F23F07" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{58BE2BFD-DA00-46FB-9163-16893A5517C4}">
+                <File Id="fil4B4CA678DA3452E0E21A0A801C375B6A" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-dot.svg" />
+            </Component>
+            <Component Id="cmp3777DCFAF56D1FDB6A5BAE6F31B14A6D" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{6408D6E5-4FD5-469A-858B-7B489E4ECDB2}">
+                <File Id="fil73D65007B186B4B66EB4876B1D1DAAAA" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-empty.svg" />
+            </Component>
+            <Component Id="cmpA5EFAD9A9A3086A6428EF28C10D0283F" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{3301CEBD-DA08-42F5-B680-B18AB0D4548D}">
+                <File Id="fil98FD5681ED64A778645019376EA00E80" KeyPath="yes" Source="..\..\..\data\skins\steel\Chrisdesign-Effect-Letters-alphabet-silver-pm.svg" />
+            </Component>
+            <Component Id="cmp0F473B7D5D5020C4CAA2B19A26B42E3E" Directory="dir92DE1A774C553DEE6D62FF2F2A494EB4" Guid="{980F15BF-6DF2-426F-9733-1ED9EF971EC1}">
+                <File Id="fil65E3DAACE946771ADCE3768201D6A665" KeyPath="yes" Source="..\..\..\data\skins\steel\skin.ini" />
+            </Component>
             <Component Id="cmp8DAD0AA4D6FF5E33D816266F65ADD145" Directory="dirCAA53B0510BF4553F6180D082CDB79A9" Guid="{9D1AD289-94E5-4F84-B7DA-1676B64FC7C2}">
                 <File Id="fil273852B3515D9D36B509B7D2C1140280" KeyPath="yes" Source="..\..\..\data\skins\vintage_digits\0.svg" />
             </Component>
@@ -609,12 +783,17 @@
     </Fragment>
     <Fragment>
         <DirectoryRef Id="dir72DB7679337FABB967BDFB270613AF8B">
-            <Directory Id="dir3DA07A840D6A4E29E119BF930E69FD25" Name="new_year" />
+            <Directory Id="dir46C4E3B8F8440B905FA804D53B6859D5" Name="hearts-empty" />
         </DirectoryRef>
     </Fragment>
     <Fragment>
         <DirectoryRef Id="dir72DB7679337FABB967BDFB270613AF8B">
-            <Directory Id="dir46C4E3B8F8440B905FA804D53B6859D5" Name="hearts-empty" />
+            <Directory Id="dir59F8140DD7416E3849C3683CE8B4AB7D" Name="liquid_numbers" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir72DB7679337FABB967BDFB270613AF8B">
+            <Directory Id="dir61051AD238C736D7DEC7C9DF6BA94903" Name="christmas_tree_r" />
         </DirectoryRef>
     </Fragment>
     <Fragment>
@@ -630,6 +809,21 @@
     <Fragment>
         <DirectoryRef Id="dir72DB7679337FABB967BDFB270613AF8B">
             <Directory Id="dir92B78AFF945B8B10D6452B26E8568834" Name="doodled-empty" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir72DB7679337FABB967BDFB270613AF8B">
+            <Directory Id="dir92DE1A774C553DEE6D62FF2F2A494EB4" Name="steel" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir72DB7679337FABB967BDFB270613AF8B">
+            <Directory Id="dirC17D44BF5B553B0D46EC927A9A939290" Name="rainbow_numbers" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir72DB7679337FABB967BDFB270613AF8B">
+            <Directory Id="dirC971AD4B6CD704ACAAD73D0670FDDB3A" Name="christmas_tree_b" />
         </DirectoryRef>
     </Fragment>
     <Fragment>
