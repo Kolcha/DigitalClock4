@@ -28,17 +28,12 @@ private slots:
   void on_str_type_button_toggled(bool checked);
   void on_int_type_box_currentIndexChanged(int index);
   void on_str_type_box_currentTextChanged(const QString& arg1);
-  void on_clock_font_button_toggled(bool checked);
-  void on_choose_font_button_clicked();
-  void on_not_zoom_clicked();
-  void on_font_autosize_clicked();
-  void on_clock_zoom_clicked();
 
 private:
   Ui::SettingsDialog* ui;
   QMap<Qt::DateFormat, QString> date_formats_;
-  QFont last_font_;
 };
 
 } // namespace date
+
 #endif // DATE_SETTINGS_DIALOG_H

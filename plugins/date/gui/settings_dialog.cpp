@@ -1,7 +1,7 @@
-#include <QFontDialog>
-#include "../date_settings.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
+
+#include "../date_settings.h"
 
 namespace date {
 
@@ -38,19 +38,6 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings) {
     if (iter.key() == OPT_DATE_FORMAT_STR) {
       ui->str_type_box->setCurrentText(iter.value().toString());
     }
-    if (iter.key() == OPT_USE_CLOCK_FONT) {
-      ui->clock_font_button->setChecked(iter.value().toBool());
-      ui->custom_font_button->setChecked(!iter.value().toBool());
-    }
-    if (iter.key() == OPT_DATE_FONT) {
-      last_font_ = iter.value().value<QFont>();
-    }
-    if (iter.key() == OPT_ZOOM_MODE) {
-      ZoomMode mode = (ZoomMode)(iter.value().toInt());
-      ui->not_zoom->setChecked(mode == ZoomMode::ZM_NOT_ZOOM);
-      ui->font_autosize->setChecked(mode == ZoomMode::ZM_AUTOSIZE);
-      ui->clock_zoom->setChecked(mode == ZoomMode::ZM_CLOCK_ZOOM);
-    }
   }
 }
 
@@ -68,31 +55,6 @@ void SettingsDialog::on_int_type_box_currentIndexChanged(int index) {
 
 void SettingsDialog::on_str_type_box_currentTextChanged(const QString& arg1) {
   emit OptionChanged(OPT_DATE_FORMAT_STR, arg1);
-}
-
-void SettingsDialog::on_clock_font_button_toggled(bool checked) {
-  emit OptionChanged(OPT_USE_CLOCK_FONT, checked);
-}
-
-void SettingsDialog::on_choose_font_button_clicked() {
-  bool ok = false;
-  QFont font = QFontDialog::getFont(&ok, last_font_, this);
-  if (ok) {
-    emit OptionChanged(OPT_DATE_FONT, font);
-    last_font_ = font;
-  }
-}
-
-void SettingsDialog::on_not_zoom_clicked() {
-  emit OptionChanged(OPT_ZOOM_MODE, (int)ZoomMode::ZM_NOT_ZOOM);
-}
-
-void SettingsDialog::on_font_autosize_clicked() {
-  emit OptionChanged(OPT_ZOOM_MODE, (int)ZoomMode::ZM_AUTOSIZE);
-}
-
-void SettingsDialog::on_clock_zoom_clicked() {
-  emit OptionChanged(OPT_ZOOM_MODE, (int)ZoomMode::ZM_CLOCK_ZOOM);
 }
 
 } // namespace date

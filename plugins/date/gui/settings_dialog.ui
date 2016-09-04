@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>297</width>
-    <height>228</height>
+    <width>308</width>
+    <height>137</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <property name="modal">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0" colspan="2">
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
     <widget class="QGroupBox" name="format_group">
      <property name="title">
       <string>Format</string>
@@ -121,93 +121,7 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QGroupBox" name="font_group">
-     <property name="title">
-      <string>Font</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QRadioButton" name="clock_font_button">
-        <property name="text">
-         <string>use clock font</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QRadioButton" name="custom_font_button">
-          <property name="text">
-           <string>custom</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="choose_font_button">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string notr="true">...</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>10</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QGroupBox" name="zoom_group">
-     <property name="title">
-      <string>Zoom</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QRadioButton" name="not_zoom">
-        <property name="text">
-         <string>do not zoom</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="font_autosize">
-        <property name="text">
-         <string>calculate font size</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="clock_zoom">
-        <property name="text">
-         <string>use clock zoom</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
+   <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -276,28 +190,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>64</x>
-     <y>63</y>
+     <x>80</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>110</x>
      <y>69</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>custom_font_button</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>choose_font_button</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>58</x>
-     <y>148</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>179</x>
-     <y>158</y>
     </hint>
    </hints>
   </connection>

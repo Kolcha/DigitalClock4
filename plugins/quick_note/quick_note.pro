@@ -10,12 +10,20 @@ include(../common.pri)
 
 TARGET = quick_note
 
-SOURCES += quick_note.cpp \
-    gui/message_widget.cpp
+SOURCES += \
+    quick_note_plugin.cpp \
+    gui/message_widget.cpp \
+    gui/settings_dialog.cpp
 
-HEADERS += quick_note.h \
+HEADERS += \
+    quick_note_plugin.h \
     quick_note_settings.h \
-    gui/message_widget.h
+    gui/message_widget.h \
+    gui/settings_dialog.h
+
+FORMS += \
+    gui/message_widget.ui \
+    gui/settings_dialog.ui
 
 TRANSLATIONS += \
     quick_note_ru.ts
@@ -28,12 +36,9 @@ OTHER_FILES += quick_note.json
 
 win32:RC_FILE = quick_note.rc
 
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../skin_draw/release/ -lskin_draw
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../skin_draw/debug/ -lskin_draw
-else:unix: LIBS += -L$$OUT_PWD/../../skin_draw/ -lskin_draw
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/release/ -lplugin_core
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/debug/ -lplugin_core
+else:unix: LIBS += -L$$OUT_PWD/../../plugin_core/ -lplugin_core
 
-INCLUDEPATH += $$PWD/../../skin_draw
-DEPENDPATH += $$PWD/../../skin_draw
-
-FORMS += \
-    gui/message_widget.ui
+INCLUDEPATH += $$PWD/../../plugin_core
+DEPENDPATH += $$PWD/../../plugin_core
