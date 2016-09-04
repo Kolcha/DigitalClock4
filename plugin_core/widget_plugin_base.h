@@ -25,14 +25,14 @@ class PLUGIN_CORE_SHARED_EXPORT WidgetPluginBase : public IClockPlugin,
 
 public:
     WidgetPluginBase();
-    void Init(const QMap<Option, QVariant>& current_settings);
-    void Init(QWidget* main_wnd);
+    virtual void Init(const QMap<Option, QVariant>& current_settings);
+    virtual void Init(QWidget* main_wnd);
 
 public slots:
-    void Start();
-    void Stop();
-    void SettingsListener(Option option, const QVariant& new_value);
-    void TimeUpdateListener();
+    virtual void Start();
+    virtual void Stop();
+    virtual void SettingsListener(Option option, const QVariant& new_value);
+    virtual void TimeUpdateListener();
 
 protected:
     virtual void InitSettingsDefaults(QSettings::SettingsMap* defaults);

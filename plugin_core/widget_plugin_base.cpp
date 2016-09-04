@@ -210,6 +210,21 @@ void WidgetPluginBase::TimeUpdateListener()
 
     int cur_avail_width = main_layout_->cellRect(0, 0).width();
 
+    switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE, plg_name_)).toInt())) {
+    case ZoomMode::ZM_NOT_ZOOM:
+        break;
+
+    case ZoomMode::ZM_AUTOSIZE:
+        plg_widget_->hide();
+        main_wnd_->adjustSize();
+        cur_avail_width = main_layout_->cellRect(0, 0).width();
+        plg_widget_->show();
+        break;
+
+    case ZoomMode::ZM_CLOCK_ZOOM:
+        break;
+    }
+
     QString cur_text = GetWidgetText();
 
     // optimization: redraw only if needed
@@ -284,7 +299,7 @@ void WidgetPluginBase::SettingsChangeListener(const QString& key, const QVariant
     if (key == OptionKey(OPT_USE_CLOCK_FONT, plg_name_)) {
         QString font_key = OptionKey(OPT_CUSTOM_FONT, plg_name_);
         SettingsChangeListener(font_key, value.toBool() ?
-                             clock_font_ : settings_->GetOption(font_key).value<QFont>());
+                                   clock_font_ : settings_->GetOption(font_key).value<QFont>());
     }
     if (key == OptionKey(OPT_CUSTOM_FONT, plg_name_)) {
         font_ = value.value<QFont>();
