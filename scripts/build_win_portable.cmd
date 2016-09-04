@@ -26,6 +26,7 @@ mkdir "%dst_path%"
 
 xcopy /y "clock_common\%variant%\clock_common.dll" "%dst_path%\"
 xcopy /y "digital_clock\%variant%\digital_clock.exe" "%dst_path%\"
+xcopy /y "plugin_core\%variant%\plugin_core.dll" "%dst_path%\"
 xcopy /y "skin_draw\%variant%\skin_draw.dll" "%dst_path%\"
 
 mkdir "%dst_path%\plugins"
@@ -42,6 +43,7 @@ set deploy_flags=--libdir . --plugindir "plugins" --no-system-d3d-compiler --no-
 
 windeployqt %deploy_flags% "clock_common.dll"
 windeployqt %deploy_flags% "digital_clock.exe"
+windeployqt %deploy_flags% "plugin_core.dll"
 windeployqt %deploy_flags% "skin_draw.dll"
 
 for %%f in ("plugins\*.dll") do (

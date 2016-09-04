@@ -15,6 +15,9 @@
       <Component Id="dll_lib2" Directory="INSTALLDIR" Guid="{142BF5F7-7860-48D9-B928-DFF543E9236E}" Win64="yes">
         <File Id="skin_draw.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_64bit-Release\skin_draw\release\skin_draw.dll" />
       </Component>
+      <Component Id="dll_lib3" Directory="INSTALLDIR" Guid="{0B0940BF-4A13-41D7-B94B-4F0477331DAD}" Win64="yes">
+        <File Id="plugin_core.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_64bit-Release\plugin_core\release\plugin_core.dll" />
+      </Component>
 
       <Component Id="plugin_dll01" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{CA061806-FCBF-400F-9528-9D3815371033}" Win64="yes">
         <File Id="alarm.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_64bit-Release\plugins\alarm\release\alarm.dll" />

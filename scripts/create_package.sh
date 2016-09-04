@@ -40,6 +40,7 @@ mkdir "$TARGET_APP_FOLDER"
 # copy all app files to target folder
 cp digital_clock/digital_clock "$TARGET_APP_FOLDER/"
 cp clock_common/libclock_common.so.1.1.1 "$TARGET_APP_FOLDER/libclock_common.so.1"
+cp plugin_core/libplugin_core.so.1.0.0 "$TARGET_APP_FOLDER/libplugin_core.so.1"
 cp skin_draw/libskin_draw.so.1.2.3 "$TARGET_APP_FOLDER/libskin_draw.so.1"
 [ -d "$TARGET_APP_FOLDER/plugins" ] || mkdir "$TARGET_APP_FOLDER/plugins"
 cd plugins
@@ -57,6 +58,7 @@ cd "$TARGET_APP_FOLDER"
 
 "$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "digital_clock"
 "$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "libclock_common.so.1"
+"$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "libplugin_core.so.1"
 "$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "libskin_draw.so.1"
 
 for i in $(ls -1 plugins)
