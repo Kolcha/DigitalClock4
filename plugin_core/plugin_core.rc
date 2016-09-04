@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	1,0,0,57
+FILEVERSION	1,0,0,59
 PRODUCTVERSION	4,4,6,0
 FILEOS		0x4
 FILETYPE	0x2
@@ -11,7 +11,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Digital Clock plugin core library"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Plugin Core Library"
-		VALUE "FileVersion", "1.0.0.57"
+		VALUE "FileVersion", "1.0.0.59"
 		VALUE "InternalName", "plugin_core.dll"
 		VALUE "LegalCopyright", "© 2016 Nick Korotysh"
 		VALUE "OriginalFilename", "plugin_core.dll"

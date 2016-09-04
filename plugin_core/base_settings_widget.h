@@ -5,6 +5,8 @@
 
 #include "widget_plugin_settings.h"
 
+class QTranslator;
+
 namespace plugin {
 
 namespace Ui {
@@ -35,6 +37,7 @@ private slots:
 private:
     Ui::BaseSettingsWidget *ui;
     QFont last_font_;
+    QTranslator* gui_translator_;
 };
 
 
