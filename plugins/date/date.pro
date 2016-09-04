@@ -10,10 +10,12 @@ include(../common.pri)
 
 TARGET = date
 
-SOURCES += date.cpp \
+SOURCES += \
+    date_plugin.cpp \
     gui/settings_dialog.cpp
 
-HEADERS += date.h \
+HEADERS += \
+    date_plugin.h \
     date_settings.h \
     gui/settings_dialog.h
 
@@ -31,9 +33,9 @@ OTHER_FILES += date.json
 
 win32:RC_FILE = date.rc
 
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../skin_draw/release/ -lskin_draw
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../skin_draw/debug/ -lskin_draw
-else:unix: LIBS += -L$$OUT_PWD/../../skin_draw/ -lskin_draw
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/release/ -lplugin_core
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/debug/ -lplugin_core
+else:unix: LIBS += -L$$OUT_PWD/../../plugin_core/ -lplugin_core
 
-INCLUDEPATH += $$PWD/../../skin_draw
-DEPENDPATH += $$PWD/../../skin_draw
+INCLUDEPATH += $$PWD/../../plugin_core
+DEPENDPATH += $$PWD/../../plugin_core

@@ -1,3 +1,4 @@
+QT += svg               # almost all plugins have SVG icon
 TEMPLATE = lib
 CONFIG += plugin
 
