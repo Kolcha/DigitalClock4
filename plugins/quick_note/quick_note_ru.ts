@@ -4,12 +4,12 @@
 <context>
     <name>quick_note::MessageWidget</name>
     <message>
-        <location filename="gui/message_widget.cpp" line="59"/>
+        <location filename="gui/message_widget.cpp" line="70"/>
         <source>Edit note</source>
         <translation>Редактировать</translation>
     </message>
     <message>
-        <location filename="gui/message_widget.cpp" line="59"/>
+        <location filename="gui/message_widget.cpp" line="70"/>
         <source>text:</source>
         <translation>текст:</translation>
     </message>
@@ -20,26 +20,29 @@
     </message>
 </context>
 <context>
-    <name>quick_note::QuickNote</name>
+    <name>quick_note::QuickNotePlugin</name>
     <message>
-        <location filename="quick_note.cpp" line="19"/>
+        <location filename="quick_note_plugin.cpp" line="17"/>
         <source>Quick note</source>
         <translation>Быстрая заметка</translation>
     </message>
     <message>
-        <location filename="quick_note.cpp" line="20"/>
+        <location filename="quick_note_plugin.cpp" line="18"/>
         <source>Allows to display any short message under clock.</source>
         <translation>Отображает короткое сообщение под часами.</translation>
     </message>
+</context>
+<context>
+    <name>quick_note::SettingsDialog</name>
     <message>
-        <location filename="quick_note.cpp" line="119"/>
-        <source>Quick note settings</source>
-        <translation>Заметка - настройки</translation>
+        <location filename="gui/settings_dialog.ui" line="14"/>
+        <source>Settings</source>
+        <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="quick_note.cpp" line="120"/>
-        <source>message:</source>
-        <translation>заметка:</translation>
+        <location filename="gui/settings_dialog.ui" line="23"/>
+        <source>Display edit button after note</source>
+        <translation>Отображать кнопку редактирования</translation>
     </message>
 </context>
 </TS>

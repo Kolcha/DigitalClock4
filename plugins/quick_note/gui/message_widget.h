@@ -18,14 +18,14 @@ public:
   explicit MessageWidget(QWidget *parent = 0);
   ~MessageWidget();
 
-  void ColorizeIcon(const QColor& color);
-
 signals:
   void textChanged(const QString& new_text);
+  void textEdited(const QString& new_text);
 
 public slots:
   void setText(const QString& new_text);
   void setPixmap(const QPixmap& img);
+  void setIconColor(const QColor& new_color);
 
   void ShowEditButton(bool show);
 
@@ -37,10 +37,13 @@ private slots:
   void on_edit_btn_clicked();
 
 private:
+  void ColorizeIcon(const QColor& color);
+
   Ui::MessageWidget *ui;
   QString curr_text_;
   QIcon edit_icon_;
   QPoint drag_position_;
+  QColor icon_color_;
 };
 
 }  // namespace quick_note
