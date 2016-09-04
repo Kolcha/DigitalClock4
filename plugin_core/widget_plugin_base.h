@@ -43,7 +43,10 @@ protected:
 
     QWidget* InitConfigWidget(QWidget* parent);
 
+    QSize GetImageSize(const QString& text, qreal zoom) const;
+
     QString plg_name_;
+    int avail_width_;
 
 private slots:
     void onBaseOptionChanged(const WidgetPluginOption opt, const QVariant& value);
@@ -51,14 +54,13 @@ private slots:
 
 private:
     void InitBaseSettingsDefaults(QSettings::SettingsMap* defaults);
-    qreal CalculateZoom(const QString& text) const;
+    virtual qreal CalculateZoom(const QString& text) const;
 
     QGridLayout* main_layout_;
     QWidget* main_wnd_;
     QPointer<QWidget> plg_widget_;
     QFont font_;
     QFont clock_font_;
-    int avail_width_;
     qreal clock_zoom_;
     QString last_text_;
     ::skin_draw::SkinDrawer* drawer_;

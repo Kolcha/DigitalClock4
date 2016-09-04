@@ -23,7 +23,7 @@ DatePlugin::DatePlugin() : msg_label_(nullptr)
 
 void DatePlugin::Configure()
 {
-    SettingsDialog* dialog = new ::date::SettingsDialog();
+    SettingsDialog* dialog = new SettingsDialog();
     // load current settings to dialog
     QSettings::SettingsMap curr_settings;
     InitDefaults(&curr_settings);

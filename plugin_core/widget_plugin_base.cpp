@@ -251,6 +251,27 @@ QWidget* WidgetPluginBase::InitConfigWidget(QWidget* parent)
     return cfg_widget;
 }
 
+QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
+{
+    QStringList ss = text.split('\n');
+    int tw = 0;
+    int th = 0;
+
+    skin_draw::TextSkin tmp_skin(font_);
+    for (auto& s : ss) {
+        int lw = 0;
+        int lh = 0;
+        for (int i = 0; i < s.length(); ++i) {
+            ::skin_draw::ISkin::QPixmapPtr img = tmp_skin.GetImage(s[i], zoom, true);
+            lw += img->width();
+            lh = qMax(lh, img->height());
+        }
+        tw = qMax(tw, lw);
+        th += lh;
+    }
+    return QSize(tw, th);
+}
+
 void WidgetPluginBase::onBaseOptionChanged(const WidgetPluginOption opt, const QVariant& value)
 {
     settings_->SetOption(OptionKey(opt, plg_name_), value);
@@ -302,38 +323,13 @@ void WidgetPluginBase::InitBaseSettingsDefaults(QSettings::SettingsMap *defaults
 
 qreal WidgetPluginBase::CalculateZoom(const QString& text) const
 {
-    QFontMetricsF fmf(font_);
-    QStringList ss = text.split('\n');
-    qreal tw = 0;
-    skin_draw::TextSkin tmp_skin(font_);
-    for (auto& s : ss) {
-        qreal lw = 0;
-        for (int i = 0; i < s.length(); ++i) {
-            lw += tmp_skin.GetImage(s[i], 1.0, true)->width();
-        }
-        tw = qMax(tw, lw);
-    }
-
+    qreal tw = GetImageSize(text, 1.0).width();
     qreal c_zoom = avail_width_ / tw;
-    int c_img_w = 0;
-    for (auto& s : ss) {
-        int lw = 0;
-        for (int i = 0; i < s.length(); ++i) {
-            lw += tmp_skin.GetImage(s[i], c_zoom, true)->width();
-        }
-        c_img_w = qMax(c_img_w, lw);
-    }
 
+    int c_img_w = GetImageSize(text, c_zoom).width();
     while (c_img_w > avail_width_) {
         c_zoom *= (1 - (0.5*(c_img_w - avail_width_)) / avail_width_);
-        c_img_w = 0;
-        for (auto& s : ss) {
-            int lw = 0;
-            for (int i = 0; i < s.length(); ++i) {
-                lw += tmp_skin.GetImage(s[i], c_zoom, true)->width();
-            }
-            c_img_w = qMax(c_img_w, lw);
-        }
+        c_img_w = GetImageSize(text, c_zoom).width();
     }
 
     return c_zoom;
