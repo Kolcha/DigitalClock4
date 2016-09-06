@@ -91,7 +91,7 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_STAY_ON_TOP:           return true;
     case OPT_TRANSP_FOR_INPUT:      return false;
     case OPT_SEPARATOR_FLASH:       return true;
-    case OPT_PLUGINS:               return QStringList("Test plugin");
+    case OPT_PLUGINS:               return QStringList();
     case OPT_TIME_FORMAT:           return QString();
     case OPT_ALIGNMENT:             return static_cast<int>(CAlignment::A_LEFT);
     case OPT_BACKGROUND_ENABLED:    return false;
