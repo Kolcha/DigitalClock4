@@ -35,6 +35,7 @@ QVariant SettingsStorage::GetValue(const QString& key, const QVariant& default_v
 
   if (isDeleted(key)) return default_value;
 
+  // TODO: remove. Is it really needed?
   auto i_iter = imported_.find(key);
   if (i_iter != imported_.end()) return i_iter.value();
 
@@ -100,7 +101,12 @@ void SettingsStorage::Revert(const QString& key)
       }
     }
   }
-  current_.remove(key);
+  auto i_iter = imported_.find(key);
+  if (i_iter != imported_.end()) {
+    current_[key] = i_iter.value();
+  } else {
+    current_.remove(key);
+  }
 }
 
 void SettingsStorage::Forget(const QString& key)
@@ -133,6 +139,7 @@ void SettingsStorage::Import(const QString& filename)
 void SettingsStorage::Accept()
 {
   for (auto& key : imported_.keys()) this->Commit(key);
+  imported_.clear();
 }
 
 void SettingsStorage::Reject()

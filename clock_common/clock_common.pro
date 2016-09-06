@@ -34,5 +34,5 @@ HEADERS += \
     settings_storage_wrapper.h
 
 win32:RC_FILE = clock_common.rc
-unix:VERSION = 1.1.1
+unix:VERSION = 1.1.2
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
