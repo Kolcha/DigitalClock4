@@ -6,7 +6,8 @@
 
 namespace tray_color {
 
-class TrayColor : public IClockPlugin, public ITrayPluginInit {
+class TrayColor : public IClockPlugin, public ITrayPluginInit
+{
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "tray_color.json")
   Q_INTERFACES(IClockPlugin ITrayPluginInit)

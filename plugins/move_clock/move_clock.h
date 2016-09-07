@@ -8,7 +8,8 @@
 
 namespace move_clock {
 
-class MoveClock : public IClockPlugin, public IWidgetPluginInit {
+class MoveClock : public IClockPlugin, public IWidgetPluginInit
+{
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "move_clock.json")
   Q_INTERFACES(IClockPlugin IWidgetPluginInit)

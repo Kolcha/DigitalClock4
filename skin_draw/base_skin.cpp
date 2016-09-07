@@ -10,7 +10,8 @@ BaseSkin::BaseSkin() : cached_zoom_(1.0)
   device_pixel_ratio_ = QGuiApplication::primaryScreen()->devicePixelRatio();
 }
 
-ISkin::QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache) {
+ISkin::QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache)
+{
   QPixmapPtr result;
   if (ch == '\n') {
     result = QPixmapPtr(new QPixmap());

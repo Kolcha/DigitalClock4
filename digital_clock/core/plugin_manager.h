@@ -36,7 +36,8 @@ struct TPluginData {
  * This class provides plugin management system. It loads/unloads plugins.
  * It distinguishes plugin types and int them with appropriate data.
  */
-class PluginManager : public QObject {
+class PluginManager : public QObject
+{
   Q_OBJECT
 
 public:

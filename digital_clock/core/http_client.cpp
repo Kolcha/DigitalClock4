@@ -15,11 +15,13 @@ HttpClient::HttpClient(QObject* parent) :
 {
 }
 
-HttpClient::~HttpClient() {
+HttpClient::~HttpClient()
+{
   if (is_running_) cancel();
 }
 
-void HttpClient::startRequest(QUrl url) {
+void HttpClient::startRequest(QUrl url)
+{
   url_ = url;
   is_running_ = true;
   QNetworkRequest req(url);
@@ -45,15 +47,18 @@ void HttpClient::startRequest(QUrl url) {
   connect(reply_, SIGNAL(readyRead()), this, SLOT(httpReadyRead()));
 }
 
-bool HttpClient::isRunning() const {
+bool HttpClient::isRunning() const
+{
   return is_running_;
 }
 
-void HttpClient::cancel() {
+void HttpClient::cancel()
+{
   if (is_running_) reply_->abort();
 }
 
-void HttpClient::httpFinished() {
+void HttpClient::httpFinished()
+{
   QVariant redirectionTarget = reply_->attribute(QNetworkRequest::RedirectionTargetAttribute);
   if (reply_->error()) {
     emit ErrorMessage(reply_->errorString());
@@ -74,7 +79,8 @@ void HttpClient::httpFinished() {
   is_running_ = false;
 }
 
-void HttpClient::httpReadyRead() {
+void HttpClient::httpReadyRead()
+{
   // this slot gets called every time the QNetworkReply has new data.
   if (reply_->attribute(QNetworkRequest::RedirectionTargetAttribute).isNull()) {
     emit DataDownloaded(reply_->readAll());

@@ -2,7 +2,7 @@
 
 #include "settings_storage.h"
 
-SettingsStorageWrapper::SettingsStorageWrapper(SettingsStorage* backend, QObject *parent) : QObject(parent)
+SettingsStorageWrapper::SettingsStorageWrapper(SettingsStorage* backend, QObject* parent) : QObject(parent)
 {
   backend_ = backend;
   connect(backend_, &SettingsStorage::reloaded, this, &SettingsStorageWrapper::Reject);

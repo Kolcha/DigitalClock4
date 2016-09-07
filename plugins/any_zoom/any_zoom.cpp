@@ -5,7 +5,8 @@
 
 namespace any_zoom {
 
-AnyZoom::AnyZoom() {
+AnyZoom::AnyZoom()
+{
   is_enabled_ = false;
   last_zoom_ = 1.0;
 
@@ -15,7 +16,8 @@ AnyZoom::AnyZoom() {
   InitIcon(":/any_zoom/icon.svg");
 }
 
-void AnyZoom::Init(const QMap<Option, QVariant>& current_settings) {
+void AnyZoom::Init(const QMap<Option, QVariant>& current_settings)
+{
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
@@ -24,17 +26,20 @@ void AnyZoom::Init(const QMap<Option, QVariant>& current_settings) {
   last_zoom_ = current_settings[OPT_ZOOM].toReal();
 }
 
-void AnyZoom::Start() {
+void AnyZoom::Start()
+{
   is_enabled_ = true;
   emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
 }
 
-void AnyZoom::Stop() {
+void AnyZoom::Stop()
+{
   is_enabled_ = false;
   emit OptionChanged(OPT_ZOOM, last_zoom_);
 }
 
-void AnyZoom::Configure() {
+void AnyZoom::Configure()
+{
   QInputDialog* settings_dlg = new QInputDialog();
   settings_dlg->setAttribute(Qt::WA_DeleteOnClose);
   settings_dlg->setModal(true);
@@ -54,18 +59,21 @@ void AnyZoom::Configure() {
   settings_dlg->show();
 }
 
-void AnyZoom::TrackChange(int new_zoom) {
+void AnyZoom::TrackChange(int new_zoom)
+{
   settings_->SetOption(OPT_CURRENT_ZOOM, new_zoom);
   if (is_enabled_) emit OptionChanged(OPT_ZOOM, new_zoom / 100.);
 }
 
-void AnyZoom::RevertSettings() {
+void AnyZoom::RevertSettings()
+{
   settings_->Load();
   if (is_enabled_)
     emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
 }
 
-void AnyZoom::SettingsListener(Option option, const QVariant& value) {
+void AnyZoom::SettingsListener(Option option, const QVariant& value)
+{
   if (option == OPT_ZOOM && is_enabled_) {
     // ignore zoom changes from other plugins (and own change too)
     QString sender_name = sender()->metaObject()->className();

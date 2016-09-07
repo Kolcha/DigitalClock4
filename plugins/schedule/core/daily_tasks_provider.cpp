@@ -2,7 +2,7 @@
 
 namespace schedule {
 
-DailyTasksProvider::DailyTasksProvider(QObject *parent)
+DailyTasksProvider::DailyTasksProvider(QObject* parent)
   : QAbstractTableModel(parent)
 {
 }
@@ -23,19 +23,19 @@ QVariant DailyTasksProvider::headerData(int section, Qt::Orientation orientation
   return QVariant();
 }
 
-int DailyTasksProvider::rowCount(const QModelIndex &parent) const
+int DailyTasksProvider::rowCount(const QModelIndex& parent) const
 {
   Q_UNUSED(parent);
   return tasks_.size();
 }
 
-int DailyTasksProvider::columnCount(const QModelIndex &parent) const
+int DailyTasksProvider::columnCount(const QModelIndex& parent) const
 {
   Q_UNUSED(parent);
   return 2;
 }
 
-QVariant DailyTasksProvider::data(const QModelIndex &index, int role) const
+QVariant DailyTasksProvider::data(const QModelIndex& index, int role) const
 {
   if (!index.isValid()) return QVariant();
 

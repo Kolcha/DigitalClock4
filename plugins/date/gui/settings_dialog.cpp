@@ -22,11 +22,13 @@ SettingsDialog::SettingsDialog(QWidget* parent) :
   }
 }
 
-SettingsDialog::~SettingsDialog() {
+SettingsDialog::~SettingsDialog()
+{
   delete ui;
 }
 
-void SettingsDialog::Init(const QSettings::SettingsMap& settings) {
+void SettingsDialog::Init(const QSettings::SettingsMap& settings)
+{
   for (auto iter = settings.constBegin(); iter != settings.constEnd(); ++iter) {
     if (iter.key() == OPT_DATE_FORMAT_TYPE) {
       ui->int_type_button->setChecked((FormatType)(iter.value().toInt()) == FormatType::FT_INT);
@@ -41,19 +43,23 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings) {
   }
 }
 
-void SettingsDialog::on_int_type_button_toggled(bool checked) {
+void SettingsDialog::on_int_type_button_toggled(bool checked)
+{
   if (checked) emit OptionChanged(OPT_DATE_FORMAT_TYPE, (int)FormatType::FT_INT);
 }
 
-void SettingsDialog::on_str_type_button_toggled(bool checked) {
+void SettingsDialog::on_str_type_button_toggled(bool checked)
+{
   if (checked) emit OptionChanged(OPT_DATE_FORMAT_TYPE, (int)FormatType::FT_STR);
 }
 
-void SettingsDialog::on_int_type_box_currentIndexChanged(int index) {
+void SettingsDialog::on_int_type_box_currentIndexChanged(int index)
+{
   emit OptionChanged(OPT_DATE_FORMAT_INT, ui->int_type_box->itemData(index));
 }
 
-void SettingsDialog::on_str_type_box_currentTextChanged(const QString& arg1) {
+void SettingsDialog::on_str_type_box_currentTextChanged(const QString& arg1)
+{
   emit OptionChanged(OPT_DATE_FORMAT_STR, arg1);
 }
 

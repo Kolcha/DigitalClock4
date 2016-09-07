@@ -11,7 +11,8 @@ namespace Ui {
 class PluginInfoDialog;
 }
 
-class PluginInfoDialog : public QDialog {
+class PluginInfoDialog : public QDialog
+{
   Q_OBJECT
 
 public:

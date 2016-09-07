@@ -14,11 +14,13 @@ PluginInfoDialog::PluginInfoDialog(QWidget* parent) :
   setWindowIcon(QIcon(":/clock/images/about.svg"));
 }
 
-PluginInfoDialog::~PluginInfoDialog() {
+PluginInfoDialog::~PluginInfoDialog()
+{
   delete ui;
 }
 
-void PluginInfoDialog::SetInfo(const TPluginInfo& info) {
+void PluginInfoDialog::SetInfo(const TPluginInfo& info)
+{
   ui->name_value->setText(info.gui_info.display_name);
   ui->version_value->setText(tr("version: %1").arg(info.metadata[PI_VERSION]));
   if (info.gui_info.icon.isNull()) ui->icon_label->hide();

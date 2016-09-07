@@ -7,7 +7,8 @@
 namespace digital_clock {
 namespace core {
 
-class TextSkin : public ::skin_draw::TextSkin, public BaseSkin {
+class TextSkin : public ::skin_draw::TextSkin, public BaseSkin
+{
 public:
   TextSkin(const QFont& font);
 

@@ -9,7 +9,8 @@
 namespace digital_clock {
 namespace core {
 
-class RasterSkin : public ::skin_draw::RasterSkin, public BaseSkin {
+class RasterSkin : public ::skin_draw::RasterSkin, public BaseSkin
+{
 public:
   RasterSkin(const QDir& skin_root);
 

@@ -32,15 +32,18 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent)
   preview_mode_ = false;
 }
 
-ClockDisplay* ClockWidget::GetDisplay() const {
+ClockDisplay* ClockWidget::GetDisplay() const
+{
   return display_;
 }
 
-void ClockWidget::ApplySkin(skin_draw::ISkin::SkinPtr skin) {
+void ClockWidget::ApplySkin(skin_draw::ISkin::SkinPtr skin)
+{
   drawer_->ApplySkin(skin);
 }
 
-void ClockWidget::ApplyOption(Option option, const QVariant& value) {
+void ClockWidget::ApplyOption(Option option, const QVariant& value)
+{
   switch (option) {
     case OPT_SEPARATOR_FLASH:
       display_->SetSeparatorFlash(value.toBool());
@@ -143,11 +146,13 @@ void ClockWidget::TimeoutHandler()
   display_->TimeoutHandler();
 }
 
-void ClockWidget::Update() {
+void ClockWidget::Update()
+{
   this->adjustSize();
 }
 
-void ClockWidget::DrawImage(const QImage& image) {
+void ClockWidget::DrawImage(const QImage& image)
+{
   if (colorize_enabled_) {
     QImage dst_image;
     colorize_image(image, dst_image, colorize_color_, colorize_level_);

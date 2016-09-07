@@ -10,7 +10,8 @@
 namespace digital_clock {
 namespace core {
 
-ClockSkinPtr CreateSkin(const QDir& skin_root) {
+ClockSkinPtr CreateSkin(const QDir& skin_root)
+{
   QStringList images = skin_root.entryList(QStringList("*.svg"), QDir::Files);
   bool skinini = skin_root.exists("skin.ini");
   ClockSkinPtr skin;
@@ -20,7 +21,8 @@ ClockSkinPtr CreateSkin(const QDir& skin_root) {
   return skin;
 }
 
-ClockSkinPtr CreateSkin(const QFont& font) {
+ClockSkinPtr CreateSkin(const QFont& font)
+{
   return ClockSkinPtr(new TextSkin(font));
 }
 
@@ -40,11 +42,13 @@ SkinManager::SkinManager(QObject* parent) : QObject(parent)
 #endif
 }
 
-ClockSkinPtr SkinManager::CurrentSkin() const {
+ClockSkinPtr SkinManager::CurrentSkin() const
+{
   return current_skin_;
 }
 
-void SkinManager::ListSkins() {
+void SkinManager::ListSkins()
+{
   skins_.clear();
   for (auto& s_path : search_paths_) {
     QDir s_dir(s_path);
@@ -60,7 +64,8 @@ void SkinManager::ListSkins() {
   emit SearchFinished(skins_.keys());
 }
 
-void SkinManager::LoadSkin(const QString& skin_name) {
+void SkinManager::LoadSkin(const QString& skin_name)
+{
   ClockSkinPtr skin;
   if (skin_name == "Text Skin") {
     skin = CreateSkin(font_);
@@ -80,18 +85,21 @@ void SkinManager::LoadSkin(const QString& skin_name) {
   emit SkinInfoLoaded(info);
 }
 
-void SkinManager::SetFont(const QFont& font) {
+void SkinManager::SetFont(const QFont& font)
+{
   font_ = font;
   // update text skin if needed
   if (current_skin_.dynamicCast<TextSkin>()) LoadSkin("Text Skin");
 }
 
-void SkinManager::SetSeparators(const QString& seps) {
+void SkinManager::SetSeparators(const QString& seps)
+{
   seps_ = seps;
   if (current_skin_) current_skin_->SetSeparators(seps);
 }
 
-void SkinManager::SetFallbackSkin(const QString& skin_name) {
+void SkinManager::SetFallbackSkin(const QString& skin_name)
+{
   fallback_skin_ = skin_name;
 }
 

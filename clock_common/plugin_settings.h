@@ -19,7 +19,8 @@ class SettingsStorage;
  * This class can notify about value change emitting signal PluginSettings::OptionChanged().
  * This feature is disabled by default, to enable it see PluginSettings::TrackChanges().
  */
-class CLOCK_COMMON_EXPORT PluginSettings : public QObject {
+class CLOCK_COMMON_EXPORT PluginSettings : public QObject
+{
   Q_OBJECT
 
 public:

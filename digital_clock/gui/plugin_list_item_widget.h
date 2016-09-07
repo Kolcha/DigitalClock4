@@ -11,7 +11,8 @@ namespace Ui {
 class PluginListItemWidget;
 }
 
-class PluginListItemWidget : public QWidget {
+class PluginListItemWidget : public QWidget
+{
   Q_OBJECT
 
 public:

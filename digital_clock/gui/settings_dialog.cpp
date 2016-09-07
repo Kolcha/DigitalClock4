@@ -61,11 +61,13 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* st
   connect(ui->check_upd_now_btn, SIGNAL(clicked(bool)), this, SIGNAL(CheckForUpdates()));
 }
 
-SettingsDialog::~SettingsDialog() {
+SettingsDialog::~SettingsDialog()
+{
   delete ui;
 }
 
-void SettingsDialog::SetSkinList(const QStringList& skins) {
+void SettingsDialog::SetSkinList(const QStringList& skins)
+{
   this->blockSignals(true);
   ui->skin_box->clear();
   ui->skin_box->addItems(skins);
@@ -73,7 +75,8 @@ void SettingsDialog::SetSkinList(const QStringList& skins) {
   this->blockSignals(false);
 }
 
-void SettingsDialog::DisplaySkinInfo(const core::BaseSkin::TSkinInfo& info) {
+void SettingsDialog::DisplaySkinInfo(const core::BaseSkin::TSkinInfo& info)
+{
   using core::BaseSkin;
   if (info[BaseSkin::SI_NAME] == "Text Skin") return;
   BaseSkin::TSkinInfo l_info = info;
@@ -84,7 +87,8 @@ void SettingsDialog::DisplaySkinInfo(const core::BaseSkin::TSkinInfo& info) {
   ui->skin_box->setToolTip(l_info[BaseSkin::SI_COMMENT]);
 }
 
-void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins) {
+void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins)
+{
   ui->plugins_list->clear();
   for (auto& plugin : plugins) {
     QListWidgetItem* item = new QListWidgetItem();
@@ -104,7 +108,8 @@ void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plug
   }
 }
 
-void SettingsDialog::showEvent(QShowEvent* e) {
+void SettingsDialog::showEvent(QShowEvent* e)
+{
   QDialog::showEvent(e);
   LoadState();
 }
@@ -202,7 +207,8 @@ void SettingsDialog::InitControls()
   this->blockSignals(false);
 }
 
-void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
+void SettingsDialog::ChangePluginState(const QString& name, bool activated)
+{
   if (activated)
     active_plugins_.append(name);
   else
@@ -210,51 +216,62 @@ void SettingsDialog::ChangePluginState(const QString& name, bool activated) {
   emit OptionChanged(OPT_PLUGINS, active_plugins_);
 }
 
-void SettingsDialog::SaveState() {
+void SettingsDialog::SaveState()
+{
   state_->SetVariable(S_OPT_LAST_TIME_FORMAT_KEY, ui->format_box->currentText());
   state_->SetVariable(S_OPT_GEOMETRY_KEY, saveGeometry());
 }
 
-void SettingsDialog::LoadState() {
+void SettingsDialog::LoadState()
+{
   QVariant last_format = state_->GetVariable(S_OPT_LAST_TIME_FORMAT_KEY);
   if (last_format.isValid()) ui->format_box->setCurrentText(last_format.toString());
   QVariant last_geometry = state_->GetVariable(S_OPT_GEOMETRY_KEY);
   if (last_geometry.isValid()) restoreGeometry(last_geometry.toByteArray());
 }
 
-void SettingsDialog::on_stay_on_top_toggled(bool checked) {
+void SettingsDialog::on_stay_on_top_toggled(bool checked)
+{
   emit OptionChanged(OPT_STAY_ON_TOP, checked);
 }
 
-void SettingsDialog::on_transp_for_input_toggled(bool checked) {
+void SettingsDialog::on_transp_for_input_toggled(bool checked)
+{
   emit OptionChanged(OPT_TRANSP_FOR_INPUT, checked);
 }
 
-void SettingsDialog::on_sep_flash_toggled(bool checked) {
+void SettingsDialog::on_sep_flash_toggled(bool checked)
+{
   emit OptionChanged(OPT_SEPARATOR_FLASH, checked);
 }
 
-void SettingsDialog::on_opacity_slider_valueChanged(int value) {
+void SettingsDialog::on_opacity_slider_valueChanged(int value)
+{
   emit OptionChanged(OPT_OPACITY, value / 100.);
 }
 
-void SettingsDialog::on_zoom_slider_valueChanged(int value) {
+void SettingsDialog::on_zoom_slider_valueChanged(int value)
+{
   emit OptionChanged(OPT_ZOOM, value / 100.);
 }
 
-void SettingsDialog::on_txd_per_elem_toggled(bool checked) {
+void SettingsDialog::on_txd_per_elem_toggled(bool checked)
+{
   emit OptionChanged(OPT_TEXTURE_PER_ELEMENT, checked);
 }
 
-void SettingsDialog::on_mode_stretch_toggled(bool checked) {
+void SettingsDialog::on_mode_stretch_toggled(bool checked)
+{
   if (checked) emit OptionChanged(OPT_TEXTURE_DRAW_MODE, SkinDrawer::DM_STRETCH);
 }
 
-void SettingsDialog::on_mode_tile_toggled(bool checked) {
+void SettingsDialog::on_mode_tile_toggled(bool checked)
+{
   if (checked) emit OptionChanged(OPT_TEXTURE_DRAW_MODE, SkinDrawer::DM_TILE);
 }
 
-void SettingsDialog::on_sel_color_btn_clicked() {
+void SettingsDialog::on_sel_color_btn_clicked()
+{
   QColor color = QColorDialog::getColor(last_color_, this);
   if (color.isValid()) {
     emit OptionChanged(OPT_COLOR, color);
@@ -262,7 +279,8 @@ void SettingsDialog::on_sel_color_btn_clicked() {
   }
 }
 
-void SettingsDialog::on_sel_image_btn_clicked() {
+void SettingsDialog::on_sel_image_btn_clicked()
+{
   QString texture = QFileDialog::getOpenFileName(this, tr("Open texture file"),
                     last_txd_path_,
                     tr("Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)"));
@@ -275,27 +293,33 @@ void SettingsDialog::on_sel_image_btn_clicked() {
   }
 }
 
-void SettingsDialog::on_type_color_toggled(bool checked) {
+void SettingsDialog::on_type_color_toggled(bool checked)
+{
   if (checked) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_COLOR);
 }
 
-void SettingsDialog::on_type_image_toggled(bool checked) {
+void SettingsDialog::on_type_image_toggled(bool checked)
+{
   if (checked) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_TEXTURE);
 }
 
-void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1) {
+void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1)
+{
   if (!arg1.isEmpty()) emit OptionChanged(OPT_SKIN_NAME, arg1);
 }
 
-void SettingsDialog::on_use_skin_toggled(bool checked) {
+void SettingsDialog::on_use_skin_toggled(bool checked)
+{
   if (checked) emit OptionChanged(OPT_SKIN_NAME, ui->skin_box->currentText());
 }
 
-void SettingsDialog::on_use_font_toggled(bool checked) {
+void SettingsDialog::on_use_font_toggled(bool checked)
+{
   if (checked) emit OptionChanged(OPT_SKIN_NAME, "Text Skin");
 }
 
-void SettingsDialog::on_sel_font_btn_clicked() {
+void SettingsDialog::on_sel_font_btn_clicked()
+{
   bool ok = false;
   QFont font = QFontDialog::getFont(&ok, last_font_, this);
   if (ok) {
@@ -304,11 +328,13 @@ void SettingsDialog::on_sel_font_btn_clicked() {
   }
 }
 
-void SettingsDialog::on_apply_btn_clicked() {
+void SettingsDialog::on_apply_btn_clicked()
+{
   emit OptionChanged(OPT_TIME_FORMAT, ui->format_box->currentText());
 }
 
-void SettingsDialog::on_system_format_clicked() {
+void SettingsDialog::on_system_format_clicked()
+{
   emit OptionChanged(OPT_TIME_FORMAT, QString());
 }
 
@@ -317,31 +343,37 @@ void SettingsDialog::on_custom_format_clicked()
   emit OptionChanged(OPT_TIME_FORMAT, ui->format_box->currentText());
 }
 
-void SettingsDialog::on_enable_autoupdate_toggled(bool checked) {
+void SettingsDialog::on_enable_autoupdate_toggled(bool checked)
+{
   emit OptionChanged(OPT_USE_AUTOUPDATE, checked);
 }
 
-void SettingsDialog::on_update_period_box_currentIndexChanged(int index) {
+void SettingsDialog::on_update_period_box_currentIndexChanged(int index)
+{
   emit OptionChanged(OPT_UPDATE_PERIOD, ui->update_period_box->itemData(index));
 }
 
-void SettingsDialog::on_check_for_beta_toggled(bool checked) {
+void SettingsDialog::on_check_for_beta_toggled(bool checked)
+{
   emit OptionChanged(OPT_CHECK_FOR_BETA, checked);
 }
 
-void SettingsDialog::on_space_slider_valueChanged(int arg1) {
+void SettingsDialog::on_space_slider_valueChanged(int arg1)
+{
   ui->space_slider->setToolTip(QString::number(arg1));
   emit OptionChanged(OPT_SPACING, arg1);
 }
 
-void SettingsDialog::on_export_btn_clicked() {
+void SettingsDialog::on_export_btn_clicked()
+{
   QString filename = QFileDialog::getSaveFileName(this, tr("Export settings to ..."),
                      QDir::home().absoluteFilePath("clock_settings.dcs"),
                      tr("Digital Clock settings files (*.dcs)"));
   if (!filename.isEmpty()) emit ExportSettings(filename);
 }
 
-void SettingsDialog::on_import_btn_clicked() {
+void SettingsDialog::on_import_btn_clicked()
+{
   QString filename = QFileDialog::getOpenFileName(this, tr("Import settings from ..."),
                      QDir::home().absoluteFilePath("clock_settings.dcs"),
                      tr("Digital Clock settings files (*.dcs)"));
@@ -351,13 +383,15 @@ void SettingsDialog::on_import_btn_clicked() {
 } // namespace gui
 } // namespace digital_clock
 
-void digital_clock::gui::SettingsDialog::on_cust_none_toggled(bool checked) {
+void digital_clock::gui::SettingsDialog::on_cust_none_toggled(bool checked)
+{
   if (!checked) return;
   ui->image_group->setDisabled(true);
   emit OptionChanged(OPT_CUSTOMIZATION, static_cast<int>(Customization::C_NONE));
 }
 
-void digital_clock::gui::SettingsDialog::on_cust_texturing_toggled(bool checked) {
+void digital_clock::gui::SettingsDialog::on_cust_texturing_toggled(bool checked)
+{
   if (checked) {
     emit OptionChanged(OPT_CUSTOMIZATION, static_cast<int>(Customization::C_TEXTURING));
     if (ui->type_color->isChecked()) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_COLOR);
@@ -368,13 +402,15 @@ void digital_clock::gui::SettingsDialog::on_cust_texturing_toggled(bool checked)
   }
 }
 
-void digital_clock::gui::SettingsDialog::on_cust_colorize_toggled(bool checked) {
+void digital_clock::gui::SettingsDialog::on_cust_colorize_toggled(bool checked)
+{
   if (!checked) return;
   ui->image_group->setDisabled(true);
   emit OptionChanged(OPT_CUSTOMIZATION, static_cast<int>(Customization::C_COLORIZE));
 }
 
-void digital_clock::gui::SettingsDialog::on_img_color_btn_clicked() {
+void digital_clock::gui::SettingsDialog::on_img_color_btn_clicked()
+{
   QColor color = QColorDialog::getColor(last_colorize_color_, this);
   if (color.isValid()) {
     ui->img_color_btn->setColor(color);
@@ -383,15 +419,18 @@ void digital_clock::gui::SettingsDialog::on_img_color_btn_clicked() {
   }
 }
 
-void digital_clock::gui::SettingsDialog::on_level_slider_valueChanged(int value) {
+void digital_clock::gui::SettingsDialog::on_level_slider_valueChanged(int value)
+{
   emit OptionChanged(OPT_COLORIZE_LEVEL, value / 100.);
 }
 
-void digital_clock::gui::SettingsDialog::on_align_left_rbtn_toggled(bool checked) {
+void digital_clock::gui::SettingsDialog::on_align_left_rbtn_toggled(bool checked)
+{
   if (checked) emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(CAlignment::A_LEFT));
 }
 
-void digital_clock::gui::SettingsDialog::on_align_right_rbtn_toggled(bool checked) {
+void digital_clock::gui::SettingsDialog::on_align_right_rbtn_toggled(bool checked)
+{
   if (checked) emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(CAlignment::A_RIGHT));
 }
 
@@ -415,7 +454,7 @@ void digital_clock::gui::SettingsDialog::on_clock_url_enabled_toggled(bool check
   emit OptionChanged(OPT_CLOCK_URL_ENABLED, checked);
 }
 
-void digital_clock::gui::SettingsDialog::on_clock_url_edit_textChanged(const QString &arg1)
+void digital_clock::gui::SettingsDialog::on_clock_url_edit_textChanged(const QString& arg1)
 {
   emit OptionChanged(OPT_CLOCK_URL_STRING, arg1);
 }

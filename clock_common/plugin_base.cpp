@@ -11,11 +11,13 @@ PluginBase::PluginBase() : settings_(0), translator_(0)
 {
 }
 
-PluginBase::~PluginBase() {
+PluginBase::~PluginBase()
+{
   if (translator_) QApplication::removeTranslator(translator_);
 }
 
-const TPluginGUIInfo& PluginBase::GetInfo() const {
+const TPluginGUIInfo& PluginBase::GetInfo() const
+{
   return info_;
 }
 
@@ -25,7 +27,8 @@ void PluginBase::InitSettings(SettingsStorage* backend)
   settings_ = new PluginSettings(backend, this);
 }
 
-void PluginBase::InitTranslator(const QLatin1String& prefix) {
+void PluginBase::InitTranslator(const QLatin1String& prefix)
+{
   translator_ = new QTranslator(this);
   QStringList ui_languages = QLocale::system().uiLanguages();
   foreach (QString locale, ui_languages) {
@@ -39,14 +42,15 @@ void PluginBase::InitTranslator(const QLatin1String& prefix) {
     } else if (locale.startsWith(QLatin1String("en")) /* "English" is built-in */) {
       // use built-in
       break;
-    } else if (locale.contains("ua", Qt::CaseInsensitive)) /* Ukrainian, use russian */ {
+    } else if (locale.contains("ua", Qt::CaseInsensitive)) { /* Ukrainian, use russian */
       if (translator_->load(prefix + "ru")) QApplication::installTranslator(translator_);
       break;
     }
   }
 }
 
-void PluginBase::InitIcon(const QString& file_path) {
+void PluginBase::InitIcon(const QString& file_path)
+{
   QIcon ico(file_path);
   info_.icon = ico.pixmap(48);
 }

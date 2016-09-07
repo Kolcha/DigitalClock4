@@ -13,7 +13,7 @@ class TasksStorage : public SettingsStorageWrapper
 {
   Q_OBJECT
 public:
-  explicit TasksStorage(SettingsStorage* backend, QObject *parent = 0);
+  explicit TasksStorage(SettingsStorage* backend, QObject* parent = 0);
 
 signals:
   void datesLoaded(const QList<QDate>& dates);

@@ -16,7 +16,7 @@
 namespace digital_clock {
 namespace core {
 
-PluginManager::PluginManager(QObject *parent) : QObject(parent)
+PluginManager::PluginManager(QObject* parent) : QObject(parent)
 {
 #ifdef Q_OS_OSX
   search_paths_.append(qApp->applicationDirPath() + "/../PlugIns");
@@ -30,11 +30,13 @@ PluginManager::PluginManager(QObject *parent) : QObject(parent)
 #endif
 }
 
-void PluginManager::SetInitData(const TPluginData& data) {
+void PluginManager::SetInitData(const TPluginData& data)
+{
   data_ = data;
 }
 
-void PluginManager::ListAvailable() {
+void PluginManager::ListAvailable()
+{
   available_.clear();
   QList<QPair<TPluginInfo, bool> > plugins;
   for (auto& path : search_paths_) {
@@ -67,11 +69,13 @@ void PluginManager::ListAvailable() {
   emit SearchFinished(plugins);
 }
 
-void PluginManager::LoadPlugins(const QStringList& names) {
+void PluginManager::LoadPlugins(const QStringList& names)
+{
   for (auto& name : names) LoadPlugin(name);
 }
 
-void PluginManager::UnloadPlugins(const QStringList& names) {
+void PluginManager::UnloadPlugins(const QStringList& names)
+{
   if (!names.isEmpty()) {
     for (auto& name : names) UnloadPlugin(name);
   } else {
@@ -84,11 +88,13 @@ void PluginManager::UnloadPlugins(const QStringList& names) {
   }
 }
 
-void PluginManager::EnablePlugin(const QString& name, bool enable) {
+void PluginManager::EnablePlugin(const QString& name, bool enable)
+{
   enable ? LoadPlugin(name) : UnloadPlugin(name);
 }
 
-void PluginManager::ConfigurePlugin(const QString& name) {
+void PluginManager::ConfigurePlugin(const QString& name)
+{
   auto iter = loaded_.find(name);
   if (iter != loaded_.end()) {
     IClockPlugin* plugin = qobject_cast<IClockPlugin*>(iter.value()->instance());
@@ -114,7 +120,8 @@ void PluginManager::ConfigurePlugin(const QString& name) {
   }
 }
 
-void PluginManager::LoadPlugin(const QString& name) {
+void PluginManager::LoadPlugin(const QString& name)
+{
   if (loaded_.contains(name)) return;
   QString file = available_[name];
   if (!QFile::exists(file)) return;
@@ -131,7 +138,8 @@ void PluginManager::LoadPlugin(const QString& name) {
   }
 }
 
-void PluginManager::UnloadPlugin(const QString& name) {
+void PluginManager::UnloadPlugin(const QString& name)
+{
   auto iter = loaded_.find(name);
   if (iter == loaded_.end()) return;
   QPluginLoader* loader = iter.value();
@@ -146,7 +154,8 @@ void PluginManager::UnloadPlugin(const QString& name) {
   }
 }
 
-void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected) {
+void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
+{
   // connect slots which are common for all plugins
   if (connected) {
     connect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),

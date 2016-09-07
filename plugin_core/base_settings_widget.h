@@ -15,31 +15,30 @@ class BaseSettingsWidget;
 
 class BaseSettingsWidget : public QWidget
 {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    explicit BaseSettingsWidget(QWidget *parent = 0);
-    ~BaseSettingsWidget();
+  explicit BaseSettingsWidget(QWidget* parent = 0);
+  ~BaseSettingsWidget();
 
-    void InitWidgets(const QMap<WidgetPluginOption, QVariant>& cur_values);
+  void InitWidgets(const QMap<WidgetPluginOption, QVariant>& cur_values);
 
 signals:
-    void OptionChanged(const WidgetPluginOption, const QVariant&);
+  void OptionChanged(const WidgetPluginOption, const QVariant&);
 
 private slots:
-    void on_clock_font_button_toggled(bool checked);
-    void on_choose_font_button_clicked();
+  void on_clock_font_button_toggled(bool checked);
+  void on_choose_font_button_clicked();
 
-    void on_not_zoom_clicked();
-    void on_font_autosize_clicked();
-    void on_clock_zoom_clicked();
+  void on_not_zoom_clicked();
+  void on_font_autosize_clicked();
+  void on_clock_zoom_clicked();
 
 private:
-    Ui::BaseSettingsWidget *ui;
-    QFont last_font_;
-    QTranslator* gui_translator_;
+  Ui::BaseSettingsWidget* ui;
+  QFont last_font_;
+  QTranslator* gui_translator_;
 };
-
 
 } // namespace plugin
 

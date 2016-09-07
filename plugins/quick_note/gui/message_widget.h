@@ -15,7 +15,7 @@ class MessageWidget : public QWidget
   Q_OBJECT
 
 public:
-  explicit MessageWidget(QWidget *parent = 0);
+  explicit MessageWidget(QWidget* parent = 0);
   ~MessageWidget();
 
 signals:
@@ -39,7 +39,7 @@ private slots:
 private:
   void ColorizeIcon(const QColor& color);
 
-  Ui::MessageWidget *ui;
+  Ui::MessageWidget* ui;
   QString curr_text_;
   QIcon edit_icon_;
   QPoint drag_position_;

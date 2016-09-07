@@ -12,23 +12,23 @@ class SettingsDialog;
 
 class SettingsDialog : public QDialog
 {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    explicit SettingsDialog(QWidget *parent = 0);
-    ~SettingsDialog();
+  explicit SettingsDialog(QWidget* parent = 0);
+  ~SettingsDialog();
 
-    void Init(const QSettings::SettingsMap& settings);
+  void Init(const QSettings::SettingsMap& settings);
 
 signals:
-    void OptionChanged(const QString& key, const QVariant& new_value);
+  void OptionChanged(const QString& key, const QVariant& new_value);
 
 private slots:
-    void on_note_edit_textEdited(const QString& arg1);
-    void on_edit_btn_enabled_clicked(bool checked);
+  void on_note_edit_textEdited(const QString& arg1);
+  void on_edit_btn_enabled_clicked(bool checked);
 
 private:
-    Ui::SettingsDialog *ui;
+  Ui::SettingsDialog* ui;
 };
 
 

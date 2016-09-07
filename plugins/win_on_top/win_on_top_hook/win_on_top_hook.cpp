@@ -12,7 +12,8 @@ HHOOK hook = NULL;   // installed hook handle
 #define SC_ONTOP     0x01  // command code for addd menu item
 
 // hook processor function
-LRESULT CALLBACK GetMsgProc(int ncode, WPARAM wparam, LPARAM lparam) {
+LRESULT CALLBACK GetMsgProc(int ncode, WPARAM wparam, LPARAM lparam)
+{
   if (ncode < 0) return CallNextHookEx(hook, ncode, wparam, lparam);
 
   LPMSG msg = (LPMSG)lparam;
@@ -73,12 +74,14 @@ LRESULT CALLBACK GetMsgProc(int ncode, WPARAM wparam, LPARAM lparam) {
 
 extern "C" {
 
-__declspec(dllexport) void SetItemName(LPCWSTR name) {
+__declspec(dllexport) void SetItemName(LPCWSTR name)
+{
   memset(item_name, 0, 64);
   StringCchCopyW(item_name, 32, name);
 }
 
-__declspec(dllexport) void Start() {
+__declspec(dllexport) void Start()
+{
   HMODULE mod_inst = NULL;
   GetModuleHandleExW(
         GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
@@ -86,14 +89,16 @@ __declspec(dllexport) void Start() {
   hook = SetWindowsHookExW(WH_GETMESSAGE, (HOOKPROC)GetMsgProc, mod_inst, 0);
 }
 
-__declspec(dllexport) void Stop() {
+__declspec(dllexport) void Stop()
+{
   UnhookWindowsHookEx(hook);
 }
 
 }
 
 
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
+BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
+{
   switch (ul_reason_for_call) {
     case DLL_PROCESS_ATTACH:
     case DLL_THREAD_ATTACH:

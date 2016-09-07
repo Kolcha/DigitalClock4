@@ -2,7 +2,8 @@
 
 namespace skin_draw {
 
-ISkin::QPixmapPtr RasterSkin::ResizeImage(QChar ch, qreal zoom) {
+ISkin::QPixmapPtr RasterSkin::ResizeImage(QChar ch, qreal zoom)
+{
   QPixmap& original = orig_images_[ch];
   if (original.isNull()) return QPixmapPtr();
 

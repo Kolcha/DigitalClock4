@@ -18,7 +18,8 @@ namespace alarm {
 
 enum SignalType { ST_FILE, ST_STREAM };
 
-inline void InitDefaults(QSettings::SettingsMap* defaults) {
+inline void InitDefaults(QSettings::SettingsMap* defaults)
+{
   defaults->insert(OPT_ENABLED, false);
   defaults->insert(OPT_TIME, QTime());
   defaults->insert(OPT_SIGNAL_TYPE, (int)ST_FILE);

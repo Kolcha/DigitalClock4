@@ -13,7 +13,8 @@ namespace core {
 class ClockState;
 class HttpClient;
 
-class Updater : public QObject {
+class Updater : public QObject
+{
   Q_OBJECT
 
 public:

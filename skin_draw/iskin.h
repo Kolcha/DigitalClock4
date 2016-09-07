@@ -17,7 +17,8 @@ namespace skin_draw {
  * This interface is used by skin draw engine.
  * @see RasterSkin, VectorSkin, TextSkin, SkinDrawer
  */
-class ISkin {
+class ISkin
+{
 public:
   /*! Virtual destructor. */
   virtual ~ISkin() {}

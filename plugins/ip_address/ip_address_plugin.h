@@ -10,22 +10,22 @@ namespace ip_address {
 
 class IpAddressPlugin : public ::plugin::WidgetPluginBase
 {
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "ip_address.json")
+  Q_OBJECT
+  Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "ip_address.json")
 
 public:
-    IpAddressPlugin();
+  IpAddressPlugin();
 
 public slots:
-    void Configure();
+  void Configure();
 
 protected:
-    QWidget* InitWidget(QGridLayout* layout);
-    void DisplayImage(const QImage& image);
-    QString GetWidgetText();
+  QWidget* InitWidget(QGridLayout* layout);
+  void DisplayImage(const QImage& image);
+  QString GetWidgetText();
 
 private:
-    QLabel* msg_label_;
+  QLabel* msg_label_;
 };
 
 } // namespace ip_address

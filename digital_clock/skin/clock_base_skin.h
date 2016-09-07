@@ -8,7 +8,8 @@
 namespace digital_clock {
 namespace core {
 
-class BaseSkin {
+class BaseSkin
+{
 public:
   enum FSkinInfo {
     SI_NAME,        // skin name

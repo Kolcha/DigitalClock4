@@ -17,24 +17,25 @@ const char c_build_date[] = {
   '\0'
 };
 
-static QString compilerString() {
+static QString compilerString()
+{
 #if defined(Q_CC_CLANG) // must be before GNU, because clang claims to be GNU too
-    QString isAppleString;
+  QString isAppleString;
 #if defined(__apple_build_version__) // Apple clang has other version numbers
-    isAppleString = QLatin1String(" (Apple)");
+  isAppleString = QLatin1String(" (Apple)");
 #endif
-    return QLatin1String("Clang " ) + QString::number(__clang_major__) + QLatin1Char('.')
-            + QString::number(__clang_minor__) + isAppleString;
+  return QLatin1String("Clang " ) + QString::number(__clang_major__) + QLatin1Char('.')
+         + QString::number(__clang_minor__) + isAppleString;
 #elif defined(Q_CC_GNU)
-    return QString("GCC %1.%2.%3").arg(__GNUC__).arg(__GNUC_MINOR__).arg(__GNUC_PATCHLEVEL__);
+  return QString("GCC %1.%2.%3").arg(__GNUC__).arg(__GNUC_MINOR__).arg(__GNUC_PATCHLEVEL__);
 #elif defined(Q_CC_MSVC)
-    if (_MSC_VER >= 1500) { // 1500: MSVC 2008, 1600: MSVC 2010, ...
-        int ver = 2008 + 2 * ((_MSC_VER / 100) - 15);
-        if (_MSC_VER >= 1800) ver -= 1;
-        return QLatin1String("MSVC ") + QString::number(ver);
-    }
+  if (_MSC_VER >= 1500) { // 1500: MSVC 2008, 1600: MSVC 2010, ...
+    int ver = 2008 + 2 * ((_MSC_VER / 100) - 15);
+    if (_MSC_VER >= 1800) ver -= 1;
+    return QLatin1String("MSVC ") + QString::number(ver);
+  }
 #endif
-    return QLatin1String("<unknown compiler>");
+  return QLatin1String("<unknown compiler>");
 }
 
 AboutDialog::AboutDialog(QWidget* parent) :
@@ -59,7 +60,8 @@ AboutDialog::AboutDialog(QWidget* parent) :
   setFixedSize(sizeHint());
 }
 
-AboutDialog::~AboutDialog() {
+AboutDialog::~AboutDialog()
+{
   delete ui;
 }
 

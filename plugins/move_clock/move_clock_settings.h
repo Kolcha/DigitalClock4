@@ -16,7 +16,8 @@ namespace move_clock {
 #define OPT_TIMEOUT   "plugins/move_clock/timeout"
 
 
-inline void InitDefaults(QSettings::SettingsMap* defaults) {
+inline void InitDefaults(QSettings::SettingsMap* defaults)
+{
   defaults->insert(OPT_X0, 50);
   defaults->insert(OPT_KX, -2.0);
   defaults->insert(OPT_AX, 0);

@@ -44,7 +44,8 @@
  *
  * Common interface for all plugins.
  */
-class CLOCK_COMMON_EXPORT IClockPlugin : public PluginBase {
+class CLOCK_COMMON_EXPORT IClockPlugin : public PluginBase
+{
   Q_OBJECT
 
 public slots:
@@ -85,7 +86,8 @@ Q_DECLARE_INTERFACE(IClockPlugin, CLOCK_PLUGIN_INTERFACE_IID)
  * inside clock, be carefull.
  * @see settings_keys.h.
  */
-class CLOCK_COMMON_EXPORT ISettingsPlugin : public IClockPlugin {
+class CLOCK_COMMON_EXPORT ISettingsPlugin : public IClockPlugin
+{
   Q_OBJECT
 
 signals:

@@ -4,7 +4,7 @@
 
 namespace schedule {
 
-TasksStorage::TasksStorage(SettingsStorage* backend, QObject *parent) : SettingsStorageWrapper(backend, parent)
+TasksStorage::TasksStorage(SettingsStorage* backend, QObject* parent) : SettingsStorageWrapper(backend, parent)
 {
 }
 

@@ -5,7 +5,7 @@
 
 namespace schedule {
 
-TaskEditDialog::TaskEditDialog(QWidget *parent) :
+TaskEditDialog::TaskEditDialog(QWidget* parent) :
   QDialog(parent),
   ui(new Ui::TaskEditDialog)
 {

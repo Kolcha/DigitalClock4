@@ -10,23 +10,23 @@ namespace date {
 
 class DatePlugin : public ::plugin::WidgetPluginBase
 {
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "date.json")
+  Q_OBJECT
+  Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "date.json")
 
 public:
-    DatePlugin();
+  DatePlugin();
 
 public slots:
-    void Configure();
+  void Configure();
 
 protected:
-    void InitSettingsDefaults(QSettings::SettingsMap* defaults);
-    QWidget* InitWidget(QGridLayout* layout);
-    void DisplayImage(const QImage& image);
-    QString GetWidgetText();
+  void InitSettingsDefaults(QSettings::SettingsMap* defaults);
+  QWidget* InitWidget(QGridLayout* layout);
+  void DisplayImage(const QImage& image);
+  QString GetWidgetText();
 
 private:
-    QLabel* msg_label_;
+  QLabel* msg_label_;
 };
 
 } // namespace date

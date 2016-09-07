@@ -13,7 +13,8 @@ namespace skin_draw {
  * @note There is no any load skin logic. You must inherit this class and implement your own
  * logic for skin resources loading. Load logic must fill RasterSkin::orig_images_ map.
  */
-class SKIN_DRAWSHARED_EXPORT RasterSkin : public BaseSkin {
+class SKIN_DRAWSHARED_EXPORT RasterSkin : public BaseSkin
+{
 protected:
   /*!
    * Resize image for given character.

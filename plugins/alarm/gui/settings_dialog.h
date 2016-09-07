@@ -10,7 +10,8 @@ namespace Ui {
 class SettingsDialog;
 }
 
-class SettingsDialog : public QDialog {
+class SettingsDialog : public QDialog
+{
   Q_OBJECT
 
 public:
@@ -32,7 +33,7 @@ private slots:
   void on_message_edit_textChanged();
   void on_st_file_clicked();
   void on_st_stream_clicked();
-  void on_stream_url_edit_textEdited(const QString &arg1);
+  void on_stream_url_edit_textEdited(const QString& arg1);
   void on_volume_slider_valueChanged(int value);
   void on_play_btn_clicked();
 

@@ -8,7 +8,8 @@ namespace tray_color {
 // alarm plugin settings keys
 #define OPT_TRAY_COLOR           "plugins/tray_color/color"
 
-inline void InitDefaults(QSettings::SettingsMap* defaults) {
+inline void InitDefaults(QSettings::SettingsMap* defaults)
+{
   defaults->insert(OPT_TRAY_COLOR, QVariant::fromValue<QColor>(Qt::blue));
 }
 

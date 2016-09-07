@@ -33,16 +33,18 @@ TrayControl::TrayControl(QWidget* parent) : QObject(parent)
           this, SLOT(TrayEventHandler(QSystemTrayIcon::ActivationReason)));
 }
 
-QSystemTrayIcon* TrayControl::GetTrayIcon() const {
+QSystemTrayIcon* TrayControl::GetTrayIcon() const
+{
   return tray_icon_;
 }
 
-QAction*TrayControl::GetShowHideAction() const
+QAction* TrayControl::GetShowHideAction() const
 {
   return show_hide_action_;
 }
 
-void TrayControl::TrayEventHandler(QSystemTrayIcon::ActivationReason reason) {
+void TrayControl::TrayEventHandler(QSystemTrayIcon::ActivationReason reason)
+{
   if (reason == QSystemTrayIcon::DoubleClick) emit ShowSettingsDlg();
 }
 

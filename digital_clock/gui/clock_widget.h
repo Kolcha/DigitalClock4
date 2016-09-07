@@ -18,7 +18,8 @@ namespace gui {
 
 class ClockDisplay;
 
-class ClockWidget : public QWidget {
+class ClockWidget : public QWidget
+{
   Q_OBJECT
 
 public:

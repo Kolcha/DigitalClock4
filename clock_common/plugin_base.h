@@ -29,7 +29,8 @@ class PluginSettings;
  * This class provides some common logic for all plugins and it inherited by all plugin interfaces.
  * Do not use it directly, use only interfaces.
  */
-class CLOCK_COMMON_EXPORT PluginBase : public QObject {
+class CLOCK_COMMON_EXPORT PluginBase : public QObject
+{
   Q_OBJECT
 
 public:

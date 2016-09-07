@@ -7,7 +7,7 @@
 
 namespace quick_note {
 
-MessageWidget::MessageWidget(QWidget *parent) :
+MessageWidget::MessageWidget(QWidget* parent) :
   QWidget(parent),
   ui(new Ui::MessageWidget),
   edit_icon_(":/quick_note/edit.svg")
@@ -31,15 +31,15 @@ void MessageWidget::setText(const QString& new_text)
 
 void MessageWidget::setPixmap(const QPixmap& img)
 {
-    ui->msg_label->setPixmap(img);
-    ColorizeIcon(icon_color_);
+  ui->msg_label->setPixmap(img);
+  ColorizeIcon(icon_color_);
 }
 
 void MessageWidget::setIconColor(const QColor& new_color)
 {
-    icon_color_ = new_color;
-    if (!ui->msg_label->pixmap() || ui->msg_label->pixmap()->isNull()) return;
-    ColorizeIcon(new_color);
+  icon_color_ = new_color;
+  if (!ui->msg_label->pixmap() || ui->msg_label->pixmap()->isNull()) return;
+  ColorizeIcon(new_color);
 }
 
 void MessageWidget::ShowEditButton(bool show)
@@ -70,8 +70,8 @@ void MessageWidget::on_edit_btn_clicked()
   QString str = QInputDialog::getText(ui->msg_label, tr("Edit note"), tr("text:"),
                                       QLineEdit::Normal, curr_text_, &ok);
   if (ok) {
-      setText(str);
-      emit textEdited(str);
+    setText(str);
+    emit textEdited(str);
   }
 }
 

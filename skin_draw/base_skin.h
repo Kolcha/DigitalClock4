@@ -18,7 +18,8 @@ namespace skin_draw {
  *
  * @see BaseSkin::ResizeImage()
  */
-class SKIN_DRAWSHARED_EXPORT BaseSkin : public ISkin {
+class SKIN_DRAWSHARED_EXPORT BaseSkin : public ISkin
+{
 public:
   /*! Constructor. */
   BaseSkin();

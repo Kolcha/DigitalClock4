@@ -8,14 +8,16 @@
 
 namespace power_off {
 
-PowerOff::PowerOff() : active_(false) {
+PowerOff::PowerOff() : active_(false)
+{
   InitTranslator(QLatin1String(":/power_off/power_off_"));
   info_.display_name = tr("Auto power off");
   info_.description = tr("Shutdown system at specified time.");
   InitIcon(":/power_off/icon.svg");
 }
 
-void PowerOff::Start() {
+void PowerOff::Start()
+{
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
@@ -33,7 +35,8 @@ void PowerOff::Start() {
   CloseHandle(hToken);
 }
 
-void PowerOff::Configure() {
+void PowerOff::Configure()
+{
   SettingsDialog* dialog = new SettingsDialog();
   // load current settings to dialog
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
@@ -52,7 +55,8 @@ void PowerOff::Configure() {
   dialog->show();
 }
 
-void PowerOff::TimeUpdateListener() {
+void PowerOff::TimeUpdateListener()
+{
   QString off_time = settings_->GetOption(OPT_TIME).value<QTime>().toString();
   QString curr_time = QTime::currentTime().toString();
   if (off_time != curr_time || active_) return;

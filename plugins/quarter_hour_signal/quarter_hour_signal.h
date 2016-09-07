@@ -5,7 +5,8 @@
 
 namespace quarter_hour_signal {
 
-class QuarterHourSignal : public IClockPlugin {
+class QuarterHourSignal : public IClockPlugin
+{
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "quarter_hour_signal.json")
   Q_INTERFACES(IClockPlugin)

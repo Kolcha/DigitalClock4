@@ -9,7 +9,8 @@
 namespace digital_clock {
 namespace core {
 
-class VectorSkin : public ::skin_draw::VectorSkin, public BaseSkin {
+class VectorSkin : public ::skin_draw::VectorSkin, public BaseSkin
+{
 public:
   VectorSkin(const QDir& skin_root);
 

@@ -8,93 +8,93 @@
 
 namespace plugin {
 
-BaseSettingsWidget::BaseSettingsWidget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::BaseSettingsWidget)
+BaseSettingsWidget::BaseSettingsWidget(QWidget* parent) :
+  QWidget(parent),
+  ui(new Ui::BaseSettingsWidget)
 {
-    gui_translator_ = new QTranslator();
-    QStringList ui_languages = QLocale::system().uiLanguages();
-    QString prefix(":/plugin_core/lang/plugin_core_");
-    foreach (QString locale, ui_languages) {
-        locale = QLocale(locale).name();
-        if (gui_translator_->load(prefix + locale)) {
-            QApplication::installTranslator(gui_translator_);
-            break;
-        } else if (locale == QLatin1String("C") /* overrideLanguage == "English" */) {
-            // use built-in
-            break;
-        } else if (locale.startsWith(QLatin1String("en")) /* "English" is built-in */) {
-            // use built-in
-            break;
-        } else if (locale.contains("ua", Qt::CaseInsensitive)) /* Ukrainian, use russian */ {
-            if (gui_translator_->load(prefix + "ru"))
-                QApplication::installTranslator(gui_translator_);
-            break;
-        }
+  gui_translator_ = new QTranslator();
+  QStringList ui_languages = QLocale::system().uiLanguages();
+  QString prefix(":/plugin_core/lang/plugin_core_");
+  foreach (QString locale, ui_languages) {
+    locale = QLocale(locale).name();
+    if (gui_translator_->load(prefix + locale)) {
+      QApplication::installTranslator(gui_translator_);
+      break;
+    } else if (locale == QLatin1String("C") /* overrideLanguage == "English" */) {
+      // use built-in
+      break;
+    } else if (locale.startsWith(QLatin1String("en")) /* "English" is built-in */) {
+      // use built-in
+      break;
+    } else if (locale.contains("ua", Qt::CaseInsensitive)) { /* Ukrainian, use russian */
+      if (gui_translator_->load(prefix + "ru"))
+        QApplication::installTranslator(gui_translator_);
+      break;
     }
+  }
 
-    ui->setupUi(this);
-    layout()->setMargin(0);
+  ui->setupUi(this);
+  layout()->setMargin(0);
 }
 
 BaseSettingsWidget::~BaseSettingsWidget()
 {
-    delete ui;
-    QApplication::removeTranslator(gui_translator_);
-    delete gui_translator_;
+  delete ui;
+  QApplication::removeTranslator(gui_translator_);
+  delete gui_translator_;
 }
 
 void BaseSettingsWidget::InitWidgets(const QMap<WidgetPluginOption, QVariant>& cur_values)
 {
-    for (auto iter = cur_values.constBegin(); iter != cur_values.constEnd(); ++iter) {
-        switch (iter.key()) {
-        case OPT_USE_CLOCK_FONT:
-            ui->clock_font_button->setChecked(iter.value().toBool());
-            ui->custom_font_button->setChecked(!iter.value().toBool());
-            break;
+  for (auto iter = cur_values.constBegin(); iter != cur_values.constEnd(); ++iter) {
+    switch (iter.key()) {
+      case OPT_USE_CLOCK_FONT:
+        ui->clock_font_button->setChecked(iter.value().toBool());
+        ui->custom_font_button->setChecked(!iter.value().toBool());
+        break;
 
-        case OPT_CUSTOM_FONT:
-            last_font_ = iter.value().value<QFont>();
-            break;
+      case OPT_CUSTOM_FONT:
+        last_font_ = iter.value().value<QFont>();
+        break;
 
-        case OPT_ZOOM_MODE:
-            ZoomMode mode = static_cast<ZoomMode>(iter.value().toInt());
-            ui->not_zoom->setChecked(mode == ZoomMode::ZM_NOT_ZOOM);
-            ui->font_autosize->setChecked(mode == ZoomMode::ZM_AUTOSIZE);
-            ui->clock_zoom->setChecked(mode == ZoomMode::ZM_CLOCK_ZOOM);
-            break;
-        }
+      case OPT_ZOOM_MODE:
+        ZoomMode mode = static_cast<ZoomMode>(iter.value().toInt());
+        ui->not_zoom->setChecked(mode == ZoomMode::ZM_NOT_ZOOM);
+        ui->font_autosize->setChecked(mode == ZoomMode::ZM_AUTOSIZE);
+        ui->clock_zoom->setChecked(mode == ZoomMode::ZM_CLOCK_ZOOM);
+        break;
     }
+  }
 }
 
 void BaseSettingsWidget::on_clock_font_button_toggled(bool checked)
 {
-    emit OptionChanged(OPT_USE_CLOCK_FONT, checked);
+  emit OptionChanged(OPT_USE_CLOCK_FONT, checked);
 }
 
 void BaseSettingsWidget::on_choose_font_button_clicked()
 {
-    bool ok = false;
-    QFont font = QFontDialog::getFont(&ok, last_font_, this);
-    if (ok) {
-      emit OptionChanged(OPT_CUSTOM_FONT, font);
-      last_font_ = font;
-    }
+  bool ok = false;
+  QFont font = QFontDialog::getFont(&ok, last_font_, this);
+  if (ok) {
+    emit OptionChanged(OPT_CUSTOM_FONT, font);
+    last_font_ = font;
+  }
 }
 
 void BaseSettingsWidget::on_not_zoom_clicked()
 {
-    emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_NOT_ZOOM));
+  emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_NOT_ZOOM));
 }
 
 void BaseSettingsWidget::on_font_autosize_clicked()
 {
-    emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_AUTOSIZE));
+  emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_AUTOSIZE));
 }
 
 void BaseSettingsWidget::on_clock_zoom_clicked()
 {
-    emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_CLOCK_ZOOM));
+  emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_CLOCK_ZOOM));
 }
 
 } // namespace plugin

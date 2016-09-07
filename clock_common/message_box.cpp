@@ -11,21 +11,26 @@ TMessageBox::TMessageBox(QWidget* parent) :
 TMessageBox::TMessageBox(QMessageBox::Icon icon, const QString& title, const QString& text,
                          QMessageBox::StandardButtons buttons, QWidget* parent, Qt::WindowFlags flags)
   : QMessageBox(icon, title, text, buttons, parent, flags),
-    auto_close_(false), timeout_(30), timer_(0) {
+    auto_close_(false), timeout_(30), timer_(0)
+{
 }
 
-TMessageBox::~TMessageBox() {
+TMessageBox::~TMessageBox()
+{
 }
 
-void TMessageBox::setAutoClose(bool enable) {
+void TMessageBox::setAutoClose(bool enable)
+{
   auto_close_ = enable;
 }
 
-void TMessageBox::setTimeout(int seconds) {
+void TMessageBox::setTimeout(int seconds)
+{
   timeout_ = seconds;
 }
 
-int TMessageBox::exec() {
+int TMessageBox::exec()
+{
   if (auto_close_ && defaultButton()) {
     def_btn_text_ = defaultButton()->text();
     timer_ = new QTimer(this);
@@ -38,7 +43,8 @@ int TMessageBox::exec() {
   return QMessageBox::exec();
 }
 
-void TMessageBox::TimedOut() {
+void TMessageBox::TimedOut()
+{
   --timeout_;
   defaultButton()->setText(QString("%1 (%2)").arg(def_btn_text_).arg(timeout_));
   if (timeout_ == 0) defaultButton()->click();

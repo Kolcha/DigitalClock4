@@ -9,7 +9,8 @@
 
 namespace alarm {
 
-class Alarm : public IClockPlugin, public ITrayPluginInit {
+class Alarm : public IClockPlugin, public ITrayPluginInit
+{
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "alarm.json")
   Q_INTERFACES(IClockPlugin ITrayPluginInit)

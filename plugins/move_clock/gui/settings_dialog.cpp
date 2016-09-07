@@ -23,11 +23,13 @@ SettingsDialog::SettingsDialog(QWidget* parent) :
   ui->ay_value->setMaximum(sh);
 }
 
-SettingsDialog::~SettingsDialog() {
+SettingsDialog::~SettingsDialog()
+{
   delete ui;
 }
 
-void SettingsDialog::SettingsListener(const QString& key, const QVariant& value) {
+void SettingsDialog::SettingsListener(const QString& key, const QVariant& value)
+{
   if (key == OPT_X0) ui->x0_value->setValue(value.toInt());
   if (key == OPT_KX) ui->kx_value->setValue(value.toReal());
   if (key == OPT_AX) ui->ax_value->setValue(value.toInt());
@@ -41,38 +43,47 @@ void SettingsDialog::SettingsListener(const QString& key, const QVariant& value)
 
 } // namespace move_clock
 
-void move_clock::SettingsDialog::on_x0_value_valueChanged(int arg1) {
+void move_clock::SettingsDialog::on_x0_value_valueChanged(int arg1)
+{
   emit OptionChanged(OPT_X0, arg1);
 }
 
-void move_clock::SettingsDialog::on_kx_value_valueChanged(double arg1) {
+void move_clock::SettingsDialog::on_kx_value_valueChanged(double arg1)
+{
   emit OptionChanged(OPT_KX, arg1);
 }
 
-void move_clock::SettingsDialog::on_ax_value_valueChanged(int arg1) {
+void move_clock::SettingsDialog::on_ax_value_valueChanged(int arg1)
+{
   emit OptionChanged(OPT_AX, arg1);
 }
 
-void move_clock::SettingsDialog::on_nx_value_valueChanged(double arg1) {
+void move_clock::SettingsDialog::on_nx_value_valueChanged(double arg1)
+{
   emit OptionChanged(OPT_NX, arg1);
 }
 
-void move_clock::SettingsDialog::on_y0_value_valueChanged(int arg1) {
+void move_clock::SettingsDialog::on_y0_value_valueChanged(int arg1)
+{
   emit OptionChanged(OPT_Y0, arg1);
 }
 
-void move_clock::SettingsDialog::on_ky_value_valueChanged(double arg1) {
+void move_clock::SettingsDialog::on_ky_value_valueChanged(double arg1)
+{
   emit OptionChanged(OPT_KY, arg1);
 }
 
-void move_clock::SettingsDialog::on_ay_value_valueChanged(int arg1) {
+void move_clock::SettingsDialog::on_ay_value_valueChanged(int arg1)
+{
   emit OptionChanged(OPT_AY, arg1);
 }
 
-void move_clock::SettingsDialog::on_ny_value_valueChanged(double arg1) {
+void move_clock::SettingsDialog::on_ny_value_valueChanged(double arg1)
+{
   emit OptionChanged(OPT_NY, arg1);
 }
 
-void move_clock::SettingsDialog::on_speed_slider_valueChanged(int value) {
+void move_clock::SettingsDialog::on_speed_slider_valueChanged(int value)
+{
   emit OptionChanged(OPT_TIMEOUT, value);
 }

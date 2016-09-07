@@ -9,7 +9,8 @@
 
 namespace schedule {
 
-Schedule::Schedule() {
+Schedule::Schedule()
+{
   invoker_ = nullptr;
 
   InitTranslator(QLatin1String(":/schedule/schedule_"));
@@ -23,7 +24,8 @@ void Schedule::InitSettings(SettingsStorage* backend)
   backend_ = new TasksStorage(backend, this);
 }
 
-void Schedule::Start() {
+void Schedule::Start()
+{
   tray_icon_ = new QSystemTrayIcon(QIcon(":/schedule/schedule.svg"));
   tray_menu_ = new QMenu();
   tray_menu_->addAction(QIcon(":/schedule/settings.svg"), "Settings", this, SLOT(Configure()));
@@ -44,7 +46,8 @@ void Schedule::Start() {
   invoker_->start();
 }
 
-void Schedule::Stop() {
+void Schedule::Stop()
+{
   invoker_->stop();
 
   tray_icon_->setVisible(false);
@@ -52,7 +55,8 @@ void Schedule::Stop() {
   delete tray_menu_;
 }
 
-void Schedule::Configure() {
+void Schedule::Configure()
+{
   ScheduleDialog* dlg = new ScheduleDialog();
   connect(backend_, &TasksStorage::datesLoaded, dlg, &ScheduleDialog::setDates);
   connect(backend_, &TasksStorage::tasksLoaded, dlg, &ScheduleDialog::setTasks);
@@ -75,7 +79,8 @@ void Schedule::Configure() {
   dlg->show();
 }
 
-void Schedule::TrayActivated(QSystemTrayIcon::ActivationReason reason) {
+void Schedule::TrayActivated(QSystemTrayIcon::ActivationReason reason)
+{
   if (reason == QSystemTrayIcon::DoubleClick) {
     Configure();
   }

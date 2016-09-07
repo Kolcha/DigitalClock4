@@ -9,7 +9,8 @@ TextSkin::TextSkin(const QFont& font) : font_(font)
 {
 }
 
-ISkin::QPixmapPtr TextSkin::ResizeImage(QChar ch, qreal zoom) {
+ISkin::QPixmapPtr TextSkin::ResizeImage(QChar ch, qreal zoom)
+{
   auto iter = char_map_.find(ch);
   QChar sch = iter != char_map_.end() ? *iter : ch;
   QFont new_font(font_);

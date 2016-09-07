@@ -8,7 +8,8 @@
 
 namespace alarm {
 
-Alarm::Alarm() {
+Alarm::Alarm()
+{
   icon_changed_ = false;
 
   InitTranslator(QLatin1String(":/alarm/alarm_"));
@@ -17,7 +18,8 @@ Alarm::Alarm() {
   InitIcon(":/alarm/alarm_clock.svg");
 }
 
-void Alarm::Init(QSystemTrayIcon* tray_icon) {
+void Alarm::Init(QSystemTrayIcon* tray_icon)
+{
   tray_icon_ = tray_icon;
   old_icon_ = tray_icon->icon();
 
@@ -27,7 +29,8 @@ void Alarm::Init(QSystemTrayIcon* tray_icon) {
   settings_->Load();
 }
 
-void Alarm::Start() {
+void Alarm::Start()
+{
   if (!settings_->GetOption(OPT_ENABLED).toBool()) return;
 
   tray_icon_->setIcon(QIcon(":/alarm/alarm_clock.svg"));
@@ -60,7 +63,8 @@ void Alarm::Start() {
   player_ = new QMediaPlayer();
 }
 
-void Alarm::Stop() {
+void Alarm::Stop()
+{
   tray_icon_->setIcon(old_icon_);
   icon_changed_ = false;
   if (player_) {
@@ -69,7 +73,8 @@ void Alarm::Stop() {
   }
 }
 
-void Alarm::Configure() {
+void Alarm::Configure()
+{
   SettingsDialog* dialog = new SettingsDialog();
   // load current settings to dialog
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
@@ -85,7 +90,8 @@ void Alarm::Configure() {
   dialog->show();
 }
 
-void Alarm::TimeUpdateListener() {
+void Alarm::TimeUpdateListener()
+{
   if (settings_->GetOption(OPT_ENABLED).toBool()) {
     if (!icon_changed_) Start();
   } else {

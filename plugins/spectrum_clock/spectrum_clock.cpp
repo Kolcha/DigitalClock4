@@ -2,30 +2,35 @@
 
 namespace spectrum_clock {
 
-SpectrumClock::SpectrumClock() {
+SpectrumClock::SpectrumClock()
+{
   InitTranslator(QLatin1String(":/spectrum_clock/spectrum_clock_"));
   info_.display_name = QLatin1String("\"Spectrum clock\"");
   info_.description = tr("Changes clock color during time.");
   InitIcon(":/spectrum_clock/icon.png");
 }
 
-void SpectrumClock::Init(const QMap<Option, QVariant>& current_settings) {
+void SpectrumClock::Init(const QMap<Option, QVariant>& current_settings)
+{
   old_color_ = current_settings[OPT_COLOR].value<QColor>();
   old_colorize_color_ = current_settings[OPT_COLORIZE_COLOR].value<QColor>();
   cur_color_ = Qt::red;
 }
 
-void SpectrumClock::Start() {
+void SpectrumClock::Start()
+{
   emit OptionChanged(OPT_COLOR, cur_color_);
   emit OptionChanged(OPT_COLORIZE_COLOR, cur_color_);
 }
 
-void SpectrumClock::Stop() {
+void SpectrumClock::Stop()
+{
   emit OptionChanged(OPT_COLOR, old_color_);
   emit OptionChanged(OPT_COLORIZE_COLOR, old_colorize_color_);
 }
 
-void SpectrumClock::TimeUpdateListener() {
+void SpectrumClock::TimeUpdateListener()
+{
   int r = cur_color_.red();
   int g = cur_color_.green();
   int b = cur_color_.blue();

@@ -14,7 +14,8 @@ namespace skin_draw {
  * change something in their behaviour (implement symbols replace logic for example).
  * To replace some symblols you must fill TextSkin::char_map_ map.
  */
-class SKIN_DRAWSHARED_EXPORT TextSkin : public BaseSkin {
+class SKIN_DRAWSHARED_EXPORT TextSkin : public BaseSkin
+{
 public:
   /*!
    * Constructor.

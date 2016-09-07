@@ -16,21 +16,25 @@ ClockDisplay::ClockDisplay(QWidget* parent) :
   setAlignment(Qt::AlignCenter);
 }
 
-ClockDisplay::~ClockDisplay() {
+ClockDisplay::~ClockDisplay()
+{
 }
 
-void ClockDisplay::DrawImage(const QImage& image) {
+void ClockDisplay::DrawImage(const QImage& image)
+{
   setPixmap(QPixmap::fromImage(image));
   adjustSize();
   emit changed();
 }
 
-void ClockDisplay::SetSeparatorFlash(bool set) {
+void ClockDisplay::SetSeparatorFlash(bool set)
+{
   sep_flashes_ = set;
   sep_visible_ = !set;
 }
 
-void ClockDisplay::SetTimeFormat(const QString& format) {
+void ClockDisplay::SetTimeFormat(const QString& format)
+{
   time_format_ = format;
   seps_ = format;
   seps_.remove(QRegExp("[hmszap]", Qt::CaseInsensitive));
@@ -48,7 +52,8 @@ void ClockDisplay::SetURL(const QString& url)
   url_string_ = url;
 }
 
-void ClockDisplay::TimeoutHandler() {
+void ClockDisplay::TimeoutHandler()
+{
   if (time_format_.isEmpty()) {
     QString sys_time_format = QLocale::system().timeFormat();
     int sep_pos = sys_time_format.indexOf(':');

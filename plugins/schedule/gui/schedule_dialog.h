@@ -22,7 +22,7 @@ class ScheduleDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit ScheduleDialog(QWidget *parent = 0);
+  explicit ScheduleDialog(QWidget* parent = 0);
   ~ScheduleDialog();
 
 signals:
@@ -42,7 +42,7 @@ private slots:
   void on_edit_btn_clicked();
 
 private:
-  Ui::ScheduleDialog *ui;
+  Ui::ScheduleDialog* ui;
   DailyTasksProvider* tasks_model_;
   QSortFilterProxyModel* sort_model_;
 };

@@ -14,7 +14,7 @@ class TaskEditDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit TaskEditDialog(QWidget *parent = 0);
+  explicit TaskEditDialog(QWidget* parent = 0);
   ~TaskEditDialog();
 
   QDate date() const;
@@ -29,7 +29,7 @@ public:
   void setNote(const QString& nt);
 
 private:
-  Ui::TaskEditDialog *ui;
+  Ui::TaskEditDialog* ui;
 };
 
 } // namespace schedule

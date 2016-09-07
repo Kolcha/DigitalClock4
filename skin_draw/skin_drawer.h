@@ -19,7 +19,8 @@ namespace skin_draw {
  * It draws all symbols one by one, applying needed changes for images from skin.
  * All changed images is cached by default.
  */
-class SKIN_DRAWSHARED_EXPORT SkinDrawer : public QObject {
+class SKIN_DRAWSHARED_EXPORT SkinDrawer : public QObject
+{
   Q_OBJECT
 public:
   /*!

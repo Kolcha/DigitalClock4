@@ -9,7 +9,8 @@ class QAction;
 namespace digital_clock {
 namespace gui {
 
-class TrayControl : public QObject {
+class TrayControl : public QObject
+{
   Q_OBJECT
 
 public:

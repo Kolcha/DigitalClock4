@@ -7,18 +7,19 @@
 #include <QApplication>
 #include <QDir>
 
-static QString GetConfigFileName() {
+static QString GetConfigFileName()
+{
   QDir app_dir(QApplication::applicationDirPath());
   return app_dir.filePath("settings.ini");
 }
 
-SettingsStorage::SettingsStorage(QObject *parent) :
+SettingsStorage::SettingsStorage(QObject* parent) :
   QObject(parent),
   storage_(GetConfigFileName(), QSettings::IniFormat)
 {
 }
 #else
-SettingsStorage::SettingsStorage(QObject *parent) : QObject(parent)
+SettingsStorage::SettingsStorage(QObject* parent) : QObject(parent)
 {
 }
 #endif

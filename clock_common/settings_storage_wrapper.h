@@ -15,7 +15,7 @@ class CLOCK_COMMON_EXPORT SettingsStorageWrapper : public QObject
 {
   Q_OBJECT
 public:
-  explicit SettingsStorageWrapper(SettingsStorage* backend, QObject *parent = 0);
+  explicit SettingsStorageWrapper(SettingsStorage* backend, QObject* parent = 0);
   virtual ~SettingsStorageWrapper() {}
 
   /*!

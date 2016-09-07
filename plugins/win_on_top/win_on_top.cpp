@@ -7,13 +7,15 @@ typedef void (*pSetItemName)(LPCWSTR);
 typedef void (*pStartFunc)(void);
 typedef void (*pStopFunc)(void);
 
-WinOnTop::WinOnTop() {
+WinOnTop::WinOnTop()
+{
   InitTranslator(QLatin1String(":/win_on_top/win_on_top_"));
   info_.display_name = tr("\"Always on top\" for any window");
   info_.description = tr("Adds \"Always on Top\" menu item to system menu for any window.");
 }
 
-void WinOnTop::Start() {
+void WinOnTop::Start()
+{
   std::wstring lib_path = QCoreApplication::applicationDirPath().toStdWString();
   lib_path += L"/plugins/special/win_on_top_hook.dll";
   lib_ = LoadLibrary(lib_path.c_str());
@@ -29,7 +31,8 @@ void WinOnTop::Start() {
   start();
 }
 
-void WinOnTop::Stop() {
+void WinOnTop::Stop()
+{
   if (!lib_) return;
   pStopFunc stop = (pStopFunc)GetProcAddress(lib_, "Stop");
   stop();

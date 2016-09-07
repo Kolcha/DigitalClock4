@@ -7,7 +7,8 @@
 
 namespace tray_color {
 
-TrayColor::TrayColor() {
+TrayColor::TrayColor()
+{
   is_enabled_ = false;
 
   InitTranslator(QLatin1String(":/tray_color/tray_color_"));
@@ -16,7 +17,8 @@ TrayColor::TrayColor() {
   InitIcon(":/tray_color/icon.png");
 }
 
-void TrayColor::Init(QSystemTrayIcon* tray_icon) {
+void TrayColor::Init(QSystemTrayIcon* tray_icon)
+{
   tray_icon_ = tray_icon;
 
   QSettings::SettingsMap defaults;
@@ -25,17 +27,20 @@ void TrayColor::Init(QSystemTrayIcon* tray_icon) {
   settings_->Load();
 }
 
-void TrayColor::Start() {
+void TrayColor::Start()
+{
   is_enabled_ = true;
   RedrawTrayIcon(settings_->GetOption(OPT_TRAY_COLOR).value<QColor>());
 }
 
-void TrayColor::Stop() {
+void TrayColor::Stop()
+{
   RedrawTrayIcon(Qt::black);
   is_enabled_ = false;
 }
 
-void TrayColor::Configure() {
+void TrayColor::Configure()
+{
   QColor color = QColorDialog::getColor(settings_->GetOption(OPT_TRAY_COLOR).value<QColor>());
   if (color.isValid()) {
     settings_->SetOption(OPT_TRAY_COLOR, color);
@@ -44,11 +49,13 @@ void TrayColor::Configure() {
   settings_->Save();
 }
 
-void TrayColor::SettingsListener(Option opt, const QVariant& value) {
+void TrayColor::SettingsListener(Option opt, const QVariant& value)
+{
   if (opt == OPT_COLOR) RedrawTrayIcon(value.value<QColor>());
 }
 
-void TrayColor::RedrawTrayIcon(const QColor& color) {
+void TrayColor::RedrawTrayIcon(const QColor& color)
+{
   QSize size = tray_icon_->icon().actualSize(QSize(48, 48));
 
   QImage result(size, QImage::Format_ARGB32_Premultiplied);

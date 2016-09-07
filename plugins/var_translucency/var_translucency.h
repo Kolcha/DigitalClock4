@@ -6,7 +6,8 @@
 
 namespace var_translucency {
 
-class VarTranslucency : public ISettingsPlugin, public ISettingsPluginInit {
+class VarTranslucency : public ISettingsPlugin, public ISettingsPluginInit
+{
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "var_translucency.json")
   Q_INTERFACES(IClockPlugin ISettingsPlugin ISettingsPluginInit)

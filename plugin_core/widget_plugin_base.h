@@ -18,52 +18,53 @@ class SkinDrawer;
 namespace plugin {
 
 class PLUGIN_CORE_SHARED_EXPORT WidgetPluginBase : public IClockPlugin,
-        public ISettingsPluginInit,
-        public IWidgetPluginInit {
-    Q_OBJECT
-    Q_INTERFACES(IClockPlugin ISettingsPluginInit IWidgetPluginInit)
+    public ISettingsPluginInit,
+    public IWidgetPluginInit
+{
+  Q_OBJECT
+  Q_INTERFACES(IClockPlugin ISettingsPluginInit IWidgetPluginInit)
 
 public:
-    WidgetPluginBase();
-    virtual void Init(const QMap<Option, QVariant>& current_settings);
-    virtual void Init(QWidget* main_wnd);
+  WidgetPluginBase();
+  virtual void Init(const QMap<Option, QVariant>& current_settings);
+  virtual void Init(QWidget* main_wnd);
 
 public slots:
-    virtual void Start();
-    virtual void Stop();
-    virtual void SettingsListener(Option option, const QVariant& new_value);
-    virtual void TimeUpdateListener();
+  virtual void Start();
+  virtual void Stop();
+  virtual void SettingsListener(Option option, const QVariant& new_value);
+  virtual void TimeUpdateListener();
 
 protected:
-    virtual void InitSettingsDefaults(QSettings::SettingsMap* defaults);
+  virtual void InitSettingsDefaults(QSettings::SettingsMap* defaults);
 
-    virtual QWidget* InitWidget(QGridLayout* layout) = 0;
-    virtual void DisplayImage(const QImage& image) = 0;
-    virtual QString GetWidgetText() = 0;
+  virtual QWidget* InitWidget(QGridLayout* layout) = 0;
+  virtual void DisplayImage(const QImage& image) = 0;
+  virtual QString GetWidgetText() = 0;
 
-    QWidget* InitConfigWidget(QWidget* parent);
+  QWidget* InitConfigWidget(QWidget* parent);
 
-    QSize GetImageSize(const QString& text, qreal zoom) const;
+  QSize GetImageSize(const QString& text, qreal zoom) const;
 
-    QString plg_name_;
-    int avail_width_;
+  QString plg_name_;
+  int avail_width_;
 
 private slots:
-    void onBaseOptionChanged(const WidgetPluginOption opt, const QVariant& value);
-    void SettingsChangeListener(const QString& key, const QVariant& value);
+  void onBaseOptionChanged(const WidgetPluginOption opt, const QVariant& value);
+  void SettingsChangeListener(const QString& key, const QVariant& value);
 
 private:
-    void InitBaseSettingsDefaults(QSettings::SettingsMap* defaults);
-    virtual qreal CalculateZoom(const QString& text) const;
+  void InitBaseSettingsDefaults(QSettings::SettingsMap* defaults);
+  virtual qreal CalculateZoom(const QString& text) const;
 
-    QGridLayout* main_layout_;
-    QWidget* main_wnd_;
-    QPointer<QWidget> plg_widget_;
-    QFont font_;
-    QFont clock_font_;
-    qreal clock_zoom_;
-    QString last_text_;
-    ::skin_draw::SkinDrawer* drawer_;
+  QGridLayout* main_layout_;
+  QWidget* main_wnd_;
+  QPointer<QWidget> plg_widget_;
+  QFont font_;
+  QFont clock_font_;
+  qreal clock_zoom_;
+  QString last_text_;
+  ::skin_draw::SkinDrawer* drawer_;
 };
 
 } // namespace plugin

@@ -6,7 +6,8 @@
 
 namespace win_on_top {
 
-class WinOnTop : public IClockPlugin {
+class WinOnTop : public IClockPlugin
+{
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "win_on_top.json")
   Q_INTERFACES(IClockPlugin)

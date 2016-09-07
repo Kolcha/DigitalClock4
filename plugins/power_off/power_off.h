@@ -5,7 +5,8 @@
 
 namespace power_off {
 
-class PowerOff : public IClockPlugin {
+class PowerOff : public IClockPlugin
+{
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "power_off.json")
   Q_INTERFACES(IClockPlugin)

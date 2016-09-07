@@ -9,7 +9,8 @@
 namespace digital_clock {
 namespace core {
 
-class HttpClient : public QObject {
+class HttpClient : public QObject
+{
   Q_OBJECT
 
 public:

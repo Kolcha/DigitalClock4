@@ -16,17 +16,20 @@ PluginSettings::~PluginSettings()
   }
 }
 
-void PluginSettings::SetDefaultValues(const QSettings::SettingsMap& values) {
+void PluginSettings::SetDefaultValues(const QSettings::SettingsMap& values)
+{
   default_map_ = values;
 }
 
-QVariant PluginSettings::GetOption(const QString& key) const {
+QVariant PluginSettings::GetOption(const QString& key) const
+{
   auto iter = current_map_.find(key);
   if (iter != current_map_.end()) return iter.value();
   return backend_->GetValue(key, default_map_.find(key).value());   // TODO: track key name
 }
 
-void PluginSettings::Load() {
+void PluginSettings::Load()
+{
   current_map_.clear();
   for (auto iter = default_map_.begin(); iter != default_map_.end(); ++iter) {
     backend_->Revert(iter.key());
@@ -35,19 +38,22 @@ void PluginSettings::Load() {
   }
 }
 
-void PluginSettings::Save() {
+void PluginSettings::Save()
+{
   for (auto iter = current_map_.begin(); iter != current_map_.end(); ++iter) {
     backend_->Commit(iter.key());
   }
 }
 
-void PluginSettings::SetOption(const QString& key, const QVariant& value) {
+void PluginSettings::SetOption(const QString& key, const QVariant& value)
+{
   current_map_[key] = value;       // TODO: add some key prefix (plugins/<plugin name>)
   backend_->SetValue(key, value);
   if (track_changes_) emit OptionChanged(key, value);
 }
 
-void PluginSettings::TrackChanges(bool is_track) {
+void PluginSettings::TrackChanges(bool is_track)
+{
   track_changes_ = is_track;
 }
 

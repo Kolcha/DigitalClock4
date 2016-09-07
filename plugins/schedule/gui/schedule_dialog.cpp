@@ -9,7 +9,7 @@
 
 namespace schedule {
 
-ScheduleDialog::ScheduleDialog(QWidget *parent) :
+ScheduleDialog::ScheduleDialog(QWidget* parent) :
   QDialog(parent),
   ui(new Ui::ScheduleDialog)
 {

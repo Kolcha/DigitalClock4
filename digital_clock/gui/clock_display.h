@@ -6,7 +6,8 @@
 namespace digital_clock {
 namespace gui {
 
-class ClockDisplay : public QLabel {
+class ClockDisplay : public QLabel
+{
   Q_OBJECT
 
 public:

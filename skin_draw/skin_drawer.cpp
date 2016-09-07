@@ -20,22 +20,26 @@ SkinDrawer::SkinDrawer(QObject* parent) :
   space_ = 4 * device_pixel_ratio_;
 }
 
-void SkinDrawer::ApplySkin(ISkin::SkinPtr skin) {
+void SkinDrawer::ApplySkin(ISkin::SkinPtr skin)
+{
   skin_ = skin;
   Redraw();
 }
 
-void SkinDrawer::SetString(const QString& str) {
+void SkinDrawer::SetString(const QString& str)
+{
   str_ = str;
   Redraw();
 }
 
-void SkinDrawer::SetZoom(qreal new_zoom) {
+void SkinDrawer::SetZoom(qreal new_zoom)
+{
   zoom_ = new_zoom;
   Redraw();
 }
 
-bool SkinDrawer::SetColor(const QColor& new_color) {
+bool SkinDrawer::SetColor(const QColor& new_color)
+{
   if (!new_color.isValid()) return false;
   color_ = new_color;
   if (cust_type_ != CT_COLOR) return false;
@@ -44,7 +48,8 @@ bool SkinDrawer::SetColor(const QColor& new_color) {
   return true;
 }
 
-bool SkinDrawer::SetTexture(const QString& filename) {
+bool SkinDrawer::SetTexture(const QString& filename)
+{
   if (!QFile::exists(filename)) return false;
   txd_file_ = filename;
   if (cust_type_ != CT_TEXTURE) return false;
@@ -53,17 +58,20 @@ bool SkinDrawer::SetTexture(const QString& filename) {
   return true;
 }
 
-void SkinDrawer::SetTexturePerElement(bool set) {
+void SkinDrawer::SetTexturePerElement(bool set)
+{
   txd_per_elem_ = set;
   Redraw();
 }
 
-void SkinDrawer::SetTextureDrawMode(SkinDrawer::DrawMode mode) {
+void SkinDrawer::SetTextureDrawMode(SkinDrawer::DrawMode mode)
+{
   txd_draw_mode_ = mode;
   Redraw();
 }
 
-void SkinDrawer::SetCustomizationType(CustomizationType type) {
+void SkinDrawer::SetCustomizationType(CustomizationType type)
+{
   cust_type_ = type;
   switch (type) {
     case CT_NONE:
@@ -80,16 +88,19 @@ void SkinDrawer::SetCustomizationType(CustomizationType type) {
   }
 }
 
-void SkinDrawer::SetSpace(int new_space) {
+void SkinDrawer::SetSpace(int new_space)
+{
   space_ = new_space * device_pixel_ratio_;
   Redraw();
 }
 
-void SkinDrawer::SetPreviewMode(bool set) {
+void SkinDrawer::SetPreviewMode(bool set)
+{
   preview_mode_ = set;
 }
 
-void SkinDrawer::Redraw() {
+void SkinDrawer::Redraw()
+{
   if (str_.isEmpty() || !skin_) return;
   // get images for all symbols
   QList<ISkin::QPixmapPtr> elements;
@@ -161,7 +172,8 @@ void SkinDrawer::Redraw() {
   emit DrawingFinished(result);
 }
 
-void SkinDrawer::DrawTexture(QPainter& painter, const QRect& rect) {
+void SkinDrawer::DrawTexture(QPainter& painter, const QRect& rect)
+{
   QPainter::CompositionMode old_mode = painter.compositionMode();
   painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
   switch (txd_draw_mode_) {

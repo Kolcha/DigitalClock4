@@ -13,7 +13,8 @@ namespace schedule {
 class TasksStorage;
 class TasksInvoker;
 
-class Schedule : public IClockPlugin {
+class Schedule : public IClockPlugin
+{
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "schedule.json")
   Q_INTERFACES(IClockPlugin)

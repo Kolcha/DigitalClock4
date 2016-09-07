@@ -7,7 +7,8 @@
 
 namespace spectrum_clock {
 
-class SpectrumClock : public ISettingsPlugin, public ISettingsPluginInit {
+class SpectrumClock : public ISettingsPlugin, public ISettingsPluginInit
+{
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "spectrum_clock.json")
   Q_INTERFACES(IClockPlugin ISettingsPlugin ISettingsPluginInit)

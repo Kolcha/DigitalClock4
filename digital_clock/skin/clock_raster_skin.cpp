@@ -5,7 +5,8 @@
 namespace digital_clock {
 namespace core {
 
-RasterSkin::RasterSkin(const QDir& skin_root) {
+RasterSkin::RasterSkin(const QDir& skin_root)
+{
   QSettings config(skin_root.filePath("skin.ini"), QSettings::IniFormat);
   // load info
   info_[SI_NAME] = config.value("info/name").toString();
@@ -27,7 +28,8 @@ RasterSkin::RasterSkin(const QDir& skin_root) {
   orig_images_['P'] = orig_images_['p'];
 }
 
-void RasterSkin::ProcSeparators() {
+void RasterSkin::ProcSeparators()
+{
   for (int i = 0; i < seps_.length(); ++i) {
     if (orig_images_.find(seps_[i]) == orig_images_.end()) {
       orig_images_[seps_[i]] = orig_images_[':'];

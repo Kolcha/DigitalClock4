@@ -11,7 +11,8 @@
  * with dialog. Remaining time is displayed on default button.
  * @see MessageBox::setAutoClose(), @see MessageBox::setTimeout()
  */
-class CLOCK_COMMON_EXPORT TMessageBox : public QMessageBox {
+class CLOCK_COMMON_EXPORT TMessageBox : public QMessageBox
+{
   Q_OBJECT
 
 public:
@@ -35,8 +36,8 @@ public:
    * @param flags - window flags, @see Qt::WindowFlags
    */
   TMessageBox(Icon icon, const QString& title, const QString& text,
-             StandardButtons buttons = NoButton, QWidget* parent = 0,
-             Qt::WindowFlags flags = Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
+              StandardButtons buttons = NoButton, QWidget* parent = 0,
+              Qt::WindowFlags flags = Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
   /**
     * @brief Destructor.
     *

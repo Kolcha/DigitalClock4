@@ -8,18 +8,18 @@
 namespace plugin {
 
 enum WidgetPluginOption {
-    OPT_USE_CLOCK_FONT,
-    OPT_CUSTOM_FONT,
-    OPT_ZOOM_MODE
+  OPT_USE_CLOCK_FONT,
+  OPT_CUSTOM_FONT,
+  OPT_ZOOM_MODE
 };
 
 QString OptionKey(const WidgetPluginOption opt, const QString& plg_name);
 
 
 enum ZoomMode {
-    ZM_NOT_ZOOM,
-    ZM_AUTOSIZE,
-    ZM_CLOCK_ZOOM
+  ZM_NOT_ZOOM,
+  ZM_AUTOSIZE,
+  ZM_CLOCK_ZOOM
 };
 
 void InitDefaults(QMap<WidgetPluginOption, QVariant>* defaults);

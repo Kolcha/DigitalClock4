@@ -6,7 +6,8 @@
 
 namespace any_zoom {
 
-class AnyZoom : public ISettingsPlugin, ISettingsPluginInit {
+class AnyZoom : public ISettingsPlugin, ISettingsPluginInit
+{
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "any_zoom.json")
   Q_INTERFACES(IClockPlugin ISettingsPlugin ISettingsPluginInit)

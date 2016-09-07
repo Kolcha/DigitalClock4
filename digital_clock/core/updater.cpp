@@ -39,32 +39,39 @@ Updater::Updater(ClockState* state, QObject* parent) :
   connect(downloader_, &HttpClient::finished, this, &Updater::ProcessData);
 }
 
-Updater::~Updater() {
+Updater::~Updater()
+{
   if (downloader_->isRunning()) downloader_->cancel();
 }
 
-void Updater::CheckForUpdates() {
+void Updater::CheckForUpdates()
+{
   RunCheckForUpdates(true);
 }
 
-void Updater::SetCheckForBeta(bool check) {
+void Updater::SetCheckForBeta(bool check)
+{
   check_beta_ = check;
 }
 
-void Updater::SetAutoupdate(bool update) {
+void Updater::SetAutoupdate(bool update)
+{
   autoupdate_ = update;
 }
 
-void Updater::SetUpdatePeriod(int period) {
+void Updater::SetUpdatePeriod(int period)
+{
   update_period_ = period;
 }
 
-void Updater::TimeoutHandler() {
+void Updater::TimeoutHandler()
+{
   if (!autoupdate_ || (downloader_ && downloader_->isRunning())) return;
   if (last_update_.daysTo(QDate::currentDate()) >= update_period_) RunCheckForUpdates(false);
 }
 
-void Updater::ProcessData() {
+void Updater::ProcessData()
+{
   if (was_error_) return;
   QJsonParseError err;
   QJsonDocument js_doc = QJsonDocument::fromJson(data_, &err);

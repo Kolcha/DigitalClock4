@@ -11,33 +11,33 @@ class MessageWidget;
 
 class QuickNotePlugin : public ::plugin::WidgetPluginBase
 {
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "quick_note.json")
+  Q_OBJECT
+  Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "quick_note.json")
 
 public:
-    QuickNotePlugin();
+  QuickNotePlugin();
 
-    void Init(const QMap<Option, QVariant>& current_settings);
+  void Init(const QMap<Option, QVariant>& current_settings);
 
 public slots:
-    void Configure();
+  void Configure();
 
-    void SettingsListener(Option option, const QVariant& new_value);
+  void SettingsListener(Option option, const QVariant& new_value);
 
 protected:
-    void InitSettingsDefaults(QSettings::SettingsMap* defaults);
-    QWidget* InitWidget(QGridLayout* layout);
-    void DisplayImage(const QImage& image);
-    QString GetWidgetText();
+  void InitSettingsDefaults(QSettings::SettingsMap* defaults);
+  QWidget* InitWidget(QGridLayout* layout);
+  void DisplayImage(const QImage& image);
+  QString GetWidgetText();
 
 private slots:
-    void SettingsUpdateListener(const QString& key, const QVariant& value);
+  void SettingsUpdateListener(const QString& key, const QVariant& value);
 
 private:
-    qreal CalculateZoom(const QString& text) const;
+  qreal CalculateZoom(const QString& text) const;
 
-    MessageWidget* msg_widget_;
-    QColor msg_color_;
+  MessageWidget* msg_widget_;
+  QColor msg_color_;
 };
 
 } // namespace quick_note

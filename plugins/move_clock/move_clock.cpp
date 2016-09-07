@@ -7,11 +7,13 @@
 
 namespace move_clock {
 
-double x(double c, double k, double a, double n, double t) {
+double x(double c, double k, double a, double n, double t)
+{
   return c + k*t + a*cos(n*t);
 }
 
-double y(double c, double k, double a, double n, double t) {
+double y(double c, double k, double a, double n, double t)
+{
   return c + k*t + a*sin(n*t);
 }
 
@@ -26,7 +28,8 @@ MoveClock::MoveClock() : t_(0.0), dx_(0), dy_(0)
   InitIcon(":/move_clock/icon.svg");
 }
 
-void MoveClock::Init(QWidget* main_wnd) {
+void MoveClock::Init(QWidget* main_wnd)
+{
   clock_wnd_ = main_wnd;
   old_pos_ = main_wnd->pos();
 
@@ -39,17 +42,20 @@ void MoveClock::Init(QWidget* main_wnd) {
   settings_->TrackChanges(true);
 }
 
-void MoveClock::Start() {
+void MoveClock::Start()
+{
   settings_->Load();
   timer_.start();
 }
 
-void MoveClock::Stop() {
+void MoveClock::Stop()
+{
   timer_.stop();
   clock_wnd_->move(old_pos_);
 }
 
-void MoveClock::Configure() {
+void MoveClock::Configure()
+{
   SettingsDialog* dialog = new SettingsDialog();
   // load current settings to dialog
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
@@ -63,7 +69,8 @@ void MoveClock::Configure() {
   dialog->show();
 }
 
-void MoveClock::SettingsListener(const QString& key, const QVariant& value) {
+void MoveClock::SettingsListener(const QString& key, const QVariant& value)
+{
   if (key == OPT_X0) x0_ = value.toInt();
   if (key == OPT_KX) kx_ = value.toReal();
   if (key == OPT_AX) ax_ = value.toInt();
@@ -75,7 +82,8 @@ void MoveClock::SettingsListener(const QString& key, const QVariant& value) {
   if (key == OPT_TIMEOUT) timer_.setInterval(value.toInt());
 }
 
-void MoveClock::TimeoutHandler() {
+void MoveClock::TimeoutHandler()
+{
   int cx = x(x0_, kx_, ax_, nx_, t_) + dx_;
   int sw = desktop_.screen()->width();
   int cw = clock_wnd_->width();

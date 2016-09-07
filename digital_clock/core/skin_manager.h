@@ -14,7 +14,8 @@
 namespace digital_clock {
 namespace core {
 
-class SkinManager : public QObject {
+class SkinManager : public QObject
+{
   Q_OBJECT
 
 public:
