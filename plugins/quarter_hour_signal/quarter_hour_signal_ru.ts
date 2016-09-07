@@ -4,12 +4,12 @@
 <context>
     <name>quarter_hour_signal::QuarterHourSignal</name>
     <message>
-        <location filename="quarter_hour_signal.cpp" line="10"/>
+        <location filename="quarter_hour_signal.cpp" line="11"/>
         <source>Quarter of an hour signal</source>
         <translation>Сигнал каждые 15 минут</translation>
     </message>
     <message>
-        <location filename="quarter_hour_signal.cpp" line="11"/>
+        <location filename="quarter_hour_signal.cpp" line="12"/>
         <source>Chiming on every quarter of an hour.</source>
         <translation>Издает короткий сигнал каждые 15 минут (четверть часа).</translation>
     </message>

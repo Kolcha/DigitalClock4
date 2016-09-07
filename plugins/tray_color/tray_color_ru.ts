@@ -4,12 +4,12 @@
 <context>
     <name>tray_color::TrayColor</name>
     <message>
-        <location filename="tray_color.cpp" line="14"/>
+        <location filename="tray_color.cpp" line="15"/>
         <source>Tray icon color</source>
         <translation>Цвет значка в трее</translation>
     </message>
     <message>
-        <location filename="tray_color.cpp" line="15"/>
+        <location filename="tray_color.cpp" line="16"/>
         <source>Allows to change tray icon color.</source>
         <translation>Позволяет изменять цвет значка в трее.</translation>
     </message>

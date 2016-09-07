@@ -4,7 +4,7 @@
 <context>
     <name>spectrum_clock::SpectrumClock</name>
     <message>
-        <location filename="spectrum_clock.cpp" line="8"/>
+        <location filename="spectrum_clock.cpp" line="9"/>
         <source>Changes clock color during time.</source>
         <translation>Изменяет цвет часов со временем.</translation>
     </message>

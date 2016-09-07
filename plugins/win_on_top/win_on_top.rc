@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	1,1,0,50
+FILEVERSION	1,1,0,51
 PRODUCTVERSION	4,5,0,0
 FILEOS		0x4
 FILETYPE	0x2
@@ -11,7 +11,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Always on top"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "1.1.0.50"
+		VALUE "FileVersion", "1.1.0.51"
 		VALUE "InternalName", "win_on_top.dll"
 		VALUE "LegalCopyright", "© 2014-2016 Nick Korotysh"
 		VALUE "OriginalFilename", "win_on_top.dll"

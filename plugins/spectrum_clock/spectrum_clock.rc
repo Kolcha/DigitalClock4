@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	2,1,1,58
+FILEVERSION	2,1,1,59
 PRODUCTVERSION	4,5,0,0
 FILEOS		0x4
 FILETYPE	0x2
@@ -11,7 +11,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Spectrum clock"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "2.1.1.58"
+		VALUE "FileVersion", "2.1.1.59"
 		VALUE "InternalName", "spectrum_clock.dll"
 		VALUE "LegalCopyright", "© 2013-2016 Nick Korotysh"
 		VALUE "OriginalFilename", "spectrum_clock.dll"

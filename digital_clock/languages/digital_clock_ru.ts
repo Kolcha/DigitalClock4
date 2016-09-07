@@ -34,7 +34,7 @@
 <context>
     <name>digital_clock::core::SkinManager</name>
     <message>
-        <location filename="../core/skin_manager.cpp" line="71"/>
+        <location filename="../core/skin_manager.cpp" line="76"/>
         <source>Skin &apos;%1&apos; is not loaded, using default skin.</source>
         <translation>Стиль &apos;%1&apos; не загружен, использован стиль по умолчанию.</translation>
     </message>
@@ -88,12 +88,12 @@
         <translation>Информация на других сайтах</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="53"/>
+        <location filename="../gui/about_dialog.cpp" line="54"/>
         <source>version: %1 (%2)</source>
         <translation>версия: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="58"/>
+        <location filename="../gui/about_dialog.cpp" line="59"/>
         <source>build date: %1</source>
         <translatorcomment>дата компиляции приложения</translatorcomment>
         <translation>дата сборки: %1</translation>
@@ -112,7 +112,7 @@
         <translation>автор:</translation>
     </message>
     <message>
-        <location filename="../gui/plugin_info_dialog.cpp" line="23"/>
+        <location filename="../gui/plugin_info_dialog.cpp" line="25"/>
         <source>version: %1</source>
         <translation>версия: %1</translation>
     </message>
@@ -376,53 +376,53 @@
         <translation>Плагины</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="178"/>
+        <location filename="../gui/settings_dialog.cpp" line="183"/>
         <source>1 day</source>
         <translation>1 день</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="179"/>
+        <location filename="../gui/settings_dialog.cpp" line="184"/>
         <source>3 days</source>
         <translation>3 дня</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="180"/>
+        <location filename="../gui/settings_dialog.cpp" line="185"/>
         <source>1 week</source>
         <translation>1 неделя</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="181"/>
+        <location filename="../gui/settings_dialog.cpp" line="186"/>
         <source>2 weeks</source>
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="81"/>
+        <location filename="../gui/settings_dialog.cpp" line="84"/>
         <source>unknown</source>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="266"/>
+        <location filename="../gui/settings_dialog.cpp" line="284"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="268"/>
+        <location filename="../gui/settings_dialog.cpp" line="286"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="338"/>
+        <location filename="../gui/settings_dialog.cpp" line="369"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="340"/>
-        <location filename="../gui/settings_dialog.cpp" line="347"/>
+        <location filename="../gui/settings_dialog.cpp" line="371"/>
+        <location filename="../gui/settings_dialog.cpp" line="379"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="345"/>
+        <location filename="../gui/settings_dialog.cpp" line="377"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>
@@ -431,7 +431,7 @@
     <name>digital_clock::gui::TrayControl</name>
     <message>
         <location filename="../gui/tray_control.cpp" line="14"/>
-        <location filename="../gui/tray_control.cpp" line="54"/>
+        <location filename="../gui/tray_control.cpp" line="56"/>
         <source>&amp;Hide Clock</source>
         <translation>С&amp;прятать</translation>
     </message>
@@ -456,7 +456,7 @@
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="56"/>
+        <location filename="../gui/tray_control.cpp" line="58"/>
         <source>S&amp;how Clock</source>
         <translation>&amp;Показать</translation>
     </message>
