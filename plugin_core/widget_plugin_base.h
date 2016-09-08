@@ -1,7 +1,6 @@
 #ifndef PLUGIN_WIDGET_PLUGIN_BASE_H
 #define PLUGIN_WIDGET_PLUGIN_BASE_H
 
-#include <QFont>
 #include <QSettings>
 
 #include "iclock_plugin.h"
@@ -11,11 +10,10 @@
 #include "widget_plugin_settings.h"
 
 class QGridLayout;
-namespace skin_draw {
-class SkinDrawer;
-}
 
 namespace plugin {
+
+class WidgetPluginBasePrivate;
 
 class PLUGIN_CORE_SHARED_EXPORT WidgetPluginBase : public IClockPlugin,
     public ISettingsPluginInit,
@@ -49,24 +47,12 @@ protected:
   QString plg_name_;
   int avail_width_;
 
-private slots:
-  void onBaseOptionChanged(const WidgetPluginOption opt, const QVariant& value);
-  void SettingsChangeListener(const QString& key, const QVariant& value);
-
 private:
-  void InitBaseSettingsDefaults(QSettings::SettingsMap* defaults);
   virtual qreal CalculateZoom(const QString& text) const;
 
-  QGridLayout* main_layout_;
-  QWidget* main_wnd_;
-  QPointer<QWidget> plg_widget_;
-  QFont font_;
-  QFont clock_font_;
-  qreal clock_zoom_;
-  int clock_customization_;   // use 'int' type to do not include 'skin_draw.h' to this header
-  QColor clock_color_;
-  QString last_text_;
-  ::skin_draw::SkinDrawer* drawer_;
+  // use pointer to private data to keep binary compatibility
+  WidgetPluginBasePrivate* private_;
+  friend class WidgetPluginBasePrivate;
 };
 
 } // namespace plugin
