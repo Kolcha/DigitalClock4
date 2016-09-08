@@ -63,6 +63,8 @@ private:
   QFont font_;
   QFont clock_font_;
   qreal clock_zoom_;
+  int clock_customization_;   // use 'int' type to do not include 'skin_draw.h' to this header
+  QColor clock_color_;
   QString last_text_;
   ::skin_draw::SkinDrawer* drawer_;
 };

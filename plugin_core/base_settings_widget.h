@@ -34,9 +34,13 @@ private slots:
   void on_font_autosize_clicked();
   void on_clock_zoom_clicked();
 
+  void on_use_custom_color_clicked(bool checked);
+  void on_custom_color_button_clicked();
+
 private:
   Ui::BaseSettingsWidget* ui;
   QFont last_font_;
+  QColor last_color_;
   QTranslator* gui_translator_;
 };
 

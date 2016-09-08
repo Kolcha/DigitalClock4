@@ -38,5 +38,15 @@
         <source>use clock zoom</source>
         <translation>использовать масштаб часов</translation>
     </message>
+    <message>
+        <location filename="base_settings_widget.ui" line="103"/>
+        <source>Color</source>
+        <translation>Цвет</translation>
+    </message>
+    <message>
+        <location filename="base_settings_widget.ui" line="109"/>
+        <source>use custom color</source>
+        <translation>использовать пользовательский цвет</translation>
+    </message>
 </context>
 </TS>

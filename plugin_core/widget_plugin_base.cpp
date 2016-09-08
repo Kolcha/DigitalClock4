@@ -30,7 +30,8 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
         break;
 
       case OPT_COLOR:
-        drawer_->SetColor(iter.value().value<QColor>());
+        clock_color_ = iter.value().value<QColor>();
+        drawer_->SetColor(clock_color_);
         break;
 
       case OPT_TEXTURE:
@@ -38,6 +39,7 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
         break;
 
       case OPT_TEXTURE_TYPE:
+        clock_customization_ = iter.value().toInt();
         drawer_->SetCustomizationType(static_cast<skin_draw::SkinDrawer::CustomizationType>(iter.value().toInt()));
         break;
 
@@ -49,11 +51,13 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
         drawer_->SetTextureDrawMode(static_cast<skin_draw::SkinDrawer::DrawMode>(iter.value().toInt()));
         break;
 
-      case OPT_CUSTOMIZATION: {
+      case OPT_CUSTOMIZATION:
+      {
         Customization cust = static_cast<Customization>(iter.value().toInt());
         switch (cust) {
           case Customization::C_NONE:
           case Customization::C_COLORIZE:
+            clock_customization_ = ::skin_draw::SkinDrawer::CT_NONE;
             drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
             break;
 
@@ -164,7 +168,9 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       break;
 
     case OPT_COLOR:
-      drawer_->SetColor(new_value.value<QColor>());
+      clock_color_ = new_value.value<QColor>();
+      if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)).toBool()) break;
+      drawer_->SetColor(clock_color_);
       break;
 
     case OPT_TEXTURE:
@@ -172,6 +178,8 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       break;
 
     case OPT_TEXTURE_TYPE:
+      clock_customization_ = new_value.toInt();
+      if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)).toBool()) break;
       drawer_->SetCustomizationType(static_cast<skin_draw::SkinDrawer::CustomizationType>(new_value.toInt()));
       break;
 
@@ -188,6 +196,8 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       switch (cust) {
         case Customization::C_NONE:
         case Customization::C_COLORIZE:
+          clock_customization_ = ::skin_draw::SkinDrawer::CT_NONE;
+          if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)).toBool()) break;
           drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
           break;
 
@@ -322,6 +332,22 @@ void WidgetPluginBase::SettingsChangeListener(const QString& key, const QVariant
       case ZoomMode::ZM_CLOCK_ZOOM:
         drawer_->SetZoom(clock_zoom_);
         break;
+    }
+  }
+  if (key == OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)) {
+    drawer_->SetString(QString());    // set empty string to do not redraw twice
+    if (value.toBool()) {
+      drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_COLOR);
+      drawer_->SetColor(settings_->GetOption(OptionKey(OPT_CUSTOM_COLOR, plg_name_)).value<QColor>());
+    } else {
+      drawer_->SetCustomizationType(static_cast<::skin_draw::SkinDrawer::CustomizationType>(clock_customization_));
+      drawer_->SetColor(clock_color_);
+    }
+    drawer_->SetString(last_text_);
+  }
+  if (key == OptionKey(OPT_CUSTOM_COLOR, plg_name_)) {
+    if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)).toBool()) {
+      drawer_->SetColor(value.value<QColor>());
     }
   }
 }

@@ -10,7 +10,9 @@ namespace plugin {
 enum WidgetPluginOption {
   OPT_USE_CLOCK_FONT,
   OPT_CUSTOM_FONT,
-  OPT_ZOOM_MODE
+  OPT_ZOOM_MODE,
+  OPT_USE_CUSTOM_COLOR,
+  OPT_CUSTOM_COLOR
 };
 
 QString OptionKey(const WidgetPluginOption opt, const QString& plg_name);
