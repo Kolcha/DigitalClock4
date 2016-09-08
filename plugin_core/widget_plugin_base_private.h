@@ -18,7 +18,8 @@ namespace plugin {
 
 class WidgetPluginBase;
 
-class WidgetPluginBasePrivate : public QObject {
+class WidgetPluginBasePrivate : public QObject
+{
   Q_OBJECT
 
 public:
