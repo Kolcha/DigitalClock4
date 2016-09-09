@@ -104,6 +104,24 @@ void QuickNotePlugin::SettingsUpdateListener(const QString& key, const QVariant&
   if (key == OPT_SHOW_EDIT_BTN) {
     msg_widget_->ShowEditButton(value.toBool());
   }
+
+  using ::plugin::OptionKey;
+  using ::plugin::OPT_USE_CUSTOM_COLOR;
+  using ::plugin::OPT_CUSTOM_COLOR;
+
+  if (key == OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)) {
+    if (value.toBool()) {
+      QColor cc = settings_->GetOption(OptionKey(OPT_CUSTOM_COLOR, plg_name_)).value<QColor>();
+      msg_widget_->setIconColor(cc);
+    } else {
+      msg_widget_->setIconColor(msg_color_);
+    }
+  }
+  if (key == OptionKey(OPT_CUSTOM_COLOR, plg_name_)) {
+    if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)).toBool()) {
+      msg_widget_->setIconColor(value.value<QColor>());
+    }
+  }
 }
 
 qreal QuickNotePlugin::CalculateZoom(const QString& text) const

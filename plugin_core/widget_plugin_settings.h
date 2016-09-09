@@ -5,6 +5,8 @@
 #include <QMap>
 #include <QVariant>
 
+#include "plugin_core_global.h"
+
 namespace plugin {
 
 enum WidgetPluginOption {
@@ -15,7 +17,7 @@ enum WidgetPluginOption {
   OPT_CUSTOM_COLOR
 };
 
-QString OptionKey(const WidgetPluginOption opt, const QString& plg_name);
+QString PLUGIN_CORE_SHARED_EXPORT OptionKey(const WidgetPluginOption opt, const QString& plg_name);
 
 
 enum ZoomMode {
