@@ -48,7 +48,8 @@ public:
   explicit PluginManager(QObject* parent = 0);
   /*!
    * Set data for plugin initialization.
-   * @param data - data to set. @see TPluginData
+   * @param data - data to set
+   * @see TPluginData
    */
   void SetInitData(const TPluginData& data);
 

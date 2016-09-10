@@ -4,10 +4,10 @@
  * @brief This file contains all plugins interfaces.
  *
  * Digital Clock has next plugin types:
- * @li clock
- * @li settings
- * @li tray
- * @li widget
+ *   - clock
+ *   - settings
+ *   - tray
+ *   - widget
  *
  * Clock plugin is a base plugin interface for all other plugin types. This is only for very
  * simple plugins, that doesn't need in access to clock settings, tray icon or other things.
@@ -59,8 +59,9 @@ public slots:
    * @brief Clock settings changes listener.
    *
    * This slot will be called when any clock option will changed.
-   * @param option - option which was changed. @see Option
+   * @param option - option which was changed
    * @param new_value - new option value as QVariant
+   * @see Option
    */
   virtual void SettingsListener(Option option, const QVariant& new_value) { Q_UNUSED(option); Q_UNUSED(new_value); }
   /*!
@@ -84,7 +85,7 @@ Q_DECLARE_INTERFACE(IClockPlugin, CLOCK_PLUGIN_INTERFACE_IID)
  * when it changes settings to notify clock. All changes will be applied immediately.
  * @note You must be sure that your plugin set correct option values, there is no any check
  * inside clock, be carefull.
- * @see settings_keys.h.
+ * @see settings_keys.h
  */
 class CLOCK_COMMON_EXPORT ISettingsPlugin : public IClockPlugin
 {
@@ -93,8 +94,9 @@ class CLOCK_COMMON_EXPORT ISettingsPlugin : public IClockPlugin
 signals:
   /*!
    * Signal to notify clock that option have changed.
-   * @param option - option which was changed. @see Option
+   * @param option - option which was changed
    * @param value - new option value as QVariant
+   * @see Option
    */
   void OptionChanged(Option option, const QVariant& value);
 };

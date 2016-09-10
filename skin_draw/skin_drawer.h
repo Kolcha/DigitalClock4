@@ -87,16 +87,16 @@ public slots:
    * @brief Set texture draw mode.
    *
    * SkinDrawer can draw texture by different ways. This paramenter chooses one of them.
-   * @see DrawMode description for details and possible values.
    * @param mode - new draw mode
+   * @see DrawMode description for details and possible values.
    */
   void SetTextureDrawMode(DrawMode mode);
   /*!
    * @brief Set skin customization type.
    *
-   * SkinDrawer can "customize" skin appling texture or color for it. Its behaviour depends on
-   * this value. @see CustomizationType for possible values and its description.
+   * SkinDrawer can "customize" skin appling texture or color for it. Its behaviour depends on this value.
    * @param type - new customization type
+   * @see CustomizationType for possible values and its description.
    */
   void SetCustomizationType(CustomizationType type);
   /*!

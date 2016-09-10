@@ -10,9 +10,9 @@ namespace skin_draw {
  * @brief Skin interface.
  *
  * This class provides interface for all supported skin types:
- * @li raster image skin
- * @li vector image skin
- * @li text skin
+ *   - raster image skin
+ *   - vector image skin
+ *   - text skin
  *
  * This interface is used by skin draw engine.
  * @see RasterSkin, VectorSkin, TextSkin, SkinDrawer

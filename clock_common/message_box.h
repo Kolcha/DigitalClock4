@@ -9,7 +9,7 @@
  *
  * This class has ability to 'click' default button by timeout, when user don't interact
  * with dialog. Remaining time is displayed on default button.
- * @see MessageBox::setAutoClose(), @see MessageBox::setTimeout()
+ * @see TMessageBox::setAutoClose(), TMessageBox::setTimeout()
  */
 class CLOCK_COMMON_EXPORT TMessageBox : public QMessageBox
 {
@@ -28,12 +28,12 @@ public:
    *
    * Constructs a message box with the given icon, title, text, and standard buttons. All arguments
    * are passed to the QMessageBox constructor.
-   * @param icon - dialog icon, @see QMessageBox::Icon
+   * @param icon - dialog icon
    * @param title - message box window title
    * @param text - message text
-   * @param buttons - standard buttons, @see QMessageBox::StandardButtons
+   * @param buttons - standard buttons
    * @param parent - parent widget
-   * @param flags - window flags, @see Qt::WindowFlags
+   * @param flags - window flags
    */
   TMessageBox(Icon icon, const QString& title, const QString& text,
               StandardButtons buttons = NoButton, QWidget* parent = 0,
@@ -48,23 +48,25 @@ public:
   /**
    * @brief Sets auto close option.
    *
-   * If enabled, dialol will closed by timeout. @see setTimeout()
+   * If enabled, dialol will closed by timeout.
    * @param enable - value to set, false by default
+   * @see setTimeout()
    */
   void setAutoClose(bool enable);
   /**
    * @brief Sets auto close timeout.
    *
-   * After this timeout default button will clicked. @see setAutoClose()
+   * After this timeout default button will clicked.
    * @param seconds - timeout in seconds
    * @note Default button must be set explicitly using setDefaultButton()
+   * @see setAutoClose()
    */
   void setTimeout(int seconds);
 
 public slots:
   /**
    * Reimplemented from QMessageBox::exec()
-   * @return clicked button, @see QMessageBox::StandardButton
+   * @return clicked button
    */
   int exec();
 

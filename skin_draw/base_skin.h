@@ -12,8 +12,8 @@ namespace skin_draw {
  *
  * It implements get image logic and images cache.
  * Get image logic:
- * @li try to get image from cache, if failed request for new image and add it to cache if needed
- * @li if try to request image with different zoom than cache has and try to add it to cache,
+ *   - try to get image from cache, if failed request for new image and add it to cache if needed
+ *   - if try to request image with different zoom than cache has and try to add it to cache,
  * cache will be cleared and current skin zoom will be updated
  *
  * @see BaseSkin::ResizeImage()
