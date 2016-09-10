@@ -1,9 +1,11 @@
+#include "tray_color.h"
+
 #include <QSystemTrayIcon>
 #include <QColorDialog>
 #include <QPainter>
+
 #include "plugin_settings.h"
 #include "tray_color_settings.h"
-#include "tray_color.h"
 
 namespace tray_color {
 
@@ -20,6 +22,7 @@ TrayColor::TrayColor()
 void TrayColor::Init(QSystemTrayIcon* tray_icon)
 {
   tray_icon_ = tray_icon;
+  old_icon_ = tray_icon->icon();
 
   QSettings::SettingsMap defaults;
   InitDefaults(&defaults);
@@ -35,7 +38,7 @@ void TrayColor::Start()
 
 void TrayColor::Stop()
 {
-  RedrawTrayIcon(Qt::black);
+  tray_icon_->setIcon(old_icon_);
   is_enabled_ = false;
 }
 
@@ -47,11 +50,6 @@ void TrayColor::Configure()
     if (is_enabled_) RedrawTrayIcon(color);
   }
   settings_->Save();
-}
-
-void TrayColor::SettingsListener(Option opt, const QVariant& value)
-{
-  if (opt == OPT_COLOR) RedrawTrayIcon(value.value<QColor>());
 }
 
 void TrayColor::RedrawTrayIcon(const QColor& color)

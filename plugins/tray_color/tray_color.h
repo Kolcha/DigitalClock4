@@ -1,8 +1,10 @@
-#ifndef TRAY_COLOR_H
-#define TRAY_COLOR_H
+#ifndef TRAY_COLOR_TRAY_COLOR_H
+#define TRAY_COLOR_TRAY_COLOR_H
 
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
+
+#include <QIcon>
 
 namespace tray_color {
 
@@ -20,16 +22,16 @@ public slots:
   void Start();
   void Stop();
   void Configure();
-  void SettingsListener(Option opt, const QVariant& value);
 
 private:
   void RedrawTrayIcon(const QColor& color);
 
   QSystemTrayIcon* tray_icon_;
+  QIcon old_icon_;
 
   bool is_enabled_;
 };
 
 } // namespace tray_color
 
-#endif // TRAY_COLOR_H
+#endif // TRAY_COLOR_TRAY_COLOR_H
