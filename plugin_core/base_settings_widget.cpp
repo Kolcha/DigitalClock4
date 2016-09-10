@@ -2,6 +2,7 @@
 #include "ui_base_settings_widget.h"
 
 #include <QFontDialog>
+#include <QColorDialog>
 #include <QTranslator>
 #include <QApplication>
 #include <QLocale>
@@ -58,10 +59,20 @@ void BaseSettingsWidget::InitWidgets(const QMap<WidgetPluginOption, QVariant>& c
         break;
 
       case OPT_ZOOM_MODE:
+      {
         ZoomMode mode = static_cast<ZoomMode>(iter.value().toInt());
         ui->not_zoom->setChecked(mode == ZoomMode::ZM_NOT_ZOOM);
         ui->font_autosize->setChecked(mode == ZoomMode::ZM_AUTOSIZE);
         ui->clock_zoom->setChecked(mode == ZoomMode::ZM_CLOCK_ZOOM);
+        break;
+      }
+
+      case OPT_USE_CUSTOM_COLOR:
+        ui->use_custom_color->setChecked(iter.value().toBool());
+        break;
+
+      case OPT_CUSTOM_COLOR:
+        last_color_ = iter.value().value<QColor>();
         break;
     }
   }
@@ -95,6 +106,18 @@ void BaseSettingsWidget::on_font_autosize_clicked()
 void BaseSettingsWidget::on_clock_zoom_clicked()
 {
   emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_CLOCK_ZOOM));
+}
+
+void BaseSettingsWidget::on_use_custom_color_clicked(bool checked)
+{
+  emit OptionChanged(OPT_USE_CUSTOM_COLOR, checked);
+}
+
+void BaseSettingsWidget::on_custom_color_button_clicked()
+{
+  QColor color = QColorDialog::getColor(last_color_, this);
+  if (!color.isValid()) return;
+  emit OptionChanged(OPT_CUSTOM_COLOR, color);
 }
 
 } // namespace plugin

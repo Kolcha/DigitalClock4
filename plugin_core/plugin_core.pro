@@ -16,12 +16,14 @@ DEFINES += PLUGIN_CORE_LIBRARY
 SOURCES += \
     base_settings_widget.cpp \
     widget_plugin_base.cpp \
+    widget_plugin_base_private.cpp \
     widget_plugin_settings.cpp
 
 HEADERS += \
     base_settings_widget.h \
     plugin_core_global.h \
     widget_plugin_base.h \
+    widget_plugin_base_private.h \
     widget_plugin_settings.h
 
 FORMS += \
@@ -36,7 +38,7 @@ RESOURCES += \
     plugin_core.qrc
 
 win32:RC_FILE = plugin_core.rc
-unix:VERSION = 1.0.0
+unix:VERSION = 1.0.1
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
 
 # add skin_draw library
