@@ -49,14 +49,6 @@
       <Directory Id="DesktopFolder" Name="Desktop" />
     </Directory>
 
-    <DirectoryRef Id="TARGETDIR">
-      <Merge Id="VCRedist" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC140_CRT_x64.msm" DiskId="1" Language="0" />
-    </DirectoryRef>
-
-    <Feature Id="VCRedist" Title="Visual C++ 14.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
-      <MergeRef Id="VCRedist" />
-    </Feature>
-
     <Feature Id="Complete" Level="1">
       <ComponentGroupRef Id="QtFiles" />
       <ComponentGroupRef Id="ClockFiles" />

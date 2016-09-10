@@ -14,6 +14,9 @@
             <Component Id="cmp936F93A6D920FB403211F0AE426037A0" Directory="INSTALLDIR" Guid="{A5623E34-B04D-4875-BFF4-0D10EEBDCDCE}">
                 <File Id="filAF89F998C93BD10CB677322009EB192E" KeyPath="yes" Source="..\..\..\Qt files x86\libGLESv2.dll" />
             </Component>
+            <Component Id="cmp74392B787643A0F135CACCD11365E4FB" Directory="INSTALLDIR" Guid="{B9F63C64-0E94-49FC-B30B-BFCF4909228D}">
+                <File Id="fil6CB9C0F009ADC59844537D2147DF743F" KeyPath="yes" Source="..\..\..\Qt files x86\qt.conf" />
+            </Component>
             <Component Id="cmp01229088A6F1DEA1BE391E6E7CC3D3EE" Directory="INSTALLDIR" Guid="{4815B61D-69BC-4687-B2D5-ABCDBEB50F02}">
                 <File Id="filAD80F4724AAE3D8B0682F5982CC2548D" KeyPath="yes" Source="..\..\..\Qt files x86\Qt5Core.dll" />
             </Component>

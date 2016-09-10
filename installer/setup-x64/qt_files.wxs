@@ -14,6 +14,9 @@
             <Component Id="cmp936F93A6D920FB403211F0AE426037A0" Directory="INSTALLDIR" Guid="{F73ECF9E-C4BF-43ED-86B8-F1AC6D86678C}" Win64="yes">
                 <File Id="filAF89F998C93BD10CB677322009EB192E" KeyPath="yes" Source="..\..\..\Qt files x64\libGLESV2.dll" />
             </Component>
+            <Component Id="cmp74392B787643A0F135CACCD11365E4FB" Directory="INSTALLDIR" Guid="{555942BE-0A35-4753-AF57-0C457935A6DF}" Win64="yes">
+                <File Id="fil6CB9C0F009ADC59844537D2147DF743F" KeyPath="yes" Source="..\..\..\Qt files x64\qt.conf" />
+            </Component>
             <Component Id="cmp01229088A6F1DEA1BE391E6E7CC3D3EE" Directory="INSTALLDIR" Guid="{F9BBEDBB-99ED-41D4-A8E5-4AA5CC4C4423}" Win64="yes">
                 <File Id="filAD80F4724AAE3D8B0682F5982CC2548D" KeyPath="yes" Source="..\..\..\Qt files x64\Qt5Core.dll" />
             </Component>
