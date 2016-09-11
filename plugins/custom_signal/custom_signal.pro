@@ -13,12 +13,14 @@ TARGET = custom_signal
 SOURCES += \
     core/signal_item.cpp \
     gui/settings_dialog.cpp \
-    custom_signal_plugin.cpp
+    custom_signal_plugin.cpp \
+    core/custom_signal_settings.cpp
 
 HEADERS += \
     core/signal_item.h \
     gui/settings_dialog.h \
-    custom_signal_plugin.h
+    custom_signal_plugin.h \
+    core/custom_signal_settings.h
 
 FORMS += \
     gui/settings_dialog.ui

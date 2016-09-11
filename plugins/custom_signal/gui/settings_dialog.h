@@ -3,6 +3,8 @@
 
 #include <QDialog>
 
+#include <QSettings>
+
 namespace custom_signal {
 
 namespace Ui {
@@ -16,6 +18,19 @@ class SettingsDialog : public QDialog
 public:
   explicit SettingsDialog(QWidget* parent = 0);
   ~SettingsDialog();
+
+  void Init(const QSettings::SettingsMap& settings);
+
+signals:
+  void OptionChanged(const QString&, const QVariant&);
+
+private slots:
+  void on_eh_signal_enabled_clicked(bool checked);
+  void on_qh_signal_enabled_clicked(bool checked);
+  void on_custom_enabled_clicked(bool checked);
+
+  void on_custom_period_valueChanged(int arg1);
+  void on_custom_offset_valueChanged(int arg1);
 
 private:
   Ui::SettingsDialog* ui;

@@ -3,6 +3,8 @@
 
 #include "iclock_plugin.h"
 
+#include <QMediaPlayer>
+
 namespace custom_signal {
 
 class CustomSignalPlugin : public IClockPlugin
@@ -15,9 +17,16 @@ public:
   CustomSignalPlugin();
 
 public slots:
+  void Start();
+  void Stop();
+
   void Configure();
 
   void TimeUpdateListener();
+
+private:
+  bool started_;
+  QMediaPlayer* player_;
 };
 
 } // namespace custom_signal
