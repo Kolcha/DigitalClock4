@@ -1,6 +1,8 @@
 #include "signal_item.h"
 
-SignalItem::SignalItem(QObject *parent) : QObject(parent)
+namespace custom_signal {
+
+SignalItem::SignalItem(QObject* parent) : QObject(parent)
 {
   period_ = 1;
   offset_ = 0;
@@ -64,3 +66,5 @@ void SignalItem::checkTime(const QTime& t)
   next_shot_ = next_shot_.addSecs(period_);
   emit timeout();
 }
+
+} // namespace custom_signal

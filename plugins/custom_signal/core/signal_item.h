@@ -1,16 +1,18 @@
-#ifndef SignalItem_H
-#define SignalItem_H
+#ifndef CUSTOM_SIGNAL_SIGNAL_ITEM_H
+#define CUSTOM_SIGNAL_SIGNAL_ITEM_H
 
 #include <QObject>
 
 #include <QString>
 #include <QTime>
 
+namespace custom_signal {
+
 class SignalItem : public QObject
 {
   Q_OBJECT
 public:
-  explicit SignalItem(QObject *parent = 0);
+  explicit SignalItem(QObject* parent = 0);
 
   int period() const;
   int offset() const;
@@ -37,4 +39,6 @@ private:
   QTime next_shot_;
 };
 
-#endif // SignalItem_H
+} // namespace custom_signal
+
+#endif // CUSTOM_SIGNAL_SIGNAL_ITEM_H
