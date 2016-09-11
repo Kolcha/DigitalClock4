@@ -13,7 +13,8 @@ SUBDIRS += \
     move_clock \
     tower_clock_signal \
     ip_address \
-    quarter_hour_signal
+    quarter_hour_signal \
+    custom_signal
 
 windows {
 SUBDIRS += \
