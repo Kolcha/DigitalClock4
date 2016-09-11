@@ -14,16 +14,19 @@ SOURCES += \
     core/signal_item.cpp \
     gui/settings_dialog.cpp \
     custom_signal_plugin.cpp \
-    core/custom_signal_settings.cpp
+    core/custom_signal_settings.cpp \
+    gui/signal_config_dialog.cpp
 
 HEADERS += \
     core/signal_item.h \
     gui/settings_dialog.h \
     custom_signal_plugin.h \
-    core/custom_signal_settings.h
+    core/custom_signal_settings.h \
+    gui/signal_config_dialog.h
 
 FORMS += \
-    gui/settings_dialog.ui
+    gui/settings_dialog.ui \
+    gui/signal_config_dialog.ui
 
 TRANSLATIONS += \
     custom_signal_ru.ts

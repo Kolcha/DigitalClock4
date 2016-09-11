@@ -26,14 +26,18 @@ signals:
 
 private slots:
   void on_eh_signal_enabled_clicked(bool checked);
+  void on_eh_config_btn_clicked();
   void on_qh_signal_enabled_clicked(bool checked);
+  void on_qh_config_btn_clicked();
   void on_custom_enabled_clicked(bool checked);
+  void on_custom_config_btn_clicked();
 
   void on_custom_period_valueChanged(int arg1);
   void on_custom_offset_valueChanged(int arg1);
 
 private:
   Ui::SettingsDialog* ui;
+  QSettings::SettingsMap settings_;
 };
 
 } // namespace custom_signal
