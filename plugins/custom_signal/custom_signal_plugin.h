@@ -4,8 +4,12 @@
 #include "iclock_plugin.h"
 
 #include <QMediaPlayer>
+#include <QList>
+#include <QMap>
 
 namespace custom_signal {
+
+class SignalItem;
 
 class CustomSignalPlugin : public IClockPlugin
 {
@@ -24,9 +28,22 @@ public slots:
 
   void TimeUpdateListener();
 
+private slots:
+  void SettingsUpdateListener(const QString& key, const QVariant& value);
+  void onSignalTriggered();
+  void onPlayerStateChanged(QMediaPlayer::State new_state);
+
 private:
+  enum SignalType {
+    EveryHour,
+    QuarterHour,
+    CustomPeriod
+  };
+
   bool started_;
   QMediaPlayer* player_;
+  QMap<SignalType, SignalItem*> all_signals_;
+  QList<SignalItem*> play_queue_;
 };
 
 } // namespace custom_signal

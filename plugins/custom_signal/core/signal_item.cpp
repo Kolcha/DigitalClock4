@@ -6,9 +6,8 @@ SignalItem::SignalItem(QObject* parent) : QObject(parent)
 {
   period_ = 1;
   offset_ = 0;
-  next_shot_ = QTime::currentTime();
-  next_shot_ = next_shot_.addMSecs(-next_shot_.msec());
-  next_shot_ = next_shot_.addSecs(period_);
+  next_shot_ = next_time(QTime::currentTime(), period_, offset_);
+  enabled_ = false;
 }
 
 int SignalItem::period() const
@@ -21,9 +20,14 @@ int SignalItem::offset() const
   return offset_;
 }
 
-QString SignalItem::file() const
+int SignalItem::volume() const
 {
-  return filename_;
+  return volume_;
+}
+
+QUrl SignalItem::sound() const
+{
+  return sound_;
 }
 
 QTime SignalItem::next() const
@@ -31,40 +35,53 @@ QTime SignalItem::next() const
   return next_shot_;
 }
 
+bool SignalItem::enabled() const
+{
+  return enabled_;
+}
+
 void SignalItem::setPeriod(int period)
 {
   period_ = period;
-  QTime now = QTime::currentTime();
-  int target = (now.second() / period_ + 1) * period_ + offset_;
-  if (target >= 60) {
-    next_shot_ = QTime(next_shot_.hour(), now.minute()).addSecs(60);
-  } else {
-    next_shot_ = QTime(next_shot_.hour(), next_shot_.minute(), target);
-  }
+  next_shot_ = next_time(QTime::currentTime(), period, offset_);
 }
 
 void SignalItem::setOffset(int offset)
 {
   offset_ = offset;
-  QTime now = QTime::currentTime();
-  int target = (now.second() / period_ + 1) * period_ + offset_;
-  if (target >= 60) {
-    next_shot_ = QTime(next_shot_.hour(), now.minute()).addSecs(60);
-  } else {
-    next_shot_ = QTime(next_shot_.hour(), next_shot_.minute(), target);
-  }
+  next_shot_ = next_time(QTime::currentTime(), period_, offset);
 }
 
-void SignalItem::setFile(const QString& filename)
+void SignalItem::setVolume(int volume)
 {
-  filename_ = filename;
+  volume_ = volume;
+}
+
+void SignalItem::setSound(const QUrl& sound)
+{
+  sound_ = sound;
+}
+
+void SignalItem::setEnabled(bool enabled)
+{
+  enabled_ = enabled;
 }
 
 void SignalItem::checkTime(const QTime& t)
 {
-  if (t.addMSecs(-t.msec()) != next_shot_) return;
-  next_shot_ = next_shot_.addSecs(period_);
-  emit timeout();
+  if (QTime(t.hour(), t.minute()) != next_shot_) return;
+  next_shot_ = next_shot_.addSecs(60*period_);
+  if (enabled_) emit timeout();
+}
+
+QTime next_time(const QTime& now, const int period, const int offset)
+{
+  int target = (now.minute() / period + 1) * period + offset;
+  if (target >= 60) {
+    return QTime(now.hour(), 0).addSecs(3600);
+  } else {
+    return QTime(now.hour(), target);
+  }
 }
 
 } // namespace custom_signal
