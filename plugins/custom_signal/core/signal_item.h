@@ -26,6 +26,7 @@ public:
 
 signals:
   void timeout();
+  void nextChanged(const QTime& next);
 
 public slots:
   void setPeriod(int period);

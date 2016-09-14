@@ -22,7 +22,10 @@ public:
   void Init(const QSettings::SettingsMap& settings);
 
 signals:
-  void OptionChanged(const QString&, const QVariant&);
+  void OptionChanged(const QString& key, const QVariant& value);
+
+public slots:
+  void setNextCustomTime(const QTime& next_time);
 
 private slots:
   void on_eh_signal_enabled_clicked(bool checked);

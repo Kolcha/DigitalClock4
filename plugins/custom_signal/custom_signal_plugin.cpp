@@ -59,16 +59,25 @@ void CustomSignalPlugin::Configure()
   // load current settings to dialog
   QSettings::SettingsMap curr_settings;
   InitDefaults(&curr_settings);
-  if (!started_) settings_->SetDefaultValues(curr_settings);
+  if (!started_) {
+    settings_->SetDefaultValues(curr_settings);
+    connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
+            this, SLOT(SettingsUpdateListener(QString,QVariant)));
+    settings_->TrackChanges(true);
+  }
   for (auto iter = curr_settings.begin(); iter != curr_settings.end(); ++iter) {
     *iter = settings_->GetOption(iter.key());
   }
   dialog->Init(curr_settings);
+  SignalItem* c_item = all_signals_.value(SignalType::CustomPeriod, nullptr);
+  Q_ASSERT(c_item);
+  dialog->setNextCustomTime(c_item->next());
   // connect main signals/slots
   connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
           settings_, SLOT(SetOption(QString,QVariant)));
   connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
+  connect(c_item, SIGNAL(nextChanged(QTime)), dialog, SLOT(setNextCustomTime(QTime)));
   dialog->show();
 }
 

@@ -44,12 +44,14 @@ void SignalItem::setPeriod(int period)
 {
   period_ = period;
   next_shot_ = next_time(QTime::currentTime(), period, offset_);
+  emit nextChanged(next_shot_);
 }
 
 void SignalItem::setOffset(int offset)
 {
   offset_ = offset;
   next_shot_ = next_time(QTime::currentTime(), period_, offset);
+  emit nextChanged(next_shot_);
 }
 
 void SignalItem::setVolume(int volume)
@@ -71,6 +73,7 @@ void SignalItem::checkTime(const QTime& t)
 {
   if (QTime(t.hour(), t.minute()) != next_shot_) return;
   next_shot_ = next_shot_.addSecs(60*period_);
+  emit nextChanged(next_shot_);
   if (enabled_) emit timeout();
 }
 

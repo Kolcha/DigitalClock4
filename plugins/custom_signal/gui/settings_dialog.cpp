@@ -30,6 +30,23 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
   settings_ = settings;
 }
 
+void SettingsDialog::setNextCustomTime(const QTime& next_time)
+{
+  static QString msg_mask;
+  if (msg_mask.isEmpty()) msg_mask = ui->next_signal_label->text();
+
+  QString sys_time_format = QLocale::system().timeFormat();
+  int sep_pos = sys_time_format.indexOf(':');
+  QString time_format = sys_time_format.mid(0, sys_time_format.indexOf(':', sep_pos + 1));
+
+  if (sys_time_format.contains('A', Qt::CaseInsensitive)) time_format += 'A';
+
+  QLocale c_locale(QLocale::C, QLocale::AnyCountry);
+  QString str_time = c_locale.toString(next_time, time_format);
+
+  ui->next_signal_label->setText(msg_mask.arg(str_time));
+}
+
 void SettingsDialog::on_eh_signal_enabled_clicked(bool checked)
 {
   emit OptionChanged(OPT_EVERY_HOUR_ENABLED, checked);
