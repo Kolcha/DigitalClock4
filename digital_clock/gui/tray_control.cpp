@@ -4,25 +4,31 @@
 #include <QIcon>
 #include <QApplication>
 
+#ifdef Q_OS_OSX
+#define MIcon(x)     QIcon(x).pixmap(16)
+#else
+#define MIcon(x)     QIcon(x)
+#endif
+
 namespace digital_clock {
 namespace gui {
 
 TrayControl::TrayControl(QWidget* parent) : QObject(parent)
 {
   QMenu* tray_menu = new QMenu(parent);
-  show_hide_action_ = tray_menu->addAction(
-        QApplication::windowIcon().pixmap(16), tr("&Hide Clock"), this, SLOT(ShowHideHandler()));
+  show_hide_action_ = tray_menu->addAction(MIcon(":/clock/images/clock.svg"), tr("&Hide Clock"),
+                                           this, SLOT(ShowHideHandler()));
   show_hide_action_->setData(false);
   tray_menu->addSeparator();
-  tray_menu->addAction(QIcon(":/clock/images/settings.svg").pixmap(16), tr("&Settings"),
+  tray_menu->addAction(MIcon(":/clock/images/settings.svg"), tr("&Settings"),
                        this, SIGNAL(ShowSettingsDlg()));
-  tray_menu->addAction(QIcon(":/clock/images/about.svg").pixmap(16), tr("&About"),
+  tray_menu->addAction(MIcon(":/clock/images/about.svg"), tr("&About"),
                        this, SIGNAL(ShowAboutDlg()));
   tray_menu->addSeparator();
-  tray_menu->addAction(QIcon(":/clock/images/update.svg").pixmap(16), tr("&Update"),
+  tray_menu->addAction(MIcon(":/clock/images/update.svg"), tr("&Update"),
                        this, SIGNAL(CheckForUpdates()));
   tray_menu->addSeparator();
-  tray_menu->addAction(QIcon(":/clock/images/quit.svg").pixmap(16), tr("&Quit"),
+  tray_menu->addAction(MIcon(":/clock/images/quit.svg"), tr("&Quit"),
                        this, SIGNAL(AppExit()));
 
   tray_icon_ = new QSystemTrayIcon(QApplication::windowIcon(), this);
