@@ -10,8 +10,15 @@
     </message>
     <message>
         <location filename="custom_signal_plugin.cpp" line="16"/>
-        <source>Plays sound with selected period.</source>
-        <translation>Издает звуковой сигнал через определенный период.</translation>
+        <source>Plays sound with selected period.This plugin replaces all sound plugins:
+&quot;Every hour signal&quot;, &quot;Quarter of an hour signal&quot;, &quot;Tower clock hour signal&quot;.
+Sounds from these plugins are included as default sounds.</source>
+        <oldsource>Plays sound with selected period.This plugin replaces all sound plugins:
+Every hour signal, Quarter of an hour signal, Tower clock hour signal.
+Sounds from these plugins are included as default sounds.</oldsource>
+        <translation>Издает звуковой сигнал через определенный период. Данный плагин заменяет все плагины издающие звуки:
+&quot;Сигнал каждый час&quot;, &quot;Сигнал каждые 15 минут&quot;, &quot;Бой башенных часов&quot;.
+Звуки из этих плагинов включены как стандартные.</translation>
     </message>
 </context>
 <context>

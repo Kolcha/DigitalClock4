@@ -13,7 +13,10 @@ CustomSignalPlugin::CustomSignalPlugin() : started_(false)
 {
   InitTranslator(QLatin1String(":/custom_signal/custom_signal_"));
   info_.display_name = tr("Custom period signal");
-  info_.description = tr("Plays sound with selected period.");
+  info_.description = tr("Plays sound with selected period."
+                         "This plugin replaces all sound plugins:\n"
+                         "\"Every hour signal\", \"Quarter of an hour signal\", \"Tower clock hour signal\".\n"
+                         "Sounds from these plugins are included as default sounds.");
   InitIcon(":/custom_signal/icon.svg");
 
   player_ = new QMediaPlayer(this);
