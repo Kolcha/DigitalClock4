@@ -15,6 +15,7 @@ SignalConfigDialog::SignalConfigDialog(QWidget* parent) :
   ui->defaults_box->blockSignals(true);
   ui->defaults_box->addItem(tr("sound 1"), QUrl("qrc:/custom_signal/eh_signal.wav"));
   ui->defaults_box->addItem(tr("sound 2"), QUrl("qrc:/custom_signal/qh_signal.wav"));
+  ui->defaults_box->addItem(tr("sound 3"), QUrl("qrc:/custom_signal/bell.wav"));
   ui->defaults_box->blockSignals(false);
 
   player_ = new QMediaPlayer(this);
