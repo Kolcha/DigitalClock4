@@ -128,14 +128,15 @@ qreal QuickNotePlugin::CalculateZoom(const QString& text) const
 {
   QSize s0 = GetImageSize(text, 1.0);
   qreal req_img_w = avail_width_ - msg_widget_->layout()->spacing() - 2*msg_widget_->layout()->margin();
-  qreal c_zoom = req_img_w / s0.width();
+  qreal dpr = msg_widget_->devicePixelRatioF();
+  qreal c_zoom = req_img_w * dpr / s0.width();
 
   QSize s = GetImageSize(text, c_zoom);
-  int ww = s.width() + 0.75*s.height() + 2*msg_widget_->layout()->margin() + msg_widget_->layout()->spacing();
+  int ww = (s.width() + 0.75*s.height()) / dpr + 2*msg_widget_->layout()->margin() + msg_widget_->layout()->spacing();
   while ((ww > avail_width_) && (ww - avail_width_) > 4) {
     c_zoom *= (1 - (0.5*(ww - avail_width_)) / avail_width_);
     s = GetImageSize(text, c_zoom);
-    ww = s.width() + 0.75*s.height() + 2*msg_widget_->layout()->margin() + msg_widget_->layout()->spacing();
+    ww = (s.width() + 0.75*s.height()) / dpr + 2*msg_widget_->layout()->margin() + msg_widget_->layout()->spacing();
   }
 
   return c_zoom;

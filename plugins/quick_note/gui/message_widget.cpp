@@ -77,10 +77,11 @@ void MessageWidget::on_edit_btn_clicked()
 
 void MessageWidget::ColorizeIcon(const QColor& color)
 {
-  int h = 0.72 * ui->msg_label->pixmap()->height();
+  int h = 0.72 * ui->msg_label->pixmap()->height() / ui->msg_label->devicePixelRatioF();
   QSize size = edit_icon_.actualSize(QSize(h, h));
 
-  QImage result(size, QImage::Format_ARGB32_Premultiplied);
+  QImage result(size*ui->msg_label->devicePixelRatioF(), QImage::Format_ARGB32_Premultiplied);
+  result.setDevicePixelRatio(ui->msg_label->devicePixelRatioF());
   QPainter painter(&result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
   painter.fillRect(result.rect(), Qt::transparent);
