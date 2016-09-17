@@ -90,12 +90,17 @@
         <translation>звук 2</translation>
     </message>
     <message>
-        <location filename="gui/signal_config_dialog.cpp" line="93"/>
+        <location filename="gui/signal_config_dialog.cpp" line="18"/>
+        <source>sound 3</source>
+        <translation>звук 3</translation>
+    </message>
+    <message>
+        <location filename="gui/signal_config_dialog.cpp" line="94"/>
         <source>Select sound</source>
         <translation>Выбор звука</translation>
     </message>
     <message>
-        <location filename="gui/signal_config_dialog.cpp" line="95"/>
+        <location filename="gui/signal_config_dialog.cpp" line="96"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga)</source>
         <translation>Звуки (*.wav *.mp3 *.ogg *.oga)</translation>
     </message>
