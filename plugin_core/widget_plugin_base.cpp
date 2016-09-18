@@ -298,7 +298,11 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
 qreal WidgetPluginBase::CalculateZoom(const QString& text) const
 {
   qreal tw = GetImageSize(text, 1.0).width();
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
   qreal avail_width = avail_width_ * private_->plg_widget_->devicePixelRatioF();
+#else
+  qreal avail_width = avail_width_ * private_->plg_widget_->devicePixelRatio();
+#endif
   qreal c_zoom = avail_width / tw;
 
   int c_img_w = GetImageSize(text, c_zoom).width();

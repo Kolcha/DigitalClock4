@@ -27,6 +27,9 @@ void QuickNotePlugin::Init(const QMap<Option, QVariant>& current_settings)
       case OPT_COLOR:
         msg_color_ = iter.value().value<QColor>();
         break;
+
+      default:
+        break;
     }
   }
   WidgetPluginBase::Init(current_settings);
@@ -128,7 +131,11 @@ qreal QuickNotePlugin::CalculateZoom(const QString& text) const
 {
   QSize s0 = GetImageSize(text, 1.0);
   qreal req_img_w = avail_width_ - msg_widget_->layout()->spacing() - 2*msg_widget_->layout()->margin();
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
   qreal dpr = msg_widget_->devicePixelRatioF();
+#else
+  int dpr = msg_widget_->devicePixelRatio();
+#endif
   qreal c_zoom = req_img_w * dpr / s0.width();
 
   QSize s = GetImageSize(text, c_zoom);
