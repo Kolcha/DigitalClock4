@@ -18,6 +18,7 @@ ISkin::QPixmapPtr TextSkin::ResizeImage(QChar ch, qreal zoom)
   new_font.setPointSizeF(font_.pointSizeF() * zoom * device_pixel_ratio_);
   QFontMetrics fm(new_font);
   int res_w = new_font.italic() ? ik * fm.boundingRect(QString(sch)).width() : fm.width(QString(sch));
+  if (res_w == 0) res_w = ik * fm.width(sch);
   QPixmapPtr result(new QPixmap(res_w, fm.height()));
   QPainter painter(result.data());
   painter.setFont(new_font);
