@@ -93,7 +93,7 @@ void SignalConfigDialog::on_custom_browse_btn_clicked()
   }
   QString new_sound = QFileDialog::getOpenFileName(this, tr("Select sound"),
                                                    last_path,
-                                                   tr("Sounds (*.wav *.mp3 *.ogg *.oga)"));
+                                                   tr("Sounds (*.wav *.mp3 *.ogg *.oga);;All files (*.*)"));
   if (new_sound.isEmpty()) return;
   last_cust_file_ = new_sound;
   player_->setMedia(QUrl::fromLocalFile(new_sound));

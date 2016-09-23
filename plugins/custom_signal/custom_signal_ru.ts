@@ -108,8 +108,9 @@ Sounds from these plugins are included as default sounds.</oldsource>
     </message>
     <message>
         <location filename="gui/signal_config_dialog.cpp" line="96"/>
-        <source>Sounds (*.wav *.mp3 *.ogg *.oga)</source>
-        <translation>Звуки (*.wav *.mp3 *.ogg *.oga)</translation>
+        <source>Sounds (*.wav *.mp3 *.ogg *.oga);;All files (*.*)</source>
+        <oldsource>Sounds (*.wav *.mp3 *.ogg *.oga)</oldsource>
+        <translation>Звуки (*.wav *.mp3 *.ogg *.oga);;Все файлы (*.*)</translation>
     </message>
 </context>
 </TS>
