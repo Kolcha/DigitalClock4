@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Name="Digital Clock" Id="*" UpgradeCode="{64E0CE3B-F6E2-4CC9-ACD2-A24E812DF339}"
     Language="1033" Codepage="1252" Version="4.5.0" Manufacturer="Nick Korotysh">
 
@@ -59,7 +60,10 @@
 
     <Icon Id="app_icon.ico" SourceFile="..\..\digital_clock\resources\clock_icon_win.ico" />
 
+    <util:CloseApplication Id="close_main_exe" Target="digital_clock.exe" EndSessionMessage="yes" RebootPrompt="no" />
+
     <InstallExecuteSequence>
+      <Custom Action="WixCloseApplications" Before="InstallValidate">PREVIOUSVERSIONSINSTALLED OR REINSTALL OR (REMOVE="ALL")</Custom>
       <!-- https://msdn.microsoft.com/library/aa371197.aspx -->
       <RemoveExistingProducts After="InstallFinalize" />
     </InstallExecuteSequence>

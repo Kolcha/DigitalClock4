@@ -2,5 +2,5 @@
 del *.wixobj
 del *.wixpdb
 del *.msi
-call candle.exe *.wxs
-call light.exe *.wixobj -out digital_clock_4-x64.msi
+call candle.exe -ext WixUtilExtension *.wxs
+call light.exe -ext WixUtilExtension *.wixobj -out digital_clock_4-x64.msi
