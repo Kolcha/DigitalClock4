@@ -1,3 +1,30 @@
+Whats new in 4.5.0:
+-------------------
+Core:
+ - slightly changed default settings
+ - fixed plugin settings import
+ - added 'plugin_core' library as a part of plugins engine
+
+GUI:
+ - decreased spacing
+ - fixed small menu icons in Windows on Retina display
+ - updated 2 skins
+ - added 3 new skins!
+
+Plugins:
+ - added 'custom_signal' plugin
+ - fixed tray icon after unloading 'tray_color' plugin
+ - rewritten 'date', 'ip_address', 'quick_note' plugins
+ - fixed/improved 'calculate font size' plugins feature
+ - centered plugin widgets under clock
+ - custom color support for widget plugins ('date', 'quick_note', etc.)
+
+Installer:
+ - improved upgrade: removed ugly blinking terminals
+ - close app before upgrade/uninstall
+ - added 32/64 bit label after app name
+
+
 Whats new in 4.4.6:
 -------------------
 Core:
