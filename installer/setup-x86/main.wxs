@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-  <Product Name="Digital Clock (32-bit)" Id="*" UpgradeCode="{19300332-9971-4ECE-B0AA-2D4ABF2DFC7D}"
+  <Product Name="Digital Clock" Id="*" UpgradeCode="{19300332-9971-4ECE-B0AA-2D4ABF2DFC7D}"
     Language="1033" Codepage="1252" Version="4.5.0" Manufacturer="Nick Korotysh">
 
     <Package Id="*" Keywords="Installer" Platform="x86" Description="Digital Clock"
