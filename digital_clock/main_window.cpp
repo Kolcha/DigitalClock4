@@ -208,11 +208,14 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
     {
       cur_alignment_ = static_cast<CAlignment>(value.toInt());
       QPoint cur_pos = this->pos();
+      QDesktopWidget desktop;
+
       switch (cur_alignment_) {
         case CAlignment::A_LEFT:
         {
-          if (cur_pos.x() < 0) {
-            cur_pos.setX(0);
+          int min_x = desktop.geometry().left();
+          if (cur_pos.x() < min_x) {
+            cur_pos.setX(min_x);
             this->move(cur_pos);
           }
           break;
@@ -220,10 +223,10 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
 
         case CAlignment::A_RIGHT:
         {
+          int max_x = desktop.geometry().right();
           cur_pos = this->frameGeometry().topRight();
-          QDesktopWidget desktop;
-          if (cur_pos.x() > desktop.screen()->width()) {
-            cur_pos.setX(desktop.screen()->width());
+          if (cur_pos.x() > max_x) {
+            cur_pos.setX(max_x);
             this->move(cur_pos.x() - this->width(), cur_pos.y());
           }
           break;
