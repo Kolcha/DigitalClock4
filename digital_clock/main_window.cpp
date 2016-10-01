@@ -193,38 +193,8 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
       break;
 
     case OPT_ALIGNMENT:
-    {
       cur_alignment_ = static_cast<CAlignment>(value.toInt());
-      QPoint cur_pos = this->pos();
-      QDesktopWidget desktop;
-
-      switch (cur_alignment_) {
-        case CAlignment::A_LEFT:
-        {
-          int min_x = desktop.geometry().left();
-          if (cur_pos.x() < min_x) {
-            cur_pos.setX(min_x);
-            this->move(cur_pos);
-          }
-          break;
-        }
-
-        case CAlignment::A_RIGHT:
-        {
-          int max_x = desktop.geometry().right();
-          cur_pos = this->frameGeometry().topRight();
-          if (cur_pos.x() > max_x) {
-            cur_pos.setX(max_x);
-            this->move(cur_pos.x() - this->width(), cur_pos.y());
-          }
-          break;
-        }
-
-        default:
-          Q_ASSERT(false);
-      }
       break;
-    }
 
     case OPT_BACKGROUND_ENABLED:
       this->setAttribute(Qt::WA_TranslucentBackground, !value.toBool());
@@ -284,6 +254,7 @@ void MainWindow::LoadState()
   }
   cur_alignment_ = last_align;
   this->move(last_pos);
+  CorrectPosition();
 }
 
 void MainWindow::SaveState()
@@ -376,6 +347,7 @@ void MainWindow::Update()
     this->raise();
   }
 #endif
+  CorrectPosition();
 }
 
 void MainWindow::InitPluginSystem()
@@ -441,6 +413,17 @@ void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set)
   setWindowFlags(flags);
   show();
   if (aw) aw->activateWindow();
+}
+
+void MainWindow::CorrectPosition()
+{
+  QDesktopWidget desktop;
+  QPoint curr_pos = this->pos();
+  curr_pos.setX(std::max(curr_pos.x(), desktop.geometry().left()));
+  curr_pos.setX(std::min(curr_pos.x(), desktop.geometry().right() - this->width()));
+  curr_pos.setY(std::max(curr_pos.y(), desktop.geometry().top()));
+  curr_pos.setY(std::min(curr_pos.y(), desktop.geometry().bottom() - this->height()));
+  if (curr_pos != this->pos()) this->move(curr_pos);
 }
 
 } // namespace digital_clock

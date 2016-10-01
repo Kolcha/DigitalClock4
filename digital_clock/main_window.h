@@ -66,6 +66,8 @@ private:
 
   void SetWindowFlag(Qt::WindowFlags flag, bool set);
 
+  void CorrectPosition();
+
   SettingsStorage* config_backend_;
 
   core::ClockSettings* app_config_;
