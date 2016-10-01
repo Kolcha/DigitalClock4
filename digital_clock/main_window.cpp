@@ -80,21 +80,9 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent)
 
   last_visibility_ = true;
 
-
-
-  QPoint last_pos = state_->GetVariable(S_OPT_POSITION, QPoint(50, 20)).toPoint();
-
-  CAlignment last_align = static_cast<CAlignment>(app_config_->GetValue(OPT_ALIGNMENT).toInt());
-  if (last_align == CAlignment::A_RIGHT) {
-    last_pos.setX(last_pos.x() - this->width());
-  }
-  cur_alignment_ = last_align;
-  this->move(last_pos);
-
-
-
   InitPluginSystem();
   Reset();
+  LoadState();
 
   timer_.setInterval(500);
   timer_.setSingleShot(false);
@@ -288,13 +276,13 @@ void MainWindow::RestoreVisibility()
 
 void MainWindow::LoadState()
 {
-  QVariant saved_pos = state_->GetVariable(S_OPT_POSITION);
-  if (!saved_pos.isValid()) return;
+  QPoint last_pos = state_->GetVariable(S_OPT_POSITION, QPoint(50, 20)).toPoint();
 
-  QPoint last_pos = saved_pos.toPoint();
-  if (cur_alignment_ == CAlignment::A_RIGHT) {
+  CAlignment last_align = static_cast<CAlignment>(app_config_->GetValue(OPT_ALIGNMENT).toInt());
+  if (last_align == CAlignment::A_RIGHT) {
     last_pos.setX(last_pos.x() - this->width());
   }
+  cur_alignment_ = last_align;
   this->move(last_pos);
 }
 
