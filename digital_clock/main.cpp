@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
   QApplication app(argc, argv);
   app.setApplicationDisplayName("Digital Clock");
   app.setApplicationName("Digital Clock");
-  app.setApplicationVersion("4.5.0");
+  app.setApplicationVersion("4.5.0+");
   app.setOrganizationName("Nick Korotysh");
   app.setOrganizationDomain("digitalclock4.sourceforge.net");
   app.setWindowIcon(QIcon(":/clock/images/clock.svg"));
