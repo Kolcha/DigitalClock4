@@ -13,7 +13,7 @@
 	<key>CFBundleSignature</key>
 	<string>NKDC</string>
 	<key>CFBundleVersion</key>
-	<string>809</string>
+	<string>810</string>
 	<key>CFBundleExecutable</key>
 	<string>digital_clock</string>
 	<key>CFBundleIdentifier</key>

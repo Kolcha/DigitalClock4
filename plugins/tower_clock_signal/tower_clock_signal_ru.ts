@@ -4,12 +4,12 @@
 <context>
     <name>tower_clock_signal::TowerCLockSignal</name>
     <message>
-        <location filename="tower_clock_signal.cpp" line="12"/>
+        <location filename="tower_clock_signal.cpp" line="30"/>
         <source>Tower clock hour signal (bell per hour)</source>
         <translation>Бой башенных часов</translation>
     </message>
     <message>
-        <location filename="tower_clock_signal.cpp" line="13"/>
+        <location filename="tower_clock_signal.cpp" line="31"/>
         <source>Plays bell strikes every hour like tower clock.</source>
         <translation>Играет удары колокола как башенные часы.</translation>
     </message>

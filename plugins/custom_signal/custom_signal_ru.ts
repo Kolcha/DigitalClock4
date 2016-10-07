@@ -4,12 +4,12 @@
 <context>
     <name>custom_signal::CustomSignalPlugin</name>
     <message>
-        <location filename="custom_signal_plugin.cpp" line="15"/>
+        <location filename="custom_signal_plugin.cpp" line="33"/>
         <source>Custom period signal</source>
         <translation>Настраиваемый периодический сигнал</translation>
     </message>
     <message>
-        <location filename="custom_signal_plugin.cpp" line="16"/>
+        <location filename="custom_signal_plugin.cpp" line="34"/>
         <source>Plays sound with selected period.This plugin replaces all sound plugins:
 &quot;Every hour signal&quot;, &quot;Quarter of an hour signal&quot;, &quot;Tower clock hour signal&quot;.
 Sounds from these plugins are included as default sounds.</source>
@@ -87,27 +87,27 @@ Sounds from these plugins are included as default sounds.</oldsource>
         <translation>Громкость</translation>
     </message>
     <message>
-        <location filename="gui/signal_config_dialog.cpp" line="16"/>
+        <location filename="gui/signal_config_dialog.cpp" line="34"/>
         <source>sound 1</source>
         <translation>звук 1</translation>
     </message>
     <message>
-        <location filename="gui/signal_config_dialog.cpp" line="17"/>
+        <location filename="gui/signal_config_dialog.cpp" line="35"/>
         <source>sound 2</source>
         <translation>звук 2</translation>
     </message>
     <message>
-        <location filename="gui/signal_config_dialog.cpp" line="18"/>
+        <location filename="gui/signal_config_dialog.cpp" line="36"/>
         <source>sound 3</source>
         <translation>звук 3</translation>
     </message>
     <message>
-        <location filename="gui/signal_config_dialog.cpp" line="94"/>
+        <location filename="gui/signal_config_dialog.cpp" line="112"/>
         <source>Select sound</source>
         <translation>Выбор звука</translation>
     </message>
     <message>
-        <location filename="gui/signal_config_dialog.cpp" line="96"/>
+        <location filename="gui/signal_config_dialog.cpp" line="114"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga);;All files (*.*)</source>
         <oldsource>Sounds (*.wav *.mp3 *.ogg *.oga)</oldsource>
         <translation>Звуки (*.wav *.mp3 *.ogg *.oga);;Все файлы (*.*)</translation>

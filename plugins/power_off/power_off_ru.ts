@@ -4,22 +4,22 @@
 <context>
     <name>power_off::PowerOff</name>
     <message>
-        <location filename="power_off.cpp" line="14"/>
+        <location filename="power_off.cpp" line="32"/>
         <source>Auto power off</source>
         <translation>Выключение системы</translation>
     </message>
     <message>
-        <location filename="power_off.cpp" line="15"/>
+        <location filename="power_off.cpp" line="33"/>
         <source>Shutdown system at specified time.</source>
         <translation>Выключает систему в указанное время.</translation>
     </message>
     <message>
-        <location filename="power_off.cpp" line="66"/>
+        <location filename="power_off.cpp" line="84"/>
         <source>System shutdown</source>
         <translation>Выключение системы</translation>
     </message>
     <message>
-        <location filename="power_off.cpp" line="67"/>
+        <location filename="power_off.cpp" line="85"/>
         <source>Warning! Shutdown will happen after a few seconds.</source>
         <translation>Внимание! Система будет выключена через несколько секунд.</translation>
     </message>
