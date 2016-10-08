@@ -4,22 +4,22 @@
 <context>
     <name>any_zoom::AnyZoom</name>
     <message>
-        <location filename="any_zoom.cpp" line="32"/>
+        <location filename="any_zoom.cpp" line="35"/>
         <source>Any zoom</source>
         <translation>Любое увеличение</translation>
     </message>
     <message>
-        <location filename="any_zoom.cpp" line="33"/>
+        <location filename="any_zoom.cpp" line="36"/>
         <source>Allows to set any clock zoom.</source>
         <translation>Позволяет устанавливать любое значение увеличения.</translation>
     </message>
     <message>
-        <location filename="any_zoom.cpp" line="65"/>
+        <location filename="any_zoom.cpp" line="68"/>
         <source>Any zoom settings</source>
         <translation>Настройка увеличения</translation>
     </message>
     <message>
-        <location filename="any_zoom.cpp" line="66"/>
+        <location filename="any_zoom.cpp" line="69"/>
         <source>zoom:</source>
         <translation>увеличение:</translation>
     </message>

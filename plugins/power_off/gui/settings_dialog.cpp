@@ -16,10 +16,10 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "settings_keys.h"
-#include "../power_off_settings.h"
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
+
+#include "../power_off_settings.h"
 
 namespace power_off {
 

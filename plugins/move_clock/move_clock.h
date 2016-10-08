@@ -19,10 +19,11 @@
 #ifndef MOVE_CLOCK_MOVE_CLOCK_H
 #define MOVE_CLOCK_MOVE_CLOCK_H
 
-#include <QDesktopWidget>
-#include <QTimer>
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
+
+#include <QDesktopWidget>
+#include <QTimer>
 
 namespace move_clock {
 

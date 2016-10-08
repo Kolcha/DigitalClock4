@@ -16,10 +16,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QInputDialog>
-#include "plugin_settings.h"
-#include "any_zoom_settings.h"
 #include "any_zoom.h"
+
+#include <QInputDialog>
+
+#include "plugin_settings.h"
+
+#include "any_zoom_settings.h"
 
 namespace any_zoom {
 

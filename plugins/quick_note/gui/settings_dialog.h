@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IP_ADDRESS_SETTINGS_DIALOG_H
-#define IP_ADDRESS_SETTINGS_DIALOG_H
+#ifndef QUICK_NOTE_SETTINGS_DIALOG_H
+#define QUICK_NOTE_SETTINGS_DIALOG_H
 
 #include <QDialog>
 #include <QSettings>
@@ -52,4 +52,4 @@ private:
 
 } // namespace quick_note
 
-#endif // IP_ADDRESS_SETTINGS_DIALOG_H
+#endif // QUICK_NOTE_SETTINGS_DIALOG_H

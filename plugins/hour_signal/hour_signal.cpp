@@ -16,9 +16,10 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "hour_signal.h"
+
 #include <QTime>
 #include <QSound>
-#include "hour_signal.h"
 
 namespace hour_signal {
 

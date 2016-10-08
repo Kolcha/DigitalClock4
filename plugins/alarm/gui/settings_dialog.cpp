@@ -16,13 +16,14 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "settings_dialog.h"
+#include "ui_settings_dialog.h"
+
 #include <QFileInfo>
 #include <QDir>
 #include <QFileDialog>
-#include <settings_keys.h>
+
 #include "../alarm_settings.h"
-#include "settings_dialog.h"
-#include "ui_settings_dialog.h"
 
 namespace alarm {
 

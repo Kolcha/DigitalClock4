@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef HOUR_SIGNAL_H
-#define HOUR_SIGNAL_H
+#ifndef HOUR_SIGNAL_HOUR_SIGNAL_H
+#define HOUR_SIGNAL_HOUR_SIGNAL_H
 
 #include "iclock_plugin.h"
 
@@ -41,4 +41,4 @@ private:
 
 } // namespace hour_signal
 
-#endif // HOUR_SIGNAL_H
+#endif // HOUR_SIGNAL_HOUR_SIGNAL_H

@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DATE_DATEPLUGIN_H
-#define DATE_DATEPLUGIN_H
+#ifndef DATE_DATE_PLUGIN_H
+#define DATE_DATE_PLUGIN_H
 
 #include "widget_plugin_base.h"
 
@@ -49,4 +49,4 @@ private:
 
 } // namespace date
 
-#endif // DATE_DATEPLUGIN_H
+#endif // DATE_DATE_PLUGIN_H

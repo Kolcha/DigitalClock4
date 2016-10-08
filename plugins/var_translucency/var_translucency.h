@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef VAR_TRANSLUCENCY_H
-#define VAR_TRANSLUCENCY_H
+#ifndef VAR_TRANSLUCENCY_VAR_TRANSLUCENCY_H
+#define VAR_TRANSLUCENCY_VAR_TRANSLUCENCY_H
 
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
@@ -47,4 +47,4 @@ private:
 
 } // namespace var_translucency
 
-#endif // VAR_TRANSLUCENCY_H
+#endif // VAR_TRANSLUCENCY_VAR_TRANSLUCENCY_H

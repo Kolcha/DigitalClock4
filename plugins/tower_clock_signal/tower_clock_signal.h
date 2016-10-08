@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOWER_CLOCK_SIGNAL_H
-#define TOWER_CLOCK_SIGNAL_H
+#ifndef TOWER_CLOCK_SIGNAL_TOWER_CLOCK_SIGNAL_H
+#define TOWER_CLOCK_SIGNAL_TOWER_CLOCK_SIGNAL_H
 
 #include "iclock_plugin.h"
 
@@ -47,4 +47,4 @@ private:
 
 } // namespace tower_clock_signal
 
-#endif // TOWER_CLOCK_SIGNAL_H
+#endif // TOWER_CLOCK_SIGNAL_TOWER_CLOCK_SIGNAL_H

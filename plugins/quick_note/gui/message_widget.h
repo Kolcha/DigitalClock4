@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MESSAGE_WIDGET_H
-#define MESSAGE_WIDGET_H
+#ifndef QUICK_NOTE_MESSAGE_WIDGET_H
+#define QUICK_NOTE_MESSAGE_WIDGET_H
 
 #include <QWidget>
 #include <QIcon>
@@ -66,4 +66,4 @@ private:
 
 }  // namespace quick_note
 
-#endif // MESSAGE_WIDGET_H
+#endif // QUICK_NOTE_MESSAGE_WIDGET_H

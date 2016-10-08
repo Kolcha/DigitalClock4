@@ -16,14 +16,15 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ALARM_H
-#define ALARM_H
+#ifndef ALARM_ALARM_H
+#define ALARM_ALARM_H
+
+#include "iclock_plugin.h"
+#include "iplugin_init.h"
 
 #include <QIcon>
 #include <QPointer>
 #include <QMediaPlayer>
-#include "iclock_plugin.h"
-#include "iplugin_init.h"
 
 namespace alarm {
 
@@ -52,4 +53,4 @@ private:
 
 } // namespace alarm
 
-#endif // ALARM_H
+#endif // ALARM_ALARM_H

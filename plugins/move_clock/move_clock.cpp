@@ -16,12 +16,17 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cmath>
-#include <QWidget>
-#include "plugin_settings.h"
-#include "move_clock_settings.h"
-#include "gui/settings_dialog.h"
 #include "move_clock.h"
+
+#include <cmath>
+
+#include <QWidget>
+
+#include "plugin_settings.h"
+
+#include "move_clock_settings.h"
+
+#include "gui/settings_dialog.h"
 
 namespace move_clock {
 

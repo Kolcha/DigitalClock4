@@ -16,12 +16,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SPECTRUM_CLOCK_H
-#define SPECTRUM_CLOCK_H
+#ifndef SPECTRUM_CLOCK_SPECTRUM_CLOCK_H
+#define SPECTRUM_CLOCK_SPECTRUM_CLOCK_H
 
-#include <QColor>
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
+
+#include <QColor>
 
 namespace spectrum_clock {
 
@@ -48,4 +49,4 @@ private:
 
 } // namespace spectrum_clock
 
-#endif // SPECTRUM_CLOCK_H
+#endif // SPECTRUM_CLOCK_SPECTRUM_CLOCK_H

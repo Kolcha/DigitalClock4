@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ANY_ZOOM_H
-#define ANY_ZOOM_H
+#ifndef ANY_ZOOM_ANY_ZOOM_H
+#define ANY_ZOOM_ANY_ZOOM_H
 
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
@@ -51,4 +51,4 @@ private:
 
 } // namespace any_zoom
 
-#endif // ANY_ZOOM_H
+#endif // ANY_ZOOM_ANY_ZOOM_H

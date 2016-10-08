@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef POWER_OFF_H
-#define POWER_OFF_H
+#ifndef POWER_OFF_POWER_OFF_H
+#define POWER_OFF_POWER_OFF_H
 
 #include "iclock_plugin.h"
 
@@ -43,4 +43,4 @@ private:
 
 } // namespace power_off
 
-#endif // POWER_OFF_H
+#endif // POWER_OFF_POWER_OFF_H

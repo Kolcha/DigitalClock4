@@ -16,10 +16,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QDesktopWidget>
 #include "settings_dialog.h"
-#include "../move_clock_settings.h"
 #include "ui_settings_dialog.h"
+
+#include <QDesktopWidget>
+
+#include "../move_clock_settings.h"
 
 namespace move_clock {
 

@@ -16,11 +16,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WIN_ON_TOP_H
-#define WIN_ON_TOP_H
+#ifndef WIN_ON_TOP_WIN_ON_TOP_H
+#define WIN_ON_TOP_WIN_ON_TOP_H
+
+#include "iclock_plugin.h"
 
 #include <Windows.h>
-#include "iclock_plugin.h"
 
 namespace win_on_top {
 
@@ -43,4 +44,4 @@ private:
 
 } // namespace win_on_top
 
-#endif // WIN_ON_TOP_H
+#endif // WIN_ON_TOP_WIN_ON_TOP_H

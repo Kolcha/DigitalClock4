@@ -4,12 +4,12 @@
 <context>
     <name>hour_signal::HourSignal</name>
     <message>
-        <location filename="hour_signal.cpp" line="28"/>
+        <location filename="hour_signal.cpp" line="29"/>
         <source>Every hour signal</source>
         <translation>Сигнал каждый час</translation>
     </message>
     <message>
-        <location filename="hour_signal.cpp" line="29"/>
+        <location filename="hour_signal.cpp" line="30"/>
         <source>Plays short signal every hour.</source>
         <translation>Воспроизводит короткий сигнал каждый час.</translation>
     </message>

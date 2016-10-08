@@ -16,8 +16,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QCoreApplication>
 #include "win_on_top.h"
+
+#include <QCoreApplication>
 
 namespace win_on_top {
 

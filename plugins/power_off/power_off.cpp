@@ -16,13 +16,17 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "power_off.h"
+
 #define NOMINMAX
 #include <Windows.h>
+
 #include "plugin_settings.h"
 #include "message_box.h"
+
 #include "power_off_settings.h"
+
 #include "gui/settings_dialog.h"
-#include "power_off.h"
 
 namespace power_off {
 
