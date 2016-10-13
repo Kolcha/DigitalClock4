@@ -18,23 +18,17 @@
 
 #include "base_skin.h"
 
-#include <QGuiApplication>
-#include <QScreen>
-
 namespace skin_draw {
 
-BaseSkin::BaseSkin() : cached_zoom_(1.0)
+BaseSkin::BaseSkin() : cached_zoom_(1.0), device_pixel_ratio_(1.0)
 {
-  device_pixel_ratio_ = QGuiApplication::primaryScreen()->devicePixelRatio();
 }
 
 ISkin::QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache)
 {
   QPixmapPtr result;
   if (ch == '\n') {
-    result = QPixmapPtr(new QPixmap());
-    result->setDevicePixelRatio(device_pixel_ratio_);
-    return result;
+    return QPixmapPtr(new QPixmap());
   }
   if (zoom == cached_zoom_) {
     result = image_cache_[ch];
@@ -51,6 +45,16 @@ ISkin::QPixmapPtr BaseSkin::GetImage(QChar ch, qreal zoom, bool cache)
     }
   }
   return result;
+}
+
+qreal BaseSkin::GetDevicePixelRatio() const
+{
+  return device_pixel_ratio_;
+}
+
+void BaseSkin::SetDevicePixelRatio(qreal ratio)
+{
+  device_pixel_ratio_ = ratio;
 }
 
 } // namespace skin_draw

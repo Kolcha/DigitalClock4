@@ -16,10 +16,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TEXT_SKIN_H
-#define TEXT_SKIN_H
+#ifndef SKIN_DRAW_TEXT_SKIN_H
+#define SKIN_DRAW_TEXT_SKIN_H
 
 #include "base_skin.h"
+
 #include <QFont>
 
 namespace skin_draw {
@@ -57,4 +58,4 @@ protected:
 
 } // namespace skin_draw
 
-#endif // TEXT_SKIN_H
+#endif // SKIN_DRAW_TEXT_SKIN_H

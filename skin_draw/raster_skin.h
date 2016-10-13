@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RASTER_SKIN_H
-#define RASTER_SKIN_H
+#ifndef SKIN_DRAW_RASTER_SKIN_H
+#define SKIN_DRAW_RASTER_SKIN_H
 
 #include "base_skin.h"
 
@@ -47,4 +47,4 @@ protected:
 
 } // namespace skin_draw
 
-#endif // RASTER_SKIN_H
+#endif // SKIN_DRAW_RASTER_SKIN_H

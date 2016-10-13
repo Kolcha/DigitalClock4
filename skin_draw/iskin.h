@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ISKIN_H
-#define ISKIN_H
+#ifndef SKIN_DRAW_ISKIN_H
+#define SKIN_DRAW_ISKIN_H
 
 #include <QPixmap>
 #include <QSharedPointer>
@@ -54,8 +54,23 @@ public:
    * @return pointer to result image
    */
   virtual QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache) = 0;
+
+  /*!
+   * Get device pixel ratio for current skin, see Qt documentation for details.
+   * @return device pixel ratio for skin as a floating point number.
+   */
+  virtual qreal GetDevicePixelRatio() const = 0;
+  /*!
+   * @brief Explicitly set device pixel ratio for skin.
+   *
+   * There is no any "autodetect" for current device pixel ratio, it must be set explicitly
+   * before any usage of created skin.
+   * @param ratio - device pixel ratio to set
+   * @note default device pixel ratio value is 1.0
+   */
+  virtual void SetDevicePixelRatio(qreal ratio) = 0;
 };
 
 } // namespace skin_draw
 
-#endif // ISKIN_H
+#endif // SKIN_DRAW_ISKIN_H

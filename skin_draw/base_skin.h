@@ -16,11 +16,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BASE_SKIN_H
-#define BASE_SKIN_H
+#ifndef SKIN_DRAW_BASE_SKIN_H
+#define SKIN_DRAW_BASE_SKIN_H
 
 #include "iskin.h"
+
 #include <QMap>
+
 #include "skin_draw_global.h"
 
 namespace skin_draw {
@@ -51,6 +53,21 @@ public:
    */
   QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache);
 
+  /*!
+   * Get device pixel ratio for current skin, see Qt documentation for details.
+   * @return device pixel ratio for skin as a floating point number.
+   */
+  qreal GetDevicePixelRatio() const;
+  /*!
+   * @brief Explicitly set device pixel ratio for skin.
+   *
+   * There is no any "autodetect" for current device pixel ratio, it must be set explicitly
+   * before any usage of created skin.
+   * @param ratio - device pixel ratio to set
+   * @note default device pixel ratio value is 1.0
+   */
+  void SetDevicePixelRatio(qreal ratio);
+
 protected:
   /*!
    * Resize image for given character.
@@ -60,14 +77,13 @@ protected:
    * @note skin-specific method
    */
   virtual QPixmapPtr ResizeImage(QChar ch, qreal zoom) = 0;
-  /// device pixel ratio, see Qt documentation for details
-  qreal device_pixel_ratio_;
 
 private:
   qreal cached_zoom_;
   QMap<QChar, QPixmapPtr> image_cache_;
+  qreal device_pixel_ratio_;
 };
 
 } // namespace skin_draw
 
-#endif // BASE_SKIN_H
+#endif // SKIN_DRAW_BASE_SKIN_H
