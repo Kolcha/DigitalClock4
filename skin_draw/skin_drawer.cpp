@@ -18,8 +18,6 @@
 
 #include "skin_drawer.h"
 
-#include <QGuiApplication>
-#include <QScreen>
 #include <QFile>
 #include <QList>
 #include <QPainter>
@@ -30,12 +28,11 @@ SkinDrawer::SkinDrawer(QObject* parent) :
   QObject(parent),
   texture_(8, 8)
 {
-  device_pixel_ratio_ = QGuiApplication::primaryScreen()->devicePixelRatio();
   zoom_ = 1.0;
   txd_per_elem_ = false;
   preview_mode_ = false;
   cust_type_ = CT_COLOR;
-  space_ = 4 * device_pixel_ratio_;
+  space_ = 4;
 }
 
 void SkinDrawer::ApplySkin(ISkin::SkinPtr skin)
@@ -108,7 +105,7 @@ void SkinDrawer::SetCustomizationType(CustomizationType type)
 
 void SkinDrawer::SetSpace(int new_space)
 {
-  space_ = new_space * device_pixel_ratio_;
+  space_ = new_space;
   Redraw();
 }
 
@@ -134,7 +131,7 @@ void SkinDrawer::Redraw()
   for (auto& elem : elements) {
     ++c_row_n;
     if (!elem) continue;
-    if (elem->size() == QSize(0,0)) {
+    if (elem->isNull()) {
       if (c_row_w >= result_w) {
         result_w = c_row_w;
         m_row_n = c_row_n;
@@ -152,13 +149,13 @@ void SkinDrawer::Redraw()
   }
   int elem_h = result_h;
   // leave some space between images
-  result_w += space_ * (m_row_n - 1);
-  int rows = str_.count('\n');
-  result_h = result_h * (rows + 1) + space_ * rows;
+  int space = space_ * skin_->GetDevicePixelRatio();
+  result_w += space * (m_row_n - 1);
+  int rows = str_.count('\n') + 1;
+  result_h = result_h * rows + space * (rows - 1);
 
   // create result image
   QImage result(result_w, result_h, QImage::Format_ARGB32_Premultiplied);
-  result.setDevicePixelRatio(device_pixel_ratio_);
   QPainter painter(&result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
   painter.fillRect(result.rect(), Qt::transparent);
@@ -169,9 +166,9 @@ void SkinDrawer::Redraw()
   for (auto& elem : elements) {
     // draw mask
     if (!elem) continue;
-    if (elem->size() == QSize(0,0)) {
+    if (elem->isNull()) {
       x = 0;
-      y += (elem_h + space_) / elem->devicePixelRatio();
+      y += elem_h + space;
       continue;
     }
     painter.drawPixmap(x, y, *elem);
@@ -179,14 +176,14 @@ void SkinDrawer::Redraw()
       // draw texture
       DrawTexture(painter, QRect(x, y, elem->width(), elem->height()));
     }
-    x += (elem->width() + space_) / elem->devicePixelRatio();
+    x += elem->width() + space;
   }
   if (!txd_per_elem_ && cust_type_ != CT_NONE) {
     // draw texture
     DrawTexture(painter, result.rect());
   }
   painter.end();
-
+  result.setDevicePixelRatio(skin_->GetDevicePixelRatio());
   emit DrawingFinished(result);
 }
 
