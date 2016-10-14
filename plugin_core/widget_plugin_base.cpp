@@ -157,11 +157,19 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       break;
 
     case OPT_FONT:
+    {
       private_->clock_font_ = new_value.value<QFont>();
       if (!settings_->GetOption(OptionKey(OPT_USE_CLOCK_FONT, plg_name_)).toBool()) break;
       private_->font_ = private_->clock_font_;
-      private_->drawer_->ApplySkin(skin_draw::ISkin::SkinPtr(new skin_draw::TextSkin(private_->font_)));
+      skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(private_->font_));
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+      txt_skin->SetDevicePixelRatio(private_->main_wnd_->devicePixelRatioF());
+#else
+      txt_skin->SetDevicePixelRatio(private_->main_wnd_->devicePixelRatio());
+#endif
+      private_->drawer_->ApplySkin(txt_skin);
       break;
+    }
 
     case OPT_ZOOM:
       private_->clock_zoom_ = new_value.toReal();
@@ -299,6 +307,11 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
   int th = 0;
 
   skin_draw::TextSkin tmp_skin(private_->font_);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+  tmp_skin.SetDevicePixelRatio(private_->main_wnd_->devicePixelRatioF());
+#else
+  tmp_skin.SetDevicePixelRatio(private_->main_wnd_->devicePixelRatio());
+#endif
   for (auto& s : ss) {
     int lw = 0;
     int lh = 0;

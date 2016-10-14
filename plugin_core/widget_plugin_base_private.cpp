@@ -66,7 +66,13 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
   if (key == OptionKey(OPT_CUSTOM_FONT, obj_->plg_name_)) {
     font_ = value.value<QFont>();
     drawer_->SetString(QString());
-    drawer_->ApplySkin(skin_draw::ISkin::SkinPtr(new ::skin_draw::TextSkin(font_)));
+    skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(font_));
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    txt_skin->SetDevicePixelRatio(main_wnd_->devicePixelRatioF());
+#else
+    txt_skin->SetDevicePixelRatio(main_wnd_->devicePixelRatio());
+#endif
+    drawer_->ApplySkin(txt_skin);
     last_text_ = "-";             // reset last date to recalculate zoom
     obj_->TimeUpdateListener();   // on redraw if needed
   }
