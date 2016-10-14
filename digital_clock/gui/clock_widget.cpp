@@ -57,6 +57,11 @@ ClockDisplay* ClockWidget::GetDisplay() const
 
 void ClockWidget::ApplySkin(skin_draw::ISkin::SkinPtr skin)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+  skin->SetDevicePixelRatio(this->devicePixelRatioF());
+#else
+  skin->SetDevicePixelRatio(this->devicePixelRatio());
+#endif
   drawer_->ApplySkin(skin);
 }
 
