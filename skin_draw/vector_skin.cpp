@@ -24,9 +24,9 @@
 
 namespace skin_draw {
 
-ISkin::QPixmapPtr VectorSkin::ResizeImage(QChar ch, qreal zoom)
+ISkin::QPixmapPtr VectorSkin::ResizeImage(const QString& str, int idx, qreal zoom)
 {
-  QString& img_file = image_files_[ch];
+  const QString& img_file = image_files_[str[idx]];
   if (!QFile::exists(img_file)) return QPixmapPtr();
 
   QSvgRenderer renderer(img_file);

@@ -41,6 +41,7 @@ SOURCES += \
 HEADERS += \
     base_skin.h \
     iskin.h \
+    iimage_cache.h \
     raster_skin.h \
     skin_draw_global.h \
     skin_drawer.h \

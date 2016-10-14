@@ -48,12 +48,13 @@ public:
 
   /*!
    * Get image for specified symbol.
-   * @param ch - symbol for which need to get image
+   * @param str - text to render
+   * @param idx - symbol index
    * @param zoom - skin zoom
    * @param cache - is image add to cache
    * @return pointer to result image
    */
-  virtual QPixmapPtr GetImage(QChar ch, qreal zoom, bool cache) = 0;
+  virtual QPixmapPtr GetImage(const QString& str, int idx, qreal zoom, bool cache) = 0;
 
   /*!
    * Get device pixel ratio for current skin, see Qt documentation for details.

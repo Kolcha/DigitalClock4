@@ -27,10 +27,10 @@ TextSkin::TextSkin(const QFont& font) : font_(font)
 {
 }
 
-ISkin::QPixmapPtr TextSkin::ResizeImage(QChar ch, qreal zoom)
+ISkin::QPixmapPtr TextSkin::ResizeImage(const QString& str, int idx, qreal zoom)
 {
-  auto iter = char_map_.find(ch);
-  QChar sch = iter != char_map_.end() ? *iter : ch;
+  auto iter = char_map_.find(str[idx]);
+  QChar sch = iter != char_map_.end() ? *iter : str[idx];
   QFont new_font(font_);
   qreal ik = new_font.italic() ? 1.5 : 1.0;
   new_font.setPointSizeF(font_.pointSizeF() * zoom * GetDevicePixelRatio());
@@ -43,7 +43,7 @@ ISkin::QPixmapPtr TextSkin::ResizeImage(QChar ch, qreal zoom)
   painter.setCompositionMode(QPainter::CompositionMode_Source);
   painter.fillRect(result->rect(), Qt::transparent);
   painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-  painter.drawText(result->rect(), Qt::AlignCenter, ch);
+  painter.drawText(result->rect(), Qt::AlignCenter, str[idx]);
   painter.end();
   return result;
 }

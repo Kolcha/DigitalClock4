@@ -119,8 +119,8 @@ void SkinDrawer::Redraw()
   if (str_.isEmpty() || !skin_) return;
   // get images for all symbols
   QList<ISkin::QPixmapPtr> elements;
-  for (auto i = str_.begin(); i != str_.end(); ++i) {
-    elements.push_back(skin_->GetImage(*i, zoom_, !preview_mode_));
+  for (auto i = 0; i < str_.length(); ++i) {
+    elements.push_back(skin_->GetImage(str_, i, zoom_, !preview_mode_));
   }
   // calculate result image width and height
   int result_w = 0;

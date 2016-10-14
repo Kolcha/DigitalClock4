@@ -21,6 +21,8 @@
 
 #include "base_skin.h"
 
+#include <QMap>
+
 namespace skin_draw {
 
 /*!
@@ -35,11 +37,12 @@ class SKIN_DRAWSHARED_EXPORT VectorSkin : public BaseSkin
 protected:
   /*!
    * Resize image for given character.
-   * @param ch - requested charater
+   * @param str - text to render
+   * @param idx - symbol index
    * @param zoom - requested zoom
    * @return pointer to resized image
    */
-  QPixmapPtr ResizeImage(QChar ch, qreal zoom);
+  QPixmapPtr ResizeImage(const QString& str, int idx, qreal zoom);
   /// map with paths to original images
   QMap<QChar, QString> image_files_;
 };

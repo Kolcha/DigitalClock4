@@ -21,6 +21,7 @@
 
 #include "base_skin.h"
 
+#include <QMap>
 #include <QFont>
 
 namespace skin_draw {
@@ -45,11 +46,12 @@ public:
 protected:
   /*!
    * Resize image for given character.
-   * @param ch - requested charater
+   * @param str - text to render
+   * @param idx - symbol index
    * @param zoom - requested zoom
    * @return pointer to resized image
    */
-  QPixmapPtr ResizeImage(QChar ch, qreal zoom);
+  QPixmapPtr ResizeImage(const QString& str, int idx, qreal zoom);
   /// map with chars that need to be replaced (old - new char)
   QMap<QChar, QChar> char_map_;
   /// used font
