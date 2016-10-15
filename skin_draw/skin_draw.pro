@@ -49,5 +49,5 @@ HEADERS += \
     vector_skin.h
 
 win32:RC_FILE = skin_draw.rc
-unix:VERSION = 1.2.4
+unix:VERSION = 1.3.0
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/

@@ -317,6 +317,7 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
     int lh = 0;
     for (int i = 0; i < s.length(); ++i) {
       ::skin_draw::ISkin::QPixmapPtr img = tmp_skin.GetImage(s, i, zoom, true);
+      if (!img) continue;
       lw += img->width();
       lh = qMax(lh, img->height());
     }

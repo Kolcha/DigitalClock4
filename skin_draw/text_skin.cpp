@@ -23,29 +23,80 @@
 
 namespace skin_draw {
 
+class TextImageCache : public IImageCache
+{
+public:
+  TextImageCache(TextSkin* parent) : parent_(parent) {}
+
+  ISkin::QPixmapPtr GetImage(const QString& str, int idx)
+  {
+    req_text_ += str[idx];
+    if (idx == str.length() - 1 || parent_->char_map_.contains(str[idx + 1]) || parent_->char_map_.contains(str[idx])) {
+      auto iter = cached_data_.find(req_text_);
+      req_text_.clear();
+      if (iter != cached_data_.end()) {
+        parent_->curr_text_.clear();
+        return iter.value();
+      }
+    }
+    return ISkin::QPixmapPtr();
+  }
+
+  void AddImage(const QString& str, int idx, const ISkin::QPixmapPtr& img)
+  {
+    if (!img) return;
+    Q_UNUSED(str);
+    Q_UNUSED(idx);
+    // don't keep cache forever
+    if (cached_data_.size() > 100) cached_data_.clear();
+    cached_data_[parent_->last_text_] = img;
+    parent_->last_text_.clear();
+  }
+
+  void Clear() { cached_data_.clear(); }
+
+private:
+  QMap<QString, ISkin::QPixmapPtr> cached_data_;
+  QString req_text_;
+  TextSkin* parent_;
+};
+
+
 TextSkin::TextSkin(const QFont& font) : font_(font)
 {
+  img_cache_ = ImageCachePtr(new TextImageCache(this));
 }
 
 ISkin::QPixmapPtr TextSkin::ResizeImage(const QString& str, int idx, qreal zoom)
 {
   auto iter = char_map_.find(str[idx]);
-  QChar sch = iter != char_map_.end() ? *iter : str[idx];
-  QFont new_font(font_);
-  qreal ik = new_font.italic() ? 1.5 : 1.0;
-  new_font.setPointSizeF(font_.pointSizeF() * zoom * GetDevicePixelRatio());
-  QFontMetrics fm(new_font);
-  int res_w = new_font.italic() ? ik * fm.boundingRect(QString(sch)).width() : fm.width(QString(sch));
-  if (res_w == 0) res_w = ik * fm.width(sch);
-  QPixmapPtr result(new QPixmap(res_w, fm.height()));
-  QPainter painter(result.data());
-  painter.setFont(new_font);
-  painter.setCompositionMode(QPainter::CompositionMode_Source);
-  painter.fillRect(result->rect(), Qt::transparent);
-  painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-  painter.drawText(result->rect(), Qt::AlignCenter, str[idx]);
-  painter.end();
-  return result;
+  curr_text_ += iter != char_map_.end() ? *iter : str[idx];
+
+  if (idx == str.length() - 1 || char_map_.contains(str[idx + 1]) || char_map_.contains(str[idx])) {
+    QFont new_font(font_);
+    new_font.setPointSizeF(font_.pointSizeF() * zoom * GetDevicePixelRatio());
+    QFontMetrics fm(new_font);
+    int res_w = fm.width(curr_text_);
+    // add some extra spacing for italic fonts
+    if (new_font.italic()) res_w += 0.25 * fm.width(*curr_text_.rbegin());
+    QPixmapPtr result(new QPixmap(res_w, fm.height()));
+    // use replaced symbol only to calculate width, but draw actual one
+    if (char_map_.contains(str[idx])) curr_text_ = str[idx];
+
+    QPainter painter(result.data());
+    painter.setFont(new_font);
+    painter.setCompositionMode(QPainter::CompositionMode_Source);
+    painter.fillRect(result->rect(), Qt::transparent);
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+    painter.drawText(result->rect(), Qt::AlignCenter, curr_text_);
+    painter.end();
+
+    last_text_ = curr_text_;
+    curr_text_.clear();
+    return result;
+  }
+
+  return QPixmapPtr();
 }
 
 } // namespace skin_draw

@@ -22,9 +22,10 @@
 
 namespace skin_draw {
 
-class CharImageCache : public IImageCache {
+class CharImageCache : public IImageCache
+{
 public:
-  ISkin::QPixmapPtr GetImage(const QString& str, int idx) const
+  ISkin::QPixmapPtr GetImage(const QString& str, int idx)
   {
     auto iter = cache_.find(str[idx]);
     if (iter != cache_.end()) return iter.value();
@@ -33,6 +34,7 @@ public:
 
   void AddImage(const QString& str, int idx, const ISkin::QPixmapPtr& image)
   {
+    if (!image) return;
     cache_[str[idx]] = image;
   }
 
@@ -59,7 +61,7 @@ ISkin::QPixmapPtr BaseSkin::GetImage(const QString& str, int idx, qreal zoom, bo
     result = img_cache_->GetImage(str, idx);
     if (!result) {
       result = ResizeImage(str, idx, zoom);
-      if (cache) img_cache_->AddImage(str, idx, result);
+      if (result && cache) img_cache_->AddImage(str, idx, result);
     }
   } else {
     result = ResizeImage(str, idx, zoom);

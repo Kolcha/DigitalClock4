@@ -56,6 +56,11 @@ protected:
   QMap<QChar, QChar> char_map_;
   /// used font
   QFont font_;
+
+private:
+  friend class TextImageCache;
+  QString curr_text_;
+  QString last_text_;
 };
 
 } // namespace skin_draw
