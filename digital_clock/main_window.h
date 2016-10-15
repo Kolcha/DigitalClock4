@@ -26,7 +26,7 @@
 #include "settings_keys.h"
 
 class SettingsStorage;
-
+class QDesktopWidget;
 
 namespace digital_clock {
 
@@ -96,6 +96,8 @@ private:
 
   gui::TrayControl* tray_control_;
   gui::ClockWidget* clock_widget_;
+
+  QDesktopWidget* desktop_;
 
   QTimer timer_;
 
