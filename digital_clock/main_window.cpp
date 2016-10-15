@@ -162,9 +162,10 @@ void MainWindow::Reset()
   ApplyOption(OPT_BACKGROUND_COLOR, app_config_->GetValue(OPT_BACKGROUND_COLOR));
   ApplyOption(OPT_BACKGROUND_ENABLED, app_config_->GetValue(OPT_BACKGROUND_ENABLED));
 
+  // load time format first to update separators where it required
+  ApplyOption(OPT_TIME_FORMAT, app_config_->GetValue(OPT_TIME_FORMAT));
   clock_widget_->blockSignals(true);
   ApplyOption(OPT_SEPARATOR_FLASH, app_config_->GetValue(OPT_SEPARATOR_FLASH));
-  ApplyOption(OPT_TIME_FORMAT, app_config_->GetValue(OPT_TIME_FORMAT));
   ApplyOption(OPT_ZOOM, app_config_->GetValue(OPT_ZOOM));
   ApplyOption(OPT_COLOR, app_config_->GetValue(OPT_COLOR));
   ApplyOption(OPT_TEXTURE, app_config_->GetValue(OPT_TEXTURE));

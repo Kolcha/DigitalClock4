@@ -50,6 +50,8 @@ void TextSkin::ProcSeparators()
     }
   }
 
+  img_cache_->Clear();
+
   char_map_.clear();
   char_map_[' '] = widest;
   for (int i = 0; i < seps_.length(); ++i) {
