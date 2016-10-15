@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SKIN_DRAWER_H
-#define SKIN_DRAWER_H
+#ifndef SKIN_DRAW_SKIN_DRAWER_H
+#define SKIN_DRAW_SKIN_DRAWER_H
 
 #include <QObject>
 
@@ -145,9 +145,6 @@ private:
    */
   void DrawTexture(QPainter& painter, const QRect& rect);
 
-  /// device pixel ratio, see Qt documentation for details
-  qreal device_pixel_ratio_;
-
   ISkin::SkinPtr skin_;
   QString str_;
   qreal zoom_;
@@ -163,4 +160,4 @@ private:
 
 } // namespace skin_draw
 
-#endif // SKIN_DRAWER_H
+#endif // SKIN_DRAW_SKIN_DRAWER_H

@@ -16,10 +16,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TEXT_SKIN_H
-#define TEXT_SKIN_H
+#ifndef SKIN_DRAW_TEXT_SKIN_H
+#define SKIN_DRAW_TEXT_SKIN_H
 
 #include "base_skin.h"
+
+#include <QMap>
 #include <QFont>
 
 namespace skin_draw {
@@ -44,17 +46,23 @@ public:
 protected:
   /*!
    * Resize image for given character.
-   * @param ch - requested charater
+   * @param str - text to render
+   * @param idx - symbol index
    * @param zoom - requested zoom
    * @return pointer to resized image
    */
-  QPixmapPtr ResizeImage(QChar ch, qreal zoom);
+  QPixmapPtr ResizeImage(const QString& str, int idx, qreal zoom);
   /// map with chars that need to be replaced (old - new char)
   QMap<QChar, QChar> char_map_;
   /// used font
   QFont font_;
+
+private:
+  friend class TextImageCache;
+  QString curr_text_;
+  QString last_text_;
 };
 
 } // namespace skin_draw
 
-#endif // TEXT_SKIN_H
+#endif // SKIN_DRAW_TEXT_SKIN_H

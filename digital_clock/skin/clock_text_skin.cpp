@@ -26,6 +26,7 @@ namespace core {
 TextSkin::TextSkin(const QFont& font) : ::skin_draw::TextSkin(font)
 {
   char_map_[' '] = ':';
+  char_map_[':'] = ':';
   // set skin info
   info_[SI_NAME] = "Text Skin";
   info_[SI_VERSION] = "1.0";
@@ -49,9 +50,10 @@ void TextSkin::ProcSeparators()
     }
   }
 
+  char_map_.clear();
   char_map_[' '] = widest;
   for (int i = 0; i < seps_.length(); ++i) {
-    if (seps_[i] != widest) char_map_[seps_[i]] = widest;
+    char_map_[seps_[i]] = widest;
   }
 }
 

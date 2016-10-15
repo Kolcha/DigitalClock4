@@ -20,15 +20,14 @@
 
 namespace skin_draw {
 
-ISkin::QPixmapPtr RasterSkin::ResizeImage(QChar ch, qreal zoom)
+ISkin::QPixmapPtr RasterSkin::ResizeImage(const QString& str, int idx, qreal zoom)
 {
-  QPixmap& original = orig_images_[ch];
+  const QPixmap& original = orig_images_[str[idx]];
   if (original.isNull()) return QPixmapPtr();
 
   QPixmapPtr result(new QPixmap());
-  *result = original.scaled(original.size() * zoom * device_pixel_ratio_,
+  *result = original.scaled(original.size() * zoom * GetDevicePixelRatio(),
                             Qt::KeepAspectRatio, Qt::SmoothTransformation);
-  result->setDevicePixelRatio(device_pixel_ratio_);
   return result;
 }
 

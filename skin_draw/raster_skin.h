@@ -16,10 +16,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RASTER_SKIN_H
-#define RASTER_SKIN_H
+#ifndef SKIN_DRAW_RASTER_SKIN_H
+#define SKIN_DRAW_RASTER_SKIN_H
 
 #include "base_skin.h"
+
+#include <QMap>
 
 namespace skin_draw {
 
@@ -36,15 +38,16 @@ class SKIN_DRAWSHARED_EXPORT RasterSkin : public BaseSkin
 protected:
   /*!
    * Resize image for given character.
-   * @param ch - requested charater
+   * @param str - text to render
+   * @param idx - symbol index
    * @param zoom - requested zoom
    * @return pointer to resized image
    */
-  QPixmapPtr ResizeImage(QChar ch, qreal zoom);
+  QPixmapPtr ResizeImage(const QString& str, int idx, qreal zoom);
   /// map with original images
   QMap<QChar, QPixmap> orig_images_;
 };
 
 } // namespace skin_draw
 
-#endif // RASTER_SKIN_H
+#endif // SKIN_DRAW_RASTER_SKIN_H
