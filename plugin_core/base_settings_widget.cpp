@@ -135,6 +135,7 @@ void BaseSettingsWidget::on_custom_color_button_clicked()
 {
   QColor color = QColorDialog::getColor(last_color_, this);
   if (!color.isValid()) return;
+  last_color_ = color;
   emit OptionChanged(OPT_CUSTOM_COLOR, color);
 }
 
