@@ -26,13 +26,14 @@ namespace skin_draw {
 
 SkinDrawer::SkinDrawer(QObject* parent) :
   QObject(parent),
-  texture_(8, 8)
+  texture_(8, 8), color_(Qt::magenta)
 {
   zoom_ = 1.0;
   txd_per_elem_ = false;
   preview_mode_ = false;
   cust_type_ = CT_COLOR;
   space_ = 4;
+  texture_.fill(color_);
 }
 
 void SkinDrawer::ApplySkin(ISkin::SkinPtr skin)
