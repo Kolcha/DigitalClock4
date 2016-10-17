@@ -72,7 +72,7 @@ ISkin::QPixmapPtr TextSkin::ResizeImage(const QString& str, int idx, qreal zoom)
   auto iter = char_map_.find(str[idx]);
   curr_text_ += iter != char_map_.end() ? *iter : str[idx];
 
-  if (idx == str.length() - 1 || char_map_.contains(str[idx + 1]) || char_map_.contains(str[idx])) {
+  if (idx == str.length() - 1 || str[idx + 1] == '\n' || char_map_.contains(str[idx + 1]) || char_map_.contains(str[idx])) {
     QFont new_font(font_);
     new_font.setPointSizeF(font_.pointSizeF() * zoom * GetDevicePixelRatio());
     QFontMetrics fm(new_font);
