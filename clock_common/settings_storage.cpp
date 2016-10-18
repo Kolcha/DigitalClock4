@@ -36,14 +36,6 @@ SettingsStorage::SettingsStorage(QObject* parent) :
   storage_(GetConfigFileName(), QSettings::IniFormat)
 {
 }
-#elif defined(Q_OS_OSX)
-#include <QDir>
-// macOS Sierra settings workaround, Qt BUG https://bugreports.qt.io/browse/QTBUG-56565
-SettingsStorage::SettingsStorage(QObject* parent) :
-  QObject(parent),
-  storage_(QDir::home().filePath("Library/Preferences/digital_clock_4.ini"), QSettings::IniFormat)
-{
-}
 #else
 SettingsStorage::SettingsStorage(QObject* parent) : QObject(parent)
 {
