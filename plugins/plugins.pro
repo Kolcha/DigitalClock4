@@ -31,7 +31,8 @@ SUBDIRS += \
     tower_clock_signal \
     ip_address \
     quarter_hour_signal \
-    custom_signal
+    custom_signal \
+    chime
 
 windows {
 SUBDIRS += \
