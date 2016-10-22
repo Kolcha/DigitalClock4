@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/quarter_hour_signal">
-        <file>quarter_hour_signal_ru.qm</file>
-        <file alias="icon.svg">1401047747_Streamline-48.svg</file>
-        <file alias="signal.wav">83272__robinhood76__01355-triangle-2-bell-door.wav</file>
-    </qresource>
-</RCC>

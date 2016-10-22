@@ -21,17 +21,13 @@ TEMPLATE = subdirs
 SUBDIRS += \
     spectrum_clock \
     var_translucency \
-    hour_signal \
     alarm \
     tray_color \
     any_zoom \
     schedule \
     quick_note \
     date \
-    tower_clock_signal \
     ip_address \
-    quarter_hour_signal \
-    custom_signal \
     chime
 
 windows {
