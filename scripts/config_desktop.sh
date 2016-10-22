@@ -13,13 +13,13 @@
 cd "${0%/*}"
 
 DESKTOP_FILE="digital_clock.desktop"
-APP_EXEC="$PWD/digital_clock.sh"
+APP_EXEC="\"$PWD/digital_clock.sh\""
 APP_ICON="$PWD/digital_clock.svg"
 
 if [ -z "$1" ]
 then
   # change .desktop file
-  APP_EXEC_S=$(echo $APP_EXEC | sed 's/\//\\\//g' | sed 's/ /\\\\ /g')
+  APP_EXEC_S=$(echo $APP_EXEC | sed 's/\//\\\//g')
   APP_ICON_S=$(echo $APP_ICON | sed 's/\//\\\//g')
 
   sed -i "s/^Exec=.*$/Exec=$APP_EXEC_S/g" $DESKTOP_FILE
