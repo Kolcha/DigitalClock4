@@ -32,13 +32,13 @@ SOURCES += \
     chime_plugin.cpp \
     gui/settings_dialog.cpp \
     gui/sound_dialog.cpp \
-    ../../../../../../Nick/Documents/Qt/DigitalClock4/plugins/chime/core/chime_settings.cpp
+    core/chime_settings.cpp
 
 HEADERS += \
     chime_plugin.h \
     gui/settings_dialog.h \
     gui/sound_dialog.h \
-    ../../../../../../Nick/Documents/Qt/DigitalClock4/plugins/chime/core/chime_settings.h \
+    core/chime_settings.h \
     core/repeat_type.h
 
 FORMS += \
@@ -52,7 +52,6 @@ include(../../qm_gen.pri)
 
 DISTFILES += chime.json
 
-RESOURCES += \
-    chime.qrc
+RESOURCES += chime.qrc
 
 win32:RC_FILE = chime.rc
