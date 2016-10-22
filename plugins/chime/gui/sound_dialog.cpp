@@ -34,7 +34,8 @@ SoundDialog::SoundDialog(QWidget* parent) :
   ui->defaults_box->blockSignals(true);
   ui->defaults_box->addItem(tr("sound 1"), QUrl("qrc:/chime/hour_signal.wav"));
   ui->defaults_box->addItem(tr("sound 2"), QUrl("qrc:/chime/quarter_signal.wav"));
-  ui->defaults_box->addItem(tr("sound 3"), QUrl("qrc:/chime/tower_clock.wav"));
+  ui->defaults_box->addItem(tr("sound 3"), QUrl("qrc:/chime/big_ben_strikes_1.m4a"));
+  ui->defaults_box->addItem(tr("sound 4"), QUrl("qrc:/chime/quarter_hour_chime_beg.m4a"));
   ui->defaults_box->blockSignals(false);
 
   player_ = new QMediaPlayer(this);
@@ -131,7 +132,7 @@ void SoundDialog::on_custom_browse_btn_clicked()
   }
   QString new_sound = QFileDialog::getOpenFileName(this, tr("Select sound"),
                                                    last_path,
-                                                   tr("Sounds (*.wav *.mp3 *.ogg *.oga);;All files (*.*)"));
+                                                   tr("Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)"));
   if (new_sound.isEmpty()) return;
   last_cust_file_ = new_sound;
   player_->setMedia(QUrl::fromLocalFile(new_sound));

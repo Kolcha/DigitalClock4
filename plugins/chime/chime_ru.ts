@@ -95,14 +95,19 @@ Sounds from these plugins are included as default sounds.</source>
         <translation>звук 3</translation>
     </message>
     <message>
-        <location filename="gui/sound_dialog.cpp" line="132"/>
+        <location filename="gui/sound_dialog.cpp" line="38"/>
+        <source>sound 4</source>
+        <translation>звук 4</translation>
+    </message>
+    <message>
+        <location filename="gui/sound_dialog.cpp" line="133"/>
         <source>Select sound</source>
         <translation>Выбор звука</translation>
     </message>
     <message>
-        <location filename="gui/sound_dialog.cpp" line="134"/>
-        <source>Sounds (*.wav *.mp3 *.ogg *.oga);;All files (*.*)</source>
-        <translation>Звуки (*.wav *.mp3 *.ogg *.oga);;All files (*.*)</translation>
+        <location filename="gui/sound_dialog.cpp" line="135"/>
+        <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)</source>
+        <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)</translation>
     </message>
 </context>
 </TS>
