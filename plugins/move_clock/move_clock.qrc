@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/move_clock">
-        <file>move_clock_ru.qm</file>
-        <file alias="icon.svg">1401047922_new_window.svg</file>
-    </qresource>
-</RCC>

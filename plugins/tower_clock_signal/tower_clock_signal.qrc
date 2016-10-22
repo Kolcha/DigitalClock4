@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/tower_clock_signal">
-        <file alias="bell.wav">bigben-1m.wav</file>
-        <file alias="icon.svg">1460339395_bell.svg</file>
-        <file>tower_clock_signal_ru.qm</file>
-    </qresource>
-</RCC>
