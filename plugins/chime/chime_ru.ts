@@ -4,16 +4,18 @@
 <context>
     <name>chime::ChimePlugin</name>
     <message>
-        <location filename="chime_plugin.cpp" line="31"/>
+        <location filename="chime_plugin.cpp" line="38"/>
         <source>Chime</source>
-        <translation type="unfinished"></translation>
+        <translation>Звуковой сигнал</translation>
     </message>
     <message>
-        <location filename="chime_plugin.cpp" line="32"/>
+        <location filename="chime_plugin.cpp" line="39"/>
         <source>Chimes with selected period.This plugin replaces all chiming plugins:
 &quot;Every hour signal&quot;, &quot;Quarter of an hour signal&quot;, &quot;Tower clock hour signal&quot;.
 Sounds from these plugins are included as default sounds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Издает звуковой сигнал через определенный период. Данный плагин заменяет все плагины издающие звуки:
+&quot;Сигнал каждый час&quot;, &quot;Сигнал каждые 15 минут&quot;, &quot;Бой башенных часов&quot;.
+Звуки из этих плагинов включены как стандартные.</translation>
     </message>
 </context>
 <context>
@@ -21,33 +23,33 @@ Sounds from these plugins are included as default sounds.</source>
     <message>
         <location filename="gui/settings_dialog.ui" line="14"/>
         <source>Chime Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки сигнала</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="30"/>
+        <location filename="gui/settings_dialog.ui" line="37"/>
         <source>Quarter</source>
-        <translation type="unfinished"></translation>
+        <translation>Четверть часа</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="57"/>
+        <location filename="gui/settings_dialog.ui" line="68"/>
         <source>Hour</source>
-        <translation type="unfinished"></translation>
+        <translation>Каждый час</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.cpp" line="36"/>
         <location filename="gui/settings_dialog.cpp" line="39"/>
         <source>Once</source>
-        <translation type="unfinished"></translation>
+        <translation>Разово</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.cpp" line="37"/>
         <source>1-12 times</source>
-        <translation type="unfinished"></translation>
+        <translation>1-12 раз</translation>
     </message>
     <message>
         <location filename="gui/settings_dialog.cpp" line="40"/>
         <source>1-3 times</source>
-        <translation type="unfinished"></translation>
+        <translation>1-3 раза</translation>
     </message>
 </context>
 <context>
@@ -55,52 +57,52 @@ Sounds from these plugins are included as default sounds.</source>
     <message>
         <location filename="gui/sound_dialog.ui" line="14"/>
         <source>Sound Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки звука</translation>
     </message>
     <message>
         <location filename="gui/sound_dialog.ui" line="20"/>
         <source>Sound</source>
-        <translation type="unfinished"></translation>
+        <translation>Звук</translation>
     </message>
     <message>
         <location filename="gui/sound_dialog.ui" line="26"/>
         <source>default</source>
-        <translation type="unfinished"></translation>
+        <translation>стандартный</translation>
     </message>
     <message>
         <location filename="gui/sound_dialog.ui" line="52"/>
         <source>custom</source>
-        <translation type="unfinished"></translation>
+        <translation>другой</translation>
     </message>
     <message>
         <location filename="gui/sound_dialog.ui" line="82"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Громкость</translation>
     </message>
     <message>
         <location filename="gui/sound_dialog.cpp" line="35"/>
         <source>sound 1</source>
-        <translation type="unfinished"></translation>
+        <translation>звук 1</translation>
     </message>
     <message>
         <location filename="gui/sound_dialog.cpp" line="36"/>
         <source>sound 2</source>
-        <translation type="unfinished"></translation>
+        <translation>звук 2</translation>
     </message>
     <message>
         <location filename="gui/sound_dialog.cpp" line="37"/>
         <source>sound 3</source>
-        <translation type="unfinished"></translation>
+        <translation>звук 3</translation>
     </message>
     <message>
-        <location filename="gui/sound_dialog.cpp" line="127"/>
+        <location filename="gui/sound_dialog.cpp" line="132"/>
         <source>Select sound</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбор звука</translation>
     </message>
     <message>
-        <location filename="gui/sound_dialog.cpp" line="129"/>
+        <location filename="gui/sound_dialog.cpp" line="134"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Звуки (*.wav *.mp3 *.ogg *.oga);;All files (*.*)</translation>
     </message>
 </context>
 </TS>

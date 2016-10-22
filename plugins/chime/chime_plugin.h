@@ -21,8 +21,8 @@
 
 #include "iclock_plugin.h"
 
-#include <QMediaPlayer>
 
+class QMediaPlayer;
 
 namespace chime {
 
@@ -43,11 +43,9 @@ public slots:
 
   void TimeUpdateListener();
 
-private slots:
-  void SettingsUpdateListener(const QString& key, const QVariant& value);
-
 private:
   bool started_;
+  bool playback_allowed_;
   QMediaPlayer* player_;
 };
 

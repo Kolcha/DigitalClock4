@@ -18,16 +18,21 @@
 
 #include "chime_plugin.h"
 
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+#include <QTime>
+
 #include "plugin_settings.h"
 
 #include "core/chime_settings.h"
+#include "core/repeat_type.h"
 
 #include "gui/settings_dialog.h"
 
 
 namespace chime {
 
-ChimePlugin::ChimePlugin() : started_(false)
+ChimePlugin::ChimePlugin() : started_(false), playback_allowed_(true), player_(nullptr)
 {
   InitTranslator(QLatin1String(":/chime/chime_"));
   info_.display_name = tr("Chime");
@@ -36,8 +41,6 @@ ChimePlugin::ChimePlugin() : started_(false)
                          "\"Every hour signal\", \"Quarter of an hour signal\", \"Tower clock hour signal\".\n"
                          "Sounds from these plugins are included as default sounds.");
   InitIcon(":/chime/icon.svg");
-
-  player_ = new QMediaPlayer(this);
 }
 
 void ChimePlugin::Start()
@@ -46,8 +49,9 @@ void ChimePlugin::Start()
   InitDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
   settings_->TrackChanges(true);
-  connect(settings_, &PluginSettings::OptionChanged, this, &ChimePlugin::SettingsUpdateListener);
   settings_->Load();
+  player_ = new QMediaPlayer(this);
+  player_->setPlaylist(new QMediaPlaylist(player_));
   started_ = true;
 }
 
@@ -55,6 +59,7 @@ void ChimePlugin::Stop()
 {
   started_ = false;
   player_->stop();
+  player_->playlist()->clear();
 }
 
 void ChimePlugin::Configure()
@@ -65,8 +70,6 @@ void ChimePlugin::Configure()
   InitDefaults(&curr_settings);
   if (!started_) {
     settings_->SetDefaultValues(curr_settings);
-    connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
-            this, SLOT(SettingsUpdateListener(QString,QVariant)));
     settings_->TrackChanges(true);
   }
   for (auto iter = curr_settings.begin(); iter != curr_settings.end(); ++iter) {
@@ -83,12 +86,45 @@ void ChimePlugin::Configure()
 
 void ChimePlugin::TimeUpdateListener()
 {
-  //
-}
+  if (!started_) return;
 
-void ChimePlugin::SettingsUpdateListener(const QString& key, const QVariant& value)
-{
-  //
+  QTime cur_time = QTime::currentTime();
+
+  if (cur_time.minute() == 0) {   // hour
+    if (playback_allowed_ && settings_->GetOption(OPT_EVERY_HOUR_ENABLED).toBool()) {
+      player_->playlist()->clear();
+      int count = 1;
+      if (static_cast<Repeat>(settings_->GetOption(OPT_EVERY_HOUR_REPEAT).toInt()) == Repeat::Dynamic) {
+        count = cur_time.hour();
+        if (count == 0) count = 12;
+        if (count > 12) count -= 12;
+      }
+      Q_ASSERT(count > 0);
+      for (int i = 0; i < count; ++i)
+        player_->playlist()->addMedia(settings_->GetOption(OPT_EVERY_HOUR_SIGNAL).toUrl());
+      player_->setVolume(settings_->GetOption(OPT_EVERY_HOUR_VOLUME).toInt());
+      player_->play();
+      playback_allowed_ = false;
+    }
+  }
+
+  if (cur_time.minute() % 15 == 0 && cur_time.minute() != 0) {    // quarter
+    if (playback_allowed_ && settings_->GetOption(OPT_QUARTER_HOUR_ENABLED).toBool()) {
+      player_->playlist()->clear();
+      int count = 1;
+      if (static_cast<Repeat>(settings_->GetOption(OPT_QUARTER_HOUR_REPEAT).toInt()) == Repeat::Dynamic) {
+        count = cur_time.minute() / 15;
+      }
+      Q_ASSERT(count > 0);
+      for (int i = 0; i < count; ++i)
+        player_->playlist()->addMedia(settings_->GetOption(OPT_QUARTER_HOUR_SIGNAL).toUrl());
+      player_->setVolume(settings_->GetOption(OPT_QUARTER_HOUR_VOLUME).toInt());
+      player_->play();
+      playback_allowed_ = false;
+    }
+  }
+
+  playback_allowed_ = (cur_time.minute() % 15 != 0);
 }
 
 } // namespace chime
