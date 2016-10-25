@@ -37,7 +37,7 @@
 #define S_OPT_LAST_TIME_FORMAT_KEY        "last_time_format"
 #define S_OPT_GEOMETRY_KEY                "settings_dialog_geometry"
 
-#ifdef Q_OS_OSX
+#ifdef Q_OS_MACOS
 #include <QApplication>
 #define DEFAULT_TEXTURE_PATH              (QApplication::applicationDirPath() + "/../Resources/textures")
 #else

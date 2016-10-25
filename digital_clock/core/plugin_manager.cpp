@@ -36,7 +36,7 @@ namespace core {
 
 PluginManager::PluginManager(QObject* parent) : QObject(parent)
 {
-#ifdef Q_OS_OSX
+#ifdef Q_OS_MACOS
   search_paths_.append(qApp->applicationDirPath() + "/../PlugIns");
 #else
   search_paths_.append(qApp->applicationDirPath() + "/plugins");

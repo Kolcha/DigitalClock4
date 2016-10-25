@@ -22,7 +22,7 @@
 #include <QIcon>
 #include <QApplication>
 
-#ifdef Q_OS_OSX
+#ifdef Q_OS_MACOS
 #define MIcon(x)     QIcon(x).pixmap(16)
 #else
 #define MIcon(x)     QIcon(x)

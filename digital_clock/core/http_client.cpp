@@ -43,7 +43,7 @@ void HttpClient::startRequest(QUrl url)
   url_ = url;
   is_running_ = true;
   QNetworkRequest req(url);
-#ifdef Q_OS_OSX
+#ifdef Q_OS_MACOS
   req.setRawHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:43.0) Gecko/20100101 Firefox/43.0");
 #endif
 #ifdef Q_OS_LINUX

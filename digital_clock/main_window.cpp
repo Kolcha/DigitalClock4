@@ -52,7 +52,7 @@ namespace digital_clock {
 MainWindow::MainWindow(QWidget* parent) : QWidget(parent)
 {
   setWindowFlags(Qt::FramelessWindowHint);
-#ifdef Q_OS_OSX
+#ifdef Q_OS_MACOS
   setWindowFlags(windowFlags() | Qt::NoDropShadowWindowHint);
 #else
   setWindowFlags(windowFlags() | Qt::Tool);

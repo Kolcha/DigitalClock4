@@ -32,9 +32,9 @@ MessageWidget::MessageWidget(QWidget* parent) :
 {
   ui->setupUi(this);
   layout()->setMargin(0);
-// flat QToolButton on Mac workaround
-// http://stackoverflow.com/questions/11803260/qtoolbutton-autoraise-not-working-for-mac-osx
 #if defined(Q_OS_MACOS)
+  // flat QToolButton on Mac workaround
+  // http://stackoverflow.com/questions/11803260/qtoolbutton-autoraise-not-working-for-mac-osx
   ui->edit_btn->setStyleSheet(
         "QToolButton { background-color: transparent; }"
         "QToolButton:hover { background-color: rgb(215,215,215); }");

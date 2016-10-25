@@ -48,7 +48,7 @@ ClockSkinPtr CreateSkin(const QFont& font)
 SkinManager::SkinManager(QObject* parent) : QObject(parent)
 {
   search_paths_.append(":/clock/default_skins");
-#ifdef Q_OS_OSX
+#ifdef Q_OS_MACOS
   search_paths_.append(qApp->applicationDirPath() + "/../Resources/skins");
 #else
   search_paths_.append(qApp->applicationDirPath() + "/skins");
