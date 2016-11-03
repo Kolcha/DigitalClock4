@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export QT_ROOT="$HOME/Qt/5.6/gcc_64"
+export QT_ROOT="/usr/local/Qt-5.6.2"
 
 CLOCK_APP_NAME="Digital Clock 4"
 

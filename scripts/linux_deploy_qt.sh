@@ -2,7 +2,7 @@
 
 # plugins lists
 # core gui widgets
-gui_lst="egldeviceintegrations generic imageformats platforminputcontexts platforms platformthemes xcbglintegrations"
+gui_lst="generic imageformats platforminputcontexts platforms platformthemes xcbglintegrations"
 # network
 net_lst="bearer"
 # multimedia
