@@ -41,26 +41,18 @@ int main(int argc, char* argv[])
   QStringList ui_languages = QLocale::system().uiLanguages();
   foreach (QString locale, ui_languages) {
     locale = QLocale(locale).name();
+    if (locale == QLatin1String("C") ||               // overrideLanguage == "English"
+        locale.startsWith(QLatin1String("en")))       // "English" is built-in
+      break;                                          // use built-in
+
+    if (locale.contains("ua", Qt::CaseInsensitive))   // Ukrainian,
+      locale = QLatin1String("ru");                   // use Russian
+
     if (app_translator.load(QLatin1String(":/clock/languages/digital_clock_") + locale)) {
-      if (qt_translator.load(QLatin1String("qt_") + locale,
-                             QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
-        app.installTranslator(&app_translator);
-        app.installTranslator(&qt_translator);
-        break;
-      }
-      app_translator.load(QString()); // unload()
-    } else if (locale == QLatin1String("C") /* overrideLanguage == "English" */) {
-      // use built-in
-      break;
-    } else if (locale.startsWith(QLatin1String("en")) /* "English" is built-in */) {
-      // use built-in
-      break;
-    } else if (locale.contains("ua", Qt::CaseInsensitive)) { /* Ukrainian, use russian */
-      app_translator.load(QLatin1String(":/clock/languages/digital_clock_ru"));
-      qt_translator.load(QLatin1String("qt_ru"),
-                         QLibraryInfo::location(QLibraryInfo::TranslationsPath));
       app.installTranslator(&app_translator);
-      app.installTranslator(&qt_translator);
+      if (qt_translator.load(QLatin1String("qt_") + locale,
+                             QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+        app.installTranslator(&qt_translator);
       break;
     }
   }

@@ -51,17 +51,15 @@ void PluginBase::InitTranslator(const QLatin1String& prefix)
   QStringList ui_languages = QLocale::system().uiLanguages();
   foreach (QString locale, ui_languages) {
     locale = QLocale(locale).name();
+    if (locale == QLatin1String("C") ||               // overrideLanguage == "English"
+        locale.startsWith(QLatin1String("en")))       // "English" is built-in
+      break;                                          // use built-in
+
+    if (locale.contains("ua", Qt::CaseInsensitive))   // Ukrainian,
+      locale = QLatin1String("ru");                   // use Russian
+
     if (translator_->load(prefix + locale)) {
       QApplication::installTranslator(translator_);
-      break;
-    } else if (locale == QLatin1String("C") /* overrideLanguage == "English" */) {
-      // use built-in
-      break;
-    } else if (locale.startsWith(QLatin1String("en")) /* "English" is built-in */) {
-      // use built-in
-      break;
-    } else if (locale.contains("ua", Qt::CaseInsensitive)) { /* Ukrainian, use russian */
-      if (translator_->load(prefix + "ru")) QApplication::installTranslator(translator_);
       break;
     }
   }
