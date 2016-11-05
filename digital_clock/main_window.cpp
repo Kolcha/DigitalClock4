@@ -440,12 +440,14 @@ void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set)
 
 void MainWindow::CorrectPosition()
 {
+#ifndef Q_OS_MACOS  // workaround for https://sourceforge.net/p/digitalclock4/tickets/7/
   QPoint curr_pos = this->pos();
   curr_pos.setX(std::max(curr_pos.x(), desktop_->geometry().left()));
   curr_pos.setX(std::min(curr_pos.x(), desktop_->geometry().right() - this->width()));
   curr_pos.setY(std::max(curr_pos.y(), desktop_->geometry().top()));
   curr_pos.setY(std::min(curr_pos.y(), desktop_->geometry().bottom() - this->height()));
   if (curr_pos != this->pos()) this->move(curr_pos);
+#endif
 }
 
 } // namespace digital_clock

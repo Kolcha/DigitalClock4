@@ -78,7 +78,7 @@ ISkin::QPixmapPtr TextSkin::ResizeImage(const QString& str, int idx, qreal zoom)
     QFontMetrics fm(new_font);
     int res_w = fm.width(curr_text_);
     // add some extra spacing for italic fonts
-    if (new_font.italic()) res_w += 0.25 * fm.width(curr_text_[curr_text_.length() - 1]);
+    if (new_font.italic()) res_w += 0.25 * fm.width(*curr_text_.rbegin());
     QPixmapPtr result(new QPixmap(res_w, fm.height()));
     // use replaced symbol only to calculate width, but draw actual one
     if (char_map_.contains(str[idx])) curr_text_ = str[idx];
