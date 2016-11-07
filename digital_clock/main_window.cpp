@@ -49,13 +49,13 @@
 
 namespace digital_clock {
 
-MainWindow::MainWindow(QWidget* parent) : QWidget(parent)
+MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
 {
   setWindowFlags(Qt::FramelessWindowHint);
 #ifdef Q_OS_MACOS
   setWindowFlags(windowFlags() | Qt::NoDropShadowWindowHint);
 #else
-  setWindowFlags(windowFlags() | Qt::Tool);
+  setWindowFlags(windowFlags() | Qt::Tool | Qt::X11BypassWindowManagerHint);
 #endif
   setAttribute(Qt::WA_TranslucentBackground);
 
