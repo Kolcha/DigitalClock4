@@ -19,6 +19,7 @@
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
+#include <QApplication>
 #include <QColorDialog>
 #include <QFileDialog>
 #include <QFontDialog>
@@ -38,10 +39,9 @@
 #define S_OPT_GEOMETRY_KEY                "settings_dialog_geometry"
 
 #ifdef Q_OS_MACOS
-#include <QApplication>
 #define DEFAULT_TEXTURE_PATH              (QApplication::applicationDirPath() + "/../Resources/textures")
 #else
-#define DEFAULT_TEXTURE_PATH              "textures"
+#define DEFAULT_TEXTURE_PATH              (QApplication::applicationDirPath() + "/textures")
 #endif
 
 using skin_draw::SkinDrawer;

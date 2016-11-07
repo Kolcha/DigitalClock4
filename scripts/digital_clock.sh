@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # File:   digital_clock.sh
 # Author: Nick Korotysh <nick.korotysh@gmail.com>
@@ -9,10 +9,18 @@
 #
 # Clock launcher script
 #
+# This script is slightly modified copy of script from
+# http://doc.qt.io/qt-5/linux-deployment.html#creating-the-application-package
+#
 
-script_path=$(readlink -f "$0")
-cd "${script_path%/*}"
+appname=`basename "$0" | sed s,\.sh$,,`
 
-export LD_LIBRARY_PATH="$PWD:$LD_LIBRARY_PATH"
-./digital_clock
+dirname=`dirname "$0"`
+tmp="${dirname#?}"
 
+if [ "${dirname%$tmp}" != "/" ]; then
+dirname=$PWD/$dirname
+fi
+LD_LIBRARY_PATH=$dirname
+export LD_LIBRARY_PATH
+"$dirname/$appname" "$@"
