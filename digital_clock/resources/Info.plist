@@ -11,7 +11,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>4.5.1</string>
 	<key>CFBundleSignature</key>
-	<string>NKDC</string>
+	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>836</string>
 	<key>CFBundleExecutable</key>
@@ -31,5 +31,7 @@
 	<string>© 2013-2016 Nick Korotysh</string>
 	<key>LSUIElement</key>
 	<string>1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.9</string>
 </dict>
 </plist>

@@ -78,7 +78,8 @@ echo "Translations = Resources/translations" >> digital_clock/digital_clock.app/
 # deploy Qt for app and create .dmg file
 cd digital_clock
 mv digital_clock.app "$CLOCK_APP_NAME.app"
-$QT_ROOT/bin/macdeployqt "$CLOCK_APP_NAME.app" -dmg
+codesign --deep --force --verify --verbose --sign "-" "$CLOCK_APP_NAME.app"
+hdiutil create -srcfolder "$CLOCK_APP_NAME.app" "$CLOCK_APP_NAME.dmg"
 
 rm -f $build_dir/../*.dmg
 rm -rf "$build_dir/../$CLOCK_APP_NAME.app"
