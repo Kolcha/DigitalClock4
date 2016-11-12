@@ -1,3 +1,31 @@
+Whats new in 4.5.1:
+-------------------
+Core:
+ - fixed multiple monitors issues
+ - improved out of range position handling
+ - custom Qt 5.6.2 with GStreamer 1.0 support for linux, fixed playback issues
+ - custom Qt 5.6.2 for macOS (OS X), fixed issues on macOS Sierra
+ - simplified/improved locale detection, prevent wrong choice or partial translation
+
+GUI:
+ - better support for italic fonts, now they look very good, no extra space
+ - improved Retina displays support
+ - fixed bug with custom flashing separator (not ':') when font is used
+ - linux: hide app from taskbar in KDE and Unity
+
+Plugins:
+ - dropped 'move_clock' plugin, it is broken, no fix is planned
+ - 'custom_signal' renamed to 'chime' and improved
+ - dropped 'hour_signal', 'tower_clock_signal', 'quarter_hour_signal'. they can be replaced with 'chime'. their sound are included in 'chime' as default.
+ - 'quick_note': flat edit button on mac
+ - fixed minor gui bugs
+
+General:
+ - linux: fixed .desktop file in KDE
+ - linux: improved launcher script
+ - introducing [mini-wiki](https://sourceforge.net/p/digitalclock4/wiki/Home/)
+
+
 Whats new in 4.5.0:
 -------------------
 Core:
