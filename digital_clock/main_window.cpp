@@ -88,9 +88,6 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   connect(&timer_, &QTimer::timeout, clock_widget_, &gui::ClockWidget::TimeoutHandler);
   connect(skin_manager_, &core::SkinManager::SkinLoaded, clock_widget_, &gui::ClockWidget::ApplySkin);
 
-  // create this object each time is too heavy... create it only once
-  desktop_ = new QDesktopWidget();
-
   ConnectTrayMessages();
 
   QGridLayout* main_layout = new QGridLayout(this);
@@ -113,7 +110,6 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
 MainWindow::~MainWindow()
 {
   timer_.stop();
-  delete desktop_;
   delete state_;
 }
 
@@ -442,10 +438,11 @@ void MainWindow::CorrectPosition()
 {
 #ifndef Q_OS_MACOS  // workaround for https://sourceforge.net/p/digitalclock4/tickets/7/
   QPoint curr_pos = this->pos();
-  curr_pos.setX(std::max(curr_pos.x(), desktop_->geometry().left()));
-  curr_pos.setX(std::min(curr_pos.x(), desktop_->geometry().right() - this->width()));
-  curr_pos.setY(std::max(curr_pos.y(), desktop_->geometry().top()));
-  curr_pos.setY(std::min(curr_pos.y(), desktop_->geometry().bottom() - this->height()));
+  QDesktopWidget* desktop = QApplication::desktop();
+  curr_pos.setX(std::max(curr_pos.x(), desktop->geometry().left()));
+  curr_pos.setX(std::min(curr_pos.x(), desktop->geometry().right() - this->width()));
+  curr_pos.setY(std::max(curr_pos.y(), desktop->geometry().top()));
+  curr_pos.setY(std::min(curr_pos.y(), desktop->geometry().bottom() - this->height()));
   if (curr_pos != this->pos()) this->move(curr_pos);
 #endif
 }
