@@ -116,7 +116,7 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_ALIGNMENT:             return static_cast<int>(CAlignment::A_LEFT);
     case OPT_BACKGROUND_ENABLED:    return false;
     case OPT_BACKGROUND_COLOR:      return QVariant::fromValue<QColor>(Qt::white);
-    case OPT_SHOW_ON_ALL_DESKTOPS:  return false;
+    case OPT_SHOW_ON_ALL_DESKTOPS:  return true;
     // skin settings
     case OPT_SKIN_NAME:             return QString("Electronic (default)");
     case OPT_FONT:                  return QFont();
