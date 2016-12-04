@@ -43,6 +43,9 @@
 #include "gui/settings_dialog.h"
 #include "gui/about_dialog.h"
 
+#ifdef Q_OS_MACOS
+#include <objc/objc-runtime.h>
+#endif
 
 #define S_OPT_POSITION              "clock_position"
 
@@ -161,6 +164,7 @@ void MainWindow::Reset()
   ApplyOption(OPT_ALIGNMENT, app_config_->GetValue(OPT_ALIGNMENT));
   ApplyOption(OPT_BACKGROUND_COLOR, app_config_->GetValue(OPT_BACKGROUND_COLOR));
   ApplyOption(OPT_BACKGROUND_ENABLED, app_config_->GetValue(OPT_BACKGROUND_ENABLED));
+  ApplyOption(OPT_SHOW_ON_ALL_DESKTOPS, app_config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS));
 
   // load time format first to update separators where it required
   ApplyOption(OPT_TIME_FORMAT, app_config_->GetValue(OPT_TIME_FORMAT));
@@ -223,6 +227,10 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
     case OPT_BACKGROUND_COLOR:
       bg_color_ = value.value<QColor>();
       this->repaint();
+      break;
+
+    case OPT_SHOW_ON_ALL_DESKTOPS:
+      this->SetVisibleOnAllDesktops(value.toBool());
       break;
 
     case OPT_SKIN_NAME:
@@ -444,6 +452,18 @@ void MainWindow::CorrectPosition()
   curr_pos.setY(std::max(curr_pos.y(), desktop->geometry().top()));
   curr_pos.setY(std::min(curr_pos.y(), desktop->geometry().bottom() - this->height()));
   if (curr_pos != this->pos()) this->move(curr_pos);
+#endif
+}
+
+void MainWindow::SetVisibleOnAllDesktops(bool set)
+{
+  // http://stackoverflow.com/questions/16775352/keep-a-application-window-always-on-current-desktop-on-linux-and-mac/
+#ifdef Q_OS_MACOS
+  WId windowObject = this->winId();
+  objc_object * nsviewObject = reinterpret_cast<objc_object *>(windowObject);
+  objc_object * nsWindowObject = objc_msgSend(nsviewObject, sel_registerName("window"));
+  int NSWindowCollectionBehaviorCanJoinAllSpaces = set ? 1 << 0 : 0 << 0;
+  objc_msgSend(nsWindowObject, sel_registerName("setCollectionBehavior:"), NSWindowCollectionBehaviorCanJoinAllSpaces);
 #endif
 }
 

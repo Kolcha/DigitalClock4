@@ -43,6 +43,7 @@ QMap<Option, QVariant> ClockSettings::GetSettings() const
   all_settings[OPT_ALIGNMENT]             = GetValue(OPT_ALIGNMENT);
   all_settings[OPT_BACKGROUND_ENABLED]    = GetValue(OPT_BACKGROUND_ENABLED);
   all_settings[OPT_BACKGROUND_COLOR]      = GetValue(OPT_BACKGROUND_COLOR);
+  all_settings[OPT_SHOW_ON_ALL_DESKTOPS]  = GetValue(OPT_SHOW_ON_ALL_DESKTOPS);
   all_settings[OPT_SKIN_NAME]             = GetValue(OPT_SKIN_NAME);
   all_settings[OPT_FONT]                  = GetValue(OPT_FONT);
   all_settings[OPT_ZOOM]                  = GetValue(OPT_ZOOM);
@@ -76,6 +77,7 @@ QString ClockSettings::GetKey(const int id) const
     case OPT_ALIGNMENT:             return "clock/alignment";
     case OPT_BACKGROUND_ENABLED:    return "clock/background_enabled";
     case OPT_BACKGROUND_COLOR:      return "clock/background_color";
+    case OPT_SHOW_ON_ALL_DESKTOPS:  return "clock/show_on_all_desktops";
     // skin settings
     case OPT_SKIN_NAME:             return "skin/name";
     case OPT_FONT:                  return "skin/font";
@@ -114,6 +116,7 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_ALIGNMENT:             return static_cast<int>(CAlignment::A_LEFT);
     case OPT_BACKGROUND_ENABLED:    return false;
     case OPT_BACKGROUND_COLOR:      return QVariant::fromValue<QColor>(Qt::white);
+    case OPT_SHOW_ON_ALL_DESKTOPS:  return false;
     // skin settings
     case OPT_SKIN_NAME:             return QString("Electronic (default)");
     case OPT_FONT:                  return QFont();

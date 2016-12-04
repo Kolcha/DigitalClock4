@@ -85,6 +85,8 @@ private:
 
   void CorrectPosition();
 
+  void SetVisibleOnAllDesktops(bool set);
+
   SettingsStorage* config_backend_;
 
   core::ClockSettings* app_config_;
