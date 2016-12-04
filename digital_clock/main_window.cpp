@@ -66,6 +66,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   setWindowFlags(windowFlags() | Qt::Tool | Qt::X11BypassWindowManagerHint);
 #endif
   setAttribute(Qt::WA_TranslucentBackground);
+  SetVisibleOnAllDesktops(true);
 
   setContextMenuPolicy(Qt::CustomContextMenu);
   connect(this, &MainWindow::customContextMenuRequested, this, &MainWindow::ShowContextMenu);
@@ -169,7 +170,6 @@ void MainWindow::Reset()
   ApplyOption(OPT_ALIGNMENT, app_config_->GetValue(OPT_ALIGNMENT));
   ApplyOption(OPT_BACKGROUND_COLOR, app_config_->GetValue(OPT_BACKGROUND_COLOR));
   ApplyOption(OPT_BACKGROUND_ENABLED, app_config_->GetValue(OPT_BACKGROUND_ENABLED));
-  ApplyOption(OPT_SHOW_ON_ALL_DESKTOPS, app_config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS));
 
   // load time format first to update separators where it required
   ApplyOption(OPT_TIME_FORMAT, app_config_->GetValue(OPT_TIME_FORMAT));
@@ -232,10 +232,6 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
     case OPT_BACKGROUND_COLOR:
       bg_color_ = value.value<QColor>();
       this->repaint();
-      break;
-
-    case OPT_SHOW_ON_ALL_DESKTOPS:
-      this->SetVisibleOnAllDesktops(value.toBool());
       break;
 
     case OPT_SKIN_NAME:
