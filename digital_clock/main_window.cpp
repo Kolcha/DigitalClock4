@@ -46,6 +46,11 @@
 #ifdef Q_OS_MACOS
 #include <objc/objc-runtime.h>
 #endif
+#ifdef Q_OS_LINUX
+#include <QX11Info>
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
+#endif
 
 #define S_OPT_POSITION              "clock_position"
 
@@ -458,12 +463,24 @@ void MainWindow::CorrectPosition()
 void MainWindow::SetVisibleOnAllDesktops(bool set)
 {
   // http://stackoverflow.com/questions/16775352/keep-a-application-window-always-on-current-desktop-on-linux-and-mac/
-#ifdef Q_OS_MACOS
+#if defined(Q_OS_MACOS)
   WId windowObject = this->winId();
   objc_object * nsviewObject = reinterpret_cast<objc_object *>(windowObject);
   objc_object * nsWindowObject = objc_msgSend(nsviewObject, sel_registerName("window"));
   int NSWindowCollectionBehaviorCanJoinAllSpaces = set ? 1 << 0 : 0 << 0;
   objc_msgSend(nsWindowObject, sel_registerName("setCollectionBehavior:"), NSWindowCollectionBehaviorCanJoinAllSpaces);
+#elif defined(Q_OS_LINUX)
+  unsigned long data = 0xFFFFFFFF;
+  XChangeProperty (QX11Info::display(),
+                   winId(),
+                   XInternAtom(QX11Info::display(), "_NET_WM_DESKTOP", False),
+                   XA_CARDINAL,
+                   32,
+                   PropModeReplace,
+                   reinterpret_cast<unsigned char *>(&data), // all desktop
+                   1);
+#else
+  Q_UNUSED(set)
 #endif
 }
 
