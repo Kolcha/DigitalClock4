@@ -23,6 +23,9 @@
 #-------------------------------------------------
 
 QT       += core gui widgets network svg
+unix:!macx {
+    QT += x11extras
+}
 
 include(../config.pri)
 
@@ -95,6 +98,10 @@ win32:RC_FILE = digital_clock.rc
 macx {
     ICON = resources/clock_icon_mac.icns
     QMAKE_INFO_PLIST = resources/Info.plist
+    LIBS += -lobjc
+}
+unix:!macx {
+    LIBS += -lX11
 }
 
 # add skin_draw library

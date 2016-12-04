@@ -43,6 +43,14 @@
 #include "gui/settings_dialog.h"
 #include "gui/about_dialog.h"
 
+#ifdef Q_OS_MACOS
+#include <objc/objc-runtime.h>
+#endif
+#ifdef Q_OS_LINUX
+#include <QX11Info>
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
+#endif
 
 #define S_OPT_POSITION              "clock_position"
 
@@ -58,6 +66,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   setWindowFlags(windowFlags() | Qt::Tool | Qt::X11BypassWindowManagerHint);
 #endif
   setAttribute(Qt::WA_TranslucentBackground);
+  SetVisibleOnAllDesktops(true);
 
   setContextMenuPolicy(Qt::CustomContextMenu);
   connect(this, &MainWindow::customContextMenuRequested, this, &MainWindow::ShowContextMenu);
@@ -444,6 +453,30 @@ void MainWindow::CorrectPosition()
   curr_pos.setY(std::max(curr_pos.y(), desktop->geometry().top()));
   curr_pos.setY(std::min(curr_pos.y(), desktop->geometry().bottom() - this->height()));
   if (curr_pos != this->pos()) this->move(curr_pos);
+#endif
+}
+
+void MainWindow::SetVisibleOnAllDesktops(bool set)
+{
+  // http://stackoverflow.com/questions/16775352/keep-a-application-window-always-on-current-desktop-on-linux-and-mac/
+#if defined(Q_OS_MACOS)
+  WId windowObject = this->winId();
+  objc_object * nsviewObject = reinterpret_cast<objc_object *>(windowObject);
+  objc_object * nsWindowObject = objc_msgSend(nsviewObject, sel_registerName("window"));
+  int NSWindowCollectionBehaviorCanJoinAllSpaces = set ? 1 << 0 : 0 << 0;
+  objc_msgSend(nsWindowObject, sel_registerName("setCollectionBehavior:"), NSWindowCollectionBehaviorCanJoinAllSpaces);
+#elif defined(Q_OS_LINUX)
+  unsigned long data = 0xFFFFFFFF;
+  XChangeProperty (QX11Info::display(),
+                   winId(),
+                   XInternAtom(QX11Info::display(), "_NET_WM_DESKTOP", False),
+                   XA_CARDINAL,
+                   32,
+                   PropModeReplace,
+                   reinterpret_cast<unsigned char *>(&data), // all desktop
+                   1);
+#else
+  Q_UNUSED(set)
 #endif
 }
 
