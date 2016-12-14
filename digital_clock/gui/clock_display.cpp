@@ -63,6 +63,7 @@ void ClockDisplay::SetTimeFormat(const QString& format)
 void ClockDisplay::SetURLEnabled(bool enable)
 {
   url_enabled_ = enable;
+  setCursor(enable ? Qt::PointingHandCursor : Qt::ArrowCursor);
 }
 
 void ClockDisplay::SetURL(const QString& url)
