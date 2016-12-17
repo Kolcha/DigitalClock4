@@ -18,7 +18,9 @@
 
 #include "power_off.h"
 
+#ifndef NOMINMAX
 #define NOMINMAX
+#endif
 #include <Windows.h>
 
 #include "plugin_settings.h"
