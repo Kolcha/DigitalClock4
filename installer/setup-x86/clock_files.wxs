@@ -7,53 +7,53 @@
 
     <ComponentGroup Id="ClockFiles">
       <Component Id="main_exe" Directory="INSTALLDIR" Guid="{217B5368-FD6C-4CA6-866A-7C45B2B17AAB}">
-        <File Id="digital_clock.exe" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\digital_clock\release\digital_clock.exe" />
+        <File Id="digital_clock.exe" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\digital_clock\release\digital_clock.exe" />
       </Component>
       <Component Id="dll_lib1" Directory="INSTALLDIR" Guid="{D73EECC9-2DFD-43CC-9E2B-10D6E4F5ABC9}">
-        <File Id="clock_common.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\clock_common\release\clock_common.dll" />
+        <File Id="clock_common.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\clock_common\release\clock_common.dll" />
       </Component>
       <Component Id="dll_lib2" Directory="INSTALLDIR" Guid="{328F0D9E-AAC5-4C02-8FC3-234AE0FBFA3A}">
-        <File Id="skin_draw.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\skin_draw\release\skin_draw.dll" />
+        <File Id="skin_draw.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\skin_draw\release\skin_draw.dll" />
       </Component>
       <Component Id="dll_lib3" Directory="INSTALLDIR" Guid="{06653CC3-F2B7-4381-8620-6AFCACFBD53D}">
-        <File Id="plugin_core.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugin_core\release\plugin_core.dll" />
+        <File Id="plugin_core.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugin_core\release\plugin_core.dll" />
       </Component>
 
       <Component Id="plugin_dll01" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{A08C8481-03EB-4E21-9CEC-6E340ED5508E}">
-        <File Id="alarm.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\alarm\release\alarm.dll" />
+        <File Id="alarm.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\alarm\release\alarm.dll" />
       </Component>
       <Component Id="plugin_dll02" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{62D1F604-39A0-4BE0-97DA-1DEAC3707B18}">
-        <File Id="any_zoom.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\any_zoom\release\any_zoom.dll" />
+        <File Id="any_zoom.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\any_zoom\release\any_zoom.dll" />
       </Component>
       <Component Id="plugin_dll03" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{07CE8708-016D-4951-A0DB-218202EED829}">
-        <File Id="date.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\date\release\date.dll" />
+        <File Id="date.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\date\release\date.dll" />
       </Component>
       <Component Id="plugin_dll06" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{78494AEC-C57B-4B87-AA6C-6A185EF62889}">
-        <File Id="power_off.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\power_off\release\power_off.dll" />
+        <File Id="power_off.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\power_off\release\power_off.dll" />
       </Component>
       <Component Id="plugin_dll07" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{1CCD53AD-9981-4A73-81E3-F7D6288640BB}">
-        <File Id="quick_note.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\quick_note\release\quick_note.dll" />
+        <File Id="quick_note.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\quick_note\release\quick_note.dll" />
       </Component>
       <Component Id="plugin_dll08" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{87BEBA9C-D36A-4665-9058-21F1DC2DB048}">
-        <File Id="schedule.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\schedule\release\schedule.dll" />
+        <File Id="schedule.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\schedule\release\schedule.dll" />
       </Component>
       <Component Id="plugin_dll09" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{71296BFB-4A68-43FD-8E71-78AD05209520}">
-        <File Id="spectrum_clock.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\spectrum_clock\release\spectrum_clock.dll" />
+        <File Id="spectrum_clock.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\spectrum_clock\release\spectrum_clock.dll" />
       </Component>
       <Component Id="plugin_dll10" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{3D36B26E-2662-451B-B73F-C977F3056361}">
-        <File Id="tray_color.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\tray_color\release\tray_color.dll" />
+        <File Id="tray_color.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\tray_color\release\tray_color.dll" />
       </Component>
       <Component Id="plugin_dll11" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{86C64B8D-56A6-49F6-93FF-4C4B0F5B1603}">
-        <File Id="var_translucency.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\var_translucency\release\var_translucency.dll" />
+        <File Id="var_translucency.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\var_translucency\release\var_translucency.dll" />
       </Component>
       <Component Id="plugin_dll12" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{F4CEB5A6-2487-4435-879D-1D25DDFDC8B1}">
-        <File Id="win_on_top.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\win_on_top\release\win_on_top.dll" />
+        <File Id="win_on_top.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\win_on_top\release\win_on_top.dll" />
       </Component>
       <Component Id="plugin_dll14" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{C4B3D882-D5D2-4544-B6B7-447F195AEA90}">
-        <File Id="ip_address.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\ip_address\release\ip_address.dll" />
+        <File Id="ip_address.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\ip_address\release\ip_address.dll" />
       </Component>
       <Component Id="plugin_dll17" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{7DE2A91E-F889-4A64-8066-C89B74AB8534}">
-        <File Id="chime.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_0_MSVC2015_32bit-Release\plugins\chime\release\chime.dll" />
+        <File Id="chime.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_7_1_MSVC2015_32bit-Release\plugins\chime\release\chime.dll" />
       </Component>
 
       <Component Id="win_on_top_ext" Directory="plugins_special" Guid="{69192379-B1C6-43F3-AC08-BC5735F359D4}">

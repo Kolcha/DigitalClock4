@@ -1,6 +1,6 @@
 #!/bin/bash
 
-QT_ROOT="/usr/local/Qt-5.6.2"
+QT_ROOT="/usr/local/Qt-5.6.3"
 
 CLOCK_APP_NAME="Digital Clock 4"
 
@@ -28,7 +28,7 @@ rm -rf "$build_dir"
 mkdir "$build_dir"
 cd "$build_dir"
 
-$QT_ROOT/bin/qmake QMAKE_MAC_SDK=macosx10.9 -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
+$QT_ROOT/bin/qmake -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
 make -j4
 [[ $? == 0 ]] || exit 1
 
