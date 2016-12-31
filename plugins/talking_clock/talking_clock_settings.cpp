@@ -25,7 +25,7 @@ void InitDefaults(QSettings::SettingsMap* defaults)
   defaults->insert(OPT_EVERY_HOUR_ENABLED, true);
   defaults->insert(OPT_EVERY_HOUR_FORMAT, QString("'It''s' ha 'o''clock'"));
   defaults->insert(OPT_QUARTER_HOUR_ENABLED, false);
-  defaults->insert(OPT_QUARTER_HOUR_FORMAT, QString("h:m"));
+  defaults->insert(OPT_QUARTER_HOUR_FORMAT, QString("h:m ap"));
 
   defaults->insert(OPT_SYNTHESIS_VOLUME, 70);
   defaults->insert(OPT_SYNTHESIS_RATE, 0);

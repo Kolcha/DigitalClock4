@@ -110,13 +110,13 @@ void VoiceConfigDialog::stop()
 void VoiceConfigDialog::setRate(int rate)
 {
   ui->rate->setToolTip(QString::number(rate));
-  m_speech->setRate(rate / 10.0);
+  m_speech->setRate(rate / 100.0);
 }
 
 void VoiceConfigDialog::setPitch(int pitch)
 {
   ui->pitch->setToolTip(QString::number(pitch));
-  m_speech->setPitch(pitch / 10.0);
+  m_speech->setPitch(pitch / 100.0);
 }
 
 void VoiceConfigDialog::setVolume(int volume)

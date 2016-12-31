@@ -87,13 +87,10 @@ This is example text, you can edit it to play with settings. No any chnages to t
      <item row="3" column="2">
       <widget class="QSlider" name="pitch">
        <property name="minimum">
-        <number>-10</number>
+        <number>-100</number>
        </property>
        <property name="maximum">
-        <number>10</number>
-       </property>
-       <property name="singleStep">
-        <number>1</number>
+        <number>100</number>
        </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -177,10 +174,10 @@ This is example text, you can edit it to play with settings. No any chnages to t
      <item row="2" column="2">
       <widget class="QSlider" name="rate">
        <property name="minimum">
-        <number>-10</number>
+        <number>-100</number>
        </property>
        <property name="maximum">
-        <number>10</number>
+        <number>100</number>
        </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>

@@ -22,6 +22,8 @@
 #include <iclock_plugin.h>
 
 
+class QTextToSpeech;
+
 namespace talking_clock {
 
 class TalkingClockPlugin : public IClockPlugin
@@ -41,8 +43,13 @@ public slots:
 
   void TimeUpdateListener();
 
+private slots:
+  void InitSpeechEngine();
+
 private:
   bool started_;
+  QTextToSpeech* speech_;
+  bool playback_allowed_;
 };
 
 } // namespace talking_clock
