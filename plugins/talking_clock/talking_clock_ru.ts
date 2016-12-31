@@ -5,66 +5,36 @@
     <name>talking_clock::SettingsDialog</name>
     <message>
         <location filename="gui/settings_dialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <source>Talking Clock Settings</source>
+        <translation>Настройки &quot;Говорящих часов&quot;</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="93"/>
-        <source>&amp;Engine:</source>
-        <translation type="unfinished"></translation>
+        <location filename="gui/settings_dialog.ui" line="20"/>
+        <source>every hour</source>
+        <translation>каждый час</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="128"/>
-        <source>Voice &amp;name:</source>
-        <translation type="unfinished"></translation>
+        <location filename="gui/settings_dialog.ui" line="30"/>
+        <source>voice configuration</source>
+        <translation>настройка голоса</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="153"/>
-        <source>&amp;Rate:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="178"/>
-        <source>&amp;Language:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="203"/>
-        <source>P&amp;itch:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="247"/>
-        <source>&amp;Volume:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="295"/>
-        <source>&amp;Format:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="314"/>
-        <source>&amp;Period:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="343"/>
-        <source>GroupBox</source>
-        <translation type="unfinished"></translation>
+        <location filename="gui/settings_dialog.ui" line="50"/>
+        <source>quarter hour</source>
+        <translation>четверть часа</translation>
     </message>
 </context>
 <context>
     <name>talking_clock::TalkingClockPlugin</name>
     <message>
-        <location filename="talking_clock_plugin.cpp" line="27"/>
+        <location filename="talking_clock_plugin.cpp" line="35"/>
         <source>Talking clock</source>
-        <translation type="unfinished"></translation>
+        <translation>Говорящие часы</translation>
     </message>
     <message>
-        <location filename="talking_clock_plugin.cpp" line="28"/>
+        <location filename="talking_clock_plugin.cpp" line="36"/>
         <source>Announces time with selected period.</source>
-        <translation type="unfinished"></translation>
+        <translation>Произносят время через указанный период.</translation>
     </message>
 </context>
 <context>
@@ -72,66 +42,75 @@
     <message>
         <location filename="gui/voice_config_dialog.ui" line="14"/>
         <source>Voice Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройкса голоса</translation>
     </message>
     <message>
         <location filename="gui/voice_config_dialog.ui" line="26"/>
-        <source>Hello QtTextToSpeech,
-this is an example text in English.
+        <source>QtSpeech is a library that makes text to speech easy with Qt. This library uses  native speech synthesis API.
 
-QtSpeech is a library that makes text to speech easy with Qt.
-Done, over and out.</source>
-        <translation type="unfinished"></translation>
+List of available languages and voices  vary depending on platform. To get more languages/voices, search for it for your platform.
+
+This is example text, you can edit it to play with settings. No any chnages to this text will saved.</source>
+        <translation>QtSpeech - библиотека, позвозяющая очень просто синтезировать речь на Qt. Данная библиотека использует API платформенного синтезатора речи.
+
+Список доступных языков и голосов варьируется в зависимости от платформы. Чтобы получить больше языков/голосов, поищите их под свою платформу.
+
+Данный текст является просто примером, его спокойно можно менять чтобы поиграть с настройками. Любые изменения данного текста сохранены не будут.</translation>
     </message>
     <message>
         <location filename="gui/voice_config_dialog.ui" line="45"/>
         <source>Engine:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ядро:</translation>
     </message>
     <message>
         <location filename="gui/voice_config_dialog.ui" line="61"/>
         <source>Pitch:</source>
-        <translation type="unfinished"></translation>
+        <translation>Высота:</translation>
     </message>
     <message>
         <location filename="gui/voice_config_dialog.ui" line="77"/>
         <source>&amp;Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Язык:</translation>
     </message>
     <message>
-        <location filename="gui/voice_config_dialog.ui" line="106"/>
+        <location filename="gui/voice_config_dialog.ui" line="103"/>
         <source>Voice name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Голос:</translation>
     </message>
     <message>
-        <location filename="gui/voice_config_dialog.ui" line="154"/>
+        <location filename="gui/voice_config_dialog.ui" line="151"/>
         <source>Rate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Скорость:</translation>
     </message>
     <message>
-        <location filename="gui/voice_config_dialog.ui" line="170"/>
+        <location filename="gui/voice_config_dialog.ui" line="167"/>
         <source>Volume:</source>
-        <translation type="unfinished"></translation>
+        <translation>Громкость:</translation>
     </message>
     <message>
-        <location filename="gui/voice_config_dialog.ui" line="207"/>
+        <location filename="gui/voice_config_dialog.ui" line="204"/>
         <source>Speak</source>
-        <translation type="unfinished"></translation>
+        <translation>Сказать</translation>
     </message>
     <message>
-        <location filename="gui/voice_config_dialog.ui" line="217"/>
+        <location filename="gui/voice_config_dialog.ui" line="214"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="gui/voice_config_dialog.ui" line="227"/>
+        <location filename="gui/voice_config_dialog.ui" line="224"/>
         <source>Resume</source>
-        <translation type="unfinished"></translation>
+        <translation>Продолжить</translation>
     </message>
     <message>
-        <location filename="gui/voice_config_dialog.ui" line="234"/>
+        <location filename="gui/voice_config_dialog.ui" line="231"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Стоп</translation>
+    </message>
+    <message>
+        <location filename="gui/voice_config_dialog.cpp" line="34"/>
+        <source>Default</source>
+        <translation>По умолчанию</translation>
     </message>
 </context>
 </TS>
