@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::MainWindow</name>
     <message>
-        <location filename="../main_window.cpp" line="405"/>
-        <location filename="../main_window.cpp" line="413"/>
-        <location filename="../main_window.cpp" line="421"/>
+        <location filename="../main_window.cpp" line="406"/>
+        <location filename="../main_window.cpp" line="416"/>
+        <location filename="../main_window.cpp" line="426"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="406"/>
+        <location filename="../main_window.cpp" line="407"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="414"/>
+        <location filename="../main_window.cpp" line="417"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="422"/>
+        <location filename="../main_window.cpp" line="427"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="432"/>
+        <location filename="../main_window.cpp" line="439"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -93,7 +93,7 @@
         <translation>версия: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="77"/>
+        <location filename="../gui/about_dialog.cpp" line="76"/>
         <source>build date: %1</source>
         <translatorcomment>дата компиляции приложения</translatorcomment>
         <translation>дата сборки: %1</translation>
@@ -430,33 +430,33 @@
 <context>
     <name>digital_clock::gui::TrayControl</name>
     <message>
-        <location filename="../gui/tray_control.cpp" line="37"/>
-        <location filename="../gui/tray_control.cpp" line="80"/>
+        <location filename="../gui/tray_control.cpp" line="38"/>
+        <location filename="../gui/tray_control.cpp" line="82"/>
         <source>&amp;Hide Clock</source>
         <translation>С&amp;прятать</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="41"/>
+        <location filename="../gui/tray_control.cpp" line="43"/>
         <source>&amp;Settings</source>
         <translation>&amp;Настройки</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="43"/>
+        <location filename="../gui/tray_control.cpp" line="45"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="46"/>
+        <location filename="../gui/tray_control.cpp" line="48"/>
         <source>&amp;Update</source>
         <translation>О&amp;бновление</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="49"/>
+        <location filename="../gui/tray_control.cpp" line="51"/>
         <source>&amp;Quit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="82"/>
+        <location filename="../gui/tray_control.cpp" line="84"/>
         <source>S&amp;how Clock</source>
         <translation>&amp;Показать</translation>
     </message>

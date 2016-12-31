@@ -130,9 +130,11 @@ void SoundDialog::on_custom_browse_btn_clicked()
     QFileInfo last_cust_info(last_cust_file_);
     last_path = last_cust_info.absolutePath();
   }
+  // *INDENT-OFF*
   QString new_sound = QFileDialog::getOpenFileName(this, tr("Select sound"),
                                                    last_path,
                                                    tr("Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)"));
+  // *INDENT-ON*
   if (new_sound.isEmpty()) return;
   last_cust_file_ = new_sound;
   player_->setMedia(QUrl::fromLocalFile(new_sound));

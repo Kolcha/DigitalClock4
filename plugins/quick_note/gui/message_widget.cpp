@@ -35,9 +35,11 @@ MessageWidget::MessageWidget(QWidget* parent) :
 #if defined(Q_OS_MACOS)
   // flat QToolButton on Mac workaround
   // http://stackoverflow.com/questions/11803260/qtoolbutton-autoraise-not-working-for-mac-osx
+  // *INDENT-OFF*
   ui->edit_btn->setStyleSheet(
         "QToolButton { background-color: transparent; }"
         "QToolButton:hover { background-color: rgb(215,215,215); }");
+  // *INDENT-ON*
 #endif
   adjustSize();
   icon_color_ = Qt::black;

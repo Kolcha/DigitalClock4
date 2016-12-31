@@ -401,35 +401,43 @@ void MainWindow::ConnectTrayMessages()
   // updater messages
   connect(updater_, &core::Updater::ErrorMessage, [this] (const QString& msg) {
     disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(qApp->applicationName()),
           tr("Update error. %1").arg(msg),
           QSystemTrayIcon::Critical);
+    // *INDENT-ON*
   });
 
   connect(updater_, &core::Updater::UpToDate, [this] () {
     disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(qApp->applicationName()),
           tr("You already have latest version (%1).").arg(qApp->applicationVersion()),
           QSystemTrayIcon::Information);
+    // *INDENT-ON*
   });
 
   connect(updater_, &core::Updater::NewVersion, [this] (const QString& version, const QString& link) {
     disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(qApp->applicationName()),
           tr("Update available (%1). Click this message to download.").arg(version),
           QSystemTrayIcon::Warning);
     connect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
             [=] () { QDesktopServices::openUrl(link); });
+    // *INDENT-ON*
   });
 
   // skin_manager messages
   connect(skin_manager_, &core::SkinManager::ErrorMessage, [this] (const QString& msg) {
     disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Error").arg(qApp->applicationName()), msg, QSystemTrayIcon::Warning);
+    // *INDENT-ON*
   });
 }
 
@@ -461,8 +469,8 @@ void MainWindow::SetVisibleOnAllDesktops(bool set)
   // http://stackoverflow.com/questions/16775352/keep-a-application-window-always-on-current-desktop-on-linux-and-mac/
 #if defined(Q_OS_MACOS)
   WId windowObject = this->winId();
-  objc_object * nsviewObject = reinterpret_cast<objc_object *>(windowObject);
-  objc_object * nsWindowObject = objc_msgSend(nsviewObject, sel_registerName("window"));
+  objc_object* nsviewObject = reinterpret_cast<objc_object*>(windowObject);
+  objc_object* nsWindowObject = objc_msgSend(nsviewObject, sel_registerName("window"));
   int NSWindowCollectionBehaviorCanJoinAllSpaces = set ? 1 << 0 : 0 << 0;
   objc_msgSend(nsWindowObject, sel_registerName("setCollectionBehavior:"), NSWindowCollectionBehaviorCanJoinAllSpaces);
 #elif defined(Q_OS_LINUX)
@@ -473,7 +481,7 @@ void MainWindow::SetVisibleOnAllDesktops(bool set)
                    XA_CARDINAL,
                    32,
                    PropModeReplace,
-                   reinterpret_cast<unsigned char *>(&data), // all desktop
+                   reinterpret_cast<unsigned char*>(&data),  // all desktop
                    1);
 #else
   Q_UNUSED(set)

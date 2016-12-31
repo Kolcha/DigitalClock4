@@ -71,8 +71,7 @@ AboutDialog::AboutDialog(QWidget* parent) :
   ui->app_name_lbl->setText(QCoreApplication::applicationName());
   ui->app_ver_lbl->setText(tr("version: %1 (%2)").arg(version).arg(build_type));
   ui->copyright_lbl->setText("© 2013-2016 " + QCoreApplication::organizationName());
-  ui->build_qt_lbl->setText(QString("Qt %1 (%2, %3 bit)").arg(qVersion(), compilerString(),
-                                                          QString::number(QSysInfo::WordSize)));
+  ui->build_qt_lbl->setText(QString("Qt %1 (%2, %3 bit)").arg(qVersion(), compilerString()).arg(QSysInfo::WordSize));
   QDate build_date = QDate::fromString(QLatin1String(c_build_date), "dd-MM-yyyy");
   ui->build_date_lbl->setText(tr("build date: %1").arg(build_date.toString(Qt::DefaultLocaleShortDate)));
   setFixedSize(sizeHint());

@@ -52,8 +52,7 @@ Updater::Updater(ClockState* state, QObject* parent) :
     was_error_ = true;
     emit ErrorMessage(msg);
   });
-  connect(downloader_, &HttpClient::DataDownloaded,
-          [=] (const QByteArray& data) { data_.append(data); });
+  connect(downloader_, &HttpClient::DataDownloaded, [=] (const QByteArray& data) { data_.append(data); });
   connect(downloader_, &HttpClient::finished, this, &Updater::ProcessData);
 }
 
