@@ -39,3 +39,5 @@ SUBDIRS += \
     win_on_top
 }
 }
+
+qtHaveModule(texttospeech):SUBDIRS += talking_clock

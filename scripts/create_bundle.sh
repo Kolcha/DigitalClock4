@@ -57,9 +57,10 @@ done
 # copy some Qt plugins
 cp -r "$QT_ROOT/plugins/iconengines" "digital_clock/digital_clock.app/Contents/PlugIns/"
 cp -r "$QT_ROOT/plugins/playlistformats" "digital_clock/digital_clock.app/Contents/PlugIns/"
+cp -r "$QT_ROOT/plugins/texttospeech" "digital_clock/digital_clock.app/Contents/PlugIns/"
 
 # deploy Qt plugins
-for d in iconengines playlistformats
+for d in iconengines playlistformats texttospeech
 do
   for l in $(ls -1 digital_clock/digital_clock.app/Contents/PlugIns/$d/)
   do
