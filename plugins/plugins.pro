@@ -28,8 +28,7 @@ SUBDIRS += \
     quick_note \
     date \
     ip_address \
-    chime \
-    talking_clock
+    chime
 
 windows {
 SUBDIRS += \
@@ -40,3 +39,5 @@ SUBDIRS += \
     win_on_top
 }
 }
+
+qtHaveModule(texttospeech):SUBDIRS += talking_clock
