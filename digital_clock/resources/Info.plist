@@ -13,7 +13,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>851</string>
+	<string>852</string>
 	<key>CFBundleExecutable</key>
 	<string>digital_clock</string>
 	<key>CFBundleIdentifier</key>
@@ -28,7 +28,7 @@
 	<key>NSHighResolutionCapable</key>
 	<string>True</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2013-2016 Nick Korotysh</string>
+	<string>© 2013-2017 Nick Korotysh</string>
 	<key>LSUIElement</key>
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
