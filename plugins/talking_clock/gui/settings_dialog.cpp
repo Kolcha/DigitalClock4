@@ -19,14 +19,25 @@
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
+#include <QTime>
+
+#include "talking_clock_settings.h"
+#include "voice_config_dialog.h"
+
 namespace talking_clock {
 
-SettingsDialog::SettingsDialog(QWidget* parent) :
+SettingsDialog::SettingsDialog(const QSettings::SettingsMap& settings, QWidget* parent) :
   QDialog(parent),
-  ui(new Ui::SettingsDialog)
+  ui(new Ui::SettingsDialog),
+  settings_(settings)
 {
-  setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
+  ui->every_hour->setChecked(settings.value(OPT_EVERY_HOUR_ENABLED).toBool());
+  ui->hour_format_edit->setText(settings.value(OPT_EVERY_HOUR_FORMAT).toString());
+  ui->hour_format_edit->setToolTip(QTime::currentTime().toString(ui->hour_format_edit->text()));
+  ui->quarter_hour->setChecked(settings.value(OPT_QUARTER_HOUR_ENABLED).toBool());
+  ui->quarter_format_edit->setText(settings.value(OPT_QUARTER_HOUR_FORMAT).toString());
+  ui->quarter_format_edit->setToolTip(QTime::currentTime().toString(ui->quarter_format_edit->text()));
 }
 
 SettingsDialog::~SettingsDialog()
@@ -34,8 +45,45 @@ SettingsDialog::~SettingsDialog()
   delete ui;
 }
 
-void SettingsDialog::Init(const QSettings::SettingsMap& settings)
+void SettingsDialog::on_voice_config_btn_clicked()
 {
+  VoiceConfigDialog dlg(settings_, this);
+  if (dlg.exec() == QDialog::Accepted) {
+    settings_[OPT_SYNTHESIS_VOLUME] = dlg.volume();
+    emit OptionChanged(OPT_SYNTHESIS_VOLUME, dlg.volume());
+    settings_[OPT_SYNTHESIS_RATE] = dlg.rate();
+    emit OptionChanged(OPT_SYNTHESIS_RATE, dlg.rate());
+    settings_[OPT_SYNTHESIS_PITCH] = dlg.pitch();
+    emit OptionChanged(OPT_SYNTHESIS_PITCH, dlg.pitch());
+    settings_[OPT_SYNTHESIS_ENGINE] = dlg.engine();
+    emit OptionChanged(OPT_SYNTHESIS_ENGINE, dlg.engine());
+    settings_[OPT_SYNTHESIS_LANGUAGE] = dlg.language();
+    emit OptionChanged(OPT_SYNTHESIS_LANGUAGE, dlg.language());
+    settings_[OPT_SYNTHESIS_VOICE] = dlg.voice();
+    emit OptionChanged(OPT_SYNTHESIS_VOICE, dlg.voice());
+  }
+}
+
+void SettingsDialog::on_every_hour_clicked(bool checked)
+{
+  emit OptionChanged(OPT_EVERY_HOUR_ENABLED, checked);
+}
+
+void SettingsDialog::on_quarter_hour_clicked(bool checked)
+{
+  emit OptionChanged(OPT_QUARTER_HOUR_ENABLED, checked);
+}
+
+void SettingsDialog::on_hour_format_edit_textEdited(const QString& arg1)
+{
+  ui->hour_format_edit->setToolTip(QTime::currentTime().toString(arg1));
+  emit OptionChanged(OPT_EVERY_HOUR_FORMAT, arg1);
+}
+
+void SettingsDialog::on_quarter_format_edit_textEdited(const QString& arg1)
+{
+  ui->quarter_format_edit->setToolTip(QTime::currentTime().toString(arg1));
+  emit OptionChanged(OPT_QUARTER_HOUR_FORMAT, arg1);
 }
 
 } // namespace talking_clock

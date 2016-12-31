@@ -18,10 +18,15 @@
 
 #include "talking_clock_plugin.h"
 
+#include "plugin_settings.h"
+
+#include "talking_clock_settings.h"
+#include "gui/settings_dialog.h"
+
 
 namespace talking_clock {
 
-TalkingClockPlugin::TalkingClockPlugin()
+TalkingClockPlugin::TalkingClockPlugin() : started_(false)
 {
   InitTranslator(QLatin1String(":/talking_clock/talking_clock_"));
   info_.display_name = tr("Talking clock");
@@ -31,14 +36,41 @@ TalkingClockPlugin::TalkingClockPlugin()
 
 void TalkingClockPlugin::Start()
 {
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->TrackChanges(true);
+  settings_->Load();
+  started_ = true;
 }
 
 void TalkingClockPlugin::Stop()
 {
+  started_ = false;
 }
 
 void TalkingClockPlugin::Configure()
 {
+  // load current settings to dialog
+  QSettings::SettingsMap curr_settings;
+  InitDefaults(&curr_settings);
+  if (!started_) {
+    settings_->SetDefaultValues(curr_settings);
+    settings_->TrackChanges(true);
+  }
+  for (auto iter = curr_settings.begin(); iter != curr_settings.end(); ++iter) {
+    *iter = settings_->GetOption(iter.key());
+  }
+
+  SettingsDialog dlg(curr_settings);
+
+  // connect main signals/slots
+  connect(&dlg, SIGNAL(OptionChanged(QString,QVariant)),
+          settings_, SLOT(SetOption(QString,QVariant)));
+  connect(&dlg, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(&dlg, SIGNAL(rejected()), settings_, SLOT(Load()));
+
+  dlg.exec();
 }
 
 void TalkingClockPlugin::TimeUpdateListener()

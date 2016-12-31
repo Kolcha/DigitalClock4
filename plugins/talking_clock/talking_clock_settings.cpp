@@ -23,16 +23,16 @@ namespace talking_clock {
 void InitDefaults(QSettings::SettingsMap* defaults)
 {
   defaults->insert(OPT_EVERY_HOUR_ENABLED, true);
-  defaults->insert(OPT_EVERY_HOUR_FORMAT, QString("'It''s' h 'o''clock'"));
+  defaults->insert(OPT_EVERY_HOUR_FORMAT, QString("'It''s' ha 'o''clock'"));
   defaults->insert(OPT_QUARTER_HOUR_ENABLED, false);
   defaults->insert(OPT_QUARTER_HOUR_FORMAT, QString("h:m"));
 
   defaults->insert(OPT_SYNTHESIS_VOLUME, 70);
   defaults->insert(OPT_SYNTHESIS_RATE, 0);
   defaults->insert(OPT_SYNTHESIS_PITCH, 0);
-  defaults->insert(OPT_SYNTHESIS_ENGINE, QVariant());
-  defaults->insert(OPT_SYNTHESIS_LANGUAGE, QVariant());
-  defaults->insert(OPT_SYNTHESIS_VOICE, QVariant());
+  defaults->insert(OPT_SYNTHESIS_ENGINE, QString("default"));
+  defaults->insert(OPT_SYNTHESIS_LANGUAGE, -1);
+  defaults->insert(OPT_SYNTHESIS_VOICE, -1);
 }
 
 } // namespace talking_clock

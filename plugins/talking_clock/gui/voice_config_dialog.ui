@@ -23,11 +23,11 @@
       </sizepolicy>
      </property>
      <property name="plainText">
-      <string>Hello QtTextToSpeech,
-this is an example text in English.
+      <string>QtSpeech is a library that makes text to speech easy with Qt. This library uses  native speech synthesis API.
 
-QtSpeech is a library that makes text to speech easy with Qt.
-Done, over and out.</string>
+List of available languages and voices  vary depending on platform. To get more languages/voices, search for it for your platform.
+
+This is example text, you can edit it to play with settings. No any chnages to this text will saved.</string>
      </property>
     </widget>
    </item>
@@ -258,8 +258,8 @@ Done, over and out.</string>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>257</x>
+     <y>420</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -274,8 +274,8 @@ Done, over and out.</string>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>325</x>
+     <y>420</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>

@@ -21,9 +21,8 @@
 
 #include <QDialog>
 
-#include <QVector>
-#include <QVoice>
 #include <QTextToSpeech>
+#include <QSettings>
 
 namespace talking_clock {
 
@@ -36,10 +35,17 @@ class VoiceConfigDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit VoiceConfigDialog(QWidget* parent = 0);
+  explicit VoiceConfigDialog(const QSettings::SettingsMap& settings, QWidget* parent = 0);
   ~VoiceConfigDialog();
 
-public slots:
+  int     volume()    const;
+  int     rate()      const;
+  int     pitch()     const;
+  QString engine()    const;
+  int     language()  const;
+  int     voice()     const;
+
+private slots:
   void speak();
   void stop();
 

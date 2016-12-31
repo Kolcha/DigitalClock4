@@ -52,7 +52,7 @@
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QLineEdit" name="qurter_format_edit"/>
+    <widget class="QLineEdit" name="quarter_format_edit"/>
    </item>
    <item row="2" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="buttonBox">
@@ -77,12 +77,12 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>257</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
-     <y>274</y>
+     <y>102</y>
     </hint>
    </hints>
   </connection>
@@ -93,12 +93,12 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>306</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
-     <y>274</y>
+     <y>102</y>
     </hint>
    </hints>
   </connection>

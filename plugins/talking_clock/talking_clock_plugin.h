@@ -40,6 +40,9 @@ public slots:
   void Configure();
 
   void TimeUpdateListener();
+
+private:
+  bool started_;
 };
 
 } // namespace talking_clock

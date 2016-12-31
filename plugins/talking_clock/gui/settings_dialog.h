@@ -34,16 +34,24 @@ class SettingsDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit SettingsDialog(QWidget* parent = 0);
+  explicit SettingsDialog(const QSettings::SettingsMap& settings, QWidget* parent = 0);
   ~SettingsDialog();
-
-  void Init(const QSettings::SettingsMap& settings);
 
 signals:
   void OptionChanged(const QString& key, const QVariant& value);
 
+private slots:
+  void on_voice_config_btn_clicked();
+
+  void on_every_hour_clicked(bool checked);
+  void on_quarter_hour_clicked(bool checked);
+
+  void on_hour_format_edit_textEdited(const QString& arg1);
+  void on_quarter_format_edit_textEdited(const QString& arg1);
+
 private:
   Ui::SettingsDialog* ui;
+  QSettings::SettingsMap settings_;
 };
 
 } // namespace talking_clock

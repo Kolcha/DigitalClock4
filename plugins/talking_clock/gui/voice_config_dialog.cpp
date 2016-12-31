@@ -19,9 +19,11 @@
 #include "voice_config_dialog.h"
 #include "ui_voice_config_dialog.h"
 
+#include "talking_clock_settings.h"
+
 namespace talking_clock {
 
-VoiceConfigDialog::VoiceConfigDialog(QWidget* parent) :
+VoiceConfigDialog::VoiceConfigDialog(const QSettings::SettingsMap& settings, QWidget* parent) :
   QDialog(parent),
   ui(new Ui::VoiceConfigDialog),
   m_speech(nullptr)
@@ -29,11 +31,30 @@ VoiceConfigDialog::VoiceConfigDialog(QWidget* parent) :
   ui->setupUi(this);
 
   // Populate engine selection list
-  ui->engine->addItem("Default", QString("default"));
+  ui->engine->addItem(tr("Default"), QString("default"));
   foreach (QString engine, QTextToSpeech::availableEngines())
     ui->engine->addItem(engine, engine);
-  ui->engine->setCurrentIndex(0);
-  engineSelected(0);
+
+  // init controls state
+  ui->volume->setValue(settings.value(OPT_SYNTHESIS_VOLUME, ui->volume->value()).toInt());
+  ui->volume->setToolTip(QString::number(ui->volume->value()));
+  ui->rate->setValue(settings.value(OPT_SYNTHESIS_RATE, ui->rate->value()).toInt());
+  ui->rate->setToolTip(QString::number(ui->rate->value()));
+  ui->pitch->setValue(settings.value(OPT_SYNTHESIS_PITCH, ui->pitch->value()).toInt());
+  ui->pitch->setToolTip(QString::number(ui->pitch->value()));
+
+  int eng_idx = ui->engine->findData(settings.value(OPT_SYNTHESIS_ENGINE));
+  if (eng_idx == -1) eng_idx = 0;
+
+  ui->engine->setCurrentIndex(eng_idx);
+  engineSelected(eng_idx);
+
+  int lang_idx = settings.value(OPT_SYNTHESIS_LANGUAGE, -1).toInt();
+  if (lang_idx >= 0 && lang_idx < ui->language->count())
+    ui->language->setCurrentIndex(lang_idx);
+  int voice_idx = settings.value(OPT_SYNTHESIS_VOICE, -1).toInt();
+  if (voice_idx >= 0 && lang_idx < ui->voice->count())
+    ui->voice->setCurrentIndex(voice_idx);
 
   connect(ui->speakButton, &QPushButton::clicked, this, &VoiceConfigDialog::speak);
   connect(ui->pitch, &QSlider::valueChanged, this, &VoiceConfigDialog::setPitch);
@@ -47,6 +68,36 @@ VoiceConfigDialog::~VoiceConfigDialog()
   delete ui;
 }
 
+int VoiceConfigDialog::volume() const
+{
+  return ui->volume->value();
+}
+
+int VoiceConfigDialog::rate() const
+{
+  return ui->rate->value();
+}
+
+int VoiceConfigDialog::pitch() const
+{
+  return ui->pitch->value();
+}
+
+QString VoiceConfigDialog::engine() const
+{
+  return ui->engine->currentData().toString();
+}
+
+int VoiceConfigDialog::language() const
+{
+  return ui->language->currentIndex();
+}
+
+int VoiceConfigDialog::voice() const
+{
+  return ui->voice->currentIndex();
+}
+
 void VoiceConfigDialog::speak()
 {
   m_speech->say(ui->plainTextEdit->toPlainText());
@@ -58,16 +109,19 @@ void VoiceConfigDialog::stop()
 
 void VoiceConfigDialog::setRate(int rate)
 {
+  ui->rate->setToolTip(QString::number(rate));
   m_speech->setRate(rate / 10.0);
 }
 
 void VoiceConfigDialog::setPitch(int pitch)
 {
+  ui->pitch->setToolTip(QString::number(pitch));
   m_speech->setPitch(pitch / 10.0);
 }
 
 void VoiceConfigDialog::setVolume(int volume)
 {
+  ui->volume->setToolTip(QString::number(volume));
   m_speech->setVolume(volume / 100.0);
 }
 
