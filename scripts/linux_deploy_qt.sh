@@ -9,6 +9,11 @@ net_lst="bearer"
 mm_lst="audio mediaservice playlistformats"
 # svg
 svg_lst="iconengines"
+# tts
+tts_lst="texttospeech"
+
+# don't look for system Qt!
+export LD_LIBRARY_PATH="$QT_ROOT/lib"
 
 
 function deploy_plugin() {
@@ -42,4 +47,5 @@ do
   [[ $(echo "$f" | grep -i "network") != "" ]] && deploy_plugins_list "$net_lst"
   [[ $(echo "$f" | grep -i "multimedia") != "" ]] && deploy_plugins_list "$mm_lst"
   [[ $(echo "$f" | grep -i "svg") != "" ]] && deploy_plugins_list "$svg_lst"
+  [[ $(echo "$f" | grep -i "texttospeech") != "" ]] && deploy_plugins_list "$tts_lst"
 done
