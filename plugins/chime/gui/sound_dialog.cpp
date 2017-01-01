@@ -34,8 +34,8 @@ SoundDialog::SoundDialog(QWidget* parent) :
   ui->defaults_box->blockSignals(true);
   ui->defaults_box->addItem(tr("sound 1"), QUrl("qrc:/chime/hour_signal.wav"));
   ui->defaults_box->addItem(tr("sound 2"), QUrl("qrc:/chime/quarter_signal.wav"));
-  ui->defaults_box->addItem(tr("sound 3"), QUrl("qrc:/chime/big_ben_strikes_1.m4a"));
-  ui->defaults_box->addItem(tr("sound 4"), QUrl("qrc:/chime/quarter_hour_chime_beg.m4a"));
+  ui->defaults_box->addItem(tr("sound 3"), QUrl("qrc:/chime/big_ben_strikes_1.mp3"));
+  ui->defaults_box->addItem(tr("sound 4"), QUrl("qrc:/chime/quarter_hour_chime_beg.mp3"));
   ui->defaults_box->blockSignals(false);
 
   player_ = new QMediaPlayer(this);
