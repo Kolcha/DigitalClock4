@@ -80,6 +80,15 @@ HEADERS += \
     skin/clock_vector_skin.h \
     main_window.h
 
+# platform-specific sources
+win32 {
+SOURCES += \
+    platform/fullscreen_detect.cpp
+
+HEADERS += \
+    platform/fullscreen_detect.h
+}
+
 FORMS += \
     gui/about_dialog.ui \
     gui/plugin_info_dialog.ui \
@@ -103,6 +112,7 @@ macx {
 unix:!macx {
     LIBS += -lX11
 }
+win32:LIBS += -luser32
 
 # add skin_draw library
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../skin_draw/release/ -lskin_draw

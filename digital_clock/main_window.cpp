@@ -51,6 +51,9 @@
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 #endif
+#ifdef Q_OS_WIN
+#include "platform/fullscreen_detect.h"
+#endif
 
 #define S_OPT_POSITION              "clock_position"
 
@@ -370,9 +373,22 @@ void MainWindow::Update()
   }
 #ifdef Q_OS_WIN
   // always on top problem workaround
-  // https://forum.qt.io/topic/28739/flags-windows-7-window-always-on-top-including-the-win7-taskbar-custom-error/4
-  if (app_config_->GetValue(OPT_STAY_ON_TOP).toBool() && !this->isActiveWindow()) {
-    this->raise();
+  // https://sourceforge.net/p/digitalclock4/tickets/3/
+  // https://sourceforge.net/p/digitalclock4/tickets/9/
+  if (app_config_->GetValue(OPT_STAY_ON_TOP).toBool()) {
+    if (IsFullscreenWndOnSameMonitor(this->winId())) {
+      if (this->windowFlags() & Qt::WindowStaysOnTopHint) {
+        this->SetWindowFlag(Qt::WindowStaysOnTopHint, false);
+        this->lower();
+      }
+      return;
+    } else {
+      if (!(this->windowFlags() & Qt::WindowStaysOnTopHint)) {
+        this->SetWindowFlag(Qt::WindowStaysOnTopHint, true);
+      }
+      // https://forum.qt.io/topic/28739/flags-windows-7-window-always-on-top-including-the-win7-taskbar-custom-error/4
+      if (!this->isActiveWindow()) this->raise();
+    }
   }
 #endif
   CorrectPosition();
