@@ -1,3 +1,20 @@
+Whats new in 4.5.2:
+-------------------
+Core:
+ - custom Qt 5.6.3 for macOS (OS X)
+ - Qt 5.7.1 for Windows (installer only)
+
+GUI:
+ - now clock is shown on all workspaces (virtual desktops) on Linux and macOS (OS X)
+ - change cursor to "hand" if "clock URL" option is enabled
+ - prevent appearing above fullscreen windows (Windows only)
+ - even better HiDPI displays support for Windows and Linux
+
+Plugins:
+ - chime: converted default sounds from *mp4* to *mp3*
+ - added *talking_clock* plugin (Windows portable doesn't support it)
+
+
 Whats new in 4.5.1:
 -------------------
 Core:
