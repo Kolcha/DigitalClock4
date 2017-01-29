@@ -1,6 +1,6 @@
 #!/bin/bash
 
-QT_ROOT="/usr/local/Qt-5.6.2"
+QT_ROOT="/Users/Nick/Qt/5.8/clang_64"
 
 CLOCK_APP_NAME="Digital Clock 4"
 
@@ -28,7 +28,7 @@ rm -rf "$build_dir"
 mkdir "$build_dir"
 cd "$build_dir"
 
-$QT_ROOT/bin/qmake QMAKE_MAC_SDK=macosx10.9 -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
+$QT_ROOT/bin/qmake -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
 make -j4
 [[ $? == 0 ]] || exit 1
 
@@ -57,10 +57,13 @@ done
 # copy some Qt plugins
 cp -r "$QT_ROOT/plugins/iconengines" "digital_clock/digital_clock.app/Contents/PlugIns/"
 cp -r "$QT_ROOT/plugins/playlistformats" "digital_clock/digital_clock.app/Contents/PlugIns/"
+cp -r "$QT_ROOT/plugins/texttospeech" "digital_clock/digital_clock.app/Contents/PlugIns/"
 
 # deploy Qt plugins
-for d in iconengines playlistformats
+for d in iconengines playlistformats texttospeech
 do
+  rm -rf digital_clock/digital_clock.app/Contents/PlugIns/$d/*.dylib.dSYM
+  rm -f digital_clock/digital_clock.app/Contents/PlugIns/$d/*_debug.dylib
   for l in $(ls -1 digital_clock/digital_clock.app/Contents/PlugIns/$d/)
   do
     deploy_qt digital_clock/digital_clock.app/Contents/PlugIns/$d/$l
@@ -78,6 +81,7 @@ echo "Translations = Resources/translations" >> digital_clock/digital_clock.app/
 # deploy Qt for app and create .dmg file
 cd digital_clock
 mv digital_clock.app "$CLOCK_APP_NAME.app"
+$QT_ROOT/bin/macdeployqt "$CLOCK_APP_NAME.app"
 codesign --deep --force --verify --verbose --sign "-" "$CLOCK_APP_NAME.app"
 hdiutil create -srcfolder "$CLOCK_APP_NAME.app" "$CLOCK_APP_NAME.dmg"
 

@@ -1,6 +1,6 @@
 /*
     Digital Clock - beautiful customizable clock with plugins
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -68,10 +68,12 @@ void PluginManager::ListAvailable()
       QJsonObject metadata = loader.metaData().value("MetaData").toObject();
       TPluginInfo info;
       QString c_name = metadata.value("name").toString();
+      // *INDENT-OFF*
       auto iter = std::find_if(plugins.cbegin(), plugins.cend(),
           [&] (const QPair<TPluginInfo, bool>& i) -> bool {
             return i.first.metadata[PI_NAME] == c_name;
           });
+      // *INDENT-ON*
       if (iter == plugins.cend()) {
         info.metadata[PI_NAME] = c_name;
         info.metadata[PI_VERSION] = metadata.value("version").toString();

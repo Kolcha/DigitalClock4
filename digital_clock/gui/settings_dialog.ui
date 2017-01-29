@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>496</width>
-    <height>382</height>
+    <width>512</width>
+    <height>423</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -368,50 +368,35 @@
          <property name="title">
           <string>custom image</string>
          </property>
-         <layout class="QVBoxLayout" name="image_layout">
+         <layout class="QGridLayout" name="image_layout">
           <property name="topMargin">
            <number>6</number>
           </property>
           <property name="bottomMargin">
            <number>6</number>
           </property>
-          <item>
+          <item row="0" column="0" colspan="2">
            <widget class="QCheckBox" name="txd_per_elem">
             <property name="text">
              <string>texture per element</string>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QGroupBox" name="mode_group">
-            <property name="title">
-             <string>texturing mode</string>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="mode_stretch">
+            <property name="text">
+             <string>stretch</string>
             </property>
-            <layout class="QHBoxLayout" name="mode_layout">
-             <property name="topMargin">
-              <number>6</number>
-             </property>
-             <property name="bottomMargin">
-              <number>6</number>
-             </property>
-             <item>
-              <widget class="QRadioButton" name="mode_stretch">
-               <property name="text">
-                <string>stretch</string>
-               </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="mode_tile">
-               <property name="text">
-                <string>tile</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QRadioButton" name="mode_tile">
+            <property name="text">
+             <string>tile</string>
+            </property>
            </widget>
           </item>
          </layout>

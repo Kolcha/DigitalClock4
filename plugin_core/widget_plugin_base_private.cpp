@@ -1,6 +1,6 @@
 /*
     Digital Clock: plugin core library
-    Copyright (C) 2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2016-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ WidgetPluginBasePrivate::WidgetPluginBasePrivate(WidgetPluginBase* obj, QObject*
   main_layout_(nullptr), main_wnd_(nullptr),
   clock_zoom_(1.0),
   clock_customization_(::skin_draw::SkinDrawer::CT_COLOR),
-  clock_color_(Qt::blue),
+  clock_color_(0, 170, 255),
   last_text_("-----"),
   drawer_(new ::skin_draw::SkinDrawer(this)),
   obj_(obj)

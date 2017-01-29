@@ -1,6 +1,6 @@
 /*
     Digital Clock: quick note plugin
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2015-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -35,9 +35,11 @@ MessageWidget::MessageWidget(QWidget* parent) :
 #if defined(Q_OS_MACOS)
   // flat QToolButton on Mac workaround
   // http://stackoverflow.com/questions/11803260/qtoolbutton-autoraise-not-working-for-mac-osx
+  // *INDENT-OFF*
   ui->edit_btn->setStyleSheet(
         "QToolButton { background-color: transparent; }"
         "QToolButton:hover { background-color: rgb(215,215,215); }");
+  // *INDENT-ON*
 #endif
   adjustSize();
   icon_color_ = Qt::black;

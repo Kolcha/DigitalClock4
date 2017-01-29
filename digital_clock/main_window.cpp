@@ -1,6 +1,6 @@
 /*
     Digital Clock - beautiful customizable clock with plugins
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2016-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
 #ifdef Q_OS_MACOS
   setWindowFlags(windowFlags() | Qt::NoDropShadowWindowHint);
 #else
-  setWindowFlags(windowFlags() | Qt::Tool | Qt::X11BypassWindowManagerHint);
+  setWindowFlags(windowFlags() | Qt::Tool);
 #endif
   setAttribute(Qt::WA_TranslucentBackground);
 
@@ -287,6 +287,8 @@ void MainWindow::SaveState()
 
 void MainWindow::ShowSettingsDialog()
 {
+  this->activateWindow();
+  this->raise();
   static QPointer<gui::SettingsDialog> dlg;
   if (!dlg) {
     dlg = new gui::SettingsDialog(app_config_, state_);
@@ -392,35 +394,43 @@ void MainWindow::ConnectTrayMessages()
   // updater messages
   connect(updater_, &core::Updater::ErrorMessage, [this] (const QString& msg) {
     disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(qApp->applicationName()),
           tr("Update error. %1").arg(msg),
           QSystemTrayIcon::Critical);
+    // *INDENT-ON*
   });
 
   connect(updater_, &core::Updater::UpToDate, [this] () {
     disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(qApp->applicationName()),
           tr("You already have latest version (%1).").arg(qApp->applicationVersion()),
           QSystemTrayIcon::Information);
+    // *INDENT-ON*
   });
 
   connect(updater_, &core::Updater::NewVersion, [this] (const QString& version, const QString& link) {
     disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(qApp->applicationName()),
           tr("Update available (%1). Click this message to download.").arg(version),
           QSystemTrayIcon::Warning);
     connect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked,
             [=] () { QDesktopServices::openUrl(link); });
+    // *INDENT-ON*
   });
 
   // skin_manager messages
   connect(skin_manager_, &core::SkinManager::ErrorMessage, [this] (const QString& msg) {
     disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Error").arg(qApp->applicationName()), msg, QSystemTrayIcon::Warning);
+    // *INDENT-ON*
   });
 }
 
@@ -429,8 +439,9 @@ void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set)
   QWidget* aw = QApplication::activeWindow();
   Qt::WindowFlags flags = windowFlags();
   set ? flags |= flag : flags &= ~flag;
+  bool last_visible = isVisible();
   setWindowFlags(flags);
-  show();
+  if (last_visible != isVisible()) show();
   if (aw) aw->activateWindow();
 }
 

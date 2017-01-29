@@ -1,6 +1,6 @@
 /*
     Digital Clock - beautiful customizable clock with plugins
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -118,14 +118,14 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_SKIN_NAME:             return QString("Electronic (default)");
     case OPT_FONT:                  return QFont();
     case OPT_ZOOM:                  return 1.25;
-    case OPT_COLOR:                 return QVariant::fromValue<QColor>(Qt::blue);
+    case OPT_COLOR:                 return QColor(0, 170, 255);
     case OPT_TEXTURE:               return QString();
     case OPT_TEXTURE_TYPE:          return 1;
     case OPT_TEXTURE_PER_ELEMENT:   return false;
     case OPT_TEXTURE_DRAW_MODE:     return 0;
     case OPT_CUSTOMIZATION:         return 1;
     case OPT_SPACING:               return 4;
-    case OPT_COLORIZE_COLOR:        return QVariant::fromValue<QColor>(Qt::darkCyan);
+    case OPT_COLORIZE_COLOR:        return QColor(0, 85, 255);
     case OPT_COLORIZE_LEVEL:        return 0.8;
     // updater settings
     case OPT_USE_AUTOUPDATE:        return true;

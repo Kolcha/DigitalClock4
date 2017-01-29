@@ -1,6 +1,6 @@
 /*
     Digital Clock: chime plugin
-    Copyright (C) 2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2016-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,8 +34,8 @@ SoundDialog::SoundDialog(QWidget* parent) :
   ui->defaults_box->blockSignals(true);
   ui->defaults_box->addItem(tr("sound 1"), QUrl("qrc:/chime/hour_signal.wav"));
   ui->defaults_box->addItem(tr("sound 2"), QUrl("qrc:/chime/quarter_signal.wav"));
-  ui->defaults_box->addItem(tr("sound 3"), QUrl("qrc:/chime/big_ben_strikes_1.m4a"));
-  ui->defaults_box->addItem(tr("sound 4"), QUrl("qrc:/chime/quarter_hour_chime_beg.m4a"));
+  ui->defaults_box->addItem(tr("sound 3"), QUrl("qrc:/chime/big_ben_strikes_1.mp3"));
+  ui->defaults_box->addItem(tr("sound 4"), QUrl("qrc:/chime/quarter_hour_chime_beg.mp3"));
   ui->defaults_box->blockSignals(false);
 
   player_ = new QMediaPlayer(this);
@@ -130,9 +130,11 @@ void SoundDialog::on_custom_browse_btn_clicked()
     QFileInfo last_cust_info(last_cust_file_);
     last_path = last_cust_info.absolutePath();
   }
+  // *INDENT-OFF*
   QString new_sound = QFileDialog::getOpenFileName(this, tr("Select sound"),
                                                    last_path,
                                                    tr("Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)"));
+  // *INDENT-ON*
   if (new_sound.isEmpty()) return;
   last_cust_file_ = new_sound;
   player_->setMedia(QUrl::fromLocalFile(new_sound));

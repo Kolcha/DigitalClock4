@@ -1,6 +1,6 @@
 /*
     Digital Clock: alarm plugin
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,13 +16,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ALARM_SETTINGS_DIALOG_H
-#define ALARM_SETTINGS_DIALOG_H
+#ifndef ALARM_PLUGIN_SETTINGS_DIALOG_H
+#define ALARM_PLUGIN_SETTINGS_DIALOG_H
 
 #include <QDialog>
 #include <QMediaPlayer>
 
-namespace alarm {
+namespace alarm_plugin {
 
 namespace Ui {
 class SettingsDialog;
@@ -61,6 +61,6 @@ private:
   QMediaPlayer* player_;
 };
 
-} // namespace alarm
+} // namespace alarm_plugin
 
-#endif // ALARM_SETTINGS_DIALOG_H
+#endif // ALARM_PLUGIN_SETTINGS_DIALOG_H

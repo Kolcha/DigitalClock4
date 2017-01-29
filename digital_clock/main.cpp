@@ -1,6 +1,6 @@
 /*
     Digital Clock - beautiful customizable clock with plugins
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,15 +25,20 @@
 
 int main(int argc, char* argv[])
 {
+  // set application info
+  QApplication::setApplicationDisplayName("Digital Clock");
+  QApplication::setApplicationName("Digital Clock");
+  QApplication::setApplicationVersion("4.5.2+");
+  QApplication::setOrganizationName("Nick Korotysh");
+  QApplication::setOrganizationDomain("digitalclock4.sourceforge.net");
+
+  // set application attributes
+  QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
   QApplication app(argc, argv);
-  app.setApplicationDisplayName("Digital Clock");
-  app.setApplicationName("Digital Clock");
-  app.setApplicationVersion("4.5.1");
-  app.setOrganizationName("Nick Korotysh");
-  app.setOrganizationDomain("digitalclock4.sourceforge.net");
   app.setWindowIcon(QIcon(":/clock/images/clock.svg"));
   app.setQuitOnLastWindowClosed(false);
-  app.setAttribute(Qt::AA_UseHighDpiPixmaps);
 
   // install app translators
   QTranslator app_translator;

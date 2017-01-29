@@ -1,6 +1,6 @@
 #
 #   Digital Clock - beautiful customizable clock with plugins
-#   Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+#   Copyright (C) 2014-2017  Nick Korotysh <nick.korotysh@gmail.com>
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -18,3 +18,5 @@
 
 CONFIG += c++11
 QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.9
+
+DEFINES += QT_DEPRECATED_WARNINGS

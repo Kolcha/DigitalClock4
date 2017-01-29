@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::MainWindow</name>
     <message>
-        <location filename="../main_window.cpp" line="396"/>
-        <location filename="../main_window.cpp" line="404"/>
-        <location filename="../main_window.cpp" line="412"/>
+        <location filename="../main_window.cpp" line="399"/>
+        <location filename="../main_window.cpp" line="409"/>
+        <location filename="../main_window.cpp" line="419"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="397"/>
+        <location filename="../main_window.cpp" line="400"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="405"/>
+        <location filename="../main_window.cpp" line="410"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="413"/>
+        <location filename="../main_window.cpp" line="420"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="423"/>
+        <location filename="../main_window.cpp" line="432"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -50,6 +50,11 @@
         <location filename="../gui/about_dialog.ui" line="60"/>
         <source>Info</source>
         <translation>Информация</translation>
+    </message>
+    <message>
+        <location filename="../gui/about_dialog.ui" line="145"/>
+        <source>© 2013-2017 Nick Korotysh</source>
+        <translation>© 2013-2017 Николай Коротыш</translation>
     </message>
     <message>
         <location filename="../gui/about_dialog.ui" line="156"/>
@@ -93,7 +98,7 @@
         <translation>версия: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="77"/>
+        <location filename="../gui/about_dialog.cpp" line="75"/>
         <source>build date: %1</source>
         <translatorcomment>дата компиляции приложения</translatorcomment>
         <translation>дата сборки: %1</translation>
@@ -196,12 +201,12 @@
         <translation>изображение</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="400"/>
+        <location filename="../gui/settings_dialog.ui" line="388"/>
         <source>stretch</source>
         <translation>растянуть</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="410"/>
+        <location filename="../gui/settings_dialog.ui" line="398"/>
         <source>tile</source>
         <translation>замостить</translation>
     </message>
@@ -232,7 +237,7 @@
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="316"/>
-        <location filename="../gui/settings_dialog.ui" line="455"/>
+        <location filename="../gui/settings_dialog.ui" line="440"/>
         <source>colorize</source>
         <translation>раскрасить</translation>
     </message>
@@ -242,111 +247,106 @@
         <translation>тип текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="388"/>
-        <source>texturing mode</source>
-        <translation>метод наложения</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="439"/>
+        <location filename="../gui/settings_dialog.ui" line="424"/>
         <source>Current background color</source>
         <translation>Текущий цвет фона</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="515"/>
+        <location filename="../gui/settings_dialog.ui" line="500"/>
         <source>Misc</source>
         <translation>Разное</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="551"/>
+        <location filename="../gui/settings_dialog.ui" line="536"/>
         <source>Time format</source>
         <translation>Формат времени</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="569"/>
+        <location filename="../gui/settings_dialog.ui" line="554"/>
         <source>system</source>
         <translation>системный</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="579"/>
+        <location filename="../gui/settings_dialog.ui" line="564"/>
         <source>custom</source>
         <translation>другой</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="650"/>
+        <location filename="../gui/settings_dialog.ui" line="635"/>
         <source>Apply</source>
         <translation>Применить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="660"/>
+        <location filename="../gui/settings_dialog.ui" line="645"/>
         <source>Alignment</source>
         <translation>Выравнивание</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="666"/>
+        <location filename="../gui/settings_dialog.ui" line="651"/>
         <source>left</source>
         <translatorcomment>выравнивание по левому краю</translatorcomment>
         <translation>по левому</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="676"/>
+        <location filename="../gui/settings_dialog.ui" line="661"/>
         <source>right</source>
         <translatorcomment>выравнивание по правому краю</translatorcomment>
         <translation>по правому</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="686"/>
+        <location filename="../gui/settings_dialog.ui" line="671"/>
         <source>Space between digits</source>
         <translation>расстояние между цифрами</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="692"/>
+        <location filename="../gui/settings_dialog.ui" line="677"/>
         <source>less</source>
         <translation>меньше</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="718"/>
+        <location filename="../gui/settings_dialog.ui" line="703"/>
         <source>more</source>
         <translation>больше</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="728"/>
+        <location filename="../gui/settings_dialog.ui" line="713"/>
         <source>Autoupdate</source>
         <translation>автообновление</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="539"/>
+        <location filename="../gui/settings_dialog.ui" line="524"/>
         <source>enable autoupdate</source>
         <translation>включить автообновление</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="423"/>
+        <location filename="../gui/settings_dialog.ui" line="408"/>
         <source>background color</source>
         <translation>цвет фона</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="429"/>
-        <location filename="../gui/settings_dialog.ui" line="787"/>
+        <location filename="../gui/settings_dialog.ui" line="414"/>
+        <location filename="../gui/settings_dialog.ui" line="772"/>
         <source>enable</source>
         <translation>включить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="740"/>
+        <location filename="../gui/settings_dialog.ui" line="725"/>
         <source>Check for updates every</source>
         <translation>Проверять обновления каждые</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="755"/>
+        <location filename="../gui/settings_dialog.ui" line="740"/>
         <source>Check now!</source>
         <translatorcomment>проверить наличие обновлений</translatorcomment>
         <translation>Проверить!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="768"/>
+        <location filename="../gui/settings_dialog.ui" line="753"/>
         <source>check for beta releases</source>
         <translation>обновляться до бета релизов</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="532"/>
+        <location filename="../gui/settings_dialog.ui" line="517"/>
         <source>start on system startup</source>
         <translation>запускать при старте системы</translation>
     </message>
@@ -356,22 +356,22 @@
         <translation>По умолчанию</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="778"/>
+        <location filename="../gui/settings_dialog.ui" line="763"/>
         <source>If enabled, given URL will be opened with default web browser when you click on clock</source>
         <translation>Если включено, указанный адрес будет открыт в браузере по умолчанию когда кликнете по часам</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="781"/>
+        <location filename="../gui/settings_dialog.ui" line="766"/>
         <source>Clock URL</source>
         <translation>ссылка на часах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="807"/>
+        <location filename="../gui/settings_dialog.ui" line="792"/>
         <source>Browse for local file instead of URL</source>
         <translation>Выбрать локальный файл вместо URL</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="834"/>
+        <location filename="../gui/settings_dialog.ui" line="819"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
@@ -430,33 +430,33 @@
 <context>
     <name>digital_clock::gui::TrayControl</name>
     <message>
-        <location filename="../gui/tray_control.cpp" line="37"/>
-        <location filename="../gui/tray_control.cpp" line="80"/>
+        <location filename="../gui/tray_control.cpp" line="38"/>
+        <location filename="../gui/tray_control.cpp" line="82"/>
         <source>&amp;Hide Clock</source>
         <translation>С&amp;прятать</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="41"/>
+        <location filename="../gui/tray_control.cpp" line="43"/>
         <source>&amp;Settings</source>
         <translation>&amp;Настройки</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="43"/>
+        <location filename="../gui/tray_control.cpp" line="45"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="46"/>
+        <location filename="../gui/tray_control.cpp" line="48"/>
         <source>&amp;Update</source>
         <translation>О&amp;бновление</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="49"/>
+        <location filename="../gui/tray_control.cpp" line="51"/>
         <source>&amp;Quit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="82"/>
+        <location filename="../gui/tray_control.cpp" line="84"/>
         <source>S&amp;how Clock</source>
         <translation>&amp;Показать</translation>
     </message>

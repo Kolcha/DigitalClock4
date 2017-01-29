@@ -1,6 +1,6 @@
 /*
     Digital Clock - beautiful customizable clock with plugins
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,8 +34,10 @@ namespace gui {
 TrayControl::TrayControl(QWidget* parent) : QObject(parent)
 {
   QMenu* tray_menu = new QMenu(parent);
+  // *INDENT-OFF*
   show_hide_action_ = tray_menu->addAction(MIcon(":/clock/images/clock.svg"), tr("&Hide Clock"),
                                            this, SLOT(ShowHideHandler()));
+  // *INDENT-ON*
   show_hide_action_->setData(false);
   tray_menu->addSeparator();
   tray_menu->addAction(MIcon(":/clock/images/settings.svg"), tr("&Settings"),

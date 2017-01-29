@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru_RU">
 <context>
-    <name>alarm::Alarm</name>
+    <name>alarm_plugin::Alarm</name>
     <message>
         <location filename="alarm.cpp" line="37"/>
         <source>Alarm/Notification</source>
@@ -11,7 +11,6 @@
     <message>
         <location filename="alarm.cpp" line="38"/>
         <source>Allows to set alarm/notification.</source>
-        <oldsource>Allow to set alarm/notification.</oldsource>
         <translation>Позволяет устанавливать будильник или просто напоминание.</translation>
     </message>
     <message>
@@ -29,12 +28,11 @@
     <message>
         <location filename="alarm.cpp" line="78"/>
         <source>File %1 doesn&apos;t exists. Click this message or go to plugin settings to choose another.</source>
-        <oldsource>File %1 doesn&apos;t exists. Click this message or go to pluginsettings to choose another.</oldsource>
         <translation>Файл %1 не существует. Щелкнить здесь или откройте настроки плагина и выберите другой файл.</translation>
     </message>
 </context>
 <context>
-    <name>alarm::SettingsDialog</name>
+    <name>alarm_plugin::SettingsDialog</name>
     <message>
         <location filename="gui/settings_dialog.ui" line="14"/>
         <source>Alarm Settings</source>

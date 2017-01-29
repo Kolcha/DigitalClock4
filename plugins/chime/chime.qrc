@@ -6,7 +6,7 @@
         <file alias="stop.svg">res/1473644880_icon-stop.svg</file>
         <file alias="hour_signal.wav">res/hour_signal.wav</file>
         <file>chime_ru.qm</file>
-        <file alias="big_ben_strikes_1.m4a">res/bigbenstrikes1.m4a</file>
-        <file alias="quarter_hour_chime_beg.m4a">res/quarterhourchimebeg.m4a</file>
+        <file alias="big_ben_strikes_1.mp3">res/bigbenstrikes1.mp3</file>
+        <file alias="quarter_hour_chime_beg.mp3">res/quarterhourchimebeg.mp3</file>
     </qresource>
 </RCC>

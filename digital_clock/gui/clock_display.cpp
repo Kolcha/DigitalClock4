@@ -1,6 +1,6 @@
 /*
     Digital Clock - beautiful customizable clock with plugins
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2014-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -63,6 +63,7 @@ void ClockDisplay::SetTimeFormat(const QString& format)
 void ClockDisplay::SetURLEnabled(bool enable)
 {
   url_enabled_ = enable;
+  setCursor(enable ? Qt::PointingHandCursor : Qt::ArrowCursor);
 }
 
 void ClockDisplay::SetURL(const QString& url)

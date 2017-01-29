@@ -1,6 +1,6 @@
 /*
     Digital Clock: alarm plugin
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ALARM_ALARM_H
-#define ALARM_ALARM_H
+#ifndef ALARM_PLUGIN_ALARM_H
+#define ALARM_PLUGIN_ALARM_H
 
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
@@ -26,7 +26,7 @@
 #include <QPointer>
 #include <QMediaPlayer>
 
-namespace alarm {
+namespace alarm_plugin {
 
 class Alarm : public IClockPlugin, public ITrayPluginInit
 {
@@ -51,6 +51,6 @@ private:
   bool icon_changed_;
 };
 
-} // namespace alarm
+} // namespace alarm_plugin
 
-#endif // ALARM_ALARM_H
+#endif // ALARM_PLUGIN_ALARM_H

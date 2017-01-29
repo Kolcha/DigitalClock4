@@ -56,7 +56,7 @@ xcopy /s /y "%data_dir%\skins" "%dst_path%\skins\"
 cd "%build_dir%\.."
 rmdir /s /q "%build_dir%"
 
-cd "%dst_path\.."
+cd "%dst_path%\.."
 if exist "%archive_name%" del /f /q "%archive_name%"
 7z a "%archive_name%" "%dst_path%"
 

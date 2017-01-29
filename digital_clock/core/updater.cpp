@@ -1,6 +1,6 @@
 /*
     Digital Clock - beautiful customizable clock with plugins
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -52,8 +52,7 @@ Updater::Updater(ClockState* state, QObject* parent) :
     was_error_ = true;
     emit ErrorMessage(msg);
   });
-  connect(downloader_, &HttpClient::DataDownloaded,
-          [=] (const QByteArray& data) { data_.append(data); });
+  connect(downloader_, &HttpClient::DataDownloaded, [=] (const QByteArray& data) { data_.append(data); });
   connect(downloader_, &HttpClient::finished, this, &Updater::ProcessData);
 }
 

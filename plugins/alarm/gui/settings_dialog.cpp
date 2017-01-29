@@ -1,6 +1,6 @@
 /*
     Digital Clock: alarm plugin
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 
 #include "../alarm_settings.h"
 
-namespace alarm {
+namespace alarm_plugin {
 
 SettingsDialog::SettingsDialog(QWidget* parent) :
   QDialog(parent),
@@ -169,4 +169,4 @@ void SettingsDialog::on_play_btn_clicked()
   }
 }
 
-} // namespace alarm
+} // namespace alarm_plugin

@@ -1,6 +1,6 @@
 /*
     Digital Clock - beautiful customizable clock with plugins
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -35,8 +35,7 @@ RasterSkin::RasterSkin(const QDir& skin_root)
   // load image files
   for (int i = 0; i < 10; ++i) {
     QString key = QString::number(i);
-    orig_images_[key[0]] = QPixmap(
-          skin_root.filePath(config.value("files/" + key, "invalid").toString()));
+    orig_images_[key[0]] = QPixmap(skin_root.filePath(config.value("files/" + key, "invalid").toString()));
   }
   orig_images_[':'] = QPixmap(skin_root.filePath(config.value("files/s1", "invalid").toString()));
   orig_images_[' '] = QPixmap(skin_root.filePath(config.value("files/s2", "invalid").toString()));

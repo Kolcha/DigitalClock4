@@ -9,11 +9,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.5.1</string>
+	<string>4.5.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>839</string>
+	<string>910</string>
 	<key>CFBundleExecutable</key>
 	<string>digital_clock</string>
 	<key>CFBundleIdentifier</key>
@@ -28,7 +28,7 @@
 	<key>NSHighResolutionCapable</key>
 	<string>True</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2013-2016 Nick Korotysh</string>
+	<string>© 2013-2017 Nick Korotysh</string>
 	<key>LSUIElement</key>
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>378</width>
-    <height>323</height>
+    <width>383</width>
+    <height>339</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -142,7 +142,7 @@
           </font>
          </property>
          <property name="text">
-          <string notr="true">&lt;copyright&gt;</string>
+          <string>© 2013-2017 Nick Korotysh</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>

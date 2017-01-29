@@ -11,13 +11,11 @@
     <message>
         <location filename="win_on_top.cpp" line="32"/>
         <source>&quot;Always on top&quot; for any window</source>
-        <oldsource>&quot;Always on top&quot;</oldsource>
         <translation>&quot;Поверх всех окон&quot; для любого окна</translation>
     </message>
     <message>
         <location filename="win_on_top.cpp" line="33"/>
         <source>Adds &quot;Always on Top&quot; menu item to system menu for any window.</source>
-        <oldsource>Add &quot;Always on top&quot; menu item to system menu for any window.</oldsource>
         <translation>Добавляет пункт &quot;Поверх всех окон&quot; в системное меню любого окна.</translation>
     </message>
 </context>

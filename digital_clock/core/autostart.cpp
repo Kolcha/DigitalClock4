@@ -1,6 +1,6 @@
 /*
     Digital Clock - beautiful customizable clock with plugins
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2015-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -58,7 +58,7 @@ void SetAutoStart(bool enable)
 
     QString exec_path = QApplication::applicationFilePath() + ".sh";
     exec_path.replace(' ', "\\ ");
-
+    // *INDENT-OFF*
     QString desktop_data = QString(
           "[Desktop Entry]\n"
           "Name=%1\n"
@@ -73,7 +73,7 @@ void SetAutoStart(bool enable)
           QApplication::applicationName() + " " + QApplication::applicationVersion() + " by " + QApplication::organizationName(),
           exec_path,
           QApplication::applicationFilePath() + ".svg");
-
+    // *INDENT-ON*
     QFile file(desktop_file);
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     file.write(desktop_data.toLocal8Bit());
@@ -118,7 +118,7 @@ void SetAutoStart(bool enable)
     if (QFile::exists(plist_file)) return;
     QString startup_dir = GetAutoStartDir();
     if (!QFile::exists(startup_dir)) QDir::home().mkpath(startup_dir);
-
+    // *INDENT-OFF*
     QString plist_data = QString(
           "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
           "<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n"
@@ -133,6 +133,7 @@ void SetAutoStart(bool enable)
           "</dict>\n"
           "</plist>\n")
         .arg(GetPackageName(), QApplication::applicationFilePath());
+    // *INDENT-ON*
     QFile file(plist_file);
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     file.write(plist_data.toLocal8Bit());

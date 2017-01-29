@@ -1,6 +1,6 @@
 /*
     Digital Clock: plugin core library
-    Copyright (C) 2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2016-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -46,7 +46,7 @@ void InitDefaults(QMap<WidgetPluginOption, QVariant>* defaults)
   defaults->insert(OPT_CUSTOM_FONT, QFont());
   defaults->insert(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_AUTOSIZE));
   defaults->insert(OPT_USE_CUSTOM_COLOR, false);
-  defaults->insert(OPT_CUSTOM_COLOR, QVariant::fromValue<QColor>(Qt::blue));
+  defaults->insert(OPT_CUSTOM_COLOR, QColor(0, 170, 255));
 }
 
 } // namespace plugin

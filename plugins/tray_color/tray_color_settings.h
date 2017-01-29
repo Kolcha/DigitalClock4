@@ -1,6 +1,6 @@
 /*
     Digital Clock: tray color plugin
-    Copyright (C) 2013-2016  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 #define TRAY_COLOR_SETTINGS_H
 
 #include <QSettings>
+#include <QColor>
 
 namespace tray_color {
 
@@ -28,7 +29,7 @@ namespace tray_color {
 
 inline void InitDefaults(QSettings::SettingsMap* defaults)
 {
-  defaults->insert(OPT_TRAY_COLOR, QVariant::fromValue<QColor>(Qt::blue));
+  defaults->insert(OPT_TRAY_COLOR, QColor(0, 85, 255));
 }
 
 } // namespace tray_color
