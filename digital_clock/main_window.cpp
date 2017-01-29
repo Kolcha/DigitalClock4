@@ -43,6 +43,17 @@
 #include "gui/settings_dialog.h"
 #include "gui/about_dialog.h"
 
+#ifdef Q_OS_MACOS
+#include <objc/objc-runtime.h>
+#endif
+#ifdef Q_OS_LINUX
+#include <QX11Info>
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
+#endif
+#ifdef Q_OS_WIN
+#include "platform/fullscreen_detect.h"
+#endif
 
 #define S_OPT_POSITION              "clock_position"
 
@@ -99,6 +110,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   adjustSize();
 
   last_visibility_ = true;
+  fullscreen_detect_enabled_ = false;
 
   InitPluginSystem();
   Reset();
@@ -113,6 +125,12 @@ MainWindow::~MainWindow()
 {
   timer_.stop();
   delete state_;
+}
+
+void MainWindow::showEvent(QShowEvent* event)
+{
+  SetVisibleOnAllDesktops(true);
+  QWidget::showEvent(event);
 }
 
 void MainWindow::mousePressEvent(QMouseEvent* event)
@@ -158,6 +176,7 @@ void MainWindow::Reset()
 {
   // widnow settings
   ApplyOption(OPT_OPACITY, app_config_->GetValue(OPT_OPACITY));
+  ApplyOption(OPT_FULLSCREEN_DETECT, app_config_->GetValue(OPT_FULLSCREEN_DETECT));
   ApplyOption(OPT_STAY_ON_TOP, app_config_->GetValue(OPT_STAY_ON_TOP));
   ApplyOption(OPT_TRANSP_FOR_INPUT, app_config_->GetValue(OPT_TRANSP_FOR_INPUT));
   ApplyOption(OPT_ALIGNMENT, app_config_->GetValue(OPT_ALIGNMENT));
@@ -207,8 +226,12 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
       setWindowOpacity(value.toReal());
       break;
 
+    case OPT_FULLSCREEN_DETECT:
+      fullscreen_detect_enabled_ = value.toBool();
+      break;
+
     case OPT_STAY_ON_TOP:
-      SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
+      SetWindowFlag(Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint, value.toBool());
       break;
 
     case OPT_TRANSP_FOR_INPUT:
@@ -375,9 +398,22 @@ void MainWindow::Update()
   }
 #ifdef Q_OS_WIN
   // always on top problem workaround
-  // https://forum.qt.io/topic/28739/flags-windows-7-window-always-on-top-including-the-win7-taskbar-custom-error/4
-  if (app_config_->GetValue(OPT_STAY_ON_TOP).toBool() && !this->isActiveWindow()) {
-    this->raise();
+  // https://sourceforge.net/p/digitalclock4/tickets/3/
+  // https://sourceforge.net/p/digitalclock4/tickets/9/
+  if (app_config_->GetValue(OPT_STAY_ON_TOP).toBool()) {
+    if (fullscreen_detect_enabled_ && IsFullscreenWndOnSameMonitor(this->winId())) {
+      if (this->windowFlags() & Qt::WindowStaysOnTopHint) {
+        this->SetWindowFlag(Qt::WindowStaysOnTopHint, false);
+        this->lower();
+      }
+      return;
+    } else {
+      if (!(this->windowFlags() & Qt::WindowStaysOnTopHint)) {
+        this->SetWindowFlag(Qt::WindowStaysOnTopHint, true);
+      }
+      // https://forum.qt.io/topic/28739/flags-windows-7-window-always-on-top-including-the-win7-taskbar-custom-error/4
+      if (!this->isActiveWindow()) this->raise();
+    }
   }
 #endif
   CorrectPosition();
@@ -467,6 +503,32 @@ void MainWindow::CorrectPosition()
   curr_pos.setY(std::max(curr_pos.y(), desktop->geometry().top()));
   curr_pos.setY(std::min(curr_pos.y(), desktop->geometry().bottom() - this->height()));
   if (curr_pos != this->pos()) this->move(curr_pos);
+#endif
+}
+
+void MainWindow::SetVisibleOnAllDesktops(bool set)
+{
+  // http://stackoverflow.com/questions/16775352/keep-a-application-window-always-on-current-desktop-on-linux-and-mac/
+#if defined(Q_OS_MACOS)
+  WId windowObject = this->winId();
+  objc_object* nsviewObject = reinterpret_cast<objc_object*>(windowObject);
+  objc_object* nsWindowObject = objc_msgSend(nsviewObject, sel_registerName("window"));
+  int NSWindowCollectionBehaviorCanJoinAllSpaces = set ? 1 << 0 : 0 << 0;
+  int NSWindowCollectionBehaviorFullScreenNone = 1 << 9;
+  int collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces | NSWindowCollectionBehaviorFullScreenNone;
+  objc_msgSend(nsWindowObject, sel_registerName("setCollectionBehavior:"), collectionBehavior);
+#elif defined(Q_OS_LINUX)
+  unsigned int data = set ? 0xFFFFFFFF : 0x00000000;
+  XChangeProperty(QX11Info::display(),
+                  winId(),
+                  XInternAtom(QX11Info::display(), "_NET_WM_DESKTOP", False),
+                  XA_CARDINAL,
+                  32,
+                  PropModeReplace,
+                  reinterpret_cast<unsigned char*>(&data),  // all desktop
+                  1);
+#else
+  Q_UNUSED(set)
 #endif
 }
 

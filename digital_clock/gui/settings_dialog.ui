@@ -799,6 +799,13 @@
          </layout>
         </widget>
        </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QCheckBox" name="fullscreen_detect">
+         <property name="text">
+          <string>prevent appearing above fullscreen windows</string>
+         </property>
+        </widget>
+       </item>
        <item row="4" column="2">
         <widget class="QCheckBox" name="show_hide_enable">
          <property name="text">

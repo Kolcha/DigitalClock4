@@ -61,6 +61,9 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* st
 
   ui->skin_info_btn->setVisible(false);  // temporary, not implemented
   ui->defaults_bth->setVisible(false);   // temporary, not implemented
+#if defined(Q_OS_MACOS) || defined(Q_OS_LINUX)
+  ui->fullscreen_detect->setVisible(false);   // not supported for Linux/Mac
+#endif
 
   connect(config->GetBackend(), &SettingsStorage::reloaded, this, &SettingsDialog::InitControls);
 
@@ -211,6 +214,7 @@ void SettingsDialog::InitControls()
   ui->clock_url_enabled->setChecked(config_->GetValue(OPT_CLOCK_URL_ENABLED).toBool());
   ui->clock_url_edit->setText(config_->GetValue(OPT_CLOCK_URL_STRING).toString());
 
+  ui->fullscreen_detect->setChecked(config_->GetValue(OPT_FULLSCREEN_DETECT).toBool());
   ui->show_hide_enable->setChecked(config_->GetValue(OPT_SHOW_HIDE_ENABLED).toBool());
   ui->export_state->setChecked(config_->GetValue(OPT_EXPORT_STATE).toBool());
 
@@ -484,6 +488,11 @@ void digital_clock::gui::SettingsDialog::on_browse_url_file_btn_clicked()
 {
   QUrl url = QFileDialog::getOpenFileUrl(this);
   if (url.isValid()) ui->clock_url_edit->setText(url.toString());
+}
+
+void digital_clock::gui::SettingsDialog::on_fullscreen_detect_clicked(bool checked)
+{
+  emit OptionChanged(OPT_FULLSCREEN_DETECT, checked);
 }
 
 void digital_clock::gui::SettingsDialog::on_show_hide_enable_clicked(bool checked)
