@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::MainWindow</name>
     <message>
-        <location filename="../main_window.cpp" line="399"/>
-        <location filename="../main_window.cpp" line="409"/>
-        <location filename="../main_window.cpp" line="419"/>
+        <location filename="../main_window.cpp" line="411"/>
+        <location filename="../main_window.cpp" line="421"/>
+        <location filename="../main_window.cpp" line="431"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="400"/>
+        <location filename="../main_window.cpp" line="412"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="410"/>
+        <location filename="../main_window.cpp" line="422"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="420"/>
+        <location filename="../main_window.cpp" line="432"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="432"/>
+        <location filename="../main_window.cpp" line="444"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -371,7 +371,17 @@
         <translation>Выбрать локальный файл вместо URL</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="819"/>
+        <location filename="../gui/settings_dialog.ui" line="805"/>
+        <source>display &apos;Show/Hide&apos; menu item</source>
+        <translation>показывать пункт меню &quot;Показать/Скрыть&quot;</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="812"/>
+        <source>export state (e.g. position)</source>
+        <translation>экспортировать состояние (т.е. позицию)</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="833"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
@@ -401,28 +411,28 @@
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="302"/>
+        <location filename="../gui/settings_dialog.cpp" line="305"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="304"/>
+        <location filename="../gui/settings_dialog.cpp" line="307"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="387"/>
+        <location filename="../gui/settings_dialog.cpp" line="390"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="389"/>
-        <location filename="../gui/settings_dialog.cpp" line="397"/>
+        <location filename="../gui/settings_dialog.cpp" line="392"/>
+        <location filename="../gui/settings_dialog.cpp" line="400"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="395"/>
+        <location filename="../gui/settings_dialog.cpp" line="398"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>

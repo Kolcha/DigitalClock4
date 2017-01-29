@@ -60,6 +60,8 @@ QMap<Option, QVariant> ClockSettings::GetSettings() const
   all_settings[OPT_CHECK_FOR_BETA]        = GetValue(OPT_CHECK_FOR_BETA);
   all_settings[OPT_CLOCK_URL_ENABLED]     = GetValue(OPT_CLOCK_URL_ENABLED);
   all_settings[OPT_CLOCK_URL_STRING]      = GetValue(OPT_CLOCK_URL_STRING);
+  all_settings[OPT_SHOW_HIDE_ENABLED]     = GetValue(OPT_SHOW_HIDE_ENABLED);
+  all_settings[OPT_EXPORT_STATE]          = GetValue(OPT_EXPORT_STATE);
   return all_settings;
 }
 
@@ -96,6 +98,8 @@ QString ClockSettings::GetKey(const int id) const
     // misc settings
     case OPT_CLOCK_URL_ENABLED:     return "misc/clock_url_enabled";
     case OPT_CLOCK_URL_STRING:      return "misc/clock_url_string";
+    case OPT_SHOW_HIDE_ENABLED:     return "misc/show_hide_enabled";
+    case OPT_EXPORT_STATE:          return "misc/export_state";
   }
   Q_ASSERT(false);
   return QString();
@@ -134,6 +138,8 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     // misc settings
     case OPT_CLOCK_URL_ENABLED:     return false;
     case OPT_CLOCK_URL_STRING:      return QString("http://digitalclock4.sourceforge.net/");
+    case OPT_SHOW_HIDE_ENABLED:     return true;
+    case OPT_EXPORT_STATE:          return true;
   }
   return QVariant();
 }

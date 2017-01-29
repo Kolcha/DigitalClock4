@@ -76,7 +76,9 @@ enum Option {
 
   // misc settings
   OPT_CLOCK_URL_ENABLED,        /*!< enable/disable quick URL feature, bool, true/false */
-  OPT_CLOCK_URL_STRING          /*!< URL value for quick URL feature, QString, any URL */
+  OPT_CLOCK_URL_STRING,         /*!< URL value for quick URL feature, QString, any URL */
+  OPT_SHOW_HIDE_ENABLED,        /*!< enable/disable 'Show/Hide' menu item, bool, true/false */
+  OPT_EXPORT_STATE              /*!< enable/disable state export with settings, bool, true/false */
 };
 
 #endif // SETTINGS_KEYS_H

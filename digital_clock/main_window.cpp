@@ -65,6 +65,8 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   config_backend_ = new SettingsStorage(this);
   app_config_ = new core::ClockSettings(config_backend_, config_backend_);
   state_ = new core::ClockState(config_backend_);
+  connect(state_, &core::ClockState::accepted, this, &MainWindow::SaveState);
+  connect(state_, &core::ClockState::rejected, this, &MainWindow::LoadState);
 
   skin_manager_ = new core::SkinManager(this);
   skin_manager_->ListSkins();
@@ -191,6 +193,8 @@ void MainWindow::Reset()
   // misc settings
   ApplyOption(OPT_CLOCK_URL_ENABLED, app_config_->GetValue(OPT_CLOCK_URL_ENABLED));
   ApplyOption(OPT_CLOCK_URL_STRING, app_config_->GetValue(OPT_CLOCK_URL_STRING));
+  ApplyOption(OPT_SHOW_HIDE_ENABLED, app_config_->GetValue(OPT_SHOW_HIDE_ENABLED));
+  ApplyOption(OPT_EXPORT_STATE, app_config_->GetValue(OPT_EXPORT_STATE));
 
   plugin_manager_->UnloadPlugins();
   plugin_manager_->LoadPlugins(app_config_->GetValue(OPT_PLUGINS).toStringList());
@@ -245,6 +249,14 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
       updater_->SetCheckForBeta(value.toBool());
       break;
 
+    case OPT_SHOW_HIDE_ENABLED:
+      tray_control_->GetShowHideAction()->setVisible(value.toBool());
+      break;
+
+    case OPT_EXPORT_STATE:
+      state_->SetExportable(value.toBool());
+      break;
+
     default:
       clock_widget_->ApplyOption(opt, value);
   }
@@ -297,11 +309,11 @@ void MainWindow::ShowSettingsDialog()
     connect(dlg.data(), &gui::SettingsDialog::OptionChanged, app_config_, &core::ClockSettings::SetValue);
     connect(dlg.data(), &gui::SettingsDialog::accepted, app_config_, &core::ClockSettings::Accept);
     connect(app_config_, &core::ClockSettings::accepted, config_backend_, &SettingsStorage::Accept);
-    connect(app_config_, &core::ClockSettings::accepted, this, &MainWindow::SaveState);
+    connect(app_config_, &core::ClockSettings::accepted, state_, &core::ClockState::Accept);
     connect(dlg.data(), &gui::SettingsDialog::rejected, config_backend_, &SettingsStorage::Reject);
     connect(dlg.data(), &gui::SettingsDialog::ResetSettings, config_backend_, &SettingsStorage::Reset);
     connect(app_config_, &core::ClockSettings::rejected, this, &MainWindow::Reset);
-    connect(app_config_, &core::ClockSettings::rejected, this, &MainWindow::LoadState);
+    connect(app_config_, &core::ClockSettings::rejected, state_, &core::ClockState::Reject);
     // restore clock visibility
     connect(dlg.data(), &gui::SettingsDialog::accepted, this, &MainWindow::RestoreVisibility);
     connect(app_config_, &core::ClockSettings::rejected, this, &MainWindow::RestoreVisibility);

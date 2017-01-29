@@ -19,26 +19,29 @@
 #ifndef DIGITAL_CLOCK_CORE_CLOCK_STATE_H
 #define DIGITAL_CLOCK_CORE_CLOCK_STATE_H
 
-#include <QString>
-#include <QVariant>
-
-class SettingsStorage;
+#include "settings_storage_wrapper.h"
 
 namespace digital_clock {
 namespace core {
 
-class ClockState
+class ClockState : public SettingsStorageWrapper
 {
+  Q_OBJECT
+
 public:
-  explicit ClockState(SettingsStorage* backend);
+  explicit ClockState(SettingsStorage* backend, QObject* parent = nullptr);
 
   void SetVariable(const QString& key, const QVariant& value, bool commit = true);
   QVariant GetVariable(const QString& key, const QVariant& default_value = QVariant());
 
+  void SetExportable(bool exportable);
+  bool IsExportable() const;
+
 private:
   static QString AddKeyPrefix(const QString& key);
 
-  SettingsStorage* backend_;
+  bool is_exportable_;
+  QSet<QString> state_keys_;
 };
 
 } // namespace core

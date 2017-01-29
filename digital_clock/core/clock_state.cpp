@@ -23,21 +23,42 @@
 namespace digital_clock {
 namespace core {
 
-ClockState::ClockState(SettingsStorage* backend)
+ClockState::ClockState(SettingsStorage* backend, QObject* parent) : SettingsStorageWrapper(backend, parent)
 {
-  backend_ = backend;
+  is_exportable_ = true;
 }
 
 void ClockState::SetVariable(const QString& key, const QVariant& value, bool commit)
 {
   QString full_key = AddKeyPrefix(key);
-  backend_->SetValue(full_key, value);
-  if (commit) backend_->Commit(full_key);
+  state_keys_.insert(full_key);
+  SettingsStorageWrapper::setValue(full_key, value);
+  if (commit) GetBackend()->Commit(full_key);
+  if (!IsExportable()) GetBackend()->Forget(full_key);
 }
 
 QVariant ClockState::GetVariable(const QString& key, const QVariant& default_value)
 {
-  return backend_->GetValue(AddKeyPrefix(key), default_value);
+  QString full_key = AddKeyPrefix(key);
+  state_keys_.insert(full_key);
+  QVariant value = SettingsStorageWrapper::getValue(full_key, default_value);
+  if (!IsExportable()) GetBackend()->Forget(full_key);
+  return value;
+}
+
+void ClockState::SetExportable(bool exportable)
+{
+  if (exportable) {
+    for (auto& key : state_keys_) GetBackend()->GetValue(key);
+  } else {
+    for (auto& key : state_keys_) GetBackend()->Forget(key);
+  }
+  is_exportable_ = exportable;
+}
+
+bool ClockState::IsExportable() const
+{
+  return is_exportable_;
 }
 
 QString ClockState::AddKeyPrefix(const QString& key)

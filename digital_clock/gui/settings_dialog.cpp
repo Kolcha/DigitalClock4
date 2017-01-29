@@ -211,6 +211,9 @@ void SettingsDialog::InitControls()
   ui->clock_url_enabled->setChecked(config_->GetValue(OPT_CLOCK_URL_ENABLED).toBool());
   ui->clock_url_edit->setText(config_->GetValue(OPT_CLOCK_URL_STRING).toString());
 
+  ui->show_hide_enable->setChecked(config_->GetValue(OPT_SHOW_HIDE_ENABLED).toBool());
+  ui->export_state->setChecked(config_->GetValue(OPT_EXPORT_STATE).toBool());
+
   // "Plugins" tab
   active_plugins_ = config_->GetValue(OPT_PLUGINS).toStringList();
   for (int i = 0; i < ui->plugins_list->count(); i++) {
@@ -481,4 +484,14 @@ void digital_clock::gui::SettingsDialog::on_browse_url_file_btn_clicked()
 {
   QUrl url = QFileDialog::getOpenFileUrl(this);
   if (url.isValid()) ui->clock_url_edit->setText(url.toString());
+}
+
+void digital_clock::gui::SettingsDialog::on_show_hide_enable_clicked(bool checked)
+{
+  emit OptionChanged(OPT_SHOW_HIDE_ENABLED, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_export_state_clicked(bool checked)
+{
+  emit OptionChanged(OPT_EXPORT_STATE, checked);
 }
