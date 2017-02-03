@@ -1,6 +1,6 @@
 #!/bin/bash
 
-QT_ROOT="/Users/Nick/Qt/5.8/clang_64"
+QT_ROOT="/Users/nick/Qt/5.8/clang_64"
 
 CLOCK_APP_NAME="Digital Clock 4"
 

@@ -1,3 +1,20 @@
+Whats new in 4.5.3:
+-------------------
+Core:
+ - compiled with Xcode 7 and Qt 5.8.0 on macOS
+ - Qt 5.8.0 for Windows installer version
+ - added option to enable/disable state export
+
+GUI:
+ - dropped 'fullscreen windows detect' and 'visible on all workspaces' features
+ - fixed "transparent for input" option on macOS
+ - bring clock window to front when setting dialog is opened
+ - added 'enable show/hide menu item' option
+
+General:
+ - included INSTALL.rtf in linux versions
+
+
 Whats new in 4.5.2:
 -------------------
 Core:
