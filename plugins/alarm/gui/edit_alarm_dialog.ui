@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>484</width>
-    <height>242</height>
+    <height>246</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -144,6 +144,10 @@
         <property name="text">
          <string notr="true">...</string>
         </property>
+        <property name="icon">
+         <iconset resource="../alarm.qrc">
+          <normaloff>:/alarm/browse.svg</normaloff>:/alarm/browse.svg</iconset>
+        </property>
        </widget>
       </item>
       <item row="1" column="0">
@@ -185,6 +189,10 @@
         <property name="text">
          <string notr="true">...</string>
         </property>
+        <property name="icon">
+         <iconset resource="../alarm.qrc">
+          <normaloff>:/alarm/play.svg</normaloff>:/alarm/play.svg</iconset>
+        </property>
        </widget>
       </item>
      </layout>
@@ -202,7 +210,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../alarm.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

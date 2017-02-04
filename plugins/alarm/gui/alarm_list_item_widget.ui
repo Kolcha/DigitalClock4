@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>582</width>
-    <height>26</height>
+    <height>27</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -136,10 +136,16 @@
      <property name="text">
       <string notr="true">...</string>
      </property>
+     <property name="icon">
+      <iconset resource="../alarm.qrc">
+       <normaloff>:/alarm/edit.svg</normaloff>:/alarm/edit.svg</iconset>
+     </property>
     </widget>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../alarm.qrc"/>
+ </resources>
  <connections/>
 </ui>
