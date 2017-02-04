@@ -19,26 +19,18 @@
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
-#include <QFileInfo>
-#include <QDir>
-#include <QFileDialog>
+#include "core/alarm_item.h"
 
-#include "../alarm_settings.h"
+#include "edit_alarm_dialog.h"
+#include "alarm_list_item_widget.h"
 
 namespace alarm_plugin {
 
-SettingsDialog::SettingsDialog(QWidget* parent) :
+SettingsDialog::SettingsDialog(QWidget *parent) :
   QDialog(parent),
   ui(new Ui::SettingsDialog)
 {
-  setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
-  ui->time_edit->setDisplayFormat("hh:mm");
-
-  player_ = new QMediaPlayer(this);
-  connect(player_, SIGNAL(stateChanged(QMediaPlayer::State)),
-          this, SLOT(PlayerStateChanged(QMediaPlayer::State)));
-  connect(ui->volume_slider, SIGNAL(valueChanged(int)), player_, SLOT(setVolume(int)));
 }
 
 SettingsDialog::~SettingsDialog()
@@ -46,127 +38,58 @@ SettingsDialog::~SettingsDialog()
   delete ui;
 }
 
-void SettingsDialog::SettingsListener(const QString& key, const QVariant& value)
+QList<AlarmItem*> SettingsDialog::alarmsList() const
 {
-  if (key == OPT_ENABLED) {
-    ui->alarm_enabled->setChecked(value.toBool());
-  }
-  if (key == OPT_TIME) {
-    ui->time_edit->setTime(value.value<QTime>());
-  }
-  if (key == OPT_SIGNAL_TYPE) {
-    SignalType st = (SignalType)value.toInt();
-    ui->st_file->setChecked(st == ST_FILE);
-    ui->st_stream->setChecked(st == ST_STREAM);
-  }
-  if (key == OPT_FILENAME) {
-    QString file = value.toString();
-    QFileInfo info(file);
-    last_file_path_ = file.isEmpty() ? "." : info.absolutePath();
-    if (info.exists()) {
-      ui->signal_label->setText(info.baseName());
-      ui->signal_label->setToolTip(QDir::toNativeSeparators(file));
-      if (ui->st_file->isChecked()) player_->setMedia(QUrl::fromLocalFile(file));
-    }
-  }
-  if (key == OPT_STREAM_URL) {
-    QString stream = value.toString();
-    ui->stream_url_edit->setText(stream);
-    ui->stream_url_edit->setToolTip(stream);
-    if (ui->st_stream->isChecked()) player_->setMedia(QUrl(stream));
-  }
-  if (key == OPT_VOLUME) {
-    int volume = value.toInt();
-    ui->volume_slider->setValue(volume);
-    player_->setVolume(volume);
-  }
-  if (key == OPT_SHOW_NOTIFY) {
-    ui->notification_enabled->setChecked(value.toBool());
-  }
-  if (key == OPT_NOTIFY_TEXT) {
-    ui->message_edit->setPlainText(value.toString());
-  }
+  return alarms_;
 }
 
-void SettingsDialog::PlayerStateChanged(QMediaPlayer::State state)
+void SettingsDialog::on_add_btn_clicked()
 {
-  switch (state) {
-    case QMediaPlayer::PlayingState:
-      ui->play_btn->setIcon(QIcon(":/alarm/stop.svg"));
-      break;
-
-    case QMediaPlayer::PausedState:
-    case QMediaPlayer::StoppedState:
-      ui->play_btn->setIcon(QIcon(":/alarm/play.svg"));
-      break;
-  }
-}
-
-void SettingsDialog::on_time_edit_timeChanged(const QTime& time)
-{
-  emit OptionChanged(OPT_TIME, time);
-}
-
-void SettingsDialog::on_alarm_enabled_toggled(bool checked)
-{
-  emit OptionChanged(OPT_ENABLED, checked);
-}
-
-void SettingsDialog::on_browse_btn_clicked()
-{
-  QString sound_file = QFileDialog::getOpenFileName(this, tr("Select sound file"),
-                       last_file_path_,
-                       tr("MP3 Files (*.mp3)"));
-  if (!sound_file.isEmpty()) {
-    ui->signal_label->setText(QFileInfo(sound_file).baseName());
-    ui->signal_label->setToolTip(QDir::toNativeSeparators(sound_file));
-    emit OptionChanged(OPT_FILENAME, sound_file);
-    last_file_path_ = QFileInfo(sound_file).absolutePath();
-    player_->setMedia(QUrl::fromLocalFile(sound_file));
-  }
-}
-
-void SettingsDialog::on_notification_enabled_toggled(bool checked)
-{
-  emit OptionChanged(OPT_SHOW_NOTIFY, checked);
-}
-
-void SettingsDialog::on_message_edit_textChanged()
-{
-  emit OptionChanged(OPT_NOTIFY_TEXT, ui->message_edit->toPlainText());
-}
-
-void SettingsDialog::on_st_file_clicked()
-{
-  emit OptionChanged(OPT_SIGNAL_TYPE, (int)ST_FILE);
-  player_->setMedia(QUrl::fromLocalFile(
-                      QDir::fromNativeSeparators(ui->signal_label->toolTip())));
-}
-
-void SettingsDialog::on_st_stream_clicked()
-{
-  emit OptionChanged(OPT_SIGNAL_TYPE, (int)ST_STREAM);
-  player_->setMedia(QUrl(ui->stream_url_edit->text()));
-}
-
-void SettingsDialog::on_stream_url_edit_textEdited(const QString& arg1)
-{
-  emit OptionChanged(OPT_STREAM_URL, arg1);
-  player_->setMedia(QUrl(arg1));
-}
-
-void SettingsDialog::on_volume_slider_valueChanged(int value)
-{
-  emit OptionChanged(OPT_VOLUME, value);
-}
-
-void SettingsDialog::on_play_btn_clicked()
-{
-  if (player_->state() == QMediaPlayer::PlayingState) {
-    player_->stop();
+  AlarmItem* alarm = new AlarmItem();
+  EditAlarmDialog dlg(alarm, this);
+  dlg.setWindowModality(Qt::WindowModal);
+  if (dlg.exec() == QDialog::Accepted) {
+    QListWidgetItem* item = new QListWidgetItem();
+    AlarmListItemWidget* widget = new AlarmListItemWidget(alarm, ui->alarms_list);
+    widget->setChecked(alarm->isEnabled());
+    widget->setTime(alarm->time());
+    widget->setDays(alarm->days());
+    item->setSizeHint(widget->sizeHint());
+    ui->alarms_list->addItem(item);
+    ui->alarms_list->setItemWidget(item, widget);
+    alarms_.append(alarm);
   } else {
-    player_->play();
+    delete alarm;
   }
+}
+
+void SettingsDialog::on_del_btn_clicked()
+{
+  QList<QListWidgetItem*> selected_items = ui->alarms_list->selectedItems();
+  for (auto& item : selected_items) {
+    int row = ui->alarms_list->row(item);
+    AlarmItem* alarm = alarms_[row];
+    alarm->setParent(nullptr);
+    alarms_.removeAt(row);
+    delete alarm;
+    QListWidgetItem* t_item = ui->alarms_list->takeItem(row);
+    delete t_item;
+  }
+}
+
+void SettingsDialog::on_disable_all_btn_clicked()
+{
+  for (auto& alarm : alarms_) alarm->setEnabled(false);
+}
+
+void SettingsDialog::on_delete_all_btn_clicked()
+{
+  ui->alarms_list->clear();
+  for (auto& alarm : alarms_) {
+    alarm->setParent(nullptr);
+    delete alarm;
+  }
+  alarms_.clear();
 }
 
 } // namespace alarm_plugin

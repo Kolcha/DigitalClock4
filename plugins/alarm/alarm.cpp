@@ -34,8 +34,8 @@ Alarm::Alarm()
   icon_changed_ = false;
 
   InitTranslator(QLatin1String(":/alarm/alarm_"));
-  info_.display_name = tr("Alarm/Notification");
-  info_.description = tr("Allows to set alarm/notification.");
+  info_.display_name = tr("Alarm");
+  info_.description = tr("Allows to set alarm(s).");
   InitIcon(":/alarm/alarm_clock.svg");
 }
 
@@ -97,17 +97,17 @@ void Alarm::Stop()
 void Alarm::Configure()
 {
   SettingsDialog* dialog = new SettingsDialog();
-  // load current settings to dialog
-  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
-          dialog, SLOT(SettingsListener(QString,QVariant)));
-  settings_->TrackChanges(true);
-  settings_->Load();
-  settings_->TrackChanges(false);
-  // connect main signals/slots
-  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
-          settings_, SLOT(SetOption(QString,QVariant)));
-  connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
-  connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
+//  // load current settings to dialog
+//  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
+//          dialog, SLOT(SettingsListener(QString,QVariant)));
+//  settings_->TrackChanges(true);
+//  settings_->Load();
+//  settings_->TrackChanges(false);
+//  // connect main signals/slots
+//  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
+//          settings_, SLOT(SetOption(QString,QVariant)));
+//  connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
+//  connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
   dialog->show();
 }
 

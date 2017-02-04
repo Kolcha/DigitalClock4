@@ -1,6 +1,6 @@
 /*
     Digital Clock: alarm plugin
-    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,42 +16,53 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ALARM_PLUGIN_SETTINGS_DIALOG_H
-#define ALARM_PLUGIN_SETTINGS_DIALOG_H
+#ifndef ALARM_PLUGIN_ALARM_LIST_ITEM_WIDGET_H
+#define ALARM_PLUGIN_ALARM_LIST_ITEM_WIDGET_H
 
-#include <QDialog>
+#include <QWidget>
 
-#include <QList>
+#include <QMap>
+#include <QSet>
+#include <QTime>
+
+class QLabel;
 
 namespace alarm_plugin {
 
 class AlarmItem;
 
 namespace Ui {
-class SettingsDialog;
+class AlarmListItemWidget;
 }
 
-class SettingsDialog : public QDialog
+class AlarmListItemWidget : public QWidget
 {
   Q_OBJECT
 
 public:
-  explicit SettingsDialog(QWidget* parent = 0);
-  ~SettingsDialog();
+  explicit AlarmListItemWidget(AlarmItem* item, QWidget *parent = 0);
+  ~AlarmListItemWidget();
 
-  QList<AlarmItem*> alarmsList() const;
+  bool isChecked() const;
+  QTime time() const;
+  QSet<Qt::DayOfWeek> days() const;
+
+public slots:
+  void setChecked(bool checked);
+  void setTime(const QTime& tm);
+  void setDays(const QSet<Qt::DayOfWeek>& days);
 
 private slots:
-  void on_add_btn_clicked();
-  void on_del_btn_clicked();
-  void on_disable_all_btn_clicked();
-  void on_delete_all_btn_clicked();
+  void on_edit_btn_clicked();
 
 private:
-  Ui::SettingsDialog *ui;
-  QList<AlarmItem*> alarms_;
+  Ui::AlarmListItemWidget *ui;
+  AlarmItem* item_;
+  QMap<Qt::DayOfWeek, QLabel*> day_labels_;
+  QTime time_;
+  QSet<Qt::DayOfWeek> days_;
 };
 
 } // namespace alarm_plugin
 
-#endif // ALARM_PLUGIN_SETTINGS_DIALOG_H
+#endif // ALARM_PLUGIN_ALARM_LIST_ITEM_WIDGET_H
