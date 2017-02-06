@@ -29,13 +29,22 @@ include(../common.pri)
 TARGET = alarm
 
 SOURCES += alarm.cpp \
+    core/alarm_item.cpp \
+    core/alarms_storage.cpp \
+    gui/alarm_list_item_widget.cpp \
+    gui/edit_alarm_dialog.cpp \
     gui/settings_dialog.cpp
 
 HEADERS += alarm.h \
-    alarm_settings.h \
+    core/alarm_item.h \
+    core/alarms_storage.h \
+    gui/alarm_list_item_widget.h \
+    gui/edit_alarm_dialog.h \
     gui/settings_dialog.h
 
 FORMS += \
+    gui/alarm_list_item_widget.ui \
+    gui/edit_alarm_dialog.ui \
     gui/settings_dialog.ui
 
 TRANSLATIONS += \

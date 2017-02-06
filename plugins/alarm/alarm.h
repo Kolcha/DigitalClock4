@@ -26,7 +26,11 @@
 #include <QPointer>
 #include <QMediaPlayer>
 
+class QAction;
+
 namespace alarm_plugin {
+
+class AlarmsStorage;
 
 class Alarm : public IClockPlugin, public ITrayPluginInit
 {
@@ -36,19 +40,23 @@ class Alarm : public IClockPlugin, public ITrayPluginInit
 
 public:
   Alarm();
-  void Init(QSystemTrayIcon* tray_icon);
+  void Init(QSystemTrayIcon* tray_icon) override;
+
+  void InitSettings(SettingsStorage* backend) override;
 
 public slots:
-  void Start();
-  void Stop();
-  void Configure();
-  void TimeUpdateListener();
+  void Start() override;
+  void Stop() override;
+  void Configure() override;
+  void TimeUpdateListener() override;
 
 private:
   QSystemTrayIcon* tray_icon_;
   QIcon old_icon_;
   QPointer<QMediaPlayer> player_;
   bool icon_changed_;
+  AlarmsStorage* storage_;
+  QAction* alarm_menu_;
 };
 
 } // namespace alarm_plugin
