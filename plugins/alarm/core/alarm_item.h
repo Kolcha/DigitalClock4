@@ -50,6 +50,8 @@ signals:
   void daysChanged(const QSet<Qt::DayOfWeek>& days);
   void toggled(bool enabled);
 
+  void edited();
+
 public slots:
   void setId(const int id);
 

@@ -34,6 +34,10 @@ AlarmItem::AlarmItem(QObject* parent) :
   days_.insert(Qt::Friday);
   days_.insert(Qt::Saturday);
   days_.insert(Qt::Sunday);
+
+  connect(this, &AlarmItem::timeChanged, this, &AlarmItem::edited);
+  connect(this, &AlarmItem::daysChanged, this, &AlarmItem::edited);
+  connect(this, &AlarmItem::toggled, this, &AlarmItem::edited);
 }
 
 int AlarmItem::id() const
@@ -90,11 +94,13 @@ void AlarmItem::setTime(const QTime& tm)
 void AlarmItem::setMedia(const QUrl& url)
 {
   media_ = url;
+  emit edited();
 }
 
 void AlarmItem::setVolume(int new_volume)
 {
   volume_ = new_volume;
+  emit edited();
 }
 
 void AlarmItem::setDays(const QSet<Qt::DayOfWeek>& new_days)

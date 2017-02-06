@@ -73,7 +73,9 @@ static QSet<Qt::DayOfWeek> decode_days(int encoded)
 }
 
 
-AlarmsStorage::AlarmsStorage(SettingsStorage* backend, QObject *parent) : SettingsStorageWrapper(backend, parent)
+AlarmsStorage::AlarmsStorage(SettingsStorage* backend, QObject *parent) :
+  SettingsStorageWrapper(backend, parent),
+  key_prefix_("plugins/alarm/alarms")
 {
   connect(backend, &SettingsStorage::reloaded, this, &AlarmsStorage::loadAlarms);
 }
@@ -124,14 +126,9 @@ void AlarmsStorage::addAlarm(AlarmItem* alarm)
   alarm->setParent(this);
   auto max_id_iter = std::max_element(alarms_.begin(), alarms_.end(), AlarmItem::idCompare);
   alarm->setId(alarms_.isEmpty() ? 1 : (*max_id_iter)->id() + 1);
-  QString key_prefix("plugins/alarm/alarms");
-  QString alarm_key = QString("%1/%2").arg(key_prefix).arg(alarm->id());
-  this->setValue(QString("%1/%2").arg(alarm_key, "time"), alarm->time());
-  this->setValue(QString("%1/%2").arg(alarm_key, "days"), encode_days(alarm->days()));
-  this->setValue(QString("%1/%2").arg(alarm_key, "enabled"), alarm->isEnabled());
-  this->setValue(QString("%1/%2").arg(alarm_key, "media"), alarm->media());
-  this->setValue(QString("%1/%2").arg(alarm_key, "volume"), alarm->volume());
+  connect(alarm, &AlarmItem::edited, this, &AlarmsStorage::onAlarmEdited);
   alarms_.append(alarm);
+  writeItem(alarm);
 }
 
 void AlarmsStorage::removeAlarm(AlarmItem* alarm)
@@ -139,24 +136,24 @@ void AlarmsStorage::removeAlarm(AlarmItem* alarm)
   Q_ASSERT(alarms_.contains(alarm));
   alarms_.removeOne(alarm);
   Q_ASSERT(!alarms_.contains(alarm));
-  QString key_prefix("plugins/alarm/alarms");
-  QString alarm_key = QString("%1/%2").arg(key_prefix).arg(alarm->id());
+  QString alarm_key = QString("%1/%2").arg(key_prefix_).arg(alarm->id());
   this->remove(alarm_key);
   alarm->setParent(nullptr);
   delete alarm;
 }
 
+void AlarmsStorage::onAlarmEdited()
+{
+  AlarmItem* item = qobject_cast<AlarmItem*>(sender());
+  Q_ASSERT(item);
+  writeItem(item);
+}
+
 void AlarmsStorage::writeAlarms()
 {
-  QString key_prefix("plugins/alarm/alarms");
-  this->remove(key_prefix);
+  this->remove(key_prefix_);
   for (auto& item : alarms_) {
-    QString alarm_key = QString("%1/%2").arg(key_prefix).arg(item->id());
-    this->setValue(alarm_key + "/time", item->time());
-    this->setValue(alarm_key + "/days", encode_days(item->days()));
-    this->setValue(alarm_key + "/enabled", item->isEnabled());
-    this->setValue(alarm_key + "/media", item->media());
-    this->setValue(alarm_key + "/volume", item->volume());
+    writeItem(item);
   }
 }
 
@@ -164,22 +161,39 @@ void AlarmsStorage::readAlarms()
 {
   qDeleteAll(alarms_);
   alarms_.clear();
-  QString key_prefix("plugins/alarm/alarms");
-  QStringList alarms_keys = this->GetBackend()->ListChildren(key_prefix);
+  QStringList alarms_keys = this->GetBackend()->ListChildren(key_prefix_);
   for (auto& key : alarms_keys) {
     bool id_ok = false;
     int id = key.toInt(&id_ok);
     if (!id_ok) continue;
-    QString alarm_key = QString("%1/%2").arg(key_prefix).arg(id);
-    AlarmItem* alarm = new AlarmItem(this);
-    alarm->setId(id);
-    alarm->setTime(this->getValue(QString("%1/%2").arg(alarm_key, "time")).toTime());
-    alarm->setDays(decode_days(this->getValue(QString("%1/%2").arg(alarm_key, "days")).toInt()));
-    alarm->setEnabled(this->getValue(QString("%1/%2").arg(alarm_key, "enabled")).toBool());
-    alarm->setMedia(this->getValue(QString("%1/%2").arg(alarm_key, "media")).toUrl());
-    alarm->setVolume(this->getValue(QString("%1/%2").arg(alarm_key, "volume")).toInt());
+    AlarmItem* alarm = readItem(id);
+    Q_ASSERT(alarm);
+    connect(alarm, &AlarmItem::edited, this, &AlarmsStorage::onAlarmEdited);
     alarms_.append(alarm);
   }
+}
+
+void AlarmsStorage::writeItem(const AlarmItem* item)
+{
+  QString alarm_key = QString("%1/%2").arg(key_prefix_).arg(item->id());
+  this->setValue(QString("%1/%2").arg(alarm_key, "time"), item->time());
+  this->setValue(QString("%1/%2").arg(alarm_key, "days"), encode_days(item->days()));
+  this->setValue(QString("%1/%2").arg(alarm_key, "enabled"), item->isEnabled());
+  this->setValue(QString("%1/%2").arg(alarm_key, "media"), item->media());
+  this->setValue(QString("%1/%2").arg(alarm_key, "volume"), item->volume());
+}
+
+AlarmItem* AlarmsStorage::readItem(const int id)
+{
+  QString alarm_key = QString("%1/%2").arg(key_prefix_).arg(id);
+  AlarmItem* item = new AlarmItem(this);
+  item->setId(id);
+  item->setTime(this->getValue(QString("%1/%2").arg(alarm_key, "time")).toTime());
+  item->setDays(decode_days(this->getValue(QString("%1/%2").arg(alarm_key, "days")).toInt()));
+  item->setEnabled(this->getValue(QString("%1/%2").arg(alarm_key, "enabled")).toBool());
+  item->setMedia(this->getValue(QString("%1/%2").arg(alarm_key, "media")).toUrl());
+  item->setVolume(this->getValue(QString("%1/%2").arg(alarm_key, "volume")).toInt());
+  return item;
 }
 
 } // namespace alarm_plugin

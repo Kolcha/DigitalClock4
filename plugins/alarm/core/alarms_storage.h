@@ -43,11 +43,18 @@ public slots:
   void addAlarm(AlarmItem* alarm);
   void removeAlarm(AlarmItem* alarm);
 
+private slots:
+  void onAlarmEdited();
+
 private:
   void writeAlarms();
   void readAlarms();
 
+  void writeItem(const AlarmItem* item);
+  AlarmItem* readItem(const int id);
+
   QList<AlarmItem*> alarms_;
+  const QString key_prefix_;
 };
 
 } // namespace alarm_plugin
