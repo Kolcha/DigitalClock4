@@ -88,6 +88,9 @@ EditAlarmDialog::EditAlarmDialog(AlarmItem* alarm_item, QWidget *parent) :
   ui->filepath_edit->setText(alarm_item->media().toString());
   ui->volume_slider->setValue(alarm_item->volume());
 
+  player_->setMedia(alarm_item->media());
+  player_->setVolume(alarm_item->volume());
+
   connect(ui->time_edit, &QTimeEdit::timeChanged, alarm_item, &AlarmItem::setTime);
   connect(ui->is_enabled_checkbox, &QCheckBox::toggled, alarm_item, &AlarmItem::setEnabled);
   connect(ui->volume_slider, &QSlider::valueChanged, alarm_item, &AlarmItem::setVolume);

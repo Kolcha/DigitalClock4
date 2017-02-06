@@ -22,6 +22,7 @@ namespace alarm_plugin {
 
 AlarmItem::AlarmItem(QObject* parent) :
   QObject(parent),
+  id_(0),
   time_(0, 0),
   volume_(75),
   is_enabled_(false)
@@ -33,6 +34,11 @@ AlarmItem::AlarmItem(QObject* parent) :
   days_.insert(Qt::Friday);
   days_.insert(Qt::Saturday);
   days_.insert(Qt::Sunday);
+}
+
+int AlarmItem::id() const
+{
+  return id_;
 }
 
 QTime AlarmItem::time() const
@@ -58,6 +64,21 @@ QSet<Qt::DayOfWeek> AlarmItem::days() const
 bool AlarmItem::isEnabled() const
 {
   return is_enabled_;
+}
+
+bool AlarmItem::idCompare(const AlarmItem* a, const AlarmItem* b)
+{
+  return a->id() < b->id();
+}
+
+bool AlarmItem::timeCompare(const AlarmItem* a, const AlarmItem* b)
+{
+  return a->time() < b->time();
+}
+
+void AlarmItem::setId(const int id)
+{
+  id_ = id;
 }
 
 void AlarmItem::setTime(const QTime& tm)

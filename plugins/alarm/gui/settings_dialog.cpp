@@ -19,6 +19,8 @@
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
+#include <algorithm>
+
 #include "core/alarm_item.h"
 
 #include "edit_alarm_dialog.h"
@@ -43,12 +45,12 @@ QList<AlarmItem*> SettingsDialog::alarmsList() const
   return alarms_;
 }
 
-void SettingsDialog::on_add_btn_clicked()
+void SettingsDialog::setAlarmsList(const QList<AlarmItem*>& alarms_list)
 {
-  AlarmItem* alarm = new AlarmItem();
-  EditAlarmDialog dlg(alarm, this);
-  dlg.setWindowModality(Qt::WindowModal);
-  if (dlg.exec() == QDialog::Accepted) {
+  alarms_ = alarms_list;
+  std::sort(alarms_.begin(), alarms_.end(), AlarmItem::timeCompare);
+  ui->alarms_list->clear();
+  for (auto& alarm : alarms_list) {
     QListWidgetItem* item = new QListWidgetItem();
     AlarmListItemWidget* widget = new AlarmListItemWidget(alarm, ui->alarms_list);
     widget->setChecked(alarm->isEnabled());
@@ -57,7 +59,27 @@ void SettingsDialog::on_add_btn_clicked()
     item->setSizeHint(widget->sizeHint());
     ui->alarms_list->addItem(item);
     ui->alarms_list->setItemWidget(item, widget);
-    alarms_.append(alarm);
+  }
+}
+
+void SettingsDialog::on_add_btn_clicked()
+{
+  AlarmItem* alarm = new AlarmItem();
+  EditAlarmDialog dlg(alarm, this);
+  dlg.setWindowModality(Qt::WindowModal);
+  if (dlg.exec() == QDialog::Accepted) {
+    auto ins_iter = std::find_if(alarms_.begin(), alarms_.end(),
+                                 [&] (const AlarmItem* i) -> bool { return i->time() < alarm->time(); });
+    auto item_iter = alarms_.insert(ins_iter, alarm);
+    QListWidgetItem* item = new QListWidgetItem();
+    AlarmListItemWidget* widget = new AlarmListItemWidget(alarm, ui->alarms_list);
+    widget->setChecked(alarm->isEnabled());
+    widget->setTime(alarm->time());
+    widget->setDays(alarm->days());
+    item->setSizeHint(widget->sizeHint());
+    ui->alarms_list->insertItem(std::distance(item_iter, alarms_.begin()), item);
+    ui->alarms_list->setItemWidget(item, widget);
+    emit alarmAdded(alarm);
   } else {
     delete alarm;
   }
@@ -69,9 +91,8 @@ void SettingsDialog::on_del_btn_clicked()
   for (auto& item : selected_items) {
     int row = ui->alarms_list->row(item);
     AlarmItem* alarm = alarms_[row];
-    alarm->setParent(nullptr);
     alarms_.removeAt(row);
-    delete alarm;
+    emit alarmRemoved(alarm);
     QListWidgetItem* t_item = ui->alarms_list->takeItem(row);
     delete t_item;
   }
@@ -86,8 +107,7 @@ void SettingsDialog::on_delete_all_btn_clicked()
 {
   ui->alarms_list->clear();
   for (auto& alarm : alarms_) {
-    alarm->setParent(nullptr);
-    delete alarm;
+    emit alarmRemoved(alarm);
   }
   alarms_.clear();
 }

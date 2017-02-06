@@ -25,11 +25,13 @@
 #include "plugin_settings.h"
 
 #include "alarm_settings.h"
+#include "core/alarm_item.h"
+#include "core/alarms_storage.h"
 #include "gui/settings_dialog.h"
 
 namespace alarm_plugin {
 
-Alarm::Alarm()
+Alarm::Alarm() : storage_(nullptr)
 {
   icon_changed_ = false;
 
@@ -44,10 +46,15 @@ void Alarm::Init(QSystemTrayIcon* tray_icon)
   tray_icon_ = tray_icon;
   old_icon_ = tray_icon->icon();
 
-  QSettings::SettingsMap defaults;
-  InitDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-  settings_->Load();
+//  QSettings::SettingsMap defaults;
+//  InitDefaults(&defaults);
+//  settings_->SetDefaultValues(defaults);
+//  settings_->Load();
+}
+
+void Alarm::InitSettings(SettingsStorage* backend)
+{
+  storage_ = new AlarmsStorage(backend, this);
 }
 
 void Alarm::Start()
@@ -96,19 +103,14 @@ void Alarm::Stop()
 
 void Alarm::Configure()
 {
-  SettingsDialog* dialog = new SettingsDialog();
-//  // load current settings to dialog
-//  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
-//          dialog, SLOT(SettingsListener(QString,QVariant)));
-//  settings_->TrackChanges(true);
-//  settings_->Load();
-//  settings_->TrackChanges(false);
-//  // connect main signals/slots
-//  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
-//          settings_, SLOT(SetOption(QString,QVariant)));
-//  connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
-//  connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
-  dialog->show();
+  SettingsDialog dlg;
+  connect(&dlg, &SettingsDialog::alarmAdded, storage_, &AlarmsStorage::addAlarm);
+  connect(&dlg, &SettingsDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
+  connect(&dlg, &SettingsDialog::accepted, storage_, &AlarmsStorage::Accept);
+  connect(&dlg, &SettingsDialog::rejected, storage_, &AlarmsStorage::Reject);
+  connect(storage_, &AlarmsStorage::alarmsLoaded, &dlg, &SettingsDialog::setAlarmsList);
+  storage_->loadAlarms();
+  dlg.exec();
 }
 
 void Alarm::TimeUpdateListener()

@@ -1,6 +1,6 @@
 /*
     Digital Clock: alarm plugin
-    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,49 +16,40 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ALARM_PLUGIN_SETTINGS_DIALOG_H
-#define ALARM_PLUGIN_SETTINGS_DIALOG_H
+#ifndef ALARM_PLUGIN_ALARMS_STORAGE_H
+#define ALARM_PLUGIN_ALARMS_STORAGE_H
 
-#include <QDialog>
-
-#include <QList>
+#include "settings_storage_wrapper.h"
 
 namespace alarm_plugin {
 
 class AlarmItem;
 
-namespace Ui {
-class SettingsDialog;
-}
-
-class SettingsDialog : public QDialog
+class AlarmsStorage : public SettingsStorageWrapper
 {
   Q_OBJECT
-
 public:
-  explicit SettingsDialog(QWidget* parent = 0);
-  ~SettingsDialog();
+  explicit AlarmsStorage(SettingsStorage* backend, QObject* parent = nullptr);
 
-  QList<AlarmItem*> alarmsList() const;
+  QList<AlarmItem*> getAlarms();
 
 signals:
-  void alarmAdded(AlarmItem* alarm);
-  void alarmRemoved(AlarmItem* alarm);
+  void alarmsLoaded(const QList<AlarmItem*>& alarms);
 
 public slots:
-  void setAlarmsList(const QList<AlarmItem*>& alarms_list);
+  void setAlarms(const QList<AlarmItem*>& alarms);
+  void loadAlarms();
 
-private slots:
-  void on_add_btn_clicked();
-  void on_del_btn_clicked();
-  void on_disable_all_btn_clicked();
-  void on_delete_all_btn_clicked();
+  void addAlarm(AlarmItem* alarm);
+  void removeAlarm(AlarmItem* alarm);
 
 private:
-  Ui::SettingsDialog *ui;
+  void writeAlarms();
+  void readAlarms();
+
   QList<AlarmItem*> alarms_;
 };
 
 } // namespace alarm_plugin
 
-#endif // ALARM_PLUGIN_SETTINGS_DIALOG_H
+#endif // ALARM_PLUGIN_ALARMS_STORAGE_H

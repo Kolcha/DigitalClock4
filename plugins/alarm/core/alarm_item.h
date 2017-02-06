@@ -34,11 +34,16 @@ class AlarmItem : public QObject
 public:
   explicit AlarmItem(QObject* parent = nullptr);
 
+  int id() const;
+
   QTime time() const;
   QUrl media() const;
   int volume() const;
   QSet<Qt::DayOfWeek> days() const;
   bool isEnabled() const;
+
+  static bool idCompare(const AlarmItem* a, const AlarmItem* b);
+  static bool timeCompare(const AlarmItem* a, const AlarmItem* b);
 
 signals:
   void timeChanged(const QTime& new_time);
@@ -46,6 +51,8 @@ signals:
   void toggled(bool enabled);
 
 public slots:
+  void setId(const int id);
+
   void setTime(const QTime& tm);
   void setMedia(const QUrl& url);
   void setVolume(int new_volume);
@@ -53,6 +60,7 @@ public slots:
   void setEnabled(bool enabled);
 
 private:
+  int id_;
   QTime time_;
   QUrl media_;
   int volume_;
