@@ -23,7 +23,7 @@
       <string>Add new alarm</string>
      </property>
      <property name="text">
-      <string>...</string>
+      <string notr="true">...</string>
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
@@ -37,7 +37,7 @@
       <string>Delete selected</string>
      </property>
      <property name="text">
-      <string>...</string>
+      <string notr="true">...</string>
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
@@ -64,7 +64,7 @@
       <string>Disable all alarms</string>
      </property>
      <property name="text">
-      <string>...</string>
+      <string notr="true">...</string>
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
@@ -78,7 +78,7 @@
       <string>Remove all alarms</string>
      </property>
      <property name="text">
-      <string>...</string>
+      <string notr="true">...</string>
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
