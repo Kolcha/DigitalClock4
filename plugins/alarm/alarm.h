@@ -26,6 +26,8 @@
 #include <QPointer>
 #include <QMediaPlayer>
 
+class QAction;
+
 namespace alarm_plugin {
 
 class AlarmsStorage;
@@ -54,6 +56,7 @@ private:
   QPointer<QMediaPlayer> player_;
   bool icon_changed_;
   AlarmsStorage* storage_;
+  QAction* alarm_menu_;
 };
 
 } // namespace alarm_plugin

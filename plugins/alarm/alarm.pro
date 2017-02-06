@@ -36,7 +36,6 @@ SOURCES += alarm.cpp \
     gui/settings_dialog.cpp
 
 HEADERS += alarm.h \
-    alarm_settings.h \
     core/alarm_item.h \
     core/alarms_storage.h \
     gui/alarm_list_item_widget.h \
