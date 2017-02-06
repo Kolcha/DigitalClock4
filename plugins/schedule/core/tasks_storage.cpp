@@ -80,16 +80,6 @@ void TasksStorage::delTask(const TaskPtr& task)
   }
 }
 
-void TasksStorage::commit()
-{
-  this->Accept();
-}
-
-void TasksStorage::reject()
-{
-  this->Reject();
-}
-
 QList<QDate> TasksStorage::listDates() const
 {
   QList<QDate> dates;
