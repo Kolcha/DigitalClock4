@@ -19,6 +19,7 @@
 #include "chime_settings.h"
 
 #include <QUrl>
+#include <QTime>
 
 #include "core/repeat_type.h"
 
@@ -38,6 +39,10 @@ void InitDefaults(QSettings::SettingsMap* defaults)
   defaults->insert(OPT_QUARTER_HOUR_VOLUME, 90);
   defaults->insert(OPT_QUARTER_HOUR_REPEAT, static_cast<int>(Repeat::Once));
   defaults->insert(OPT_QUARTER_HOUR_LAST_FILE, QString());
+
+  defaults->insert(OPT_QUIET_HOURS_ENABLED, false);
+  defaults->insert(OPT_QUIET_HOURS_START, QTime(23, 1));
+  defaults->insert(OPT_QUIET_HOURS_END, QTime(6, 59));
 }
 
 } // namespace chime
