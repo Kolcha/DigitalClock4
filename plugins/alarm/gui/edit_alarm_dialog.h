@@ -39,7 +39,7 @@ class EditAlarmDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit EditAlarmDialog(AlarmItem* alarm_item, QWidget *parent = 0);
+  explicit EditAlarmDialog(AlarmItem* alarm_item, QWidget* parent = 0);
   ~EditAlarmDialog();
 
 public slots:
@@ -49,11 +49,11 @@ private slots:
   void onAnyDayCheckboxToggled(bool checked);
   void onPlayerStateChanged(QMediaPlayer::State new_state);
 
-  void on_filepath_edit_textChanged(const QString &arg1);
+  void on_filepath_edit_textChanged(const QString& arg1);
   void on_browse_btn_clicked();
 
 private:
-  Ui::EditAlarmDialog *ui;
+  Ui::EditAlarmDialog* ui;
   AlarmItem* alarm_item_;
   AlarmItem* orig_item_;
   QMap<QCheckBox*, Qt::DayOfWeek> days_boxes_;

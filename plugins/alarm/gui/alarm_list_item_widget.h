@@ -40,7 +40,7 @@ class AlarmListItemWidget : public QWidget
   Q_OBJECT
 
 public:
-  explicit AlarmListItemWidget(AlarmItem* item, QWidget *parent = 0);
+  explicit AlarmListItemWidget(AlarmItem* item, QWidget* parent = 0);
   ~AlarmListItemWidget();
 
   bool isChecked() const;
@@ -56,7 +56,7 @@ private slots:
   void on_edit_btn_clicked();
 
 private:
-  Ui::AlarmListItemWidget *ui;
+  Ui::AlarmListItemWidget* ui;
   AlarmItem* item_;
   QMap<Qt::DayOfWeek, QLabel*> day_labels_;
   QTime time_;

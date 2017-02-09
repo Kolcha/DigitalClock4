@@ -28,7 +28,7 @@
 
 namespace alarm_plugin {
 
-SettingsDialog::SettingsDialog(QWidget *parent) :
+SettingsDialog::SettingsDialog(QWidget* parent) :
   QDialog(parent),
   ui(new Ui::SettingsDialog)
 {

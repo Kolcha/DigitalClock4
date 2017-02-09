@@ -30,7 +30,7 @@
 
 namespace alarm_plugin {
 
-EditAlarmDialog::EditAlarmDialog(AlarmItem* alarm_item, QWidget *parent) :
+EditAlarmDialog::EditAlarmDialog(AlarmItem* alarm_item, QWidget* parent) :
   QDialog(parent),
   ui(new Ui::EditAlarmDialog),
   alarm_item_(alarm_item),
@@ -137,7 +137,7 @@ void EditAlarmDialog::onPlayerStateChanged(QMediaPlayer::State new_state)
   }
 }
 
-void EditAlarmDialog::on_filepath_edit_textChanged(const QString &arg1)
+void EditAlarmDialog::on_filepath_edit_textChanged(const QString& arg1)
 {
   alarm_item_->setMedia(QUrl(arg1));
 }

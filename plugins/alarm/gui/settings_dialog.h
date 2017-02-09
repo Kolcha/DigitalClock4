@@ -55,7 +55,7 @@ private slots:
   void on_delete_all_btn_clicked();
 
 private:
-  Ui::SettingsDialog *ui;
+  Ui::SettingsDialog* ui;
   QList<AlarmItem*> alarms_;
 };
 

@@ -73,7 +73,7 @@ static QSet<Qt::DayOfWeek> decode_days(int encoded)
 }
 
 
-AlarmsStorage::AlarmsStorage(SettingsStorage* backend, QObject *parent) :
+AlarmsStorage::AlarmsStorage(SettingsStorage* backend, QObject* parent) :
   SettingsStorageWrapper(backend, parent),
   key_prefix_("plugins/alarm/alarms")
 {

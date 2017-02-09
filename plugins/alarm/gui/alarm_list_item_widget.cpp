@@ -30,7 +30,7 @@
 
 namespace alarm_plugin {
 
-AlarmListItemWidget::AlarmListItemWidget(AlarmItem* item, QWidget *parent) :
+AlarmListItemWidget::AlarmListItemWidget(AlarmItem* item, QWidget* parent) :
   QWidget(parent),
   ui(new Ui::AlarmListItemWidget),
   item_(item)
