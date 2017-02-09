@@ -44,6 +44,8 @@ public slots:
   void TimeUpdateListener();
 
 private:
+  bool isQuietTime(const QTime& cur_time);
+
   bool started_;
   bool playback_allowed_;
   QMediaPlayer* player_;
