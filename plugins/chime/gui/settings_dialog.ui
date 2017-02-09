@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>276</width>
-    <height>161</height>
+    <width>315</width>
+    <height>219</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,102 +16,120 @@
   <property name="modal">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QCheckBox" name="hour_enabled_cb">
-     <property name="text">
-      <string>Hour</string>
+  <layout class="QVBoxLayout" name="dialog_layout">
+   <item>
+    <widget class="QGroupBox" name="sounds_group">
+     <property name="title">
+      <string>Sounds</string>
      </property>
+     <layout class="QGridLayout" name="sounds_layout">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="hour_enabled_cb">
+        <property name="text">
+         <string>Hour</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <spacer name="hour_spacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="2">
+       <widget class="QComboBox" name="hour_count_box"/>
+      </item>
+      <item row="0" column="3">
+       <widget class="QToolButton" name="hour_sound_btn">
+        <property name="text">
+         <string notr="true">...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../chime.qrc">
+          <normaloff>:/chime/icon.svg</normaloff>:/chime/icon.svg</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="quarter_enabled_cb">
+        <property name="text">
+         <string>Quarter</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <spacer name="quarter_spacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="2">
+       <widget class="QComboBox" name="quarter_count_box"/>
+      </item>
+      <item row="1" column="3">
+       <widget class="QToolButton" name="quarter_sound_btn">
+        <property name="text">
+         <string notr="true">...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../chime.qrc">
+          <normaloff>:/chime/icon.svg</normaloff>:/chime/icon.svg</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2">
-    <spacer name="hour_spacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+   <item>
+    <widget class="QGroupBox" name="quiet_time_group">
+     <property name="title">
+      <string>Quiet time</string>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="3" colspan="2">
-    <widget class="QComboBox" name="hour_count_box"/>
-   </item>
-   <item row="0" column="5">
-    <widget class="QToolButton" name="hour_sound_btn">
-     <property name="text">
-      <string notr="true">...</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../chime.qrc">
-       <normaloff>:/chime/icon.svg</normaloff>:/chime/icon.svg</iconset>
-     </property>
+     <layout class="QHBoxLayout" name="quiet_time_layout">
+      <item>
+       <widget class="QCheckBox" name="quiet_hours_enabled">
+        <property name="text">
+         <string>Enable</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="q_time_start"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string notr="true">-</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTimeEdit" name="q_time_end"/>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QCheckBox" name="quarter_enabled_cb">
-     <property name="text">
-      <string>Quarter</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="2">
-    <spacer name="quarter_spacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="3" colspan="2">
-    <widget class="QComboBox" name="quarter_count_box"/>
-   </item>
-   <item row="1" column="5">
-    <widget class="QToolButton" name="quarter_sound_btn">
-     <property name="text">
-      <string notr="true">...</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../chime.qrc">
-       <normaloff>:/chime/icon.svg</normaloff>:/chime/icon.svg</iconset>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="6">
-    <widget class="QCheckBox" name="quiet_hours_enabled">
-     <property name="text">
-      <string>Enable quiet hours</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="2">
-    <widget class="QTimeEdit" name="q_time_start"/>
-   </item>
-   <item row="3" column="2" colspan="2">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string notr="true">-</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="4" colspan="2">
-    <widget class="QTimeEdit" name="q_time_end"/>
-   </item>
-   <item row="4" column="0" colspan="6">
+   <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -134,8 +152,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>239</x>
-     <y>151</y>
+     <x>248</x>
+     <y>209</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -150,8 +168,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>239</x>
-     <y>151</y>
+     <x>248</x>
+     <y>209</y>
     </hint>
     <hint type="destinationlabel">
      <x>250</x>
@@ -166,28 +184,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>70</x>
-     <y>80</y>
+     <x>87</x>
+     <y>165</y>
     </hint>
     <hint type="destinationlabel">
-     <x>60</x>
-     <y>105</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>quiet_hours_enabled</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>label</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>157</x>
-     <y>81</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>163</x>
-     <y>108</y>
+     <x>154</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>
@@ -198,12 +200,28 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>263</x>
-     <y>80</y>
+     <x>87</x>
+     <y>165</y>
     </hint>
     <hint type="destinationlabel">
-     <x>260</x>
-     <y>103</y>
+     <x>293</x>
+     <y>167</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>quiet_hours_enabled</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>87</x>
+     <y>165</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>196</x>
+     <y>167</y>
     </hint>
    </hints>
   </connection>

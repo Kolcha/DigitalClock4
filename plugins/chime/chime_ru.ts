@@ -26,17 +26,27 @@ Sounds from these plugins are included as default sounds.</source>
         <translation>Настройки сигнала</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="57"/>
+        <location filename="gui/settings_dialog.ui" line="23"/>
+        <source>Sounds</source>
+        <translation>Звуки</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="63"/>
         <source>Quarter</source>
         <translation>Четверть часа</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="91"/>
-        <source>Enable quiet hours</source>
-        <translation>Включить &quot;тихие часы&quot;</translation>
+        <location filename="gui/settings_dialog.ui" line="100"/>
+        <source>Quiet time</source>
+        <translation>Тихие часы</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="23"/>
+        <location filename="gui/settings_dialog.ui" line="106"/>
+        <source>Enable</source>
+        <translation>Включить</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="29"/>
         <source>Hour</source>
         <translation>Каждый час</translation>
     </message>
