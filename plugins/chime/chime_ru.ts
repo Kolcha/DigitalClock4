@@ -4,12 +4,12 @@
 <context>
     <name>chime::ChimePlugin</name>
     <message>
-        <location filename="chime_plugin.cpp" line="38"/>
+        <location filename="chime_plugin.cpp" line="45"/>
         <source>Chime</source>
         <translation>Звуковой сигнал</translation>
     </message>
     <message>
-        <location filename="chime_plugin.cpp" line="39"/>
+        <location filename="chime_plugin.cpp" line="46"/>
         <source>Chimes with selected period.This plugin replaces all chiming plugins:
 &quot;Every hour signal&quot;, &quot;Quarter of an hour signal&quot;, &quot;Tower clock hour signal&quot;.
 Sounds from these plugins are included as default sounds.</source>
@@ -26,12 +26,27 @@ Sounds from these plugins are included as default sounds.</source>
         <translation>Настройки сигнала</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="37"/>
+        <location filename="gui/settings_dialog.ui" line="23"/>
+        <source>Sounds</source>
+        <translation>Звуки</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="63"/>
         <source>Quarter</source>
         <translation>Четверть часа</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="68"/>
+        <location filename="gui/settings_dialog.ui" line="100"/>
+        <source>Quiet time</source>
+        <translation>Тихие часы</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="106"/>
+        <source>Enable</source>
+        <translation>Включить</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="29"/>
         <source>Hour</source>
         <translation>Каждый час</translation>
     </message>

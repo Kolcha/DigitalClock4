@@ -33,6 +33,10 @@ namespace chime {
 #define OPT_QUARTER_HOUR_VOLUME       "plugins/chime/quarter_hour/volume"
 #define OPT_QUARTER_HOUR_REPEAT       "plugins/chime/quarter_hour/repeat"
 
+#define OPT_QUIET_HOURS_ENABLED       "plugins/chime/quiet_hours/enabled"
+#define OPT_QUIET_HOURS_START         "plugins/chime/quiet_hours/start_time"
+#define OPT_QUIET_HOURS_END           "plugins/chime/quiet_hours/end_end"
+
 #define OPT_EVERY_HOUR_LAST_FILE      "plugins/chime/state/last_every_hour_file"
 #define OPT_QUARTER_HOUR_LAST_FILE    "plugins/chime/state/last_quarter_hour_file"
 

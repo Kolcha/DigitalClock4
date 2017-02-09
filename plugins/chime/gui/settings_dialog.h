@@ -51,6 +51,10 @@ private slots:
   void on_quarter_count_box_activated(int index);
   void on_quarter_sound_btn_clicked();
 
+  void on_quiet_hours_enabled_clicked(bool checked);
+  void on_q_time_start_timeChanged(const QTime& time);
+  void on_q_time_end_timeChanged(const QTime& time);
+
 private:
   Ui::SettingsDialog* ui;
   QSettings::SettingsMap settings_;
