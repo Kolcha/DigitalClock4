@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	1,1,1,73
-PRODUCTVERSION	4,5,3,0
+FILEVERSION	1,1,1,74
+PRODUCTVERSION	4,5,4,0
 FILEOS		0x4
 FILETYPE	0x2
 {
@@ -11,12 +11,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Any zoom"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "1.1.1.73"
+		VALUE "FileVersion", "1.1.1.74"
 		VALUE "InternalName", "any_zoom.dll"
 		VALUE "LegalCopyright", "© 2013-2017 Nick Korotysh"
 		VALUE "OriginalFilename", "any_zoom.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.5.3"
+		VALUE "ProductVersion", "4.5.4"
 	}
 }
 
