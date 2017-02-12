@@ -56,6 +56,11 @@ void MessageWidget::setText(const QString& new_text)
   emit textChanged(new_text);
 }
 
+void MessageWidget::setAlignment(Qt::Alignment alignment)
+{
+  ui->msg_label->setAlignment(alignment);
+}
+
 void MessageWidget::setPixmap(const QPixmap& img)
 {
   ui->msg_label->setPixmap(img);

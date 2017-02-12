@@ -4,17 +4,17 @@
 <context>
     <name>quick_note::MessageWidget</name>
     <message>
-        <location filename="gui/message_widget.cpp" line="97"/>
+        <location filename="gui/message_widget.cpp" line="102"/>
         <source>Edit note</source>
         <translation>Редактировать</translation>
     </message>
     <message>
-        <location filename="gui/message_widget.cpp" line="97"/>
+        <location filename="gui/message_widget.cpp" line="102"/>
         <source>text:</source>
         <translation>текст:</translation>
     </message>
     <message>
-        <location filename="gui/message_widget.ui" line="48"/>
+        <location filename="gui/message_widget.ui" line="45"/>
         <source>edit note</source>
         <translation>редактировать заметку</translation>
     </message>
