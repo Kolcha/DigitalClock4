@@ -34,6 +34,7 @@ enum WidgetPluginOption {
   OPT_USE_CLOCK_FONT,         /*!< will plugin use same font as clock, bool, true/false */
   OPT_CUSTOM_FONT,            /*!< plugin font, if OPT_USE_CLOCK_FONT is not set, QFont */
   OPT_ZOOM_MODE,              /*!< controls widget zoom behaviour, one of ZoomMode values */
+  OPT_ALIGNMENT,              /*!< plugin widgets alignment, Qt::Alignment, any allowed flags combination */
   OPT_USE_CUSTOM_COLOR,       /*!< will plugin use custom color or drawn as clock, bool, true/false */
   OPT_CUSTOM_COLOR            /*!< plugin color, if OPT_USE_CUSTOM_COLOR is set, QColor */
 };

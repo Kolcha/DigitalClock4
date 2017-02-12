@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>276</width>
-    <height>195</height>
+    <height>261</height>
    </rect>
   </property>
   <layout class="QGridLayout" name="base_settings_layout">
@@ -98,6 +98,39 @@
     </widget>
    </item>
    <item row="1" column="0" colspan="2">
+    <widget class="QGroupBox" name="alignment_group">
+     <property name="title">
+      <string>Alignment</string>
+     </property>
+     <layout class="QHBoxLayout" name="alignment_layout">
+      <item>
+       <widget class="QRadioButton" name="align_left_rbtn">
+        <property name="text">
+         <string>left</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="align_center_rbtn">
+        <property name="text">
+         <string>center</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="align_right_rbtn">
+        <property name="text">
+         <string>right</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="color_group">
      <property name="title">
       <string>Color</string>
