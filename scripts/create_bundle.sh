@@ -59,7 +59,7 @@ cp -r "$QT_ROOT/plugins/iconengines" "digital_clock/digital_clock.app/Contents/P
 cp -r "$QT_ROOT/plugins/playlistformats" "digital_clock/digital_clock.app/Contents/PlugIns/"
 cp -r "$QT_ROOT/plugins/texttospeech" "digital_clock/digital_clock.app/Contents/PlugIns/"
 
-# deploy Qt plugins
+# deploy copied Qt plugins
 for d in iconengines playlistformats texttospeech
 do
   rm -rf digital_clock/digital_clock.app/Contents/PlugIns/$d/*.dylib.dSYM
@@ -82,6 +82,7 @@ echo "Translations = Resources/translations" >> digital_clock/digital_clock.app/
 cd digital_clock
 mv digital_clock.app "$CLOCK_APP_NAME.app"
 $QT_ROOT/bin/macdeployqt "$CLOCK_APP_NAME.app"
+find "$CLOCK_APP_NAME.app" -name "*_debug.dylib" -exec rm -vf {} \;
 codesign --deep --force --verify --verbose --sign "-" "$CLOCK_APP_NAME.app"
 hdiutil create -srcfolder "$CLOCK_APP_NAME.app" "$CLOCK_APP_NAME.dmg"
 
