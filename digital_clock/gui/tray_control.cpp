@@ -21,6 +21,7 @@
 #include <QMenu>
 #include <QIcon>
 #include <QApplication>
+#include <QSettings>
 
 namespace digital_clock {
 namespace gui {
@@ -51,6 +52,7 @@ TrayControl::TrayControl(QWidget* parent) : QObject(parent)
 #endif
 
   tray_icon_ = new QSystemTrayIcon(QApplication::windowIcon(), this);
+  UpdateTrayIcon();
   tray_icon_->setVisible(true);
   tray_icon_->setContextMenu(tray_menu);
   tray_icon_->setToolTip(QApplication::applicationDisplayName() + " " + QApplication::applicationVersion());
@@ -66,6 +68,24 @@ QSystemTrayIcon* TrayControl::GetTrayIcon() const
 QAction* TrayControl::GetShowHideAction() const
 {
   return show_hide_action_;
+}
+
+void TrayControl::UpdateTrayIcon()
+{
+#ifdef Q_OS_MACOS
+  // macOS dark panel support
+  QSettings s;
+  QString curr_mode = s.value("AppleInterfaceStyle").toString();
+  if (curr_mode == last_mode_) return;
+
+  if (curr_mode == QString("Dark")) {
+    tray_icon_->setIcon(QIcon(":/clock/images/clock-light.svg"));
+  } else {
+    tray_icon_->setIcon(QIcon(":/clock/images/clock.svg"));
+  }
+
+  last_mode_ = curr_mode;
+#endif
 }
 
 void TrayControl::TrayEventHandler(QSystemTrayIcon::ActivationReason reason)
