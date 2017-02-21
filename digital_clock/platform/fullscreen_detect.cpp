@@ -30,6 +30,7 @@ struct wnd_find_t {
   int width;
   int height;
   bool found;
+  QStringList ignore_list;
 };
 
 // parts of solution was found there:
@@ -46,6 +47,11 @@ BOOL CALLBACK CheckMaximized(HWND hwnd, LPARAM lParam)
   // skip desktop window
   if (hwnd == GetDesktopWindow() || hwnd == GetShellWindow()) return TRUE;
 
+  // skip ignored windows
+  WCHAR class_name[256];
+  GetClassName(hwnd, class_name, 256);
+  if (data->ignore_list.contains(QString::fromWCharArray(class_name))) return TRUE;
+
   RECT r;
   GetWindowRect(hwnd, &r);
 
@@ -57,10 +63,11 @@ BOOL CALLBACK CheckMaximized(HWND hwnd, LPARAM lParam)
   return TRUE;
 }
 
-bool IsFullscreenWndOnSameMonitor(WId wid)
+bool IsFullscreenWndOnSameMonitor(WId wid, const QStringList& ignore_list)
 {
   wnd_find_t data;
   data.monitor = MonitorFromWindow((HWND)wid, MONITOR_DEFAULTTONEAREST);
+  data.ignore_list = ignore_list;
   MONITORINFO info;
   info.cbSize = sizeof(MONITORINFO);
   if (GetMonitorInfo(data.monitor, &info)) {

@@ -20,14 +20,16 @@
 #define DIGITAL_CLOCK_FULLSCREEN_DETECT_H
 
 #include <QWidget>
+#include <QStringList>
 
 namespace digital_clock {
 
 /*!
  * Finds fullscreen windows on the same monitor as @a wid.
+ * @param ignore_list - list of fullscreen windows to ignore
  * @return true if fullscreen window was found
  */
-bool IsFullscreenWndOnSameMonitor(WId wid);
+bool IsFullscreenWndOnSameMonitor(WId wid, const QStringList& ignore_list);
 
 } // namespace digital_clock
 

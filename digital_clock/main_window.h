@@ -108,6 +108,7 @@ private:
 
   bool last_visibility_;
   bool fullscreen_detect_enabled_;
+  QStringList window_ignore_list_;
 };
 
 } // namespace digital_clock

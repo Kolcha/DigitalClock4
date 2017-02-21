@@ -111,6 +111,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
 
   last_visibility_ = true;
   fullscreen_detect_enabled_ = false;
+  window_ignore_list_ = app_config_->GetValue(OPT_FULLSCREEN_IGNORE_LST).toStringList();
 
   InitPluginSystem();
   Reset();
@@ -405,7 +406,7 @@ void MainWindow::Update()
   // https://sourceforge.net/p/digitalclock4/tickets/3/
   // https://sourceforge.net/p/digitalclock4/tickets/9/
   if (app_config_->GetValue(OPT_STAY_ON_TOP).toBool()) {
-    if (fullscreen_detect_enabled_ && IsFullscreenWndOnSameMonitor(this->winId())) {
+    if (fullscreen_detect_enabled_ && IsFullscreenWndOnSameMonitor(this->winId(), window_ignore_list_)) {
       if (this->windowFlags() & Qt::WindowStaysOnTopHint) {
         this->SetWindowFlag(Qt::WindowStaysOnTopHint, false);
         this->lower();
