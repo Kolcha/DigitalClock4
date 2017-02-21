@@ -237,9 +237,9 @@ void SettingsDialog::InitControls()
   }
 
   // "Experimental" tab
-  ui->fullscreen_detect_2->setChecked(config_->getValue(OPT_FULLSCREEN_DETECT).toBool());
-  ui->show_on_all_workspaces->setChecked(config_->getValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
-  ui->better_stay_on_top->setChecked(config_->getValue(OPT_BETTER_STAY_ON_TOP).toBool());
+  ui->fullscreen_detect_2->setChecked(config_->GetValue(OPT_FULLSCREEN_DETECT).toBool());
+  ui->show_on_all_workspaces->setChecked(config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
+  ui->better_stay_on_top->setChecked(config_->GetValue(OPT_BETTER_STAY_ON_TOP).toBool());
 
   this->blockSignals(false);
 }

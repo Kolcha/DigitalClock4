@@ -129,7 +129,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::showEvent(QShowEvent* event)
 {
-  SetVisibleOnAllDesktops(true);
+  SetVisibleOnAllDesktops(app_config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
   QWidget::showEvent(event);
 }
 
@@ -231,7 +231,11 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
       break;
 
     case OPT_STAY_ON_TOP:
-      SetWindowFlag(Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint, value.toBool());
+      if (app_config_->GetValue(OPT_BETTER_STAY_ON_TOP).toBool()) {
+        SetWindowFlag(Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint, value.toBool());
+      } else {
+        SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
+      }
       break;
 
     case OPT_TRANSP_FOR_INPUT:

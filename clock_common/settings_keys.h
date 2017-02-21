@@ -55,9 +55,7 @@ enum Option {
   OPT_BACKGROUND_ENABLED,       /*!< is background color will be used, bool, true/false */
   OPT_BACKGROUND_COLOR,         /*!< clock background color, QColor, any color */
   OPT_FULLSCREEN_DETECT,        /*!< detect fullscreen windows flag, bool, true/false */
-  OPT_FULLSCREEN_IGNORE_LIST,   /*!< list of fullscreen windows to ignore, QStringList, any strings */
   OPT_SHOW_ON_ALL_DESKTOPS,     /*!< show clock on all desktops flag, bool, true/false */
-  OPT_BETTER_STAY_ON_TOP,       /*!< use Qt::X11BypassWindowManagerHint, bool, true/false */
   // skin settings
   OPT_SKIN_NAME,                /*!< skin name to use, QString, skin name */
   OPT_FONT,                     /*!< font to use, QFont, any available font */
@@ -81,6 +79,8 @@ enum Option {
   // misc settings
   OPT_CLOCK_URL_ENABLED,        /*!< enable/disable quick URL feature, bool, true/false */
   OPT_CLOCK_URL_STRING,         /*!< URL value for quick URL feature, QString, any URL */
+  OPT_FULLSCREEN_IGNORE_LST,    /*!< list of fullscreen windows to ignore, QStringList, any strings */
+  OPT_BETTER_STAY_ON_TOP,       /*!< use Qt::X11BypassWindowManagerHint, bool, true/false */
   OPT_SHOW_HIDE_ENABLED,        /*!< enable/disable 'Show/Hide' menu item, bool, true/false */
   OPT_EXPORT_STATE              /*!< enable/disable state export with settings, bool, true/false */
 };
