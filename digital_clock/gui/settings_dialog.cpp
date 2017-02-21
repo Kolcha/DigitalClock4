@@ -61,8 +61,15 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* st
 
   ui->skin_info_btn->setVisible(false);  // temporary, not implemented
   ui->defaults_bth->setVisible(false);   // temporary, not implemented
-#if defined(Q_OS_MACOS) || defined(Q_OS_LINUX)
-  ui->fullscreen_detect->setVisible(false);   // not supported for Linux/Mac
+#ifndef Q_OS_WIN
+  ui->fullscreen_detect->setVisible(false);   // supported only on Windows
+  ui->fullscreen_detect_2->setVisible(false); // supported only on Windows
+#endif
+#ifndef Q_OS_LINUX
+  ui->better_stay_on_top->setVisible(false);  // supported only on Linux
+#endif
+#if !defined(Q_OS_LINUX) && !defined(Q_OS_MACOS)
+  ui->show_on_all_workspaces->setVisible(false);  // supported on Linux/Mac
 #endif
 
   connect(config->GetBackend(), &SettingsStorage::reloaded, this, &SettingsDialog::InitControls);
@@ -228,6 +235,11 @@ void SettingsDialog::InitControls()
     widget->SetChecked(active_plugins_.contains(widget->GetName()));
     widget->blockSignals(false);
   }
+
+  // "Experimental" tab
+  ui->fullscreen_detect_2->setChecked(config_->getValue(OPT_FULLSCREEN_DETECT).toBool());
+  ui->show_on_all_workspaces->setChecked(config_->getValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
+  ui->better_stay_on_top->setChecked(config_->getValue(OPT_BETTER_STAY_ON_TOP).toBool());
 
   this->blockSignals(false);
 }
@@ -503,4 +515,19 @@ void digital_clock::gui::SettingsDialog::on_show_hide_enable_clicked(bool checke
 void digital_clock::gui::SettingsDialog::on_export_state_clicked(bool checked)
 {
   emit OptionChanged(OPT_EXPORT_STATE, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_fullscreen_detect_2_clicked(bool checked)
+{
+  emit OptionChanged(OPT_FULLSCREEN_DETECT, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_show_on_all_workspaces_clicked(bool checked)
+{
+  emit OptionChanged(OPT_SHOW_ON_ALL_DESKTOPS, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_better_stay_on_top_clicked(bool checked)
+{
+  emit OptionChanged(OPT_BETTER_STAY_ON_TOP, checked);
 }
