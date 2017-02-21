@@ -799,6 +799,13 @@
          </layout>
         </widget>
        </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QCheckBox" name="fullscreen_detect">
+         <property name="text">
+          <string>prevent appearing above fullscreen windows</string>
+         </property>
+        </widget>
+       </item>
        <item row="4" column="2">
         <widget class="QCheckBox" name="show_hide_enable">
          <property name="text">
@@ -844,6 +851,70 @@
        </property>
        <item row="0" column="0">
         <widget class="QListWidget" name="plugins_list"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="experimental_tab">
+      <attribute name="title">
+       <string>Experimental</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="experimental_layout">
+       <item>
+        <widget class="QCheckBox" name="fullscreen_detect_2">
+         <property name="text">
+          <string>prevent appearing above fullscreen windows</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="show_on_all_workspaces">
+         <property name="text">
+          <string>show clock on all workspaces/virtual desktops</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="better_stay_on_top">
+         <property name="text">
+          <string>better 'stay on top' for Linux</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="restart_warning_label">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Please restart clock after changing any of theese options!</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>155</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="experimental_note_label">
+         <property name="text">
+          <string>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in 'About' dialog.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -1163,6 +1234,38 @@
     <hint type="destinationlabel">
      <x>251</x>
      <y>251</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fullscreen_detect</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>fullscreen_detect_2</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>178</x>
+     <y>353</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>290</x>
+     <y>56</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fullscreen_detect_2</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>fullscreen_detect</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>290</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>353</y>
     </hint>
    </hints>
   </connection>

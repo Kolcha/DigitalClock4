@@ -43,6 +43,8 @@ QMap<Option, QVariant> ClockSettings::GetSettings() const
   all_settings[OPT_ALIGNMENT]             = GetValue(OPT_ALIGNMENT);
   all_settings[OPT_BACKGROUND_ENABLED]    = GetValue(OPT_BACKGROUND_ENABLED);
   all_settings[OPT_BACKGROUND_COLOR]      = GetValue(OPT_BACKGROUND_COLOR);
+  all_settings[OPT_FULLSCREEN_DETECT]     = GetValue(OPT_FULLSCREEN_DETECT);
+  all_settings[OPT_SHOW_ON_ALL_DESKTOPS]  = GetValue(OPT_SHOW_ON_ALL_DESKTOPS);
   all_settings[OPT_SKIN_NAME]             = GetValue(OPT_SKIN_NAME);
   all_settings[OPT_FONT]                  = GetValue(OPT_FONT);
   all_settings[OPT_ZOOM]                  = GetValue(OPT_ZOOM);
@@ -60,6 +62,8 @@ QMap<Option, QVariant> ClockSettings::GetSettings() const
   all_settings[OPT_CHECK_FOR_BETA]        = GetValue(OPT_CHECK_FOR_BETA);
   all_settings[OPT_CLOCK_URL_ENABLED]     = GetValue(OPT_CLOCK_URL_ENABLED);
   all_settings[OPT_CLOCK_URL_STRING]      = GetValue(OPT_CLOCK_URL_STRING);
+  all_settings[OPT_FULLSCREEN_IGNORE_LST] = GetValue(OPT_FULLSCREEN_IGNORE_LST);
+  all_settings[OPT_BETTER_STAY_ON_TOP]    = GetValue(OPT_BETTER_STAY_ON_TOP);
   all_settings[OPT_SHOW_HIDE_ENABLED]     = GetValue(OPT_SHOW_HIDE_ENABLED);
   all_settings[OPT_EXPORT_STATE]          = GetValue(OPT_EXPORT_STATE);
   return all_settings;
@@ -78,6 +82,8 @@ QString ClockSettings::GetKey(const int id) const
     case OPT_ALIGNMENT:             return "clock/alignment";
     case OPT_BACKGROUND_ENABLED:    return "clock/background_enabled";
     case OPT_BACKGROUND_COLOR:      return "clock/background_color";
+    case OPT_FULLSCREEN_DETECT:     return "clock/fullscreen_detect";
+    case OPT_SHOW_ON_ALL_DESKTOPS:  return "clock/show_on_all_desktops";
     // skin settings
     case OPT_SKIN_NAME:             return "skin/name";
     case OPT_FONT:                  return "skin/font";
@@ -98,6 +104,8 @@ QString ClockSettings::GetKey(const int id) const
     // misc settings
     case OPT_CLOCK_URL_ENABLED:     return "misc/clock_url_enabled";
     case OPT_CLOCK_URL_STRING:      return "misc/clock_url_string";
+    case OPT_FULLSCREEN_IGNORE_LST: return "misc/fullscreen_ignore_list";
+    case OPT_BETTER_STAY_ON_TOP:    return "misc/better_stay_on_top";
     case OPT_SHOW_HIDE_ENABLED:     return "misc/show_hide_enabled";
     case OPT_EXPORT_STATE:          return "misc/export_state";
   }
@@ -118,6 +126,8 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_ALIGNMENT:             return static_cast<int>(CAlignment::A_LEFT);
     case OPT_BACKGROUND_ENABLED:    return false;
     case OPT_BACKGROUND_COLOR:      return QVariant::fromValue<QColor>(Qt::white);
+    case OPT_FULLSCREEN_DETECT:     return false;
+    case OPT_SHOW_ON_ALL_DESKTOPS:  return false;
     // skin settings
     case OPT_SKIN_NAME:             return QString("Electronic (default)");
     case OPT_FONT:                  return QFont();
@@ -138,6 +148,8 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     // misc settings
     case OPT_CLOCK_URL_ENABLED:     return false;
     case OPT_CLOCK_URL_STRING:      return QString("http://digitalclock4.sourceforge.net/");
+    case OPT_FULLSCREEN_IGNORE_LST: return QStringList();
+    case OPT_BETTER_STAY_ON_TOP:    return false;
     case OPT_SHOW_HIDE_ENABLED:     return true;
     case OPT_EXPORT_STATE:          return true;
   }

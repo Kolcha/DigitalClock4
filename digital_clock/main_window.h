@@ -52,6 +52,7 @@ public:
   ~MainWindow();
 
 protected:
+  void showEvent(QShowEvent* event);
   void mousePressEvent(QMouseEvent* event);
   void mouseMoveEvent(QMouseEvent* event);
   void mouseReleaseEvent(QMouseEvent* event);
@@ -85,6 +86,8 @@ private:
 
   void CorrectPosition();
 
+  void SetVisibleOnAllDesktops(bool set);
+
   SettingsStorage* config_backend_;
 
   core::ClockSettings* app_config_;
@@ -104,6 +107,8 @@ private:
   QColor bg_color_;
 
   bool last_visibility_;
+  bool fullscreen_detect_enabled_;
+  QStringList window_ignore_list_;
 };
 
 } // namespace digital_clock
