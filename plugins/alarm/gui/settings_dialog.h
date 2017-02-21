@@ -20,9 +20,12 @@
 #define ALARM_PLUGIN_SETTINGS_DIALOG_H
 
 #include <QDialog>
-#include <QMediaPlayer>
+
+#include <QList>
 
 namespace alarm_plugin {
+
+class AlarmItem;
 
 namespace Ui {
 class SettingsDialog;
@@ -36,29 +39,24 @@ public:
   explicit SettingsDialog(QWidget* parent = 0);
   ~SettingsDialog();
 
-public slots:
-  void SettingsListener(const QString& key, const QVariant& value);
+  QList<AlarmItem*> alarmsList() const;
 
 signals:
-  void OptionChanged(const QString&, const QVariant&);
+  void alarmAdded(AlarmItem* alarm);
+  void alarmRemoved(AlarmItem* alarm);
+
+public slots:
+  void setAlarmsList(const QList<AlarmItem*>& alarms_list);
 
 private slots:
-  void PlayerStateChanged(QMediaPlayer::State state);
-  void on_time_edit_timeChanged(const QTime& time);
-  void on_alarm_enabled_toggled(bool checked);
-  void on_browse_btn_clicked();
-  void on_notification_enabled_toggled(bool checked);
-  void on_message_edit_textChanged();
-  void on_st_file_clicked();
-  void on_st_stream_clicked();
-  void on_stream_url_edit_textEdited(const QString& arg1);
-  void on_volume_slider_valueChanged(int value);
-  void on_play_btn_clicked();
+  void on_add_btn_clicked();
+  void on_del_btn_clicked();
+  void on_disable_all_btn_clicked();
+  void on_delete_all_btn_clicked();
 
 private:
   Ui::SettingsDialog* ui;
-  QString last_file_path_;
-  QMediaPlayer* player_;
+  QList<AlarmItem*> alarms_;
 };
 
 } // namespace alarm_plugin

@@ -40,7 +40,7 @@ mkdir "$TARGET_APP_FOLDER"
 # copy all app files to target folder
 cp digital_clock/digital_clock "$TARGET_APP_FOLDER/"
 cp clock_common/libclock_common.so.1.1.2 "$TARGET_APP_FOLDER/libclock_common.so.1"
-cp plugin_core/libplugin_core.so.1.0.3 "$TARGET_APP_FOLDER/libplugin_core.so.1"
+cp plugin_core/libplugin_core.so.1.0.4 "$TARGET_APP_FOLDER/libplugin_core.so.1"
 cp skin_draw/libskin_draw.so.1.3.0 "$TARGET_APP_FOLDER/libskin_draw.so.1"
 [ -d "$TARGET_APP_FOLDER/plugins" ] || mkdir "$TARGET_APP_FOLDER/plugins"
 cd plugins
@@ -83,6 +83,7 @@ cp "$CLOCK_SRC_PATH/scripts/config_desktop.sh" "$TARGET_APP_FOLDER/"
 cp -r "$CLOCK_DATA_PATH/skins" "$TARGET_APP_FOLDER/"
 cp -r "$CLOCK_DATA_PATH/textures" "$TARGET_APP_FOLDER/"
 [[ -d "$CLOCK_DATA_PATH/translations" ]] && cp -r "$CLOCK_DATA_PATH/translations" "$TARGET_APP_FOLDER/"
+[[ -f "$CLOCK_DATA_PATH/install_linux.rtf" ]] && cp "$CLOCK_DATA_PATH/install_linux.rtf" "$TARGET_APP_FOLDER/INSTALL.rtf"
 
 cd "$TARGET_APP_FOLDER/.."
 

@@ -19,23 +19,20 @@
 #include "alarm.h"
 
 #include <QSystemTrayIcon>
-#include <QFile>
-#include <QDir>
+#include <QMenu>
+#include <QMediaPlaylist>
 
-#include "plugin_settings.h"
-
-#include "alarm_settings.h"
+#include "core/alarm_item.h"
+#include "core/alarms_storage.h"
 #include "gui/settings_dialog.h"
 
 namespace alarm_plugin {
 
-Alarm::Alarm()
+Alarm::Alarm() : tray_icon_(nullptr), icon_changed_(false), storage_(nullptr), alarm_menu_(nullptr)
 {
-  icon_changed_ = false;
-
   InitTranslator(QLatin1String(":/alarm/alarm_"));
-  info_.display_name = tr("Alarm/Notification");
-  info_.description = tr("Allows to set alarm/notification.");
+  info_.display_name = tr("Alarm");
+  info_.description = tr("Allows to set multiple alarms.");
   InitIcon(":/alarm/alarm_clock.svg");
 }
 
@@ -43,45 +40,28 @@ void Alarm::Init(QSystemTrayIcon* tray_icon)
 {
   tray_icon_ = tray_icon;
   old_icon_ = tray_icon->icon();
+}
 
-  QSettings::SettingsMap defaults;
-  InitDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-  settings_->Load();
+void Alarm::InitSettings(SettingsStorage* backend)
+{
+  storage_ = new AlarmsStorage(backend, this);
 }
 
 void Alarm::Start()
 {
-  if (!settings_->GetOption(OPT_ENABLED).toBool()) return;
-
   tray_icon_->setIcon(QIcon(":/alarm/alarm_clock.svg"));
   icon_changed_ = true;
 
-  SignalType st = (SignalType)(settings_->GetOption(OPT_SIGNAL_TYPE).toInt());
-  if (st == ST_STREAM) {
-    // if stream url is invalid force use file
-    if (!QUrl(settings_->GetOption(OPT_STREAM_URL).toString(), QUrl::StrictMode).isValid()) {
-      st = ST_FILE;
-      settings_->SetOption(OPT_SIGNAL_TYPE, (int)ST_FILE);
-      tray_icon_->showMessage(tr("Digital Clock Alarm"),
-                              tr("Stream url is not valid. Force use file instead of stream."
-                                 "Click this message to change settings."),
-                              QSystemTrayIcon::Warning);
-      connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(Configure()));
-    }
-  }
-  if (st == ST_FILE) {
-    // check is signal mediafile exists
-    QString mediafile = settings_->GetOption(OPT_FILENAME).toString();
-    if (!QFile::exists(mediafile)) {
-      tray_icon_->showMessage(tr("Digital Clock Alarm"),
-                              tr("File %1 doesn't exists. Click this message or go to plugin "
-                                 "settings to choose another.").arg(QDir::toNativeSeparators(mediafile)),
-                              QSystemTrayIcon::Critical);
-      connect(tray_icon_, SIGNAL(messageClicked()), this, SLOT(Configure()));
-    }
-  }
-  player_ = new QMediaPlayer();
+  player_ = new QMediaPlayer(this, QMediaPlayer::StreamPlayback);
+  player_->setPlaylist(new QMediaPlaylist(player_));
+  player_->playlist()->setPlaybackMode(QMediaPlaylist::Loop);
+
+  QMenu* tray_menu = tray_icon_->contextMenu();
+  QMenu* alarm_menu = new QMenu(tr("Alarm"));
+  alarm_menu->addAction(tr("Stop Alarm"), player_.data(), &QMediaPlayer::stop);
+  alarm_menu->addAction(tr("Configure"), this, &Alarm::Configure);
+  alarm_menu_ = tray_menu->insertMenu(tray_menu->actions().first(), alarm_menu);
+  alarm_menu_->setIcon(tray_icon_->icon());
 }
 
 void Alarm::Stop()
@@ -92,58 +72,46 @@ void Alarm::Stop()
     if (player_->state() == QMediaPlayer::PlayingState) player_->stop();
     delete player_;
   }
+  tray_icon_->contextMenu()->removeAction(alarm_menu_);
+  delete alarm_menu_->menu();
 }
 
 void Alarm::Configure()
 {
-  SettingsDialog* dialog = new SettingsDialog();
-  // load current settings to dialog
-  connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
-          dialog, SLOT(SettingsListener(QString,QVariant)));
-  settings_->TrackChanges(true);
-  settings_->Load();
-  settings_->TrackChanges(false);
-  // connect main signals/slots
-  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
-          settings_, SLOT(SetOption(QString,QVariant)));
-  connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
-  connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
-  dialog->show();
+  SettingsDialog dlg;
+  connect(&dlg, &SettingsDialog::alarmAdded, storage_, &AlarmsStorage::addAlarm);
+  connect(&dlg, &SettingsDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
+  connect(&dlg, &SettingsDialog::accepted, storage_, &AlarmsStorage::Accept);
+  connect(&dlg, &SettingsDialog::rejected, storage_, &AlarmsStorage::Reject);
+  connect(storage_, &AlarmsStorage::alarmsLoaded, &dlg, &SettingsDialog::setAlarmsList);
+  storage_->loadAlarms();
+  dlg.exec();
 }
 
 void Alarm::TimeUpdateListener()
 {
-  if (settings_->GetOption(OPT_ENABLED).toBool()) {
-    if (!icon_changed_) Start();
-  } else {
-    if (icon_changed_) Stop();
-    return;
-  }
+  if (!icon_changed_) return;
 
-  QString alarm_time = settings_->GetOption(OPT_TIME).value<QTime>().toString();
-  QString curr_time = QTime::currentTime().toString();
-  if (alarm_time != curr_time ||
-      player_->state() == QMediaPlayer::PlayingState) return;
+  QDateTime curr_time = QDateTime::currentDateTime();
+  if (curr_time.time().second() != 0) return;
 
-  QUrl media_url;
-  switch ((SignalType)(settings_->GetOption(OPT_SIGNAL_TYPE).toInt())) {
-    case ST_FILE:
-      media_url = QUrl::fromLocalFile(settings_->GetOption(OPT_FILENAME).toString());
-      break;
+  if (player_->state() == QMediaPlayer::PlayingState) return;
 
-    case ST_STREAM:
-      media_url = settings_->GetOption(OPT_STREAM_URL).toString();
-      break;
-  }
+  QList<AlarmItem*> alarms = storage_->getAlarms();
+  for (auto& alarm : alarms) {
+    if (!alarm->isEnabled()) continue;
+    if (!alarm->days().contains(static_cast<Qt::DayOfWeek>(curr_time.date().dayOfWeek()))) continue;
+    if (alarm->time().hour() != curr_time.time().hour() ||
+        alarm->time().minute() != curr_time.time().minute()) continue;
+    player_->playlist()->clear();
+    player_->playlist()->addMedia(alarm->media());
+    player_->setVolume(alarm->volume());
+    player_->play();
 
-  player_->setMedia(media_url);
-  player_->setVolume(settings_->GetOption(OPT_VOLUME).toInt());
-  player_->play();
-  if (settings_->GetOption(OPT_SHOW_NOTIFY).toBool()) {
     tray_icon_->showMessage(tr("Digital Clock Alarm"),
-                            settings_->GetOption(OPT_NOTIFY_TEXT).toString(),
+                            tr("Alarm at %1").arg(alarm->time().toString(Qt::SystemLocaleLongDate)),
                             QSystemTrayIcon::Information, 30000);
-    connect(tray_icon_, SIGNAL(messageClicked()), player_, SLOT(stop()));
+    connect(tray_icon_, &QSystemTrayIcon::messageClicked, player_.data(), &QMediaPlayer::stop);
   }
 }
 

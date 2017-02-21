@@ -68,7 +68,12 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
       ui->quarter_count_box->setCurrentIndex(1);
       break;
   }
+  ui->q_time_start->setTime(settings[OPT_QUIET_HOURS_START].toTime());
+  ui->q_time_end->setTime(settings[OPT_QUIET_HOURS_END].toTime());
   this->blockSignals(false);
+
+  ui->quiet_hours_enabled->setChecked(settings[OPT_QUIET_HOURS_ENABLED].toBool());
+
   settings_ = settings;
 }
 
@@ -120,6 +125,21 @@ void SettingsDialog::on_quarter_sound_btn_clicked()
   emit OptionChanged(OPT_QUARTER_HOUR_VOLUME, dlg.volume());
   if (dlg.sound().scheme() == "file")
     emit OptionChanged(OPT_QUARTER_HOUR_LAST_FILE, dlg.sound().toLocalFile());
+}
+
+void SettingsDialog::on_quiet_hours_enabled_clicked(bool checked)
+{
+  emit OptionChanged(OPT_QUIET_HOURS_ENABLED, checked);
+}
+
+void SettingsDialog::on_q_time_start_timeChanged(const QTime& time)
+{
+  emit OptionChanged(OPT_QUIET_HOURS_START, time);
+}
+
+void SettingsDialog::on_q_time_end_timeChanged(const QTime& time)
+{
+  emit OptionChanged(OPT_QUIET_HOURS_END, time);
 }
 
 } // namespace chime

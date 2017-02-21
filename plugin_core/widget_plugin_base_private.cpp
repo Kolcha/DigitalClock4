@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QGridLayout>
+#include <QLabel>
 
 #include "plugin_settings.h"
 
@@ -89,6 +90,10 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
         drawer_->SetZoom(clock_zoom_);
         break;
     }
+  }
+  if (key == OptionKey(OPT_ALIGNMENT, obj_->plg_name_)) {
+    QLabel* lbl = qobject_cast<QLabel*>(plg_widget_.data());
+    if (lbl) lbl->setAlignment(static_cast<Qt::Alignment>(value.toInt()));
   }
   if (key == OptionKey(OPT_USE_CUSTOM_COLOR, obj_->plg_name_)) {
     drawer_->SetString(QString());    // set empty string to do not redraw twice

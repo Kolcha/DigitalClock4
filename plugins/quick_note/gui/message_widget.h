@@ -42,6 +42,7 @@ signals:
 
 public slots:
   void setText(const QString& new_text);
+  void setAlignment(Qt::Alignment alignment);
   void setPixmap(const QPixmap& img);
   void setIconColor(const QColor& new_color);
 

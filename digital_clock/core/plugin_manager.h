@@ -24,6 +24,7 @@
 #include <QMap>
 #include <QString>
 #include <QList>
+#include <QTimer>
 
 #include "iclock_plugin.h"
 #include "core/plugin_info.h"
@@ -64,6 +65,8 @@ public:
    * @param parent - parent object
    */
   explicit PluginManager(QObject* parent = 0);
+  /*! Destructor. */
+  ~PluginManager();
   /*!
    * Set data for plugin initialization.
    * @param data - data to set
@@ -137,6 +140,7 @@ private:
    */
   void InitPlugin(IClockPlugin* plugin, bool connected);
 
+  QTimer timer_;
   QStringList search_paths_;
   QMap<QString, QString> available_;
   QMap<QString, QPluginLoader*> loaded_;

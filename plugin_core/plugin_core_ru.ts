@@ -40,11 +40,31 @@
     </message>
     <message>
         <location filename="base_settings_widget.ui" line="103"/>
+        <source>Alignment</source>
+        <translation>Выравнивание</translation>
+    </message>
+    <message>
+        <location filename="base_settings_widget.ui" line="109"/>
+        <source>left</source>
+        <translation>по левому краю</translation>
+    </message>
+    <message>
+        <location filename="base_settings_widget.ui" line="116"/>
+        <source>center</source>
+        <translation>по центру</translation>
+    </message>
+    <message>
+        <location filename="base_settings_widget.ui" line="126"/>
+        <source>right</source>
+        <translation>по правому краю</translation>
+    </message>
+    <message>
+        <location filename="base_settings_widget.ui" line="136"/>
         <source>Color</source>
         <translation>Цвет</translation>
     </message>
     <message>
-        <location filename="base_settings_widget.ui" line="109"/>
+        <location filename="base_settings_widget.ui" line="142"/>
         <source>use custom color</source>
         <translation>использовать пользовательский цвет</translation>
     </message>

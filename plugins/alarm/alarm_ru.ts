@@ -4,31 +4,84 @@
 <context>
     <name>alarm_plugin::Alarm</name>
     <message>
-        <location filename="alarm.cpp" line="37"/>
-        <source>Alarm/Notification</source>
-        <translation>Будильник/Напоминание</translation>
+        <location filename="alarm.cpp" line="34"/>
+        <location filename="alarm.cpp" line="60"/>
+        <source>Alarm</source>
+        <translation>Будильник</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="38"/>
-        <source>Allows to set alarm/notification.</source>
-        <translation>Позволяет устанавливать будильник или просто напоминание.</translation>
+        <location filename="alarm.cpp" line="35"/>
+        <source>Allows to set multiple alarms.</source>
+        <translation>Позволяет установить несколько будильников.</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="66"/>
-        <location filename="alarm.cpp" line="77"/>
-        <location filename="alarm.cpp" line="143"/>
+        <location filename="alarm.cpp" line="61"/>
+        <source>Stop Alarm</source>
+        <translation>Остановить</translation>
+    </message>
+    <message>
+        <location filename="alarm.cpp" line="62"/>
+        <source>Configure</source>
+        <translation>Настроить</translation>
+    </message>
+    <message>
+        <location filename="alarm.cpp" line="111"/>
         <source>Digital Clock Alarm</source>
         <translation>Будильник Digital Clock</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="67"/>
-        <source>Stream url is not valid. Force use file instead of stream.Click this message to change settings.</source>
-        <translation>Неверный адрес потока. Будет использован файл вместо потока. Щелкните это сообщение чтобы изменить настройки.</translation>
+        <location filename="alarm.cpp" line="112"/>
+        <source>Alarm at %1</source>
+        <translation>Будильник в %1</translation>
+    </message>
+</context>
+<context>
+    <name>alarm_plugin::EditAlarmDialog</name>
+    <message>
+        <location filename="gui/edit_alarm_dialog.ui" line="14"/>
+        <source>Alarm Settings</source>
+        <translation>Настройки будильника</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="78"/>
-        <source>File %1 doesn&apos;t exists. Click this message or go to plugin settings to choose another.</source>
-        <translation>Файл %1 не существует. Щелкнить здесь или откройте настроки плагина и выберите другой файл.</translation>
+        <location filename="gui/edit_alarm_dialog.ui" line="20"/>
+        <source>Time:</source>
+        <translation>Время:</translation>
+    </message>
+    <message>
+        <location filename="gui/edit_alarm_dialog.ui" line="43"/>
+        <source>enable this alarm</source>
+        <translation>включить данный будильник</translation>
+    </message>
+    <message>
+        <location filename="gui/edit_alarm_dialog.ui" line="50"/>
+        <source>Days</source>
+        <translation>Дни</translation>
+    </message>
+    <message>
+        <location filename="gui/edit_alarm_dialog.ui" line="129"/>
+        <source>Sound</source>
+        <translation>Мелодия</translation>
+    </message>
+    <message>
+        <location filename="gui/edit_alarm_dialog.ui" line="135"/>
+        <source>File:</source>
+        <translation>Файл:</translation>
+    </message>
+    <message>
+        <location filename="gui/edit_alarm_dialog.ui" line="156"/>
+        <source>Volume:</source>
+        <translation>Громкость:</translation>
+    </message>
+    <message>
+        <location filename="gui/edit_alarm_dialog.cpp" line="148"/>
+        <source>Select sound</source>
+        <translation>Выберите звук</translation>
+    </message>
+    <message>
+        <location filename="gui/edit_alarm_dialog.cpp" line="150"/>
+        <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)</source>
+        <translatorcomment>фильтр файлов</translatorcomment>
+        <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a);;Все файлы (*.*)</translation>
     </message>
 </context>
 <context>
@@ -39,64 +92,24 @@
         <translation>Настройки будильника</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="29"/>
-        <source>Alarm time:</source>
-        <translation>Время:</translation>
+        <location filename="gui/settings_dialog.ui" line="23"/>
+        <source>Add new alarm</source>
+        <translation>Добавить новый будильник</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="52"/>
-        <source>enabled</source>
-        <translation>включен</translation>
+        <location filename="gui/settings_dialog.ui" line="37"/>
+        <source>Delete selected</source>
+        <translation>Удалить выбранное</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="61"/>
-        <source>Signal</source>
-        <translation>Сигнал</translation>
+        <location filename="gui/settings_dialog.ui" line="64"/>
+        <source>Disable all alarms</source>
+        <translation>Отключить все будильники</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="70"/>
-        <source>file</source>
-        <translation>файл</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="82"/>
-        <source>&lt;please select any mp3&gt;</source>
-        <translation>&lt;выберите файл&gt;</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="98"/>
-        <source>stream</source>
-        <translation>поток</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="108"/>
-        <source>Type stream URL here</source>
-        <translation>введите адрес здесь</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="120"/>
-        <source>Volume:</source>
-        <translation>Громкость:</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="168"/>
-        <source>Notification</source>
-        <translation>Уведомление</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="174"/>
-        <source>display notification</source>
-        <translation>показывать уведомление</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.cpp" line="117"/>
-        <source>Select sound file</source>
-        <translation>Выбор звукового файла</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.cpp" line="119"/>
-        <source>MP3 Files (*.mp3)</source>
-        <translation>файлы mp3 (*.mp3)</translation>
+        <location filename="gui/settings_dialog.ui" line="78"/>
+        <source>Remove all alarms</source>
+        <translation>Удалить все будильники</translation>
     </message>
 </context>
 </TS>

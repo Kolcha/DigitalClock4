@@ -46,6 +46,14 @@ PluginManager::PluginManager(QObject* parent) : QObject(parent)
   search_paths_.append("/usr/local/share/digital_clock/plugins");
   search_paths_.append(QDir::homePath() + "/.local/share/digital_clock/plugins");
 #endif
+  timer_.setInterval(500);
+  timer_.setSingleShot(false);
+  timer_.start();
+}
+
+PluginManager::~PluginManager()
+{
+  timer_.stop();
 }
 
 void PluginManager::SetInitData(const TPluginData& data)
@@ -166,8 +174,7 @@ void PluginManager::UnloadPlugin(const QString& name)
   Q_ASSERT(loader);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
-    disconnect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
-               plugin, SLOT(TimeUpdateListener()));
+    disconnect(&timer_, SIGNAL(timeout()), plugin, SLOT(TimeUpdateListener()));
     plugin->Stop();
     loader->unload();
     loaded_.erase(iter);
@@ -178,8 +185,7 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
 {
   // connect slots which are common for all plugins
   if (connected) {
-    connect(data_.window->GetDisplay(), SIGNAL(ImageNeeded(QString)),
-            plugin, SLOT(TimeUpdateListener()));
+    connect(&timer_, SIGNAL(timeout()), plugin, SLOT(TimeUpdateListener()));
     connect(this, SIGNAL(UpdateSettings(Option,QVariant)),
             plugin, SLOT(SettingsListener(Option,QVariant)));
   }

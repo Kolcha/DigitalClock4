@@ -44,9 +44,6 @@ public slots:
   void addTask(const TaskPtr& task);
   void delTask(const TaskPtr& task);
 
-  void commit();      // TODO: replace with Wrapper::Accept()
-  void reject();      // TODO: replace with Wrapper::Reject()
-
 private:
   QList<QDate> listDates() const;
 };

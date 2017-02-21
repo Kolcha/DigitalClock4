@@ -32,6 +32,13 @@
 
 namespace chime {
 
+static bool is_quiet_time(const QTime& c_time, const QTime& s_time, const QTime& e_time)
+{
+  if (s_time <= e_time) return (s_time <= c_time) && (c_time <= e_time);
+  return ((s_time <= c_time) && (c_time <= QTime(23, 59, 59, 999))) || ((QTime(0, 0) <= c_time) && (c_time <= e_time));
+}
+
+
 ChimePlugin::ChimePlugin() : started_(false), playback_allowed_(true), player_(nullptr)
 {
   InitTranslator(QLatin1String(":/chime/chime_"));
@@ -90,7 +97,7 @@ void ChimePlugin::TimeUpdateListener()
 
   QTime cur_time = QTime::currentTime();
 
-  if (cur_time.minute() == 0) {   // hour
+  if (cur_time.minute() == 0 && !isQuietTime(cur_time)) {   // hour
     if (playback_allowed_ && settings_->GetOption(OPT_EVERY_HOUR_ENABLED).toBool()) {
       player_->playlist()->clear();
       int count = 1;
@@ -108,7 +115,7 @@ void ChimePlugin::TimeUpdateListener()
     }
   }
 
-  if (cur_time.minute() % 15 == 0 && cur_time.minute() != 0) {    // quarter
+  if (cur_time.minute() % 15 == 0 && cur_time.minute() != 0 && !isQuietTime(cur_time)) {    // quarter
     if (playback_allowed_ && settings_->GetOption(OPT_QUARTER_HOUR_ENABLED).toBool()) {
       player_->playlist()->clear();
       int count = 1;
@@ -125,6 +132,16 @@ void ChimePlugin::TimeUpdateListener()
   }
 
   playback_allowed_ = (cur_time.minute() % 15 != 0);
+}
+
+bool ChimePlugin::isQuietTime(const QTime& cur_time)
+{
+  if (settings_->GetOption(OPT_QUIET_HOURS_ENABLED).toBool()) {
+    QTime qs_time = settings_->GetOption(OPT_QUIET_HOURS_START).toTime();
+    QTime qe_time = settings_->GetOption(OPT_QUIET_HOURS_END).toTime();
+    return is_quiet_time(cur_time, qs_time, qe_time);
+  }
+  return false;
 }
 
 } // namespace chime

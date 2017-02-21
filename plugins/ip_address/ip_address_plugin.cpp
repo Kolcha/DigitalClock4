@@ -54,7 +54,6 @@ void IpAddressPlugin::Configure()
 QWidget* IpAddressPlugin::InitWidget(QGridLayout* layout)
 {
   msg_label_ = new QLabel();
-  msg_label_->setAlignment(Qt::AlignCenter);
   layout->addWidget(msg_label_, layout->rowCount(), 0, 1, layout->columnCount());
   return msg_label_;
 }

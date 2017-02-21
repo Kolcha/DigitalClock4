@@ -85,6 +85,15 @@ void BaseSettingsWidget::InitWidgets(const QMap<WidgetPluginOption, QVariant>& c
         break;
       }
 
+      case OPT_ALIGNMENT:
+      {
+        Qt::Alignment c_align = static_cast<Qt::Alignment>(iter.value().toInt());
+        ui->align_left_rbtn->setChecked(c_align == Qt::AlignLeft);
+        ui->align_center_rbtn->setChecked(c_align == Qt::AlignCenter);
+        ui->align_right_rbtn->setChecked(c_align == Qt::AlignRight);
+        break;
+      }
+
       case OPT_USE_CUSTOM_COLOR:
         ui->use_custom_color->setChecked(iter.value().toBool());
         break;
@@ -124,6 +133,21 @@ void BaseSettingsWidget::on_font_autosize_clicked()
 void BaseSettingsWidget::on_clock_zoom_clicked()
 {
   emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_CLOCK_ZOOM));
+}
+
+void BaseSettingsWidget::on_align_left_rbtn_clicked()
+{
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignLeft));
+}
+
+void BaseSettingsWidget::on_align_center_rbtn_clicked()
+{
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignCenter));
+}
+
+void BaseSettingsWidget::on_align_right_rbtn_clicked()
+{
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignRight));
 }
 
 void BaseSettingsWidget::on_use_custom_color_clicked(bool checked)

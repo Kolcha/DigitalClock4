@@ -58,7 +58,7 @@ void Schedule::Start()
   connect(backend_, &TasksStorage::tasksLoaded, invoker_, &TasksInvoker::setDailyTasks);
   connect(invoker_, &TasksInvoker::dateChanged, backend_, &TasksStorage::LoadTasks);
   connect(invoker_, &TasksInvoker::completed, backend_, &TasksStorage::delTask);
-  connect(invoker_, &TasksInvoker::done, backend_, &TasksStorage::commit);
+  connect(invoker_, &TasksInvoker::done, backend_, &TasksStorage::Accept);
   connect(invoker_, &TasksInvoker::completed, this, &Schedule::TaskCompleted);
 
   invoker_->start();
@@ -81,8 +81,8 @@ void Schedule::Configure()
   connect(dlg, &ScheduleDialog::dateChanged, backend_, &TasksStorage::LoadTasks);
   connect(dlg, &ScheduleDialog::taskCreated, backend_, &TasksStorage::addTask);
   connect(dlg, &ScheduleDialog::taskDeleted, backend_, &TasksStorage::delTask);
-  connect(dlg, &ScheduleDialog::accepted, backend_, &TasksStorage::commit);
-  connect(dlg, &ScheduleDialog::rejected, backend_, &TasksStorage::reject);
+  connect(dlg, &ScheduleDialog::accepted, backend_, &TasksStorage::Accept);
+  connect(dlg, &ScheduleDialog::rejected, backend_, &TasksStorage::Reject);
 
   connect(dlg, &ScheduleDialog::accepted, dlg, &ScheduleDialog::deleteLater);
   connect(dlg, &ScheduleDialog::rejected, dlg, &ScheduleDialog::deleteLater);

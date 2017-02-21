@@ -78,6 +78,10 @@ private slots:
   void on_font_autosize_clicked();
   void on_clock_zoom_clicked();
 
+  void on_align_left_rbtn_clicked();
+  void on_align_center_rbtn_clicked();
+  void on_align_right_rbtn_clicked();
+
   void on_use_custom_color_clicked(bool checked);
   void on_custom_color_button_clicked();
 

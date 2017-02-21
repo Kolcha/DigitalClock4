@@ -100,6 +100,9 @@ QWidget* QuickNotePlugin::InitWidget(QGridLayout* layout)
     settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
     settings_->Save();
   });
+  using ::plugin::OptionKey;
+  using ::plugin::OPT_ALIGNMENT;
+  msg_widget_->setAlignment(static_cast<Qt::Alignment>(settings_->GetOption(OptionKey(OPT_ALIGNMENT, plg_name_)).toInt()));
   msg_widget_->setIconColor(msg_color_);
   connect(msg_widget_, &MessageWidget::textChanged, this, &QuickNotePlugin::TimeUpdateListener);
   connect(settings_, &PluginSettings::OptionChanged, this, &QuickNotePlugin::SettingsUpdateListener);
@@ -130,6 +133,9 @@ void QuickNotePlugin::SettingsUpdateListener(const QString& key, const QVariant&
   using ::plugin::OPT_USE_CUSTOM_COLOR;
   using ::plugin::OPT_CUSTOM_COLOR;
 
+  if (key == OptionKey(::plugin::OPT_ALIGNMENT, plg_name_)) {
+    msg_widget_->setAlignment(static_cast<Qt::Alignment>(value.toInt()));
+  }
   if (key == OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)) {
     if (value.toBool()) {
       QColor cc = settings_->GetOption(OptionKey(OPT_CUSTOM_COLOR, plg_name_)).value<QColor>();
