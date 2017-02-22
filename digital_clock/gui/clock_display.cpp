@@ -29,7 +29,7 @@ namespace gui {
 
 ClockDisplay::ClockDisplay(QWidget* parent) :
   QLabel(parent),
-  sep_visible_(false), sep_flashes_(true)
+  sep_visible_(false), sep_flashes_(true), url_enabled_(false)
 {
   setAlignment(Qt::AlignCenter);
 }

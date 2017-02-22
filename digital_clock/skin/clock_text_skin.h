@@ -28,7 +28,7 @@ namespace core {
 class TextSkin : public ::skin_draw::TextSkin, public BaseSkin
 {
 public:
-  TextSkin(const QFont& font);
+  explicit TextSkin(const QFont& font);
 
 protected:
   void ProcSeparators();

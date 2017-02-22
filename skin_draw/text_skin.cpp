@@ -26,7 +26,7 @@ namespace skin_draw {
 class TextImageCache : public IImageCache
 {
 public:
-  TextImageCache(TextSkin* parent) : parent_(parent) {}
+  explicit TextImageCache(TextSkin* parent) : parent_(parent) {}
 
   ISkin::QPixmapPtr GetImage(const QString& str, int idx)
   {

@@ -30,7 +30,7 @@ namespace core {
 class RasterSkin : public ::skin_draw::RasterSkin, public BaseSkin
 {
 public:
-  RasterSkin(const QDir& skin_root);
+  explicit RasterSkin(const QDir& skin_root);
 
 protected:
   void ProcSeparators();

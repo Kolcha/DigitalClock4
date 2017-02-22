@@ -34,7 +34,7 @@ class PluginInfoDialog : public QDialog
   Q_OBJECT
 
 public:
-  PluginInfoDialog(QWidget* parent = 0);
+  explicit PluginInfoDialog(QWidget* parent = 0);
   ~PluginInfoDialog();
 
 public slots:

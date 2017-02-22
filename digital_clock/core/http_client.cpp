@@ -29,6 +29,7 @@ namespace core {
 
 HttpClient::HttpClient(QObject* parent) :
   QObject(parent),
+  reply_(nullptr),
   is_running_(false)
 {
 }

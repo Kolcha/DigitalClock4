@@ -27,7 +27,7 @@
 
 namespace tray_color {
 
-TrayColor::TrayColor()
+TrayColor::TrayColor() : tray_icon_(nullptr)
 {
   is_enabled_ = false;
 
