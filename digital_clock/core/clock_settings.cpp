@@ -148,7 +148,7 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     // misc settings
     case OPT_CLOCK_URL_ENABLED:     return false;
     case OPT_CLOCK_URL_STRING:      return QString("http://digitalclock4.sourceforge.net/");
-    case OPT_FULLSCREEN_IGNORE_LST: return QStringList();
+    case OPT_FULLSCREEN_IGNORE_LST: return QStringList() << "Chrome_WidgetWin_0" << "CEF-OSR-WIDGET";
     case OPT_BETTER_STAY_ON_TOP:    return false;
     case OPT_SHOW_HIDE_ENABLED:     return true;
     case OPT_EXPORT_STATE:          return true;
