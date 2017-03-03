@@ -18,6 +18,9 @@
 
 #include "alarm_item.h"
 
+#include <QDir>
+#include <QFileInfo>
+
 namespace alarm_plugin {
 
 AlarmItem::AlarmItem(QObject* parent) :
@@ -68,6 +71,13 @@ QSet<Qt::DayOfWeek> AlarmItem::days() const
 bool AlarmItem::isEnabled() const
 {
   return is_enabled_;
+}
+
+QString AlarmItem::lastMediaDir() const
+{
+  if (media().isValid() && media().isLocalFile())
+    return QFileInfo(media().toLocalFile()).absolutePath();
+  return QDir::homePath();
 }
 
 bool AlarmItem::idCompare(const AlarmItem* a, const AlarmItem* b)
