@@ -25,6 +25,8 @@
 
 #include "plugin_settings.h"
 
+#include "core/ip_addres_settings.h"
+
 #include "gui/settings_dialog.h"
 
 namespace ip_address {
@@ -51,6 +53,11 @@ void IpAddressPlugin::Configure()
   dialog->show();
 }
 
+void IpAddressPlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults)
+{
+  InitDefaults(defaults);
+}
+
 QWidget* IpAddressPlugin::InitWidget(QGridLayout* layout)
 {
   msg_label_ = new QLabel();
@@ -67,8 +74,9 @@ QString IpAddressPlugin::GetWidgetText()
 {
   QString ip_list;
 
-  foreach (const QNetworkInterface& iface, QNetworkInterface::allInterfaces()) {
-    if (iface.flags() & QNetworkInterface::IsLoopBack) continue;
+  for (auto& iname : settings_->GetOption(OPT_INTERNAL_INTERFACES_LIST).toStringList()) {
+    QNetworkInterface iface = QNetworkInterface::interfaceFromName(iname);
+    if (!iface.isValid()) continue;
     if (iface.flags() & QNetworkInterface::IsUp) {
       foreach (const QNetworkAddressEntry& addren, iface.addressEntries()) {
         if (addren.ip().protocol() == QAbstractSocket::IPv4Protocol) {

@@ -38,6 +38,7 @@ public slots:
   void Configure();
 
 protected:
+  void InitSettingsDefaults(QSettings::SettingsMap* defaults);
   QWidget* InitWidget(QGridLayout* layout);
   void DisplayImage(const QImage& image);
   QString GetWidgetText();

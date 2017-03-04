@@ -30,10 +30,14 @@ TARGET = ip_address
 
 SOURCES += \
     ip_address_plugin.cpp \
+    core/ip_addres_settings.cpp \
+    core/net_interfaces_model.cpp \
     gui/settings_dialog.cpp
 
 HEADERS += \
     ip_address_plugin.h \
+    core/ip_addres_settings.h \
+    core/net_interfaces_model.h \
     gui/settings_dialog.h
 
 FORMS += \
