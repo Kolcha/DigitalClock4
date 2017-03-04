@@ -34,13 +34,13 @@ class NetInterfacesModel : public QAbstractListModel
   Q_PROPERTY(QStringList checkedInterfaces READ getCheckedInterfaces WRITE setCheckedInterfaces NOTIFY checkedInterfacesChanged)
 
 public:
-  explicit NetInterfacesModel(QObject *parent = 0);
+  explicit NetInterfacesModel(QObject* parent = 0);
 
-  int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+  int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 
-  QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+  QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 
-  bool setData(const QModelIndex &index, const QVariant &value,
+  bool setData(const QModelIndex& index, const QVariant& value,
                int role = Qt::EditRole) override;
 
   Qt::ItemFlags flags(const QModelIndex& index) const override;

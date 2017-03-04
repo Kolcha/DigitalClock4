@@ -20,19 +20,19 @@
 
 namespace ip_address {
 
-NetInterfacesModel::NetInterfacesModel(QObject *parent)
+NetInterfacesModel::NetInterfacesModel(QObject* parent)
   : QAbstractListModel(parent)
 {
   interfaces_ = QNetworkInterface::allInterfaces();
 }
 
-int NetInterfacesModel::rowCount(const QModelIndex &parent) const
+int NetInterfacesModel::rowCount(const QModelIndex& parent) const
 {
   if (parent.isValid()) return 0;
   return interfaces_.size();
 }
 
-QVariant NetInterfacesModel::data(const QModelIndex &index, int role) const
+QVariant NetInterfacesModel::data(const QModelIndex& index, int role) const
 {
   if (!index.isValid()) return QVariant();
 
@@ -49,7 +49,7 @@ QVariant NetInterfacesModel::data(const QModelIndex &index, int role) const
   return QVariant();
 }
 
-bool NetInterfacesModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool NetInterfacesModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
   if (data(index, role) != value) {
     if (role == Qt::CheckStateRole) {
@@ -66,7 +66,7 @@ bool NetInterfacesModel::setData(const QModelIndex &index, const QVariant &value
   return false;
 }
 
-Qt::ItemFlags NetInterfacesModel::flags(const QModelIndex &index) const
+Qt::ItemFlags NetInterfacesModel::flags(const QModelIndex& index) const
 {
   if (!index.isValid()) return Qt::NoItemFlags;
 
