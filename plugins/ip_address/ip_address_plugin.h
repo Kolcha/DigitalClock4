@@ -43,8 +43,12 @@ protected:
   void DisplayImage(const QImage& image);
   QString GetWidgetText();
 
+private slots:
+  void UpdateIPsList();
+
 private:
   QLabel* msg_label_;
+  QString last_ip_list_;
 };
 
 } // namespace ip_address

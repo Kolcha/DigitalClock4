@@ -21,6 +21,10 @@
 #include <QLabel>
 #include <QGridLayout>
 #include <QNetworkInterface>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QEventLoop>
 
 #include "plugin_settings.h"
 
@@ -57,6 +61,10 @@ void IpAddressPlugin::Configure()
   connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
   dialog->show();
+  // optimization: update IP addresses only by settings changes
+  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)), this, SLOT(UpdateIPsList()));
+  connect(dialog, SIGNAL(accepted()), this, SLOT(UpdateIPsList()));
+  connect(dialog, SIGNAL(rejected()), this, SLOT(UpdateIPsList()));
 }
 
 void IpAddressPlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults)
@@ -78,27 +86,51 @@ void IpAddressPlugin::DisplayImage(const QImage& image)
 
 QString IpAddressPlugin::GetWidgetText()
 {
-  QString ip_list;
+  // IP list is not initialized at first time
+  if (last_ip_list_.isEmpty()) UpdateIPsList();
+  return last_ip_list_;
+}
 
-  for (auto& iname : settings_->GetOption(OPT_INTERNAL_INTERFACES_LIST).toStringList()) {
-    QNetworkInterface iface = QNetworkInterface::interfaceFromName(iname);
-    if (!iface.isValid()) continue;
-    if (iface.flags() & QNetworkInterface::IsUp) {
-      foreach (const QNetworkAddressEntry& addren, iface.addressEntries()) {
-        if (addren.ip().protocol() == QAbstractSocket::IPv4Protocol) {
-          ip_list += addren.ip().toString() + '\n';
+void IpAddressPlugin::UpdateIPsList()
+{
+  last_ip_list_.clear();
+
+  if (settings_->GetOption(OPT_DISPLAY_INTERNAL_ADDRESSES).toBool()) {
+    // get interested internal addresses
+    for (auto& iname : settings_->GetOption(OPT_INTERNAL_INTERFACES_LIST).toStringList()) {
+      QNetworkInterface iface = QNetworkInterface::interfaceFromName(iname);
+      if (!iface.isValid()) continue;
+      if (iface.flags() & QNetworkInterface::IsUp) {
+        foreach (const QNetworkAddressEntry& addren, iface.addressEntries()) {
+          if (addren.ip().protocol() == QAbstractSocket::IPv4Protocol) {
+            last_ip_list_ += addren.ip().toString() + '\n';
+          }
         }
       }
     }
   }
 
-  if (!ip_list.isEmpty()) {
-    ip_list.chop(1);
-  } else {
-    ip_list = tr("<no interfaces found>");
+  if (settings_->GetOption(OPT_DISPLAY_EXTERNAL_ADDRESS).toBool()) {
+    // get external IP address
+    QNetworkAccessManager qnam;
+    QNetworkReply* reply = qnam.get(QNetworkRequest(QUrl("https://api.ipify.org/")));
+    QEventLoop ev_loop;
+    connect(reply, &QNetworkReply::finished, &ev_loop, &QEventLoop::quit);
+    ev_loop.exec();
+    if (reply->error() == QNetworkReply::NoError)
+      last_ip_list_ += QString(reply->readAll()) + '\n';
+    else
+      last_ip_list_ += reply->errorString() + '\n';
+    reply->deleteLater();
   }
 
-  return ip_list;
+  if (!last_ip_list_.isEmpty()) {
+    last_ip_list_.chop(1);
+  } else {
+    last_ip_list_ = tr("<no interfaces found>");
+  }
+
+  TimeUpdateListener();
 }
 
 } // namespace ip_address

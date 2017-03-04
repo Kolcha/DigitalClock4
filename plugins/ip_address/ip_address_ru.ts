@@ -4,17 +4,17 @@
 <context>
     <name>ip_address::IpAddressPlugin</name>
     <message>
-        <location filename="ip_address_plugin.cpp" line="36"/>
+        <location filename="ip_address_plugin.cpp" line="40"/>
         <source>IP address</source>
         <translation>IP адрес</translation>
     </message>
     <message>
-        <location filename="ip_address_plugin.cpp" line="37"/>
+        <location filename="ip_address_plugin.cpp" line="41"/>
         <source>Displays local IP address(es) under clock.</source>
         <translation>Отображает локальный(е) IP адрес(а) под часами.</translation>
     </message>
     <message>
-        <location filename="ip_address_plugin.cpp" line="98"/>
+        <location filename="ip_address_plugin.cpp" line="130"/>
         <source>&lt;no interfaces found&gt;</source>
         <translation>&lt;интерфейсы не найдены&gt;</translation>
     </message>
