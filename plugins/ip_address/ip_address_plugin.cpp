@@ -20,7 +20,6 @@
 
 #include <QLabel>
 #include <QGridLayout>
-#include <QVBoxLayout>
 #include <QNetworkInterface>
 
 #include "plugin_settings.h"
@@ -43,11 +42,18 @@ IpAddressPlugin::IpAddressPlugin() : msg_label_(nullptr)
 void IpAddressPlugin::Configure()
 {
   SettingsDialog* dialog = new SettingsDialog();
+  // load current settings to dialog
+  QSettings::SettingsMap curr_settings;
+  InitDefaults(&curr_settings);
+  for (auto iter = curr_settings.begin(); iter != curr_settings.end(); ++iter) {
+    *iter = settings_->GetOption(iter.key());
+  }
+  dialog->Init(curr_settings);
   // add widget with common settings configuration controls
-  QVBoxLayout* dlg_layout = qobject_cast<QVBoxLayout*>(dialog->layout());
-  Q_ASSERT(dlg_layout);
-  dlg_layout->insertWidget(dlg_layout->count() - 1, InitConfigWidget(dialog));
+  dialog->AddCommonWidget(InitConfigWidget(dialog));
   // connect main signals/slots
+  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
+          settings_, SLOT(SetOption(QString,QVariant)));
   connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
   dialog->show();

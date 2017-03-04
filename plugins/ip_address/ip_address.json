@@ -5,6 +5,6 @@
     "email" : "nick.korotysh@gmail.com",
     "configurable" : true,
     "settings_listener" : true,
-    "needs_in_timer" : false,
+    "needs_in_timer" : true,
     "needs_in_drawer" : true
 }

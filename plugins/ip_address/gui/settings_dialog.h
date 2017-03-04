@@ -21,7 +21,11 @@
 
 #include <QDialog>
 
+#include <QSettings>
+
 namespace ip_address {
+
+class NetInterfacesModel;
 
 namespace Ui {
 class SettingsDialog;
@@ -35,8 +39,21 @@ public:
   explicit SettingsDialog(QWidget* parent = 0);
   ~SettingsDialog();
 
+  void AddCommonWidget(QWidget* widget);
+
+  void Init(const QSettings::SettingsMap& settings);
+
+signals:
+  void OptionChanged(const QString&, const QVariant&);
+
+private slots:
+  void onInterfacesListChanged(const QStringList& ilst);
+  void on_show_internal_addr_cbox_clicked(bool checked);
+  void on_show_external_addr_cbox_clicked(bool checked);
+
 private:
   Ui::SettingsDialog* ui;
+  NetInterfacesModel* iface_model_;
 };
 
 
