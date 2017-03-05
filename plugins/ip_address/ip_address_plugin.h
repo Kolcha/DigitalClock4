@@ -23,6 +23,7 @@
 
 class QGridLayout;
 class QLabel;
+class QTimer;
 
 namespace ip_address {
 
@@ -35,6 +36,8 @@ public:
   IpAddressPlugin();
 
 public slots:
+  void Start();
+  void Stop();
   void Configure();
 
 protected:
@@ -48,6 +51,7 @@ private slots:
 
 private:
   QLabel* msg_label_;
+  QTimer* ip_update_timer_;
   QString last_ip_list_;
 };
 

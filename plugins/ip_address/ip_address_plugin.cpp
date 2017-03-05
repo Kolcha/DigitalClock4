@@ -20,6 +20,7 @@
 
 #include <QLabel>
 #include <QGridLayout>
+#include <QTimer>
 #include <QNetworkInterface>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
@@ -34,13 +35,29 @@
 
 namespace ip_address {
 
-IpAddressPlugin::IpAddressPlugin() : msg_label_(nullptr)
+IpAddressPlugin::IpAddressPlugin() : msg_label_(nullptr), ip_update_timer_(nullptr)
 {
   InitTranslator(QLatin1String(":/ip_address/ip_address_"));
   info_.display_name = tr("IP address");
   info_.description = tr("Displays local IP address(es) under clock.");
   InitIcon(":/ip_address/icon.svg");
   plg_name_ = QString("ip_address");
+}
+
+void IpAddressPlugin::Start()
+{
+  ::plugin::WidgetPluginBase::Start();
+  ip_update_timer_ = new QTimer();
+  connect(ip_update_timer_, &QTimer::timeout, this, &IpAddressPlugin::UpdateIPsList);
+  ip_update_timer_->setSingleShot(false);
+  ip_update_timer_->start(15 * 60 * 1000);
+}
+
+void IpAddressPlugin::Stop()
+{
+  ::plugin::WidgetPluginBase::Stop();
+  ip_update_timer_->stop();
+  ip_update_timer_->deleteLater();
 }
 
 void IpAddressPlugin::Configure()
