@@ -4,17 +4,17 @@
 <context>
     <name>ip_address::IpAddressPlugin</name>
     <message>
-        <location filename="ip_address_plugin.cpp" line="35"/>
+        <location filename="ip_address_plugin.cpp" line="41"/>
         <source>IP address</source>
         <translation>IP адрес</translation>
     </message>
     <message>
-        <location filename="ip_address_plugin.cpp" line="36"/>
+        <location filename="ip_address_plugin.cpp" line="42"/>
         <source>Displays local IP address(es) under clock.</source>
         <translation>Отображает локальный(е) IP адрес(а) под часами.</translation>
     </message>
     <message>
-        <location filename="ip_address_plugin.cpp" line="84"/>
+        <location filename="ip_address_plugin.cpp" line="147"/>
         <source>&lt;no interfaces found&gt;</source>
         <translation>&lt;интерфейсы не найдены&gt;</translation>
     </message>
@@ -23,8 +23,28 @@
     <name>ip_address::SettingsDialog</name>
     <message>
         <location filename="gui/settings_dialog.ui" line="14"/>
-        <source>Settings</source>
-        <translation>Настройки</translation>
+        <source>IP Address plugin Settings</source>
+        <translation>Настройки плагина &quot;IP адрес&quot;</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="24"/>
+        <source>Network</source>
+        <translation>Сеть</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="39"/>
+        <source>Display internal address(es)</source>
+        <translation>Показывать внутренний адрес(а)</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.ui" line="52"/>
+        <source>Display external address</source>
+        <translation>Показывать внешний адрес</translation>
+    </message>
+    <message>
+        <location filename="gui/settings_dialog.cpp" line="46"/>
+        <source>Appearance</source>
+        <translation>Вид</translation>
     </message>
 </context>
 </TS>

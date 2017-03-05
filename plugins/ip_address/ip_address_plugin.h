@@ -23,6 +23,7 @@
 
 class QGridLayout;
 class QLabel;
+class QTimer;
 
 namespace ip_address {
 
@@ -35,15 +36,23 @@ public:
   IpAddressPlugin();
 
 public slots:
+  void Start();
+  void Stop();
   void Configure();
 
 protected:
+  void InitSettingsDefaults(QSettings::SettingsMap* defaults);
   QWidget* InitWidget(QGridLayout* layout);
   void DisplayImage(const QImage& image);
   QString GetWidgetText();
 
+private slots:
+  void UpdateIPsList();
+
 private:
   QLabel* msg_label_;
+  QTimer* ip_update_timer_;
+  QString last_ip_list_;
 };
 
 } // namespace ip_address
