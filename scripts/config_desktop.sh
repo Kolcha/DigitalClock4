@@ -27,7 +27,12 @@ then
 
   chmod 755 $DESKTOP_FILE
 
-  LOCAL_APPS_DIR="$HOME/.local/share/applications"
+  if [[ $UID -ne 0 ]]
+  then
+    LOCAL_APPS_DIR="$HOME/.local/share/applications"
+  else
+    LOCAL_APPS_DIR="/usr/local/share/applications"
+  fi
   [ -d $LOCAL_APPS_DIR ] || mkdir -p $LOCAL_APPS_DIR
   ln -sf "$PWD/$DESKTOP_FILE" "$LOCAL_APPS_DIR/$DESKTOP_FILE"
 fi
@@ -36,31 +41,8 @@ fi
 if [[ "$1" == "--help" ]]
 then
   echo "Supported options:"
-  echo "  --autostart <arg>  : enable/disable clock autostart"
-  echo "      <arg> values: 'enable'/'disable'"
-  echo ""
   echo "  --icon-color <arg> : change application icon color"
   echo "      <arg> value : hex HTML color without '#'"
-  exit
-fi
-
-if [[ "$1" == "--autostart" ]]
-then
-  STARTUP_DIR="$HOME/.config/autostart"
-  case "$2" in
-    "enable")
-      [ -d "$STARTUP_DIR" ] || mkdir -p "$STARTUP_DIR"
-      ln -s "$PWD/$DESKTOP_FILE" "$STARTUP_DIR/$DESKTOP_FILE"
-    ;;
-
-    "disable")
-      unlink "$STARTUP_DIR/$DESKTOP_FILE"
-    ;;
-
-    *)
-      echo "ivalid argument"
-    ;;
-  esac
   exit
 fi
 
@@ -75,4 +57,3 @@ then
   sed -i "s/fill=\"\#[A-Fa-f0-9]\{6\}\"/fill=\"\#$color\"/g" "$APP_ICON"
   exit
 fi
-
