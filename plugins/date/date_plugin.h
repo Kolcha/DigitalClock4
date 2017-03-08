@@ -21,6 +21,8 @@
 
 #include "widget_plugin_base.h"
 
+#include <QTimeZone>
+
 class QGridLayout;
 class QLabel;
 
@@ -34,8 +36,12 @@ class DatePlugin : public ::plugin::WidgetPluginBase
 public:
   DatePlugin();
 
+  void Init(const QMap<Option, QVariant>& current_settings);
+
 public slots:
   void Configure();
+
+  void SettingsListener(Option option, const QVariant& new_value);
 
 protected:
   void InitSettingsDefaults(QSettings::SettingsMap* defaults);
@@ -45,6 +51,8 @@ protected:
 
 private:
   QLabel* msg_label_;
+  bool local_time_;
+  QTimeZone time_zone_;
 };
 
 } // namespace date
