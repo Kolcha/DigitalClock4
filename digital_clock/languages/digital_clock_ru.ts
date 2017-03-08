@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::MainWindow</name>
     <message>
-        <location filename="../main_window.cpp" line="455"/>
-        <location filename="../main_window.cpp" line="465"/>
-        <location filename="../main_window.cpp" line="475"/>
+        <location filename="../main_window.cpp" line="457"/>
+        <location filename="../main_window.cpp" line="467"/>
+        <location filename="../main_window.cpp" line="477"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="456"/>
+        <location filename="../main_window.cpp" line="458"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="466"/>
+        <location filename="../main_window.cpp" line="468"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="476"/>
+        <location filename="../main_window.cpp" line="478"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="488"/>
+        <location filename="../main_window.cpp" line="490"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>

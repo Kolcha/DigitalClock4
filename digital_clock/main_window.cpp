@@ -121,6 +121,8 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   timer_.setInterval(500);
   timer_.setSingleShot(false);
   timer_.start();
+
+  connect(QApplication::desktop(), &QDesktopWidget::resized, this, &MainWindow::LoadState);
 }
 
 MainWindow::~MainWindow()
