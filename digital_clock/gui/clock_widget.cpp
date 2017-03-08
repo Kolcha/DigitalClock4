@@ -72,6 +72,14 @@ void ClockWidget::ApplyOption(Option option, const QVariant& value)
       display_->SetTimeFormat(value.toString());
       break;
 
+    case OPT_DISPLAY_LOCAL_TIME:
+      display_->SetDisplayLocalTime(value.toBool());
+      break;
+
+    case OPT_TIME_ZONE:
+      display_->SetTimeZone(QTimeZone(value.toByteArray()));
+      break;
+
     case OPT_ZOOM:
       drawer_->SetZoom(value.toReal());
       break;
