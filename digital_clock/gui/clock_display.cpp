@@ -18,7 +18,7 @@
 
 #include "clock_display.h"
 
-#include <QTime>
+#include <QDateTime>
 #include <QLocale>
 #include <QRegExp>
 #include <QMouseEvent>
@@ -29,7 +29,8 @@ namespace gui {
 
 ClockDisplay::ClockDisplay(QWidget* parent) :
   QLabel(parent),
-  sep_visible_(false), sep_flashes_(true), url_enabled_(false)
+  sep_visible_(false), sep_flashes_(true), url_enabled_(false),
+  local_time_(true), time_zone_(QTimeZone::systemTimeZone())
 {
   setAlignment(Qt::AlignCenter);
 }
@@ -60,6 +61,18 @@ void ClockDisplay::SetTimeFormat(const QString& format)
   TimeoutHandler(); // to emit redraw request
 }
 
+void ClockDisplay::SetDisplayLocalTime(bool set)
+{
+  local_time_ = set;
+  TimeoutHandler();
+}
+
+void ClockDisplay::SetTimeZone(const QTimeZone& tz)
+{
+  time_zone_ = tz;
+  TimeoutHandler();
+}
+
 void ClockDisplay::SetURLEnabled(bool enable)
 {
   url_enabled_ = enable;
@@ -84,7 +97,9 @@ void ClockDisplay::TimeoutHandler()
     SetTimeFormat(time_format);
   }
   QLocale c_locale(QLocale::C, QLocale::AnyCountry);
-  QString str_time = c_locale.toString(QTime::currentTime(), time_format_);
+  QDateTime dt = QDateTime::currentDateTime();
+  if (!local_time_) dt = dt.toTimeZone(time_zone_);
+  QString str_time = c_locale.toString(dt.time(), time_format_);
 
   QList<int> seps_pos;
   for (int i = 0; i < str_time.length(); ++i) {

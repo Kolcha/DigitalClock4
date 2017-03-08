@@ -24,6 +24,7 @@
 #include <QFileDialog>
 #include <QFontDialog>
 #include <QFileInfo>
+#include <QTimeZone>
 
 #include "skin_drawer.h"
 #include "settings_storage.h"
@@ -62,7 +63,6 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* st
   ui->skin_info_btn->setVisible(false);  // temporary, not implemented
   ui->defaults_bth->setVisible(false);   // temporary, not implemented
 #ifndef Q_OS_WIN
-  ui->fullscreen_detect->setVisible(false);   // supported only on Windows
   ui->fullscreen_detect_2->setVisible(false); // supported only on Windows
 #endif
 #ifndef Q_OS_LINUX
@@ -221,9 +221,13 @@ void SettingsDialog::InitControls()
   ui->clock_url_enabled->setChecked(config_->GetValue(OPT_CLOCK_URL_ENABLED).toBool());
   ui->clock_url_edit->setText(config_->GetValue(OPT_CLOCK_URL_STRING).toString());
 
-  ui->fullscreen_detect->setChecked(config_->GetValue(OPT_FULLSCREEN_DETECT).toBool());
   ui->show_hide_enable->setChecked(config_->GetValue(OPT_SHOW_HIDE_ENABLED).toBool());
   ui->export_state->setChecked(config_->GetValue(OPT_EXPORT_STATE).toBool());
+
+  ui->change_time_zone_cbx->setChecked(!config_->GetValue(OPT_DISPLAY_LOCAL_TIME).toBool());
+  for (auto& tz : QTimeZone::availableTimeZoneIds())
+    ui->time_zone_box->addItem(QString(tz), tz);
+  ui->time_zone_box->setCurrentText(QString(config_->GetValue(OPT_TIME_ZONE).toByteArray()));
 
   // "Plugins" tab
   active_plugins_ = config_->GetValue(OPT_PLUGINS).toStringList();
@@ -502,11 +506,6 @@ void digital_clock::gui::SettingsDialog::on_browse_url_file_btn_clicked()
   if (url.isValid()) ui->clock_url_edit->setText(url.toString());
 }
 
-void digital_clock::gui::SettingsDialog::on_fullscreen_detect_clicked(bool checked)
-{
-  emit OptionChanged(OPT_FULLSCREEN_DETECT, checked);
-}
-
 void digital_clock::gui::SettingsDialog::on_show_hide_enable_clicked(bool checked)
 {
   emit OptionChanged(OPT_SHOW_HIDE_ENABLED, checked);
@@ -530,4 +529,14 @@ void digital_clock::gui::SettingsDialog::on_show_on_all_workspaces_clicked(bool 
 void digital_clock::gui::SettingsDialog::on_better_stay_on_top_clicked(bool checked)
 {
   emit OptionChanged(OPT_BETTER_STAY_ON_TOP, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_change_time_zone_cbx_clicked(bool checked)
+{
+  emit OptionChanged(OPT_DISPLAY_LOCAL_TIME, !checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_time_zone_box_activated(int index)
+{
+  emit OptionChanged(OPT_TIME_ZONE, ui->time_zone_box->itemData(index, Qt::UserRole).toByteArray());
 }

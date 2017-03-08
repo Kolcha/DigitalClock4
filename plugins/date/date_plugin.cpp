@@ -21,7 +21,7 @@
 #include <QLabel>
 #include <QGridLayout>
 #include <QVBoxLayout>
-#include <QDate>
+#include <QDateTime>
 
 #include "plugin_settings.h"
 
@@ -30,13 +30,21 @@
 
 namespace date {
 
-DatePlugin::DatePlugin() : msg_label_(nullptr)
+DatePlugin::DatePlugin() : msg_label_(nullptr), local_time_(true)
 {
   InitTranslator(QLatin1String(":/date/date_"));
   info_.display_name = tr("Date");
   info_.description = tr("Allows to display current date under clock.");
   InitIcon(":/date/icon.svg");
   plg_name_ = QString("date");
+  time_zone_ = QTimeZone::systemTimeZone();
+}
+
+void DatePlugin::Init(const QMap<Option, QVariant>& current_settings)
+{
+  ::plugin::WidgetPluginBase::Init(current_settings);
+  local_time_ = current_settings.value(OPT_DISPLAY_LOCAL_TIME, local_time_).toBool();
+  time_zone_ = QTimeZone(current_settings.value(OPT_TIME_ZONE, time_zone_.id()).toByteArray());
 }
 
 void DatePlugin::Configure()
@@ -61,6 +69,21 @@ void DatePlugin::Configure()
   dialog->show();
 }
 
+void DatePlugin::SettingsListener(Option option, const QVariant& new_value)
+{
+  if (option == OPT_DISPLAY_LOCAL_TIME) {
+    local_time_ = new_value.toBool();
+    TimeUpdateListener();
+  }
+
+  if (option == OPT_TIME_ZONE) {
+    time_zone_ = QTimeZone(new_value.toByteArray());
+    TimeUpdateListener();
+  }
+
+  ::plugin::WidgetPluginBase::SettingsListener(option, new_value);
+}
+
 void DatePlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults)
 {
   InitDefaults(defaults);
@@ -81,7 +104,9 @@ void DatePlugin::DisplayImage(const QImage& image)
 QString DatePlugin::GetWidgetText()
 {
   QString date;
-  QDate d_date = QDate::currentDate();
+  QDateTime dt = QDateTime::currentDateTime();
+  if (!local_time_) dt = dt.toTimeZone(time_zone_);
+  QDate d_date = dt.date();
 
   switch (static_cast<FormatType>(settings_->GetOption(OPT_DATE_FORMAT_TYPE).toInt())) {
     case FormatType::FT_INT:

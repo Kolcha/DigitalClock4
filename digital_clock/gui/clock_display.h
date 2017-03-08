@@ -21,6 +21,8 @@
 
 #include <QLabel>
 
+#include <QTimeZone>
+
 namespace digital_clock {
 namespace gui {
 
@@ -41,6 +43,8 @@ public slots:
   void DrawImage(const QImage& image);
   void SetSeparatorFlash(bool set);
   void SetTimeFormat(const QString& format);
+  void SetDisplayLocalTime(bool set);
+  void SetTimeZone(const QTimeZone& tz);
 
   void SetURLEnabled(bool enable);
   void SetURL(const QString& url);
@@ -61,6 +65,9 @@ private:
   QString url_string_;
 
   QPoint drag_position_;
+
+  bool local_time_;
+  QTimeZone time_zone_;
 };
 
 } // namespace gui

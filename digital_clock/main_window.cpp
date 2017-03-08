@@ -189,6 +189,8 @@ void MainWindow::Reset()
   ApplyOption(OPT_TIME_FORMAT, app_config_->GetValue(OPT_TIME_FORMAT));
   clock_widget_->blockSignals(true);
   ApplyOption(OPT_SEPARATOR_FLASH, app_config_->GetValue(OPT_SEPARATOR_FLASH));
+  ApplyOption(OPT_TIME_ZONE, app_config_->GetValue(OPT_TIME_ZONE));
+  ApplyOption(OPT_DISPLAY_LOCAL_TIME, app_config_->GetValue(OPT_DISPLAY_LOCAL_TIME));
   ApplyOption(OPT_ZOOM, app_config_->GetValue(OPT_ZOOM));
   ApplyOption(OPT_COLOR, app_config_->GetValue(OPT_COLOR));
   ApplyOption(OPT_TEXTURE, app_config_->GetValue(OPT_TEXTURE));

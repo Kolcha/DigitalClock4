@@ -21,6 +21,7 @@
 #include <QFont>
 #include <QColor>
 #include <QStringList>
+#include <QTimeZone>
 
 #include "settings_keys.h"
 
@@ -45,6 +46,8 @@ QMap<Option, QVariant> ClockSettings::GetSettings() const
   all_settings[OPT_BACKGROUND_COLOR]      = GetValue(OPT_BACKGROUND_COLOR);
   all_settings[OPT_FULLSCREEN_DETECT]     = GetValue(OPT_FULLSCREEN_DETECT);
   all_settings[OPT_SHOW_ON_ALL_DESKTOPS]  = GetValue(OPT_SHOW_ON_ALL_DESKTOPS);
+  all_settings[OPT_DISPLAY_LOCAL_TIME]    = GetValue(OPT_DISPLAY_LOCAL_TIME);
+  all_settings[OPT_TIME_ZONE]             = GetValue(OPT_TIME_ZONE);
   all_settings[OPT_SKIN_NAME]             = GetValue(OPT_SKIN_NAME);
   all_settings[OPT_FONT]                  = GetValue(OPT_FONT);
   all_settings[OPT_ZOOM]                  = GetValue(OPT_ZOOM);
@@ -84,6 +87,8 @@ QString ClockSettings::GetKey(const int id) const
     case OPT_BACKGROUND_COLOR:      return "clock/background_color";
     case OPT_FULLSCREEN_DETECT:     return "clock/fullscreen_detect";
     case OPT_SHOW_ON_ALL_DESKTOPS:  return "clock/show_on_all_desktops";
+    case OPT_DISPLAY_LOCAL_TIME:    return "clock/local_time";
+    case OPT_TIME_ZONE:             return "clock/time_zone";
     // skin settings
     case OPT_SKIN_NAME:             return "skin/name";
     case OPT_FONT:                  return "skin/font";
@@ -128,6 +133,8 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_BACKGROUND_COLOR:      return QVariant::fromValue<QColor>(Qt::white);
     case OPT_FULLSCREEN_DETECT:     return false;
     case OPT_SHOW_ON_ALL_DESKTOPS:  return false;
+    case OPT_DISPLAY_LOCAL_TIME:    return true;
+    case OPT_TIME_ZONE:             return QTimeZone::systemTimeZoneId();
     // skin settings
     case OPT_SKIN_NAME:             return QString("Electronic (default)");
     case OPT_FONT:                  return QFont();
