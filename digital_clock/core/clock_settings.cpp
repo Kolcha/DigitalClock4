@@ -152,7 +152,7 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     // updater settings
     case OPT_USE_AUTOUPDATE:        return true;
     case OPT_UPDATE_PERIOD:         return 3;
-    case OPT_CHECK_FOR_BETA:        return *(QApplication::applicationVersion().rbegin()) == "+";
+    case OPT_CHECK_FOR_BETA:        return *(QApplication::applicationVersion().rbegin()) == '+';
     // misc settings
     case OPT_CLOCK_URL_ENABLED:     return false;
     case OPT_CLOCK_URL_STRING:      return QString("http://digitalclock4.sourceforge.net/");
