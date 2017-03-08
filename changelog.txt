@@ -1,3 +1,32 @@
+Whats new in 4.5.4:
+-------------------
+Features:
+ - alternative (possible much better) 'stay on top' for Linux
+ - show clock on all workspaces/desktops on Linux/Mac
+ - autodetect fullscreen apps on Windows
+ - change clock time zone
+
+Core:
+ - separated timer for plugins
+ - compiled with GCC 5.4.0 on linux
+
+GUI:
+ - decreased spacing in few dialogs
+ - macOS dark menu bar support (make icon white)
+ - don't show menu icons on macOS
+ - added tab with experimental features
+ - restore clock position after screen resolution change
+
+Plugins:
+ - new alarm plugin with multiple alarms support
+ - chime: quiet time feature
+ - alignment support for plugins which have widgets
+ - ip_addres: ability to choose what addresses will be displayed
+
+General:
+ - linux: config_desktop.sh now can be run as root
+
+
 Whats new in 4.5.3:
 -------------------
 Core:
