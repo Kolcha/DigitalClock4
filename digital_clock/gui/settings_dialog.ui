@@ -800,38 +800,32 @@
         </widget>
        </item>
        <item row="4" column="0" colspan="2">
-        <widget class="QCheckBox" name="fullscreen_detect">
-         <property name="text">
-          <string>prevent appearing above fullscreen windows</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
         <widget class="QCheckBox" name="show_hide_enable">
          <property name="text">
           <string>display 'Show/Hide' menu item</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="2">
+       <item row="4" column="2">
+        <widget class="QCheckBox" name="change_time_zone_cbx">
+         <property name="text">
+          <string>display time in another time zome</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
         <widget class="QCheckBox" name="export_state">
          <property name="text">
           <string>export state (e.g. position)</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0" colspan="2">
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+       <item row="5" column="2">
+        <widget class="QComboBox" name="time_zone_box">
+         <property name="enabled">
+          <bool>false</bool>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -940,8 +934,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>486</x>
-     <y>372</y>
+     <x>571</x>
+     <y>436</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -956,8 +950,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>486</x>
-     <y>372</y>
+     <x>571</x>
+     <y>436</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -976,8 +970,8 @@
      <y>66</y>
     </hint>
     <hint type="destinationlabel">
-     <x>452</x>
-     <y>66</y>
+     <x>536</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -992,8 +986,8 @@
      <y>98</y>
     </hint>
     <hint type="destinationlabel">
-     <x>452</x>
-     <y>98</y>
+     <x>536</x>
+     <y>110</y>
     </hint>
    </hints>
   </connection>
@@ -1004,12 +998,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>419</x>
-     <y>317</y>
+     <x>496</x>
+     <y>375</y>
     </hint>
     <hint type="destinationlabel">
-     <x>443</x>
-     <y>317</y>
+     <x>525</x>
+     <y>380</y>
     </hint>
    </hints>
   </connection>
@@ -1020,12 +1014,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>278</x>
-     <y>218</y>
+     <x>335</x>
+     <y>264</y>
     </hint>
     <hint type="destinationlabel">
-     <x>309</x>
-     <y>219</y>
+     <x>365</x>
+     <y>262</y>
     </hint>
    </hints>
   </connection>
@@ -1036,12 +1030,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>278</x>
-     <y>248</y>
+     <x>335</x>
+     <y>299</y>
     </hint>
     <hint type="destinationlabel">
-     <x>309</x>
-     <y>249</y>
+     <x>365</x>
+     <y>297</y>
     </hint>
    </hints>
   </connection>
@@ -1052,8 +1046,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>278</x>
-     <y>248</y>
+     <x>335</x>
+     <y>299</y>
     </hint>
     <hint type="destinationlabel">
      <x>470</x>
@@ -1068,8 +1062,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>123</x>
-     <y>258</y>
+     <x>146</x>
+     <y>310</y>
     </hint>
     <hint type="destinationlabel">
      <x>204</x>
@@ -1084,8 +1078,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>157</x>
-     <y>234</y>
+     <x>180</x>
+     <y>282</y>
     </hint>
     <hint type="destinationlabel">
      <x>319</x>
@@ -1100,12 +1094,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>429</x>
-     <y>153</y>
+     <x>515</x>
+     <y>185</y>
     </hint>
     <hint type="destinationlabel">
-     <x>460</x>
-     <y>154</y>
+     <x>545</x>
+     <y>183</y>
     </hint>
    </hints>
   </connection>
@@ -1116,12 +1110,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>93</x>
-     <y>153</y>
+     <x>110</x>
+     <y>185</y>
     </hint>
     <hint type="destinationlabel">
-     <x>297</x>
-     <y>154</y>
+     <x>370</x>
+     <y>186</y>
     </hint>
    </hints>
   </connection>
@@ -1132,12 +1126,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>93</x>
-     <y>153</y>
+     <x>110</x>
+     <y>185</y>
     </hint>
     <hint type="destinationlabel">
-     <x>326</x>
-     <y>155</y>
+     <x>400</x>
+     <y>185</y>
     </hint>
    </hints>
   </connection>
@@ -1168,8 +1162,8 @@
      <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>461</x>
-     <y>86</y>
+     <x>549</x>
+     <y>101</y>
     </hint>
    </hints>
   </connection>
@@ -1196,12 +1190,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>91</x>
-     <y>306</y>
+     <x>114</x>
+     <y>379</y>
     </hint>
     <hint type="destinationlabel">
-     <x>141</x>
-     <y>308</y>
+     <x>184</x>
+     <y>377</y>
     </hint>
    </hints>
   </connection>
@@ -1212,12 +1206,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>67</x>
-     <y>256</y>
+     <x>87</x>
+     <y>323</y>
     </hint>
     <hint type="destinationlabel">
-     <x>103</x>
-     <y>258</y>
+     <x>195</x>
+     <y>324</y>
     </hint>
    </hints>
   </connection>
@@ -1228,44 +1222,28 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>64</x>
-     <y>252</y>
+     <x>84</x>
+     <y>323</y>
     </hint>
     <hint type="destinationlabel">
-     <x>251</x>
-     <y>251</y>
+     <x>548</x>
+     <y>322</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>fullscreen_detect</sender>
+   <sender>change_time_zone_cbx</sender>
    <signal>clicked(bool)</signal>
-   <receiver>fullscreen_detect_2</receiver>
-   <slot>setChecked(bool)</slot>
+   <receiver>time_zone_box</receiver>
+   <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>178</x>
-     <y>353</y>
+     <x>404</x>
+     <y>359</y>
     </hint>
     <hint type="destinationlabel">
-     <x>290</x>
-     <y>56</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fullscreen_detect_2</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>fullscreen_detect</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>290</x>
-     <y>56</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>178</x>
-     <y>353</y>
+     <x>406</x>
+     <y>387</y>
     </hint>
    </hints>
   </connection>
