@@ -63,7 +63,7 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* st
   ui->skin_info_btn->setVisible(false);  // temporary, not implemented
   ui->defaults_bth->setVisible(false);   // temporary, not implemented
 #ifndef Q_OS_WIN
-  ui->fullscreen_detect_2->setVisible(false); // supported only on Windows
+  ui->fullscreen_detect->setVisible(false);   // supported only on Windows
 #endif
 #ifndef Q_OS_LINUX
   ui->better_stay_on_top->setVisible(false);  // supported only on Linux
@@ -206,16 +206,12 @@ void SettingsDialog::InitControls()
   ui->space_slider->setToolTip(QString::number(spacing));
 
   ui->update_period_box->clear();
-  // TODO: remove 'for' and 'update_periods_'
-  QMap<qint64, QString> update_periods;
-  update_periods[1] = tr("1 day");
-  update_periods[3] = tr("3 days");
-  update_periods[7] = tr("1 week");
-  update_periods[14] = tr("2 weeks");
-  for (auto iter = update_periods.begin(); iter != update_periods.end(); ++iter) {
-    ui->update_period_box->addItem(iter.value(), iter.key());
-  }
-  ui->update_period_box->setCurrentText(update_periods[config_->GetValue(OPT_UPDATE_PERIOD).toInt()]);
+  ui->update_period_box->addItem(tr("1 day"), 1);
+  ui->update_period_box->addItem(tr("3 days"), 3);
+  ui->update_period_box->addItem(tr("1 week"), 7);
+  ui->update_period_box->addItem(tr("2 weeks"), 14);
+  int c_index = ui->update_period_box->findData(config_->GetValue(OPT_UPDATE_PERIOD).toInt());
+  ui->update_period_box->setCurrentIndex(c_index);
   ui->check_for_beta->setChecked(config_->GetValue(OPT_CHECK_FOR_BETA).toBool());
 
   ui->clock_url_enabled->setChecked(config_->GetValue(OPT_CLOCK_URL_ENABLED).toBool());
@@ -225,6 +221,7 @@ void SettingsDialog::InitControls()
   ui->export_state->setChecked(config_->GetValue(OPT_EXPORT_STATE).toBool());
 
   ui->change_time_zone_cbx->setChecked(!config_->GetValue(OPT_DISPLAY_LOCAL_TIME).toBool());
+  ui->time_zone_box->clear();
   for (auto& tz : QTimeZone::availableTimeZoneIds())
     ui->time_zone_box->addItem(QString(tz), tz);
   ui->time_zone_box->setCurrentText(QString(config_->GetValue(OPT_TIME_ZONE).toByteArray()));
@@ -241,7 +238,7 @@ void SettingsDialog::InitControls()
   }
 
   // "Experimental" tab
-  ui->fullscreen_detect_2->setChecked(config_->GetValue(OPT_FULLSCREEN_DETECT).toBool());
+  ui->fullscreen_detect->setChecked(config_->GetValue(OPT_FULLSCREEN_DETECT).toBool());
   ui->show_on_all_workspaces->setChecked(config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
   ui->better_stay_on_top->setChecked(config_->GetValue(OPT_BETTER_STAY_ON_TOP).toBool());
 
@@ -516,7 +513,7 @@ void digital_clock::gui::SettingsDialog::on_export_state_clicked(bool checked)
   emit OptionChanged(OPT_EXPORT_STATE, checked);
 }
 
-void digital_clock::gui::SettingsDialog::on_fullscreen_detect_2_clicked(bool checked)
+void digital_clock::gui::SettingsDialog::on_fullscreen_detect_clicked(bool checked)
 {
   emit OptionChanged(OPT_FULLSCREEN_DETECT, checked);
 }
