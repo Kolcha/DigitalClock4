@@ -303,6 +303,7 @@ qreal WidgetPluginBase::CalculateZoom(const QString& text) const
 {
   qreal tw = GetImageSize(text, 1.0).width();
   qreal avail_width = avail_width_ * private_->plg_widget_->devicePixelRatioF();
+  avail_width *= 0.01 * settings_->GetOption(OptionKey(OPT_SPACE_PERCENT, plg_name_)).toInt();
   qreal c_zoom = avail_width / tw;
 
   int c_img_w = GetImageSize(text, c_zoom).width();

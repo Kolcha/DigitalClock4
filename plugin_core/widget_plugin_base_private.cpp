@@ -70,7 +70,7 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
     txt_skin->SetDevicePixelRatio(main_wnd_->devicePixelRatioF());
     drawer_->ApplySkin(txt_skin);
     last_text_ = "-";             // reset last date to recalculate zoom
-    obj_->TimeUpdateListener();   // on redraw if needed
+    obj_->TimeUpdateListener();   // force redraw
   }
   if (key == OptionKey(OPT_ZOOM_MODE, obj_->plg_name_)) {
     switch (static_cast<ZoomMode>(value.toInt())) {
@@ -84,6 +84,12 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
         obj_->avail_width_ = main_layout_->cellRect(0, 0).width();
         drawer_->SetZoom(obj_->CalculateZoom(last_text_));
         break;
+    }
+  }
+  if (key == OptionKey(OPT_SPACE_PERCENT, obj_->plg_name_)) {
+    int c_zoom_mode = obj_->settings_->GetOption(OptionKey(OPT_ZOOM_MODE, obj_->plg_name_)).toInt();
+    if (static_cast<ZoomMode>(c_zoom_mode) == ZoomMode::ZM_AUTOSIZE) {
+      drawer_->SetZoom(obj_->CalculateZoom(last_text_));
     }
   }
   if (key == OptionKey(OPT_ALIGNMENT, obj_->plg_name_)) {

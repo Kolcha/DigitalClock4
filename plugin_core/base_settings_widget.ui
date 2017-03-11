@@ -37,7 +37,7 @@
       <item row="1" column="0" colspan="2">
        <widget class="QSlider" name="percent_slider">
         <property name="minimum">
-         <number>1</number>
+         <number>20</number>
         </property>
         <property name="maximum">
          <number>100</number>
@@ -53,7 +53,7 @@
       <item row="1" column="2">
        <widget class="QSpinBox" name="percent_box">
         <property name="minimum">
-         <number>1</number>
+         <number>20</number>
         </property>
         <property name="maximum">
          <number>100</number>
@@ -264,24 +264,8 @@
      <y>267</y>
     </hint>
     <hint type="destinationlabel">
-     <x>254</x>
+     <x>378</x>
      <y>268</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>percent_slider</sender>
-   <signal>sliderMoved(int)</signal>
-   <receiver>percent_box</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>135</x>
-     <y>73</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>218</x>
-     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -292,8 +276,8 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>205</x>
-     <y>64</y>
+     <x>378</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
      <x>76</x>
@@ -308,8 +292,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>160</x>
-     <y>45</y>
+     <x>378</x>
+     <y>56</y>
     </hint>
     <hint type="destinationlabel">
      <x>101</x>
@@ -324,12 +308,28 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>220</x>
-     <y>44</y>
+     <x>378</x>
+     <y>56</y>
     </hint>
     <hint type="destinationlabel">
-     <x>222</x>
-     <y>73</y>
+     <x>378</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>percent_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>percent_box</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>254</x>
+     <y>76</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>338</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
