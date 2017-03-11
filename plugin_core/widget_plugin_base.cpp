@@ -43,10 +43,6 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
         private_->clock_font_ = iter.value().value<QFont>();
         break;
 
-      case OPT_ZOOM:
-        private_->clock_zoom_ = iter.value().toReal();
-        break;
-
       case OPT_COLOR:
         private_->clock_color_ = iter.value().value<QColor>();
         private_->drawer_->SetColor(private_->clock_color_);
@@ -148,10 +144,6 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
           private_->last_text_ = "-";
           TimeUpdateListener();         // force redraw
           break;
-
-        case ZoomMode::ZM_CLOCK_ZOOM:
-          private_->drawer_->SetZoom(private_->clock_zoom_);
-          break;
       }
 
       break;
@@ -168,8 +160,6 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
     }
 
     case OPT_ZOOM:
-      private_->clock_zoom_ = new_value.toReal();
-
       switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE, plg_name_)).toInt())) {
         case ZoomMode::ZM_NOT_ZOOM:
           private_->drawer_->SetZoom(1.0);
@@ -180,10 +170,6 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
           private_->main_wnd_->adjustSize();
           avail_width_ = private_->main_layout_->cellRect(0, 0).width();
           private_->drawer_->SetZoom(CalculateZoom(private_->last_text_));
-          break;
-
-        case ZoomMode::ZM_CLOCK_ZOOM:
-          private_->drawer_->SetZoom(private_->clock_zoom_);
           break;
       }
 
@@ -250,9 +236,6 @@ void WidgetPluginBase::TimeUpdateListener()
       cur_avail_width = private_->main_layout_->cellRect(0, 0).width();
       private_->plg_widget_->show();
       break;
-
-    case ZoomMode::ZM_CLOCK_ZOOM:
-      break;
   }
 
   QString cur_text = GetWidgetText();
@@ -269,9 +252,6 @@ void WidgetPluginBase::TimeUpdateListener()
     case ZoomMode::ZM_AUTOSIZE:
       private_->drawer_->SetString(QString());  // set empty string to do not redraw twice
       private_->drawer_->SetZoom(CalculateZoom(cur_text));
-      break;
-
-    case ZoomMode::ZM_CLOCK_ZOOM:
       break;
   }
 

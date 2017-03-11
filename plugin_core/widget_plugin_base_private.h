@@ -95,8 +95,6 @@ public:
   QFont font_;
   /// current clock font
   QFont clock_font_;
-  /// current clock zoom
-  qreal clock_zoom_;
   /// current clock skin customization
   ::skin_draw::SkinDrawer::CustomizationType clock_customization_;
   /// current clock color

@@ -33,7 +33,6 @@ namespace plugin {
 WidgetPluginBasePrivate::WidgetPluginBasePrivate(WidgetPluginBase* obj, QObject* parent) :
   QObject(parent),
   main_layout_(nullptr), main_wnd_(nullptr),
-  clock_zoom_(1.0),
   clock_customization_(::skin_draw::SkinDrawer::CT_COLOR),
   clock_color_(0, 170, 255),
   last_text_("-----"),
@@ -84,10 +83,6 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
         main_wnd_->adjustSize();
         obj_->avail_width_ = main_layout_->cellRect(0, 0).width();
         drawer_->SetZoom(obj_->CalculateZoom(last_text_));
-        break;
-
-      case ZoomMode::ZM_CLOCK_ZOOM:
-        drawer_->SetZoom(clock_zoom_);
         break;
     }
   }

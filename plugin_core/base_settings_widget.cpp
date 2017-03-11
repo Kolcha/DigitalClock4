@@ -79,18 +79,27 @@ void BaseSettingsWidget::InitWidgets(const QMap<WidgetPluginOption, QVariant>& c
       case OPT_ZOOM_MODE:
       {
         ZoomMode mode = static_cast<ZoomMode>(iter.value().toInt());
-        ui->not_zoom->setChecked(mode == ZoomMode::ZM_NOT_ZOOM);
-        ui->font_autosize->setChecked(mode == ZoomMode::ZM_AUTOSIZE);
-        ui->clock_zoom->setChecked(mode == ZoomMode::ZM_CLOCK_ZOOM);
+        ui->leave_as_is_rbtn->setChecked(mode == ZoomMode::ZM_NOT_ZOOM);
+        ui->clock_size_percent_rbtn->setChecked(mode == ZoomMode::ZM_AUTOSIZE);
         break;
       }
+
+      case OPT_SPACE_PERCENT:
+        ui->percent_box->setValue(iter.value().toInt());
+        break;
 
       case OPT_ALIGNMENT:
       {
         Qt::Alignment c_align = static_cast<Qt::Alignment>(iter.value().toInt());
-        ui->align_left_rbtn->setChecked(c_align == Qt::AlignLeft);
+        ui->align_top_left_rbtn->setChecked(c_align == (Qt::AlignLeft | Qt::AlignTop));
+        ui->align_top_rbtn->setChecked(c_align == (Qt::AlignHCenter | Qt::AlignTop));
+        ui->align_top_right_rbtn->setChecked(c_align == (Qt::AlignRight | Qt::AlignTop));
+        ui->align_left_rbtn->setChecked(c_align == (Qt::AlignLeft | Qt::AlignVCenter));
         ui->align_center_rbtn->setChecked(c_align == Qt::AlignCenter);
-        ui->align_right_rbtn->setChecked(c_align == Qt::AlignRight);
+        ui->align_right_rbtn->setChecked(c_align == (Qt::AlignRight | Qt::AlignVCenter));
+        ui->align_bottom_left_rbtn->setChecked(c_align == (Qt::AlignLeft | Qt::AlignBottom));
+        ui->align_bottom_rbtn->setChecked(c_align == (Qt::AlignHCenter | Qt::AlignBottom));
+        ui->align_bottom_right_rbtn->setChecked(c_align == (Qt::AlignRight | Qt::AlignBottom));
         break;
       }
 
@@ -120,24 +129,39 @@ void BaseSettingsWidget::on_choose_font_button_clicked()
   }
 }
 
-void BaseSettingsWidget::on_not_zoom_clicked()
+void BaseSettingsWidget::on_leave_as_is_rbtn_clicked()
 {
   emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_NOT_ZOOM));
 }
 
-void BaseSettingsWidget::on_font_autosize_clicked()
+void BaseSettingsWidget::on_clock_size_percent_rbtn_clicked()
 {
   emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_AUTOSIZE));
 }
 
-void BaseSettingsWidget::on_clock_zoom_clicked()
+void BaseSettingsWidget::on_percent_box_valueChanged(int arg1)
 {
-  emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_CLOCK_ZOOM));
+  emit OptionChanged(OPT_SPACE_PERCENT, arg1);
+}
+
+void BaseSettingsWidget::on_align_top_left_rbtn_clicked()
+{
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignLeft | Qt::AlignTop));
+}
+
+void BaseSettingsWidget::on_align_top_rbtn_clicked()
+{
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignHCenter | Qt::AlignTop));
+}
+
+void BaseSettingsWidget::on_align_top_right_rbtn_clicked()
+{
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignRight | Qt::AlignTop));
 }
 
 void BaseSettingsWidget::on_align_left_rbtn_clicked()
 {
-  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignLeft));
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignLeft | Qt::AlignVCenter));
 }
 
 void BaseSettingsWidget::on_align_center_rbtn_clicked()
@@ -147,7 +171,22 @@ void BaseSettingsWidget::on_align_center_rbtn_clicked()
 
 void BaseSettingsWidget::on_align_right_rbtn_clicked()
 {
-  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignRight));
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignRight | Qt::AlignVCenter));
+}
+
+void BaseSettingsWidget::on_align_bottom_left_rbtn_clicked()
+{
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignLeft | Qt::AlignBottom));
+}
+
+void BaseSettingsWidget::on_align_bottom_rbtn_clicked()
+{
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignHCenter | Qt::AlignBottom));
+}
+
+void BaseSettingsWidget::on_align_bottom_right_rbtn_clicked()
+{
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(Qt::AlignRight | Qt::AlignBottom));
 }
 
 void BaseSettingsWidget::on_use_custom_color_clicked(bool checked)
