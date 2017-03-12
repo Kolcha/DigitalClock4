@@ -43,7 +43,6 @@ signals:
 
 private slots:
   void on_note_edit_textEdited(const QString& arg1);
-  void on_edit_btn_enabled_clicked(bool checked);
 
 private:
   Ui::SettingsDialog* ui;
