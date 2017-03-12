@@ -6,12 +6,48 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>398</width>
     <height>290</height>
    </rect>
   </property>
   <layout class="QGridLayout" name="base_settings_layout">
-   <item row="0" column="0" colspan="2">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="font_group">
+     <property name="title">
+      <string>Font</string>
+     </property>
+     <layout class="QGridLayout" name="font_layout">
+      <item row="0" column="0" colspan="2">
+       <widget class="QRadioButton" name="clock_font_button">
+        <property name="text">
+         <string>use clock font</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="custom_font_button">
+        <property name="text">
+         <string>custom</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QToolButton" name="choose_font_button">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string notr="true">...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1">
     <widget class="QGroupBox" name="font_size_group">
      <property name="title">
       <string>Font size</string>
@@ -67,15 +103,15 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QGroupBox" name="font_group">
+    <widget class="QGroupBox" name="position_group">
      <property name="title">
-      <string>Font</string>
+      <string>Position</string>
      </property>
-     <layout class="QVBoxLayout" name="font_layout">
+     <layout class="QVBoxLayout" name="position_layout">
       <item>
-       <widget class="QRadioButton" name="clock_font_button">
+       <widget class="QRadioButton" name="pos_bottom_rbtn">
         <property name="text">
-         <string>use clock font</string>
+         <string>at the bottom</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -83,38 +119,11 @@
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QRadioButton" name="custom_font_button">
-          <property name="text">
-           <string>custom</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="choose_font_button">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string notr="true">...</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
+       <widget class="QRadioButton" name="pos_right_rbtn">
+        <property name="text">
+         <string>at the right</string>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>10</height>
-         </size>
-        </property>
-       </spacer>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -238,22 +247,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>custom_font_button</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>choose_font_button</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>73</x>
-     <y>177</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>112</x>
-     <y>178</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>use_custom_color</sender>
    <signal>toggled(bool)</signal>
    <receiver>custom_color_button</receiver>
@@ -330,6 +323,22 @@
     <hint type="destinationlabel">
      <x>338</x>
      <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>custom_font_button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>choose_font_button</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>73</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>112</x>
+     <y>178</y>
     </hint>
    </hints>
   </connection>

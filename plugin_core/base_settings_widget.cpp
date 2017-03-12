@@ -88,6 +88,14 @@ void BaseSettingsWidget::InitWidgets(const QMap<WidgetPluginOption, QVariant>& c
         ui->percent_box->setValue(iter.value().toInt());
         break;
 
+      case OPT_WIDGET_LOCATION:
+      {
+        WidgetLocation w_loc = static_cast<WidgetLocation>(iter.value().toInt());
+        ui->pos_bottom_rbtn->setChecked(w_loc == WidgetLocation::WL_BOTTOM);
+        ui->pos_right_rbtn->setChecked(w_loc == WidgetLocation::WL_RIGHT);
+        break;
+      }
+
       case OPT_ALIGNMENT:
       {
         Qt::Alignment c_align = static_cast<Qt::Alignment>(iter.value().toInt());
@@ -142,6 +150,16 @@ void BaseSettingsWidget::on_clock_size_percent_rbtn_clicked()
 void BaseSettingsWidget::on_percent_box_valueChanged(int arg1)
 {
   emit OptionChanged(OPT_SPACE_PERCENT, arg1);
+}
+
+void BaseSettingsWidget::on_pos_bottom_rbtn_clicked()
+{
+  emit OptionChanged(OPT_WIDGET_LOCATION, static_cast<int>(WidgetLocation::WL_BOTTOM));
+}
+
+void BaseSettingsWidget::on_pos_right_rbtn_clicked()
+{
+  emit OptionChanged(OPT_WIDGET_LOCATION, static_cast<int>(WidgetLocation::WL_RIGHT));
 }
 
 void BaseSettingsWidget::on_align_top_left_rbtn_clicked()

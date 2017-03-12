@@ -78,6 +78,9 @@ private slots:
   void on_clock_size_percent_rbtn_clicked();
   void on_percent_box_valueChanged(int arg1);
 
+  void on_pos_bottom_rbtn_clicked();
+  void on_pos_right_rbtn_clicked();
+
   void on_align_top_left_rbtn_clicked();
   void on_align_top_rbtn_clicked();
   void on_align_top_right_rbtn_clicked();

@@ -35,6 +35,7 @@ enum WidgetPluginOption {
   OPT_CUSTOM_FONT,            /*!< plugin font, if OPT_USE_CLOCK_FONT is not set, QFont */
   OPT_ZOOM_MODE,              /*!< controls widget zoom behaviour, one of ZoomMode values */
   OPT_SPACE_PERCENT,          /*!< percent of clock space to fill, int, [1-100] */
+  OPT_WIDGET_LOCATION,        /*!< widget position, WidgetLocation, one of WidgetLocation values */
   OPT_ALIGNMENT,              /*!< plugin widgets alignment, Qt::Alignment, any allowed flags combination */
   OPT_USE_CUSTOM_COLOR,       /*!< will plugin use custom color or drawn as clock, bool, true/false */
   OPT_CUSTOM_COLOR            /*!< plugin color, if OPT_USE_CUSTOM_COLOR is set, QColor */
@@ -61,6 +62,14 @@ QString PLUGIN_CORE_SHARED_EXPORT OptionKey(const WidgetPluginOption opt, const 
 enum ZoomMode {
   ZM_NOT_ZOOM,                /*!< do not zoom anything, draw as is */
   ZM_AUTOSIZE                 /*!< calculate suitable zoom to fill available space */
+};
+
+/*!
+ * Available widget locations.
+ */
+enum WidgetLocation {
+  WL_BOTTOM,                  /*!< widget will located under the clock */
+  WL_RIGHT                    /*!< widget will located after the clock */
 };
 
 /*!
