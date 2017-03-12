@@ -35,12 +35,8 @@ class QuickNotePlugin : public ::plugin::WidgetPluginBase
 public:
   QuickNotePlugin();
 
-  void Init(const QMap<Option, QVariant>& current_settings);
-
 public slots:
   void Configure();
-
-  void SettingsListener(Option option, const QVariant& new_value);
 
 protected:
   void InitSettingsDefaults(QSettings::SettingsMap* defaults);
@@ -52,10 +48,7 @@ private slots:
   void SettingsUpdateListener(const QString& key, const QVariant& value);
 
 private:
-  qreal CalculateZoom(const QString& text) const;
-
   MessageWidget* msg_widget_;
-  QColor msg_color_;
 };
 
 } // namespace quick_note

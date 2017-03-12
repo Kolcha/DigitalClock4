@@ -37,21 +37,6 @@ QuickNotePlugin::QuickNotePlugin() : msg_widget_(nullptr)
   plg_name_ = QString("quick_note");
 }
 
-void QuickNotePlugin::Init(const QMap<Option, QVariant>& current_settings)
-{
-  for (auto iter = current_settings.begin(); iter != current_settings.end(); ++iter) {
-    switch (iter.key()) {
-      case OPT_COLOR:
-        msg_color_ = iter.value().value<QColor>();
-        break;
-
-      default:
-        break;
-    }
-  }
-  WidgetPluginBase::Init(current_settings);
-}
-
 void QuickNotePlugin::Configure()
 {
   SettingsDialog* dialog = new SettingsDialog();
@@ -74,19 +59,6 @@ void QuickNotePlugin::Configure()
   dialog->show();
 }
 
-void QuickNotePlugin::SettingsListener(Option option, const QVariant& new_value)
-{
-  switch (option) {
-    case OPT_COLOR:
-      msg_color_ = new_value.value<QColor>();
-      if (msg_widget_) msg_widget_->setIconColor(msg_color_);
-      break;
-    default:
-      break;
-  }
-  WidgetPluginBase::SettingsListener(option, new_value);
-}
-
 void QuickNotePlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults)
 {
   InitDefaults(defaults);
@@ -99,10 +71,6 @@ QWidget* QuickNotePlugin::InitWidget(QGridLayout* layout)
     settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
     settings_->Save();
   });
-  using ::plugin::OptionKey;
-  using ::plugin::OPT_ALIGNMENT;
-  msg_widget_->setAlignment(static_cast<Qt::Alignment>(settings_->GetOption(OptionKey(OPT_ALIGNMENT, plg_name_)).toInt()));
-  msg_widget_->setIconColor(msg_color_);
   connect(msg_widget_, &MessageWidget::textChanged, this, &QuickNotePlugin::TimeUpdateListener);
   connect(settings_, &PluginSettings::OptionChanged, this, &QuickNotePlugin::SettingsUpdateListener);
   Q_UNUSED(layout);
@@ -124,48 +92,6 @@ void QuickNotePlugin::SettingsUpdateListener(const QString& key, const QVariant&
   if (key == OPT_QUICK_NOTE_MSG) {
     msg_widget_->setText(value.toString());
   }
-  if (key == OPT_SHOW_EDIT_BTN) {
-    msg_widget_->ShowEditButton(value.toBool());
-  }
-
-  using ::plugin::OptionKey;
-  using ::plugin::OPT_USE_CUSTOM_COLOR;
-  using ::plugin::OPT_CUSTOM_COLOR;
-
-  if (key == OptionKey(::plugin::OPT_ALIGNMENT, plg_name_)) {
-    msg_widget_->setAlignment(static_cast<Qt::Alignment>(value.toInt()));
-  }
-  if (key == OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)) {
-    if (value.toBool()) {
-      QColor cc = settings_->GetOption(OptionKey(OPT_CUSTOM_COLOR, plg_name_)).value<QColor>();
-      msg_widget_->setIconColor(cc);
-    } else {
-      msg_widget_->setIconColor(msg_color_);
-    }
-  }
-  if (key == OptionKey(OPT_CUSTOM_COLOR, plg_name_)) {
-    if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)).toBool()) {
-      msg_widget_->setIconColor(value.value<QColor>());
-    }
-  }
-}
-
-qreal QuickNotePlugin::CalculateZoom(const QString& text) const
-{
-  QSize s0 = GetImageSize(text, 1.0);
-  qreal req_img_w = avail_width_ - msg_widget_->layout()->spacing() - 2*msg_widget_->layout()->margin();
-  qreal dpr = msg_widget_->devicePixelRatioF();
-  qreal c_zoom = req_img_w * dpr / s0.width();
-
-  QSize s = GetImageSize(text, c_zoom);
-  int ww = (s.width() + 0.75*s.height()) / dpr + 2*msg_widget_->layout()->margin() + msg_widget_->layout()->spacing();
-  while ((ww > avail_width_) && (ww - avail_width_) > 4) {
-    c_zoom *= (1 - (0.5*(ww - avail_width_)) / avail_width_);
-    s = GetImageSize(text, c_zoom);
-    ww = (s.width() + 0.75*s.height()) / dpr + 2*msg_widget_->layout()->margin() + msg_widget_->layout()->spacing();
-  }
-
-  return c_zoom;
 }
 
 } // namespace quick_note
