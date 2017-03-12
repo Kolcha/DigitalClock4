@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>276</width>
-    <height>261</height>
+    <width>398</width>
+    <height>290</height>
    </rect>
   </property>
   <layout class="QGridLayout" name="base_settings_layout">
@@ -16,8 +16,8 @@
      <property name="title">
       <string>Font</string>
      </property>
-     <layout class="QVBoxLayout" name="font_layout">
-      <item>
+     <layout class="QGridLayout" name="font_layout">
+      <item row="0" column="0" colspan="2">
        <widget class="QRadioButton" name="clock_font_button">
         <property name="text">
          <string>use clock font</string>
@@ -27,60 +27,91 @@
         </property>
        </widget>
       </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QRadioButton" name="custom_font_button">
-          <property name="text">
-           <string>custom</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="choose_font_button">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string notr="true">...</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="custom_font_button">
+        <property name="text">
+         <string>custom</string>
+        </property>
+       </widget>
       </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
+      <item row="1" column="1">
+       <widget class="QToolButton" name="choose_font_button">
+        <property name="enabled">
+         <bool>false</bool>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>10</height>
-         </size>
+        <property name="text">
+         <string notr="true">...</string>
         </property>
-       </spacer>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QGroupBox" name="zoom_group">
+    <widget class="QGroupBox" name="font_size_group">
      <property name="title">
-      <string>Zoom</string>
+      <string>Font size</string>
      </property>
-     <layout class="QVBoxLayout" name="zoom_layout">
-      <item>
-       <widget class="QRadioButton" name="not_zoom">
+     <layout class="QGridLayout" name="font_size_layout" columnstretch="1,0,0">
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="leave_as_is_rbtn">
         <property name="text">
-         <string>do not zoom</string>
+         <string>leave as is</string>
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QRadioButton" name="font_autosize">
+      <item row="0" column="1" colspan="2">
+       <widget class="QRadioButton" name="clock_size_percent_rbtn">
         <property name="text">
-         <string>calculate font size</string>
+         <string>percent of clock size</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QSlider" name="percent_slider">
+        <property name="minimum">
+         <number>20</number>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>100</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QSpinBox" name="percent_box">
+        <property name="minimum">
+         <number>20</number>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>100</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="position_group">
+     <property name="title">
+      <string>Position</string>
+     </property>
+     <layout class="QVBoxLayout" name="position_layout">
+      <item>
+       <widget class="QRadioButton" name="pos_bottom_rbtn">
+        <property name="text">
+         <string>at the bottom</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -88,29 +119,50 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="clock_zoom">
+       <widget class="QRadioButton" name="pos_right_rbtn">
         <property name="text">
-         <string>use clock zoom</string>
+         <string>at the right</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item row="1" column="1">
     <widget class="QGroupBox" name="alignment_group">
      <property name="title">
       <string>Alignment</string>
      </property>
-     <layout class="QHBoxLayout" name="alignment_layout">
-      <item>
+     <layout class="QGridLayout" name="alignment_layout">
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="align_top_left_rbtn">
+        <property name="text">
+         <string>top-left</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QRadioButton" name="align_top_rbtn">
+        <property name="text">
+         <string>top</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QRadioButton" name="align_top_right_rbtn">
+        <property name="text">
+         <string>top-right</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
        <widget class="QRadioButton" name="align_left_rbtn">
         <property name="text">
          <string>left</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="1">
        <widget class="QRadioButton" name="align_center_rbtn">
         <property name="text">
          <string>center</string>
@@ -120,10 +172,31 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="2">
        <widget class="QRadioButton" name="align_right_rbtn">
         <property name="text">
          <string>right</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QRadioButton" name="align_bottom_left_rbtn">
+        <property name="text">
+         <string>bottom-left</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QRadioButton" name="align_bottom_rbtn">
+        <property name="text">
+         <string>bottom</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QRadioButton" name="align_bottom_right_rbtn">
+        <property name="text">
+         <string>bottom-right</string>
         </property>
        </widget>
       </item>
@@ -174,34 +247,98 @@
  <resources/>
  <connections>
   <connection>
-   <sender>custom_font_button</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>choose_font_button</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>51</x>
-     <y>74</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>101</x>
-     <y>75</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>use_custom_color</sender>
    <signal>toggled(bool)</signal>
    <receiver>custom_color_button</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>165</y>
+     <x>124</x>
+     <y>267</y>
     </hint>
     <hint type="destinationlabel">
-     <x>245</x>
-     <y>167</y>
+     <x>378</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>percent_box</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>percent_slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>378</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>76</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clock_size_percent_rbtn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>percent_slider</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>378</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>101</x>
+     <y>72</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clock_size_percent_rbtn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>percent_box</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>378</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>378</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>percent_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>percent_box</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>254</x>
+     <y>76</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>338</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>custom_font_button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>choose_font_button</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>73</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>112</x>
+     <y>178</y>
     </hint>
    </hints>
   </connection>

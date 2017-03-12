@@ -22,12 +22,12 @@
 <context>
     <name>quick_note::QuickNotePlugin</name>
     <message>
-        <location filename="quick_note_plugin.cpp" line="35"/>
+        <location filename="quick_note_plugin.cpp" line="34"/>
         <source>Quick note</source>
         <translation>Быстрая заметка</translation>
     </message>
     <message>
-        <location filename="quick_note_plugin.cpp" line="36"/>
+        <location filename="quick_note_plugin.cpp" line="35"/>
         <source>Allows to display any short message under clock.</source>
         <translation>Отображает короткое сообщение под часами.</translation>
     </message>

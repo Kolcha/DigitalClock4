@@ -19,7 +19,6 @@
 #include "ip_address_plugin.h"
 
 #include <QLabel>
-#include <QGridLayout>
 #include <QTimer>
 #include <QNetworkInterface>
 #include <QNetworkAccessManager>
@@ -92,7 +91,7 @@ void IpAddressPlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults)
 QWidget* IpAddressPlugin::InitWidget(QGridLayout* layout)
 {
   msg_label_ = new QLabel();
-  layout->addWidget(msg_label_, layout->rowCount(), 0, 1, layout->columnCount());
+  Q_UNUSED(layout);
   return msg_label_;
 }
 

@@ -33,7 +33,6 @@ namespace plugin {
 WidgetPluginBasePrivate::WidgetPluginBasePrivate(WidgetPluginBase* obj, QObject* parent) :
   QObject(parent),
   main_layout_(nullptr), main_wnd_(nullptr),
-  clock_zoom_(1.0),
   clock_customization_(::skin_draw::SkinDrawer::CT_COLOR),
   clock_color_(0, 170, 255),
   last_text_("-----"),
@@ -48,6 +47,16 @@ void WidgetPluginBasePrivate::InitBaseSettingsDefaults(QSettings::SettingsMap* d
   InitDefaults(&base_defaults);
   for (auto iter = base_defaults.begin(); iter != base_defaults.end(); ++iter)
     defaults->insert(OptionKey(iter.key(), obj_->plg_name_), iter.value());
+}
+
+int WidgetPluginBasePrivate::CalculateAvailableSpace() const
+{
+  int w_loc = obj_->settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION, obj_->plg_name_)).toInt();
+  if (static_cast<WidgetLocation>(w_loc) == WidgetLocation::WL_RIGHT) {
+    return main_layout_->cellRect(0, 0).height();
+  } else {
+    return main_layout_->cellRect(0, 0).width();
+  }
 }
 
 void WidgetPluginBasePrivate::onBaseOptionChanged(const WidgetPluginOption opt, const QVariant& value)
@@ -71,7 +80,7 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
     txt_skin->SetDevicePixelRatio(main_wnd_->devicePixelRatioF());
     drawer_->ApplySkin(txt_skin);
     last_text_ = "-";             // reset last date to recalculate zoom
-    obj_->TimeUpdateListener();   // on redraw if needed
+    obj_->TimeUpdateListener();   // force redraw
   }
   if (key == OptionKey(OPT_ZOOM_MODE, obj_->plg_name_)) {
     switch (static_cast<ZoomMode>(value.toInt())) {
@@ -82,13 +91,38 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
       case ZoomMode::ZM_AUTOSIZE:
         plg_widget_->hide();
         main_wnd_->adjustSize();
-        obj_->avail_width_ = main_layout_->cellRect(0, 0).width();
+        obj_->avail_width_ = CalculateAvailableSpace();
         drawer_->SetZoom(obj_->CalculateZoom(last_text_));
         break;
-
-      case ZoomMode::ZM_CLOCK_ZOOM:
-        drawer_->SetZoom(clock_zoom_);
+    }
+  }
+  if (key == OptionKey(OPT_SPACE_PERCENT, obj_->plg_name_)) {
+    int c_zoom_mode = obj_->settings_->GetOption(OptionKey(OPT_ZOOM_MODE, obj_->plg_name_)).toInt();
+    if (static_cast<ZoomMode>(c_zoom_mode) == ZoomMode::ZM_AUTOSIZE) {
+      drawer_->SetZoom(obj_->CalculateZoom(last_text_));
+    }
+  }
+  if (key == OptionKey(OPT_WIDGET_LOCATION, obj_->plg_name_)) {
+    plg_widget_->hide();
+    main_layout_->removeWidget(plg_widget_);
+    main_wnd_->adjustSize();
+    switch (static_cast<WidgetLocation>(value.toInt())) {
+      case WidgetLocation::WL_BOTTOM:
+        obj_->avail_width_ = main_layout_->cellRect(0, 0).width();
+        main_layout_->addWidget(plg_widget_, main_layout_->rowCount(), 0, 1, main_layout_->columnCount());
         break;
+
+      case WidgetLocation::WL_RIGHT:
+        obj_->avail_width_ = main_layout_->cellRect(0, 0).height();
+        main_layout_->addWidget(plg_widget_, 0, main_layout_->columnCount(), 1, 1);
+        break;
+    }
+
+    int c_zoom_mode = obj_->settings_->GetOption(OptionKey(OPT_ZOOM_MODE, obj_->plg_name_)).toInt();
+    if (static_cast<ZoomMode>(c_zoom_mode) == ZoomMode::ZM_AUTOSIZE) {
+      drawer_->SetZoom(obj_->CalculateZoom(last_text_));
+    } else {
+      plg_widget_->show();
     }
   }
   if (key == OptionKey(OPT_ALIGNMENT, obj_->plg_name_)) {

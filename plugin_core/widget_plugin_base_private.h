@@ -61,6 +61,12 @@ public:
    * @see WidgetPluginOption, InitDefaults()
    */
   void InitBaseSettingsDefaults(QSettings::SettingsMap* defaults);
+  /*!
+   * Calculates available width or height, depending on OPT_WIDGET_LOCATION value.
+   * @return available width or height
+   * @see WidgetLocation, WidgetPluginBase::avail_width_
+   */
+  int CalculateAvailableSpace() const;
 
 public slots:
   /*!
@@ -95,8 +101,6 @@ public:
   QFont font_;
   /// current clock font
   QFont clock_font_;
-  /// current clock zoom
-  qreal clock_zoom_;
   /// current clock skin customization
   ::skin_draw::SkinDrawer::CustomizationType clock_customization_;
   /// current clock color

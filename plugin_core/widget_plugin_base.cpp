@@ -43,10 +43,6 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
         private_->clock_font_ = iter.value().value<QFont>();
         break;
 
-      case OPT_ZOOM:
-        private_->clock_zoom_ = iter.value().toReal();
-        break;
-
       case OPT_COLOR:
         private_->clock_color_ = iter.value().value<QColor>();
         private_->drawer_->SetColor(private_->clock_color_);
@@ -96,7 +92,6 @@ void WidgetPluginBase::Init(QWidget* main_wnd)
 {
   private_->main_layout_ = qobject_cast<QGridLayout*>(main_wnd->layout());
   private_->main_wnd_ = main_wnd;
-  avail_width_ = private_->main_layout_->cellRect(0, 0).width();
 
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
           private_, SLOT(SettingsChangeListener(QString,QVariant)));
@@ -106,11 +101,22 @@ void WidgetPluginBase::Init(QWidget* main_wnd)
   InitSettingsDefaults(&defaults);
   settings_->SetDefaultValues(defaults);
   settings_->TrackChanges(true);
+
+  avail_width_ = private_->CalculateAvailableSpace();
 }
 
 void WidgetPluginBase::Start()
 {
+  QGridLayout* layout = private_->main_layout_;
   private_->plg_widget_ = InitWidget(private_->main_layout_);
+  if (private_->main_layout_->indexOf(private_->plg_widget_) == -1) {
+    int w_loc = settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION, plg_name_)).toInt();
+    if (static_cast<WidgetLocation>(w_loc) == WidgetLocation::WL_RIGHT) {
+      layout->addWidget(private_->plg_widget_, 0, layout->columnCount(), 1, 1);
+    } else {
+      layout->addWidget(private_->plg_widget_, layout->rowCount(), 0, 1, layout->columnCount());
+    }
+  }
   connect(private_->drawer_, &skin_draw::SkinDrawer::DrawingFinished, [=] (const QImage& img) {
     this->DisplayImage(img);
     private_->plg_widget_->adjustSize();
@@ -137,7 +143,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
     case OPT_SKIN_NAME:
       private_->plg_widget_->hide();
       private_->main_wnd_->adjustSize();
-      avail_width_ = private_->main_layout_->cellRect(0, 0).width();
+      avail_width_ = private_->CalculateAvailableSpace();
 
       switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE, plg_name_)).toInt())) {
         case ZoomMode::ZM_NOT_ZOOM:
@@ -147,10 +153,6 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
         case ZoomMode::ZM_AUTOSIZE:
           private_->last_text_ = "-";
           TimeUpdateListener();         // force redraw
-          break;
-
-        case ZoomMode::ZM_CLOCK_ZOOM:
-          private_->drawer_->SetZoom(private_->clock_zoom_);
           break;
       }
 
@@ -168,8 +170,6 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
     }
 
     case OPT_ZOOM:
-      private_->clock_zoom_ = new_value.toReal();
-
       switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE, plg_name_)).toInt())) {
         case ZoomMode::ZM_NOT_ZOOM:
           private_->drawer_->SetZoom(1.0);
@@ -178,12 +178,8 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
         case ZoomMode::ZM_AUTOSIZE:
           private_->plg_widget_->hide();
           private_->main_wnd_->adjustSize();
-          avail_width_ = private_->main_layout_->cellRect(0, 0).width();
+          avail_width_ = private_->CalculateAvailableSpace();
           private_->drawer_->SetZoom(CalculateZoom(private_->last_text_));
-          break;
-
-        case ZoomMode::ZM_CLOCK_ZOOM:
-          private_->drawer_->SetZoom(private_->clock_zoom_);
           break;
       }
 
@@ -238,7 +234,7 @@ void WidgetPluginBase::TimeUpdateListener()
 {
   if (!private_->plg_widget_) return;  // not started
 
-  int cur_avail_width = private_->main_layout_->cellRect(0, 0).width();
+  int cur_avail_width = private_->CalculateAvailableSpace();
 
   switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE, plg_name_)).toInt())) {
     case ZoomMode::ZM_NOT_ZOOM:
@@ -247,11 +243,8 @@ void WidgetPluginBase::TimeUpdateListener()
     case ZoomMode::ZM_AUTOSIZE:
       private_->plg_widget_->hide();
       private_->main_wnd_->adjustSize();
-      cur_avail_width = private_->main_layout_->cellRect(0, 0).width();
+      cur_avail_width = private_->CalculateAvailableSpace();
       private_->plg_widget_->show();
-      break;
-
-    case ZoomMode::ZM_CLOCK_ZOOM:
       break;
   }
 
@@ -269,9 +262,6 @@ void WidgetPluginBase::TimeUpdateListener()
     case ZoomMode::ZM_AUTOSIZE:
       private_->drawer_->SetString(QString());  // set empty string to do not redraw twice
       private_->drawer_->SetZoom(CalculateZoom(cur_text));
-      break;
-
-    case ZoomMode::ZM_CLOCK_ZOOM:
       break;
   }
 
@@ -321,14 +311,18 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
 
 qreal WidgetPluginBase::CalculateZoom(const QString& text) const
 {
-  qreal tw = GetImageSize(text, 1.0).width();
+  int iw_loc = settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION, plg_name_)).toInt();
+  WidgetLocation w_loc = static_cast<WidgetLocation>(iw_loc);
+
+  qreal tw = w_loc == WidgetLocation::WL_RIGHT ?  GetImageSize(text, 1.0).height() : GetImageSize(text, 1.0).width();
   qreal avail_width = avail_width_ * private_->plg_widget_->devicePixelRatioF();
+  avail_width *= 0.01 * settings_->GetOption(OptionKey(OPT_SPACE_PERCENT, plg_name_)).toInt();
   qreal c_zoom = avail_width / tw;
 
-  int c_img_w = GetImageSize(text, c_zoom).width();
+  int c_img_w = w_loc == WidgetLocation::WL_RIGHT ? GetImageSize(text, c_zoom).height() : GetImageSize(text, c_zoom).width();
   while (c_img_w > avail_width) {
     c_zoom *= (1 - (0.5*(c_img_w - avail_width)) / avail_width);
-    c_img_w = GetImageSize(text, c_zoom).width();
+    c_img_w = w_loc == WidgetLocation::WL_RIGHT ? GetImageSize(text, c_zoom).height() : GetImageSize(text, c_zoom).width();
   }
 
   return c_zoom;

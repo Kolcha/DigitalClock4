@@ -74,13 +74,22 @@ private slots:
   void on_clock_font_button_toggled(bool checked);
   void on_choose_font_button_clicked();
 
-  void on_not_zoom_clicked();
-  void on_font_autosize_clicked();
-  void on_clock_zoom_clicked();
+  void on_leave_as_is_rbtn_clicked();
+  void on_clock_size_percent_rbtn_clicked();
+  void on_percent_box_valueChanged(int arg1);
 
+  void on_pos_bottom_rbtn_clicked();
+  void on_pos_right_rbtn_clicked();
+
+  void on_align_top_left_rbtn_clicked();
+  void on_align_top_rbtn_clicked();
+  void on_align_top_right_rbtn_clicked();
   void on_align_left_rbtn_clicked();
   void on_align_center_rbtn_clicked();
   void on_align_right_rbtn_clicked();
+  void on_align_bottom_left_rbtn_clicked();
+  void on_align_bottom_rbtn_clicked();
+  void on_align_bottom_right_rbtn_clicked();
 
   void on_use_custom_color_clicked(bool checked);
   void on_custom_color_button_clicked();

@@ -18,7 +18,6 @@
 
 #include "quick_note_plugin.h"
 
-#include <QGridLayout>
 #include <QVBoxLayout>
 
 #include "plugin_settings.h"
@@ -106,7 +105,7 @@ QWidget* QuickNotePlugin::InitWidget(QGridLayout* layout)
   msg_widget_->setIconColor(msg_color_);
   connect(msg_widget_, &MessageWidget::textChanged, this, &QuickNotePlugin::TimeUpdateListener);
   connect(settings_, &PluginSettings::OptionChanged, this, &QuickNotePlugin::SettingsUpdateListener);
-  layout->addWidget(msg_widget_, layout->rowCount(), 0, 1, layout->columnCount());
+  Q_UNUSED(layout);
   return msg_widget_;
 }
 
