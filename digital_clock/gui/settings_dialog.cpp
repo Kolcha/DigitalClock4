@@ -19,6 +19,8 @@
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
+#include <algorithm>
+
 #include <QApplication>
 #include <QColorDialog>
 #include <QFileDialog>
@@ -49,6 +51,12 @@ using skin_draw::SkinDrawer;
 
 namespace digital_clock {
 namespace gui {
+
+static bool plugin_info_cmp(const QPair<TPluginInfo, bool>& a, const QPair<TPluginInfo, bool>& b)
+{
+  return QString::localeAwareCompare(a.first.gui_info.display_name, b.first.gui_info.display_name) < 0;
+}
+
 
 SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* state, QWidget* parent) :
   QDialog(parent),
@@ -118,7 +126,9 @@ void SettingsDialog::DisplaySkinInfo(const core::BaseSkin::TSkinInfo& info)
 void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins)
 {
   ui->plugins_list->clear();
-  for (auto& plugin : plugins) {
+  QList<QPair<TPluginInfo, bool> > sorted_plugins = plugins;
+  std::sort(sorted_plugins.begin(), sorted_plugins.end(), plugin_info_cmp);
+  for (auto& plugin : sorted_plugins) {
     QListWidgetItem* item = new QListWidgetItem();
     PluginListItemWidget* widget = new PluginListItemWidget(ui->plugins_list);
     widget->SetInfo(plugin.first);

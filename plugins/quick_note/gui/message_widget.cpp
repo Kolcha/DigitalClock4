@@ -45,13 +45,13 @@ void MessageWidget::mouseReleaseEvent(QMouseEvent* event)
 {
   if (event->button() == Qt::LeftButton &&
       event->globalPos() == drag_position_) {
-      bool ok = false;
-      QString str = QInputDialog::getText(nullptr, tr("Edit note"), tr("text:"),
-                                          QLineEdit::Normal, curr_text_, &ok);
-      if (ok) {
-        setText(str);
-        emit textEdited(str);
-      }
+    bool ok = false;
+    QString str = QInputDialog::getText(nullptr, tr("Edit note"), tr("text:"),
+                                        QLineEdit::Normal, curr_text_, &ok);
+    if (ok) {
+      setText(str);
+      emit textEdited(str);
+    }
   }
   event->ignore();
 }
