@@ -40,7 +40,6 @@ HEADERS += \
     gui/settings_dialog.h
 
 FORMS += \
-    gui/message_widget.ui \
     gui/settings_dialog.ui
 
 TRANSLATIONS += \

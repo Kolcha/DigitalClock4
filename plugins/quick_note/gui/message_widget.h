@@ -19,22 +19,16 @@
 #ifndef QUICK_NOTE_MESSAGE_WIDGET_H
 #define QUICK_NOTE_MESSAGE_WIDGET_H
 
-#include <QWidget>
-#include <QIcon>
+#include <QLabel>
 
 namespace quick_note {
 
-namespace Ui {
-class MessageWidget;
-}
-
-class MessageWidget : public QWidget
+class MessageWidget : public QLabel
 {
   Q_OBJECT
 
 public:
   explicit MessageWidget(QWidget* parent = 0);
-  ~MessageWidget();
 
 signals:
   void textChanged(const QString& new_text);
@@ -42,27 +36,13 @@ signals:
 
 public slots:
   void setText(const QString& new_text);
-  void setAlignment(Qt::Alignment alignment);
-  void setPixmap(const QPixmap& img);
-  void setIconColor(const QColor& new_color);
-
-  void ShowEditButton(bool show);
 
 protected:
   void mousePressEvent(QMouseEvent* event);
   void mouseReleaseEvent(QMouseEvent* event);
 
-private slots:
-  void on_edit_btn_clicked();
-
-private:
-  void ColorizeIcon(const QColor& color);
-
-  Ui::MessageWidget* ui;
   QString curr_text_;
-  QIcon edit_icon_;
   QPoint drag_position_;
-  QColor icon_color_;
 };
 
 }  // namespace quick_note
