@@ -2,6 +2,5 @@
     <qresource prefix="/quick_note">
         <file>quick_note_ru.qm</file>
         <file alias="icon.svg">1401048262_notes_edit.svg</file>
-        <file alias="edit.svg">1438812438_pen-15.svg</file>
     </qresource>
 </RCC>
