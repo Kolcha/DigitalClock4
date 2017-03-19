@@ -45,20 +45,20 @@ void HttpClient::startRequest(QUrl url)
   is_running_ = true;
   QNetworkRequest req(url);
 #ifdef Q_OS_MACOS
-  req.setRawHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:43.0) Gecko/20100101 Firefox/43.0");
+  req.setRawHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:52.0) Gecko/20100101 Firefox/52.0");
 #endif
 #ifdef Q_OS_LINUX
   if (QSysInfo::WordSize == 64) {
-    req.setRawHeader("User-Agent", "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:43.0) Gecko/20100101 Firefox/43.0");
+    req.setRawHeader("User-Agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0");
   } else {
-    req.setRawHeader("User-Agent", "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:43.0) Gecko/20100101 Firefox/43.0");
+    req.setRawHeader("User-Agent", "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0");
   }
 #endif
 #ifdef Q_OS_WIN
 #ifdef Q_OS_WIN64
-  req.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:45.0) Gecko/20100101 Firefox/45.0");
+  req.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:52.0) Gecko/20100101 Firefox/52.0");
 #else
-  req.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.3; rv:45.0) Gecko/20100101 Firefox/45.0");
+  req.setRawHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; rv:52.0) Gecko/20100101 Firefox/52.0");
 #endif
 #endif
   reply_ = qnam_.get(req);
