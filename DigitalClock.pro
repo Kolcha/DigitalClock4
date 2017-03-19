@@ -22,10 +22,11 @@ CONFIG += ordered
 SUBDIRS += \
     clock_common \
     skin_draw \
-    digital_clock \
     plugin_core \
+    digital_clock \
     plugins
 
 digital_clock.depends = clock_common
 digital_clock.depends = skin_draw
+digital_clock.depends = plugin_core
 plugins.depends = plugin_core
