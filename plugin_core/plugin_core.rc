@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	1,1,0,118
-PRODUCTVERSION	4,5,4,0
+FILEVERSION	1,1,0,119
+PRODUCTVERSION	4,5,5,0
 FILEOS		0x4
 FILETYPE	0x2
 {
@@ -11,12 +11,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Digital Clock plugin core library"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Plugin Core Library"
-		VALUE "FileVersion", "1.1.0.118"
+		VALUE "FileVersion", "1.1.0.119"
 		VALUE "InternalName", "plugin_core.dll"
 		VALUE "LegalCopyright", "© 2016-2017 Nick Korotysh"
 		VALUE "OriginalFilename", "plugin_core.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.5.4"
+		VALUE "ProductVersion", "4.5.5"
 	}
 }
 

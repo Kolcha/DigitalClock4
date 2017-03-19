@@ -9,11 +9,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.5.4</string>
+	<string>4.5.5</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>944</string>
+	<string>945</string>
 	<key>CFBundleExecutable</key>
 	<string>digital_clock</string>
 	<key>CFBundleIdentifier</key>
