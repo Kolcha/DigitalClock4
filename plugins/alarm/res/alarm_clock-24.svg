@@ -78,7 +78,7 @@
          d="m 287.14286,412.36218 a 72.85714,72.85714 0 1 1 -145.71428,0 72.85714,72.85714 0 1 1 145.71428,0 z"
          transform="translate(-14.285714,-65)"
          id="path3183"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+         style="fill:#161616;fill-opacity:1;fill-rule:nonzero;stroke:none" />
       <path
          d="m 24.999999,306.29074 a 4.2857141,35.357143 0 1 1 -8.571428,0 4.2857141,35.357143 0 1 1 8.571428,0 z"
          transform="matrix(0.8303331,0.5572674,-0.3124075,0.4654898,265.63062,212.35072)"
@@ -97,16 +97,16 @@
       <path
          d="m 282.65783,314.96919 c 14.17389,-16.21414 12.51803,-40.87689 -3.69611,-55.05078 -16.21414,-14.17388 -40.87688,-12.51802 -55.05076,3.69612"
          id="path3194"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+         style="fill:#161616;fill-opacity:1;fill-rule:nonzero;stroke:none" />
       <path
          d="m 224.28572,355.93362 a 7.8571429,7.8571429 0 1 1 -15.71429,0 7.8571429,7.8571429 0 1 1 15.71429,0 z"
          transform="translate(-25.000002,-95.7143)"
          id="path3196"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+         style="fill:#161616;fill-opacity:1;fill-rule:nonzero;stroke:none" />
       <path
          d="m 116.86579,314.96919 c -14.17389,-16.21414 -12.51803,-40.87689 3.69611,-55.05078 16.21414,-14.17388 40.87688,-12.51802 55.05076,3.69612"
          id="path3198"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+         style="fill:#161616;fill-opacity:1;fill-rule:nonzero;stroke:none" />
     </g>
   </g>
 </svg>
