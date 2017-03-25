@@ -50,6 +50,9 @@ public slots:
   void Configure() override;
   void TimeUpdateListener() override;
 
+private slots:
+  void ShowPlayerError(QMediaPlayer::Error error);
+
 private:
   QSystemTrayIcon* tray_icon_;
   QIcon old_icon_;
