@@ -107,14 +107,15 @@ void Alarm::Stop()
 
 void Alarm::Configure()
 {
-  SettingsDialog dlg;
-  connect(&dlg, &SettingsDialog::alarmAdded, storage_, &AlarmsStorage::addAlarm);
-  connect(&dlg, &SettingsDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
-  connect(&dlg, &SettingsDialog::accepted, storage_, &AlarmsStorage::Accept);
-  connect(&dlg, &SettingsDialog::rejected, storage_, &AlarmsStorage::Reject);
-  connect(storage_, &AlarmsStorage::alarmsLoaded, &dlg, &SettingsDialog::setAlarmsList);
+  SettingsDialog* dlg = new SettingsDialog();
+  connect(dlg, &SettingsDialog::alarmAdded, storage_, &AlarmsStorage::addAlarm);
+  connect(dlg, &SettingsDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
+  connect(dlg, &SettingsDialog::accepted, storage_, &AlarmsStorage::Accept);
+  connect(dlg, &SettingsDialog::rejected, storage_, &AlarmsStorage::Reject);
+
+  connect(storage_, &AlarmsStorage::alarmsLoaded, dlg, &SettingsDialog::setAlarmsList);
   storage_->loadAlarms();
-  dlg.exec();
+  dlg->show();
 }
 
 void Alarm::TimeUpdateListener()
