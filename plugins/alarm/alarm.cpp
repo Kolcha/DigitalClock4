@@ -65,6 +65,8 @@ void Alarm::Start()
   alarm_menu_ = tray_menu->insertMenu(tray_menu->actions().first(), alarm_menu);
   alarm_menu_->setIcon(tray_icon_->icon());
 
+  storage_->loadAlarms();
+
   QList<AlarmItem*> alarms = storage_->getAlarms();
   QStringList bad_files;
   for (auto& alarm : alarms) {
@@ -114,7 +116,10 @@ void Alarm::Configure()
   connect(dlg, &SettingsDialog::rejected, storage_, &AlarmsStorage::Reject);
 
   connect(storage_, &AlarmsStorage::alarmsLoaded, dlg, &SettingsDialog::setAlarmsList);
-  storage_->loadAlarms();
+  if (icon_changed_)
+    dlg->setAlarmsList(storage_->getAlarms());
+  else
+    storage_->loadAlarms();
   dlg->show();
 }
 

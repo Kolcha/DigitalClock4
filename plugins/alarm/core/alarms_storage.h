@@ -31,7 +31,7 @@ class AlarmsStorage : public SettingsStorageWrapper
 public:
   explicit AlarmsStorage(SettingsStorage* backend, QObject* parent = nullptr);
 
-  QList<AlarmItem*> getAlarms();
+  QList<AlarmItem*> getAlarms() const;
 
 signals:
   void alarmsLoaded(const QList<AlarmItem*>& alarms);
