@@ -32,6 +32,7 @@ SettingsDialog::SettingsDialog(QWidget* parent) :
   QDialog(parent),
   ui(new Ui::SettingsDialog)
 {
+  setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
 }
 
@@ -50,7 +51,7 @@ void SettingsDialog::setAlarmsList(const QList<AlarmItem*>& alarms_list)
   alarms_ = alarms_list;
   std::sort(alarms_.begin(), alarms_.end(), AlarmItem::timeCompare);
   ui->alarms_list->clear();
-  for (auto& alarm : alarms_list) {
+  for (auto& alarm : alarms_) {
     QListWidgetItem* item = new QListWidgetItem();
     AlarmListItemWidget* widget = new AlarmListItemWidget(alarm, ui->alarms_list);
     widget->setChecked(alarm->isEnabled());
@@ -69,7 +70,7 @@ void SettingsDialog::on_add_btn_clicked()
   dlg.setWindowModality(Qt::WindowModal);
   if (dlg.exec() == QDialog::Accepted) {
     auto ins_iter = std::find_if(alarms_.begin(), alarms_.end(),
-                                 [&] (const AlarmItem* i) -> bool { return i->time() < alarm->time(); });
+                                 [&] (const AlarmItem* i) -> bool { return alarm->time() < i->time(); });
     auto item_iter = alarms_.insert(ins_iter, alarm);
     QListWidgetItem* item = new QListWidgetItem();
     AlarmListItemWidget* widget = new AlarmListItemWidget(alarm, ui->alarms_list);
@@ -77,7 +78,7 @@ void SettingsDialog::on_add_btn_clicked()
     widget->setTime(alarm->time());
     widget->setDays(alarm->days());
     item->setSizeHint(widget->sizeHint());
-    ui->alarms_list->insertItem(std::distance(item_iter, alarms_.begin()), item);
+    ui->alarms_list->insertItem(std::distance(alarms_.begin(), item_iter), item);
     ui->alarms_list->setItemWidget(item, widget);
     emit alarmAdded(alarm);
   } else {

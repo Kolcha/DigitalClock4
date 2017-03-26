@@ -20,6 +20,8 @@
 
 #include <QSystemTrayIcon>
 #include <QMenu>
+#include <QFile>
+#include <QDir>
 #include <QMediaPlaylist>
 
 #include "core/alarm_item.h"
@@ -62,6 +64,35 @@ void Alarm::Start()
   alarm_menu->addAction(tr("Configure"), this, &Alarm::Configure);
   alarm_menu_ = tray_menu->insertMenu(tray_menu->actions().first(), alarm_menu);
   alarm_menu_->setIcon(tray_icon_->icon());
+
+  storage_->loadAlarms();
+
+  QList<AlarmItem*> alarms = storage_->getAlarms();
+  QStringList bad_files;
+  for (auto& alarm : alarms) {
+    if (!alarm->media().isValid() || alarm->media().isEmpty()) {
+      tray_icon_->showMessage(tr("Digital Clock Alarm"),
+                              tr("Invalid media source is set for one of alarms. Click this message to fix."),
+                              QSystemTrayIcon::Warning);
+      connect(tray_icon_, &QSystemTrayIcon::messageClicked, this, &Alarm::Configure);
+      break;
+    }
+
+    if (alarm->media().isLocalFile() && !QFile::exists(alarm->media().toLocalFile())) {
+      bad_files.append(QDir::toNativeSeparators(alarm->media().toLocalFile()));
+    }
+  }
+
+  if (!bad_files.isEmpty()) {
+    disconnect(tray_icon_, &QSystemTrayIcon::messageClicked, 0, 0);
+    tray_icon_->showMessage(tr("Digital Clock Alarm"),
+                            tr("Next media files was NOT found:\n%1").arg(bad_files.join('\n')),
+                            QSystemTrayIcon::Warning);
+    connect(tray_icon_, &QSystemTrayIcon::messageClicked, this, &Alarm::Configure);
+  }
+
+  connect(player_.data(), static_cast<void(QMediaPlayer::*)(QMediaPlayer::Error)>(&QMediaPlayer::error),
+          this, &Alarm::ShowPlayerError);
 }
 
 void Alarm::Stop()
@@ -78,14 +109,18 @@ void Alarm::Stop()
 
 void Alarm::Configure()
 {
-  SettingsDialog dlg;
-  connect(&dlg, &SettingsDialog::alarmAdded, storage_, &AlarmsStorage::addAlarm);
-  connect(&dlg, &SettingsDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
-  connect(&dlg, &SettingsDialog::accepted, storage_, &AlarmsStorage::Accept);
-  connect(&dlg, &SettingsDialog::rejected, storage_, &AlarmsStorage::Reject);
-  connect(storage_, &AlarmsStorage::alarmsLoaded, &dlg, &SettingsDialog::setAlarmsList);
-  storage_->loadAlarms();
-  dlg.exec();
+  SettingsDialog* dlg = new SettingsDialog();
+  connect(dlg, &SettingsDialog::alarmAdded, storage_, &AlarmsStorage::addAlarm);
+  connect(dlg, &SettingsDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
+  connect(dlg, &SettingsDialog::accepted, storage_, &AlarmsStorage::Accept);
+  connect(dlg, &SettingsDialog::rejected, storage_, &AlarmsStorage::Reject);
+
+  connect(storage_, &AlarmsStorage::alarmsLoaded, dlg, &SettingsDialog::setAlarmsList);
+  if (icon_changed_)
+    dlg->setAlarmsList(storage_->getAlarms());
+  else
+    storage_->loadAlarms();
+  dlg->show();
 }
 
 void Alarm::TimeUpdateListener()
@@ -103,6 +138,15 @@ void Alarm::TimeUpdateListener()
     if (!alarm->days().contains(static_cast<Qt::DayOfWeek>(curr_time.date().dayOfWeek()))) continue;
     if (alarm->time().hour() != curr_time.time().hour() ||
         alarm->time().minute() != curr_time.time().minute()) continue;
+
+    disconnect(tray_icon_, &QSystemTrayIcon::messageClicked, 0, 0);
+    if (alarm->media().isLocalFile() && !QFile::exists(alarm->media().toLocalFile())) {
+      tray_icon_->showMessage(tr("Digital Clock Alarm"),
+                              tr("File not found:\n%1").arg(QDir::toNativeSeparators(alarm->media().toLocalFile())),
+                              QSystemTrayIcon::Critical);
+      continue;
+    }
+
     player_->playlist()->clear();
     player_->playlist()->addMedia(alarm->media());
     player_->setVolume(alarm->volume());
@@ -113,6 +157,12 @@ void Alarm::TimeUpdateListener()
                             QSystemTrayIcon::Information, 30000);
     connect(tray_icon_, &QSystemTrayIcon::messageClicked, player_.data(), &QMediaPlayer::stop);
   }
+}
+
+void Alarm::ShowPlayerError(QMediaPlayer::Error error)
+{
+  if (error == QMediaPlayer::NoError) return;
+  tray_icon_->showMessage(tr("Digital Clock Alarm"), player_->errorString(), QSystemTrayIcon::Critical);
 }
 
 } // namespace alarm_plugin

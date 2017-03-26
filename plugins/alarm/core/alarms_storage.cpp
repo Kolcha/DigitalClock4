@@ -80,9 +80,8 @@ AlarmsStorage::AlarmsStorage(SettingsStorage* backend, QObject* parent) :
   connect(backend, &SettingsStorage::reloaded, this, &AlarmsStorage::loadAlarms);
 }
 
-QList<AlarmItem*> AlarmsStorage::getAlarms()
+QList<AlarmItem*> AlarmsStorage::getAlarms() const
 {
-  readAlarms();
   return alarms_;
 }
 

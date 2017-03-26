@@ -4,33 +4,56 @@
 <context>
     <name>alarm_plugin::Alarm</name>
     <message>
-        <location filename="alarm.cpp" line="34"/>
-        <location filename="alarm.cpp" line="60"/>
+        <location filename="alarm.cpp" line="36"/>
+        <location filename="alarm.cpp" line="62"/>
         <source>Alarm</source>
         <translation>Будильник</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="35"/>
+        <location filename="alarm.cpp" line="37"/>
         <source>Allows to set multiple alarms.</source>
         <translation>Позволяет установить несколько будильников.</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="61"/>
+        <location filename="alarm.cpp" line="63"/>
         <source>Stop Alarm</source>
         <translation>Остановить</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="62"/>
+        <location filename="alarm.cpp" line="64"/>
         <source>Configure</source>
         <translation>Настроить</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="111"/>
+        <location filename="alarm.cpp" line="74"/>
+        <location filename="alarm.cpp" line="88"/>
+        <location filename="alarm.cpp" line="144"/>
+        <location filename="alarm.cpp" line="155"/>
+        <location filename="alarm.cpp" line="165"/>
         <source>Digital Clock Alarm</source>
         <translation>Будильник Digital Clock</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="112"/>
+        <location filename="alarm.cpp" line="75"/>
+        <source>Invalid media source is set for one of alarms. Click this message to fix.</source>
+        <translation>Для одного из будильников установлен некорректный источник медиа. Щёлкните данное сообщение чтобы исправить.</translation>
+    </message>
+    <message>
+        <location filename="alarm.cpp" line="89"/>
+        <source>Next media files was NOT found:
+%1</source>
+        <translation>Следующие файлы НЕ найдены:
+%1</translation>
+    </message>
+    <message>
+        <location filename="alarm.cpp" line="145"/>
+        <source>File not found:
+%1</source>
+        <translation>Файл не найден:
+%1</translation>
+    </message>
+    <message>
+        <location filename="alarm.cpp" line="156"/>
         <source>Alarm at %1</source>
         <translation>Будильник в %1</translation>
     </message>
