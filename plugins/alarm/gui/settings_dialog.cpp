@@ -51,7 +51,7 @@ void SettingsDialog::setAlarmsList(const QList<AlarmItem*>& alarms_list)
   alarms_ = alarms_list;
   std::sort(alarms_.begin(), alarms_.end(), AlarmItem::timeCompare);
   ui->alarms_list->clear();
-  for (auto& alarm : alarms_list) {
+  for (auto& alarm : alarms_) {
     QListWidgetItem* item = new QListWidgetItem();
     AlarmListItemWidget* widget = new AlarmListItemWidget(alarm, ui->alarms_list);
     widget->setChecked(alarm->isEnabled());
