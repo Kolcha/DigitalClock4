@@ -73,7 +73,7 @@ void Alarm::Start()
     if (!alarm->media().isValid() || alarm->media().isEmpty()) {
       tray_icon_->showMessage(tr("Digital Clock Alarm"),
                               tr("Invalid media source is set for one of alarms. Click this message to fix."),
-                              QSystemTrayIcon::Warning, 15000);
+                              QSystemTrayIcon::Warning);
       connect(tray_icon_, &QSystemTrayIcon::messageClicked, this, &Alarm::Configure);
       break;
     }
@@ -87,7 +87,7 @@ void Alarm::Start()
     disconnect(tray_icon_, &QSystemTrayIcon::messageClicked, 0, 0);
     tray_icon_->showMessage(tr("Digital Clock Alarm"),
                             tr("Next media files was NOT found:\n%1").arg(bad_files.join('\n')),
-                            QSystemTrayIcon::Warning, 15000);
+                            QSystemTrayIcon::Warning);
     connect(tray_icon_, &QSystemTrayIcon::messageClicked, this, &Alarm::Configure);
   }
 
@@ -143,7 +143,7 @@ void Alarm::TimeUpdateListener()
     if (alarm->media().isLocalFile() && !QFile::exists(alarm->media().toLocalFile())) {
       tray_icon_->showMessage(tr("Digital Clock Alarm"),
                               tr("File not found:\n%1").arg(QDir::toNativeSeparators(alarm->media().toLocalFile())),
-                              QSystemTrayIcon::Critical, 20000);
+                              QSystemTrayIcon::Critical);
       continue;
     }
 
