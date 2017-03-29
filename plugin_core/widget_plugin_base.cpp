@@ -249,6 +249,7 @@ void WidgetPluginBase::TimeUpdateListener()
   }
 
   QString cur_text = GetWidgetText();
+  if (cur_text.isEmpty()) return;
 
   // optimization: redraw only if needed
   if (cur_text == private_->last_text_ && cur_avail_width == avail_width_) return;
@@ -311,6 +312,7 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
 
 qreal WidgetPluginBase::CalculateZoom(const QString& text) const
 {
+  Q_ASSERT(!text.isEmpty());
   int iw_loc = settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION, plg_name_)).toInt();
   WidgetLocation w_loc = static_cast<WidgetLocation>(iw_loc);
 

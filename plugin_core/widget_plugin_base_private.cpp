@@ -138,7 +138,7 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
       drawer_->SetCustomizationType(static_cast<::skin_draw::SkinDrawer::CustomizationType>(clock_customization_));
       drawer_->SetColor(clock_color_);
     }
-    drawer_->SetString(last_text_);
+    if (last_text_ != QString("-")) drawer_->SetString(last_text_);
   }
   if (key == OptionKey(OPT_CUSTOM_COLOR, obj_->plg_name_)) {
     if (obj_->settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR, obj_->plg_name_)).toBool()) {
