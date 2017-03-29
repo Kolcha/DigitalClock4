@@ -56,7 +56,7 @@ void IpAddressPlugin::Stop()
 {
   ::plugin::WidgetPluginBase::Stop();
   ip_update_timer_->stop();
-  ip_update_timer_->deleteLater();
+  delete ip_update_timer_;
 }
 
 void IpAddressPlugin::Configure()
