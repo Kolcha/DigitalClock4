@@ -18,13 +18,14 @@
 
 #include "ip_address_plugin.h"
 
+#include <functional>
+
 #include <QLabel>
 #include <QTimer>
 #include <QNetworkInterface>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
-#include <QEventLoop>
 
 #include "plugin_settings.h"
 
@@ -34,13 +35,14 @@
 
 namespace ip_address {
 
-IpAddressPlugin::IpAddressPlugin() : msg_label_(nullptr), ip_update_timer_(nullptr)
+IpAddressPlugin::IpAddressPlugin() : msg_label_(nullptr), ip_update_timer_(nullptr), getting_external_ip_(false)
 {
   InitTranslator(QLatin1String(":/ip_address/ip_address_"));
   info_.display_name = tr("IP address");
   info_.description = tr("Displays local IP address(es) under clock.");
   InitIcon(":/ip_address/icon.svg");
   plg_name_ = QString("ip_address");
+  qnam_ = new QNetworkAccessManager(this);
 }
 
 void IpAddressPlugin::Start()
@@ -56,7 +58,7 @@ void IpAddressPlugin::Stop()
 {
   ::plugin::WidgetPluginBase::Stop();
   ip_update_timer_->stop();
-  ip_update_timer_->deleteLater();
+  delete ip_update_timer_;
 }
 
 void IpAddressPlugin::Configure()
@@ -124,29 +126,30 @@ void IpAddressPlugin::UpdateIPsList()
         }
       }
     }
+
+    if (last_ip_list_.isEmpty())
+      last_ip_list_ = tr("<no interfaces found>");
   }
 
-  if (settings_->GetOption(OPT_DISPLAY_EXTERNAL_ADDRESS).toBool()) {
+  if (settings_->GetOption(OPT_DISPLAY_EXTERNAL_ADDRESS).toBool() && !getting_external_ip_) {
     // get external IP address
-    QNetworkAccessManager qnam;
-    QNetworkReply* reply = qnam.get(QNetworkRequest(QUrl("https://api.ipify.org/")));
-    QEventLoop ev_loop;
-    connect(reply, &QNetworkReply::finished, &ev_loop, &QEventLoop::quit);
-    ev_loop.exec();
-    if (reply->error() == QNetworkReply::NoError)
-      last_ip_list_ += QString(reply->readAll()) + '\n';
-    else
-      last_ip_list_ += reply->errorString() + '\n';
-    reply->deleteLater();
+    getting_external_ip_ = true;
+    QNetworkReply* reply = qnam_->get(QNetworkRequest(QUrl("https://api.ipify.org/")));
+    connect(reply, &QNetworkReply::finished, [=] () {
+      if (!last_ip_list_.isEmpty() && *last_ip_list_.rbegin() != '\n')
+        last_ip_list_ += '\n';
+      getting_external_ip_ = false;
+      if (reply->error() == QNetworkReply::NoError)
+        last_ip_list_ += reply->readAll();
+      else
+        last_ip_list_ += reply->errorString();
+      reply->deleteLater();
+      TimeUpdateListener();
+    });
   }
 
-  if (!last_ip_list_.isEmpty()) {
+  if (!last_ip_list_.isEmpty() && *last_ip_list_.rbegin() == '\n')
     last_ip_list_.chop(1);
-  } else {
-    last_ip_list_ = tr("<no interfaces found>");
-  }
-
-  TimeUpdateListener();
 }
 
 } // namespace ip_address
