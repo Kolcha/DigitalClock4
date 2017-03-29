@@ -8,6 +8,9 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="QtFiles">
+            <Component Id="cmp17131BA271257D72FB32E0B8CD164BCA" Directory="INSTALLDIR" Guid="{51DB23BD-117D-4A7C-BAA1-B42C514B2156}" Win64="yes">
+                <File Id="fil0936B3F06B062CC85604526F0DFF963B" KeyPath="yes" Source="..\..\..\Qt files x64\libeay32.dll" />
+            </Component>
             <Component Id="cmp5DDCF0CE56D406D1B8B1F93E988AED6B" Directory="INSTALLDIR" Guid="{D4DF0E3E-493C-43C4-B219-334ACC636621}" Win64="yes">
                 <File Id="fil0F4CD3729AF07C1C460E292E0F081D0A" KeyPath="yes" Source="..\..\..\Qt files x64\libEGL.dll" />
             </Component>
@@ -37,6 +40,9 @@
             </Component>
             <Component Id="cmp975651B71289ACA70B3EB154C08A27F0" Directory="INSTALLDIR" Guid="{688451D0-6954-47D5-9FFE-C3B116D88F08}" Win64="yes">
                 <File Id="filE89B28CF105C7A7691C046E6516D540E" KeyPath="yes" Source="..\..\..\Qt files x64\Qt5Widgets.dll" />
+            </Component>
+            <Component Id="cmpAD26CD129A22547CE847B9393B35EB23" Directory="INSTALLDIR" Guid="{E7850553-9DD7-4880-854F-723B3330F977}" Win64="yes">
+                <File Id="fil9EEC1809405C3DAFE3D442BC731EE069" KeyPath="yes" Source="..\..\..\Qt files x64\ssleay32.dll" />
             </Component>
             <Component Id="cmp0A3EA57EB677109190A07DB8452B32F6" Directory="dir0549B3D8BCB345376D7DA16235134304" Guid="{8CE0F6B0-7E4C-4416-BC79-F3C7DC967702}" Win64="yes">
                 <File Id="fil053628F956B07B10E3C4E87C0CE8ABF7" KeyPath="yes" Source="..\..\..\Qt files x64\plugins\audio\qtaudio_windows.dll" />
