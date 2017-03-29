@@ -24,6 +24,7 @@
 class QGridLayout;
 class QLabel;
 class QTimer;
+class QNetworkAccessManager;
 
 namespace ip_address {
 
@@ -53,6 +54,8 @@ private:
   QLabel* msg_label_;
   QTimer* ip_update_timer_;
   QString last_ip_list_;
+  QNetworkAccessManager* qnam_;
+  bool getting_external_ip_;
 };
 
 } // namespace ip_address
