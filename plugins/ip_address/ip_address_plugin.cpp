@@ -26,7 +26,6 @@
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
-#include <QEventLoop>
 
 #include "plugin_settings.h"
 
