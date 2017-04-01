@@ -81,7 +81,8 @@ enum Option {
   OPT_FULLSCREEN_IGNORE_LST,    /*!< list of fullscreen windows to ignore, QStringList, any strings */
   OPT_BETTER_STAY_ON_TOP,       /*!< use Qt::X11BypassWindowManagerHint, bool, true/false */
   OPT_SHOW_HIDE_ENABLED,        /*!< enable/disable 'Show/Hide' menu item, bool, true/false */
-  OPT_EXPORT_STATE              /*!< enable/disable state export with settings, bool, true/false */
+  OPT_EXPORT_STATE,             /*!< enable/disable state export with settings, bool, true/false */
+  OPT_KEEP_ALWAYS_VISIBLE       /*!< prevent out of range positions, bool, true/false */
 };
 
 #endif // SETTINGS_KEYS_H

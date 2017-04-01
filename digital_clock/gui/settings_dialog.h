@@ -117,6 +117,7 @@ private slots:
   void on_fullscreen_detect_clicked(bool checked);
   void on_show_on_all_workspaces_clicked(bool checked);
   void on_better_stay_on_top_clicked(bool checked);
+  void on_keep_always_visible_clicked(bool checked);
 
   void on_change_time_zone_cbx_clicked(bool checked);
   void on_time_zone_box_activated(int index);

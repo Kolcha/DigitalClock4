@@ -112,6 +112,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
 
   last_visibility_ = true;
   fullscreen_detect_enabled_ = false;
+  keep_always_visible_ = true;
   window_ignore_list_ = app_config_->GetValue(OPT_FULLSCREEN_IGNORE_LST).toStringList();
 
   InitPluginSystem();
@@ -220,6 +221,7 @@ void MainWindow::Reset()
   ApplyOption(OPT_CLOCK_URL_STRING, app_config_->GetValue(OPT_CLOCK_URL_STRING));
   ApplyOption(OPT_SHOW_HIDE_ENABLED, app_config_->GetValue(OPT_SHOW_HIDE_ENABLED));
   ApplyOption(OPT_EXPORT_STATE, app_config_->GetValue(OPT_EXPORT_STATE));
+  ApplyOption(OPT_KEEP_ALWAYS_VISIBLE, app_config_->GetValue(OPT_KEEP_ALWAYS_VISIBLE));
 
   plugin_manager_->UnloadPlugins();
   plugin_manager_->LoadPlugins(app_config_->GetValue(OPT_PLUGINS).toStringList());
@@ -288,6 +290,11 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
 
     case OPT_EXPORT_STATE:
       state_->SetExportable(value.toBool());
+      break;
+
+    case OPT_KEEP_ALWAYS_VISIBLE:
+      keep_always_visible_ = value.toBool();
+      this->CorrectPosition();
       break;
 
     default:
@@ -505,7 +512,7 @@ void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set)
 
 void MainWindow::CorrectPosition()
 {
-#ifndef Q_OS_MACOS  // workaround for https://sourceforge.net/p/digitalclock4/tickets/7/
+  if (!keep_always_visible_) return;
   QPoint curr_pos = this->pos();
   QDesktopWidget* desktop = QApplication::desktop();
   curr_pos.setX(std::max(curr_pos.x(), desktop->geometry().left()));
@@ -513,7 +520,6 @@ void MainWindow::CorrectPosition()
   curr_pos.setY(std::max(curr_pos.y(), desktop->geometry().top()));
   curr_pos.setY(std::min(curr_pos.y(), desktop->geometry().bottom() - this->height()));
   if (curr_pos != this->pos()) this->move(curr_pos);
-#endif
 }
 
 void MainWindow::SetVisibleOnAllDesktops(bool set)

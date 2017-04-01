@@ -875,6 +875,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="keep_always_visible">
+         <property name="text">
+          <string>always keep clock visible on screen, prevent out of sceen postion</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLabel" name="restart_warning_label">
          <property name="font">
           <font>
