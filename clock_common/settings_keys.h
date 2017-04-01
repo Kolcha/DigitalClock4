@@ -67,17 +67,14 @@ enum Option {
   OPT_TEXTURE_TYPE,             /*!< texture type, SkinDrawer::CustomizationType, CT_COLOR/CT_TEXTURE */
   OPT_TEXTURE_PER_ELEMENT,      /*!< apply texture per element flag, bool, true/false */
   OPT_TEXTURE_DRAW_MODE,        /*!< texture draw mode, SkinDrawer::DrawMode, DM_STRETCH/DM_TILE */
-  OPT_CUSTOMIZATION,            /*!< customization type, Customization,
-                                     C_NONE/C_TEXTURING/C_COLORIZE */
+  OPT_CUSTOMIZATION,            /*!< customization type, Customization, C_NONE/C_TEXTURING/C_COLORIZE */
   OPT_SPACING,                  /*!< space between clock digits in pixels */
   OPT_COLORIZE_COLOR,           /*!< color for colorize effect, QColor, any color */
   OPT_COLORIZE_LEVEL,           /*!< colorize effect strength, qreal, 0..1 */
-
   // updater settings
   OPT_USE_AUTOUPDATE,           /*!< enable/disable autoupdate, bool, true/false */
   OPT_UPDATE_PERIOD,            /*!< how often to check for updates, qint64, days count */
   OPT_CHECK_FOR_BETA,           /*!< check for beta releases, bool, true/false */
-
   // misc settings
   OPT_CLOCK_URL_ENABLED,        /*!< enable/disable quick URL feature, bool, true/false */
   OPT_CLOCK_URL_STRING,         /*!< URL value for quick URL feature, QString, any URL */
