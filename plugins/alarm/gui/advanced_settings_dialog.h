@@ -34,7 +34,7 @@ class AdvancedSettingsDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit AdvancedSettingsDialog(QWidget *parent = 0);
+  explicit AdvancedSettingsDialog(QWidget* parent = 0);
   ~AdvancedSettingsDialog();
 
   void Init(const QSettings::SettingsMap& settings);
@@ -46,7 +46,7 @@ private slots:
   void on_shortcut_edit_editingFinished();
 
 private:
-  Ui::AdvancedSettingsDialog *ui;
+  Ui::AdvancedSettingsDialog* ui;
 };
 
 } // namespace alarm_plugin
