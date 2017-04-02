@@ -27,6 +27,7 @@
 #include <QMediaPlayer>
 
 class QAction;
+class QHotkey;
 
 namespace alarm_plugin {
 
@@ -62,6 +63,7 @@ private:
   bool icon_changed_;
   AlarmsStorage* storage_;
   QAction* alarm_menu_;
+  QHotkey* stop_hotkey_;
 };
 
 } // namespace alarm_plugin

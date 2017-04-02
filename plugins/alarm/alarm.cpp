@@ -24,6 +24,8 @@
 #include <QDir>
 #include <QMediaPlaylist>
 
+#include <QHotkey>
+
 #include "plugin_settings.h"
 
 #include "core/alarm_item.h"
@@ -34,7 +36,12 @@
 
 namespace alarm_plugin {
 
-Alarm::Alarm() : tray_icon_(nullptr), icon_changed_(false), storage_(nullptr), alarm_menu_(nullptr)
+Alarm::Alarm() :
+  tray_icon_(nullptr),
+  icon_changed_(false),
+  storage_(nullptr),
+  alarm_menu_(nullptr),
+  stop_hotkey_(nullptr)
 {
   InitTranslator(QLatin1String(":/alarm/alarm_"));
   info_.display_name = tr("Alarm");
@@ -58,13 +65,6 @@ void Alarm::Start()
 {
   tray_icon_->setIcon(QIcon(":/alarm/alarm_clock.svg"));
   icon_changed_ = true;
-
-  QSettings::SettingsMap defaults;
-  InitDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-  settings_->TrackChanges(true);
-  connect(settings_, &PluginSettings::OptionChanged, this, &Alarm::onPluginOptionChanged);
-  settings_->Load();
 
   player_ = new QMediaPlayer(this, QMediaPlayer::StreamPlayback);
   player_->setPlaylist(new QMediaPlaylist(player_));
@@ -105,6 +105,13 @@ void Alarm::Start()
 
   connect(player_.data(), static_cast<void(QMediaPlayer::*)(QMediaPlayer::Error)>(&QMediaPlayer::error),
           this, &Alarm::ShowPlayerError);
+
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->TrackChanges(true);
+  connect(settings_, &PluginSettings::OptionChanged, this, &Alarm::onPluginOptionChanged);
+  settings_->Load();
 }
 
 void Alarm::Stop()
@@ -117,6 +124,7 @@ void Alarm::Stop()
   }
   tray_icon_->contextMenu()->removeAction(alarm_menu_);
   delete alarm_menu_->menu();
+  delete stop_hotkey_;
 }
 
 void Alarm::Configure()
@@ -201,7 +209,14 @@ void Alarm::ShowSettingsDialog()
 
 void Alarm::onPluginOptionChanged(const QString& key, const QVariant& value)
 {
-  qDebug() << key << value;
+  if (key == OPT_STOP_ALARM_SHORTCUT) {
+    delete stop_hotkey_;
+    QString key_seq_str = value.toString();
+    if (key_seq_str.isEmpty()) return;
+    stop_hotkey_ = new QHotkey(QKeySequence(key_seq_str), true);
+    connect(stop_hotkey_, &QHotkey::activated, player_.data(), &QMediaPlayer::stop);
+    return;
+  }
 }
 
 } // namespace alarm_plugin
