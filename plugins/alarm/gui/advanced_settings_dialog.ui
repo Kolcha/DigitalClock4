@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>291</width>
+    <width>321</width>
     <height>72</height>
    </rect>
   </property>
@@ -21,7 +21,21 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item row="0" column="1">
+    <widget class="QKeySequenceEdit" name="shortcut_edit"/>
+   </item>
+   <item row="0" column="2">
+    <widget class="QToolButton" name="shortcut_clear_btn">
+     <property name="text">
+      <string notr="true">...</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../alarm.qrc">
+       <normaloff>:/alarm/remove_all.svg</normaloff>:/alarm/remove_all.svg</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -31,12 +45,11 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QKeySequenceEdit" name="shortcut_edit"/>
-   </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../alarm.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>
@@ -45,12 +58,12 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>227</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
-     <y>274</y>
+     <y>71</y>
     </hint>
    </hints>
   </connection>
@@ -61,12 +74,28 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>295</x>
+     <y>59</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
-     <y>274</y>
+     <y>71</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shortcut_clear_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>shortcut_edit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>305</x>
+     <y>19</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>252</x>
+     <y>20</y>
     </hint>
    </hints>
   </connection>

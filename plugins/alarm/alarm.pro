@@ -29,16 +29,18 @@ include(../common.pri)
 TARGET = alarm
 
 SOURCES += alarm.cpp \
-    core/alarm_item.cpp \
     core/alarms_storage.cpp \
+    core/alarm_item.cpp \
+    core/alarm_settings.cpp \
     gui/advanced_settings_dialog.cpp \
     gui/alarms_list_dialog.cpp \
     gui/alarm_list_item_widget.cpp \
     gui/edit_alarm_dialog.cpp
 
 HEADERS += alarm.h \
-    core/alarm_item.h \
     core/alarms_storage.h \
+    core/alarm_item.h \
+    core/alarm_settings.h \
     gui/advanced_settings_dialog.h \
     gui/alarms_list_dialog.h \
     gui/alarm_list_item_widget.h \
