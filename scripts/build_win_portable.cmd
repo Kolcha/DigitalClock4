@@ -53,6 +53,9 @@ for %%f in ("plugins\*.dll") do (
 xcopy /s /y "%data_dir%\textures" "%dst_path%\textures\"
 xcopy /s /y "%data_dir%\skins" "%dst_path%\skins\"
 
+xcopy /y "%data_dir%\mingw-ssl\libeay32.dll" "%dst_path%\"
+xcopy /y "%data_dir%\mingw-ssl\ssleay32.dll" "%dst_path%\"
+
 cd "%build_dir%\.."
 rmdir /s /q "%build_dir%"
 
