@@ -14,7 +14,7 @@
    <string>Alarm Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" rowspan="6">
+   <item row="0" column="0" rowspan="7">
     <widget class="QListWidget" name="alarms_list"/>
    </item>
    <item row="0" column="1">
@@ -99,7 +99,21 @@
      </property>
     </spacer>
    </item>
-   <item row="6" column="0" colspan="2">
+   <item row="6" column="1">
+    <widget class="QToolButton" name="adv_settings_btn">
+     <property name="toolTip">
+      <string>Advanced settings</string>
+     </property>
+     <property name="text">
+      <string notr="true">...</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../alarm.qrc">
+       <normaloff>:/alarm/settings.svg</normaloff>:/alarm/settings.svg</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
