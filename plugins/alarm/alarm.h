@@ -52,6 +52,8 @@ public slots:
 
 private slots:
   void ShowPlayerError(QMediaPlayer::Error error);
+  void ShowSettingsDialog();
+  void onPluginOptionChanged(const QString& key, const QVariant& value);
 
 private:
   QSystemTrayIcon* tray_icon_;

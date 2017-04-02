@@ -21,6 +21,8 @@
 
 #include <QDialog>
 
+#include <QSettings>
+
 namespace alarm_plugin {
 
 namespace Ui {
@@ -35,10 +37,17 @@ public:
   explicit AdvancedSettingsDialog(QWidget *parent = 0);
   ~AdvancedSettingsDialog();
 
+  void Init(const QSettings::SettingsMap& settings);
+
+signals:
+  void OptionChanged(const QString& key, const QVariant& value);
+
+private slots:
+  void on_shortcut_edit_editingFinished();
+
 private:
   Ui::AdvancedSettingsDialog *ui;
 };
-
 
 } // namespace alarm_plugin
 

@@ -24,9 +24,13 @@
 #include <QDir>
 #include <QMediaPlaylist>
 
+#include "plugin_settings.h"
+
 #include "core/alarm_item.h"
 #include "core/alarms_storage.h"
+#include "core/alarm_settings.h"
 #include "gui/alarms_list_dialog.h"
+#include "gui/advanced_settings_dialog.h"
 
 namespace alarm_plugin {
 
@@ -47,12 +51,20 @@ void Alarm::Init(QSystemTrayIcon* tray_icon)
 void Alarm::InitSettings(SettingsStorage* backend)
 {
   storage_ = new AlarmsStorage(backend, this);
+  IClockPlugin::InitSettings(backend);
 }
 
 void Alarm::Start()
 {
   tray_icon_->setIcon(QIcon(":/alarm/alarm_clock.svg"));
   icon_changed_ = true;
+
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->TrackChanges(true);
+  connect(settings_, &PluginSettings::OptionChanged, this, &Alarm::onPluginOptionChanged);
+  settings_->Load();
 
   player_ = new QMediaPlayer(this, QMediaPlayer::StreamPlayback);
   player_->setPlaylist(new QMediaPlaylist(player_));
@@ -114,6 +126,7 @@ void Alarm::Configure()
   connect(dlg, &AlarmsListDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
   connect(dlg, &AlarmsListDialog::accepted, storage_, &AlarmsStorage::Accept);
   connect(dlg, &AlarmsListDialog::rejected, storage_, &AlarmsStorage::Reject);
+  connect(dlg, &AlarmsListDialog::settingsButtonClicked, this, &Alarm::ShowSettingsDialog);
 
   connect(storage_, &AlarmsStorage::alarmsLoaded, dlg, &AlarmsListDialog::setAlarmsList);
   if (icon_changed_)
@@ -163,6 +176,32 @@ void Alarm::ShowPlayerError(QMediaPlayer::Error error)
 {
   if (error == QMediaPlayer::NoError) return;
   tray_icon_->showMessage(tr("Digital Clock Alarm"), player_->errorString(), QSystemTrayIcon::Critical);
+}
+
+void Alarm::ShowSettingsDialog()
+{
+  AdvancedSettingsDialog* dlg = new AdvancedSettingsDialog(qobject_cast<QWidget*>(sender()));
+  dlg->setWindowModality(Qt::ApplicationModal);
+  // load current settings to dialog
+  QSettings::SettingsMap curr_settings;
+  InitDefaults(&curr_settings);
+  if (!icon_changed_) settings_->SetDefaultValues(curr_settings);
+  for (auto iter = curr_settings.begin(); iter != curr_settings.end(); ++iter) {
+    *iter = settings_->GetOption(iter.key());
+  }
+  dlg->Init(curr_settings);
+  // connect main signals/slots
+  connect(dlg, &AdvancedSettingsDialog::accepted, settings_, &PluginSettings::Save);
+  connect(dlg, &AdvancedSettingsDialog::rejected, settings_, &PluginSettings::Load);
+  connect(dlg, &AdvancedSettingsDialog::OptionChanged, settings_, &PluginSettings::SetOption);
+  connect(dlg, &AdvancedSettingsDialog::accepted, dlg, &AdvancedSettingsDialog::deleteLater);
+  connect(dlg, &AdvancedSettingsDialog::rejected, dlg, &AdvancedSettingsDialog::deleteLater);
+  dlg->show();
+}
+
+void Alarm::onPluginOptionChanged(const QString& key, const QVariant& value)
+{
+  qDebug() << key << value;
 }
 
 } // namespace alarm_plugin

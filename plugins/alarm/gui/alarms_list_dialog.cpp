@@ -25,7 +25,6 @@
 
 #include "edit_alarm_dialog.h"
 #include "alarm_list_item_widget.h"
-#include "advanced_settings_dialog.h"
 
 namespace alarm_plugin {
 
@@ -35,6 +34,7 @@ AlarmsListDialog::AlarmsListDialog(QWidget* parent) :
 {
   setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
+  connect(ui->adv_settings_btn, &QToolButton::clicked, this, &AlarmsListDialog::settingsButtonClicked);
 }
 
 AlarmsListDialog::~AlarmsListDialog()
@@ -112,12 +112,6 @@ void AlarmsListDialog::on_delete_all_btn_clicked()
     emit alarmRemoved(alarm);
   }
   alarms_.clear();
-}
-
-void AlarmsListDialog::on_adv_settings_btn_clicked()
-{
-  AdvancedSettingsDialog dlg(this);
-  dlg.exec();
 }
 
 } // namespace alarm_plugin

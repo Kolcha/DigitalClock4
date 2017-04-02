@@ -44,6 +44,7 @@ public:
 signals:
   void alarmAdded(AlarmItem* alarm);
   void alarmRemoved(AlarmItem* alarm);
+  void settingsButtonClicked();
 
 public slots:
   void setAlarmsList(const QList<AlarmItem*>& alarms_list);
@@ -53,7 +54,6 @@ private slots:
   void on_del_btn_clicked();
   void on_disable_all_btn_clicked();
   void on_delete_all_btn_clicked();
-  void on_adv_settings_btn_clicked();
 
 private:
   Ui::AlarmsListDialog* ui;

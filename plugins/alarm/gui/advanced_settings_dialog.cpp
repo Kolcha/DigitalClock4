@@ -19,6 +19,8 @@
 #include "advanced_settings_dialog.h"
 #include "ui_advanced_settings_dialog.h"
 
+#include "core/alarm_settings.h"
+
 namespace alarm_plugin {
 
 AdvancedSettingsDialog::AdvancedSettingsDialog(QWidget *parent) :
@@ -26,11 +28,22 @@ AdvancedSettingsDialog::AdvancedSettingsDialog(QWidget *parent) :
   ui(new Ui::AdvancedSettingsDialog)
 {
   ui->setupUi(this);
+  connect(ui->shortcut_clear_btn, &QToolButton::clicked, this, &AdvancedSettingsDialog::on_shortcut_edit_editingFinished);
 }
 
 AdvancedSettingsDialog::~AdvancedSettingsDialog()
 {
   delete ui;
+}
+
+void AdvancedSettingsDialog::Init(const QSettings::SettingsMap& settings)
+{
+  ui->shortcut_edit->setKeySequence(QKeySequence(settings.value(OPT_STOP_ALARM_SHORTCUT).toString()));
+}
+
+void AdvancedSettingsDialog::on_shortcut_edit_editingFinished()
+{
+  emit OptionChanged(OPT_STOP_ALARM_SHORTCUT, ui->shortcut_edit->keySequence().toString());
 }
 
 } // namespace alarm_plugin
