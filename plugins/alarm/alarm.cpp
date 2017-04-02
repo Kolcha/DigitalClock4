@@ -24,13 +24,24 @@
 #include <QDir>
 #include <QMediaPlaylist>
 
+#include <QHotkey>
+
+#include "plugin_settings.h"
+
 #include "core/alarm_item.h"
 #include "core/alarms_storage.h"
-#include "gui/settings_dialog.h"
+#include "core/alarm_settings.h"
+#include "gui/alarms_list_dialog.h"
+#include "gui/advanced_settings_dialog.h"
 
 namespace alarm_plugin {
 
-Alarm::Alarm() : tray_icon_(nullptr), icon_changed_(false), storage_(nullptr), alarm_menu_(nullptr)
+Alarm::Alarm() :
+  tray_icon_(nullptr),
+  icon_changed_(false),
+  storage_(nullptr),
+  alarm_menu_(nullptr),
+  stop_hotkey_(nullptr)
 {
   InitTranslator(QLatin1String(":/alarm/alarm_"));
   info_.display_name = tr("Alarm");
@@ -47,6 +58,7 @@ void Alarm::Init(QSystemTrayIcon* tray_icon)
 void Alarm::InitSettings(SettingsStorage* backend)
 {
   storage_ = new AlarmsStorage(backend, this);
+  IClockPlugin::InitSettings(backend);
 }
 
 void Alarm::Start()
@@ -93,6 +105,13 @@ void Alarm::Start()
 
   connect(player_.data(), static_cast<void(QMediaPlayer::*)(QMediaPlayer::Error)>(&QMediaPlayer::error),
           this, &Alarm::ShowPlayerError);
+
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->TrackChanges(true);
+  connect(settings_, &PluginSettings::OptionChanged, this, &Alarm::onPluginOptionChanged);
+  settings_->Load();
 }
 
 void Alarm::Stop()
@@ -105,17 +124,19 @@ void Alarm::Stop()
   }
   tray_icon_->contextMenu()->removeAction(alarm_menu_);
   delete alarm_menu_->menu();
+  delete stop_hotkey_;
 }
 
 void Alarm::Configure()
 {
-  SettingsDialog* dlg = new SettingsDialog();
-  connect(dlg, &SettingsDialog::alarmAdded, storage_, &AlarmsStorage::addAlarm);
-  connect(dlg, &SettingsDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
-  connect(dlg, &SettingsDialog::accepted, storage_, &AlarmsStorage::Accept);
-  connect(dlg, &SettingsDialog::rejected, storage_, &AlarmsStorage::Reject);
+  AlarmsListDialog* dlg = new AlarmsListDialog();
+  connect(dlg, &AlarmsListDialog::alarmAdded, storage_, &AlarmsStorage::addAlarm);
+  connect(dlg, &AlarmsListDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
+  connect(dlg, &AlarmsListDialog::accepted, storage_, &AlarmsStorage::Accept);
+  connect(dlg, &AlarmsListDialog::rejected, storage_, &AlarmsStorage::Reject);
+  connect(dlg, &AlarmsListDialog::settingsButtonClicked, this, &Alarm::ShowSettingsDialog);
 
-  connect(storage_, &AlarmsStorage::alarmsLoaded, dlg, &SettingsDialog::setAlarmsList);
+  connect(storage_, &AlarmsStorage::alarmsLoaded, dlg, &AlarmsListDialog::setAlarmsList);
   if (icon_changed_)
     dlg->setAlarmsList(storage_->getAlarms());
   else
@@ -163,6 +184,39 @@ void Alarm::ShowPlayerError(QMediaPlayer::Error error)
 {
   if (error == QMediaPlayer::NoError) return;
   tray_icon_->showMessage(tr("Digital Clock Alarm"), player_->errorString(), QSystemTrayIcon::Critical);
+}
+
+void Alarm::ShowSettingsDialog()
+{
+  AdvancedSettingsDialog* dlg = new AdvancedSettingsDialog(qobject_cast<QWidget*>(sender()));
+  dlg->setWindowModality(Qt::ApplicationModal);
+  // load current settings to dialog
+  QSettings::SettingsMap curr_settings;
+  InitDefaults(&curr_settings);
+  if (!icon_changed_) settings_->SetDefaultValues(curr_settings);
+  for (auto iter = curr_settings.begin(); iter != curr_settings.end(); ++iter) {
+    *iter = settings_->GetOption(iter.key());
+  }
+  dlg->Init(curr_settings);
+  // connect main signals/slots
+  connect(dlg, &AdvancedSettingsDialog::accepted, settings_, &PluginSettings::Save);
+  connect(dlg, &AdvancedSettingsDialog::rejected, settings_, &PluginSettings::Load);
+  connect(dlg, &AdvancedSettingsDialog::OptionChanged, settings_, &PluginSettings::SetOption);
+  connect(dlg, &AdvancedSettingsDialog::accepted, dlg, &AdvancedSettingsDialog::deleteLater);
+  connect(dlg, &AdvancedSettingsDialog::rejected, dlg, &AdvancedSettingsDialog::deleteLater);
+  dlg->show();
+}
+
+void Alarm::onPluginOptionChanged(const QString& key, const QVariant& value)
+{
+  if (key == OPT_STOP_ALARM_SHORTCUT) {
+    delete stop_hotkey_;
+    QString key_seq_str = value.toString();
+    if (key_seq_str.isEmpty()) return;
+    stop_hotkey_ = new QHotkey(QKeySequence(key_seq_str), true);
+    connect(stop_hotkey_, &QHotkey::activated, player_.data(), &QMediaPlayer::stop);
+    return;
+  }
 }
 
 } // namespace alarm_plugin

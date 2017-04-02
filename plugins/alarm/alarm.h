@@ -27,6 +27,7 @@
 #include <QMediaPlayer>
 
 class QAction;
+class QHotkey;
 
 namespace alarm_plugin {
 
@@ -52,6 +53,8 @@ public slots:
 
 private slots:
   void ShowPlayerError(QMediaPlayer::Error error);
+  void ShowSettingsDialog();
+  void onPluginOptionChanged(const QString& key, const QVariant& value);
 
 private:
   QSystemTrayIcon* tray_icon_;
@@ -60,6 +63,7 @@ private:
   bool icon_changed_;
   AlarmsStorage* storage_;
   QAction* alarm_menu_;
+  QHotkey* stop_hotkey_;
 };
 
 } // namespace alarm_plugin

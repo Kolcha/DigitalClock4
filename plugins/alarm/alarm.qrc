@@ -10,5 +10,6 @@
         <file alias="disable_all.svg">res/1486216481_bell-disabled.svg</file>
         <file alias="remove_all.svg">res/1486216487_86.svg</file>
         <file alias="browse.svg">res/1486216322_folder.svg</file>
+        <file alias="settings.svg">res/settings-24.svg</file>
     </qresource>
 </RCC>

@@ -16,3 +16,4 @@ desktop.ini
 *.app/
 .vs
 *.VC.*
+.git*
