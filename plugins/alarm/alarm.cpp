@@ -26,7 +26,7 @@
 
 #include "core/alarm_item.h"
 #include "core/alarms_storage.h"
-#include "gui/settings_dialog.h"
+#include "gui/alarms_list_dialog.h"
 
 namespace alarm_plugin {
 
@@ -109,13 +109,13 @@ void Alarm::Stop()
 
 void Alarm::Configure()
 {
-  SettingsDialog* dlg = new SettingsDialog();
-  connect(dlg, &SettingsDialog::alarmAdded, storage_, &AlarmsStorage::addAlarm);
-  connect(dlg, &SettingsDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
-  connect(dlg, &SettingsDialog::accepted, storage_, &AlarmsStorage::Accept);
-  connect(dlg, &SettingsDialog::rejected, storage_, &AlarmsStorage::Reject);
+  AlarmsListDialog* dlg = new AlarmsListDialog();
+  connect(dlg, &AlarmsListDialog::alarmAdded, storage_, &AlarmsStorage::addAlarm);
+  connect(dlg, &AlarmsListDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
+  connect(dlg, &AlarmsListDialog::accepted, storage_, &AlarmsStorage::Accept);
+  connect(dlg, &AlarmsListDialog::rejected, storage_, &AlarmsStorage::Reject);
 
-  connect(storage_, &AlarmsStorage::alarmsLoaded, dlg, &SettingsDialog::setAlarmsList);
+  connect(storage_, &AlarmsStorage::alarmsLoaded, dlg, &AlarmsListDialog::setAlarmsList);
   if (icon_changed_)
     dlg->setAlarmsList(storage_->getAlarms());
   else

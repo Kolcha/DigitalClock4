@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ALARM_PLUGIN_SETTINGS_DIALOG_H
-#define ALARM_PLUGIN_SETTINGS_DIALOG_H
+#ifndef ALARM_ALARMS_LIST_DIALOG_H
+#define ALARM_ALARMS_LIST_DIALOG_H
 
 #include <QDialog>
 
@@ -28,16 +28,16 @@ namespace alarm_plugin {
 class AlarmItem;
 
 namespace Ui {
-class SettingsDialog;
+class AlarmsListDialog;
 }
 
-class SettingsDialog : public QDialog
+class AlarmsListDialog : public QDialog
 {
   Q_OBJECT
 
 public:
-  explicit SettingsDialog(QWidget* parent = 0);
-  ~SettingsDialog();
+  explicit AlarmsListDialog(QWidget* parent = 0);
+  ~AlarmsListDialog();
 
   QList<AlarmItem*> alarmsList() const;
 
@@ -55,10 +55,10 @@ private slots:
   void on_delete_all_btn_clicked();
 
 private:
-  Ui::SettingsDialog* ui;
+  Ui::AlarmsListDialog* ui;
   QList<AlarmItem*> alarms_;
 };
 
 } // namespace alarm_plugin
 
-#endif // ALARM_PLUGIN_SETTINGS_DIALOG_H
+#endif // ALARM_ALARMS_LIST_DIALOG_H

@@ -59,6 +59,34 @@
     </message>
 </context>
 <context>
+    <name>alarm_plugin::AlarmsListDialog</name>
+    <message>
+        <location filename="gui/alarms_list_dialog.ui" line="14"/>
+        <source>Alarm Settings</source>
+        <translation>Настройки будильника</translation>
+    </message>
+    <message>
+        <location filename="gui/alarms_list_dialog.ui" line="23"/>
+        <source>Add new alarm</source>
+        <translation>Добавить новый будильник</translation>
+    </message>
+    <message>
+        <location filename="gui/alarms_list_dialog.ui" line="37"/>
+        <source>Delete selected</source>
+        <translation>Удалить выбранное</translation>
+    </message>
+    <message>
+        <location filename="gui/alarms_list_dialog.ui" line="64"/>
+        <source>Disable all alarms</source>
+        <translation>Отключить все будильники</translation>
+    </message>
+    <message>
+        <location filename="gui/alarms_list_dialog.ui" line="78"/>
+        <source>Remove all alarms</source>
+        <translation>Удалить все будильники</translation>
+    </message>
+</context>
+<context>
     <name>alarm_plugin::EditAlarmDialog</name>
     <message>
         <location filename="gui/edit_alarm_dialog.ui" line="14"/>
@@ -105,34 +133,6 @@
         <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)</source>
         <translatorcomment>фильтр файлов</translatorcomment>
         <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a);;Все файлы (*.*)</translation>
-    </message>
-</context>
-<context>
-    <name>alarm_plugin::SettingsDialog</name>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="14"/>
-        <source>Alarm Settings</source>
-        <translation>Настройки будильника</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="23"/>
-        <source>Add new alarm</source>
-        <translation>Добавить новый будильник</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="37"/>
-        <source>Delete selected</source>
-        <translation>Удалить выбранное</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="64"/>
-        <source>Disable all alarms</source>
-        <translation>Отключить все будильники</translation>
-    </message>
-    <message>
-        <location filename="gui/settings_dialog.ui" line="78"/>
-        <source>Remove all alarms</source>
-        <translation>Удалить все будильники</translation>
     </message>
 </context>
 </TS>

@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "settings_dialog.h"
-#include "ui_settings_dialog.h"
+#include "alarms_list_dialog.h"
+#include "ui_alarms_list_dialog.h"
 
 #include <algorithm>
 
@@ -28,25 +28,25 @@
 
 namespace alarm_plugin {
 
-SettingsDialog::SettingsDialog(QWidget* parent) :
+AlarmsListDialog::AlarmsListDialog(QWidget* parent) :
   QDialog(parent),
-  ui(new Ui::SettingsDialog)
+  ui(new Ui::AlarmsListDialog)
 {
   setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
 }
 
-SettingsDialog::~SettingsDialog()
+AlarmsListDialog::~AlarmsListDialog()
 {
   delete ui;
 }
 
-QList<AlarmItem*> SettingsDialog::alarmsList() const
+QList<AlarmItem*> AlarmsListDialog::alarmsList() const
 {
   return alarms_;
 }
 
-void SettingsDialog::setAlarmsList(const QList<AlarmItem*>& alarms_list)
+void AlarmsListDialog::setAlarmsList(const QList<AlarmItem*>& alarms_list)
 {
   alarms_ = alarms_list;
   std::sort(alarms_.begin(), alarms_.end(), AlarmItem::timeCompare);
@@ -63,7 +63,7 @@ void SettingsDialog::setAlarmsList(const QList<AlarmItem*>& alarms_list)
   }
 }
 
-void SettingsDialog::on_add_btn_clicked()
+void AlarmsListDialog::on_add_btn_clicked()
 {
   AlarmItem* alarm = new AlarmItem();
   EditAlarmDialog dlg(alarm, this);
@@ -86,7 +86,7 @@ void SettingsDialog::on_add_btn_clicked()
   }
 }
 
-void SettingsDialog::on_del_btn_clicked()
+void AlarmsListDialog::on_del_btn_clicked()
 {
   QList<QListWidgetItem*> selected_items = ui->alarms_list->selectedItems();
   for (auto& item : selected_items) {
@@ -99,12 +99,12 @@ void SettingsDialog::on_del_btn_clicked()
   }
 }
 
-void SettingsDialog::on_disable_all_btn_clicked()
+void AlarmsListDialog::on_disable_all_btn_clicked()
 {
   for (auto& alarm : alarms_) alarm->setEnabled(false);
 }
 
-void SettingsDialog::on_delete_all_btn_clicked()
+void AlarmsListDialog::on_delete_all_btn_clicked()
 {
   ui->alarms_list->clear();
   for (auto& alarm : alarms_) {
