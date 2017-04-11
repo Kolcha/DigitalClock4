@@ -34,6 +34,7 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     core/autostart.cpp \
+    core/clock_logger.cpp \
     core/clock_settings.cpp \
     core/clock_state.cpp \
     core/http_client.cpp \
@@ -55,9 +56,15 @@ SOURCES += main.cpp \
     skin/clock_vector_skin.cpp \
     main_window.cpp
 
+unix {
+SOURCES += \
+    core/backtrace_unix.cpp
+}
+
 HEADERS += \
     core/autostart.h \
     core/build_defs.h \
+    core/clock_logger.h \
     core/clock_settings.h \
     core/clock_state.h \
     core/http_client.h \
