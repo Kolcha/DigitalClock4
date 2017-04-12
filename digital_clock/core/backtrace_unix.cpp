@@ -79,10 +79,11 @@ static void stack_trace()
 }
 
 
-static void sig_handler(int sig)
+static void sig_handler(int signum)
 {
   stack_trace();
-  exit(128 + sig);
+  signal(signum, SIG_DFL);
+  raise(signum);
 }
 
 
