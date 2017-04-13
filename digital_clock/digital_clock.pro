@@ -56,11 +56,6 @@ SOURCES += main.cpp \
     skin/clock_vector_skin.cpp \
     main_window.cpp
 
-unix {
-SOURCES += \
-    core/backtrace_unix.cpp
-}
-
 HEADERS += \
     core/autostart.h \
     core/build_defs.h \
@@ -94,6 +89,11 @@ SOURCES += \
 
 HEADERS += \
     platform/fullscreen_detect.h
+}
+
+unix {
+SOURCES += \
+    platform/backtrace_unix.cpp
 }
 
 FORMS += \
