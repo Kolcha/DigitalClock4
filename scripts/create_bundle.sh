@@ -84,13 +84,13 @@ mv digital_clock.app "$CLOCK_APP_NAME.app"
 $QT_ROOT/bin/macdeployqt "$CLOCK_APP_NAME.app"
 find "$CLOCK_APP_NAME.app" -name "*_debug.dylib" -exec rm -vf {} \;
 codesign --deep --force --verify --verbose --sign "-" "$CLOCK_APP_NAME.app"
-hdiutil create -srcfolder "$CLOCK_APP_NAME.app" "$CLOCK_APP_NAME.dmg"
+hdiutil create -srcfolder "$CLOCK_APP_NAME.app" -nospotlight -layout NONE "$CLOCK_APP_NAME.dmg"
 
 rm -f $build_dir/../*.dmg
 rm -rf "$build_dir/../$CLOCK_APP_NAME.app"
 mv "$CLOCK_APP_NAME.app" "$build_dir/../"
-mv "$CLOCK_APP_NAME.dmg" "$build_dir/../digital_clock_4-macosx.dmg"
-cd ..
+# this is very strange, but much better compression is achieved only after image conversion ...
+hdiutil convert "$CLOCK_APP_NAME.dmg" -format UDBZ -o "$build_dir/../digital_clock_4-macosx.dmg"
 
 # cleanup
 cd "$build_dir/.."
