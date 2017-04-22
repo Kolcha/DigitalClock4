@@ -49,3 +49,17 @@ do
   [[ $(echo "$f" | grep -i "svg") != "" ]] && deploy_plugins_list "$svg_lst"
   [[ $(echo "$f" | grep -i "texttospeech") != "" ]] && deploy_plugins_list "$tts_lst"
 done
+
+if ! [[ -d translations ]]
+then
+  mkdir translations
+  tr_path="$PWD/translations"
+  pushd "$QT_ROOT/translations" > /dev/null
+  langs=$(ls -1 qt_*.qm | grep -v help | sed 's/qt_\(.*\)\.qm/\1/g')
+  for lang in $langs
+  do
+    lang_files=$(ls -1 qt*_$lang.qm)
+    "$QT_ROOT/bin/lconvert" -o "$tr_path/qt_$lang.qm" $lang_files
+  done
+  popd > /dev/null
+fi

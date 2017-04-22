@@ -70,10 +70,21 @@ do
   done
 done
 
+# deploy Qt translations
+tr_path="$PWD/digital_clock/digital_clock.app/Contents/Resources/translations"
+[[ -d "$tr_path" ]] || mkdir "$tr_path"
+pushd "$QT_ROOT/translations" > /dev/null
+langs=$(ls -1 qt_*.qm | grep -v help | sed 's/qt_\(.*\)\.qm/\1/g')
+for lang in $langs
+do
+  lang_files=$(ls -1 qt*_$lang.qm)
+  $QT_ROOT/bin/lconvert -o "$tr_path/qt_$lang.qm" $lang_files
+done
+popd > /dev/null
+
 # copy resources
 cp -r $CLOCK_DATA_PATH/skins digital_clock/digital_clock.app/Contents/Resources/
 cp -r $CLOCK_DATA_PATH/textures digital_clock/digital_clock.app/Contents/Resources/
-cp -r $CLOCK_DATA_PATH/translations digital_clock/digital_clock.app/Contents/Resources/
 
 # update generated qt.conf
 echo "Translations = Resources/translations" >> digital_clock/digital_clock.app/Contents/Resources/qt.conf
