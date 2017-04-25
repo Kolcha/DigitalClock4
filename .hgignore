@@ -17,3 +17,4 @@ desktop.ini
 .vs
 *.VC.*
 .git*
+lang_en/*.ts

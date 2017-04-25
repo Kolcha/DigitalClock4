@@ -25,3 +25,6 @@ unix {
 QMAKE_CXXFLAGS_RELEASE -= -O2
 QMAKE_LFLAGS += -rdynamic
 }
+
+# fake config option, just to generate English translations each time
+en_translations:TRANSLATIONS += "$$PWD/lang_en/$${TARGET}.ts"
