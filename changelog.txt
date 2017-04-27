@@ -1,3 +1,33 @@
+Whats new in 4.5.5:
+-------------------
+Features:
+ - always keep visible on display (prevent out of range position)
+
+Core:
+ - small changes in updater
+ - added basic logging (linux/mac only)
+
+GUI:
+ - sort plugins by name
+ - decreased spacing on HiDPI display on Windows
+
+Plugins:
+ - horizontal layout support
+ - quick_note: dropped edit button
+ - alarm: fixed "disable all" icon color
+ - alarm: fixed alarms sorting
+ - alarm: fixed unstable crash
+ - alarm: changed icon color
+ - alarm: show notifications on error
+ - alarm: global hotkey to stop alarm
+ - ip_address: fixed unstable crash
+ - ip_address: fixed external IP getting
+
+General:
+ - fixed launch issues on some linux systems
+ - fixed autostart on some linux systems
+
+
 Whats new in 4.5.4:
 -------------------
 Features:
