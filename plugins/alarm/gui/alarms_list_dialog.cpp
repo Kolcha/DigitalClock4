@@ -21,6 +21,9 @@
 
 #include <algorithm>
 
+#include <QDir>
+#include <QFileInfo>
+
 #include "core/alarm_item.h"
 
 #include "edit_alarm_dialog.h"
@@ -35,6 +38,7 @@ AlarmsListDialog::AlarmsListDialog(QWidget* parent) :
   setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
   connect(ui->adv_settings_btn, &QToolButton::clicked, this, &AlarmsListDialog::settingsButtonClicked);
+  last_media_path_ = QDir::homePath();
 }
 
 AlarmsListDialog::~AlarmsListDialog()
@@ -64,10 +68,17 @@ void AlarmsListDialog::setAlarmsList(const QList<AlarmItem*>& alarms_list)
   }
 }
 
+void AlarmsListDialog::setLastMediaPath(const QString& last_path)
+{
+  last_media_path_ = last_path;
+  emit lastMediaPathChanged(last_media_path_);
+}
+
 void AlarmsListDialog::on_add_btn_clicked()
 {
   AlarmItem* alarm = new AlarmItem();
   EditAlarmDialog dlg(alarm, this);
+  dlg.setLastMediaPath(last_media_path_);
   dlg.setWindowModality(Qt::WindowModal);
   if (dlg.exec() == QDialog::Accepted) {
     auto ins_iter = std::find_if(alarms_.begin(), alarms_.end(),
@@ -81,6 +92,8 @@ void AlarmsListDialog::on_add_btn_clicked()
     item->setSizeHint(widget->sizeHint());
     ui->alarms_list->insertItem(std::distance(alarms_.begin(), item_iter), item);
     ui->alarms_list->setItemWidget(item, widget);
+    if (alarm->media().isLocalFile())
+      setLastMediaPath(QFileInfo(alarm->media().toLocalFile()).absolutePath());
     emit alarmAdded(alarm);
   } else {
     delete alarm;

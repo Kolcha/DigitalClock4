@@ -33,6 +33,7 @@ namespace alarm_plugin {
 EditAlarmDialog::EditAlarmDialog(AlarmItem* alarm_item, QWidget* parent) :
   QDialog(parent),
   ui(new Ui::EditAlarmDialog),
+  last_media_path_(QDir::homePath()),
   alarm_item_(alarm_item),
   orig_item_(new AlarmItem(this))
 {
@@ -111,6 +112,11 @@ void EditAlarmDialog::reject()
   QDialog::reject();
 }
 
+void EditAlarmDialog::setLastMediaPath(const QString& last_path)
+{
+  if (QFile::exists(last_path)) last_media_path_ = last_path;
+}
+
 void EditAlarmDialog::onAnyDayCheckboxToggled(bool checked)
 {
   auto d_iter = days_boxes_.find(qobject_cast<QCheckBox*>(sender()));
@@ -146,7 +152,7 @@ void EditAlarmDialog::on_browse_btn_clicked()
 {
   // *INDENT-OFF*
   QUrl new_file = QFileDialog::getOpenFileUrl(this, tr("Select sound"),
-                                              QUrl::fromLocalFile(QDir::homePath()),
+                                              QUrl::fromLocalFile(last_media_path_),
                                               tr("Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)"));
   // *INDENT-ON*
   if (!new_file.isValid()) return;

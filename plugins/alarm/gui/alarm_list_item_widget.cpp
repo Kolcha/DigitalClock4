@@ -24,6 +24,7 @@
 
 #include <QDate>
 #include <QLocale>
+#include <QFileInfo>
 
 #include "core/alarm_item.h"
 #include "edit_alarm_dialog.h"
@@ -119,6 +120,8 @@ void AlarmListItemWidget::setDays(const QSet<Qt::DayOfWeek>& days)
 void AlarmListItemWidget::on_edit_btn_clicked()
 {
   EditAlarmDialog dlg(item_, this->window());
+  if (item_->media().isLocalFile())
+    dlg.setLastMediaPath(QFileInfo(item_->media().toLocalFile()).absolutePath());
   dlg.setWindowModality(Qt::WindowModal);
   dlg.exec();
 }

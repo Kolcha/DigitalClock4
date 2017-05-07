@@ -18,11 +18,14 @@
 
 #include "alarm_settings.h"
 
+#include <QDir>
+
 namespace alarm_plugin {
 
 void InitDefaults(QSettings::SettingsMap* defaults)
 {
   defaults->insert(OPT_STOP_ALARM_SHORTCUT, QString());
+  defaults->insert(OPT_LAST_MEDIA_PATH, QDir::homePath());
 }
 
 } // namespace alarm_plugin

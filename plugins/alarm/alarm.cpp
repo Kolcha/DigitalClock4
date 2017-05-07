@@ -130,6 +130,19 @@ void Alarm::Stop()
 void Alarm::Configure()
 {
   AlarmsListDialog* dlg = new AlarmsListDialog();
+
+  if (!icon_changed_) {
+    QSettings::SettingsMap curr_settings;
+    InitDefaults(&curr_settings);
+    settings_->SetDefaultValues(curr_settings);
+  }
+  dlg->setLastMediaPath(settings_->GetOption(OPT_LAST_MEDIA_PATH).toString());
+  connect(dlg, &AlarmsListDialog::lastMediaPathChanged, [=] (const QString& last_path) {
+    settings_->SetOption(OPT_LAST_MEDIA_PATH, last_path);
+  });
+  connect(dlg, &AlarmsListDialog::accepted, settings_, &PluginSettings::Save);
+  connect(dlg, &AlarmsListDialog::rejected, settings_, &PluginSettings::Load);
+
   connect(dlg, &AlarmsListDialog::alarmAdded, storage_, &AlarmsStorage::addAlarm);
   connect(dlg, &AlarmsListDialog::alarmRemoved, storage_, &AlarmsStorage::removeAlarm);
   connect(dlg, &AlarmsListDialog::accepted, storage_, &AlarmsStorage::Accept);

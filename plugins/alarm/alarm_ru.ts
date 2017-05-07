@@ -40,9 +40,9 @@
     <message>
         <location filename="alarm.cpp" line="86"/>
         <location filename="alarm.cpp" line="100"/>
-        <location filename="alarm.cpp" line="165"/>
-        <location filename="alarm.cpp" line="176"/>
-        <location filename="alarm.cpp" line="186"/>
+        <location filename="alarm.cpp" line="178"/>
+        <location filename="alarm.cpp" line="189"/>
+        <location filename="alarm.cpp" line="199"/>
         <source>Digital Clock Alarm</source>
         <translation>Будильник Digital Clock</translation>
     </message>
@@ -59,14 +59,14 @@
 %1</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="166"/>
+        <location filename="alarm.cpp" line="179"/>
         <source>File not found:
 %1</source>
         <translation>Файл не найден:
 %1</translation>
     </message>
     <message>
-        <location filename="alarm.cpp" line="177"/>
+        <location filename="alarm.cpp" line="190"/>
         <source>Alarm at %1</source>
         <translation>Будильник в %1</translation>
     </message>
@@ -142,12 +142,12 @@
         <translation>Громкость:</translation>
     </message>
     <message>
-        <location filename="gui/edit_alarm_dialog.cpp" line="148"/>
+        <location filename="gui/edit_alarm_dialog.cpp" line="154"/>
         <source>Select sound</source>
         <translation>Выберите звук</translation>
     </message>
     <message>
-        <location filename="gui/edit_alarm_dialog.cpp" line="150"/>
+        <location filename="gui/edit_alarm_dialog.cpp" line="156"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)</source>
         <translatorcomment>фильтр файлов</translatorcomment>
         <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a);;Все файлы (*.*)</translation>

@@ -24,6 +24,7 @@
 namespace alarm_plugin {
 
 #define OPT_STOP_ALARM_SHORTCUT         "plugins/alarm/stop_shortcut"
+#define OPT_LAST_MEDIA_PATH             "plugins/alarm/last_media_path"
 
 void InitDefaults(QSettings::SettingsMap* defaults);
 

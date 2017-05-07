@@ -45,9 +45,11 @@ signals:
   void alarmAdded(AlarmItem* alarm);
   void alarmRemoved(AlarmItem* alarm);
   void settingsButtonClicked();
+  void lastMediaPathChanged(const QString& last_path);
 
 public slots:
   void setAlarmsList(const QList<AlarmItem*>& alarms_list);
+  void setLastMediaPath(const QString& last_path);
 
 private slots:
   void on_add_btn_clicked();
@@ -58,6 +60,7 @@ private slots:
 private:
   Ui::AlarmsListDialog* ui;
   QList<AlarmItem*> alarms_;
+  QString last_media_path_;
 };
 
 } // namespace alarm_plugin

@@ -45,6 +45,8 @@ public:
 public slots:
   void reject() override;
 
+  void setLastMediaPath(const QString& last_path);
+
 private slots:
   void onAnyDayCheckboxToggled(bool checked);
   void onPlayerStateChanged(QMediaPlayer::State new_state);
@@ -54,6 +56,7 @@ private slots:
 
 private:
   Ui::EditAlarmDialog* ui;
+  QString last_media_path_;
   AlarmItem* alarm_item_;
   AlarmItem* orig_item_;
   QMap<QCheckBox*, Qt::DayOfWeek> days_boxes_;
