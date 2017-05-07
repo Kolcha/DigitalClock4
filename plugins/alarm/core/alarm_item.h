@@ -42,8 +42,6 @@ public:
   QSet<Qt::DayOfWeek> days() const;
   bool isEnabled() const;
 
-  QString lastMediaDir() const;
-
   static bool idCompare(const AlarmItem* a, const AlarmItem* b);
   static bool timeCompare(const AlarmItem* a, const AlarmItem* b);
 

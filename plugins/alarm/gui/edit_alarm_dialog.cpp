@@ -146,7 +146,7 @@ void EditAlarmDialog::on_browse_btn_clicked()
 {
   // *INDENT-OFF*
   QUrl new_file = QFileDialog::getOpenFileUrl(this, tr("Select sound"),
-                                              QUrl::fromLocalFile(alarm_item_->lastMediaDir()),
+                                              QUrl::fromLocalFile(QDir::homePath()),
                                               tr("Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)"));
   // *INDENT-ON*
   if (!new_file.isValid()) return;
