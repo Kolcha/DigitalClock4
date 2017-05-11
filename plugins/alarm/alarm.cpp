@@ -23,9 +23,9 @@
 #include <QFile>
 #include <QDir>
 #include <QMediaPlaylist>
-
+#ifdef HAVE_QHOTKEY
 #include <QHotkey>
-
+#endif
 #include "plugin_settings.h"
 
 #include "core/alarm_item.h"
@@ -226,8 +226,10 @@ void Alarm::onPluginOptionChanged(const QString& key, const QVariant& value)
     delete stop_hotkey_;
     QString key_seq_str = value.toString();
     if (key_seq_str.isEmpty()) return;
+#ifdef HAVE_QHOTKEY
     stop_hotkey_ = new QHotkey(QKeySequence(key_seq_str), true);
     connect(stop_hotkey_, &QHotkey::activated, player_.data(), &QMediaPlayer::stop);
+#endif
     return;
   }
 }

@@ -39,6 +39,9 @@ AlarmsListDialog::AlarmsListDialog(QWidget* parent) :
   ui->setupUi(this);
   connect(ui->adv_settings_btn, &QToolButton::clicked, this, &AlarmsListDialog::settingsButtonClicked);
   last_media_path_ = QDir::homePath();
+#ifndef HAVE_QHOTKEY
+  ui->adv_settings_btn->hide();
+#endif
 }
 
 AlarmsListDialog::~AlarmsListDialog()
