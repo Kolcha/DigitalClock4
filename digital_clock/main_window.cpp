@@ -92,7 +92,6 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   connect(tray_control_, &gui::TrayControl::ShowSettingsDlg, this, &MainWindow::ShowSettingsDialog);
   connect(tray_control_, &gui::TrayControl::ShowAboutDlg, this, &MainWindow::ShowAboutDialog);
   connect(tray_control_, &gui::TrayControl::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
-  connect(tray_control_, &gui::TrayControl::AppExit, this, &MainWindow::ShutdownPluginSystem);
   connect(tray_control_, &gui::TrayControl::AppExit, qApp, &QApplication::quit);
   connect(&timer_, &QTimer::timeout, tray_control_, &gui::TrayControl::UpdateTrayIcon);
 
@@ -128,6 +127,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
 
 MainWindow::~MainWindow()
 {
+  ShutdownPluginSystem();
   timer_.stop();
   delete state_;
 }
