@@ -2,10 +2,10 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Name="Digital Clock" Id="*" UpgradeCode="{19300332-9971-4ECE-B0AA-2D4ABF2DFC7D}"
-    Language="1033" Codepage="1252" Version="4.5.5" Manufacturer="Nick Korotysh">
+    Language="1033" Codepage="1252" Version="4.5.6" Manufacturer="Nick Korotysh">
 
     <Package Id="*" Keywords="Installer" Platform="x86" Description="Digital Clock"
-      Comments="Digital Clock 4.5.5 x86 Installer" Manufacturer="Nick Korotysh"
+      Comments="Digital Clock 4.5.6 x86 Installer" Manufacturer="Nick Korotysh"
       InstallerVersion="405" InstallScope="perMachine" Compressed="yes" Languages="1033" SummaryCodepage="1252" />
 
     <Property Id="ARPCONTACT">mailto:nick.korotysh@gmail.com</Property>
@@ -22,7 +22,7 @@
 
     <Upgrade Id="{19300332-9971-4ECE-B0AA-2D4ABF2DFC7D}">
       <UpgradeVersion
-        Minimum="4.4.4" Maximum="4.5.5"
+        Minimum="4.4.4" Maximum="4.5.6"
         Property="PREVIOUSVERSIONSINSTALLED"
         IncludeMinimum="yes" IncludeMaximum="yes" />
     </Upgrade>
