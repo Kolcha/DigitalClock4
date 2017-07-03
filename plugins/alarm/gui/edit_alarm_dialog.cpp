@@ -159,6 +159,7 @@ void EditAlarmDialog::on_browse_btn_clicked()
   ui->filepath_edit->setText(new_file.toString());
   ui->filepath_edit->setToolTip(new_file.toString());
   player_->setMedia(new_file);
+  if (new_file.isLocalFile()) setLastMediaPath(QFileInfo(new_file.toLocalFile()).absolutePath());
 }
 
 } // namespace alarm_plugin
