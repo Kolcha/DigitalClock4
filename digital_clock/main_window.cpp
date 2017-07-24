@@ -96,7 +96,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   connect(&timer_, &QTimer::timeout, tray_control_, &gui::TrayControl::UpdateTrayIcon);
 
   clock_widget_ = new gui::ClockWidget(this);
-  connect(clock_widget_, &gui::ClockWidget::changed, this, &MainWindow::Update);
+  connect(&timer_, &QTimer::timeout, this, &MainWindow::Update);
   connect(clock_widget_, &gui::ClockWidget::SeparatorsChanged, skin_manager_, &core::SkinManager::SetSeparators);
   connect(&timer_, &QTimer::timeout, clock_widget_, &gui::ClockWidget::TimeoutHandler);
   connect(skin_manager_, &core::SkinManager::SkinLoaded, clock_widget_, &gui::ClockWidget::ApplySkin);
@@ -104,10 +104,10 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   ConnectTrayMessages();
 
   QGridLayout* main_layout = new QGridLayout(this);
+  main_layout->setSizeConstraint(QLayout::SetFixedSize);
   main_layout->addWidget(clock_widget_);
   main_layout->setMargin(2);
   setLayout(main_layout);
-  adjustSize();
 
   last_visibility_ = true;
   fullscreen_detect_enabled_ = false;
@@ -175,6 +175,16 @@ void MainWindow::paintEvent(QPaintEvent* /*event*/)
     p.setCompositionMode(QPainter::CompositionMode_Source);
     p.fillRect(this->rect(), bg_color_);
   }
+}
+
+void MainWindow::resizeEvent(QResizeEvent* event)
+{
+  if (cur_alignment_ == CAlignment::A_RIGHT && event->oldSize().isValid()) {
+    QPoint cur_pos = this->pos();
+    cur_pos.setX(cur_pos.x() + event->oldSize().width() - event->size().width());
+    this->move(cur_pos);
+  }
+  CorrectPosition();
 }
 
 void MainWindow::Reset()
@@ -294,7 +304,7 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
 
     case OPT_KEEP_ALWAYS_VISIBLE:
       keep_always_visible_ = value.toBool();
-      this->CorrectPosition();
+//      this->CorrectPosition();
       break;
 
     default:
@@ -321,11 +331,10 @@ void MainWindow::LoadState()
 
   CAlignment last_align = static_cast<CAlignment>(app_config_->GetValue(OPT_ALIGNMENT).toInt());
   if (last_align == CAlignment::A_RIGHT) {
-    last_pos.setX(last_pos.x() - this->width());
+    last_pos.setX(last_pos.x() - sizeHint().width());
   }
   cur_alignment_ = last_align;
   this->move(last_pos);
-  CorrectPosition();
 }
 
 void MainWindow::SaveState()
@@ -402,17 +411,6 @@ void MainWindow::ShowContextMenu(const QPoint& p)
 
 void MainWindow::Update()
 {
-  if (cur_alignment_ == CAlignment::A_RIGHT) {
-    int old_width = this->frameGeometry().width();
-    this->adjustSize();
-    int new_width = this->frameGeometry().width();
-    QPoint cur_pos = this->pos();
-    cur_pos.setX(cur_pos.x() + old_width - new_width);
-    this->move(cur_pos);
-  } else {
-    Q_ASSERT(cur_alignment_ == CAlignment::A_LEFT);
-    this->adjustSize();
-  }
 #ifdef Q_OS_WIN
   // always on top problem workaround
   // https://sourceforge.net/p/digitalclock4/tickets/3/
@@ -433,7 +431,6 @@ void MainWindow::Update()
     }
   }
 #endif
-  CorrectPosition();
 }
 
 void MainWindow::InitPluginSystem()
@@ -512,6 +509,7 @@ void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set)
 
 void MainWindow::CorrectPosition()
 {
+  return;
   if (!keep_always_visible_) return;
   QPoint curr_pos = this->pos();
   QDesktopWidget* desktop = QApplication::desktop();

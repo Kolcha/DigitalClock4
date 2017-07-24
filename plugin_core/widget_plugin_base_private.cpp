@@ -90,7 +90,6 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
 
       case ZoomMode::ZM_AUTOSIZE:
         plg_widget_->hide();
-        main_wnd_->adjustSize();
         obj_->avail_width_ = CalculateAvailableSpace();
         drawer_->SetZoom(obj_->CalculateZoom(last_text_));
         break;
@@ -105,7 +104,6 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
   if (key == OptionKey(OPT_WIDGET_LOCATION, obj_->plg_name_)) {
     plg_widget_->hide();
     main_layout_->removeWidget(plg_widget_);
-    main_wnd_->adjustSize();
     switch (static_cast<WidgetLocation>(value.toInt())) {
       case WidgetLocation::WL_BOTTOM:
         obj_->avail_width_ = main_layout_->cellRect(0, 0).width();

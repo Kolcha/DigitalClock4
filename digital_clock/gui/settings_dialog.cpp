@@ -83,8 +83,7 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* st
   connect(config->GetBackend(), &SettingsStorage::reloaded, this, &SettingsDialog::InitControls);
 
   InitControls();
-  adjustSize();
-
+  resize(sizeHint());
 
   connect(this, SIGNAL(accepted()), this, SLOT(SaveState()));
   connect(ui->defaults_bth, SIGNAL(clicked()), this, SIGNAL(ResetSettings()));

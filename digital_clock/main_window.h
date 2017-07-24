@@ -57,6 +57,7 @@ protected:
   void mouseMoveEvent(QMouseEvent* event);
   void mouseReleaseEvent(QMouseEvent* event);
   void paintEvent(QPaintEvent* event);
+  void resizeEvent(QResizeEvent* event);
 
 private slots:
   void Reset();
@@ -73,7 +74,7 @@ private slots:
 
   void ShowContextMenu(const QPoint& p);
 
-  void Update();
+  void Update();      // TODO: rename or even remove
 
   // temporary, will be changed later
   void InitPluginSystem();

@@ -49,8 +49,6 @@ public:
 signals:
   void SeparatorsChanged(const QString& seps);
 
-  void changed();
-
 public slots:
   void ApplySkin(::skin_draw::ISkin::SkinPtr skin);
   void ApplyOption(Option option, const QVariant& value);
@@ -60,7 +58,6 @@ public slots:
   void TimeoutHandler();
 
 private slots:
-  void Update();
   void DrawImage(const QImage& image);
 
 private:
