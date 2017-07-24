@@ -96,7 +96,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   connect(&timer_, &QTimer::timeout, tray_control_, &gui::TrayControl::UpdateTrayIcon);
 
   clock_widget_ = new gui::ClockWidget(this);
-  connect(clock_widget_, &gui::ClockWidget::changed, this, &MainWindow::Update);
+  connect(&timer_, &QTimer::timeout, this, &MainWindow::Update);
   connect(clock_widget_, &gui::ClockWidget::SeparatorsChanged, skin_manager_, &core::SkinManager::SetSeparators);
   connect(&timer_, &QTimer::timeout, clock_widget_, &gui::ClockWidget::TimeoutHandler);
   connect(skin_manager_, &core::SkinManager::SkinLoaded, clock_widget_, &gui::ClockWidget::ApplySkin);
@@ -328,7 +328,6 @@ void MainWindow::RestoreVisibility()
 void MainWindow::LoadState()
 {
   QPoint last_pos = state_->GetVariable(S_OPT_POSITION, QPoint(50, 20)).toPoint();
-  QPoint loaded = last_pos;
 
   CAlignment last_align = static_cast<CAlignment>(app_config_->GetValue(OPT_ALIGNMENT).toInt());
   if (last_align == CAlignment::A_RIGHT) {

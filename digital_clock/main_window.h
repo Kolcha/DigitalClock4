@@ -74,7 +74,7 @@ private slots:
 
   void ShowContextMenu(const QPoint& p);
 
-  void Update();
+  void Update();      // TODO: rename or even remove
 
   // temporary, will be changed later
   void InitPluginSystem();

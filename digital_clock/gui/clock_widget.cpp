@@ -41,7 +41,6 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent)
   drawer_ = new ::skin_draw::SkinDrawer(this);
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
   connect(display_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
-  connect(display_, &ClockDisplay::changed, this, &ClockWidget::changed);
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), this, SLOT(DrawImage(QImage)));
 
   colorize_enabled_ = false;

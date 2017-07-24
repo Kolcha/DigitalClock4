@@ -43,7 +43,6 @@ void ClockDisplay::DrawImage(const QImage& image)
 {
   setPixmap(QPixmap::fromImage(image));
   updateGeometry();
-  emit changed();
 }
 
 void ClockDisplay::SetSeparatorFlash(bool set)
