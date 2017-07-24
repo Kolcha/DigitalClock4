@@ -159,7 +159,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event)
   if (event->button() == Qt::LeftButton) {
     QPoint last_pos = this->pos();
     if (cur_alignment_ == CAlignment::A_RIGHT) {
-      last_pos.setX(this->frameGeometry().right());
+      last_pos = this->frameGeometry().topRight();
     }
     state_->SetVariable(S_OPT_POSITION, last_pos, !clock_widget_->preview());
     event->accept();
@@ -304,7 +304,7 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
 
     case OPT_KEEP_ALWAYS_VISIBLE:
       keep_always_visible_ = value.toBool();
-//      this->CorrectPosition();
+      this->CorrectPosition();
       break;
 
     default:
@@ -341,7 +341,7 @@ void MainWindow::SaveState()
 {
   QPoint last_pos = this->pos();
   if (cur_alignment_ == CAlignment::A_RIGHT) {
-    last_pos.setX(this->frameGeometry().right());
+    last_pos = this->frameGeometry().topRight();
   }
   state_->SetVariable(S_OPT_POSITION, last_pos);
 }
@@ -509,7 +509,6 @@ void MainWindow::SetWindowFlag(Qt::WindowFlags flag, bool set)
 
 void MainWindow::CorrectPosition()
 {
-  return;
   if (!keep_always_visible_) return;
   QPoint curr_pos = this->pos();
   QDesktopWidget* desktop = QApplication::desktop();

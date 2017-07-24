@@ -26,27 +26,27 @@ Sounds from these plugins are included as default sounds.</source>
         <translation>Настройки сигнала</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="23"/>
+        <location filename="gui/settings_dialog.ui" line="26"/>
         <source>Sounds</source>
         <translation>Звуки</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="63"/>
+        <location filename="gui/settings_dialog.ui" line="66"/>
         <source>Quarter</source>
         <translation>Четверть часа</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="100"/>
+        <location filename="gui/settings_dialog.ui" line="103"/>
         <source>Quiet time</source>
         <translation>Тихие часы</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="106"/>
+        <location filename="gui/settings_dialog.ui" line="109"/>
         <source>Enable</source>
         <translation>Включить</translation>
     </message>
     <message>
-        <location filename="gui/settings_dialog.ui" line="29"/>
+        <location filename="gui/settings_dialog.ui" line="32"/>
         <source>Hour</source>
         <translation>Каждый час</translation>
     </message>
@@ -75,22 +75,22 @@ Sounds from these plugins are included as default sounds.</source>
         <translation>Настройки звука</translation>
     </message>
     <message>
-        <location filename="gui/sound_dialog.ui" line="20"/>
+        <location filename="gui/sound_dialog.ui" line="23"/>
         <source>Sound</source>
         <translation>Звук</translation>
     </message>
     <message>
-        <location filename="gui/sound_dialog.ui" line="26"/>
+        <location filename="gui/sound_dialog.ui" line="29"/>
         <source>default</source>
         <translation>стандартный</translation>
     </message>
     <message>
-        <location filename="gui/sound_dialog.ui" line="52"/>
+        <location filename="gui/sound_dialog.ui" line="55"/>
         <source>custom</source>
         <translation>другой</translation>
     </message>
     <message>
-        <location filename="gui/sound_dialog.ui" line="82"/>
+        <location filename="gui/sound_dialog.ui" line="85"/>
         <source>Volume</source>
         <translation>Громкость</translation>
     </message>

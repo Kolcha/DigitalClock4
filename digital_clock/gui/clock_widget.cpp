@@ -33,6 +33,7 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent)
 {
   display_ = new ClockDisplay(this);
   QGridLayout* main_layout = new QGridLayout(this);
+  main_layout->setSizeConstraint(QLayout::SetFixedSize);
   main_layout->addWidget(display_);
   main_layout->setMargin(0);
   main_layout->setSpacing(4);

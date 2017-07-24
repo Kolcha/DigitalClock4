@@ -32,7 +32,6 @@ class ClockDisplay : public QLabel
 
 public:
   explicit ClockDisplay(QWidget* parent = 0);
-  ~ClockDisplay();
 
 signals:
   void ImageNeeded(const QString& text);

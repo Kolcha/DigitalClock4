@@ -35,14 +35,9 @@ ClockDisplay::ClockDisplay(QWidget* parent) :
   setAlignment(Qt::AlignCenter);
 }
 
-ClockDisplay::~ClockDisplay()
-{
-}
-
 void ClockDisplay::DrawImage(const QImage& image)
 {
   setPixmap(QPixmap::fromImage(image));
-  updateGeometry();
 }
 
 void ClockDisplay::SetSeparatorFlash(bool set)
