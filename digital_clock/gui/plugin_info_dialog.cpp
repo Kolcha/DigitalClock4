@@ -46,8 +46,6 @@ void PluginInfoDialog::SetInfo(const TPluginInfo& info)
   ui->description_value->setText(info.gui_info.description);
   ui->author_value->setText(info.metadata[PI_AUTHOR]);
   ui->email_value->setText(info.metadata[PI_EMAIL]);
-  adjustSize();
-  setMaximumSize(sizeHint());
 }
 
 } // namespace gui

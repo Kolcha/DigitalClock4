@@ -37,12 +37,10 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent)
   main_layout->setMargin(0);
   main_layout->setSpacing(4);
   setLayout(main_layout);
-  adjustSize();
 
   drawer_ = new ::skin_draw::SkinDrawer(this);
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
   connect(display_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
-  connect(display_, SIGNAL(changed()), this, SLOT(Update()));
   connect(display_, &ClockDisplay::changed, this, &ClockWidget::changed);
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), this, SLOT(DrawImage(QImage)));
 
@@ -171,11 +169,6 @@ void ClockWidget::DisablePreviewMode()
 void ClockWidget::TimeoutHandler()
 {
   display_->TimeoutHandler();
-}
-
-void ClockWidget::Update()
-{
-  this->adjustSize();
 }
 
 void ClockWidget::DrawImage(const QImage& image)

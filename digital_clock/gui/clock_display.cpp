@@ -42,7 +42,7 @@ ClockDisplay::~ClockDisplay()
 void ClockDisplay::DrawImage(const QImage& image)
 {
   setPixmap(QPixmap::fromImage(image));
-  adjustSize();
+  updateGeometry();
   emit changed();
 }
 

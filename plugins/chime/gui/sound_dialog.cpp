@@ -43,8 +43,6 @@ SoundDialog::SoundDialog(QWidget* parent) :
   connect(player_, &QMediaPlayer::currentMediaChanged, this, &SoundDialog::onPlayerMediaChanged);
   connect(ui->preview_btn, &QToolButton::clicked, player_, &QMediaPlayer::play);
   connect(ui->volume_slider, &QSlider::valueChanged, player_, &QMediaPlayer::setVolume);
-
-  adjustSize();
 }
 
 SoundDialog::~SoundDialog()

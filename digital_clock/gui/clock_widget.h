@@ -60,7 +60,6 @@ public slots:
   void TimeoutHandler();
 
 private slots:
-  void Update();
   void DrawImage(const QImage& image);
 
 private:
