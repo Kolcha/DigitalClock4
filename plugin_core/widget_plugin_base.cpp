@@ -119,7 +119,6 @@ void WidgetPluginBase::Start()
   }
   connect(private_->drawer_, &skin_draw::SkinDrawer::DrawingFinished, [=] (const QImage& img) {
     this->DisplayImage(img);
-    if (private_->plg_widget_->isHidden()) private_->plg_widget_->show();
   });
 
   settings_->Load();
@@ -138,7 +137,6 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
 
   switch (option) {
     case OPT_SKIN_NAME:
-      private_->plg_widget_->hide();
       avail_width_ = private_->CalculateAvailableSpace();
 
       switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE, plg_name_)).toInt())) {
@@ -172,7 +170,6 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
           break;
 
         case ZoomMode::ZM_AUTOSIZE:
-          private_->plg_widget_->hide();
           avail_width_ = private_->CalculateAvailableSpace();
           private_->drawer_->SetZoom(CalculateZoom(private_->last_text_));
           break;
@@ -236,9 +233,7 @@ void WidgetPluginBase::TimeUpdateListener()
       break;
 
     case ZoomMode::ZM_AUTOSIZE:
-      private_->plg_widget_->hide();
       cur_avail_width = private_->CalculateAvailableSpace();
-      private_->plg_widget_->show();
       break;
   }
 
