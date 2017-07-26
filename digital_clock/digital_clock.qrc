@@ -34,11 +34,11 @@
         <file alias="skin.ini">resources/electronic_empty/skin.ini</file>
     </qresource>
     <qresource prefix="/clock/images">
-        <file alias="quit.svg">resources/images/cross-24.svg</file>
-        <file alias="settings.svg">resources/images/settings-24.svg</file>
+        <file alias="quit.svg.p">resources/images/cross-24.svg</file>
+        <file alias="settings.svg.p">resources/images/settings-24.svg</file>
         <file alias="clock.svg">resources/images/time-24.svg</file>
-        <file alias="about.svg">resources/images/info-24.svg</file>
-        <file alias="update.svg">resources/images/download-16.svg</file>
+        <file alias="about.svg.p">resources/images/info-24.svg</file>
+        <file alias="update.svg.p">resources/images/download-16.svg</file>
         <file alias="clock-light.svg">resources/images/time-light-24.svg</file>
     </qresource>
     <qresource prefix="/clock/languages">

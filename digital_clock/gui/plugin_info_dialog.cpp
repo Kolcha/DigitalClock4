@@ -29,7 +29,7 @@ PluginInfoDialog::PluginInfoDialog(QWidget* parent) :
   ui->setupUi(this);
 
   setAttribute(Qt::WA_DeleteOnClose);
-  setWindowIcon(QIcon(":/clock/images/about.svg"));
+  setWindowIcon(QIcon(":/clock/images/about.svg.p"));
 }
 
 PluginInfoDialog::~PluginInfoDialog()

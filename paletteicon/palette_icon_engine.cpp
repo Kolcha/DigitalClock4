@@ -73,7 +73,7 @@ void PaletteIconEngine::paint(QPainter* painter, const QRect& rect, QIcon::Mode 
     QPalette palette;
 
     QPixmap texture(4, 4);
-    texture.fill(palette.color(color_group, QPalette::Text));
+    texture.fill(palette.color(color_group, QPalette::WindowText));
 
     svg_painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
     svg_painter.drawTiledPixmap(rect, texture);
