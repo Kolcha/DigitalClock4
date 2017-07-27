@@ -69,6 +69,9 @@ do
   fi
 done
 
+# copy custom Qt plugins
+cp "$build_dir/paletteicon/libpaletteicon.so" "$TARGET_APP_FOLDER/plugins/iconengines/"
+
 # generate qt.conf
 rm -f qt.conf
 echo "[Paths]"                     >> qt.conf
