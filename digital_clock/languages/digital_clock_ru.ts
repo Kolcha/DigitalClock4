@@ -319,32 +319,32 @@
         <translation>показывать время в другом часовом поясе</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="853"/>
+        <location filename="../gui/settings_dialog.ui" line="857"/>
         <source>Experimental</source>
         <translation>Экспериментальные</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="866"/>
+        <location filename="../gui/settings_dialog.ui" line="870"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation>показывать часы на всех рабочих столах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="873"/>
+        <location filename="../gui/settings_dialog.ui" line="877"/>
         <source>better &apos;stay on top&apos; for Linux</source>
         <translation>альтернативный режим &apos;поверх всех окон&apos;</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="880"/>
+        <location filename="../gui/settings_dialog.ui" line="884"/>
         <source>always keep clock visible on screen, prevent out of sceen postion</source>
         <translation>всегда держать часы видимыми на экране, избегать положения вне экрана</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="893"/>
+        <location filename="../gui/settings_dialog.ui" line="897"/>
         <source>Please restart clock after changing any of theese options!</source>
         <translation>Пожалуйста перезапустите часы после изменения любой из данных опций!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="913"/>
+        <location filename="../gui/settings_dialog.ui" line="917"/>
         <source>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in &apos;About&apos; dialog.</source>
         <translation>На этой вкладке представлены экспериментальные опции. По умолчанию они отключены. Их включение и использование полностью безопасно для Вашего компьютера, но они могут привести к непредсказуемому поведению часов. Пробуйте их если хотите, но любое тестирование только приветствуется. Если после включения любой из данных опций Вы заметите некорректное поведение часов, пожалуйста сообщите мне об этом. Контактную информацию можно найти в окошке &apos;О программе&apos;.</translation>
     </message>
@@ -406,7 +406,7 @@
         <translation>Выбрать локальный файл вместо URL</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="859"/>
+        <location filename="../gui/settings_dialog.ui" line="863"/>
         <source>prevent appearing above fullscreen windows</source>
         <translation>не появляться поверх полноэкранных окон</translation>
     </message>

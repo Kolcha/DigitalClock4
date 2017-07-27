@@ -79,27 +79,27 @@
         <translation>Настройки будильника</translation>
     </message>
     <message>
-        <location filename="gui/alarms_list_dialog.ui" line="23"/>
+        <location filename="gui/alarms_list_dialog.ui" line="27"/>
         <source>Add new alarm</source>
         <translation>Добавить новый будильник</translation>
     </message>
     <message>
-        <location filename="gui/alarms_list_dialog.ui" line="37"/>
+        <location filename="gui/alarms_list_dialog.ui" line="41"/>
         <source>Delete selected</source>
         <translation>Удалить выбранное</translation>
     </message>
     <message>
-        <location filename="gui/alarms_list_dialog.ui" line="64"/>
+        <location filename="gui/alarms_list_dialog.ui" line="68"/>
         <source>Disable all alarms</source>
         <translation>Отключить все будильники</translation>
     </message>
     <message>
-        <location filename="gui/alarms_list_dialog.ui" line="78"/>
+        <location filename="gui/alarms_list_dialog.ui" line="82"/>
         <source>Remove all alarms</source>
         <translation>Удалить все будильники</translation>
     </message>
     <message>
-        <location filename="gui/alarms_list_dialog.ui" line="105"/>
+        <location filename="gui/alarms_list_dialog.ui" line="109"/>
         <source>Advanced settings</source>
         <translation>Дополнительные настройки</translation>
     </message>

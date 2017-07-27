@@ -844,7 +844,11 @@
         <number>12</number>
        </property>
        <item row="0" column="0">
-        <widget class="QListWidget" name="plugins_list"/>
+        <widget class="QListWidget" name="plugins_list">
+         <property name="selectionMode">
+          <enum>QAbstractItemView::NoSelection</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
