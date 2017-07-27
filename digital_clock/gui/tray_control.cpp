@@ -35,15 +35,15 @@ TrayControl::TrayControl(QWidget* parent) : QObject(parent)
   // *INDENT-ON*
   show_hide_action_->setData(false);
   tray_menu->addSeparator();
-  tray_menu->addAction(QIcon(":/clock/images/settings.svg"), tr("&Settings"),
+  tray_menu->addAction(QIcon(":/clock/images/settings.svg.p"), tr("&Settings"),
                        this, SIGNAL(ShowSettingsDlg()));
-  tray_menu->addAction(QIcon(":/clock/images/about.svg"), tr("&About"),
+  tray_menu->addAction(QIcon(":/clock/images/about.svg.p"), tr("&About"),
                        this, SIGNAL(ShowAboutDlg()));
   tray_menu->addSeparator();
-  tray_menu->addAction(QIcon(":/clock/images/update.svg"), tr("&Update"),
+  tray_menu->addAction(QIcon(":/clock/images/update.svg.p"), tr("&Update"),
                        this, SIGNAL(CheckForUpdates()));
   tray_menu->addSeparator();
-  tray_menu->addAction(QIcon(":/clock/images/quit.svg"), tr("&Quit"),
+  tray_menu->addAction(QIcon(":/clock/images/quit.svg.p"), tr("&Quit"),
                        this, SIGNAL(AppExit()));
 #ifdef Q_OS_MACOS
   // don't show menu icons on macOS

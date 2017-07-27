@@ -59,6 +59,9 @@ cp -r "$QT_ROOT/plugins/iconengines" "digital_clock/digital_clock.app/Contents/P
 cp -r "$QT_ROOT/plugins/playlistformats" "digital_clock/digital_clock.app/Contents/PlugIns/"
 cp -r "$QT_ROOT/plugins/texttospeech" "digital_clock/digital_clock.app/Contents/PlugIns/"
 
+# copy custom Qt plugins
+cp paletteicon/libpaletteicon.dylib digital_clock/digital_clock.app/Contents/PlugIns/iconengines/
+
 # deploy copied Qt plugins
 for d in iconengines playlistformats texttospeech
 do

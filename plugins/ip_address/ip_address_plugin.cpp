@@ -40,7 +40,7 @@ IpAddressPlugin::IpAddressPlugin() : msg_label_(nullptr), ip_update_timer_(nullp
   InitTranslator(QLatin1String(":/ip_address/ip_address_"));
   info_.display_name = tr("IP address");
   info_.description = tr("Displays local IP address(es) under clock.");
-  InitIcon(":/ip_address/icon.svg");
+  InitIcon(":/ip_address/icon.svg.p");
   plg_name_ = QString("ip_address");
   qnam_ = new QNetworkAccessManager(this);
 }

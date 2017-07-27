@@ -34,7 +34,7 @@ DatePlugin::DatePlugin() : msg_label_(nullptr), local_time_(true)
   InitTranslator(QLatin1String(":/date/date_"));
   info_.display_name = tr("Date");
   info_.description = tr("Allows to display current date under clock.");
-  InitIcon(":/date/icon.svg");
+  InitIcon(":/date/icon.svg.p");
   plg_name_ = QString("date");
   time_zone_ = QTimeZone::systemTimeZone();
 }

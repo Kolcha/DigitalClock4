@@ -50,6 +50,8 @@ for %%f in ("plugins\*.dll") do (
   windeployqt %deploy_flags% --no-translations "%%f"
 )
 
+xcopy /y "%build_dir%\paletteicon\%variant%\paletteicon.dll" "%dst_path%\plugins\iconengines\"
+
 xcopy /s /y "%data_dir%\textures" "%dst_path%\textures\"
 xcopy /s /y "%data_dir%\skins" "%dst_path%\skins\"
 

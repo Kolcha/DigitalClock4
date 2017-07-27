@@ -146,7 +146,7 @@
         </property>
         <property name="icon">
          <iconset resource="../alarm.qrc">
-          <normaloff>:/alarm/browse.svg</normaloff>:/alarm/browse.svg</iconset>
+          <normaloff>:/alarm/browse.svg.p</normaloff>:/alarm/browse.svg.p</iconset>
         </property>
        </widget>
       </item>
@@ -191,7 +191,7 @@
         </property>
         <property name="icon">
          <iconset resource="../alarm.qrc">
-          <normaloff>:/alarm/play.svg</normaloff>:/alarm/play.svg</iconset>
+          <normaloff>:/alarm/play.svg.p</normaloff>:/alarm/play.svg.p</iconset>
         </property>
        </widget>
       </item>

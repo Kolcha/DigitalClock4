@@ -33,7 +33,7 @@ QuickNotePlugin::QuickNotePlugin() : msg_widget_(nullptr)
   InitTranslator(QLatin1String(":/quick_note/quick_note_"));
   info_.display_name = tr("Quick note");
   info_.description = tr("Allows to display any short message under clock.");
-  InitIcon(":/quick_note/icon.svg");
+  InitIcon(":/quick_note/icon.svg.p");
   plg_name_ = QString("quick_note");
 }
 

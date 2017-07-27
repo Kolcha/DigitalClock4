@@ -63,6 +63,10 @@
         <File Id="win_on_top_hook.dll" KeyPath="yes" Source="..\..\plugins\win_on_top\win_on_top_hook\msvc2015\x64\Release\win_on_top_hook.dll" />
       </Component>
 
+      <Component Id="paletteicon_dll" Directory="dir2C41C47317919F7F40F42C2D5CABDBDE" Guid="{1B50EECD-0332-4789-9A4E-2F1A8BCC2F19}" Win64="yes">
+        <File Id="paletteicon.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_9_1_MSVC2015_64bit-Release\paletteicon\release\paletteicon.dll" />
+      </Component>
+
       <Component Id="RegistryEntries" Directory="INSTALLDIR" Guid="{2126B850-19E1-464F-921D-36F907ECE477}" Win64="yes">
         <RegistryKey Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" ForceDeleteOnUninstall="yes" />
         <RegistryKey Root="HKCU" Key="Software\Microsoft\Windows\CurrentVersion\Run">

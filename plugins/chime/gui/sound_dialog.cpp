@@ -93,11 +93,11 @@ void SoundDialog::onPlayerStateChanged(QMediaPlayer::State new_state)
   if (new_state == QMediaPlayer::PlayingState) {
     disconnect(ui->preview_btn, SIGNAL(clicked()), player_, SLOT(play()));
     connect(ui->preview_btn, SIGNAL(clicked()), player_, SLOT(stop()));
-    ui->preview_btn->setIcon(QIcon(":/chime/stop.svg"));
+    ui->preview_btn->setIcon(QIcon(":/chime/stop.svg.p"));
   } else {
     disconnect(ui->preview_btn, SIGNAL(clicked()), player_, SLOT(stop()));
     connect(ui->preview_btn, SIGNAL(clicked()), player_, SLOT(play()));
-    ui->preview_btn->setIcon(QIcon(":/chime/play.svg"));
+    ui->preview_btn->setIcon(QIcon(":/chime/play.svg.p"));
   }
 }
 

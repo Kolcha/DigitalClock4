@@ -27,7 +27,7 @@
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
-       <normaloff>:/alarm/add.svg</normaloff>:/alarm/add.svg</iconset>
+       <normaloff>:/alarm/add.svg.p</normaloff>:/alarm/add.svg.p</iconset>
      </property>
     </widget>
    </item>
@@ -41,7 +41,7 @@
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
-       <normaloff>:/alarm/del.svg</normaloff>:/alarm/del.svg</iconset>
+       <normaloff>:/alarm/del.svg.p</normaloff>:/alarm/del.svg.p</iconset>
      </property>
     </widget>
    </item>
@@ -68,7 +68,7 @@
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
-       <normaloff>:/alarm/disable_all.svg</normaloff>:/alarm/disable_all.svg</iconset>
+       <normaloff>:/alarm/disable_all.svg.p</normaloff>:/alarm/disable_all.svg.p</iconset>
      </property>
     </widget>
    </item>
@@ -82,7 +82,7 @@
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
-       <normaloff>:/alarm/remove_all.svg</normaloff>:/alarm/remove_all.svg</iconset>
+       <normaloff>:/alarm/remove_all.svg.p</normaloff>:/alarm/remove_all.svg.p</iconset>
      </property>
     </widget>
    </item>
@@ -109,7 +109,7 @@
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
-       <normaloff>:/alarm/settings.svg</normaloff>:/alarm/settings.svg</iconset>
+       <normaloff>:/alarm/settings.svg.p</normaloff>:/alarm/settings.svg.p</iconset>
      </property>
     </widget>
    </item>

@@ -1,6 +1,6 @@
 #
-#   Digital Clock - beautiful customizable clock with plugins
-#   Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
+#   custom icon engine Qt plugin
+#   Copyright (C) 2017  Nick Korotysh <nick.korotysh@gmail.com>
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -16,18 +16,30 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-TEMPLATE = subdirs
-CONFIG += ordered
+#-------------------------------------------------
+#
+# Project created by QtCreator 2017-07-26T15:16:12
+#
+#-------------------------------------------------
 
-SUBDIRS += \
-    paletteicon \
-    clock_common \
-    skin_draw \
-    plugin_core \
-    digital_clock \
-    plugins
+QT       += core gui svg
 
-digital_clock.depends = clock_common
-digital_clock.depends = skin_draw
-digital_clock.depends = plugin_core
-plugins.depends = plugin_core
+TARGET = paletteicon
+TEMPLATE = lib
+CONFIG += plugin
+
+QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.9
+
+DEFINES += QT_DEPRECATED_WARNINGS
+
+SOURCES += \
+    palette_icon_engine_plugin.cpp \
+    palette_icon_engine.cpp
+
+HEADERS += \
+    palette_icon_engine_plugin.h \
+    palette_icon_engine.h
+
+DISTFILES += paletteicon.json
+
+win32:RC_FILE = paletteicon.rc

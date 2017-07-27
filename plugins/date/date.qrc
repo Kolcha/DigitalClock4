@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/date">
         <file>date_ru.qm</file>
-        <file alias="icon.svg">1464840078_common-calendar-day-outline-stroke.svg</file>
+        <file alias="icon.svg.p">1464840078_common-calendar-day-outline-stroke.svg</file>
     </qresource>
 </RCC>

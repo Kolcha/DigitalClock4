@@ -47,7 +47,7 @@ ChimePlugin::ChimePlugin() : started_(false), playback_allowed_(true), player_(n
                          "This plugin replaces all chiming plugins:\n"
                          "\"Every hour signal\", \"Quarter of an hour signal\", \"Tower clock hour signal\".\n"
                          "Sounds from these plugins are included as default sounds.");
-  InitIcon(":/chime/icon.svg");
+  InitIcon(":/chime/icon.svg.p");
 }
 
 void ChimePlugin::Start()

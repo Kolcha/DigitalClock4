@@ -56,7 +56,7 @@
         </property>
         <property name="icon">
          <iconset resource="../chime.qrc">
-          <normaloff>:/chime/icon.svg</normaloff>:/chime/icon.svg</iconset>
+          <normaloff>:/chime/icon.svg.p</normaloff>:/chime/icon.svg.p</iconset>
         </property>
        </widget>
       </item>
@@ -90,7 +90,7 @@
         </property>
         <property name="icon">
          <iconset resource="../chime.qrc">
-          <normaloff>:/chime/icon.svg</normaloff>:/chime/icon.svg</iconset>
+          <normaloff>:/chime/icon.svg.p</normaloff>:/chime/icon.svg.p</iconset>
         </property>
        </widget>
       </item>
