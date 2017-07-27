@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/schedule">
-        <file alias="settings.svg">res/settings-24.svg</file>
+        <file alias="settings.svg.p">res/settings-24.svg</file>
         <file alias="schedule.svg">res/1464839943_calendar.svg</file>
         <file alias="remove.svg">res/minus-24.svg</file>
         <file alias="add.svg">res/plus-24.svg</file>

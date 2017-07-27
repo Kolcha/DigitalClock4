@@ -44,7 +44,7 @@ void Schedule::Start()
 {
   tray_icon_ = new QSystemTrayIcon(QIcon(":/schedule/schedule.svg"));
   tray_menu_ = new QMenu();
-  tray_menu_->addAction(QIcon(":/schedule/settings.svg"), "Settings", this, SLOT(Configure()));
+  tray_menu_->addAction(QIcon(":/schedule/settings.svg.p"), "Settings", this, SLOT(Configure()));
   tray_icon_->setContextMenu(tray_menu_);
   tray_icon_->setToolTip("Digital Clock Schedule Plugin");
   tray_icon_->setVisible(true);
