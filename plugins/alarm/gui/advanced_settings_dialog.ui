@@ -31,7 +31,7 @@
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
-       <normaloff>:/alarm/remove_all.svg</normaloff>:/alarm/remove_all.svg</iconset>
+       <normaloff>:/alarm/remove_all.svg.p</normaloff>:/alarm/remove_all.svg.p</iconset>
      </property>
     </widget>
    </item>

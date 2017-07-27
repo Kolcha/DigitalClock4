@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/any_zoom">
         <file>any_zoom_ru.qm</file>
-        <file alias="icon.svg">1401047229_68.svg</file>
+        <file alias="icon.svg.p">1401047229_68.svg</file>
     </qresource>
 </RCC>

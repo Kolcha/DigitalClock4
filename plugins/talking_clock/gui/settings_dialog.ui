@@ -34,7 +34,7 @@
      </property>
      <property name="icon">
       <iconset resource="../talking_clock.qrc">
-       <normaloff>:/talking_clock/voice-config.svg</normaloff>:/talking_clock/voice-config.svg</iconset>
+       <normaloff>:/talking_clock/voice-config.svg.p</normaloff>:/talking_clock/voice-config.svg.p</iconset>
      </property>
      <property name="iconSize">
       <size>

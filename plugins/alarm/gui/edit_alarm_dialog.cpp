@@ -135,11 +135,11 @@ void EditAlarmDialog::onPlayerStateChanged(QMediaPlayer::State new_state)
   if (new_state == QMediaPlayer::PlayingState) {
     disconnect(ui->preview_btn, &QToolButton::clicked, player_, &QMediaPlayer::play);
     connect(ui->preview_btn, &QToolButton::clicked, player_, &QMediaPlayer::stop);
-    ui->preview_btn->setIcon(QIcon(":/alarm/stop.svg"));
+    ui->preview_btn->setIcon(QIcon(":/alarm/stop.svg.p"));
   } else {
     disconnect(ui->preview_btn, &QToolButton::clicked, player_, &QMediaPlayer::stop);
     connect(ui->preview_btn, &QToolButton::clicked, player_, &QMediaPlayer::play);
-    ui->preview_btn->setIcon(QIcon(":/alarm/play.svg"));
+    ui->preview_btn->setIcon(QIcon(":/alarm/play.svg.p"));
   }
 }
 
