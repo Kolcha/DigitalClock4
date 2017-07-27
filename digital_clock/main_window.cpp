@@ -93,7 +93,6 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   connect(tray_control_, &gui::TrayControl::ShowAboutDlg, this, &MainWindow::ShowAboutDialog);
   connect(tray_control_, &gui::TrayControl::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
   connect(tray_control_, &gui::TrayControl::AppExit, qApp, &QApplication::quit);
-  connect(&timer_, &QTimer::timeout, tray_control_, &gui::TrayControl::UpdateTrayIcon);
 
   clock_widget_ = new gui::ClockWidget(this);
   connect(&timer_, &QTimer::timeout, this, &MainWindow::Update);

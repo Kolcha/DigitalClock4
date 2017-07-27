@@ -37,6 +37,9 @@ int main(int argc, char* argv[])
   // set application attributes
   QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
   QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#ifdef Q_OS_MACOS
+  QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
+#endif
 
   digital_clock::core::Logger::init();
 

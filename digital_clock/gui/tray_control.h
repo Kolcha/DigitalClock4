@@ -43,9 +43,6 @@ signals:
   void CheckForUpdates();
   void AppExit();
 
-public slots:
-  void UpdateTrayIcon();
-
 private slots:
   void TrayEventHandler(QSystemTrayIcon::ActivationReason reason);
   void ShowHideHandler();
@@ -53,7 +50,6 @@ private slots:
 private:
   QSystemTrayIcon* tray_icon_;
   QAction* show_hide_action_;
-  QString last_mode_;
 };
 
 } // namespace gui
