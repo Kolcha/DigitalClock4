@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
   digital_clock::core::Logger::init();
 
   QApplication app(argc, argv);
-  app.setWindowIcon(QIcon(":/clock/images/clock.svg"));
+  app.setWindowIcon(QIcon(":/clock/images/clock.svg.p"));
   app.setQuitOnLastWindowClosed(false);
 
   // install app translators
