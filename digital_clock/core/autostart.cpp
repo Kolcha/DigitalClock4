@@ -63,7 +63,7 @@ void SetAutoStart(bool enable)
           "Comment=%2\n"
           "Type=Application\n"
           "Terminal=false\n"
-          "Exec=\"%3\"\n"
+          "Exec=\"%3\" --autostart\n"
           "Icon=%4\n"
           "StartupNotify=false\n")
         .arg(
@@ -82,7 +82,7 @@ void SetAutoStart(bool enable)
 }
 #endif
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 #include <QFile>
 
 static QString GetAutoStartDir()

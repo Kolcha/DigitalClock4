@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # File:   digital_clock.sh
 # Author: Nick Korotysh <nick.korotysh@gmail.com>
@@ -9,18 +9,36 @@
 #
 # Clock launcher script
 #
-# This script is slightly modified copy of script from
+# This script is improved version of script from
 # http://doc.qt.io/qt-5/linux-deployment.html#creating-the-application-package
 #
+
+autostart=0
+
+ARGS=()
+for var in "$@"
+do
+  if [[ "$var" != '--autostart' ]]
+  then
+    ARGS+=("$var")
+  else
+    autostart=1
+  fi
+done
+
+[[ $autostart -ne 0 ]] && sleep 15
+
 
 appname=`basename "$0" | sed s,\.sh$,,`
 
 dirname=`dirname "$0"`
 tmp="${dirname#?}"
 
-if [ "${dirname%$tmp}" != "/" ]; then
-dirname=$PWD/$dirname
+if [[ "${dirname%$tmp}" != "/" ]]
+then
+  dirname=$PWD/$dirname
 fi
-LD_LIBRARY_PATH=$dirname
-export LD_LIBRARY_PATH
-"$dirname/$appname" "$@"
+
+export LD_LIBRARY_PATH="$dirname:$LD_LIBRARY_PATH"
+"$dirname/$appname" "${ARGS[@]}"
+
