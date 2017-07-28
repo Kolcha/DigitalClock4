@@ -46,7 +46,7 @@ Alarm::Alarm() :
   InitTranslator(QLatin1String(":/alarm/alarm_"));
   info_.display_name = tr("Alarm");
   info_.description = tr("Allows to set multiple alarms.");
-  InitIcon(":/alarm/alarm_clock.svg");
+  InitIcon(":/alarm/alarm_clock.svg.p");
 }
 
 void Alarm::Init(QSystemTrayIcon* tray_icon)
@@ -63,7 +63,9 @@ void Alarm::InitSettings(SettingsStorage* backend)
 
 void Alarm::Start()
 {
-  tray_icon_->setIcon(QIcon(":/alarm/alarm_clock.svg"));
+  QIcon tray_icon(":/alarm/alarm_clock.svg.p");
+  tray_icon.setIsMask(true);
+  tray_icon_->setIcon(tray_icon);
   icon_changed_ = true;
 
   player_ = new QMediaPlayer(this, QMediaPlayer::StreamPlayback);

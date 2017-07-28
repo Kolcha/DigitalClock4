@@ -38,6 +38,8 @@ public:
   QPixmap pixmap(const QSize& size, QIcon::Mode mode, QIcon::State state) Q_DECL_OVERRIDE;
 
 private:
+  void paintIcon(QPainter* painter, const QRect& rect, const QColor& color);
+
   QSvgRenderer* renderer_;
   QString src_file_;
 };

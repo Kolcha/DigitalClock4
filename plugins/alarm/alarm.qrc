@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/alarm">
-        <file alias="alarm_clock.svg">res/alarm_clock-24.svg</file>
         <file alias="play.svg.p">res/play-24.svg</file>
         <file alias="stop.svg.p">res/stop-24.svg</file>
         <file>alarm_ru.qm</file>
@@ -11,5 +10,6 @@
         <file alias="remove_all.svg.p">res/1486216487_86.svg</file>
         <file alias="browse.svg.p">res/1486216322_folder.svg</file>
         <file alias="settings.svg.p">res/settings-24.svg</file>
+        <file alias="alarm_clock.svg.p">res/alarm-clock.svg</file>
     </qresource>
 </RCC>

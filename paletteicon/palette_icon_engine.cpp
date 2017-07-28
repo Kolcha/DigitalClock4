@@ -23,6 +23,16 @@
 #include <QPixmapCache>
 #include <QSvgRenderer>
 
+
+static QColor getIconColor(QIcon::Mode mode, QIcon::State state)
+{
+  Q_UNUSED(state);
+  QPalette::ColorGroup color_group = QPalette::Active;
+  if (mode == QIcon::Disabled) color_group = QPalette::Disabled;
+  return QPalette().color(color_group, QPalette::WindowText);
+}
+
+
 PaletteIconEngine::PaletteIconEngine()
 {
   renderer_ = new QSvgRenderer();
@@ -57,37 +67,16 @@ QIconEngine* PaletteIconEngine::clone() const
 
 void PaletteIconEngine::paint(QPainter* painter, const QRect& rect, QIcon::Mode mode, QIcon::State state)
 {
-  Q_UNUSED(state);
-  if (!renderer_ || !renderer_->isValid()) return;
-
-  QPixmap glyph(rect.size());
-  {
-    QPainter svg_painter(&glyph);
-    svg_painter.setCompositionMode(QPainter::CompositionMode_Source);
-    svg_painter.fillRect(glyph.rect(), Qt::transparent);
-    svg_painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-    renderer_->render(&svg_painter);
-
-    QPalette::ColorGroup color_group = QPalette::Active;
-    if (mode == QIcon::Disabled) color_group = QPalette::Disabled;
-    QPalette palette;
-
-    QPixmap texture(4, 4);
-    texture.fill(palette.color(color_group, QPalette::WindowText));
-
-    svg_painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-    svg_painter.drawTiledPixmap(rect, texture);
-  }
-
-  painter->drawPixmap(rect, glyph);
+  paintIcon(painter, rect, getIconColor(mode, state));
 }
 
 QPixmap PaletteIconEngine::pixmap(const QSize& size, QIcon::Mode mode, QIcon::State state)
 {
-  if (src_file_.isEmpty() || !renderer_ || !renderer_->isValid()) return QPixmap();
+  QColor color = getIconColor(mode, state);
 
   QString pmckey("pie_%1:%2x%3:%4-%5");
   pmckey = pmckey.arg(src_file_).arg(size.width()).arg(size.height()).arg(mode).arg(state);
+  pmckey += color.name();
 
   QPixmap pxm(size);
   if (QPixmapCache::find(pmckey, pxm)) return pxm;
@@ -95,8 +84,28 @@ QPixmap PaletteIconEngine::pixmap(const QSize& size, QIcon::Mode mode, QIcon::St
   pxm.fill(Qt::transparent);
   {
     QPainter p(&pxm);
-    paint(&p, pxm.rect(), mode, state);
+    paintIcon(&p, pxm.rect(), color);
   }
   QPixmapCache::insert(pmckey, pxm);
   return pxm;
+}
+
+void PaletteIconEngine::paintIcon(QPainter* painter, const QRect& rect, const QColor& color)
+{
+  if (!renderer_ || !renderer_->isValid()) return;
+
+  QPixmap glyph(rect.size());
+  glyph.fill(Qt::transparent);
+  {
+    QPainter svg_painter(&glyph);
+    renderer_->render(&svg_painter);
+
+    QPixmap texture(4, 4);
+    texture.fill(color);
+
+    svg_painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    svg_painter.drawTiledPixmap(rect, texture);
+  }
+
+  painter->drawPixmap(rect, glyph);
 }
