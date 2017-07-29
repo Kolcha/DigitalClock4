@@ -47,58 +47,58 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="60"/>
+        <location filename="../gui/about_dialog.ui" line="64"/>
         <source>Info</source>
         <translation>Информация</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="145"/>
+        <location filename="../gui/about_dialog.ui" line="149"/>
         <source>© 2013-2017 Nick Korotysh</source>
         <translation>© 2013-2017 Николай Коротыш</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="156"/>
+        <location filename="../gui/about_dialog.ui" line="160"/>
         <source>Links</source>
         <translation>Ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="162"/>
+        <location filename="../gui/about_dialog.ui" line="166"/>
         <source>Useful links</source>
         <translation>Полезные ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="168"/>
+        <location filename="../gui/about_dialog.ui" line="172"/>
         <source>&lt;a href=&quot;http://digitalclock4.sourceforge.net/&quot;&gt;project home page&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;http://digitalclock4.sourceforge.net/&quot;&gt;домашняя страница проекта&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="181"/>
+        <location filename="../gui/about_dialog.ui" line="185"/>
         <source>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;bug report/feature request&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;сообщить об ошибке/предложить функцию&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="194"/>
+        <location filename="../gui/about_dialog.ui" line="198"/>
         <source>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;view full changelog&lt;/a&gt;</source>
         <translatorcomment>просмотреть историю изменений</translatorcomment>
         <translation>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;полный список изменений&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="207"/>
+        <location filename="../gui/about_dialog.ui" line="211"/>
         <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;how to create own skin&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;как создать собственный стиль&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="223"/>
+        <location filename="../gui/about_dialog.ui" line="227"/>
         <source>More info</source>
         <translation>Информация на других сайтах</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="72"/>
+        <location filename="../gui/about_dialog.cpp" line="71"/>
         <source>version: %1 (%2)</source>
         <translation>версия: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="75"/>
+        <location filename="../gui/about_dialog.cpp" line="74"/>
         <source>build date: %1</source>
         <translatorcomment>дата компиляции приложения</translatorcomment>
         <translation>дата сборки: %1</translation>
@@ -117,7 +117,7 @@
         <translation>автор:</translation>
     </message>
     <message>
-        <location filename="../gui/plugin_info_dialog.cpp" line="43"/>
+        <location filename="../gui/plugin_info_dialog.cpp" line="42"/>
         <source>version: %1</source>
         <translation>версия: %1</translation>
     </message>
@@ -130,349 +130,349 @@
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="87"/>
+        <location filename="../gui/settings_dialog.ui" line="91"/>
         <source>Appearance</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="129"/>
+        <location filename="../gui/settings_dialog.ui" line="133"/>
         <source>opacity</source>
         <translation>непрозрачность</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="169"/>
+        <location filename="../gui/settings_dialog.ui" line="173"/>
         <source>zoom</source>
         <translation>увеличение</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="104"/>
+        <location filename="../gui/settings_dialog.ui" line="108"/>
         <source>stay on top</source>
         <translation>поверх всех окон</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="30"/>
+        <location filename="../gui/settings_dialog.ui" line="34"/>
         <source>Export current settings to file</source>
         <translation>Экспортировать текущие настройки в файл</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="60"/>
+        <location filename="../gui/settings_dialog.ui" line="64"/>
         <source>Import settings from file</source>
         <translation>Импортировать настройки из файла</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="111"/>
+        <location filename="../gui/settings_dialog.ui" line="115"/>
         <source>transparent for input</source>
         <translation>прозрачность для мыши</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="118"/>
+        <location filename="../gui/settings_dialog.ui" line="122"/>
         <source>separator flashes</source>
         <translation>разделитель мигает</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="208"/>
+        <location filename="../gui/settings_dialog.ui" line="212"/>
         <source>Skin</source>
         <translation>Стиль</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="214"/>
+        <location filename="../gui/settings_dialog.ui" line="218"/>
         <source>use skin</source>
         <translation>использовать стиль</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="267"/>
+        <location filename="../gui/settings_dialog.ui" line="271"/>
         <source>use font</source>
         <translation>использовать шрифт</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="299"/>
+        <location filename="../gui/settings_dialog.ui" line="303"/>
         <source>none</source>
         <translation>отключена</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="332"/>
+        <location filename="../gui/settings_dialog.ui" line="336"/>
         <source>solid color</source>
         <translation>сплошной цвет</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="349"/>
-        <location filename="../gui/settings_dialog.ui" line="369"/>
+        <location filename="../gui/settings_dialog.ui" line="353"/>
+        <location filename="../gui/settings_dialog.ui" line="373"/>
         <source>custom image</source>
         <translation>изображение</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="388"/>
+        <location filename="../gui/settings_dialog.ui" line="392"/>
         <source>stretch</source>
         <translation>растянуть</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="398"/>
+        <location filename="../gui/settings_dialog.ui" line="402"/>
         <source>tile</source>
         <translation>замостить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="381"/>
+        <location filename="../gui/settings_dialog.ui" line="385"/>
         <source>texture per element</source>
         <translation>текстура для каждого элемента</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="33"/>
+        <location filename="../gui/settings_dialog.ui" line="37"/>
         <source>Export...</source>
         <translation>Экспорт...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="63"/>
+        <location filename="../gui/settings_dialog.ui" line="67"/>
         <source>Import...</source>
         <translation>Импорт...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="287"/>
+        <location filename="../gui/settings_dialog.ui" line="291"/>
         <source>skin customization</source>
         <translation>персонализация стиля</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="306"/>
+        <location filename="../gui/settings_dialog.ui" line="310"/>
         <source>change texture</source>
         <translation>изменить текстуру</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="316"/>
-        <location filename="../gui/settings_dialog.ui" line="440"/>
+        <location filename="../gui/settings_dialog.ui" line="320"/>
+        <location filename="../gui/settings_dialog.ui" line="444"/>
         <source>colorize</source>
         <translation>раскрасить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="326"/>
+        <location filename="../gui/settings_dialog.ui" line="330"/>
         <source>texture type</source>
         <translation>тип текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="424"/>
+        <location filename="../gui/settings_dialog.ui" line="428"/>
         <source>Current background color</source>
         <translation>Текущий цвет фона</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="500"/>
+        <location filename="../gui/settings_dialog.ui" line="504"/>
         <source>Misc</source>
         <translation>Разное</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="536"/>
+        <location filename="../gui/settings_dialog.ui" line="540"/>
         <source>Time format</source>
         <translation>Формат времени</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="554"/>
+        <location filename="../gui/settings_dialog.ui" line="558"/>
         <source>system</source>
         <translation>системный</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="564"/>
+        <location filename="../gui/settings_dialog.ui" line="568"/>
         <source>custom</source>
         <translation>другой</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="635"/>
+        <location filename="../gui/settings_dialog.ui" line="639"/>
         <source>Apply</source>
         <translation>Применить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="645"/>
+        <location filename="../gui/settings_dialog.ui" line="649"/>
         <source>Alignment</source>
         <translation>Выравнивание</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="651"/>
+        <location filename="../gui/settings_dialog.ui" line="655"/>
         <source>left</source>
         <translatorcomment>выравнивание по левому краю</translatorcomment>
         <translation>по левому</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="661"/>
+        <location filename="../gui/settings_dialog.ui" line="665"/>
         <source>right</source>
         <translatorcomment>выравнивание по правому краю</translatorcomment>
         <translation>по правому</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="671"/>
+        <location filename="../gui/settings_dialog.ui" line="675"/>
         <source>Space between digits</source>
         <translation>расстояние между цифрами</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="677"/>
+        <location filename="../gui/settings_dialog.ui" line="681"/>
         <source>less</source>
         <translation>меньше</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="703"/>
+        <location filename="../gui/settings_dialog.ui" line="707"/>
         <source>more</source>
         <translation>больше</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="713"/>
+        <location filename="../gui/settings_dialog.ui" line="717"/>
         <source>Autoupdate</source>
         <translation>автообновление</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="812"/>
+        <location filename="../gui/settings_dialog.ui" line="816"/>
         <source>display time in another time zome</source>
         <translation>показывать время в другом часовом поясе</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="857"/>
+        <location filename="../gui/settings_dialog.ui" line="861"/>
         <source>Experimental</source>
         <translation>Экспериментальные</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="870"/>
+        <location filename="../gui/settings_dialog.ui" line="874"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation>показывать часы на всех рабочих столах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="877"/>
+        <location filename="../gui/settings_dialog.ui" line="881"/>
         <source>better &apos;stay on top&apos; for Linux</source>
         <translation>альтернативный режим &apos;поверх всех окон&apos;</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="884"/>
+        <location filename="../gui/settings_dialog.ui" line="888"/>
         <source>always keep clock visible on screen, prevent out of sceen postion</source>
         <translation>всегда держать часы видимыми на экране, избегать положения вне экрана</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="897"/>
+        <location filename="../gui/settings_dialog.ui" line="901"/>
         <source>Please restart clock after changing any of theese options!</source>
         <translation>Пожалуйста перезапустите часы после изменения любой из данных опций!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="917"/>
+        <location filename="../gui/settings_dialog.ui" line="921"/>
         <source>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in &apos;About&apos; dialog.</source>
         <translation>На этой вкладке представлены экспериментальные опции. По умолчанию они отключены. Их включение и использование полностью безопасно для Вашего компьютера, но они могут привести к непредсказуемому поведению часов. Пробуйте их если хотите, но любое тестирование только приветствуется. Если после включения любой из данных опций Вы заметите некорректное поведение часов, пожалуйста сообщите мне об этом. Контактную информацию можно найти в окошке &apos;О программе&apos;.</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="524"/>
+        <location filename="../gui/settings_dialog.ui" line="528"/>
         <source>enable autoupdate</source>
         <translation>включить автообновление</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="408"/>
+        <location filename="../gui/settings_dialog.ui" line="412"/>
         <source>background color</source>
         <translation>цвет фона</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="414"/>
-        <location filename="../gui/settings_dialog.ui" line="772"/>
+        <location filename="../gui/settings_dialog.ui" line="418"/>
+        <location filename="../gui/settings_dialog.ui" line="776"/>
         <source>enable</source>
         <translation>включить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="725"/>
+        <location filename="../gui/settings_dialog.ui" line="729"/>
         <source>Check for updates every</source>
         <translation>Проверять обновления каждые</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="740"/>
+        <location filename="../gui/settings_dialog.ui" line="744"/>
         <source>Check now!</source>
         <translatorcomment>проверить наличие обновлений</translatorcomment>
         <translation>Проверить!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="753"/>
+        <location filename="../gui/settings_dialog.ui" line="757"/>
         <source>check for beta releases</source>
         <translation>обновляться до бета релизов</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="517"/>
+        <location filename="../gui/settings_dialog.ui" line="521"/>
         <source>start on system startup</source>
         <translation>запускать при старте системы</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="40"/>
+        <location filename="../gui/settings_dialog.ui" line="44"/>
         <source>Restore Defaults</source>
         <translation>По умолчанию</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="763"/>
+        <location filename="../gui/settings_dialog.ui" line="767"/>
         <source>If enabled, given URL will be opened with default web browser when you click on clock</source>
         <translation>Если включено, указанный адрес будет открыт в браузере по умолчанию когда кликнете по часам</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="766"/>
+        <location filename="../gui/settings_dialog.ui" line="770"/>
         <source>Clock URL</source>
         <translation>ссылка на часах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="792"/>
+        <location filename="../gui/settings_dialog.ui" line="796"/>
         <source>Browse for local file instead of URL</source>
         <translation>Выбрать локальный файл вместо URL</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="863"/>
+        <location filename="../gui/settings_dialog.ui" line="867"/>
         <source>prevent appearing above fullscreen windows</source>
         <translation>не появляться поверх полноэкранных окон</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="805"/>
+        <location filename="../gui/settings_dialog.ui" line="809"/>
         <source>display &apos;Show/Hide&apos; menu item</source>
         <translation>показывать пункт меню &quot;Показать/Скрыть&quot;</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="819"/>
+        <location filename="../gui/settings_dialog.ui" line="823"/>
         <source>export state (e.g. position)</source>
         <translation>экспортировать состояние (т.е. позицию)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="834"/>
+        <location filename="../gui/settings_dialog.ui" line="838"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="218"/>
+        <location filename="../gui/settings_dialog.cpp" line="217"/>
         <source>1 day</source>
         <translation>1 день</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="219"/>
+        <location filename="../gui/settings_dialog.cpp" line="218"/>
         <source>3 days</source>
         <translation>3 дня</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="220"/>
+        <location filename="../gui/settings_dialog.cpp" line="219"/>
         <source>1 week</source>
         <translation>1 неделя</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="221"/>
+        <location filename="../gui/settings_dialog.cpp" line="220"/>
         <source>2 weeks</source>
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="119"/>
+        <location filename="../gui/settings_dialog.cpp" line="118"/>
         <source>unknown</source>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="332"/>
+        <location filename="../gui/settings_dialog.cpp" line="331"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="334"/>
+        <location filename="../gui/settings_dialog.cpp" line="333"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="417"/>
+        <location filename="../gui/settings_dialog.cpp" line="416"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="419"/>
-        <location filename="../gui/settings_dialog.cpp" line="427"/>
+        <location filename="../gui/settings_dialog.cpp" line="418"/>
+        <location filename="../gui/settings_dialog.cpp" line="426"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="425"/>
+        <location filename="../gui/settings_dialog.cpp" line="424"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>

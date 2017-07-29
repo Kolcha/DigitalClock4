@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Settings</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../digital_clock.qrc">
+    <normaloff>:/clock/images/settings.svg.p</normaloff>:/clock/images/settings.svg.p</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="5">
     <widget class="QDialogButtonBox" name="buttonBox">
@@ -241,7 +245,7 @@
             </property>
             <property name="icon">
              <iconset resource="../digital_clock.qrc">
-              <normaloff>:/clock/images/about.svg.p</normaloff>:/clock/images/about.svg.p</iconset>
+              <normaloff>:/clock/images/info.svg.p</normaloff>:/clock/images/info.svg.p</iconset>
             </property>
            </widget>
           </item>

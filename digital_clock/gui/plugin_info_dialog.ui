@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../digital_clock.qrc">
-    <normaloff>:/clock/images/about.svg.p</normaloff>:/clock/images/about.svg.p</iconset>
+    <normaloff>:/clock/images/info.svg.p</normaloff>:/clock/images/info.svg.p</iconset>
   </property>
   <property name="modal">
    <bool>true</bool>

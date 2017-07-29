@@ -66,7 +66,6 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* st
   ui->setupUi(this);
 
   setAttribute(Qt::WA_DeleteOnClose);
-  setWindowIcon(QIcon(":/clock/images/settings.svg.p"));
 
   ui->skin_info_btn->setVisible(false);  // temporary, not implemented
   ui->defaults_bth->setVisible(false);   // temporary, not implemented

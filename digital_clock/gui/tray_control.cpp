@@ -36,7 +36,7 @@ TrayControl::TrayControl(QWidget* parent) : QObject(parent)
   tray_menu->addSeparator();
   tray_menu->addAction(QIcon(":/clock/images/settings.svg.p"), tr("&Settings"),
                        this, SIGNAL(ShowSettingsDlg()));
-  tray_menu->addAction(QIcon(":/clock/images/about.svg.p"), tr("&About"),
+  tray_menu->addAction(QIcon(":/clock/images/info.svg.p"), tr("&About"),
                        this, SIGNAL(ShowAboutDlg()));
   tray_menu->addSeparator();
   tray_menu->addAction(QIcon(":/clock/images/update.svg.p"), tr("&Update"),
