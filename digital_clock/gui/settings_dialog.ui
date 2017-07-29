@@ -1248,7 +1248,7 @@
   </connection>
   <connection>
    <sender>change_time_zone_cbx</sender>
-   <signal>clicked(bool)</signal>
+   <signal>toggled(bool)</signal>
    <receiver>time_zone_box</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>

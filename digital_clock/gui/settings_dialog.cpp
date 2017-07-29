@@ -102,11 +102,9 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::SetSkinList(const QStringList& skins)
 {
-  this->blockSignals(true);
   ui->skin_box->clear();
   ui->skin_box->addItems(skins);
   ui->skin_box->setCurrentText(config_->GetValue(OPT_SKIN_NAME).toString());
-  this->blockSignals(false);
 }
 
 void SettingsDialog::DisplaySkinInfo(const core::BaseSkin::TSkinInfo& info)
@@ -153,8 +151,6 @@ void SettingsDialog::showEvent(QShowEvent* e)
 void SettingsDialog::InitControls()
 {
   Q_ASSERT(config_);
-  this->blockSignals(true);
-
   // "Appearance" tab
   ui->stay_on_top->setChecked(config_->GetValue(OPT_STAY_ON_TOP).toBool());
   ui->transp_for_input->setChecked(config_->GetValue(OPT_TRANSP_FOR_INPUT).toBool());
@@ -250,8 +246,6 @@ void SettingsDialog::InitControls()
   ui->show_on_all_workspaces->setChecked(config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
   ui->better_stay_on_top->setChecked(config_->GetValue(OPT_BETTER_STAY_ON_TOP).toBool());
   ui->keep_always_visible->setChecked(config_->GetValue(OPT_KEEP_ALWAYS_VISIBLE).toBool());
-
-  this->blockSignals(false);
 }
 
 void SettingsDialog::ChangePluginState(const QString& name, bool activated)
@@ -277,17 +271,17 @@ void SettingsDialog::LoadState()
   if (last_geometry.isValid()) restoreGeometry(last_geometry.toByteArray());
 }
 
-void SettingsDialog::on_stay_on_top_toggled(bool checked)
+void SettingsDialog::on_stay_on_top_clicked(bool checked)
 {
   emit OptionChanged(OPT_STAY_ON_TOP, checked);
 }
 
-void SettingsDialog::on_transp_for_input_toggled(bool checked)
+void SettingsDialog::on_transp_for_input_clicked(bool checked)
 {
   emit OptionChanged(OPT_TRANSP_FOR_INPUT, checked);
 }
 
-void SettingsDialog::on_sep_flash_toggled(bool checked)
+void SettingsDialog::on_sep_flash_clicked(bool checked)
 {
   emit OptionChanged(OPT_SEPARATOR_FLASH, checked);
 }
@@ -302,19 +296,19 @@ void SettingsDialog::on_zoom_slider_valueChanged(int value)
   emit OptionChanged(OPT_ZOOM, value / 100.);
 }
 
-void SettingsDialog::on_txd_per_elem_toggled(bool checked)
+void SettingsDialog::on_txd_per_elem_clicked(bool checked)
 {
   emit OptionChanged(OPT_TEXTURE_PER_ELEMENT, checked);
 }
 
-void SettingsDialog::on_mode_stretch_toggled(bool checked)
+void SettingsDialog::on_mode_stretch_clicked()
 {
-  if (checked) emit OptionChanged(OPT_TEXTURE_DRAW_MODE, SkinDrawer::DM_STRETCH);
+  emit OptionChanged(OPT_TEXTURE_DRAW_MODE, SkinDrawer::DM_STRETCH);
 }
 
-void SettingsDialog::on_mode_tile_toggled(bool checked)
+void SettingsDialog::on_mode_tile_clicked()
 {
-  if (checked) emit OptionChanged(OPT_TEXTURE_DRAW_MODE, SkinDrawer::DM_TILE);
+  emit OptionChanged(OPT_TEXTURE_DRAW_MODE, SkinDrawer::DM_TILE);
 }
 
 void SettingsDialog::on_sel_color_btn_clicked()
@@ -340,29 +334,29 @@ void SettingsDialog::on_sel_image_btn_clicked()
   }
 }
 
-void SettingsDialog::on_type_color_toggled(bool checked)
+void SettingsDialog::on_type_color_clicked()
 {
-  if (checked) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_COLOR);
+  emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_COLOR);
 }
 
-void SettingsDialog::on_type_image_toggled(bool checked)
+void SettingsDialog::on_type_image_clicked()
 {
-  if (checked) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_TEXTURE);
+  emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_TEXTURE);
 }
 
-void SettingsDialog::on_skin_box_currentIndexChanged(const QString& arg1)
+void SettingsDialog::on_skin_box_activated(const QString& arg1)
 {
   if (!arg1.isEmpty()) emit OptionChanged(OPT_SKIN_NAME, arg1);
 }
 
-void SettingsDialog::on_use_skin_toggled(bool checked)
+void SettingsDialog::on_use_skin_clicked()
 {
-  if (checked) emit OptionChanged(OPT_SKIN_NAME, ui->skin_box->currentText());
+  emit OptionChanged(OPT_SKIN_NAME, ui->skin_box->currentText());
 }
 
-void SettingsDialog::on_use_font_toggled(bool checked)
+void SettingsDialog::on_use_font_clicked()
 {
-  if (checked) emit OptionChanged(OPT_SKIN_NAME, "Text Skin");
+  emit OptionChanged(OPT_SKIN_NAME, "Text Skin");
 }
 
 void SettingsDialog::on_sel_font_btn_clicked()
@@ -390,17 +384,17 @@ void SettingsDialog::on_custom_format_clicked()
   emit OptionChanged(OPT_TIME_FORMAT, ui->format_box->currentText());
 }
 
-void SettingsDialog::on_enable_autoupdate_toggled(bool checked)
+void SettingsDialog::on_enable_autoupdate_clicked(bool checked)
 {
   emit OptionChanged(OPT_USE_AUTOUPDATE, checked);
 }
 
-void SettingsDialog::on_update_period_box_currentIndexChanged(int index)
+void SettingsDialog::on_update_period_box_activated(int index)
 {
   emit OptionChanged(OPT_UPDATE_PERIOD, ui->update_period_box->itemData(index));
 }
 
-void SettingsDialog::on_check_for_beta_toggled(bool checked)
+void SettingsDialog::on_check_for_beta_clicked(bool checked)
 {
   emit OptionChanged(OPT_CHECK_FOR_BETA, checked);
 }
@@ -430,28 +424,26 @@ void SettingsDialog::on_import_btn_clicked()
 } // namespace gui
 } // namespace digital_clock
 
-void digital_clock::gui::SettingsDialog::on_cust_none_toggled(bool checked)
+void digital_clock::gui::SettingsDialog::on_cust_texturing_toggled(bool checked)
 {
-  if (!checked) return;
+  ui->image_group->setEnabled(checked ? ui->type_image->isChecked() : false);
+}
+
+void digital_clock::gui::SettingsDialog::on_cust_none_clicked()
+{
   ui->image_group->setDisabled(true);
   emit OptionChanged(OPT_CUSTOMIZATION, static_cast<int>(Customization::C_NONE));
 }
 
-void digital_clock::gui::SettingsDialog::on_cust_texturing_toggled(bool checked)
+void digital_clock::gui::SettingsDialog::on_cust_texturing_clicked()
 {
-  if (checked) {
-    emit OptionChanged(OPT_CUSTOMIZATION, static_cast<int>(Customization::C_TEXTURING));
-    if (ui->type_color->isChecked()) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_COLOR);
-    if (ui->type_image->isChecked()) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_TEXTURE);
-    ui->image_group->setEnabled(ui->type_image->isChecked());
-  } else {
-    ui->image_group->setDisabled(true);
-  }
+  emit OptionChanged(OPT_CUSTOMIZATION, static_cast<int>(Customization::C_TEXTURING));
+  if (ui->type_color->isChecked()) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_COLOR);
+  if (ui->type_image->isChecked()) emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_TEXTURE);
 }
 
-void digital_clock::gui::SettingsDialog::on_cust_colorize_toggled(bool checked)
+void digital_clock::gui::SettingsDialog::on_cust_colorize_clicked()
 {
-  if (!checked) return;
   ui->image_group->setDisabled(true);
   emit OptionChanged(OPT_CUSTOMIZATION, static_cast<int>(Customization::C_COLORIZE));
 }
@@ -471,17 +463,17 @@ void digital_clock::gui::SettingsDialog::on_level_slider_valueChanged(int value)
   emit OptionChanged(OPT_COLORIZE_LEVEL, value / 100.);
 }
 
-void digital_clock::gui::SettingsDialog::on_align_left_rbtn_toggled(bool checked)
+void digital_clock::gui::SettingsDialog::on_align_left_rbtn_clicked()
 {
-  if (checked) emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(CAlignment::A_LEFT));
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(CAlignment::A_LEFT));
 }
 
-void digital_clock::gui::SettingsDialog::on_align_right_rbtn_toggled(bool checked)
+void digital_clock::gui::SettingsDialog::on_align_right_rbtn_clicked()
 {
-  if (checked) emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(CAlignment::A_RIGHT));
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(CAlignment::A_RIGHT));
 }
 
-void digital_clock::gui::SettingsDialog::on_background_enabled_toggled(bool checked)
+void digital_clock::gui::SettingsDialog::on_background_enabled_clicked(bool checked)
 {
   emit OptionChanged(OPT_BACKGROUND_ENABLED, checked);
 }
@@ -496,12 +488,12 @@ void digital_clock::gui::SettingsDialog::on_background_color_btn_clicked()
   }
 }
 
-void digital_clock::gui::SettingsDialog::on_clock_url_enabled_toggled(bool checked)
+void digital_clock::gui::SettingsDialog::on_clock_url_enabled_clicked(bool checked)
 {
   emit OptionChanged(OPT_CLOCK_URL_ENABLED, checked);
 }
 
-void digital_clock::gui::SettingsDialog::on_clock_url_edit_textChanged(const QString& arg1)
+void digital_clock::gui::SettingsDialog::on_clock_url_edit_textEdited(const QString& arg1)
 {
   emit OptionChanged(OPT_CLOCK_URL_STRING, arg1);
 }
