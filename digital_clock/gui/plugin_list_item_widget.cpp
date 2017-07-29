@@ -80,9 +80,9 @@ void PluginListItemWidget::on_config_btn_clicked()
 
 void PluginListItemWidget::on_info_btn_clicked()
 {
-  PluginInfoDialog* dialog = new PluginInfoDialog(this);
-  dialog->SetInfo(info_);
-  dialog->show();
+  PluginInfoDialog dialog(window());
+  dialog.SetInfo(info_);
+  dialog.exec();
 }
 
 } // namespace gui

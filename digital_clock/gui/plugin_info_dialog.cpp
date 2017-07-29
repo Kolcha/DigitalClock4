@@ -27,8 +27,6 @@ PluginInfoDialog::PluginInfoDialog(QWidget* parent) :
   ui(new Ui::PluginInfoDialog)
 {
   ui->setupUi(this);
-
-  setAttribute(Qt::WA_DeleteOnClose);
 }
 
 PluginInfoDialog::~PluginInfoDialog()

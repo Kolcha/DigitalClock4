@@ -112,12 +112,12 @@
         <translation>О плагине</translation>
     </message>
     <message>
-        <location filename="../gui/plugin_info_dialog.ui" line="124"/>
+        <location filename="../gui/plugin_info_dialog.ui" line="121"/>
         <source>author:</source>
         <translation>автор:</translation>
     </message>
     <message>
-        <location filename="../gui/plugin_info_dialog.cpp" line="42"/>
+        <location filename="../gui/plugin_info_dialog.cpp" line="40"/>
         <source>version: %1</source>
         <translation>версия: %1</translation>
     </message>
