@@ -20,6 +20,10 @@
 
 #include <QMenu>
 #include <QIcon>
+#ifdef Q_OS_MACOS
+#include <QSysInfo>
+#include <QVersionNumber>
+#endif
 #include <QApplication>
 
 namespace digital_clock {
@@ -45,8 +49,11 @@ TrayControl::TrayControl(QWidget* parent) : QObject(parent)
   tray_menu->addAction(QIcon(":/clock/images/quit.svg.p"), tr("&Quit"),
                        this, SIGNAL(AppExit()));
 
-  QIcon tray_icon = QApplication::windowIcon();
-  tray_icon.setIsMask(true);
+  QIcon tray_icon(":/clock/images/clock.svg");
+#ifdef Q_OS_MACOS
+  if (QVersionNumber::fromString(QSysInfo::productVersion()) >= QVersionNumber(10, 10))
+#endif
+    tray_icon.setIsMask(true);
   tray_icon_ = new QSystemTrayIcon(tray_icon, this);
   tray_icon_->setVisible(true);
   tray_icon_->setContextMenu(tray_menu);

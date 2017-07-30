@@ -480,33 +480,33 @@
 <context>
     <name>digital_clock::gui::TrayControl</name>
     <message>
-        <location filename="../gui/tray_control.cpp" line="32"/>
-        <location filename="../gui/tray_control.cpp" line="78"/>
+        <location filename="../gui/tray_control.cpp" line="36"/>
+        <location filename="../gui/tray_control.cpp" line="85"/>
         <source>&amp;Hide Clock</source>
         <translation>С&amp;прятать</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="37"/>
+        <location filename="../gui/tray_control.cpp" line="41"/>
         <source>&amp;Settings</source>
         <translation>&amp;Настройки</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="39"/>
+        <location filename="../gui/tray_control.cpp" line="43"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="42"/>
+        <location filename="../gui/tray_control.cpp" line="46"/>
         <source>&amp;Update</source>
         <translation>О&amp;бновление</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="45"/>
+        <location filename="../gui/tray_control.cpp" line="49"/>
         <source>&amp;Quit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../gui/tray_control.cpp" line="80"/>
+        <location filename="../gui/tray_control.cpp" line="87"/>
         <source>S&amp;how Clock</source>
         <translation>&amp;Показать</translation>
     </message>
