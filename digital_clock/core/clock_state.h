@@ -27,6 +27,7 @@ namespace core {
 class ClockState : public SettingsStorageWrapper
 {
   Q_OBJECT
+  Q_PROPERTY(bool exportable READ IsExportable WRITE SetExportable)
 
 public:
   explicit ClockState(SettingsStorage* backend, QObject* parent = nullptr);

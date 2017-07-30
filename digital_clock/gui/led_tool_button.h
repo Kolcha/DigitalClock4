@@ -28,7 +28,7 @@ namespace gui {
 class LedToolButton : public QToolButton
 {
   Q_OBJECT
-  Q_PROPERTY(QColor color READ color WRITE setColor)
+  Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 
 public:
   explicit LedToolButton(QWidget* parent = 0);
