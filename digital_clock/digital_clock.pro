@@ -34,6 +34,7 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     core/autostart.cpp \
+    core/build_date.cpp \
     core/clock_logger.cpp \
     core/clock_settings.cpp \
     core/clock_state.cpp \
@@ -58,6 +59,7 @@ SOURCES += main.cpp \
 
 HEADERS += \
     core/autostart.h \
+    core/build_date.h \
     core/build_defs.h \
     core/clock_logger.h \
     core/clock_settings.h \

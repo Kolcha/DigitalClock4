@@ -19,21 +19,10 @@
 #include "about_dialog.h"
 #include "ui_about_dialog.h"
 
-#include <QDate>
-
-#include "core/build_defs.h"
+#include "core/build_date.h"
 
 namespace digital_clock {
 namespace gui {
-
-const char c_build_date[] = {
-  BUILD_DAY_CH0, BUILD_DAY_CH1,
-  '-',
-  BUILD_MONTH_CH0, BUILD_MONTH_CH1,
-  '-',
-  BUILD_YEAR_CH0, BUILD_YEAR_CH1, BUILD_YEAR_CH2, BUILD_YEAR_CH3,
-  '\0'
-};
 
 static QString compilerString()
 {
@@ -70,7 +59,7 @@ AboutDialog::AboutDialog(QWidget* parent) :
   ui->app_name_lbl->setText(QCoreApplication::applicationName());
   ui->app_ver_lbl->setText(tr("version: %1 (%2)").arg(version).arg(build_type));
   ui->build_qt_lbl->setText(QString("Qt %1 (%2, %3 bit)").arg(qVersion(), compilerString()).arg(QSysInfo::WordSize));
-  QDate build_date = QDate::fromString(QLatin1String(c_build_date), "dd-MM-yyyy");
+  QDate build_date = core::build_date();
   ui->build_date_lbl->setText(tr("build date: %1").arg(build_date.toString(Qt::DefaultLocaleShortDate)));
   setFixedSize(sizeHint());
 }

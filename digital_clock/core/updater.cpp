@@ -21,8 +21,9 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QCoreApplication>
+#include <QVersionNumber>
 
-#include "core/build_defs.h"
+#include "core/build_date.h"
 #include "core/clock_state.h"
 #include "core/http_client.h"
 
@@ -30,15 +31,6 @@
 
 namespace digital_clock {
 namespace core {
-
-const char c_build_date[] = {
-  BUILD_DAY_CH0, BUILD_DAY_CH1,
-  '-',
-  BUILD_MONTH_CH0, BUILD_MONTH_CH1,
-  '-',
-  BUILD_YEAR_CH0, BUILD_YEAR_CH1, BUILD_YEAR_CH2, BUILD_YEAR_CH3,
-  '\0'
-};
 
 Updater::Updater(ClockState* state, QObject* parent) :
   QObject(parent),
@@ -98,23 +90,23 @@ void Updater::ProcessData()
     return;
   }
   QJsonObject js_obj = js_doc.object().value("stable").toObject();
-  QString latest = js_obj.value("version").toString();
+  QVersionNumber latest = QVersionNumber::fromString(js_obj.value("version").toString());
   QDate last_build = QDate::fromString(js_obj.value("timestamp").toString().simplified(), "dd-MM-yyyy");
   QString link = js_obj.value("download").toString();
   if (check_beta_) {
     js_obj = js_doc.object().value("testing").toObject();
     QString t_version = js_obj.value("version").toString("-");
     if (t_version != "-") {
-      latest = t_version;
+      latest = QVersionNumber::fromString(t_version);
       last_build = QDate::fromString(js_obj.value("timestamp").toString().simplified(), "dd-MM-yyyy");
       link = js_obj.value("download").toString();
     }
   }
 
-  if (latest > QCoreApplication::applicationVersion() ||
-      QDate::fromString(QLatin1String(c_build_date), "dd-MM-yyyy") < last_build) {
-    latest = QString("%1, %2").arg(latest).arg(last_build.toString(Qt::DefaultLocaleShortDate));
-    emit NewVersion(latest, link);
+  if (latest > QVersionNumber::fromString(QCoreApplication::applicationVersion()) || build_date() < last_build) {
+    QString latest_str = latest.toString() + ", ";
+    latest_str += last_build.toString(Qt::DefaultLocaleShortDate);
+    emit NewVersion(latest_str, link);
   } else {
     if (force_update_) emit UpToDate();
   }
