@@ -42,7 +42,7 @@ protected:
    * @param zoom - requested zoom
    * @return pointer to resized image
    */
-  QPixmapPtr ResizeImage(const QString& str, int idx, qreal zoom);
+  QPixmap ResizeImage(const QString& str, int idx, qreal zoom);
   /// map with paths to original images
   QMap<QChar, QString> image_files_;
 };

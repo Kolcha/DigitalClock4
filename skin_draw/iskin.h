@@ -43,8 +43,6 @@ public:
 
   /// skin pointer type
   typedef QSharedPointer<ISkin> SkinPtr;
-  /// QPixmap shared pointer type
-  typedef QSharedPointer<QPixmap> QPixmapPtr;
 
   /*!
    * Get image for specified symbol.
@@ -54,7 +52,7 @@ public:
    * @param cache - is image add to cache
    * @return pointer to result image
    */
-  virtual QPixmapPtr GetImage(const QString& str, int idx, qreal zoom, bool cache) = 0;
+  virtual QPixmap GetImage(const QString& str, int idx, qreal zoom, bool cache) = 0;
 
   /*!
    * Get device pixel ratio for current skin, see Qt documentation for details.

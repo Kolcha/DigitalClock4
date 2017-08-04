@@ -25,14 +25,14 @@ namespace skin_draw {
 class CharImageCache : public IImageCache
 {
 public:
-  ISkin::QPixmapPtr GetImage(const QString& str, int idx)
+  QPixmap GetImage(const QString& str, int idx)
   {
     auto iter = cache_.find(str[idx]);
     if (iter != cache_.end()) return iter.value();
-    return ISkin::QPixmapPtr();
+    return QPixmap();
   }
 
-  void AddImage(const QString& str, int idx, const ISkin::QPixmapPtr& image)
+  void AddImage(const QString& str, int idx, const QPixmap& image)
   {
     if (!image) return;
     cache_[str[idx]] = image;
@@ -41,7 +41,7 @@ public:
   void Clear() { cache_.clear(); }
 
 private:
-  QMap<QChar, ISkin::QPixmapPtr> cache_;
+  QMap<QChar, QPixmap> cache_;
 };
 
 
@@ -50,18 +50,18 @@ BaseSkin::BaseSkin() : cached_zoom_(1.0), device_pixel_ratio_(1.0)
   img_cache_ = ImageCachePtr(new CharImageCache());
 }
 
-ISkin::QPixmapPtr BaseSkin::GetImage(const QString& str, int idx, qreal zoom, bool cache)
+QPixmap BaseSkin::GetImage(const QString& str, int idx, qreal zoom, bool cache)
 {
-  QPixmapPtr result;
+  QPixmap result;
   if (idx >= str.length()) return result;
 
-  if (str[idx] == '\n') return QPixmapPtr(new QPixmap());
+  if (str[idx] == '\n') return result;
 
   if (zoom == cached_zoom_) {
     result = img_cache_->GetImage(str, idx);
     if (!result) {
       result = ResizeImage(str, idx, zoom);
-      if (result && cache) img_cache_->AddImage(str, idx, result);
+      if (!result.isNull() && cache) img_cache_->AddImage(str, idx, result);
     }
   } else {
     result = ResizeImage(str, idx, zoom);

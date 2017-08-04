@@ -43,11 +43,11 @@ public:
    * @param idx - symbol index
    * @return cached image, returns invalid pointer if image was not found
    */
-  virtual ISkin::QPixmapPtr GetImage(const QString& str, int idx) = 0;
+  virtual QPixmap GetImage(const QString& str, int idx) = 0;
   /*!
    * Add @a image to cache.
    */
-  virtual void AddImage(const QString& str, int idx, const ISkin::QPixmapPtr& image) = 0;
+  virtual void AddImage(const QString& str, int idx, const QPixmap& image) = 0;
 
   /*!
    * Drop all cached images.

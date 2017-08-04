@@ -51,7 +51,7 @@ public:
    * @param cache - is image will added to cache
    * @return pointer to result image
    */
-  QPixmapPtr GetImage(const QString& str, int idx, qreal zoom, bool cache);
+  QPixmap GetImage(const QString& str, int idx, qreal zoom, bool cache);
 
   /*!
    * Get device pixel ratio for current skin, see Qt documentation for details.
@@ -77,7 +77,7 @@ protected:
    * @return pointer to resized image
    * @note skin-specific method
    */
-  virtual QPixmapPtr ResizeImage(const QString& str, int idx, qreal zoom) = 0;
+  virtual QPixmap ResizeImage(const QString& str, int idx, qreal zoom) = 0;
 
   /// image chache object
   ImageCachePtr img_cache_;

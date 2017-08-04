@@ -51,7 +51,7 @@ protected:
    * @param zoom - requested zoom
    * @return pointer to resized image
    */
-  QPixmapPtr ResizeImage(const QString& str, int idx, qreal zoom);
+  QPixmap ResizeImage(const QString& str, int idx, qreal zoom);
   /// map with chars that need to be replaced (old - new char)
   QMap<QChar, QChar> char_map_;
   /// used font

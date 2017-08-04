@@ -24,16 +24,16 @@
 
 namespace skin_draw {
 
-ISkin::QPixmapPtr VectorSkin::ResizeImage(const QString& str, int idx, qreal zoom)
+QPixmap VectorSkin::ResizeImage(const QString& str, int idx, qreal zoom)
 {
   const QString& img_file = image_files_[str[idx]];
-  if (!QFile::exists(img_file)) return QPixmapPtr();
+  if (!QFile::exists(img_file)) return QPixmap();
 
   QSvgRenderer renderer(img_file);
-  QPixmapPtr result(new QPixmap(renderer.defaultSize() * zoom * GetDevicePixelRatio()));
-  QPainter painter(result.data());
+  QPixmap result(renderer.defaultSize() * zoom * GetDevicePixelRatio());
+  QPainter painter(&result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
-  painter.fillRect(result->rect(), Qt::transparent);
+  painter.fillRect(result.rect(), Qt::transparent);
   painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
   renderer.render(&painter);
   painter.end();

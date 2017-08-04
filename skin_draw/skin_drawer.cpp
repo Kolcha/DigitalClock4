@@ -119,8 +119,8 @@ void SkinDrawer::Redraw()
 {
   if (str_.isEmpty() || !skin_) return;
 
-  QList<QList<ISkin::QPixmapPtr> > elements;
-  QList<ISkin::QPixmapPtr> row_elements;
+  QList<QList<QPixmap> > elements;
+  QList<QPixmap> row_elements;
 
   const int space = space_ * skin_->GetDevicePixelRatio();
 
@@ -140,13 +140,13 @@ void SkinDrawer::Redraw()
       continue;
     }
 
-    ISkin::QPixmapPtr elem = skin_->GetImage(str_, i, zoom_, !preview_mode_);
-    if (!elem || elem->isNull()) continue;
+    QPixmap elem = skin_->GetImage(str_, i, zoom_, !preview_mode_);
+    if (!elem || elem.isNull()) continue;
     row_elements.append(elem);
 
     if (cur_row_w > 0) cur_row_w += space;
-    cur_row_w += elem->width();
-    cur_row_h = std::max(elem->height(), cur_row_h);
+    cur_row_w += elem.width();
+    cur_row_h = std::max(elem.height(), cur_row_h);
   }
 
   result_w = std::max(result_w, cur_row_w);
@@ -167,13 +167,13 @@ void SkinDrawer::Redraw()
       int row_h = 0;
 
       for (auto& elem : row) {
-        row_h = std::max(elem->height(), row_h);
-        painter.drawPixmap(pt, *elem);
+        row_h = std::max(elem.height(), row_h);
+        painter.drawPixmap(pt, elem);
 
         if (txd_per_elem_ && cust_type_ != CT_NONE)
-          DrawTexture(painter, QRect(pt, elem->size()));
+          DrawTexture(painter, QRect(pt, elem.size()));
 
-        pt.rx() += elem->width() + space;
+        pt.rx() += elem.width() + space;
       }
 
       pt.ry() += row_h + space;
