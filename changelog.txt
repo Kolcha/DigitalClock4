@@ -1,3 +1,26 @@
+Whats new in 4.5.6:
+-------------------
+Core:
+ - Qt 5.9.1 for Windows (including portable version)
+ - fixed unstable crash on exit
+ - change window resize logic, CPU load must be decreased even more
+ - fixed rare bug in updater
+
+GUI:
+ - fixed ugly blinking on repaint when some skins are used
+ - correctly handle dark menu bar mode on macOS
+ - icons color depend on system palette (especially notable on Linux systems with dark themes)
+
+Plugins:
+ - alarm: remember last used sound path
+ - alarm: allow multiselect
+ - significantly improved 'autoresize' feature
+
+General:
+ - fixed autostart issues on some Linux systems
+ - changed SettingsDialog logic
+
+
 Whats new in 4.5.5:
 -------------------
 Features:
