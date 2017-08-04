@@ -118,72 +118,70 @@ void SkinDrawer::SetPreviewMode(bool set)
 void SkinDrawer::Redraw()
 {
   if (str_.isEmpty() || !skin_) return;
-  // get images for all symbols
-  QList<ISkin::QPixmapPtr> elements;
-  for (auto i = 0; i < str_.length(); ++i) {
-    elements.push_back(skin_->GetImage(str_, i, zoom_, !preview_mode_));
-  }
-  // calculate result image width and height
+
+  QList<QList<ISkin::QPixmapPtr> > elements;
+  QList<ISkin::QPixmapPtr> row_elements;
+
+  const int space = space_ * skin_->GetDevicePixelRatio();
+
   int result_w = 0;
   int result_h = 0;
-  int c_row_w = 0;
-  int c_row_n = 0;
-  int m_row_n = 0;
-  for (auto& elem : elements) {
-    ++c_row_n;
-    if (!elem) continue;
-    if (elem->isNull()) {
-      if (c_row_w >= result_w) {
-        result_w = c_row_w;
-        m_row_n = c_row_n;
-      }
-      c_row_w = 0;
-      c_row_n = 0;
+
+  int cur_row_w = 0;
+  int cur_row_h = 0;
+
+  for (int i = 0; i < str_.length(); ++i) {
+    if (str_[i] == '\n') {
+      result_w = std::max(result_w, cur_row_w);
+      result_h += cur_row_h + space;
+      cur_row_w = 0;
+      elements.append(row_elements);
+      row_elements.clear();
       continue;
     }
-    c_row_w += elem->width();
-    result_h = qMax(result_h, elem->height());
-  }
-  if (c_row_w >= result_w) {
-    result_w = c_row_w;
-    m_row_n = c_row_n;
-  }
-  int elem_h = result_h;
-  // leave some space between images
-  int space = space_ * skin_->GetDevicePixelRatio();
-  result_w += space * (m_row_n - 1);
-  int rows = str_.count('\n') + 1;
-  result_h = result_h * rows + space * (rows - 1);
 
-  // create result image
+    ISkin::QPixmapPtr elem = skin_->GetImage(str_, i, zoom_, !preview_mode_);
+    if (!elem || elem->isNull()) continue;
+    row_elements.append(elem);
+
+    if (cur_row_w > 0) cur_row_w += space;
+    cur_row_w += elem->width();
+    cur_row_h = std::max(elem->height(), cur_row_h);
+  }
+
+  result_w = std::max(result_w, cur_row_w);
+  result_h += cur_row_h;
+  elements.append(row_elements);
+
   QImage result(result_w, result_h, QImage::Format_ARGB32_Premultiplied);
-  QPainter painter(&result);
-  painter.setCompositionMode(QPainter::CompositionMode_Source);
-  painter.fillRect(result.rect(), Qt::transparent);
-  painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+  {
+    QPainter painter(&result);
+    painter.setCompositionMode(QPainter::CompositionMode_Source);
+    painter.fillRect(result.rect(), Qt::transparent);
+    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
 
-  int x = 0;
-  int y = 0;
-  for (auto& elem : elements) {
-    // draw mask
-    if (!elem) continue;
-    if (elem->isNull()) {
-      x = 0;
-      y += elem_h + space;
-      continue;
+    QPoint pt(0, 0);
+
+    for (auto& row : elements) {
+      pt.setX(0);
+      int row_h = 0;
+
+      for (auto& elem : row) {
+        row_h = std::max(elem->height(), row_h);
+        painter.drawPixmap(pt, *elem);
+
+        if (txd_per_elem_ && cust_type_ != CT_NONE)
+          DrawTexture(painter, QRect(pt, elem->size()));
+
+        pt.rx() += elem->width() + space;
+      }
+
+      pt.ry() += row_h + space;
     }
-    painter.drawPixmap(x, y, *elem);
-    if (txd_per_elem_ && cust_type_ != CT_NONE) {
-      // draw texture
-      DrawTexture(painter, QRect(x, y, elem->width(), elem->height()));
-    }
-    x += elem->width() + space;
+
+    if (!txd_per_elem_ && cust_type_ != CT_NONE)
+      DrawTexture(painter, result.rect());
   }
-  if (!txd_per_elem_ && cust_type_ != CT_NONE) {
-    // draw texture
-    DrawTexture(painter, result.rect());
-  }
-  painter.end();
   result.setDevicePixelRatio(skin_->GetDevicePixelRatio());
   emit DrawingFinished(result);
 }
