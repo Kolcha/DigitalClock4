@@ -171,7 +171,7 @@ void SettingsDialog::InitControls()
   ui->cust_texturing->setChecked(cust == Customization::C_TEXTURING);
   ui->cust_colorize->setChecked(cust == Customization::C_COLORIZE);
 
-  SkinDrawer::CustomizationType txd_type = static_cast<SkinDrawer::CustomizationType>(config_->GetValue(OPT_TEXTURE_TYPE).toInt());
+  SkinDrawer::CustomizationType txd_type = config_->GetValue(OPT_TEXTURE_TYPE).value<SkinDrawer::CustomizationType>();
   ui->type_color->setChecked(txd_type == SkinDrawer::CT_COLOR);
   ui->type_image->setChecked(txd_type == SkinDrawer::CT_TEXTURE);
   last_color_ = config_->GetValue(OPT_COLOR).value<QColor>();
@@ -179,7 +179,7 @@ void SettingsDialog::InitControls()
   last_txd_path_ = texture.isEmpty() ? DEFAULT_TEXTURE_PATH : QFileInfo(texture).absolutePath();
 
   ui->txd_per_elem->setChecked(config_->GetValue(OPT_TEXTURE_PER_ELEMENT).toBool());
-  SkinDrawer::DrawMode mode = static_cast<SkinDrawer::DrawMode>(config_->GetValue(OPT_TEXTURE_DRAW_MODE).toInt());
+  SkinDrawer::DrawMode mode = config_->GetValue(OPT_TEXTURE_DRAW_MODE).value<SkinDrawer::DrawMode>();
   ui->mode_stretch->setChecked(mode == SkinDrawer::DM_STRETCH);
   ui->mode_tile->setChecked(mode == SkinDrawer::DM_TILE);
 

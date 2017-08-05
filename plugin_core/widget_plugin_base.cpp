@@ -53,7 +53,7 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
         break;
 
       case OPT_TEXTURE_TYPE:
-        private_->clock_customization_ = static_cast<skin_draw::SkinDrawer::CustomizationType>(iter.value().toInt());
+        private_->clock_customization_ = iter.value().value< ::skin_draw::SkinDrawer::CustomizationType>();
         private_->drawer_->SetCustomizationType(private_->clock_customization_);
         break;
 
@@ -62,7 +62,7 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
         break;
 
       case OPT_TEXTURE_DRAW_MODE:
-        private_->drawer_->SetTextureDrawMode(static_cast<skin_draw::SkinDrawer::DrawMode>(iter.value().toInt()));
+        private_->drawer_->SetTextureDrawMode(iter.value().value< ::skin_draw::SkinDrawer::DrawMode>());
         break;
 
       case OPT_CUSTOMIZATION:
@@ -188,7 +188,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       break;
 
     case OPT_TEXTURE_TYPE:
-      private_->clock_customization_ = static_cast<skin_draw::SkinDrawer::CustomizationType>(new_value.toInt());
+      private_->clock_customization_ = new_value.value< ::skin_draw::SkinDrawer::CustomizationType>();
       if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)).toBool()) break;
       private_->drawer_->SetCustomizationType(private_->clock_customization_);
       break;
@@ -198,7 +198,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       break;
 
     case OPT_TEXTURE_DRAW_MODE:
-      private_->drawer_->SetTextureDrawMode(static_cast<skin_draw::SkinDrawer::DrawMode>(new_value.toInt()));
+      private_->drawer_->SetTextureDrawMode(new_value.value< ::skin_draw::SkinDrawer::DrawMode>());
       break;
 
     case OPT_CUSTOMIZATION: {
