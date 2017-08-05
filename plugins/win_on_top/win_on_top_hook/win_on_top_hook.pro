@@ -1,6 +1,6 @@
 #
-#   Digital Clock: window on top plugin
-#   Copyright (C) 2014-2017  Nick Korotysh <nick.korotysh@gmail.com>
+#   window on top hook library
+#   Copyright (C) 2017  Nick Korotysh <nick.korotysh@gmail.com>
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -18,30 +18,19 @@
 
 #-------------------------------------------------
 #
-# Project created by QtCreator 2014-01-02T22:55:42
+# Project created by QtCreator 2017-08-05T09:08:10
 #
 #-------------------------------------------------
 
-QT       += core
+CONFIG -= qt
 
-include(../../common.pri)
+TARGET = win_on_top_hook
+TEMPLATE = lib
 
-TARGET = win_on_top
+DEFINES += _WINDOWS _USRDLL
 
-SOURCES += win_on_top.cpp
+SOURCES += win_on_top_hook.cpp
 
-HEADERS += win_on_top.h
+RC_FILE = win_on_top_hook.rc
 
-TRANSLATIONS += \
-    win_on_top_ru.ts
-
-include(../../../qm_gen.pri)
-
-RESOURCES += win_on_top.qrc
-
-OTHER_FILES += win_on_top.json
-
-win32:RC_FILE = win_on_top.rc
-
-win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../../clock_common/debug/
-else:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../../clock_common/release/
+LIBS += -luser32
