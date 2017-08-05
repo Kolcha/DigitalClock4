@@ -54,7 +54,7 @@ bool NetInterfacesModel::setData(const QModelIndex& index, const QVariant& value
   if (data(index, role) != value) {
     if (role == Qt::CheckStateRole) {
       const QNetworkInterface& iface = interfaces_[index.row()];
-      if (static_cast<Qt::CheckState>(value.toInt()) == Qt::Checked)
+      if (value.value<Qt::CheckState>() == Qt::Checked)
         checked_interfaces_.insert(iface.name());
       else
         checked_interfaces_.remove(iface.name());

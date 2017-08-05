@@ -109,7 +109,7 @@ QString DatePlugin::GetWidgetText()
 
   switch (static_cast<FormatType>(settings_->GetOption(OPT_DATE_FORMAT_TYPE).toInt())) {
     case FormatType::FT_INT:
-      date = d_date.toString(static_cast<Qt::DateFormat>(settings_->GetOption(OPT_DATE_FORMAT_INT).toInt()));
+      date = d_date.toString(settings_->GetOption(OPT_DATE_FORMAT_INT).value<Qt::DateFormat>());
       break;
 
     case FormatType::FT_STR:

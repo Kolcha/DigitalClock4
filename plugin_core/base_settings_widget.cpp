@@ -139,12 +139,12 @@ void BaseSettingsWidget::on_choose_font_button_clicked()
 
 void BaseSettingsWidget::on_leave_as_is_rbtn_clicked()
 {
-  emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_NOT_ZOOM));
+  emit OptionChanged(OPT_ZOOM_MODE, ZoomMode::ZM_NOT_ZOOM);
 }
 
 void BaseSettingsWidget::on_clock_size_percent_rbtn_clicked()
 {
-  emit OptionChanged(OPT_ZOOM_MODE, static_cast<int>(ZoomMode::ZM_AUTOSIZE));
+  emit OptionChanged(OPT_ZOOM_MODE, ZoomMode::ZM_AUTOSIZE);
 }
 
 void BaseSettingsWidget::on_percent_box_valueChanged(int arg1)
@@ -154,12 +154,12 @@ void BaseSettingsWidget::on_percent_box_valueChanged(int arg1)
 
 void BaseSettingsWidget::on_pos_bottom_rbtn_clicked()
 {
-  emit OptionChanged(OPT_WIDGET_LOCATION, static_cast<int>(WidgetLocation::WL_BOTTOM));
+  emit OptionChanged(OPT_WIDGET_LOCATION, WidgetLocation::WL_BOTTOM);
 }
 
 void BaseSettingsWidget::on_pos_right_rbtn_clicked()
 {
-  emit OptionChanged(OPT_WIDGET_LOCATION, static_cast<int>(WidgetLocation::WL_RIGHT));
+  emit OptionChanged(OPT_WIDGET_LOCATION, WidgetLocation::WL_RIGHT);
 }
 
 void BaseSettingsWidget::on_align_top_left_rbtn_clicked()
