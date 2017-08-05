@@ -18,7 +18,6 @@
 
 #include "skin_drawer.h"
 
-#include <QFile>
 #include <QList>
 #include <QPainter>
 
@@ -44,75 +43,114 @@ void SkinDrawer::ApplySkin(ISkin::SkinPtr skin)
 
 void SkinDrawer::SetString(const QString& str)
 {
+  if (str_ == str) return;
   str_ = str;
+  emit textChanged(str_);
   Redraw();
 }
 
 void SkinDrawer::SetZoom(qreal new_zoom)
 {
+  if (qFuzzyIsNull(new_zoom)) return;
+  if (qFuzzyCompare(zoom_, new_zoom)) return;
   zoom_ = new_zoom;
+  emit zoomChanged(zoom_);
   Redraw();
 }
 
-bool SkinDrawer::SetColor(const QColor& new_color)
+void SkinDrawer::SetColor(const QColor& new_color)
 {
-  if (!new_color.isValid()) return false;
+  if (!new_color.isValid()) return;
+  if (color_ == new_color) return;
   color_ = new_color;
-  if (cust_type_ != CT_COLOR) return false;
-  texture_.fill(new_color);
-  Redraw();
-  return true;
+  emit colorChanged(color_);
+  if (cust_type_ != CT_COLOR) return;
+  if (UpdateTexture(new_color)) Redraw();
 }
 
-bool SkinDrawer::SetTexture(const QString& filename)
+void SkinDrawer::SetTexture(const QString& filename)
 {
-  if (!QFile::exists(filename)) return false;
+  if (txd_file_ == filename) return;
   txd_file_ = filename;
-  if (cust_type_ != CT_TEXTURE) return false;
-  texture_.load(filename);
-  Redraw();
-  return true;
+  emit textureFileChanged(txd_file_);
+  if (cust_type_ != CT_TEXTURE) return;
+  if (UpdateTexture(filename)) Redraw();
 }
 
 void SkinDrawer::SetTexturePerElement(bool set)
 {
+  if (txd_per_elem_ == set) return;
   txd_per_elem_ = set;
+  emit texturePerElementChanged(set);
   Redraw();
 }
 
 void SkinDrawer::SetTextureDrawMode(SkinDrawer::DrawMode mode)
 {
+  if (txd_draw_mode_ == mode) return;
   txd_draw_mode_ = mode;
+  emit textureModeChanged(mode);
   Redraw();
 }
 
 void SkinDrawer::SetCustomizationType(CustomizationType type)
 {
-  cust_type_ = type;
+  /*
+   * Temporary HACK! When setting CT_NONE Redraw() must be called in any case,
+   * doesn't matter even the same value was before.
+   * Required when disabling customization from 'colorize' state.
+   * TODO: move effect here.
+   */
+  if (cust_type_ != type) {
+    cust_type_ = type;
+    emit customizationChanged(type);
+  }
+
   switch (type) {
     case CT_NONE:
       Redraw();
       break;
 
     case CT_COLOR:
-      if (!SetColor(color_)) SetCustomizationType(CT_NONE);
+      UpdateTexture(color_) ? Redraw() : SetCustomizationType(CT_NONE);
       break;
 
     case CT_TEXTURE:
-      if (!SetTexture(txd_file_)) SetCustomizationType(CT_COLOR);
+      UpdateTexture(txd_file_) ? Redraw() : SetCustomizationType(CT_COLOR);
       break;
   }
 }
 
 void SkinDrawer::SetSpace(int new_space)
 {
+  if (space_ == new_space) return;
   space_ = new_space;
+  emit spacingChanged(space_);
   Redraw();
 }
 
 void SkinDrawer::SetPreviewMode(bool set)
 {
+  if (preview_mode_ == set) return;
   preview_mode_ = set;
+  emit previewModeChanged(set);
+}
+
+bool SkinDrawer::UpdateTexture(const QColor& color)
+{
+  if (!color.isValid()) return false;
+  QPixmap ctxd(8, 8);
+  ctxd.fill(color);
+  texture_.swap(ctxd);
+  emit textureChanged(texture_);
+  return true;
+}
+
+bool SkinDrawer::UpdateTexture(const QString& file)
+{
+  if (!texture_.load(file)) return false;
+  emit textureChanged(texture_);
+  return true;
 }
 
 void SkinDrawer::Redraw()
