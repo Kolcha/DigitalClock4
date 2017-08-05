@@ -117,12 +117,8 @@ __declspec(dllexport) void Stop()
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
-  switch (ul_reason_for_call) {
-    case DLL_PROCESS_ATTACH:
-    case DLL_THREAD_ATTACH:
-    case DLL_THREAD_DETACH:
-    case DLL_PROCESS_DETACH:
-      break;
-  }
+  (void)hModule;
+  (void)ul_reason_for_call;
+  (void)lpReserved;
   return TRUE;
 }

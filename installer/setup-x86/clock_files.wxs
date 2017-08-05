@@ -47,7 +47,7 @@
         <File Id="var_translucency.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_9_1_MSVC2015_32bit-Release\plugins\var_translucency\release\var_translucency.dll" />
       </Component>
       <Component Id="plugin_dll12" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{F4CEB5A6-2487-4435-879D-1D25DDFDC8B1}">
-        <File Id="win_on_top.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_9_1_MSVC2015_32bit-Release\plugins\win_on_top\release\win_on_top.dll" />
+        <File Id="win_on_top.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_9_1_MSVC2015_32bit-Release\plugins\win_on_top\win_on_top\release\win_on_top.dll" />
       </Component>
       <Component Id="plugin_dll14" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{C4B3D882-D5D2-4544-B6B7-447F195AEA90}">
         <File Id="ip_address.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_9_1_MSVC2015_32bit-Release\plugins\ip_address\release\ip_address.dll" />
@@ -60,7 +60,7 @@
       </Component>
 
       <Component Id="win_on_top_ext" Directory="plugins_special" Guid="{69192379-B1C6-43F3-AC08-BC5735F359D4}">
-        <File Id="win_on_top_hook.dll" KeyPath="yes" Source="..\..\plugins\win_on_top\win_on_top_hook\msvc2015\Win32\Release\win_on_top_hook.dll" />
+        <File Id="win_on_top_hook.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_9_1_MSVC2015_32bit-Release\plugins\win_on_top\win_on_top_hook\release\win_on_top_hook.dll" />
       </Component>
 
       <Component Id="paletteicon_dll" Directory="dir2C41C47317919F7F40F42C2D5CABDBDE" Guid="{83DEF5DC-19CC-48E1-A674-1F654883A6E9}">

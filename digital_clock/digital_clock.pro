@@ -33,7 +33,6 @@ TARGET   = digital_clock
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    core/autostart.cpp \
     core/build_date.cpp \
     core/clock_logger.cpp \
     core/clock_settings.cpp \
@@ -58,7 +57,7 @@ SOURCES += main.cpp \
     main_window.cpp
 
 HEADERS += \
-    core/autostart.h \
+    platform/autostart.h \
     core/build_date.h \
     core/build_defs.h \
     core/clock_logger.h \
@@ -87,6 +86,7 @@ HEADERS += \
 # platform-specific sources
 win32 {
 SOURCES += \
+    platform/autostart_win.cpp \
     platform/fullscreen_detect.cpp
 
 HEADERS += \
@@ -94,6 +94,13 @@ HEADERS += \
 }
 
 unix {
+macx {
+SOURCES += \
+    platform/autostart_mac.cpp
+} else {
+SOURCES += \
+    platform/autostart_linux.cpp
+}
 SOURCES += \
     platform/backtrace_unix.cpp
 }

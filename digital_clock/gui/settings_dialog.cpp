@@ -31,7 +31,7 @@
 #include "skin_drawer.h"
 #include "settings_storage.h"
 
-#include "core/autostart.h"
+#include "platform/autostart.h"
 #include "core/clock_settings.h"
 #include "core/clock_state.h"
 

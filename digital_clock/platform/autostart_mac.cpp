@@ -20,69 +20,6 @@
 
 #include <QApplication>
 #include <QDir>
-
-#ifdef Q_OS_LINUX
-#include <QFile>
-#include <QFileInfo>
-
-static QString GetAppFileName()
-{
-  QFileInfo fi(QApplication::applicationFilePath());
-  return fi.fileName();
-}
-
-static QString GetAutoStartDir()
-{
-  return QDir::home().absoluteFilePath(".config/autostart");
-}
-
-static QString GetDesktopFile()
-{
-  QDir auto_start_dir(GetAutoStartDir());
-  return auto_start_dir.absoluteFilePath(GetAppFileName() + ".desktop");
-}
-
-
-bool IsAutoStartEnabled()
-{
-  return QFile::exists(GetDesktopFile());
-}
-
-void SetAutoStart(bool enable)
-{
-  QString desktop_file = GetDesktopFile();
-  if (enable) {
-    if (QFile::exists(desktop_file)) return;
-    QString startup_dir = GetAutoStartDir();
-    if (!QFile::exists(startup_dir)) QDir::home().mkpath(startup_dir);
-
-    // *INDENT-OFF*
-    QString desktop_data = QString(
-          "[Desktop Entry]\n"
-          "Name=%1\n"
-          "Comment=%2\n"
-          "Type=Application\n"
-          "Terminal=false\n"
-          "Exec=\"%3\" --autostart\n"
-          "Icon=%4\n"
-          "StartupNotify=false\n")
-        .arg(
-          QApplication::applicationName(),
-          QApplication::applicationName() + " " + QApplication::applicationVersion() + " by " + QApplication::organizationName(),
-          QApplication::applicationFilePath() + ".sh",
-          QApplication::applicationFilePath() + ".svg");
-    // *INDENT-ON*
-    QFile file(desktop_file);
-    file.open(QIODevice::WriteOnly | QIODevice::Text);
-    file.write(desktop_data.toLocal8Bit());
-    file.close();
-  } else {
-    QFile::remove(desktop_file);
-  }
-}
-#endif
-
-#ifdef Q_OS_MACOS
 #include <QFile>
 
 static QString GetAutoStartDir()
@@ -140,24 +77,3 @@ void SetAutoStart(bool enable)
     QFile::remove(plist_file);
   }
 }
-#endif
-
-#ifdef Q_OS_WIN
-#include <QSettings>
-
-bool IsAutoStartEnabled()
-{
-  QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
-  return settings.value(QApplication::applicationName()).toString() == QDir::toNativeSeparators(QApplication::applicationFilePath());
-}
-
-void SetAutoStart(bool enable)
-{
-  QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
-  if (enable) {
-    settings.setValue(QApplication::applicationName(), QDir::toNativeSeparators(QApplication::applicationFilePath()));
-  } else {
-    settings.remove(QApplication::applicationName());
-  }
-}
-#endif
