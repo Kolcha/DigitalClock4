@@ -61,7 +61,7 @@ AboutDialog::AboutDialog(QWidget* parent) :
   ui->build_qt_lbl->setText(QString("Qt %1 (%2, %3 bit)").arg(qVersion(), compilerString()).arg(QSysInfo::WordSize));
   QDate build_date = core::build_date();
   ui->build_date_lbl->setText(tr("build date: %1").arg(build_date.toString(Qt::DefaultLocaleShortDate)));
-  setFixedSize(sizeHint());
+  resize(sizeHint());
 }
 
 AboutDialog::~AboutDialog()

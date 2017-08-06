@@ -47,48 +47,48 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="64"/>
+        <location filename="../gui/about_dialog.ui" line="70"/>
         <source>Info</source>
         <translation>Информация</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="149"/>
+        <location filename="../gui/about_dialog.ui" line="155"/>
         <source>© 2013-2017 Nick Korotysh</source>
         <translation>© 2013-2017 Николай Коротыш</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="160"/>
+        <location filename="../gui/about_dialog.ui" line="166"/>
         <source>Links</source>
         <translation>Ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="166"/>
+        <location filename="../gui/about_dialog.ui" line="172"/>
         <source>Useful links</source>
         <translation>Полезные ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="172"/>
+        <location filename="../gui/about_dialog.ui" line="178"/>
         <source>&lt;a href=&quot;http://digitalclock4.sourceforge.net/&quot;&gt;project home page&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;http://digitalclock4.sourceforge.net/&quot;&gt;домашняя страница проекта&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="185"/>
+        <location filename="../gui/about_dialog.ui" line="191"/>
         <source>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;bug report/feature request&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;сообщить об ошибке/предложить функцию&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="198"/>
+        <location filename="../gui/about_dialog.ui" line="204"/>
         <source>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;view full changelog&lt;/a&gt;</source>
         <translatorcomment>просмотреть историю изменений</translatorcomment>
         <translation>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;полный список изменений&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="211"/>
+        <location filename="../gui/about_dialog.ui" line="217"/>
         <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;how to create own skin&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;как создать собственный стиль&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="227"/>
+        <location filename="../gui/about_dialog.ui" line="233"/>
         <source>More info</source>
         <translation>Информация на других сайтах</translation>
     </message>

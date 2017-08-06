@@ -18,6 +18,9 @@
     <normaloff>:/clock/images/info.svg.p</normaloff>:/clock/images/info.svg.p</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetFixedSize</enum>
+   </property>
    <item row="1" column="2">
     <spacer name="h_spacer_2">
      <property name="orientation">
@@ -32,11 +35,14 @@
     </spacer>
    </item>
    <item row="1" column="1">
-    <widget class="QPushButton" name="ok_btn">
-     <property name="text">
-      <string notr="true">OK</string>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
-     <property name="default">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Ok</set>
+     </property>
+     <property name="centerButtons">
       <bool>true</bool>
      </property>
     </widget>
@@ -307,18 +313,34 @@
  </resources>
  <connections>
   <connection>
-   <sender>ok_btn</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
    <receiver>digital_clock::gui::AboutDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>198</x>
-     <y>276</y>
+     <x>231</x>
+     <y>366</y>
     </hint>
     <hint type="destinationlabel">
-     <x>258</x>
-     <y>279</y>
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>digital_clock::gui::AboutDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>231</x>
+     <y>366</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
     </hint>
    </hints>
   </connection>
