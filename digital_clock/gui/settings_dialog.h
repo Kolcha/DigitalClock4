@@ -66,7 +66,7 @@ public slots:
   void SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins);
 
 protected:
-  void showEvent(QShowEvent* e);
+  void showEvent(QShowEvent* e) override;
 
 private slots:
   void InitControls();

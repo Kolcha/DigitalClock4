@@ -36,12 +36,12 @@ public:
   TalkingClockPlugin();
 
 public slots:
-  void Start();
-  void Stop();
+  void Start() override;
+  void Stop() override;
 
-  void Configure();
+  void Configure() override;
 
-  void TimeUpdateListener();
+  void TimeUpdateListener() override;
 
 private slots:
   void InitSpeechEngine();

@@ -36,13 +36,13 @@ public:
   QuickNotePlugin();
 
 public slots:
-  void Configure();
+  void Configure() override;
 
 protected:
-  void InitSettingsDefaults(QSettings::SettingsMap* defaults);
-  QWidget* InitWidget(QGridLayout* layout);
-  void DisplayImage(const QImage& image);
-  QString GetWidgetText();
+  void InitSettingsDefaults(QSettings::SettingsMap* defaults) override;
+  QWidget* InitWidget(QGridLayout* layout) override;
+  void DisplayImage(const QImage& image) override;
+  QString GetWidgetText() override;
 
 private slots:
   void SettingsUpdateListener(const QString& key, const QVariant& value);

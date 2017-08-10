@@ -35,8 +35,8 @@ public:
   WinOnTop();
 
 public slots:
-  void Start();
-  void Stop();
+  void Start() override;
+  void Stop() override;
 
 private:
   HMODULE lib_;

@@ -25,20 +25,20 @@ namespace skin_draw {
 class CharImageCache : public IImageCache
 {
 public:
-  QPixmap GetImage(const QString& str, int idx)
+  QPixmap GetImage(const QString& str, int idx) override
   {
     auto iter = cache_.find(str[idx]);
     if (iter != cache_.end()) return iter.value();
     return QPixmap();
   }
 
-  void AddImage(const QString& str, int idx, const QPixmap& image)
+  void AddImage(const QString& str, int idx, const QPixmap& image) override
   {
     if (!image) return;
     cache_[str[idx]] = image;
   }
 
-  void Clear() { cache_.clear(); }
+  void Clear() override { cache_.clear(); }
 
 private:
   QMap<QChar, QPixmap> cache_;

@@ -39,7 +39,7 @@ class ISkin
 {
 public:
   /*! Virtual destructor. */
-  virtual ~ISkin() {}
+  virtual ~ISkin() = default;
 
   /// skin pointer type
   typedef QSharedPointer<ISkin> SkinPtr;

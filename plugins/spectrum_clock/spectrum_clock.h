@@ -34,12 +34,12 @@ class SpectrumClock : public ISettingsPlugin, public ISettingsPluginInit
 
 public:
   SpectrumClock();
-  void Init(const QMap<Option, QVariant>& current_settings);
+  void Init(const QMap<Option, QVariant>& current_settings) override;
 
 public slots:
-  void Start();
-  void Stop();
-  void TimeUpdateListener();
+  void Start() override;
+  void Stop() override;
+  void TimeUpdateListener() override;
 
 private:
   QColor old_color_;

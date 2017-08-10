@@ -38,8 +38,8 @@ public slots:
   void setText(const QString& new_text);
 
 protected:
-  void mousePressEvent(QMouseEvent* event);
-  void mouseReleaseEvent(QMouseEvent* event);
+  void mousePressEvent(QMouseEvent* event) override;
+  void mouseReleaseEvent(QMouseEvent* event) override;
 
   QString curr_text_;
   QPoint drag_position_;

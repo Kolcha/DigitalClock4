@@ -62,14 +62,14 @@ public:
    * @param current_settings - map with current clock settings
    * @see ISettingsPluginInit, Option, ::skin_draw::SkinDrawer
    */
-  virtual void Init(const QMap<Option, QVariant>& current_settings);
+  virtual void Init(const QMap<Option, QVariant>& current_settings) override;
   /*!
    * @brief Init widget part of plugin
    *
    * Initializes some variables which will needed for widget initialization.
    * @param main_wnd - clock main window
    */
-  virtual void Init(QWidget* main_wnd);
+  virtual void Init(QWidget* main_wnd) override;
 
 public slots:
   /*!
@@ -79,7 +79,7 @@ public slots:
    * Starts all plugin activity.
    * @see InitWidget(), IClockPlugin
    */
-  virtual void Start();
+  virtual void Start() override;
   /*!
    * @brief Deactivate plugin.
    *
@@ -87,7 +87,7 @@ public slots:
    * Stops all plugin activity.
    * @see IClockPlugin
    */
-  virtual void Stop();
+  virtual void Stop() override;
   /*!
    * @brief Clock settings change listener.
    *
@@ -97,13 +97,13 @@ public slots:
    * @param new_value - new option value
    * @see IClockPlugin, Option
    */
-  virtual void SettingsListener(Option option, const QVariant& new_value);
+  virtual void SettingsListener(Option option, const QVariant& new_value) override;
   /*!
    * @brief Reimplemented from IClockPlugin::TimeUpdateListener()
    *
    * Used as timer. Redraws widget if needed.
    */
-  virtual void TimeUpdateListener();
+  virtual void TimeUpdateListener() override;
 
 protected:
   /*!

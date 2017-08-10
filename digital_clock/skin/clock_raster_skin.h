@@ -27,13 +27,13 @@
 namespace digital_clock {
 namespace core {
 
-class RasterSkin : public ::skin_draw::RasterSkin, public BaseSkin
+class RasterSkin : public BaseSkin, public ::skin_draw::RasterSkin
 {
 public:
   explicit RasterSkin(const QDir& skin_root);
 
 protected:
-  void ProcSeparators();
+  void ProcSeparators() override;
 };
 
 } // namespace core

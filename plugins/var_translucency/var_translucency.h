@@ -32,12 +32,12 @@ class VarTranslucency : public ISettingsPlugin, public ISettingsPluginInit
 
 public:
   VarTranslucency();
-  void Init(const QMap<Option, QVariant>& current_settings);
+  void Init(const QMap<Option, QVariant>& current_settings) override;
 
 public slots:
-  void Start();
-  void Stop();
-  void TimeUpdateListener();
+  void Start() override;
+  void Stop() override;
+  void TimeUpdateListener() override;
 
 private:
   qreal old_opacity_;

@@ -38,8 +38,8 @@ public:
   QMap<Option, QVariant> GetSettings() const;
 
 protected:
-  QString GetKey(const int id) const;
-  QVariant GetDefaultValue(const int id) const;
+  QString GetKey(const int id) const override;
+  QVariant GetDefaultValue(const int id) const override;
 };
 
 } // namespace core

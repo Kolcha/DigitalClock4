@@ -32,13 +32,13 @@ class AnyZoom : public ISettingsPlugin, ISettingsPluginInit
 
 public:
   AnyZoom();
-  void Init(const QMap<Option, QVariant>& current_settings);
+  void Init(const QMap<Option, QVariant>& current_settings) override;
 
 public slots:
-  void Start();
-  void Stop();
-  void Configure();
-  void SettingsListener(Option option, const QVariant& value);
+  void Start() override;
+  void Stop() override;
+  void Configure() override;
+  void SettingsListener(Option option, const QVariant& value) override;
 
 private slots:
   void TrackChange(int new_zoom);
