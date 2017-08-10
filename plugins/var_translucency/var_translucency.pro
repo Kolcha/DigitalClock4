@@ -33,6 +33,7 @@ SOURCES += var_translucency.cpp
 HEADERS += var_translucency.h
 
 TRANSLATIONS += \
+    var_translucency_en.ts \
     var_translucency_ru.ts
 
 include(../../qm_gen.pri)

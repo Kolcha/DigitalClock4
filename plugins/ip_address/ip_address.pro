@@ -44,6 +44,7 @@ FORMS += \
     gui/settings_dialog.ui
 
 TRANSLATIONS += \
+    ip_address_en.ts \
     ip_address_ru.ts
 
 include(../../qm_gen.pri)

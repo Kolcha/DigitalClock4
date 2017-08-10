@@ -39,6 +39,7 @@ FORMS += \
     gui/settings_dialog.ui
 
 TRANSLATIONS += \
+    power_off_en.ts \
     power_off_ru.ts
 
 include(../../qm_gen.pri)

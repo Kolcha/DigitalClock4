@@ -33,6 +33,7 @@ SOURCES += spectrum_clock.cpp
 HEADERS += spectrum_clock.h
 
 TRANSLATIONS += \
+    spectrum_clock_en.ts \
     spectrum_clock_ru.ts
 
 include(../../qm_gen.pri)

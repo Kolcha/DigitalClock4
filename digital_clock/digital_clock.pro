@@ -112,6 +112,7 @@ FORMS += \
     gui/settings_dialog.ui
 
 TRANSLATIONS += \
+    languages/digital_clock_en.ts \
     languages/digital_clock_ru.ts
 
 include(../qm_gen.pri)

@@ -54,6 +54,7 @@ FORMS += \
     gui/edit_alarm_dialog.ui
 
 TRANSLATIONS += \
+    alarm_en.ts \
     alarm_ru.ts
 
 include(../../qm_gen.pri)

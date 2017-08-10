@@ -48,6 +48,7 @@ FORMS += \
     base_settings_widget.ui
 
 TRANSLATIONS += \
+    plugin_core_en.ts \
     plugin_core_ru.ts
 
 include(../qm_gen.pri)

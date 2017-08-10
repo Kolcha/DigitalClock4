@@ -34,6 +34,7 @@ HEADERS += any_zoom.h \
     any_zoom_settings.h
 
 TRANSLATIONS += \
+    any_zoom_en.ts \
     any_zoom_ru.ts
 
 include(../../qm_gen.pri)

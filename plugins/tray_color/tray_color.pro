@@ -34,6 +34,7 @@ HEADERS += tray_color.h \
     tray_color_settings.h
 
 TRANSLATIONS += \
+    tray_color_en.ts \
     tray_color_ru.ts
 
 include(../../qm_gen.pri)
