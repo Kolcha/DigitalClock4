@@ -64,7 +64,7 @@ public:
    * Constructor.
    * @param parent - parent object
    */
-  explicit PluginManager(QObject* parent = 0);
+  explicit PluginManager(QObject* parent = nullptr);
   /*! Destructor. */
   ~PluginManager();
   /*!

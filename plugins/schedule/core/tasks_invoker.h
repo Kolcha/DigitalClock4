@@ -35,7 +35,7 @@ class TasksInvoker : public QObject
 {
   Q_OBJECT
 public:
-  explicit TasksInvoker(QObject* parent = 0);
+  explicit TasksInvoker(QObject* parent = nullptr);
 
 signals:
   void dateChanged(const QDate& date);

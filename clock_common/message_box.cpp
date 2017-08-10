@@ -22,18 +22,14 @@
 
 TMessageBox::TMessageBox(QWidget* parent) :
   QMessageBox(parent),
-  auto_close_(false), timeout_(30), timer_(0)
+  auto_close_(false), timeout_(30), timer_(nullptr)
 {
 }
 
 TMessageBox::TMessageBox(QMessageBox::Icon icon, const QString& title, const QString& text,
                          QMessageBox::StandardButtons buttons, QWidget* parent, Qt::WindowFlags flags)
   : QMessageBox(icon, title, text, buttons, parent, flags),
-    auto_close_(false), timeout_(30), timer_(0)
-{
-}
-
-TMessageBox::~TMessageBox()
+    auto_close_(false), timeout_(30), timer_(nullptr)
 {
 }
 

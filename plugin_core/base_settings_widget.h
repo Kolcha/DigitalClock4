@@ -48,7 +48,7 @@ public:
    * Constructor.
    * @param parent - parent widget
    */
-  explicit BaseSettingsWidget(QWidget* parent = 0);
+  explicit BaseSettingsWidget(QWidget* parent = nullptr);
   /*!
    * Destructor.
    */

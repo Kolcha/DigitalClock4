@@ -32,7 +32,7 @@ class HttpClient : public QObject
   Q_OBJECT
 
 public:
-  explicit HttpClient(QObject* parent = 0);
+  explicit HttpClient(QObject* parent = nullptr);
   ~HttpClient();
 
   void startRequest(QUrl url);

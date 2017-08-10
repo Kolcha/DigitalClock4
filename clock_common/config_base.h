@@ -37,9 +37,7 @@ public:
    * @param backend - settings storage backend
    * @param parent - parent object
    */
-  explicit ConfigBase(SettingsStorage* backend, QObject* parent = 0);
-  /*! Destructor */
-  virtual ~ConfigBase() {}
+  explicit ConfigBase(SettingsStorage* backend, QObject* parent = nullptr);
 
   /*!
    * @brief Get option value.

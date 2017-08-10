@@ -57,7 +57,7 @@ public:
    * Constructor.
    * @param parent - parent object
    */
-  explicit SkinDrawer(QObject* parent = 0);
+  explicit SkinDrawer(QObject* parent = nullptr);
 
   /*! texture draw modes */
   enum DrawMode {

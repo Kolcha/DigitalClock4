@@ -45,7 +45,7 @@ class CLOCK_COMMON_EXPORT SettingsStorage : public QObject
   Q_OBJECT
 public:
   /*! Constructor */
-  explicit SettingsStorage(QObject* parent = 0);
+  explicit SettingsStorage(QObject* parent = nullptr);
 
   /*!
    * Change option value only in runtime storage.

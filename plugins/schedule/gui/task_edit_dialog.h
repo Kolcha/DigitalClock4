@@ -32,7 +32,7 @@ class TaskEditDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit TaskEditDialog(QWidget* parent = 0);
+  explicit TaskEditDialog(QWidget* parent = nullptr);
   ~TaskEditDialog();
 
   QDate date() const;

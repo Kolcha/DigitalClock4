@@ -39,7 +39,7 @@ class EditAlarmDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit EditAlarmDialog(AlarmItem* alarm_item, QWidget* parent = 0);
+  explicit EditAlarmDialog(AlarmItem* alarm_item, QWidget* parent = nullptr);
   ~EditAlarmDialog();
 
 public slots:

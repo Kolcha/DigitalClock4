@@ -28,7 +28,7 @@ class MessageWidget : public QLabel
   Q_OBJECT
 
 public:
-  explicit MessageWidget(QWidget* parent = 0);
+  explicit MessageWidget(QWidget* parent = nullptr);
 
 signals:
   void textChanged(const QString& new_text);

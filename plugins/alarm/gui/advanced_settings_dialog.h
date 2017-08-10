@@ -34,7 +34,7 @@ class AdvancedSettingsDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit AdvancedSettingsDialog(QWidget* parent = 0);
+  explicit AdvancedSettingsDialog(QWidget* parent = nullptr);
   ~AdvancedSettingsDialog();
 
   void Init(const QSettings::SettingsMap& settings);

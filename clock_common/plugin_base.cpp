@@ -25,7 +25,7 @@
 
 #include "plugin_settings.h"
 
-PluginBase::PluginBase() : settings_(0), translator_(0)
+PluginBase::PluginBase() : settings_(nullptr), translator_(nullptr)
 {
 }
 

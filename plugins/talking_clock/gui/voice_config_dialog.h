@@ -35,7 +35,7 @@ class VoiceConfigDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit VoiceConfigDialog(const QSettings::SettingsMap& settings, QWidget* parent = 0);
+  explicit VoiceConfigDialog(const QSettings::SettingsMap& settings, QWidget* parent = nullptr);
   ~VoiceConfigDialog();
 
   int     volume()    const;

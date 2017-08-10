@@ -48,7 +48,7 @@ class SettingsDialog : public QDialog
   Q_OBJECT
 
 public:
-  SettingsDialog(core::ClockSettings* config, core::ClockState* state, QWidget* parent = 0);
+  SettingsDialog(core::ClockSettings* config, core::ClockState* state, QWidget* parent = nullptr);
   ~SettingsDialog();
 
 signals:

@@ -31,7 +31,7 @@ namespace core {
 class ClockSettings : public ConfigBase
 {
 public:
-  explicit ClockSettings(SettingsStorage* backend, QObject* parent = 0);
+  explicit ClockSettings(SettingsStorage* backend, QObject* parent = nullptr);
 
   // temporary added only for compatibility
   // TODO: remove

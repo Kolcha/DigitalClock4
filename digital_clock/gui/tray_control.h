@@ -32,7 +32,7 @@ class TrayControl : public QObject
   Q_OBJECT
 
 public:
-  explicit TrayControl(QWidget* parent = 0);
+  explicit TrayControl(QWidget* parent = nullptr);
   QSystemTrayIcon* GetTrayIcon() const;
   QAction* GetShowHideAction() const;
 

@@ -34,7 +34,7 @@ class NetInterfacesModel : public QAbstractListModel
   Q_PROPERTY(QStringList checkedInterfaces READ getCheckedInterfaces WRITE setCheckedInterfaces NOTIFY checkedInterfacesChanged)
 
 public:
-  explicit NetInterfacesModel(QObject* parent = 0);
+  explicit NetInterfacesModel(QObject* parent = nullptr);
 
   int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 

@@ -34,7 +34,7 @@ class SettingsDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit SettingsDialog(const QSettings::SettingsMap& settings, QWidget* parent = 0);
+  explicit SettingsDialog(const QSettings::SettingsMap& settings, QWidget* parent = nullptr);
   ~SettingsDialog();
 
 signals:

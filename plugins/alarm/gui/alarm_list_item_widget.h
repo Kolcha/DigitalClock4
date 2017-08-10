@@ -40,7 +40,7 @@ class AlarmListItemWidget : public QWidget
   Q_OBJECT
 
 public:
-  explicit AlarmListItemWidget(AlarmItem* item, QWidget* parent = 0);
+  explicit AlarmListItemWidget(AlarmItem* item, QWidget* parent = nullptr);
   ~AlarmListItemWidget();
 
   bool isChecked() const;
