@@ -31,15 +31,15 @@ namespace core {
 class ClockSettings : public ConfigBase
 {
 public:
-  explicit ClockSettings(SettingsStorage* backend, QObject* parent = 0);
+  explicit ClockSettings(SettingsStorage* backend, QObject* parent = nullptr);
 
   // temporary added only for compatibility
   // TODO: remove
   QMap<Option, QVariant> GetSettings() const;
 
 protected:
-  QString GetKey(const int id) const;
-  QVariant GetDefaultValue(const int id) const;
+  QString GetKey(const int id) const override;
+  QVariant GetDefaultValue(const int id) const override;
 };
 
 } // namespace core

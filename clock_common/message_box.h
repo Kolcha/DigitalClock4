@@ -40,7 +40,7 @@ public:
    * Constructs a message box with no text and no buttons.
    * @param parent - parent widget
    */
-  explicit TMessageBox(QWidget* parent = 0);
+  explicit TMessageBox(QWidget* parent = nullptr);
   /**
    * @brief Constructor.
    *
@@ -54,14 +54,8 @@ public:
    * @param flags - window flags
    */
   TMessageBox(Icon icon, const QString& title, const QString& text,
-              StandardButtons buttons = NoButton, QWidget* parent = 0,
+              StandardButtons buttons = NoButton, QWidget* parent = nullptr,
               Qt::WindowFlags flags = Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
-  /**
-    * @brief Destructor.
-    *
-    * Destroys the message box.
-    */
-  ~TMessageBox();
 
   /**
    * @brief Sets auto close option.
@@ -86,7 +80,7 @@ public slots:
    * Reimplemented from QMessageBox::exec()
    * @return clicked button
    */
-  int exec();
+  int exec() override;
 
 private slots:
   void TimedOut();

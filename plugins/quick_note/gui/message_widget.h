@@ -28,7 +28,7 @@ class MessageWidget : public QLabel
   Q_OBJECT
 
 public:
-  explicit MessageWidget(QWidget* parent = 0);
+  explicit MessageWidget(QWidget* parent = nullptr);
 
 signals:
   void textChanged(const QString& new_text);
@@ -38,8 +38,8 @@ public slots:
   void setText(const QString& new_text);
 
 protected:
-  void mousePressEvent(QMouseEvent* event);
-  void mouseReleaseEvent(QMouseEvent* event);
+  void mousePressEvent(QMouseEvent* event) override;
+  void mouseReleaseEvent(QMouseEvent* event) override;
 
   QString curr_text_;
   QPoint drag_position_;

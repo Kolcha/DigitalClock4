@@ -31,7 +31,7 @@ class ClockDisplay : public QLabel
   Q_OBJECT
 
 public:
-  explicit ClockDisplay(QWidget* parent = 0);
+  explicit ClockDisplay(QWidget* parent = nullptr);
 
 signals:
   void ImageNeeded(const QString& text);
@@ -39,7 +39,7 @@ signals:
 
 public slots:
   void DrawImage(const QImage& image);
-  void SetSeparatorFlash(bool set);
+  void SetSeparatorFlash(bool set) noexcept;
   void SetTimeFormat(const QString& format);
   void SetDisplayLocalTime(bool set);
   void SetTimeZone(const QTimeZone& tz);
@@ -50,8 +50,8 @@ public slots:
   void TimeoutHandler();
 
 protected:
-  void mousePressEvent(QMouseEvent* event);
-  void mouseReleaseEvent(QMouseEvent* event);
+  void mousePressEvent(QMouseEvent* event) override;
+  void mouseReleaseEvent(QMouseEvent* event) override;
 
 private:
   bool sep_visible_;

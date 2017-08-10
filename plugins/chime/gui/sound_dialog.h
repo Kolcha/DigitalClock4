@@ -35,7 +35,7 @@ class SoundDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit SoundDialog(QWidget* parent = 0);
+  explicit SoundDialog(QWidget* parent = nullptr);
   ~SoundDialog();
 
   QUrl sound() const;

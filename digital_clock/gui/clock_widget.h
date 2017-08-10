@@ -41,7 +41,7 @@ class ClockWidget : public QWidget
   Q_OBJECT
 
 public:
-  explicit ClockWidget(QWidget* parent = 0);
+  explicit ClockWidget(QWidget* parent = nullptr);
   ClockDisplay* GetDisplay() const;
 
   bool preview() const { return preview_mode_; }

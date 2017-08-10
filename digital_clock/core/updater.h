@@ -36,7 +36,7 @@ class Updater : public QObject
   Q_OBJECT
 
 public:
-  explicit Updater(ClockState* state, QObject* parent = 0);
+  explicit Updater(ClockState* state, QObject* parent = nullptr);
   ~Updater();
 
 signals:

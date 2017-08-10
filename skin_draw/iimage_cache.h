@@ -35,7 +35,7 @@ class IImageCache
 {
 public:
   /*! Virtual destructor. */
-  virtual ~IImageCache() {}
+  virtual ~IImageCache() = default;
 
   /*!
    * Get image from cache.

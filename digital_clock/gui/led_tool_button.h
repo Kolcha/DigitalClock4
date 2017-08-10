@@ -31,7 +31,7 @@ class LedToolButton : public QToolButton
   Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 
 public:
-  explicit LedToolButton(QWidget* parent = 0);
+  explicit LedToolButton(QWidget* parent = nullptr);
 
   QColor color() const;
 

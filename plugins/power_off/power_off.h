@@ -33,9 +33,9 @@ public:
   PowerOff();
 
 public slots:
-  void Start();
-  void Configure();
-  void TimeUpdateListener();
+  void Start() override;
+  void Configure() override;
+  void TimeUpdateListener() override;
 
 private:
   bool active_;

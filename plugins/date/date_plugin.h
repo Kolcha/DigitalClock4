@@ -36,18 +36,18 @@ class DatePlugin : public ::plugin::WidgetPluginBase
 public:
   DatePlugin();
 
-  void Init(const QMap<Option, QVariant>& current_settings);
+  void Init(const QMap<Option, QVariant>& current_settings) override;
 
 public slots:
-  void Configure();
+  void Configure() override;
 
-  void SettingsListener(Option option, const QVariant& new_value);
+  void SettingsListener(Option option, const QVariant& new_value) override;
 
 protected:
-  void InitSettingsDefaults(QSettings::SettingsMap* defaults);
-  QWidget* InitWidget(QGridLayout* layout);
-  void DisplayImage(const QImage& image);
-  QString GetWidgetText();
+  void InitSettingsDefaults(QSettings::SettingsMap* defaults) override;
+  QWidget* InitWidget(QGridLayout* layout) override;
+  void DisplayImage(const QImage& image) override;
+  QString GetWidgetText() override;
 
 private:
   QLabel* msg_label_;

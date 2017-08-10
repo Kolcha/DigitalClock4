@@ -40,7 +40,7 @@ void ClockDisplay::DrawImage(const QImage& image)
   setPixmap(QPixmap::fromImage(image));
 }
 
-void ClockDisplay::SetSeparatorFlash(bool set)
+void ClockDisplay::SetSeparatorFlash(bool set) noexcept
 {
   sep_flashes_ = set;
   sep_visible_ = !set;

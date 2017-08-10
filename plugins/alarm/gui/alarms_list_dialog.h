@@ -36,7 +36,7 @@ class AlarmsListDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit AlarmsListDialog(QWidget* parent = 0);
+  explicit AlarmsListDialog(QWidget* parent = nullptr);
   ~AlarmsListDialog();
 
   QList<AlarmItem*> alarmsList() const;

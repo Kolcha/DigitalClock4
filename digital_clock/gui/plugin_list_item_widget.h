@@ -34,7 +34,7 @@ class PluginListItemWidget : public QWidget
   Q_OBJECT
 
 public:
-  explicit PluginListItemWidget(QWidget* parent = 0);
+  explicit PluginListItemWidget(QWidget* parent = nullptr);
   ~PluginListItemWidget();
 
   QString GetName() const;

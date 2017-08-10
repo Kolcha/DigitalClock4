@@ -34,12 +34,12 @@ class TrayColor : public IClockPlugin, public ITrayPluginInit
 
 public:
   TrayColor();
-  void Init(QSystemTrayIcon* tray_icon);
+  void Init(QSystemTrayIcon* tray_icon) override;
 
 public slots:
-  void Start();
-  void Stop();
-  void Configure();
+  void Start() override;
+  void Stop() override;
+  void Configure() override;
 
 private:
   void RedrawTrayIcon(const QColor& color);

@@ -45,7 +45,7 @@ class CLOCK_COMMON_EXPORT SettingsStorage : public QObject
   Q_OBJECT
 public:
   /*! Constructor */
-  explicit SettingsStorage(QObject* parent = 0);
+  explicit SettingsStorage(QObject* parent = nullptr);
 
   /*!
    * Change option value only in runtime storage.
@@ -63,7 +63,7 @@ public:
    * @return option value
    * @note given @a default_value will be saved for internal usage
    */
-  QVariant GetValue(const QString& key, const QVariant& default_value = QVariant());
+  QVariant GetValue(const QString& key, const QVariant& default_value = QVariant()) const;
 
   /*!
    * @brief Remove @a key and all its child elements.
@@ -103,7 +103,7 @@ signals:
 
 public slots:
   /*! Export current settings to file */
-  void Export(const QString& filename);
+  void Export(const QString& filename) const;
   /*! Import current settings from file */
   void Import(const QString& filename);
 
@@ -134,7 +134,7 @@ private:
   /// @see Import(), Export()
   QSettings::SettingsMap imported_;
   /// runtime storage
-  QSettings::SettingsMap current_;
+  mutable QSettings::SettingsMap current_;
   /// runtime list of removed keys
   QSet<QString> removed_keys_;
 };

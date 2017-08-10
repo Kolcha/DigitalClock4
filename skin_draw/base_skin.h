@@ -51,13 +51,13 @@ public:
    * @param cache - is image will added to cache
    * @return pointer to result image
    */
-  QPixmap GetImage(const QString& str, int idx, qreal zoom, bool cache);
+  QPixmap GetImage(const QString& str, int idx, qreal zoom, bool cache) override;
 
   /*!
    * Get device pixel ratio for current skin, see Qt documentation for details.
    * @return device pixel ratio for skin as a floating point number.
    */
-  qreal GetDevicePixelRatio() const;
+  qreal GetDevicePixelRatio() const override;
   /*!
    * @brief Explicitly set device pixel ratio for skin.
    *
@@ -66,7 +66,7 @@ public:
    * @param ratio - device pixel ratio to set
    * @note default device pixel ratio value is 1.0
    */
-  void SetDevicePixelRatio(qreal ratio);
+  void SetDevicePixelRatio(qreal ratio) override;
 
 protected:
   /*!

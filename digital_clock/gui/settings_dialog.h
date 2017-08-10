@@ -48,7 +48,7 @@ class SettingsDialog : public QDialog
   Q_OBJECT
 
 public:
-  SettingsDialog(core::ClockSettings* config, core::ClockState* state, QWidget* parent = 0);
+  SettingsDialog(core::ClockSettings* config, core::ClockState* state, QWidget* parent = nullptr);
   ~SettingsDialog();
 
 signals:
@@ -66,7 +66,7 @@ public slots:
   void SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plugins);
 
 protected:
-  void showEvent(QShowEvent* e);
+  void showEvent(QShowEvent* e) override;
 
 private slots:
   void InitControls();

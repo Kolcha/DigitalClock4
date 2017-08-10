@@ -47,7 +47,7 @@ void SettingsStorage::SetValue(const QString& key, const QVariant& value)
   current_[key] = value;
 }
 
-QVariant SettingsStorage::GetValue(const QString& key, const QVariant& default_value)
+QVariant SettingsStorage::GetValue(const QString& key, const QVariant& default_value) const
 {
   auto c_iter = current_.find(key);
   if (c_iter != current_.end()) return c_iter.value();
@@ -133,7 +133,7 @@ void SettingsStorage::Forget(const QString& key)
   current_.remove(key);
 }
 
-void SettingsStorage::Export(const QString& filename)
+void SettingsStorage::Export(const QString& filename) const
 {
   QFile file(filename);
   if (!file.open(QIODevice::WriteOnly)) return;

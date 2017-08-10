@@ -49,7 +49,7 @@ public:
   /*!
    * Virtual destructor.
    */
-  virtual ~ISettingsPluginInit() {}
+  virtual ~ISettingsPluginInit() = default;
   /*!
    * Init plugin.
    * @param current_settings - map with all current clock settings
@@ -75,7 +75,7 @@ public:
   /*!
    * Virtual destructor.
    */
-  virtual ~ITrayPluginInit() {}
+  virtual ~ITrayPluginInit() = default;
   /*!
    * Init plugin.
    * @param tray_icon - pointer to clock QSystemTrayIcon object
@@ -101,7 +101,7 @@ public:
   /*!
    * Virtual destructor.
    */
-  virtual ~IWidgetPluginInit() {}
+  virtual ~IWidgetPluginInit() = default;
   /*!
    * Init plugin.
    * @param main_wnd - pointer to clock main window
@@ -128,7 +128,7 @@ public:
   /*!
    * Virtual destructor.
    */
-  virtual ~IDrawerPluginInit() {}
+  virtual ~IDrawerPluginInit() = default;
   /*!
    * Init plugin.
    * @param drawer - configured drawer instance

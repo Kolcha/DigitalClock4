@@ -38,7 +38,7 @@ public:
   };
   typedef QMap<FSkinInfo, QString> TSkinInfo;
 
-  virtual ~BaseSkin() {}
+  virtual ~BaseSkin() = default;
 
   const TSkinInfo& GetInfo() const;
   void SetSeparators(const QString& seps);

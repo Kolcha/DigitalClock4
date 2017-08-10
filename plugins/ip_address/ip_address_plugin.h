@@ -37,15 +37,15 @@ public:
   IpAddressPlugin();
 
 public slots:
-  void Start();
-  void Stop();
-  void Configure();
+  void Start() override;
+  void Stop() override;
+  void Configure() override;
 
 protected:
-  void InitSettingsDefaults(QSettings::SettingsMap* defaults);
-  QWidget* InitWidget(QGridLayout* layout);
-  void DisplayImage(const QImage& image);
-  QString GetWidgetText();
+  void InitSettingsDefaults(QSettings::SettingsMap* defaults) override;
+  QWidget* InitWidget(QGridLayout* layout) override;
+  void DisplayImage(const QImage& image) override;
+  QString GetWidgetText() override;
 
 private slots:
   void UpdateIPsList();

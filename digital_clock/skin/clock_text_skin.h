@@ -25,13 +25,13 @@
 namespace digital_clock {
 namespace core {
 
-class TextSkin : public ::skin_draw::TextSkin, public BaseSkin
+class TextSkin : public BaseSkin, public ::skin_draw::TextSkin
 {
 public:
   explicit TextSkin(const QFont& font);
 
 protected:
-  void ProcSeparators();
+  void ProcSeparators() override;
 };
 
 } // namespace core

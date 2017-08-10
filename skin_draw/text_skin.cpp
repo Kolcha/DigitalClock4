@@ -28,7 +28,7 @@ class TextImageCache : public IImageCache
 public:
   explicit TextImageCache(TextSkin* parent) : parent_(parent) {}
 
-  QPixmap GetImage(const QString& str, int idx)
+  QPixmap GetImage(const QString& str, int idx) override
   {
     req_text_ += str[idx];
     if (idx == str.length() - 1 || parent_->char_map_.contains(str[idx + 1]) || parent_->char_map_.contains(str[idx])) {
@@ -42,7 +42,7 @@ public:
     return QPixmap();
   }
 
-  void AddImage(const QString& str, int idx, const QPixmap& img)
+  void AddImage(const QString& str, int idx, const QPixmap& img) override
   {
     if (!img) return;
     Q_UNUSED(str);
@@ -53,7 +53,7 @@ public:
     parent_->last_text_.clear();
   }
 
-  void Clear() { cached_data_.clear(); }
+  void Clear() override { cached_data_.clear(); }
 
 private:
   QMap<QString, QPixmap> cached_data_;
