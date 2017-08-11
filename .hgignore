@@ -6,15 +6,5 @@ syntax: glob
 *.wixobj
 *.wixpdb
 desktop.ini
-*.suo
-*.opensdf
-*.sdf
-[Dd]ebug/
-[Rr]elease/
 .DS_Store
-*.dmg
-*.app/
-.vs
-*.VC.*
-.git*
 *_en.ts
