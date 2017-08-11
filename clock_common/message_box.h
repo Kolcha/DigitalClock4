@@ -33,6 +33,9 @@ class CLOCK_COMMON_EXPORT TMessageBox : public QMessageBox
 {
   Q_OBJECT
 
+  Q_PROPERTY(bool autoClose READ autoClose WRITE setAutoClose)
+  Q_PROPERTY(int timeout READ timeout WRITE setTimeout)
+
 public:
   /**
    * @brief Constructor.
@@ -57,18 +60,36 @@ public:
               StandardButtons buttons = NoButton, QWidget* parent = nullptr,
               Qt::WindowFlags flags = Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
 
+  /*!
+   * @property TMessageBox::autoClose
+   * automaticaly close dialog after some timeout
+   * @note disabled by default
+   * @see TMessageBox::timeout
+   */
+  bool autoClose() const { return auto_close_; }
   /**
    * @brief Sets auto close option.
    *
-   * If enabled, dialol will closed by timeout.
+   * If enabled, dialol will be closed by timeout.
    * @param enable - value to set, false by default
    * @see setTimeout()
    */
   void setAutoClose(bool enable);
+  /*!
+   * @property TMessageBox::timeout
+   * @brief dialog autoclose timeout in seconds
+   *
+   * If TMessageBox::autoClose is set to @e true, and this timeout is expired,
+   * dialog will be closed with default button pressed.
+   * By default this value is set to 30 seconds.
+   *
+   * @see TMessageBox::autoClose, TMessageBox::setTimeout()
+   */
+  int timeout() const { return timeout_; }
   /**
    * @brief Sets auto close timeout.
    *
-   * After this timeout default button will clicked.
+   * After this timeout default button will be clicked.
    * @param seconds - timeout in seconds
    * @note Default button must be set explicitly using setDefaultButton()
    * @see setAutoClose()

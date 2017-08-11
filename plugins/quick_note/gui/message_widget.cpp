@@ -29,6 +29,7 @@ MessageWidget::MessageWidget(QWidget* parent) : QLabel(parent)
 
 void MessageWidget::setText(const QString& new_text)
 {
+  if (curr_text_ == new_text) return;
   curr_text_ = new_text;
   emit textChanged(new_text);
 }

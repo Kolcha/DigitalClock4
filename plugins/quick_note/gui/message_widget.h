@@ -27,8 +27,12 @@ class MessageWidget : public QLabel
 {
   Q_OBJECT
 
+  Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
+
 public:
   explicit MessageWidget(QWidget* parent = nullptr);
+
+  QString text() const { return curr_text_; }
 
 signals:
   void textChanged(const QString& new_text);
