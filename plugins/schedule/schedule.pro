@@ -49,8 +49,8 @@ FORMS += \
     gui/task_edit_dialog.ui
 
 TRANSLATIONS += \
-    schedule_en.ts \
-    schedule_ru.ts
+    lang/schedule_en.ts \
+    lang/schedule_ru.ts
 
 include(../../qm_gen.pri)
 

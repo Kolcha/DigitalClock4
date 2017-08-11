@@ -46,8 +46,8 @@ FORMS += \
     gui/sound_dialog.ui
 
 TRANSLATIONS += \
-    chime_en.ts \
-    chime_ru.ts
+    lang/chime_en.ts \
+    lang/chime_ru.ts
 
 include(../../qm_gen.pri)
 

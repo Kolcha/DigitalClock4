@@ -43,8 +43,8 @@ FORMS += \
     gui/settings_dialog.ui
 
 TRANSLATIONS += \
-    quick_note_en.ts \
-    quick_note_ru.ts
+    lang/quick_note_en.ts \
+    lang/quick_note_ru.ts
 
 include(../../qm_gen.pri)
 

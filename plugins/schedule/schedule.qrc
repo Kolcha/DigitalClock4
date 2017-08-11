@@ -4,6 +4,6 @@
         <file alias="schedule.svg">res/1464839943_calendar.svg</file>
         <file alias="remove.svg">res/minus-24.svg</file>
         <file alias="add.svg">res/plus-24.svg</file>
-        <file>schedule_ru.qm</file>
+        <file alias="schedule_ru.qm">lang/schedule_ru.qm</file>
     </qresource>
 </RCC>

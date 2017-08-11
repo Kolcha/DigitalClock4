@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/power_off">
-        <file>power_off_ru.qm</file>
+        <file alias="power_off_ru.qm">lang/power_off_ru.qm</file>
         <file alias="icon.svg.p">1401048090_519564-060_Off.svg</file>
     </qresource>
 </RCC>

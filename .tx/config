@@ -20,8 +20,8 @@ source_lang = en
 type = QT
 
 [digitalclock4.plugin_alarm]
-file_filter = plugins/alarm/alarm_<lang>.ts
-source_file = plugins/alarm/alarm_en.ts
+file_filter = plugins/alarm/lang/alarm_<lang>.ts
+source_file = plugins/alarm/lang/alarm_en.ts
 source_lang = en
 type = QT
 
@@ -32,38 +32,38 @@ source_lang = en
 type = QT
 
 [digitalclock4.plugin_chime]
-file_filter = plugins/chime/chime_<lang>.ts
-source_file = plugins/chime/chime_en.ts
+file_filter = plugins/chime/lang/chime_<lang>.ts
+source_file = plugins/chime/lang/chime_en.ts
 source_lang = en
 type = QT
 
 [digitalclock4.plugin_date]
-file_filter = plugins/date/date_<lang>.ts
-source_file = plugins/date/date_en.ts
+file_filter = plugins/date/lang/date_<lang>.ts
+source_file = plugins/date/lang/date_en.ts
 source_lang = en
 type = QT
 
 [digitalclock4.plugin_ip_address]
-file_filter = plugins/ip_address/ip_address_<lang>.ts
-source_file = plugins/ip_address/ip_address_en.ts
+file_filter = plugins/ip_address/lang/ip_address_<lang>.ts
+source_file = plugins/ip_address/lang/ip_address_en.ts
 source_lang = en
 type = QT
 
 [digitalclock4.plugin_power_off]
-file_filter = plugins/power_off/power_off_<lang>.ts
-source_file = plugins/power_off/power_off_en.ts
+file_filter = plugins/power_off/lang/power_off_<lang>.ts
+source_file = plugins/power_off/lang/power_off_en.ts
 source_lang = en
 type = QT
 
 [digitalclock4.plugin_quick_note]
-file_filter = plugins/quick_note/quick_note_<lang>.ts
-source_file = plugins/quick_note/quick_note_en.ts
+file_filter = plugins/quick_note/lang/quick_note_<lang>.ts
+source_file = plugins/quick_note/lang/quick_note_en.ts
 source_lang = en
 type = QT
 
 [digitalclock4.plugin_schedule]
-file_filter = plugins/schedule/schedule_<lang>.ts
-source_file = plugins/schedule/schedule_en.ts
+file_filter = plugins/schedule/lang/schedule_<lang>.ts
+source_file = plugins/schedule/lang/schedule_en.ts
 source_lang = en
 type = QT
 
@@ -74,8 +74,8 @@ source_lang = en
 type = QT
 
 [digitalclock4.plugin_talking_clock]
-file_filter = plugins/talking_clock/talking_clock_<lang>.ts
-source_file = plugins/talking_clock/talking_clock_en.ts
+file_filter = plugins/talking_clock/lang/talking_clock_<lang>.ts
+source_file = plugins/talking_clock/lang/talking_clock_en.ts
 source_lang = en
 type = QT
 

@@ -45,8 +45,8 @@ FORMS += \
     gui/voice_config_dialog.ui
 
 TRANSLATIONS += \
-    talking_clock_en.ts \
-    talking_clock_ru.ts
+    lang/talking_clock_en.ts \
+    lang/talking_clock_ru.ts
 
 include(../../qm_gen.pri)
 

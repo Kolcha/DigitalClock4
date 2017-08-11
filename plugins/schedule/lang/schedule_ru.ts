@@ -4,17 +4,17 @@
 <context>
     <name>schedule::Schedule</name>
     <message>
-        <location filename="schedule.cpp" line="33"/>
+        <location filename="../schedule.cpp" line="33"/>
         <source>Scheduler</source>
         <translation>Планировщик</translation>
     </message>
     <message>
-        <location filename="schedule.cpp" line="34"/>
+        <location filename="../schedule.cpp" line="34"/>
         <source>Allow to schedule a task and display notification at specified time.</source>
         <translation>Позволяет запланировать задание и отображает уведомление в указанное время.</translation>
     </message>
     <message>
-        <location filename="schedule.cpp" line="108"/>
+        <location filename="../schedule.cpp" line="108"/>
         <source>Scheduled task</source>
         <translation>Запланированое задание</translation>
     </message>
@@ -22,22 +22,22 @@
 <context>
     <name>schedule::ScheduleDialog</name>
     <message>
-        <location filename="gui/schedule_dialog.ui" line="14"/>
+        <location filename="../gui/schedule_dialog.ui" line="14"/>
         <source>Schedule</source>
         <translation>Расписание</translation>
     </message>
     <message>
-        <location filename="gui/schedule_dialog.ui" line="23"/>
+        <location filename="../gui/schedule_dialog.ui" line="23"/>
         <source>Add</source>
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="gui/schedule_dialog.ui" line="30"/>
+        <location filename="../gui/schedule_dialog.ui" line="30"/>
         <source>Edit</source>
         <translation>Править</translation>
     </message>
     <message>
-        <location filename="gui/schedule_dialog.ui" line="37"/>
+        <location filename="../gui/schedule_dialog.ui" line="37"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
@@ -45,7 +45,7 @@
 <context>
     <name>schedule::TaskEditDialog</name>
     <message>
-        <location filename="gui/task_edit_dialog.ui" line="14"/>
+        <location filename="../gui/task_edit_dialog.ui" line="14"/>
         <source>Task Editing</source>
         <translation>Редактирование задания</translation>
     </message>

@@ -41,8 +41,8 @@ FORMS += \
     gui/settings_dialog.ui
 
 TRANSLATIONS += \
-    date_en.ts
-    date_ru.ts
+    lang/date_en.ts \
+    lang/date_ru.ts
 
 include(../../qm_gen.pri)
 
