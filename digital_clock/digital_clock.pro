@@ -42,6 +42,7 @@ SOURCES += main.cpp \
     core/skin_manager.cpp \
     core/updater.cpp \
     gui/about_dialog.cpp \
+    gui/clickable_label.cpp \
     gui/clock_display.cpp \
     gui/clock_widget.cpp \
     gui/colorize_effect.cpp \
@@ -69,6 +70,7 @@ HEADERS += \
     core/skin_manager.h \
     core/updater.h \
     gui/about_dialog.h \
+    gui/clickable_label.h \
     gui/clock_display.h \
     gui/clock_widget.h \
     gui/colorize_effect.h \

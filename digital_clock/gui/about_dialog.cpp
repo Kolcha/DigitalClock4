@@ -47,7 +47,8 @@ static QString compilerString()
 
 AboutDialog::AboutDialog(QWidget* parent) :
   QDialog(parent),
-  ui(new Ui::AboutDialog)
+  ui(new Ui::AboutDialog),
+  click_counter_(0)
 {
   ui->setupUi(this);
   setAttribute(Qt::WA_DeleteOnClose);
@@ -67,6 +68,24 @@ AboutDialog::AboutDialog(QWidget* parent) :
 AboutDialog::~AboutDialog()
 {
   delete ui;
+}
+
+void AboutDialog::on_logo_lbl_clicked()
+{
+  switch (++click_counter_) {
+    case 1:
+      ui->logo_lbl->setPixmap(QIcon(":/clock/about/about-1.png").pixmap(128));
+      break;
+
+    case 2:
+      ui->logo_lbl->setPixmap(QIcon(":/clock/about/about-2.png").pixmap(128));
+      break;
+
+    default:
+      ui->logo_lbl->setPixmap(QApplication::windowIcon().pixmap(128));
+      click_counter_ = 0;
+      break;
+  }
 }
 
 } // namespace gui

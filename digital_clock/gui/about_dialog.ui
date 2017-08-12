@@ -71,7 +71,7 @@
       </attribute>
       <layout class="QVBoxLayout" name="info_tab_layout">
        <item>
-        <widget class="QLabel" name="logo_lbl">
+        <widget class="digital_clock::gui::ClickableLabel" name="logo_lbl">
          <property name="text">
           <string notr="true">&lt;logo&gt;</string>
          </property>
@@ -321,6 +321,13 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>digital_clock::gui::ClickableLabel</class>
+   <extends>QLabel</extends>
+   <header>gui/clickable_label.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../resources/icons.qrc"/>
  </resources>
