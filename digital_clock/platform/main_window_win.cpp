@@ -18,6 +18,7 @@
 
 #include "main_window.h"
 
+#include "core/clock_settings.h"
 #include "platform/fullscreen_detect.h"
 
 namespace digital_clock {
