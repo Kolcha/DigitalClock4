@@ -73,9 +73,9 @@ private slots:
   void ShowAboutDialog();
 
   void ShowContextMenu(const QPoint& p);
-
-  void Update();      // TODO: rename or even remove
-
+#ifdef Q_OS_WIN
+  void WinOnTopWorkaround();
+#endif
   // temporary, will be changed later
   void InitPluginSystem();
   void ShutdownPluginSystem();

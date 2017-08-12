@@ -43,17 +43,6 @@
 #include "gui/settings_dialog.h"
 #include "gui/about_dialog.h"
 
-#ifdef Q_OS_MACOS
-#include <objc/objc-runtime.h>
-#endif
-#ifdef Q_OS_LINUX
-#include <QX11Info>
-#include <X11/Xlib.h>
-#include <X11/Xatom.h>
-#endif
-#ifdef Q_OS_WIN
-#include "platform/fullscreen_detect.h"
-#endif
 
 #define S_OPT_POSITION              "clock_position"
 
@@ -95,7 +84,9 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   connect(tray_control_, &gui::TrayControl::AppExit, qApp, &QApplication::quit);
 
   clock_widget_ = new gui::ClockWidget(this);
-  connect(&timer_, &QTimer::timeout, this, &MainWindow::Update);
+#ifdef Q_OS_WIN
+  connect(&timer_, &QTimer::timeout, this, &MainWindow::WinOnTopWorkaround);
+#endif
   connect(clock_widget_, &gui::ClockWidget::SeparatorsChanged, skin_manager_, &core::SkinManager::SetSeparators);
   connect(&timer_, &QTimer::timeout, clock_widget_, &gui::ClockWidget::TimeoutHandler);
   connect(skin_manager_, &core::SkinManager::SkinLoaded, clock_widget_, &gui::ClockWidget::ApplySkin);
@@ -408,30 +399,6 @@ void MainWindow::ShowContextMenu(const QPoint& p)
   tray_control_->GetTrayIcon()->contextMenu()->exec(this->mapToParent(p));
 }
 
-void MainWindow::Update()
-{
-#ifdef Q_OS_WIN
-  // always on top problem workaround
-  // https://sourceforge.net/p/digitalclock4/tickets/3/
-  // https://sourceforge.net/p/digitalclock4/tickets/9/
-  if (app_config_->GetValue(OPT_STAY_ON_TOP).toBool()) {
-    if (fullscreen_detect_enabled_ && IsFullscreenWndOnSameMonitor(this->winId(), window_ignore_list_)) {
-      if (this->windowFlags() & Qt::WindowStaysOnTopHint) {
-        this->SetWindowFlag(Qt::WindowStaysOnTopHint, false);
-        this->lower();
-      }
-      return;
-    } else {
-      if (!(this->windowFlags() & Qt::WindowStaysOnTopHint)) {
-        this->SetWindowFlag(Qt::WindowStaysOnTopHint, true);
-      }
-      // https://forum.qt.io/topic/28739/flags-windows-7-window-always-on-top-including-the-win7-taskbar-custom-error/4
-      if (!this->isActiveWindow()) this->raise();
-    }
-  }
-#endif
-}
-
 void MainWindow::InitPluginSystem()
 {
   plugin_manager_ = new core::PluginManager(this);
@@ -517,31 +484,10 @@ void MainWindow::CorrectPosition()
   curr_pos.setY(std::min(curr_pos.y(), desktop->geometry().bottom() - this->height()));
   if (curr_pos != this->pos()) this->move(curr_pos);
 }
-
+#if !defined(Q_OS_MACOS) && !defined(Q_OS_LINUX)
 void MainWindow::SetVisibleOnAllDesktops(bool set)
 {
-  // http://stackoverflow.com/questions/16775352/keep-a-application-window-always-on-current-desktop-on-linux-and-mac/
-#if defined(Q_OS_MACOS)
-  WId windowObject = this->winId();
-  objc_object* nsviewObject = reinterpret_cast<objc_object*>(windowObject);
-  objc_object* nsWindowObject = objc_msgSend(nsviewObject, sel_registerName("window"));
-  int NSWindowCollectionBehaviorCanJoinAllSpaces = set ? 1 << 0 : 0 << 0;
-  int NSWindowCollectionBehaviorFullScreenNone = 1 << 9;
-  int collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces | NSWindowCollectionBehaviorFullScreenNone;
-  objc_msgSend(nsWindowObject, sel_registerName("setCollectionBehavior:"), collectionBehavior);
-#elif defined(Q_OS_LINUX)
-  unsigned int data = set ? 0xFFFFFFFF : 0x00000000;
-  XChangeProperty(QX11Info::display(),
-                  winId(),
-                  XInternAtom(QX11Info::display(), "_NET_WM_DESKTOP", False),
-                  XA_CARDINAL,
-                  32,
-                  PropModeReplace,
-                  reinterpret_cast<unsigned char*>(&data),  // all desktop
-                  1);
-#else
   Q_UNUSED(set)
-#endif
 }
-
+#endif
 } // namespace digital_clock

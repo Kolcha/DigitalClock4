@@ -87,7 +87,8 @@ HEADERS += \
 win32 {
 SOURCES += \
     platform/autostart_win.cpp \
-    platform/fullscreen_detect.cpp
+    platform/fullscreen_detect.cpp \
+    platform/main_window_win.cpp
 
 HEADERS += \
     platform/fullscreen_detect.h
@@ -96,10 +97,12 @@ HEADERS += \
 unix {
 macx {
 SOURCES += \
-    platform/autostart_mac.cpp
+    platform/autostart_mac.cpp \
+    platform/main_window_mac.cpp
 } else {
 SOURCES += \
-    platform/autostart_linux.cpp
+    platform/autostart_linux.cpp \
+    platform/main_window_linux.cpp
 }
 SOURCES += \
     platform/backtrace_unix.cpp
