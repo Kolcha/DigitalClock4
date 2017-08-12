@@ -27,17 +27,17 @@
         <translation>Настройки плагина &quot;IP адрес&quot;</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="24"/>
+        <location filename="../gui/settings_dialog.ui" line="27"/>
         <source>Network</source>
         <translation>Сеть</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="39"/>
+        <location filename="../gui/settings_dialog.ui" line="42"/>
         <source>Display internal address(es)</source>
         <translation>Показывать внутренний адрес(а)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="52"/>
+        <location filename="../gui/settings_dialog.ui" line="55"/>
         <source>Display external address</source>
         <translation>Показывать внешний адрес</translation>
     </message>

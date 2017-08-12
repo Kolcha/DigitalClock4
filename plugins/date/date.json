@@ -1,6 +1,6 @@
 {
     "name" : "date",
-    "version" : "1.4.3",
+    "version" : "1.4.4",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
     "configurable" : true,

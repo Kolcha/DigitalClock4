@@ -112,32 +112,32 @@
         <translation>Настройки будильника</translation>
     </message>
     <message>
-        <location filename="../gui/edit_alarm_dialog.ui" line="20"/>
+        <location filename="../gui/edit_alarm_dialog.ui" line="23"/>
         <source>Time:</source>
         <translation>Время:</translation>
     </message>
     <message>
-        <location filename="../gui/edit_alarm_dialog.ui" line="43"/>
+        <location filename="../gui/edit_alarm_dialog.ui" line="46"/>
         <source>enable this alarm</source>
         <translation>включить данный будильник</translation>
     </message>
     <message>
-        <location filename="../gui/edit_alarm_dialog.ui" line="50"/>
+        <location filename="../gui/edit_alarm_dialog.ui" line="53"/>
         <source>Days</source>
         <translation>Дни</translation>
     </message>
     <message>
-        <location filename="../gui/edit_alarm_dialog.ui" line="129"/>
+        <location filename="../gui/edit_alarm_dialog.ui" line="132"/>
         <source>Sound</source>
         <translation>Мелодия</translation>
     </message>
     <message>
-        <location filename="../gui/edit_alarm_dialog.ui" line="135"/>
+        <location filename="../gui/edit_alarm_dialog.ui" line="138"/>
         <source>File:</source>
         <translation>Файл:</translation>
     </message>
     <message>
-        <location filename="../gui/edit_alarm_dialog.ui" line="156"/>
+        <location filename="../gui/edit_alarm_dialog.ui" line="159"/>
         <source>Volume:</source>
         <translation>Громкость:</translation>
     </message>

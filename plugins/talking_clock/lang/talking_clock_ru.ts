@@ -9,17 +9,17 @@
         <translation>Настройки &quot;Говорящих часов&quot;</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="20"/>
+        <location filename="../gui/settings_dialog.ui" line="23"/>
         <source>every hour</source>
         <translation>каждый час</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="30"/>
+        <location filename="../gui/settings_dialog.ui" line="33"/>
         <source>voice configuration</source>
         <translation>настройка голоса</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="50"/>
+        <location filename="../gui/settings_dialog.ui" line="53"/>
         <source>quarter hour</source>
         <translation>четверть часа</translation>
     </message>

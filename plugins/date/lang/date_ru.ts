@@ -22,17 +22,17 @@
         <translation>Настройки плагина &quot;Дата&quot;</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="23"/>
+        <location filename="../gui/settings_dialog.ui" line="26"/>
         <source>Format</source>
         <translation>Формат</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="29"/>
+        <location filename="../gui/settings_dialog.ui" line="32"/>
         <source>system</source>
         <translation>системный</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="42"/>
+        <location filename="../gui/settings_dialog.ui" line="45"/>
         <source>custom</source>
         <translation>пользовательский</translation>
     </message>
