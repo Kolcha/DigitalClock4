@@ -88,7 +88,12 @@
         <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;как создать собственный стиль&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="233"/>
+        <location filename="../gui/about_dialog.ui" line="230"/>
+        <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20translate/&quot;&gt;help to translate&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20translate/&quot;&gt;помочь с переводом на другой язык&lt;/a&gt;</translation>
+    </message>
+    <message>
+        <location filename="../gui/about_dialog.ui" line="246"/>
         <source>More info</source>
         <translation>Информация на других сайтах</translation>
     </message>

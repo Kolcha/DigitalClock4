@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>383</width>
-    <height>339</height>
+    <height>398</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -212,9 +212,22 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="wiki_lbl">
+           <widget class="QLabel" name="create_skin_lbl">
             <property name="text">
              <string>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;how to create own skin&lt;/a&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="openExternalLinks">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="translate_lbl">
+            <property name="text">
+             <string>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20translate/&quot;&gt;help to translate&lt;/a&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
