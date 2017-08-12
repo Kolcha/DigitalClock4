@@ -121,7 +121,9 @@ TRANSLATIONS += \
 include(../qm_gen.pri)
 
 RESOURCES += \
-    digital_clock.qrc
+    languages/languages.qrc \
+    resources/icons.qrc \
+    resources/skins.qrc
 
 win32:RC_FILE = digital_clock.rc
 macx {

@@ -93,7 +93,7 @@
       <string notr="true">...</string>
      </property>
      <property name="icon">
-      <iconset resource="../digital_clock.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/clock/images/settings.svg.p</normaloff>:/clock/images/settings.svg.p</iconset>
      </property>
     </widget>
@@ -104,7 +104,7 @@
       <string notr="true">...</string>
      </property>
      <property name="icon">
-      <iconset resource="../digital_clock.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/clock/images/info.svg.p</normaloff>:/clock/images/info.svg.p</iconset>
      </property>
     </widget>
@@ -112,7 +112,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../digital_clock.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections/>
 </ui>

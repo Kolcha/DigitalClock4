@@ -14,7 +14,7 @@
    <string>About</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../digital_clock.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/clock/images/info.svg.p</normaloff>:/clock/images/info.svg.p</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -309,7 +309,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../digital_clock.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

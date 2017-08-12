@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/clock/images">
+        <file alias="quit.svg.p">images/cross-24.svg</file>
+        <file alias="update.svg.p">images/download-16.svg</file>
+        <file alias="info.svg.p">images/info-24.svg</file>
+        <file alias="settings.svg.p">images/settings-24.svg</file>
+        <file alias="clock.svg.p">images/time-24.svg</file>
+        <file alias="clock.svg">images/time-24.svg</file>
+    </qresource>
+</RCC>

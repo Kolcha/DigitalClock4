@@ -20,7 +20,7 @@
    <string>About plugin</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../digital_clock.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/clock/images/info.svg.p</normaloff>:/clock/images/info.svg.p</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -154,7 +154,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../digital_clock.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>
