@@ -27,6 +27,7 @@
 #include <QPointer>
 #include <QSettings>
 #include <QDesktopWidget>
+#include <QScreen>
 #include <QMenu>
 #include <QDesktopServices>
 
@@ -139,7 +140,20 @@ void MainWindow::mousePressEvent(QMouseEvent* event)
 void MainWindow::mouseMoveEvent(QMouseEvent* event)
 {
   if (event->buttons() & Qt::LeftButton) {
-    move(event->globalPos() - drag_position_);
+    QPoint target_pos = event->globalPos() - drag_position_;
+    if (snap_to_edges_) {
+      QRect screen = QApplication::screens()[QApplication::desktop()->screenNumber(this)]->availableGeometry();
+      QRect widget = frameGeometry();
+      if (target_pos.x() - screen.left() <= snap_threshold_)
+        target_pos.setX(screen.left());
+      if (target_pos.y() - screen.top() <= snap_threshold_)
+        target_pos.setY(screen.top());
+      if (screen.right() - (target_pos.x() + widget.width()) <= snap_threshold_)
+        target_pos.setX(screen.right() - widget.width());
+      if (screen.bottom() - (target_pos.y() + widget.height()) <= snap_threshold_)
+        target_pos.setY(screen.bottom() - widget.height());
+    }
+    move(target_pos);
     event->accept();
   }
 }
@@ -187,6 +201,8 @@ void MainWindow::Reset()
   ApplyOption(OPT_ALIGNMENT, app_config_->GetValue(OPT_ALIGNMENT));
   ApplyOption(OPT_BACKGROUND_COLOR, app_config_->GetValue(OPT_BACKGROUND_COLOR));
   ApplyOption(OPT_BACKGROUND_ENABLED, app_config_->GetValue(OPT_BACKGROUND_ENABLED));
+  ApplyOption(OPT_SNAP_TO_EDGES, app_config_->GetValue(OPT_SNAP_TO_EDGES));
+  ApplyOption(OPT_SNAP_THRESHOLD, app_config_->GetValue(OPT_SNAP_THRESHOLD));
 
   // load time format first to update separators where it required
   ApplyOption(OPT_TIME_FORMAT, app_config_->GetValue(OPT_TIME_FORMAT));
@@ -262,6 +278,14 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
     case OPT_BACKGROUND_COLOR:
       bg_color_ = value.value<QColor>();
       this->repaint();
+      break;
+
+    case OPT_SNAP_TO_EDGES:
+      snap_to_edges_ = value.toBool();
+      break;
+
+    case OPT_SNAP_THRESHOLD:
+      snap_threshold_ = value.toInt();
       break;
 
     case OPT_SKIN_NAME:

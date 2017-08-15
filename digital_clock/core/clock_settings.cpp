@@ -71,6 +71,8 @@ QMap<Option, QVariant> ClockSettings::GetSettings() const
   all_settings[OPT_SHOW_HIDE_ENABLED]     = GetValue(OPT_SHOW_HIDE_ENABLED);
   all_settings[OPT_EXPORT_STATE]          = GetValue(OPT_EXPORT_STATE);
   all_settings[OPT_KEEP_ALWAYS_VISIBLE]   = GetValue(OPT_KEEP_ALWAYS_VISIBLE);
+  all_settings[OPT_SNAP_TO_EDGES]         = GetValue(OPT_SNAP_TO_EDGES);
+  all_settings[OPT_SNAP_THRESHOLD]        = GetValue(OPT_SNAP_THRESHOLD);
   return all_settings;
 }
 
@@ -116,6 +118,9 @@ QString ClockSettings::GetKey(const int id) const
     case OPT_SHOW_HIDE_ENABLED:     return "misc/show_hide_enabled";
     case OPT_EXPORT_STATE:          return "misc/export_state";
     case OPT_KEEP_ALWAYS_VISIBLE:   return "window/always_visible";
+    // window settings
+    case OPT_SNAP_TO_EDGES:         return "window/snap_to_edges";
+    case OPT_SNAP_THRESHOLD:        return "window/snap_threshold";
   }
   Q_ASSERT(false);
   return QString();
@@ -163,6 +168,9 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_SHOW_HIDE_ENABLED:     return true;
     case OPT_EXPORT_STATE:          return true;
     case OPT_KEEP_ALWAYS_VISIBLE:   return false;
+    // window settings
+    case OPT_SNAP_TO_EDGES:         return true;
+    case OPT_SNAP_THRESHOLD:        return 15;
   }
   return QVariant();
 }

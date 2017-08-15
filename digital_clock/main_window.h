@@ -111,6 +111,9 @@ private:
   bool fullscreen_detect_enabled_;
   bool keep_always_visible_;
   QStringList window_ignore_list_;
+
+  bool snap_to_edges_;
+  int snap_threshold_;
 };
 
 } // namespace digital_clock
