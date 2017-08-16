@@ -17,7 +17,6 @@
 #
 
 TEMPLATE = subdirs
-CONFIG += ordered
 
 SUBDIRS += \
     paletteicon \
@@ -30,4 +29,5 @@ SUBDIRS += \
 digital_clock.depends = clock_common
 digital_clock.depends = skin_draw
 digital_clock.depends = plugin_core
+plugin_core.depends = clock_common skin_draw
 plugins.depends = plugin_core
