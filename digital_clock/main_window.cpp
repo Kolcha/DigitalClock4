@@ -113,6 +113,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   timer_.setSingleShot(false);
   timer_.start();
 
+  connect(QApplication::desktop(), &QDesktopWidget::resized, this, &MainWindow::LoadState);
   connect(QApplication::desktop(), &QDesktopWidget::resized, this, &MainWindow::CorrectPosition);
 }
 
