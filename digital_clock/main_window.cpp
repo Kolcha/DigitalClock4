@@ -144,13 +144,13 @@ void MainWindow::mouseMoveEvent(QMouseEvent* event)
     if (snap_to_edges_) {
       QRect screen = QApplication::screens()[QApplication::desktop()->screenNumber(this)]->availableGeometry();
       QRect widget = frameGeometry();
-      if (target_pos.x() - screen.left() <= snap_threshold_)
+      if (qAbs(target_pos.x() - screen.left()) <= snap_threshold_)
         target_pos.setX(screen.left());
-      if (target_pos.y() - screen.top() <= snap_threshold_)
+      if (qAbs(target_pos.y() - screen.top()) <= snap_threshold_)
         target_pos.setY(screen.top());
-      if (screen.right() - (target_pos.x() + widget.width()) <= snap_threshold_)
+      if (qAbs(screen.right() - (target_pos.x() + widget.width())) <= snap_threshold_)
         target_pos.setX(screen.right() - widget.width());
-      if (screen.bottom() - (target_pos.y() + widget.height()) <= snap_threshold_)
+      if (qAbs(screen.bottom() - (target_pos.y() + widget.height())) <= snap_threshold_)
         target_pos.setY(screen.bottom() - widget.height());
     }
     move(target_pos);
