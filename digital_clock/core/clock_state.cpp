@@ -30,6 +30,7 @@ ClockState::ClockState(SettingsStorage* backend, QObject* parent) : SettingsStor
 
 void ClockState::SetVariable(const QString& key, const QVariant& value, bool commit)
 {
+  if (GetVariable(key) == value) return;
   QString full_key = AddKeyPrefix(key);
   state_keys_.insert(full_key);
   SettingsStorageWrapper::setValue(full_key, value);
