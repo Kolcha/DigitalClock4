@@ -113,7 +113,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   timer_.setSingleShot(false);
   timer_.start();
 
-  connect(QApplication::desktop(), &QDesktopWidget::resized, this, &MainWindow::LoadState);
+  connect(QApplication::desktop(), &QDesktopWidget::resized, this, &MainWindow::CorrectPosition);
 }
 
 MainWindow::~MainWindow()
@@ -126,6 +126,7 @@ MainWindow::~MainWindow()
 void MainWindow::showEvent(QShowEvent* event)
 {
   SetVisibleOnAllDesktops(app_config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
+  CorrectPosition();
   QWidget::showEvent(event);
 }
 
