@@ -21,6 +21,8 @@
 
 #include <QDialog>
 
+#include "core/notification.h"
+
 namespace schedule {
 
 namespace Ui {
@@ -40,14 +42,25 @@ public:
 
   QString note() const;
 
+  Notification notification() const;
+
 
   void setDate(const QDate& dt);
   void setTime(const QTime& tm);
 
   void setNote(const QString& nt);
 
+  void setNotification(const Notification& nt);
+
+private slots:
+  void on_msg_balloon_rbtn_clicked();
+  void on_msg_dialog_rbtn_clicked();
+
+  void on_timeout_edit_valueChanged(int arg1);
+
 private:
   Ui::TaskEditDialog* ui;
+  Notification notification_;
 };
 
 } // namespace schedule

@@ -57,6 +57,11 @@ QString TaskEditDialog::note() const
   return ui->textEdit->toPlainText();
 }
 
+Notification TaskEditDialog::notification() const
+{
+  return notification_;
+}
+
 void TaskEditDialog::setDate(const QDate& dt)
 {
   ui->dateEdit->setDate(dt);
@@ -70,6 +75,29 @@ void TaskEditDialog::setTime(const QTime& tm)
 void TaskEditDialog::setNote(const QString& nt)
 {
   ui->textEdit->setPlainText(nt);
+}
+
+void TaskEditDialog::setNotification(const Notification& nt)
+{
+  ui->msg_balloon_rbtn->setChecked(nt.type() == Notification::TrayMessage);
+  ui->msg_dialog_rbtn->setChecked(nt.type() == Notification::MessageBox);
+  ui->timeout_edit->setValue(nt.timeout());
+  notification_ = nt;
+}
+
+void TaskEditDialog::on_msg_balloon_rbtn_clicked()
+{
+  notification_.setType(Notification::TrayMessage);
+}
+
+void TaskEditDialog::on_msg_dialog_rbtn_clicked()
+{
+  notification_.setType(Notification::MessageBox);
+}
+
+void TaskEditDialog::on_timeout_edit_valueChanged(int arg1)
+{
+  notification_.setTimeout(arg1);
 }
 
 } // namespace schedule
