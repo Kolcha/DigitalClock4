@@ -1,6 +1,6 @@
 /*
     Digital Clock: schedule plugin
-    Copyright (C) 2016-2017  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,51 +16,34 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SCHEDULE_TASK_H
-#define SCHEDULE_TASK_H
-
-#include <QString>
-#include <QDateTime>
-#include <QSharedPointer>
-
-#include "core/notification.h"
+#include "notification.h"
 
 namespace schedule {
 
-class Task
+Notification::Notification() :
+  type_(TrayMessage),
+  timeout_(10)
 {
-public:
-  Task();
+}
 
-  int id() const;
+Notification::Type Notification::type() const
+{
+  return type_;
+}
 
-  QDate date() const;
-  QTime time() const;
+int Notification::timeout() const
+{
+  return timeout_;
+}
 
-  QString note() const;
+void Notification::setType(const Notification::Type t)
+{
+  type_ = t;
+}
 
-  Notification notification() const;
-
-  void setId(const int id);
-
-  void setDate(const QDate& dt);
-  void setTime(const QTime& tm);
-
-  void setNote(const QString& msg);
-
-  void setNotification(const Notification& n);
-
-  bool isValid() const;
-
-private:
-  int id_;
-  QDateTime date_time_;
-  QString message_;
-  Notification notification_;
-};
-
-typedef QSharedPointer<Task> TaskPtr;
+void Notification::setTimeout(const int t)
+{
+  timeout_ = t;
+}
 
 } // namespace schedule
-
-#endif // SCHEDULE_TASK_H

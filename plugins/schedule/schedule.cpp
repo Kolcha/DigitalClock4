@@ -20,6 +20,8 @@
 
 #include <QMenu>
 
+#include "message_box.h"
+
 #include "core/tasks_storage.h"
 #include "core/tasks_invoker.h"
 
@@ -55,9 +57,9 @@ void Schedule::Start()
 
   connect(backend_, &TasksStorage::tasksLoaded, invoker_, &TasksInvoker::setDailyTasks);
   connect(invoker_, &TasksInvoker::dateChanged, backend_, &TasksStorage::LoadTasks);
+  connect(invoker_, &TasksInvoker::completed, this, &Schedule::TaskCompleted);
   connect(invoker_, &TasksInvoker::completed, backend_, &TasksStorage::delTask);
   connect(invoker_, &TasksInvoker::done, backend_, &TasksStorage::Accept);
-  connect(invoker_, &TasksInvoker::completed, this, &Schedule::TaskCompleted);
 
   invoker_->start();
 }
@@ -104,8 +106,25 @@ void Schedule::TrayActivated(QSystemTrayIcon::ActivationReason reason)
 
 void Schedule::TaskCompleted(const TaskPtr& task)
 {
-  if (!tray_icon_) return;
-  tray_icon_->showMessage(tr("Scheduled task"), task->note());
+  switch (task->notification().type()) {
+    case Notification::TrayMessage:
+      if (!tray_icon_) return;
+      tray_icon_->showMessage(tr("Scheduled task"), task->note(),
+                              QSystemTrayIcon::Information,
+                              task->notification().timeout() * 1000);
+      break;
+
+    case Notification::MessageBox:
+      if (task->notification().timeout() > 0) {
+        TMessageBox dlg(QMessageBox::Information, tr("Scheduled task"), task->note(), QMessageBox::Ok);
+        dlg.setTimeout(task->notification().timeout());
+        dlg.setAutoClose(true);
+        dlg.exec();
+      } else {
+        QMessageBox::information(nullptr, tr("Scheduled task"), task->note(), QMessageBox::Ok);
+      }
+      break;
+  }
 }
 
 } // namespace schedule

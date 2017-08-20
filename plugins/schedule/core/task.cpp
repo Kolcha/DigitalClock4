@@ -44,6 +44,11 @@ QString Task::note() const
   return message_;
 }
 
+Notification Task::notification() const
+{
+  return notification_;
+}
+
 void Task::setId(const int id)
 {
   Q_ASSERT(id_ <= 0);
@@ -63,6 +68,11 @@ void Task::setTime(const QTime& tm)
 void Task::setNote(const QString& msg)
 {
   message_ = msg;
+}
+
+void Task::setNotification(const Notification& n)
+{
+  notification_ = n;
 }
 
 bool Task::isValid() const
