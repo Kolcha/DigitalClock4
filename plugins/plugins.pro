@@ -41,3 +41,5 @@ SUBDIRS += \
 }
 
 qtHaveModule(texttospeech):SUBDIRS += talking_clock
+
+OTHER_FILES += common.pri
