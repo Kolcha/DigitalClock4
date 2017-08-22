@@ -54,11 +54,11 @@ QVariant SettingsStorage::GetValue(const QString& key, const QVariant& default_v
 
   if (isDeleted(key)) return default_value;
 
-  // TODO: remove. Is it really needed?
   auto i_iter = imported_.find(key);
   if (i_iter != imported_.end()) return i_iter.value();
 
   QVariant value = storage_.value(key, default_value);
+  if (default_value.isValid()) value.convert(default_value.type());
   current_[key] = value;
   return value;
 }
