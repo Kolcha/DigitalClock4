@@ -43,6 +43,7 @@ public slots:
 
   void addTask(const TaskPtr& task);
   void delTask(const TaskPtr& task);
+  void updateTask(const TaskPtr& task);
 
 private:
   QList<QDate> listDates() const;

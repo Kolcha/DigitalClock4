@@ -26,6 +26,7 @@
 #include "core/task.h"
 
 class QSortFilterProxyModel;
+class QItemSelection;
 
 namespace schedule {
 
@@ -47,12 +48,16 @@ signals:
   void dateChanged(const QDate& dt);
   void taskCreated(const TaskPtr& tsk);
   void taskDeleted(const TaskPtr& tsk);
+  void taskEdited(const TaskPtr& tsk);
 
 public slots:
   void setDates(const QList<QDate>& dates);
   void setTasks(const QList<TaskPtr>& tasks);
 
 private slots:
+  void onTaskDetailsChanged(const QModelIndex& tl, const QModelIndex& br);
+  void onTasksSelectionChanged(const QItemSelection& selection);
+
   void on_dates_box_currentIndexChanged(int index);
   void on_add_btn_clicked();
   void on_del_btn_clicked();

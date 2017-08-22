@@ -1,6 +1,6 @@
 /*
     Digital Clock: schedule plugin
-    Copyright (C) 2016-2017  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SCHEDULE_TASK_EDIT_DIALOG_H
-#define SCHEDULE_TASK_EDIT_DIALOG_H
+#ifndef SCHEDULE_TASK_ADVANCED_SETTINGS_DIALOG_H
+#define SCHEDULE_TASK_ADVANCED_SETTINGS_DIALOG_H
 
 #include <QDialog>
 
@@ -26,40 +26,27 @@
 namespace schedule {
 
 namespace Ui {
-class TaskEditDialog;
+class TaskAdvancedSettingsDialog;
 }
 
-class TaskEditDialog : public QDialog
+class TaskAdvancedSettingsDialog : public QDialog
 {
   Q_OBJECT
 
 public:
-  explicit TaskEditDialog(QWidget* parent = nullptr);
-  ~TaskEditDialog();
-
-  QDate date() const;
-  QTime time() const;
-
-  QString note() const;
+  explicit TaskAdvancedSettingsDialog(QWidget* parent = nullptr);
+  ~TaskAdvancedSettingsDialog();
 
   Notification notification() const;
-
-
-  void setDate(const QDate& dt);
-  void setTime(const QTime& tm);
-
-  void setNote(const QString& nt);
-
   void setNotification(const Notification& nt);
 
 private slots:
-  void on_adv_settings_btn_clicked();
+  void on_preview_btn_clicked();
 
 private:
-  Ui::TaskEditDialog* ui;
-  Notification notification_;
+  Ui::TaskAdvancedSettingsDialog* ui;
 };
 
 } // namespace schedule
 
-#endif // SCHEDULE_TASK_EDIT_DIALOG_H
+#endif // SCHEDULE_TASK_ADVANCED_SETTINGS_DIALOG_H

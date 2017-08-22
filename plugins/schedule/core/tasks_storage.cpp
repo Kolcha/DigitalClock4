@@ -46,6 +46,10 @@ void TasksStorage::LoadTasks(const QDate& dt)
     task->setDate(dt);
     task->setTime(this->getValue(QString("%1/%2").arg(task_key, "time")).toTime());
     task->setNote(this->getValue(QString("%1/%2").arg(task_key, "note")).toString());
+    Notification nt;
+    nt.setType(this->getValue(QString("%1/%2").arg(task_key, "notification/type")).value<Notification::Type>());
+    nt.setTimeout(this->getValue(QString("%1/%2").arg(task_key, "notification/timeout")).toInt());
+    task->setNotification(nt);
     if (task->isValid()) tasks.append(task);
   }
   emit tasksLoaded(tasks);
@@ -65,6 +69,8 @@ void TasksStorage::addTask(const TaskPtr& task)
   QString task_key = QString("%1/%2").arg(date_key).arg(task->id());
   this->setValue(QString("%1/%2").arg(task_key, "time"), task->time());
   this->setValue(QString("%1/%2").arg(task_key, "note"), task->note());
+  this->setValue(QString("%1/%2").arg(task_key, "notification/type"), task->notification().type());
+  this->setValue(QString("%1/%2").arg(task_key, "notification/timeout"), task->notification().timeout());
 
   QList<QDate> new_dates = listDates();
   if (new_dates.size() != old_count) emit datesLoaded(new_dates);
@@ -78,6 +84,19 @@ void TasksStorage::delTask(const TaskPtr& task)
   if (GetBackend()->ListChildren(date_key).isEmpty()) {
     this->remove(date_key);
   }
+}
+
+void TasksStorage::updateTask(const TaskPtr& task)
+{
+  if (task->note().isEmpty()) return;
+
+  QString date_key = QString("plugins/schedule/tasks/%1").arg(task->date().toString("dd-MM-yyyy"));
+  QString task_key = QString("%1/%2").arg(date_key).arg(task->id());
+
+  this->setValue(QString("%1/%2").arg(task_key, "time"), task->time());
+  this->setValue(QString("%1/%2").arg(task_key, "note"), task->note());
+  this->setValue(QString("%1/%2").arg(task_key, "notification/type"), task->notification().type());
+  this->setValue(QString("%1/%2").arg(task_key, "notification/timeout"), task->notification().timeout());
 }
 
 QList<QDate> TasksStorage::listDates() const

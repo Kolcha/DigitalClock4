@@ -14,8 +14,21 @@
    <string>Task Editing</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QDateEdit" name="dateEdit"/>
+   <item row="1" column="0" colspan="5">
+    <widget class="QPlainTextEdit" name="textEdit"/>
+   </item>
+   <item row="0" column="3">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>54</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="0" column="1">
     <spacer name="horizontalSpacer">
@@ -24,19 +37,13 @@
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>119</width>
+       <width>40</width>
        <height>20</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="0" column="2">
-    <widget class="QTimeEdit" name="timeEdit"/>
-   </item>
-   <item row="1" column="0" colspan="3">
-    <widget class="QPlainTextEdit" name="textEdit"/>
-   </item>
-   <item row="2" column="0" colspan="3">
+   <item row="2" column="0" colspan="5">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -46,9 +53,31 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="4">
+    <widget class="QTimeEdit" name="timeEdit"/>
+   </item>
+   <item row="0" column="2">
+    <widget class="QToolButton" name="adv_settings_btn">
+     <property name="toolTip">
+      <string>Advanced task settings</string>
+     </property>
+     <property name="text">
+      <string notr="true">...</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../schedule.qrc">
+       <normaloff>:/schedule/notification.svg.p</normaloff>:/schedule/notification.svg.p</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QDateEdit" name="dateEdit"/>
+   </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../schedule.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

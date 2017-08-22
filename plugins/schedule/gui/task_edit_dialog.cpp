@@ -21,6 +21,8 @@
 
 #include <QLocale>
 
+#include "gui/task_advanced_settings_dialog.h"
+
 namespace schedule {
 
 TaskEditDialog::TaskEditDialog(QWidget* parent) :
@@ -31,10 +33,6 @@ TaskEditDialog::TaskEditDialog(QWidget* parent) :
 
   ui->dateEdit->setDisplayFormat(QLocale::system().dateFormat(QLocale::LongFormat));
   ui->timeEdit->setDisplayFormat(QLocale::system().timeFormat(QLocale::ShortFormat));
-
-  QDateTime now = QDateTime::currentDateTime();
-  ui->dateEdit->setMinimumDate(now.date());
-  ui->timeEdit->setMinimumTime(now.time());
 }
 
 TaskEditDialog::~TaskEditDialog()
@@ -57,6 +55,11 @@ QString TaskEditDialog::note() const
   return ui->textEdit->toPlainText();
 }
 
+Notification TaskEditDialog::notification() const
+{
+  return notification_;
+}
+
 void TaskEditDialog::setDate(const QDate& dt)
 {
   ui->dateEdit->setDate(dt);
@@ -70,6 +73,19 @@ void TaskEditDialog::setTime(const QTime& tm)
 void TaskEditDialog::setNote(const QString& nt)
 {
   ui->textEdit->setPlainText(nt);
+}
+
+void TaskEditDialog::setNotification(const Notification& nt)
+{
+  notification_ = nt;
+}
+
+void TaskEditDialog::on_adv_settings_btn_clicked()
+{
+  TaskAdvancedSettingsDialog dlg(this);
+  dlg.setNotification(notification());
+  dlg.setWindowModality(Qt::WindowModal);
+  if (dlg.exec() == QDialog::Accepted) setNotification(dlg.notification());
 }
 
 } // namespace schedule

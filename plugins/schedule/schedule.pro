@@ -30,22 +30,27 @@ TARGET = schedule
 
 SOURCES += schedule.cpp \
     core/daily_tasks_provider.cpp \
+    core/notification.cpp \
     core/task.cpp \
     core/tasks_invoker.cpp \
     core/tasks_storage.cpp \
     gui/schedule_dialog.cpp \
+    gui/task_advanced_settings_dialog.cpp \
     gui/task_edit_dialog.cpp
 
 HEADERS += schedule.h \
     core/daily_tasks_provider.h \
+    core/notification.h \
     core/task.h \
     core/tasks_invoker.h \
     core/tasks_storage.h \
     gui/schedule_dialog.h \
+    gui/task_advanced_settings_dialog.h \
     gui/task_edit_dialog.h
 
 FORMS += \
     gui/schedule_dialog.ui \
+    gui/task_advanced_settings_dialog.ui \
     gui/task_edit_dialog.ui
 
 TRANSLATIONS += \
