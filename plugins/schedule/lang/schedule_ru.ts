@@ -45,6 +45,46 @@
     </message>
 </context>
 <context>
+    <name>schedule::TaskAdvancedSettingsDialog</name>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="14"/>
+        <source>Notification Settings</source>
+        <translation>Настройки уведомлений</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="20"/>
+        <source>&amp;Balloon message</source>
+        <translation>&amp;Всплывающее сообщение</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="30"/>
+        <source>&amp;Timeout:</source>
+        <translation>&amp;Таймаут:</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="46"/>
+        <source>Message &amp;dialog</source>
+        <translation>&amp;Диалоговое окно</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="66"/>
+        <source>Preview</source>
+        <translation>Просмотр</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.cpp" line="59"/>
+        <source>This is sample task text. Just to test how notification looks.</source>
+        <translation>Пример текста задания. Только для просмотра вида уведомления.</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.cpp" line="72"/>
+        <location filename="../gui/task_advanced_settings_dialog.cpp" line="77"/>
+        <location filename="../gui/task_advanced_settings_dialog.cpp" line="83"/>
+        <source>Task preview</source>
+        <translation>Предварительный просмотр</translation>
+    </message>
+</context>
+<context>
     <name>schedule::TaskEditDialog</name>
     <message>
         <location filename="../gui/task_edit_dialog.ui" line="14"/>
@@ -52,36 +92,9 @@
         <translation>Редактирование задания</translation>
     </message>
     <message>
-        <location filename="../gui/task_edit_dialog.ui" line="54"/>
-        <source>Notification</source>
-        <translation>Уведомление</translation>
-    </message>
-    <message>
-        <location filename="../gui/task_edit_dialog.ui" line="60"/>
-        <source>&amp;Balloon message</source>
-        <translation>&amp;Всплывающее сообщение</translation>
-    </message>
-    <message>
-        <location filename="../gui/task_edit_dialog.ui" line="70"/>
-        <source>&amp;Timeout:</source>
-        <translation>&amp;Таймаут:</translation>
-    </message>
-    <message>
-        <location filename="../gui/task_edit_dialog.ui" line="86"/>
-        <source>Message &amp;dialog</source>
-        <translation>&amp;Диалоговое окно</translation>
-    </message>
-    <message>
-        <location filename="../gui/task_edit_dialog.ui" line="106"/>
-        <source>Preview</source>
-        <translation>Просмотр</translation>
-    </message>
-    <message>
-        <location filename="../gui/task_edit_dialog.cpp" line="115"/>
-        <location filename="../gui/task_edit_dialog.cpp" line="120"/>
-        <location filename="../gui/task_edit_dialog.cpp" line="126"/>
-        <source>Task preview</source>
-        <translation>Предварительный просмотр</translation>
+        <location filename="../gui/task_edit_dialog.ui" line="62"/>
+        <source>Advanced task settings</source>
+        <translation>Дополнительные настройки</translation>
     </message>
 </context>
 </TS>

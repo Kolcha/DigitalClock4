@@ -35,6 +35,7 @@ SOURCES += schedule.cpp \
     core/tasks_invoker.cpp \
     core/tasks_storage.cpp \
     gui/schedule_dialog.cpp \
+    gui/task_advanced_settings_dialog.cpp \
     gui/task_edit_dialog.cpp
 
 HEADERS += schedule.h \
@@ -44,10 +45,12 @@ HEADERS += schedule.h \
     core/tasks_invoker.h \
     core/tasks_storage.h \
     gui/schedule_dialog.h \
+    gui/task_advanced_settings_dialog.h \
     gui/task_edit_dialog.h
 
 FORMS += \
     gui/schedule_dialog.ui \
+    gui/task_advanced_settings_dialog.ui \
     gui/task_edit_dialog.ui
 
 TRANSLATIONS += \

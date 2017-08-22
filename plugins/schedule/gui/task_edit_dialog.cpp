@@ -20,10 +20,8 @@
 #include "ui_task_edit_dialog.h"
 
 #include <QLocale>
-#include <QSystemTrayIcon>
-#include <QTimer>
 
-#include "message_box.h"
+#include "gui/task_advanced_settings_dialog.h"
 
 namespace schedule {
 
@@ -35,8 +33,6 @@ TaskEditDialog::TaskEditDialog(QWidget* parent) :
 
   ui->dateEdit->setDisplayFormat(QLocale::system().dateFormat(QLocale::LongFormat));
   ui->timeEdit->setDisplayFormat(QLocale::system().timeFormat(QLocale::ShortFormat));
-
-  ui->timeout_edit->setValue(notification_.timeout());
 }
 
 TaskEditDialog::~TaskEditDialog()
@@ -81,56 +77,15 @@ void TaskEditDialog::setNote(const QString& nt)
 
 void TaskEditDialog::setNotification(const Notification& nt)
 {
-  ui->msg_balloon_rbtn->setChecked(nt.type() == Notification::TrayMessage);
-  ui->msg_dialog_rbtn->setChecked(nt.type() == Notification::MessageBox);
-  ui->timeout_edit->setValue(nt.timeout());
   notification_ = nt;
 }
 
-void TaskEditDialog::on_msg_balloon_rbtn_clicked()
+void TaskEditDialog::on_adv_settings_btn_clicked()
 {
-  notification_.setType(Notification::TrayMessage);
-}
-
-void TaskEditDialog::on_msg_dialog_rbtn_clicked()
-{
-  notification_.setType(Notification::MessageBox);
-}
-
-void TaskEditDialog::on_preview_btn_clicked()
-{
-  QString task_text = ui->textEdit->toPlainText();
-  int task_timeout = ui->timeout_edit->value();
-
-  if (ui->msg_balloon_rbtn->isChecked()) {
-    QSystemTrayIcon* tray_icon = new QSystemTrayIcon(QIcon(":/schedule/schedule.svg"), this);
-    QTimer* timer = new QTimer(this);
-    timer->setInterval(task_timeout * 1000 + 500);
-    timer->setSingleShot(true);
-    connect(timer, &QTimer::timeout, tray_icon, &QSystemTrayIcon::hide);
-    connect(timer, &QTimer::timeout, tray_icon, &QSystemTrayIcon::deleteLater);
-    connect(timer, &QTimer::timeout, timer, &QTimer::deleteLater);
-    timer->start();
-    tray_icon->show();
-    tray_icon->showMessage(tr("Task preview"), task_text, QSystemTrayIcon::Information, task_timeout * 1000);
-  }
-
-  if (ui->msg_dialog_rbtn->isChecked()) {
-    if (task_timeout > 0) {
-      TMessageBox dlg(QMessageBox::Information, tr("Task preview"), task_text, QMessageBox::Ok);
-      dlg.setTimeout(task_timeout);
-      dlg.setAutoClose(true);
-      dlg.setDefaultButton(QMessageBox::Ok);
-      dlg.exec();
-    } else {
-      QMessageBox::information(nullptr, tr("Task preview"), task_text, QMessageBox::Ok);
-    }
-  }
-}
-
-void TaskEditDialog::on_timeout_edit_valueChanged(int arg1)
-{
-  notification_.setTimeout(arg1);
+  TaskAdvancedSettingsDialog dlg(this);
+  dlg.setNotification(notification());
+  dlg.setWindowModality(Qt::WindowModal);
+  if (dlg.exec() == QDialog::Accepted) setNotification(dlg.notification());
 }
 
 } // namespace schedule
