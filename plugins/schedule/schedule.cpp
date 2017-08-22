@@ -119,6 +119,7 @@ void Schedule::TaskCompleted(const TaskPtr& task)
         TMessageBox dlg(QMessageBox::Information, tr("Scheduled task"), task->note(), QMessageBox::Ok);
         dlg.setTimeout(task->notification().timeout());
         dlg.setAutoClose(true);
+        dlg.setDefaultButton(QMessageBox::Ok);
         dlg.exec();
       } else {
         QMessageBox::information(nullptr, tr("Scheduled task"), task->note(), QMessageBox::Ok);

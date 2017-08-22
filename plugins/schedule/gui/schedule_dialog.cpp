@@ -86,6 +86,7 @@ void ScheduleDialog::on_add_btn_clicked()
     task->setDate(dlg.date());
     task->setTime(dlg.time());
     task->setNote(dlg.note());
+    task->setNotification(dlg.notification());
     emit taskCreated(task);
     // emit dateChanged() to force update view
     if (task->date() == ui->dates_box->currentData().toDate()) {
@@ -118,6 +119,7 @@ void ScheduleDialog::on_edit_btn_clicked()
   dlg.setDate(task->date());
   dlg.setTime(task->time());
   dlg.setNote(task->note());
+  dlg.setNotification(task->notification());
 
   if (dlg.exec() == QDialog::Accepted) {
     if (dlg.date() != task->date()) {
@@ -127,10 +129,12 @@ void ScheduleDialog::on_edit_btn_clicked()
       new_task->setDate(dlg.date());
       new_task->setTime(dlg.time());
       new_task->setNote(dlg.note());
+      new_task->setNotification(dlg.notification());
       emit taskCreated(new_task);
     } else {
       task->setTime(dlg.time());
       task->setNote(dlg.note());
+      task->setNotification(dlg.notification());
     }
     // emit dateChanged() to force update view
     emit dateChanged(ui->dates_box->currentData().toDate());

@@ -20,6 +20,10 @@
 #include "ui_task_edit_dialog.h"
 
 #include <QLocale>
+#include <QSystemTrayIcon>
+#include <QTimer>
+
+#include "message_box.h"
 
 namespace schedule {
 
@@ -35,6 +39,8 @@ TaskEditDialog::TaskEditDialog(QWidget* parent) :
   QDateTime now = QDateTime::currentDateTime();
   ui->dateEdit->setMinimumDate(now.date());
   ui->timeEdit->setMinimumTime(now.time());
+
+  ui->timeout_edit->setValue(notification_.timeout());
 }
 
 TaskEditDialog::~TaskEditDialog()
@@ -93,6 +99,37 @@ void TaskEditDialog::on_msg_balloon_rbtn_clicked()
 void TaskEditDialog::on_msg_dialog_rbtn_clicked()
 {
   notification_.setType(Notification::MessageBox);
+}
+
+void TaskEditDialog::on_preview_btn_clicked()
+{
+  QString task_text = ui->textEdit->toPlainText();
+  int task_timeout = ui->timeout_edit->value();
+
+  if (ui->msg_balloon_rbtn->isChecked()) {
+    QSystemTrayIcon* tray_icon = new QSystemTrayIcon(QIcon(":/schedule/schedule.svg"), this);
+    QTimer* timer = new QTimer(this);
+    timer->setInterval(task_timeout * 1000 + 500);
+    timer->setSingleShot(true);
+    connect(timer, &QTimer::timeout, tray_icon, &QSystemTrayIcon::hide);
+    connect(timer, &QTimer::timeout, tray_icon, &QSystemTrayIcon::deleteLater);
+    connect(timer, &QTimer::timeout, timer, &QTimer::deleteLater);
+    timer->start();
+    tray_icon->show();
+    tray_icon->showMessage(tr("Task preview"), task_text, QSystemTrayIcon::Information, task_timeout * 1000);
+  }
+
+  if (ui->msg_dialog_rbtn->isChecked()) {
+    if (task_timeout > 0) {
+      TMessageBox dlg(QMessageBox::Information, tr("Task preview"), task_text, QMessageBox::Ok);
+      dlg.setTimeout(task_timeout);
+      dlg.setAutoClose(true);
+      dlg.setDefaultButton(QMessageBox::Ok);
+      dlg.exec();
+    } else {
+      QMessageBox::information(nullptr, tr("Task preview"), task_text, QMessageBox::Ok);
+    }
+  }
 }
 
 void TaskEditDialog::on_timeout_edit_valueChanged(int arg1)

@@ -56,6 +56,8 @@ private slots:
   void on_msg_balloon_rbtn_clicked();
   void on_msg_dialog_rbtn_clicked();
 
+  void on_preview_btn_clicked();
+
   void on_timeout_edit_valueChanged(int arg1);
 
 private:
