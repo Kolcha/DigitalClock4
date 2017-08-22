@@ -36,10 +36,6 @@ TaskEditDialog::TaskEditDialog(QWidget* parent) :
   ui->dateEdit->setDisplayFormat(QLocale::system().dateFormat(QLocale::LongFormat));
   ui->timeEdit->setDisplayFormat(QLocale::system().timeFormat(QLocale::ShortFormat));
 
-  QDateTime now = QDateTime::currentDateTime();
-  ui->dateEdit->setMinimumDate(now.date());
-  ui->timeEdit->setMinimumTime(now.time());
-
   ui->timeout_edit->setValue(notification_.timeout());
 }
 

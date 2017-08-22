@@ -34,11 +34,14 @@ ScheduleDialog::ScheduleDialog(QWidget* parent) :
   ui->setupUi(this);
 
   tasks_model_ = new DailyTasksProvider(this);
+  connect(tasks_model_, &DailyTasksProvider::dataChanged, this, &ScheduleDialog::onTaskDetailsChanged);
 
   sort_model_ = new QSortFilterProxyModel(this);
   sort_model_->setSourceModel(tasks_model_);
 
   ui->tasks_view->setModel(sort_model_);
+  connect(ui->tasks_view->selectionModel(), &QItemSelectionModel::selectionChanged,
+          this, &ScheduleDialog::onTasksSelectionChanged);
 
   ui->tasks_view->horizontalHeader()->setSortIndicator(0, Qt::AscendingOrder);
   ui->tasks_view->sortByColumn(0, Qt::AscendingOrder);
@@ -71,6 +74,21 @@ void ScheduleDialog::setTasks(const QList<TaskPtr>& tasks)
   tasks_model_->setTasks(tasks);
 }
 
+void ScheduleDialog::onTaskDetailsChanged(const QModelIndex& tl, const QModelIndex& br)
+{
+  QModelIndexList changed_indexes;
+  for (int i = tl.row(); i <= br.row(); ++i)
+    changed_indexes.append(tasks_model_->index(i, 0));
+  for (auto& idx : changed_indexes)
+    emit taskEdited(tasks_model_->getTask(idx));
+}
+
+void ScheduleDialog::onTasksSelectionChanged(const QItemSelection& selection)
+{
+  ui->edit_btn->setEnabled(ui->tasks_view->selectionModel()->selectedRows().size() == 1);
+  ui->del_btn->setEnabled(!selection.isEmpty());
+}
+
 void ScheduleDialog::on_dates_box_currentIndexChanged(int index)
 {
   if (index < 0 || index >= ui->dates_box->count()) return;
@@ -80,6 +98,10 @@ void ScheduleDialog::on_dates_box_currentIndexChanged(int index)
 void ScheduleDialog::on_add_btn_clicked()
 {
   TaskEditDialog dlg(this);
+  if (ui->dates_box->currentData().isValid())
+    dlg.setDate(ui->dates_box->currentData().toDate());
+  else
+    dlg.setDate(QDate::currentDate());
   dlg.setWindowModality(Qt::WindowModal);
   if (dlg.exec() == QDialog::Accepted) {
     TaskPtr task(new Task());
@@ -120,6 +142,7 @@ void ScheduleDialog::on_edit_btn_clicked()
   dlg.setTime(task->time());
   dlg.setNote(task->note());
   dlg.setNotification(task->notification());
+  dlg.setWindowModality(Qt::WindowModal);
 
   if (dlg.exec() == QDialog::Accepted) {
     if (dlg.date() != task->date()) {
@@ -131,13 +154,14 @@ void ScheduleDialog::on_edit_btn_clicked()
       new_task->setNote(dlg.note());
       new_task->setNotification(dlg.notification());
       emit taskCreated(new_task);
+      // emit dateChanged() to force update view
+      emit dateChanged(ui->dates_box->currentData().toDate());
     } else {
       task->setTime(dlg.time());
       task->setNote(dlg.note());
       task->setNotification(dlg.notification());
+      emit taskEdited(task);
     }
-    // emit dateChanged() to force update view
-    emit dateChanged(ui->dates_box->currentData().toDate());
   }
 }
 

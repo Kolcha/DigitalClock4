@@ -81,6 +81,7 @@ void Schedule::Configure()
   connect(dlg, &ScheduleDialog::dateChanged, backend_, &TasksStorage::LoadTasks);
   connect(dlg, &ScheduleDialog::taskCreated, backend_, &TasksStorage::addTask);
   connect(dlg, &ScheduleDialog::taskDeleted, backend_, &TasksStorage::delTask);
+  connect(dlg, &ScheduleDialog::taskEdited, backend_, &TasksStorage::updateTask);
   connect(dlg, &ScheduleDialog::accepted, backend_, &TasksStorage::Accept);
   connect(dlg, &ScheduleDialog::rejected, backend_, &TasksStorage::Reject);
 

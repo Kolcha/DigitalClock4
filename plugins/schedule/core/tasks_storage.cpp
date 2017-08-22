@@ -86,6 +86,19 @@ void TasksStorage::delTask(const TaskPtr& task)
   }
 }
 
+void TasksStorage::updateTask(const TaskPtr& task)
+{
+  if (task->note().isEmpty()) return;
+
+  QString date_key = QString("plugins/schedule/tasks/%1").arg(task->date().toString("dd-MM-yyyy"));
+  QString task_key = QString("%1/%2").arg(date_key).arg(task->id());
+
+  this->setValue(QString("%1/%2").arg(task_key, "time"), task->time());
+  this->setValue(QString("%1/%2").arg(task_key, "note"), task->note());
+  this->setValue(QString("%1/%2").arg(task_key, "notification/type"), task->notification().type());
+  this->setValue(QString("%1/%2").arg(task_key, "notification/timeout"), task->notification().timeout());
+}
+
 QList<QDate> TasksStorage::listDates() const
 {
   QList<QDate> dates;
