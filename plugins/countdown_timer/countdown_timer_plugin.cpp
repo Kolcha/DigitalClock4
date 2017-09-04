@@ -42,21 +42,21 @@ CountdownTimerPlugin::CountdownTimerPlugin() : msg_label_(nullptr), cd_timer_(nu
 
 void CountdownTimerPlugin::Start()
 {
-    cd_timer_ = new CountdownTimer();
-    connect(cd_timer_, &CountdownTimer::timeLeftChanged, this, &CountdownTimerPlugin::TimeUpdateListener);
-    connect(cd_timer_, &CountdownTimer::timeout, this, &CountdownTimerPlugin::HandleTimeout);
+  cd_timer_ = new CountdownTimer();
+  connect(cd_timer_, &CountdownTimer::timeLeftChanged, this, &CountdownTimerPlugin::TimeUpdateListener);
+  connect(cd_timer_, &CountdownTimer::timeout, this, &CountdownTimerPlugin::HandleTimeout);
 
-    ::plugin::WidgetPluginBase::Start();
-    InitTimer();
+  ::plugin::WidgetPluginBase::Start();
+  InitTimer();
 }
 
 void CountdownTimerPlugin::Stop()
 {
-    if (cd_timer_->isActive()) cd_timer_->stop();
-    delete cd_timer_;
-    cd_timer_ = nullptr;
+  if (cd_timer_->isActive()) cd_timer_->stop();
+  delete cd_timer_;
+  cd_timer_ = nullptr;
 
-    ::plugin::WidgetPluginBase::Stop();
+  ::plugin::WidgetPluginBase::Stop();
 }
 
 void CountdownTimerPlugin::Configure()
@@ -78,9 +78,9 @@ void CountdownTimerPlugin::Configure()
   connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
   // connect additional slots
   if (cd_timer_) {
-      connect(dialog, &SettingsDialog::accepted, cd_timer_, &CountdownTimer::stop);
-      connect(dialog, &SettingsDialog::accepted, this, &CountdownTimerPlugin::InitTimer);
-      connect(dialog, &SettingsDialog::accepted, cd_timer_, &CountdownTimer::start);
+    connect(dialog, &SettingsDialog::accepted, cd_timer_, &CountdownTimer::stop);
+    connect(dialog, &SettingsDialog::accepted, this, &CountdownTimerPlugin::InitTimer);
+    connect(dialog, &SettingsDialog::accepted, cd_timer_, &CountdownTimer::start);
   }
   dialog->show();
 }
@@ -104,35 +104,35 @@ void CountdownTimerPlugin::DisplayImage(const QImage& image)
 
 QString CountdownTimerPlugin::GetWidgetText()
 {
-    return format_time(cd_timer_->timeLeft());
+  return format_time(cd_timer_->timeLeft());
 }
 
 void CountdownTimerPlugin::InitTimer()
 {
-    if (settings_->GetOption(OPT_USE_TARGET_TIME).toBool()) {
-        QDateTime now = QDateTime::currentDateTime();
-        now = now.addMSecs(-now.time().msec());
-        QDateTime target = settings_->GetOption(OPT_TARGET_DATETIME).toDateTime();
-        if (target > now) {
-            cd_timer_->setTimeout(now.secsTo(target));
-            cd_timer_->start();
-        }
-    } else {
-        qint64 timeout = settings_->GetOption(OPT_INTERVAL_SECONDS).toLongLong();
-        timeout += 60 * settings_->GetOption(OPT_INTERVAL_MINUTES).toLongLong();
-        timeout += 3600 * settings_->GetOption(OPT_INTERVAL_HOURS).toLongLong();
-        cd_timer_->setTimeout(timeout);
+  if (settings_->GetOption(OPT_USE_TARGET_TIME).toBool()) {
+    QDateTime now = QDateTime::currentDateTime();
+    now = now.addMSecs(-now.time().msec());
+    QDateTime target = settings_->GetOption(OPT_TARGET_DATETIME).toDateTime();
+    if (target > now) {
+      cd_timer_->setTimeout(now.secsTo(target));
+      cd_timer_->start();
     }
+  } else {
+    qint64 timeout = settings_->GetOption(OPT_INTERVAL_SECONDS).toLongLong();
+    timeout += 60 * settings_->GetOption(OPT_INTERVAL_MINUTES).toLongLong();
+    timeout += 3600 * settings_->GetOption(OPT_INTERVAL_HOURS).toLongLong();
+    cd_timer_->setTimeout(timeout);
+  }
 }
 
 void CountdownTimerPlugin::HandleTimeout()
 {
-    if (settings_->GetOption(OPT_SHOW_MESSAGE).toBool()) {
-        QMessageBox::warning(nullptr,
-                             info_.display_name,
-                             settings_->GetOption(OPT_MESSAGE_TEXT).toString(),
-                             QMessageBox::Ok);
-    }
+  if (settings_->GetOption(OPT_SHOW_MESSAGE).toBool()) {
+    QMessageBox::warning(nullptr,
+                         info_.display_name,
+                         settings_->GetOption(OPT_MESSAGE_TEXT).toString(),
+                         QMessageBox::Ok);
+  }
 }
 
 } // namespace countdown_timer

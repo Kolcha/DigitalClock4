@@ -36,62 +36,62 @@ SettingsDialog::~SettingsDialog()
   delete ui;
 }
 
-void SettingsDialog::AddCommonWidget(QWidget *widget)
+void SettingsDialog::AddCommonWidget(QWidget* widget)
 {
-    widget->layout()->setMargin(12);
-    ui->tabWidget->addTab(widget, tr("Appearance"));
+  widget->layout()->setMargin(12);
+  ui->tabWidget->addTab(widget, tr("Appearance"));
 }
 
 void SettingsDialog::Init(const QSettings::SettingsMap& settings)
 {
-    ui->target_time_rbtn->setChecked(settings.value(OPT_USE_TARGET_TIME).toBool());
-    ui->interval_rbtn->setChecked(!ui->target_time_rbtn->isChecked());
-    ui->target_time_edit->setDateTime(settings.value(OPT_TARGET_DATETIME).toDateTime());
-    ui->h_edit->setValue(settings.value(OPT_INTERVAL_HOURS).toInt());
-    ui->m_edit->setValue(settings.value(OPT_INTERVAL_MINUTES).toInt());
-    ui->s_edit->setValue(settings.value(OPT_INTERVAL_SECONDS).toInt());
-    ui->show_msg->setChecked(settings.value(OPT_SHOW_MESSAGE).toBool());
-    ui->msg_text_edit->setPlainText(settings.value(OPT_MESSAGE_TEXT).toString());
+  ui->target_time_rbtn->setChecked(settings.value(OPT_USE_TARGET_TIME).toBool());
+  ui->interval_rbtn->setChecked(!ui->target_time_rbtn->isChecked());
+  ui->target_time_edit->setDateTime(settings.value(OPT_TARGET_DATETIME).toDateTime());
+  ui->h_edit->setValue(settings.value(OPT_INTERVAL_HOURS).toInt());
+  ui->m_edit->setValue(settings.value(OPT_INTERVAL_MINUTES).toInt());
+  ui->s_edit->setValue(settings.value(OPT_INTERVAL_SECONDS).toInt());
+  ui->show_msg->setChecked(settings.value(OPT_SHOW_MESSAGE).toBool());
+  ui->msg_text_edit->setPlainText(settings.value(OPT_MESSAGE_TEXT).toString());
 }
 
 void SettingsDialog::on_target_time_rbtn_clicked()
 {
-    emit OptionChanged(OPT_USE_TARGET_TIME, true);
+  emit OptionChanged(OPT_USE_TARGET_TIME, true);
 }
 
 void SettingsDialog::on_interval_rbtn_clicked()
 {
-    emit OptionChanged(OPT_USE_TARGET_TIME, false);
+  emit OptionChanged(OPT_USE_TARGET_TIME, false);
 }
 
-void SettingsDialog::on_target_time_edit_dateTimeChanged(const QDateTime &date_time)
+void SettingsDialog::on_target_time_edit_dateTimeChanged(const QDateTime& date_time)
 {
-    emit OptionChanged(OPT_TARGET_DATETIME, date_time);
+  emit OptionChanged(OPT_TARGET_DATETIME, date_time);
 }
 
 void SettingsDialog::on_h_edit_valueChanged(int arg1)
 {
-    emit OptionChanged(OPT_INTERVAL_HOURS, arg1);
+  emit OptionChanged(OPT_INTERVAL_HOURS, arg1);
 }
 
 void SettingsDialog::on_m_edit_valueChanged(int arg1)
 {
-    emit OptionChanged(OPT_INTERVAL_MINUTES, arg1);
+  emit OptionChanged(OPT_INTERVAL_MINUTES, arg1);
 }
 
 void SettingsDialog::on_s_edit_valueChanged(int arg1)
 {
-    emit OptionChanged(OPT_INTERVAL_SECONDS, arg1);
+  emit OptionChanged(OPT_INTERVAL_SECONDS, arg1);
 }
 
 void SettingsDialog::on_show_msg_clicked(bool checked)
 {
-    emit OptionChanged(OPT_SHOW_MESSAGE, checked);
+  emit OptionChanged(OPT_SHOW_MESSAGE, checked);
 }
 
 void SettingsDialog::on_msg_text_edit_textChanged()
 {
-    emit OptionChanged(OPT_MESSAGE_TEXT, ui->msg_text_edit->toPlainText());
+  emit OptionChanged(OPT_MESSAGE_TEXT, ui->msg_text_edit->toPlainText());
 }
 
 } // namespace countdown_timer

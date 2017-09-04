@@ -22,14 +22,14 @@ namespace countdown_timer {
 
 QString format_time(qint64 time_left)
 {
-    qint64 h = time_left / 3600;
-    qint64 m = (time_left - h * 3600) / 60;
-    qint64 s = time_left - (h * 3600 + m * 60);
+  qint64 h = time_left / 3600;
+  qint64 m = (time_left - h * 3600) / 60;
+  qint64 s = time_left - (h * 3600 + m * 60);
 
-    int fw = 2;             // field width
-    int b = 10;             // base
-    QLatin1Char ch('0');    // filler
-    return QString("%1:%2:%3").arg(h).arg(m, fw, b, ch).arg(s, fw, b, ch);
+  int fw = 2;             // field width
+  int b = 10;             // base
+  QLatin1Char ch('0');    // filler
+  return QString("%1:%2:%3").arg(h).arg(m, fw, b, ch).arg(s, fw, b, ch);
 }
 
 } // namespace countdown_timer
