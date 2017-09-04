@@ -37,6 +37,12 @@ source_file = plugins/chime/lang/chime_en.ts
 source_lang = en
 type = QT
 
+[digitalclock4.plugin_countdown_timer]
+file_filter = plugins/countdown_timer/lang/countdown_timer_<lang>.ts
+source_file = plugins/countdown_timer/lang/countdown_timer_en.ts
+source_lang = en
+type = QT
+
 [digitalclock4.plugin_date]
 file_filter = plugins/date/lang/date_<lang>.ts
 source_file = plugins/date/lang/date_en.ts
