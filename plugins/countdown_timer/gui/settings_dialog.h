@@ -36,12 +36,25 @@ public:
   explicit SettingsDialog(QWidget* parent = nullptr);
   ~SettingsDialog();
 
+  void AddCommonWidget(QWidget* widget);
+
   void Init(const QSettings::SettingsMap& settings);
 
 signals:
   void OptionChanged(const QString&, const QVariant&);
 
 private slots:
+  void on_target_time_rbtn_clicked();
+  void on_interval_rbtn_clicked();
+
+  void on_target_time_edit_dateTimeChanged(const QDateTime &date_time);
+
+  void on_h_edit_valueChanged(int arg1);
+  void on_m_edit_valueChanged(int arg1);
+  void on_s_edit_valueChanged(int arg1);
+
+  void on_show_msg_clicked(bool checked);
+  void on_msg_text_edit_textChanged();
 
 private:
   Ui::SettingsDialog* ui;

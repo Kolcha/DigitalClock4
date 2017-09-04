@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>308</width>
-    <height>137</height>
+    <width>384</width>
+    <height>283</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,111 +17,89 @@
    <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="sizeConstraint">
-    <enum>QLayout::SetFixedSize</enum>
-   </property>
    <item>
-    <widget class="QGroupBox" name="format_group">
-     <property name="title">
-      <string>Format</string>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
      </property>
-     <layout class="QGridLayout" name="gridLayout" columnstretch="0,1">
-      <item row="0" column="0">
-       <widget class="QRadioButton" name="int_type_button">
-        <property name="text">
-         <string>system</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="int_type_box"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="str_type_button">
-        <property name="text">
-         <string>custom</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QComboBox" name="str_type_box">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="editable">
-         <bool>true</bool>
-        </property>
-        <item>
-         <property name="text">
-          <string notr="true">dd.MM.yyyy</string>
+     <widget class="QWidget" name="timer_tab">
+      <attribute name="title">
+       <string>Timer</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0" colspan="2">
+        <widget class="QFrame" name="timeout_frame">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
          </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">MM/dd/yyyy</string>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
          </property>
-        </item>
-        <item>
+         <layout class="QGridLayout" name="gridLayout" columnstretch="1,0,0,0">
+          <item row="0" column="0">
+           <widget class="QRadioButton" name="target_time_rbtn">
+            <property name="text">
+             <string>target time</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" colspan="3">
+           <widget class="QDateTimeEdit" name="target_time_edit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="interval_rbtn">
+            <property name="text">
+             <string>interval</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="h_edit">
+            <property name="toolTip">
+             <string>hours</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QSpinBox" name="m_edit">
+            <property name="toolTip">
+             <string>minutes</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QSpinBox" name="s_edit">
+            <property name="toolTip">
+             <string>seconds</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QCheckBox" name="show_msg">
          <property name="text">
-          <string notr="true">M/d/yyyy</string>
+          <string>show custom message on timeout</string>
          </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">yy/MM/dd</string>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QTextEdit" name="msg_text_edit">
+         <property name="enabled">
+          <bool>false</bool>
          </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">yyyy-MM-dd</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">d-MMM-yy</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">dddd, MMMM d</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">MM:WW</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">MMMM:W</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">dddd,'\n'MMMM d, yyyy</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">MMMM d, yyyy'\nWeek: 'WW</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">yyyy-MM-dd - J</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string notr="true">yyyy-MM-dd'\nweek': WW'\nday': J</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-     </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item>
@@ -145,8 +123,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>173</x>
-     <y>243</y>
+     <x>182</x>
+     <y>273</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -161,8 +139,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>173</x>
-     <y>243</y>
+     <x>182</x>
+     <y>273</y>
     </hint>
     <hint type="destinationlabel">
      <x>173</x>
@@ -171,34 +149,82 @@
    </hints>
   </connection>
   <connection>
-   <sender>int_type_button</sender>
+   <sender>target_time_rbtn</sender>
    <signal>toggled(bool)</signal>
-   <receiver>int_type_box</receiver>
+   <receiver>target_time_edit</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>49</x>
-     <y>42</y>
+     <x>153</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>101</x>
-     <y>41</y>
+     <x>235</x>
+     <y>70</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>str_type_button</sender>
+   <sender>interval_rbtn</sender>
    <signal>toggled(bool)</signal>
-   <receiver>str_type_box</receiver>
+   <receiver>h_edit</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>80</x>
-     <y>86</y>
+     <x>162</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>69</y>
+     <x>207</x>
+     <y>94</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>interval_rbtn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>71</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>interval_rbtn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>s_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>67</x>
+     <y>107</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>333</x>
+     <y>109</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>show_msg</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>msg_text_edit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>206</x>
+     <y>144</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>182</y>
     </hint>
    </hints>
   </connection>

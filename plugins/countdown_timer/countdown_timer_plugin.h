@@ -50,6 +50,7 @@ protected:
 
 private slots:
   void InitTimer();
+  void HandleTimeout();
 
 private:
   QLabel* msg_label_;

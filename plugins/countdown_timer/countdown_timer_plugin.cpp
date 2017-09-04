@@ -19,8 +19,8 @@
 #include "countdown_timer_plugin.h"
 
 #include <QLabel>
-#include <QVBoxLayout>
 #include <QDateTime>
+#include <QMessageBox>
 
 #include "plugin_settings.h"
 
@@ -44,6 +44,7 @@ void CountdownTimerPlugin::Start()
 {
     cd_timer_ = new CountdownTimer();
     connect(cd_timer_, &CountdownTimer::timeLeftChanged, this, &CountdownTimerPlugin::TimeUpdateListener);
+    connect(cd_timer_, &CountdownTimer::timeout, this, &CountdownTimerPlugin::HandleTimeout);
 
     ::plugin::WidgetPluginBase::Start();
     InitTimer();
@@ -69,9 +70,7 @@ void CountdownTimerPlugin::Configure()
   }
   dialog->Init(curr_settings);
   // add widget with common settings configuration controls
-  QVBoxLayout* dlg_layout = qobject_cast<QVBoxLayout*>(dialog->layout());
-  Q_ASSERT(dlg_layout);
-  dlg_layout->insertWidget(dlg_layout->count() - 1, InitConfigWidget(dialog));
+  dialog->AddCommonWidget(InitConfigWidget(dialog));
   // connect main signals/slots
   connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
           settings_, SLOT(SetOption(QString,QVariant)));
@@ -123,6 +122,16 @@ void CountdownTimerPlugin::InitTimer()
         timeout += 60 * settings_->GetOption(OPT_INTERVAL_MINUTES).toLongLong();
         timeout += 3600 * settings_->GetOption(OPT_INTERVAL_HOURS).toLongLong();
         cd_timer_->setTimeout(timeout);
+    }
+}
+
+void CountdownTimerPlugin::HandleTimeout()
+{
+    if (settings_->GetOption(OPT_SHOW_MESSAGE).toBool()) {
+        QMessageBox::warning(nullptr,
+                             info_.display_name,
+                             settings_->GetOption(OPT_MESSAGE_TEXT).toString(),
+                             QMessageBox::Ok);
     }
 }
 
