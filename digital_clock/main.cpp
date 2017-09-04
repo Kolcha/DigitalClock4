@@ -69,6 +69,12 @@ int main(int argc, char* argv[])
     }
   }
 
+  // small trick to get links to look better
+  QPalette p;
+  p.setColor(QPalette::Link, p.color(QPalette::Active, QPalette::Text));
+  p.setColor(QPalette::LinkVisited, p.color(QPalette::Inactive, QPalette::Text));
+  QApplication::setPalette(p);
+
   digital_clock::MainWindow wnd;
   wnd.show();
 
