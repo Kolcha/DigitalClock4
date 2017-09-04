@@ -28,7 +28,8 @@ SUBDIRS += \
     quick_note \
     date \
     ip_address \
-    chime
+    chime \
+    countdown_timer
 
 windows {
 SUBDIRS += \

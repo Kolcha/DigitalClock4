@@ -58,6 +58,9 @@
       <Component Id="plugin_dll18" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{851B650E-1FCB-40B5-AB67-7217ED88E047}">
         <File Id="talking_clock.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_9_1_MSVC2015_32bit-Release\plugins\talking_clock\release\talking_clock.dll" />
       </Component>
+      <Component Id="plugin_dll19" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{056254FB-9542-4DE5-BF5A-3BAAC675D13A}">
+        <File Id="countdown_timer.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_9_1_MSVC2015_32bit-Release\plugins\countdown_timer\release\countdown_timer.dll" />
+      </Component>
 
       <Component Id="win_on_top_ext" Directory="plugins_special" Guid="{69192379-B1C6-43F3-AC08-BC5735F359D4}">
         <File Id="win_on_top_hook.dll" KeyPath="yes" Source="..\..\..\build-DigitalClock-Desktop_Qt_5_9_1_MSVC2015_32bit-Release\plugins\win_on_top\win_on_top_hook\release\win_on_top_hook.dll" />
