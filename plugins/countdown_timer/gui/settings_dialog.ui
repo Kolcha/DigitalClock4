@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Date plugin settings</string>
+   <string>Countdown timer plugin settings</string>
   </property>
   <property name="modal">
    <bool>true</bool>
