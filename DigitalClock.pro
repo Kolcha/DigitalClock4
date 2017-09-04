@@ -26,9 +26,7 @@ SUBDIRS += \
     digital_clock \
     plugins
 
-digital_clock.depends = clock_common
-digital_clock.depends = skin_draw
-digital_clock.depends = plugin_core
+digital_clock.depends = clock_common skin_draw plugin_core
 plugin_core.depends = clock_common skin_draw
 plugins.depends = plugin_core
 
