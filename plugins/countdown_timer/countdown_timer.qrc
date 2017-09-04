@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/countdown_timer">
+        <file alias="countdown_timer_ru.qm">lang/countdown_timer_ru.qm</file>
+        <file alias="icon.svg.p">1464840078_common-calendar-day-outline-stroke.svg</file>
+    </qresource>
+</RCC>
