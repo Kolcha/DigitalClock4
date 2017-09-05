@@ -23,17 +23,17 @@
 
 namespace countdown_timer {
 
-#define OPT_INTERVAL_HOURS            "plugins/countdown_timer/hours"
-#define OPT_INTERVAL_MINUTES          "plugins/countdown_timer/minutes"
-#define OPT_INTERVAL_SECONDS          "plugins/countdown_timer/seconds"
+const char* const OPT_INTERVAL_HOURS    = "plugins/countdown_timer/hours";
+const char* const OPT_INTERVAL_MINUTES  = "plugins/countdown_timer/minutes";
+const char* const OPT_INTERVAL_SECONDS  = "plugins/countdown_timer/seconds";
 
-#define OPT_USE_TARGET_TIME           "plugins/countdown_timer/use_target_time"
-#define OPT_TARGET_DATETIME           "plugins/countdown_timer/target_datetime"
+const char* const OPT_USE_TARGET_TIME   = "plugins/countdown_timer/use_target_time";
+const char* const OPT_TARGET_DATETIME   = "plugins/countdown_timer/target_datetime";
 
-#define OPT_SHOW_MESSAGE              "plugins/countdown_timer/show_message"
-#define OPT_MESSAGE_TEXT              "plugins/countdown_timer/message_text"
+const char* const OPT_SHOW_MESSAGE      = "plugins/countdown_timer/show_message";
+const char* const OPT_MESSAGE_TEXT      = "plugins/countdown_timer/message_text";
 
-#define OPT_WIDGET_IS_VISIBLE         "plugins/countdown_timer/show_widget"
+const char* const OPT_WIDGET_IS_VISIBLE = "plugins/countdown_timer/show_widget";
 
 void InitDefaults(QSettings::SettingsMap* defaults);
 

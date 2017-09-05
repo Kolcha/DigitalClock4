@@ -24,7 +24,7 @@
 namespace any_zoom {
 
 // any zoom plugin settings keys
-#define OPT_CURRENT_ZOOM        "plugins/any_zoom/zoom"
+const char* const OPT_CURRENT_ZOOM = "plugins/any_zoom/zoom";
 
 inline void InitDefaults(QSettings::SettingsMap* defaults)
 {

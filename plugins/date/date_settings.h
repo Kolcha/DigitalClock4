@@ -25,9 +25,9 @@
 namespace date {
 
 // date plugin settings
-#define OPT_DATE_FORMAT_TYPE  "plugins/date/format_type"
-#define OPT_DATE_FORMAT_STR   "plugins/date/format_str"
-#define OPT_DATE_FORMAT_INT   "plugins/date/format_int"
+const char* const OPT_DATE_FORMAT_TYPE = "plugins/date/format_type";
+const char* const OPT_DATE_FORMAT_STR  = "plugins/date/format_str";
+const char* const OPT_DATE_FORMAT_INT  = "plugins/date/format_int";
 
 enum class FormatType {
   FT_STR, FT_INT
