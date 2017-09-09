@@ -289,6 +289,12 @@
             <Component Id="cmp4ECE5DB54179AA426728CA0CB157E846" Directory="dir08FB36725A06774CDC6C4D42DA643B8D" Guid="{36912018-568E-465A-B276-D9A24BF5BB41}">
                 <File Id="filB6F01CC8D23F9348C34981FD163656CA" KeyPath="yes" Source="..\..\..\data\skins\flipclock-hd\9.png" />
             </Component>
+            <Component Id="cmp2831418CD82E9AF565CE5F6D39E368E7" Directory="dir08FB36725A06774CDC6C4D42DA643B8D" Guid="{73BA4AAA-2AE0-4180-8931-BC02FC5EA2DC}">
+                <File Id="filB7199CC2C1F8DCCC24EE32720E95C7DF" KeyPath="yes" Source="..\..\..\data\skins\flipclock-hd\am.png" />
+            </Component>
+            <Component Id="cmpE32662DB6CEB10BA4A791013E88A8EC2" Directory="dir08FB36725A06774CDC6C4D42DA643B8D" Guid="{100BBFE6-B1A0-4E5A-978B-CFE550EB1EF2}">
+                <File Id="fil74C4F5DDBEB59C63486BFEDBE8450FE7" KeyPath="yes" Source="..\..\..\data\skins\flipclock-hd\pm.png" />
+            </Component>
             <Component Id="cmpFE192AFC8202DC047E865B4FBDDFD883" Directory="dir08FB36725A06774CDC6C4D42DA643B8D" Guid="{B079E14C-9607-47B5-AE11-8553A4FA4EF1}">
                 <File Id="filDF87B1B1155C7DC10DFDAECA6054F365" KeyPath="yes" Source="..\..\..\data\skins\flipclock-hd\s.png" />
             </Component>
@@ -495,6 +501,45 @@
             </Component>
             <Component Id="cmpFDDC2CC18DA56EEF01A2F41ABA8E02D9" Directory="dir59F8140DD7416E3849C3683CE8B4AB7D" Guid="{F07F122A-9FFA-4E7B-9F78-57FB1E649AC4}">
                 <File Id="fil1E71C8D06BDA153D765084393CEB0EB0" KeyPath="yes" Source="..\..\..\data\skins\liquid_numbers\zreu56dre-empty.png" />
+            </Component>
+            <Component Id="cmp14B5B777A04E0F1D261737C6DCA2266D" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{84A09ECB-FC41-4846-85CD-7F430BBBBF42}">
+                <File Id="filF77841C22DABD78122D0291E6A0A789B" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\0.svg" />
+            </Component>
+            <Component Id="cmpC965D47FCF7312C0D25F08A1C9B3FF99" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{7E9F4A9C-FC71-4A3C-B509-0C947B231FE6}">
+                <File Id="filB8EFDCCFC560CC5759729FA7C81348FD" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\1.svg" />
+            </Component>
+            <Component Id="cmpF5B9CE642F2D6C876819DC91ACAABA3E" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{8102875C-84DE-4186-8A2C-F77DD20CFBB3}">
+                <File Id="filBC23414F230E52C53518A1FCE8A5DB2C" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\2.svg" />
+            </Component>
+            <Component Id="cmp281CA7345CF11798EEB7B4B9DBF74714" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{8253DC16-64F6-402E-8F3C-E958F5D2DE86}">
+                <File Id="fil24DD005E8EAD63014AE4B79E7FEDE691" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\3.svg" />
+            </Component>
+            <Component Id="cmpD6C203D715C03F3BD3D410F5E9A53BBA" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{FA6EA94A-E3EC-40AE-8A92-2D055421A2D7}">
+                <File Id="fil53A7E2CBE43F1921E7F8F7DC52D65E1B" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\4.svg" />
+            </Component>
+            <Component Id="cmpC6FA42E0C8E2F7728CA0AF1272C4E0B7" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{BDF60458-8CF7-4020-A746-0E1D0C4920FE}">
+                <File Id="filA3B20329AA1553EF7EB8335793FA556B" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\5.svg" />
+            </Component>
+            <Component Id="cmp11A53172053E57E58D6D339E9184E50E" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{A82F34D5-572D-48F7-A1CB-D7B7CB468705}">
+                <File Id="filB64DF6D350F044C478A3BDCE3B87DD70" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\6.svg" />
+            </Component>
+            <Component Id="cmpDA5DE0A8647FFF7ECF6AF3C25A6A5FC7" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{D0EF30EA-2550-49C0-A5B5-A8223E2D9220}">
+                <File Id="fil2500928C9CFEA83F1BF7C01B0B1943B5" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\7.svg" />
+            </Component>
+            <Component Id="cmp9FB774F511663D1DBAFEAC6BEA8FB4EA" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{6272B01D-2C7C-460D-8417-BDA422050B0D}">
+                <File Id="filC004F1606179776FBED1EF819DD7F234" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\8.svg" />
+            </Component>
+            <Component Id="cmp4A30FAE14489D1CB143518E0CFF060C3" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{7DB3700A-469A-40D5-8C85-F3178D51B127}">
+                <File Id="fil5E6C6C32034070742EBA727CC970E891" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\9.svg" />
+            </Component>
+            <Component Id="cmpD80C658B664C2C45CE30FCFB9FC4153E" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{905ECB06-7E37-4EEF-B3CC-B2EA87517330}">
+                <File Id="fil3007C435B8C73D7F7B009C5059011520" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\d.svg" />
+            </Component>
+            <Component Id="cmp258831086F1D91867E68E2AE9851F233" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{5AA8DCDC-C257-41D0-BF65-7641AD50DA0B}">
+                <File Id="fil16C85D0DCA71D9AD6B67B8F4FEA0E95B" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\e.svg" />
+            </Component>
+            <Component Id="cmp549F6AE043F9DDA71C7D6A51C058A0AD" Directory="dir02E5F647799521C87D276EE2534E9366" Guid="{85E3EB25-9D20-4E8B-9D9D-1ACFE960F32A}">
+                <File Id="filE8FCA0351AA3A5EA3BF618F5B0E30A86" KeyPath="yes" Source="..\..\..\data\skins\numeric-dotted\skin.ini" />
             </Component>
             <Component Id="cmpAFFD985498A870BE968140E7C070DADA" Directory="dir16DA5A7CF07BD03F2472E24FD1539B19" Guid="{0FF82F60-BB7E-424A-BE4A-DF8991410D24}">
                 <File Id="fil8A334B5560219770DDF5A6D1BDEBFB9F" KeyPath="yes" Source="..\..\..\data\skins\origami_style\0.png" />
@@ -755,6 +800,11 @@
                 <File Id="filC244CFA0A1042A660586D5C239A3A309" KeyPath="yes" Source="..\..\..\data\skins\vintage_digits\skin.ini" />
             </Component>
         </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir72DB7679337FABB967BDFB270613AF8B">
+            <Directory Id="dir02E5F647799521C87D276EE2534E9366" Name="numeric-dotted" />
+        </DirectoryRef>
     </Fragment>
     <Fragment>
         <DirectoryRef Id="dir72DB7679337FABB967BDFB270613AF8B">
