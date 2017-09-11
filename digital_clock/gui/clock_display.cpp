@@ -27,6 +27,82 @@
 namespace digital_clock {
 namespace gui {
 
+
+static QString time_to_str(const QTime& t, const QString& fmt)
+{
+  QString out_str;
+  for (int i = 0; i < fmt.length();) {
+    QStringRef ss = fmt.midRef(i, 2);
+    if (ss == "HH") {
+      out_str += QString("%1").arg(t.hour(), 2, 10, QLatin1Char('0'));
+      i += 2;
+      continue;
+    }
+    if (ss == "hh") {
+      int hour = t.hour();
+      if (hour > 12) hour -= 12;
+      out_str += QString("%1").arg(hour, 2, 10, QLatin1Char('0'));
+      i += 2;
+      continue;
+    }
+    if (ss == "mm") {
+      out_str += QString("%1").arg(t.minute(), 2, 10, QLatin1Char('0'));
+      i += 2;
+      continue;
+    }
+    if (ss == "ss") {
+      out_str += QString("%1").arg(t.second(), 2, 10, QLatin1Char('0'));
+      i += 2;
+      continue;
+    }
+    if (ss == "AP") {
+      out_str += t.hour() < 12 ? "AM" : "PM";
+      i += 2;
+      continue;
+    }
+    if (ss == "ap") {
+      out_str += t.hour() < 12 ? "am" : "pm";
+      i += 2;
+      continue;
+    }
+    if (fmt[i] == 'H') {
+      out_str += QString::number(t.hour());
+      ++i;
+      continue;
+    }
+    if (fmt[i] == 'h') {
+      int hour = t.hour();
+      if (hour > 12) hour -= 12;
+      out_str += QString::number(hour);
+      ++i;
+      continue;
+    }
+    if (fmt[i] == 'm') {
+      out_str += QString::number(t.minute());
+      ++i;
+      continue;
+    }
+    if (fmt[i] == 's') {
+      out_str += QString::number(t.second());
+      ++i;
+      continue;
+    }
+    if (fmt[i] == 'A') {
+      out_str += t.hour() < 12 ? "AM" : "PM";
+      ++i;
+      continue;
+    }
+    if (fmt[i] == 'a') {
+      out_str += t.hour() < 12 ? "am" : "pm";
+      ++i;
+      continue;
+    }
+    out_str += fmt[i++];
+  }
+  return out_str;
+}
+
+
 ClockDisplay::ClockDisplay(QWidget* parent) :
   QLabel(parent),
   sep_visible_(false), sep_flashes_(true), url_enabled_(false),
@@ -90,10 +166,10 @@ void ClockDisplay::TimeoutHandler()
     }
     SetTimeFormat(time_format);
   }
-  QLocale c_locale(QLocale::C, QLocale::AnyCountry);
+
   QDateTime dt = QDateTime::currentDateTime();
   if (!local_time_) dt = dt.toTimeZone(time_zone_);
-  QString str_time = c_locale.toString(dt.time(), time_format_);
+  QString str_time = time_to_str(dt.time(), time_format_);
 
   QList<int> seps_pos;
   for (int i = 0; i < str_time.length(); ++i) {
