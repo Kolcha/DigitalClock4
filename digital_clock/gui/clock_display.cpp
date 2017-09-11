@@ -40,6 +40,7 @@ static QString time_to_str(const QTime& t, const QString& fmt)
     }
     if (ss == "hh") {
       int hour = t.hour();
+      if (hour == 0) hour = 12;
       if (hour > 12) hour -= 12;
       out_str += QString("%1").arg(hour, 2, 10, QLatin1Char('0'));
       i += 2;
@@ -72,6 +73,7 @@ static QString time_to_str(const QTime& t, const QString& fmt)
     }
     if (fmt[i] == 'h') {
       int hour = t.hour();
+      if (hour == 0) hour = 12;
       if (hour > 12) hour -= 12;
       out_str += QString::number(hour);
       ++i;
