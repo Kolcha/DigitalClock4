@@ -66,6 +66,7 @@ private:
 
   bool local_time_;
   QTimeZone time_zone_;
+  QString sys_time_format_;
 };
 
 } // namespace gui

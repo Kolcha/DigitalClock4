@@ -20,7 +20,7 @@
 
 #include <QDateTime>
 #include <QLocale>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QMouseEvent>
 #include <QDesktopServices>
 
@@ -108,9 +108,11 @@ static QString time_to_str(const QTime& t, const QString& fmt)
 ClockDisplay::ClockDisplay(QWidget* parent) :
   QLabel(parent),
   sep_visible_(false), sep_flashes_(true), url_enabled_(false),
-  local_time_(true), time_zone_(QTimeZone::systemTimeZone())
+  local_time_(true), time_zone_(QTimeZone::systemTimeZone()),
+  sys_time_format_(QLocale::system().timeFormat(QLocale::ShortFormat))
 {
   setAlignment(Qt::AlignCenter);
+  time_format_ = sys_time_format_;
 }
 
 void ClockDisplay::DrawImage(const QImage& image)
@@ -126,9 +128,9 @@ void ClockDisplay::SetSeparatorFlash(bool set) noexcept
 
 void ClockDisplay::SetTimeFormat(const QString& format)
 {
-  time_format_ = format;
-  seps_ = format;
-  seps_.remove(QRegExp("[hmszap]", Qt::CaseInsensitive));
+  time_format_ = format.isEmpty() ? sys_time_format_ : format;
+  seps_ = time_format_;
+  seps_.remove(QRegularExpression("[hmszap]", QRegularExpression::CaseInsensitiveOption));
   emit SeparatorsChanged(seps_);
   TimeoutHandler(); // to emit redraw request
 }
@@ -158,16 +160,7 @@ void ClockDisplay::SetURL(const QString& url)
 
 void ClockDisplay::TimeoutHandler()
 {
-  if (time_format_.isEmpty()) {
-    QString sys_time_format = QLocale::system().timeFormat();
-    int sep_pos = sys_time_format.indexOf(':');
-    QString time_format = sys_time_format.mid(0, sys_time_format.indexOf(':', sep_pos + 1));
-
-    if (sys_time_format.contains('A', Qt::CaseInsensitive)) {
-      time_format += 'A';
-    }
-    SetTimeFormat(time_format);
-  }
+  Q_ASSERT(!time_format_.isEmpty());
 
   QDateTime dt = QDateTime::currentDateTime();
   if (!local_time_) dt = dt.toTimeZone(time_zone_);
