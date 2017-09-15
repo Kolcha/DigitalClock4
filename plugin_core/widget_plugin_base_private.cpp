@@ -76,7 +76,7 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
   if (key == OptionKey(OPT_CUSTOM_FONT, obj_->plg_name_)) {
     font_ = value.value<QFont>();
     if (!obj_->settings_->GetOption(OptionKey(OPT_USE_CLOCK_SKIN, obj_->plg_name_)).toBool())
-        ApplySkin(CreateTextSkin(font_));
+      ApplySkin(CreateTextSkin(font_));
   }
   if (key == OptionKey(OPT_ZOOM_MODE, obj_->plg_name_)) {
     switch (static_cast<ZoomMode>(value.toInt())) {
@@ -140,19 +140,19 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
   }
 }
 
-skin_draw::ISkin::SkinPtr WidgetPluginBasePrivate::CreateTextSkin(const QFont &fnt)
+skin_draw::ISkin::SkinPtr WidgetPluginBasePrivate::CreateTextSkin(const QFont& fnt)
 {
-    skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(fnt));
-    txt_skin->SetDevicePixelRatio(main_wnd_->devicePixelRatioF());
-    return txt_skin;
+  skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(fnt));
+  txt_skin->SetDevicePixelRatio(main_wnd_->devicePixelRatioF());
+  return txt_skin;
 }
 
 void WidgetPluginBasePrivate::ApplySkin(skin_draw::ISkin::SkinPtr skin)
 {
-    drawer_->SetString(QString());
-    drawer_->ApplySkin(skin);
-    last_text_ = "-";             // reset last date to recalculate zoom
-    obj_->TimeUpdateListener();   // force redraw
+  drawer_->SetString(QString());
+  drawer_->ApplySkin(skin);
+  last_text_ = "-";             // reset last date to recalculate zoom
+  obj_->TimeUpdateListener();   // force redraw
 }
 
 } // namespace plugin

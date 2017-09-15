@@ -35,7 +35,7 @@ WidgetPluginBase::WidgetPluginBase() : avail_width_(0), private_(new WidgetPlugi
 {
 }
 
-void WidgetPluginBase::InitSettings(SettingsStorage *backend)
+void WidgetPluginBase::InitSettings(SettingsStorage* backend)
 {
   PluginBase::InitSettings(backend);
   QSettings::SettingsMap defaults;
