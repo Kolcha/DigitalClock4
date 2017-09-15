@@ -45,6 +45,7 @@ public:
   ClockDisplay* GetDisplay() const;
 
   bool preview() const { return preview_mode_; }
+  ::skin_draw::ISkin::SkinPtr skin() const;
 
 signals:
   void SeparatorsChanged(const QString& seps);

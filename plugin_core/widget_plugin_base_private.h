@@ -101,16 +101,21 @@ public:
   QFont font_;
   /// current clock font
   QFont clock_font_;
+  /// current clock skin
+  ::skin_draw::ISkin::SkinPtr clock_skin_;
   /// current clock skin customization
   ::skin_draw::SkinDrawer::CustomizationType clock_customization_;
   /// current clock color
   QColor clock_color_;
   /// last rendered text
   QString last_text_;
-  /// text render
+  /// text renderer
   ::skin_draw::SkinDrawer* drawer_;
 
 private:
+  ::skin_draw::ISkin::SkinPtr CreateTextSkin(const QFont& fnt);
+  void ApplySkin(::skin_draw::ISkin::SkinPtr skin);
+
   WidgetPluginBase* obj_;
 };
 

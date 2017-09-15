@@ -192,8 +192,10 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
   }
   // init skin user plugins
   ISkinUserPlugin* su = qobject_cast<ISkinUserPlugin*>(plugin);
-  if (su && connected) {
-    connect(data_.window, &gui::ClockWidget::SkinChanged, su, &ISkinUserPlugin::SetSkin);
+  if (su) {
+    if (connected)
+      connect(data_.window, &gui::ClockWidget::SkinChanged, su, &ISkinUserPlugin::SetSkin);
+    su->SetSkin(data_.window->skin());
   }
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
