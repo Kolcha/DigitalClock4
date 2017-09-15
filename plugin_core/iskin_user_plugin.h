@@ -7,6 +7,8 @@
 #include "plugin_core_global.h"
 
 class PLUGIN_CORE_SHARED_EXPORT ISkinUserPlugin : public IClockPlugin {
+    Q_OBJECT
+
 public slots:
     virtual void SetSkin(skin_draw::ISkin::SkinPtr new_skin) = 0;
 };

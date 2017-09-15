@@ -67,6 +67,10 @@ public:
    * @see WidgetLocation, WidgetPluginBase::avail_width_
    */
   int CalculateAvailableSpace() const;
+  /*!
+   * Set given @a skin to skin darw engine.
+   */
+  void ApplySkin(::skin_draw::ISkin::SkinPtr skin);
 
 public slots:
   /*!
@@ -114,7 +118,6 @@ public:
 
 private:
   ::skin_draw::ISkin::SkinPtr CreateTextSkin(const QFont& fnt);
-  void ApplySkin(::skin_draw::ISkin::SkinPtr skin);
 
   WidgetPluginBase* obj_;
 };

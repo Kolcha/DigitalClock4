@@ -35,6 +35,16 @@ WidgetPluginBase::WidgetPluginBase() : avail_width_(0), private_(new WidgetPlugi
 {
 }
 
+void WidgetPluginBase::InitSettings(SettingsStorage *backend)
+{
+  PluginBase::InitSettings(backend);
+  QSettings::SettingsMap defaults;
+  private_->InitBaseSettingsDefaults(&defaults);
+  InitSettingsDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->TrackChanges(true);
+}
+
 void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
 {
   for (auto iter = current_settings.begin(); iter != current_settings.end(); ++iter) {
@@ -96,12 +106,6 @@ void WidgetPluginBase::Init(QWidget* main_wnd)
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
           private_, SLOT(SettingsChangeListener(QString,QVariant)));
 
-  QSettings::SettingsMap defaults;
-  private_->InitBaseSettingsDefaults(&defaults);
-  InitSettingsDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-  settings_->TrackChanges(true);
-
   avail_width_ = private_->CalculateAvailableSpace();
 }
 
@@ -160,7 +164,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       if (settings_->GetOption(OptionKey(OPT_USE_CLOCK_SKIN, plg_name_)).toBool()) break;
       skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(private_->font_));
       txt_skin->SetDevicePixelRatio(private_->main_wnd_->devicePixelRatioF());
-      private_->drawer_->ApplySkin(txt_skin);
+      private_->ApplySkin(txt_skin);
       break;
     }
 

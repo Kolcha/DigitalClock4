@@ -58,7 +58,7 @@ RESOURCES += \
     plugin_core.qrc
 
 win32:RC_FILE = plugin_core.rc
-unix:VERSION = 1.1.2
+unix:VERSION = 1.1.3
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
 
 # add skin_draw library

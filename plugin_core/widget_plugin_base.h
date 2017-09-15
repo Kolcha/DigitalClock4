@@ -56,6 +56,11 @@ public:
   /*! Constructor */
   WidgetPluginBase();
   /*!
+   * Create PluginSettings object.
+   * @param backend - storage backend
+   */
+  void InitSettings(SettingsStorage* backend) override;
+  /*!
    * @brief Init internals with current clock settings.
    *
    * Uses almost all view-related options to configure render.
