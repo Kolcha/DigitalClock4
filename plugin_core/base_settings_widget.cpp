@@ -54,6 +54,7 @@ BaseSettingsWidget::BaseSettingsWidget(QWidget* parent) :
 
   ui->setupUi(this);
   layout()->setMargin(0);
+  ui->use_clock_skin->hide();           // TODO: remove with release 4.6
 }
 
 BaseSettingsWidget::~BaseSettingsWidget()
@@ -117,6 +118,10 @@ void BaseSettingsWidget::InitWidgets(const QMap<WidgetPluginOption, QVariant>& c
 
       case OPT_CUSTOM_COLOR:
         last_color_ = iter.value().value<QColor>();
+        break;
+
+      case OPT_USE_CLOCK_SKIN:
+        ui->use_clock_skin->setChecked(iter.value().toBool());
         break;
     }
   }
@@ -218,6 +223,11 @@ void BaseSettingsWidget::on_custom_color_button_clicked()
   if (!color.isValid()) return;
   last_color_ = color;
   emit OptionChanged(OPT_CUSTOM_COLOR, color);
+}
+
+void BaseSettingsWidget::on_use_clock_skin_clicked(bool checked)
+{
+  emit OptionChanged(OPT_USE_CLOCK_SKIN, checked);
 }
 
 } // namespace plugin

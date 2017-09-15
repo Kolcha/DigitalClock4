@@ -94,6 +94,8 @@ private slots:
   void on_use_custom_color_clicked(bool checked);
   void on_custom_color_button_clicked();
 
+  void on_use_clock_skin_clicked(bool checked);
+
 private:
   Ui::BaseSettingsWidget* ui;
   QFont last_font_;

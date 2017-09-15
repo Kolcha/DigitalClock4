@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>398</width>
-    <height>290</height>
+    <width>500</width>
+    <height>351</height>
    </rect>
   </property>
   <layout class="QGridLayout" name="base_settings_layout">
@@ -242,6 +242,13 @@
      </layout>
     </widget>
    </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="use_clock_skin">
+     <property name="text">
+      <string>use current clock skin instead of customized font</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
@@ -253,12 +260,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>124</x>
-     <y>267</y>
+     <x>145</x>
+     <y>299</y>
     </hint>
     <hint type="destinationlabel">
-     <x>378</x>
-     <y>268</y>
+     <x>478</x>
+     <y>300</y>
     </hint>
    </hints>
   </connection>
@@ -269,12 +276,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>378</x>
-     <y>85</y>
+     <x>478</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>76</x>
-     <y>75</y>
+     <x>247</x>
+     <y>89</y>
     </hint>
    </hints>
   </connection>
@@ -289,8 +296,8 @@
      <y>56</y>
     </hint>
     <hint type="destinationlabel">
-     <x>101</x>
-     <y>72</y>
+     <x>272</x>
+     <y>89</y>
     </hint>
    </hints>
   </connection>
@@ -305,8 +312,8 @@
      <y>56</y>
     </hint>
     <hint type="destinationlabel">
-     <x>378</x>
-     <y>85</y>
+     <x>478</x>
+     <y>95</y>
     </hint>
    </hints>
   </connection>
@@ -321,8 +328,8 @@
      <y>76</y>
     </hint>
     <hint type="destinationlabel">
-     <x>338</x>
-     <y>75</y>
+     <x>478</x>
+     <y>95</y>
     </hint>
    </hints>
   </connection>
@@ -333,12 +340,28 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>73</x>
-     <y>177</y>
+     <x>94</x>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
-     <x>112</x>
-     <y>178</y>
+     <x>140</x>
+     <y>93</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>use_clock_skin</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>font_group</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>22</x>
+     <y>18</y>
     </hint>
    </hints>
   </connection>

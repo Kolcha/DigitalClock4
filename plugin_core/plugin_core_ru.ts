@@ -108,5 +108,10 @@
         <source>use custom color</source>
         <translation>использовать пользовательский цвет</translation>
     </message>
+    <message>
+        <location filename="base_settings_widget.ui" line="248"/>
+        <source>use current clock skin instead of customized font</source>
+        <translation>использовать стиль часов вместо шрифта</translation>
+    </message>
 </context>
 </TS>
