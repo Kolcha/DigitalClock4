@@ -25,6 +25,7 @@
 #include <QPluginLoader>
 
 #include "iplugin_init.h"
+#include "iskin_user_plugin.h"
 
 #include "core/clock_settings.h"
 
@@ -189,15 +190,18 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
     connect(this, SIGNAL(UpdateSettings(Option,QVariant)),
             plugin, SLOT(SettingsListener(Option,QVariant)));
   }
+  // init skin user plugins
+  ISkinUserPlugin* su = qobject_cast<ISkinUserPlugin*>(plugin);
+  if (su && connected) {
+    connect(data_.window, &gui::ClockWidget::SkinChanged, su, &ISkinUserPlugin::SetSkin);
+  }
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
-  if (sp) {
-    if (connected) {
-      connect(sp, SIGNAL(OptionChanged(Option,QVariant)),
-              data_.window, SLOT(ApplyOption(Option,QVariant)));
-      connect(sp, SIGNAL(OptionChanged(Option,QVariant)),
-              this, SIGNAL(UpdateSettings(Option,QVariant)));
-    }
+  if (sp && connected) {
+    connect(sp, SIGNAL(OptionChanged(Option,QVariant)),
+            data_.window, SLOT(ApplyOption(Option,QVariant)));
+    connect(sp, SIGNAL(OptionChanged(Option,QVariant)),
+            this, SIGNAL(UpdateSettings(Option,QVariant)));
   }
   ISettingsPluginInit* spi = qobject_cast<ISettingsPluginInit*>(plugin);
   if (spi) spi->Init(data_.settings->GetSettings());

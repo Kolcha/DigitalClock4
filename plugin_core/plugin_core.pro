@@ -39,6 +39,7 @@ SOURCES += \
 
 HEADERS += \
     base_settings_widget.h \
+    iskin_user_plugin.h \
     plugin_core_global.h \
     widget_plugin_base.h \
     widget_plugin_base_private.h \

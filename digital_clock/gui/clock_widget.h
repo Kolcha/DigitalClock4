@@ -48,6 +48,7 @@ public:
 
 signals:
   void SeparatorsChanged(const QString& seps);
+  void SkinChanged(::skin_draw::ISkin::SkinPtr skin);
 
 public slots:
   void ApplySkin(::skin_draw::ISkin::SkinPtr skin);
