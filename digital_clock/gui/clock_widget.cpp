@@ -53,10 +53,16 @@ ClockDisplay* ClockWidget::GetDisplay() const
   return display_;
 }
 
+skin_draw::ISkin::SkinPtr ClockWidget::skin() const
+{
+  return drawer_->currentSkin();
+}
+
 void ClockWidget::ApplySkin(skin_draw::ISkin::SkinPtr skin)
 {
   skin->SetDevicePixelRatio(this->devicePixelRatioF());
   drawer_->ApplySkin(skin);
+  emit SkinChanged(skin);
 }
 
 void ClockWidget::ApplyOption(Option option, const QVariant& value)

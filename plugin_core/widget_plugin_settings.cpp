@@ -36,6 +36,7 @@ QString OptionKey(const plugin::WidgetPluginOption opt, const QString& plg_name)
     case OPT_WIDGET_LOCATION:     return fmt_str.arg(plg_name, "widget_location");
     case OPT_USE_CUSTOM_COLOR:    return fmt_str.arg(plg_name, "use_custom_color");
     case OPT_CUSTOM_COLOR:        return fmt_str.arg(plg_name, "custom_color");
+    case OPT_USE_CLOCK_SKIN:      return fmt_str.arg(plg_name, "use_clock_skin");
   }
 
   Q_ASSERT(false);
@@ -53,6 +54,7 @@ void InitDefaults(QMap<WidgetPluginOption, QVariant>* defaults)
   defaults->insert(OPT_ALIGNMENT, static_cast<int>(Qt::AlignCenter));
   defaults->insert(OPT_USE_CUSTOM_COLOR, false);
   defaults->insert(OPT_CUSTOM_COLOR, QColor(0, 170, 255));
+  defaults->insert(OPT_USE_CLOCK_SKIN, false);
 }
 
 } // namespace plugin

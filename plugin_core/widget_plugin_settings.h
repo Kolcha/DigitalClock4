@@ -38,7 +38,8 @@ enum WidgetPluginOption {
   OPT_WIDGET_LOCATION,        /*!< widget position, WidgetLocation, one of WidgetLocation values */
   OPT_ALIGNMENT,              /*!< plugin widgets alignment, Qt::Alignment, any allowed flags combination */
   OPT_USE_CUSTOM_COLOR,       /*!< will plugin use custom color or drawn as clock, bool, true/false */
-  OPT_CUSTOM_COLOR            /*!< plugin color, if OPT_USE_CUSTOM_COLOR is set, QColor */
+  OPT_CUSTOM_COLOR,           /*!< plugin color, if OPT_USE_CUSTOM_COLOR is set, QColor */
+  OPT_USE_CLOCK_SKIN          /*!< use clock skin for drawing, bool, true/false */
 };
 
 /*!

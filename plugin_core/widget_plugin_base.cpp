@@ -35,6 +35,16 @@ WidgetPluginBase::WidgetPluginBase() : avail_width_(0), private_(new WidgetPlugi
 {
 }
 
+void WidgetPluginBase::InitSettings(SettingsStorage* backend)
+{
+  PluginBase::InitSettings(backend);
+  QSettings::SettingsMap defaults;
+  private_->InitBaseSettingsDefaults(&defaults);
+  InitSettingsDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->TrackChanges(true);
+}
+
 void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
 {
   for (auto iter = current_settings.begin(); iter != current_settings.end(); ++iter) {
@@ -96,12 +106,6 @@ void WidgetPluginBase::Init(QWidget* main_wnd)
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
           private_, SLOT(SettingsChangeListener(QString,QVariant)));
 
-  QSettings::SettingsMap defaults;
-  private_->InitBaseSettingsDefaults(&defaults);
-  InitSettingsDefaults(&defaults);
-  settings_->SetDefaultValues(defaults);
-  settings_->TrackChanges(true);
-
   avail_width_ = private_->CalculateAvailableSpace();
 }
 
@@ -157,9 +161,10 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       private_->clock_font_ = new_value.value<QFont>();
       if (!settings_->GetOption(OptionKey(OPT_USE_CLOCK_FONT, plg_name_)).toBool()) break;
       private_->font_ = private_->clock_font_;
+      if (settings_->GetOption(OptionKey(OPT_USE_CLOCK_SKIN, plg_name_)).toBool()) break;
       skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(private_->font_));
       txt_skin->SetDevicePixelRatio(private_->main_wnd_->devicePixelRatioF());
-      private_->drawer_->ApplySkin(txt_skin);
+      private_->ApplySkin(txt_skin);
       break;
     }
 
@@ -282,13 +287,11 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
   int tw = 0;
   int th = 0;
 
-  skin_draw::TextSkin tmp_skin(private_->font_);
-  tmp_skin.SetDevicePixelRatio(private_->main_wnd_->devicePixelRatioF());
   for (auto& s : ss) {
     int lw = 0;
     int lh = 0;
     for (int i = 0; i < s.length(); ++i) {
-      QPixmap img = tmp_skin.GetImage(s, i, zoom, true);
+      QPixmap img = private_->drawer_->currentSkin()->GetImage(s, i, zoom, true);
       if (!img) continue;
       lw += img.width();
       lh = qMax(lh, img.height());
