@@ -41,6 +41,7 @@ class SKIN_DRAWSHARED_EXPORT SkinDrawer : public QObject
 {
   Q_OBJECT
 
+  Q_PROPERTY(ISkin::SkinPtr skin READ currentSkin WRITE ApplySkin NOTIFY skinChanged)
   Q_PROPERTY(QString text READ text WRITE SetString NOTIFY textChanged)
   Q_PROPERTY(qreal zoom READ zoom WRITE SetZoom NOTIFY zoomChanged)
   Q_PROPERTY(int spacing READ spacing WRITE SetSpace NOTIFY spacingChanged)
@@ -73,6 +74,11 @@ public:
   };
   Q_ENUM(CustomizationType)
 
+  /*!
+   * @property SkinDrawer::skin
+   * current skin
+   */
+  ISkin::SkinPtr currentSkin() const { return skin_; }
   /*!
    * @property SkinDrawer::text
    * current drawn text
@@ -160,6 +166,11 @@ public:
   bool previewMode() const { return preview_mode_; }
 
 signals:
+  /*!
+   * @fn void SkinDrawer::skinChanged(ISkin::SkinPtr skin)
+   * This signal is emitted when the current skin has changed, with the new @a skin as an argument.
+   */
+  void skinChanged(ISkin::SkinPtr skin);
   /*!
    * @fn void SkinDrawer::textChanged(const QString& text)
    * This signal is emitted when the current drawing text has changed, with the new @a text as an argument.

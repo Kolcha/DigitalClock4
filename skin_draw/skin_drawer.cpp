@@ -38,6 +38,7 @@ SkinDrawer::SkinDrawer(QObject* parent) :
 void SkinDrawer::ApplySkin(ISkin::SkinPtr skin)
 {
   skin_ = skin;
+  emit skinChanged(skin);
   Redraw();
 }
 
