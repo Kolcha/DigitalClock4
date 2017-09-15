@@ -25,23 +25,44 @@
 namespace digital_clock {
 namespace gui {
 
+/*!
+ * @brief Customized QToolButton intended to color selection
+ *
+ * This tool button displays a current selected color preview, whick looks like LED.
+ */
 class LedToolButton : public QToolButton
 {
   Q_OBJECT
   Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 
 public:
+  /*!
+   * Constructor.
+   * @param parent - parent object
+   */
   explicit LedToolButton(QWidget* parent = nullptr);
 
+  /*!
+   * @property LedToolButton::color
+   * current "LED" color
+   */
   QColor color() const;
 
 signals:
+  /*!
+   * @fn void LedToolButton::colorChanged(const QColor& color)
+   * This signal is emitted when the current "LED" color has changed, with the new @a color as an argument.
+   */
   void colorChanged(const QColor& color);
 
 public slots:
+  /*!
+   * Changes current "LED" color to given @a color.
+   */
   void setColor(const QColor& color);
 
 private:
+  /// current "LED" color
   QColor color_;
 };
 
