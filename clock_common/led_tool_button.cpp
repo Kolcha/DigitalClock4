@@ -21,9 +21,6 @@
 #include <QImage>
 #include <QPainter>
 
-namespace digital_clock {
-namespace gui {
-
 LedToolButton::LedToolButton(QWidget* parent) : QToolButton(parent)
 {
   blockSignals(true);
@@ -54,6 +51,3 @@ void LedToolButton::setColor(const QColor& color)
 
   emit colorChanged(color);
 }
-
-} // namespace gui
-} // namespace digital_clock

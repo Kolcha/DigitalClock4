@@ -22,9 +22,6 @@
 #include <QToolButton>
 #include <QColor>
 
-namespace digital_clock {
-namespace gui {
-
 /*!
  * @brief Customized QToolButton intended to color selection
  *
@@ -65,8 +62,5 @@ private:
   /// current "LED" color
   QColor color_;
 };
-
-} // namespace gui
-} // namespace digital_clock
 
 #endif // DIGITAL_CLOCK_GUI_LED_TOOL_BUTTON_H

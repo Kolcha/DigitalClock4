@@ -33,6 +33,7 @@ DEFINES += CLOCK_COMMON_LIBRARY
 
 SOURCES += \
     config_base.cpp \
+    led_tool_button.cpp \
     message_box.cpp \
     plugin_base.cpp \
     plugin_settings.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     config_base.h \
     iclock_plugin.h \
     iplugin_init.h \
+    led_tool_button.h \
     message_box.h \
     plugin_base.h \
     plugin_settings.h \

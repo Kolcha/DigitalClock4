@@ -230,7 +230,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QToolButton" name="custom_color_button">
+       <widget class="LedToolButton" name="custom_color_button">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -251,6 +251,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LedToolButton</class>
+   <extends>QToolButton</extends>
+   <header>led_tool_button.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

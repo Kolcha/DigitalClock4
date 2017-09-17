@@ -420,7 +420,7 @@
            </widget>
           </item>
           <item>
-           <widget class="digital_clock::gui::LedToolButton" name="background_color_btn">
+           <widget class="LedToolButton" name="background_color_btn">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -445,7 +445,7 @@
          </property>
          <layout class="QHBoxLayout" name="colorize_layout">
           <item>
-           <widget class="digital_clock::gui::LedToolButton" name="img_color_btn">
+           <widget class="LedToolButton" name="img_color_btn">
             <property name="text">
              <string notr="true">...</string>
             </property>
@@ -933,9 +933,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>digital_clock::gui::LedToolButton</class>
+   <class>LedToolButton</class>
    <extends>QToolButton</extends>
-   <header>gui/led_tool_button.h</header>
+   <header>led_tool_button.h</header>
   </customwidget>
  </customwidgets>
  <resources>
