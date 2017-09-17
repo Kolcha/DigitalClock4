@@ -32,12 +32,14 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSHighResolutionCapable</key>
-	<string>True</string>
+	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>© 2013-2017 Nick Korotysh</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
 	<key>LSUIElement</key>
-	<string>1</string>
+	<true/>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.9</string>
+	<string>10.9.0</string>
 </dict>
 </plist>
