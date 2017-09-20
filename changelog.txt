@@ -1,3 +1,36 @@
+Whats new in 4.5.7:
+-------------------
+Features:
+ - snap to edges
+
+Core:
+ - re-written skin draw engine, a lot of improvements
+ - don't overwrite config if nothing changed
+ - improved settings loading
+ - used custom parser for time format, resolves issues with 12h format without AM/PM indicator
+ - correctly handle locale-dependent system time format
+ - a lot of small bugfixes in plugin core
+ - improved macOS support
+
+GUI:
+ - disabled resize for some plugin settings dialogs
+ - added "Help to translate" link to About dialog
+ - added "surprise" to About dialog (triple click the logo several times)
+ - changed links color in about dialog
+ - added AM/PM indicator for Flipclock HD skin
+ - added new skin: "Numeric Dotted"
+
+Plugins:
+ - schedule: added ability to change notification type
+ - schedule: fixed task text editing
+ - added basic countdown timer plugin
+ - plugins API was extended
+
+General:
+ - transifex.com integration, now you can help to translate my clock
+ - updated mini-wiki, added translation instructions
+
+
 Whats new in 4.5.6:
 -------------------
 Core:

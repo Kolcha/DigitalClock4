@@ -22,12 +22,14 @@
 #include <QToolButton>
 #include <QColor>
 
+#include "clock_common_global.h"
+
 /*!
  * @brief Customized QToolButton intended to color selection
  *
  * This tool button displays a current selected color preview, whick looks like LED.
  */
-class LedToolButton : public QToolButton
+class CLOCK_COMMON_EXPORT LedToolButton : public QToolButton
 {
   Q_OBJECT
   Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
