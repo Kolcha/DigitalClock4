@@ -68,6 +68,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   state_ = new core::ClockState(config_backend_);
   connect(state_, &core::ClockState::accepted, this, &MainWindow::SaveState);
   connect(state_, &core::ClockState::rejected, this, &MainWindow::LoadState);
+  connect(state_, &core::ClockState::rejected, this, &MainWindow::CorrectPosition);
 
   skin_manager_ = new core::SkinManager(this);
   skin_manager_->ListSkins();
