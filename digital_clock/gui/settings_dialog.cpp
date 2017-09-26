@@ -203,6 +203,7 @@ void SettingsDialog::InitControls()
 
   CAlignment alignment = static_cast<CAlignment>(config_->GetValue(OPT_ALIGNMENT).toInt());
   ui->align_left_rbtn->setChecked(alignment == CAlignment::A_LEFT);
+  ui->align_center_rbtn->setChecked(alignment == CAlignment::A_CENTER);
   ui->align_right_rbtn->setChecked(alignment == CAlignment::A_RIGHT);
 
   int spacing = config_->GetValue(OPT_SPACING).toInt();
@@ -466,6 +467,11 @@ void digital_clock::gui::SettingsDialog::on_level_slider_valueChanged(int value)
 void digital_clock::gui::SettingsDialog::on_align_left_rbtn_clicked()
 {
   emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(CAlignment::A_LEFT));
+}
+
+void digital_clock::gui::SettingsDialog::on_align_center_rbtn_clicked()
+{
+  emit OptionChanged(OPT_ALIGNMENT, static_cast<int>(CAlignment::A_CENTER));
 }
 
 void digital_clock::gui::SettingsDialog::on_align_right_rbtn_clicked()

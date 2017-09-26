@@ -660,6 +660,13 @@
            </widget>
           </item>
           <item>
+           <widget class="QRadioButton" name="align_center_rbtn">
+            <property name="text">
+             <string>center</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QRadioButton" name="align_right_rbtn">
             <property name="text">
              <string>right</string>

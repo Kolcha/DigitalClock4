@@ -38,7 +38,8 @@ enum class Customization {
 /*! clock alignment value type */
 enum CAlignment {
   A_LEFT = 1,     /*!< align left */
-  A_RIGHT         /*!< align right */
+  A_RIGHT,        /*!< align right */
+  A_CENTER        /*!< align center */
 };
 
 /*! clock settings keys */
@@ -51,7 +52,7 @@ enum Option {
   OPT_SEPARATOR_FLASH,          /*!< is separator flashes flag, bool, true/false */
   OPT_PLUGINS,                  /*!< plugins to load, QStringList, list of plugin names */
   OPT_TIME_FORMAT,              /*!< time format, QString, any valid time format string */
-  OPT_ALIGNMENT,                /*!< clock alignment, CAlignment, A_LEFT/A_RIGHT */
+  OPT_ALIGNMENT,                /*!< clock alignment, CAlignment, A_LEFT/A_RIGHT/A_CENTER */
   OPT_BACKGROUND_ENABLED,       /*!< is background color will be used, bool, true/false */
   OPT_BACKGROUND_COLOR,         /*!< clock background color, QColor, any color */
   OPT_FULLSCREEN_DETECT,        /*!< detect fullscreen windows flag, bool, true/false */

@@ -107,6 +107,7 @@ private slots:
   void on_img_color_btn_clicked();
   void on_level_slider_valueChanged(int value);
   void on_align_left_rbtn_clicked();
+  void on_align_center_rbtn_clicked();
   void on_align_right_rbtn_clicked();
   void on_background_enabled_clicked(bool checked);
   void on_background_color_btn_clicked();
