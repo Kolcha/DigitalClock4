@@ -93,7 +93,8 @@ QPixmap TextSkin::ResizeImage(const QString& str, int idx, Zoom zoom)
 
     last_text_ = curr_text_;
     curr_text_.clear();
-    return result;
+    if (qFuzzyCompare(zoom.zoom_x, zoom.zoom_y)) return result;
+    return result.scaled(res_w * zoom.zoom_x / zoom.zoom_y, result.height());
   }
 
   return QPixmap();
