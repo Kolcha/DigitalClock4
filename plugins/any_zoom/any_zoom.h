@@ -22,6 +22,8 @@
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
 
+#include "zoom_type.h"
+
 namespace any_zoom {
 
 class AnyZoom : public ISettingsPlugin, ISettingsPluginInit
@@ -41,8 +43,11 @@ public slots:
   void SettingsListener(Option option, const QVariant& value) override;
 
 private slots:
-  void TrackChange(int new_zoom);
+  void TrackChange(const ::skin_draw::Zoom& zoom);
   void RevertSettings();
+
+private:
+  ::skin_draw::Zoom LoadZoom() const;
 
 private:
   bool is_enabled_;

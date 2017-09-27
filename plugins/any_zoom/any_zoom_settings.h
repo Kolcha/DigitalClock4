@@ -24,11 +24,13 @@
 namespace any_zoom {
 
 // any zoom plugin settings keys
-const char* const OPT_CURRENT_ZOOM = "plugins/any_zoom/zoom";
+const char* const OPT_CURRENT_ZOOM_X = "plugins/any_zoom/zoom_x";
+const char* const OPT_CURRENT_ZOOM_Y = "plugins/any_zoom/zoom_y";
 
 inline void InitDefaults(QSettings::SettingsMap* defaults)
 {
-  defaults->insert(OPT_CURRENT_ZOOM, 425);
+  defaults->insert(OPT_CURRENT_ZOOM_X, 125);
+  defaults->insert(OPT_CURRENT_ZOOM_Y, 125);
 }
 
 } // namespace any_zoom

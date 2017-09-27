@@ -28,10 +28,15 @@ include(../common.pri)
 
 TARGET = any_zoom
 
-SOURCES += any_zoom.cpp
+SOURCES += any_zoom.cpp \
+    zoom_dialog.cpp
 
 HEADERS += any_zoom.h \
-    any_zoom_settings.h
+    any_zoom_settings.h \
+    zoom_dialog.h
+
+FORMS += \
+    zoom_dialog.ui
 
 TRANSLATIONS += \
     any_zoom_en.ts \
@@ -44,3 +49,6 @@ RESOURCES += any_zoom.qrc
 OTHER_FILES += any_zoom.json
 
 win32:RC_FILE = any_zoom.rc
+
+INCLUDEPATH += $$PWD/../../skin_draw
+DEPENDPATH += $$PWD/../../skin_draw

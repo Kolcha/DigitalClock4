@@ -18,11 +18,10 @@
 
 #include "any_zoom.h"
 
-#include <QInputDialog>
-
 #include "plugin_settings.h"
 
 #include "any_zoom_settings.h"
+#include "zoom_dialog.h"
 
 namespace any_zoom {
 
@@ -50,7 +49,7 @@ void AnyZoom::Init(const QMap<Option, QVariant>& current_settings)
 void AnyZoom::Start()
 {
   is_enabled_ = true;
-  emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
+  emit OptionChanged(OPT_ZOOM, QVariant::fromValue(LoadZoom()));
 }
 
 void AnyZoom::Stop()
@@ -61,36 +60,38 @@ void AnyZoom::Stop()
 
 void AnyZoom::Configure()
 {
-  QInputDialog* settings_dlg = new QInputDialog();
+  ZoomDialog* settings_dlg = new ZoomDialog();
   settings_dlg->setAttribute(Qt::WA_DeleteOnClose);
   settings_dlg->setModal(true);
 
-  settings_dlg->setWindowTitle(tr("Any zoom settings"));
-  settings_dlg->setLabelText(tr("zoom:"));
+  settings_dlg->setZoom(LoadZoom());
 
-  settings_dlg->setInputMode(QInputDialog::IntInput);
-  settings_dlg->setIntRange(1, 1000000);
-  settings_dlg->setIntValue(settings_->GetOption(OPT_CURRENT_ZOOM).toInt());
-
-  connect(settings_dlg, SIGNAL(intValueChanged(int)), this, SLOT(TrackChange(int)));
-  connect(settings_dlg, SIGNAL(intValueSelected(int)), this, SLOT(TrackChange(int)));
+  connect(settings_dlg, &ZoomDialog::zoomChanged, this, &AnyZoom::TrackChange);
   connect(settings_dlg, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(settings_dlg, SIGNAL(rejected()), this, SLOT(RevertSettings()));
 
   settings_dlg->show();
 }
 
-void AnyZoom::TrackChange(int new_zoom)
+void AnyZoom::TrackChange(const skin_draw::Zoom &zoom)
 {
-  settings_->SetOption(OPT_CURRENT_ZOOM, new_zoom);
-  if (is_enabled_) emit OptionChanged(OPT_ZOOM, new_zoom / 100.);
+  settings_->SetOption(OPT_CURRENT_ZOOM_X, zoom.zoom_x * 100);
+  settings_->SetOption(OPT_CURRENT_ZOOM_Y, zoom.zoom_y * 100);
+  if (is_enabled_) emit OptionChanged(OPT_ZOOM, QVariant::fromValue(zoom));
 }
 
 void AnyZoom::RevertSettings()
 {
   settings_->Load();
-  if (is_enabled_)
-    emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
+  if (is_enabled_) emit OptionChanged(OPT_ZOOM, QVariant::fromValue(LoadZoom()));
+}
+
+skin_draw::Zoom AnyZoom::LoadZoom() const
+{
+    ::skin_draw::Zoom curr_zoom;
+    curr_zoom.zoom_x = settings_->GetOption(OPT_CURRENT_ZOOM_X).toInt() / 100.;
+    curr_zoom.zoom_y = settings_->GetOption(OPT_CURRENT_ZOOM_Y).toInt() / 100.;
+    return curr_zoom;
 }
 
 void AnyZoom::SettingsListener(Option option, const QVariant& value)
@@ -100,7 +101,7 @@ void AnyZoom::SettingsListener(Option option, const QVariant& value)
     QString sender_name = sender()->metaObject()->className();
     if (sender_name.contains("PluginManager")) return;
     last_zoom_ = value.toReal();
-    emit OptionChanged(OPT_ZOOM, settings_->GetOption(OPT_CURRENT_ZOOM).toInt() / 100.);
+    emit OptionChanged(OPT_ZOOM, QVariant::fromValue(LoadZoom()));
   }
 }
 
