@@ -50,7 +50,7 @@ BaseSkin::BaseSkin() : cached_zoom_(1.0), device_pixel_ratio_(1.0)
   img_cache_ = ImageCachePtr(new CharImageCache());
 }
 
-QPixmap BaseSkin::GetImage(const QString& str, int idx, qreal zoom, bool cache)
+QPixmap BaseSkin::GetImage(const QString& str, int idx, Zoom zoom, bool cache)
 {
   QPixmap result;
   if (idx >= str.length()) return result;

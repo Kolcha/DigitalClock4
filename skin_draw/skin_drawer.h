@@ -43,7 +43,7 @@ class SKIN_DRAWSHARED_EXPORT SkinDrawer : public QObject
 
   Q_PROPERTY(ISkin::SkinPtr skin READ currentSkin WRITE ApplySkin NOTIFY skinChanged)
   Q_PROPERTY(QString text READ text WRITE SetString NOTIFY textChanged)
-  Q_PROPERTY(qreal zoom READ zoom WRITE SetZoom NOTIFY zoomChanged)
+  Q_PROPERTY(Zoom zoom READ zoom WRITE SetZoom NOTIFY zoomChanged)
   Q_PROPERTY(int spacing READ spacing WRITE SetSpace NOTIFY spacingChanged)
   Q_PROPERTY(CustomizationType customization READ customization WRITE SetCustomizationType NOTIFY customizationChanged)
   Q_PROPERTY(QColor color READ color WRITE SetColor NOTIFY colorChanged)
@@ -89,7 +89,7 @@ public:
    * current zoom
    * @note default value is 1.0
    */
-  qreal zoom() const { return zoom_; }
+  Zoom zoom() const { return zoom_; }
   /*!
    * @property SkinDrawer::spacing
    * space between digits in both directions
@@ -180,7 +180,7 @@ signals:
    * @fn void SkinDrawer::zoomChanged(qreal zoom)
    * This signal is emitted when the current zoom has changed, with the new @a zoom as an argument.
    */
-  void zoomChanged(qreal zoom);
+  void zoomChanged(Zoom zoom);
   /*!
    * @fn void SkinDrawer::spacingChanged(int value)
    * This signal is emitted when the spacing has changed, with the new @a value as an argument.
@@ -242,7 +242,7 @@ public slots:
    * Set skin zoom.
    * @param new_zoom - new zoom
    */
-  void SetZoom(qreal new_zoom);
+  void SetZoom(Zoom new_zoom);
   /*!
    * Set color to use.
    * @param new_color - new color to use
@@ -316,7 +316,7 @@ private:
 
   ISkin::SkinPtr skin_;
   QString str_;
-  qreal zoom_;
+  Zoom zoom_;
   QPixmap texture_;
   bool txd_per_elem_;
   DrawMode txd_draw_mode_;

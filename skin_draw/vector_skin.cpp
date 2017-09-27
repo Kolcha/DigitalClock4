@@ -24,7 +24,7 @@
 
 namespace skin_draw {
 
-QPixmap VectorSkin::ResizeImage(const QString& str, int idx, qreal zoom)
+QPixmap VectorSkin::ResizeImage(const QString& str, int idx, Zoom zoom)
 {
   const QString& img_file = image_files_[str[idx]];
   if (!QFile::exists(img_file)) return QPixmap();

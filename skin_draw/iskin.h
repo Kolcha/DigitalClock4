@@ -22,6 +22,8 @@
 #include <QPixmap>
 #include <QSharedPointer>
 
+#include "zoom_type.h"
+
 namespace skin_draw {
 
 /*!
@@ -52,7 +54,7 @@ public:
    * @param cache - is image add to cache
    * @return pointer to result image
    */
-  virtual QPixmap GetImage(const QString& str, int idx, qreal zoom, bool cache) = 0;
+  virtual QPixmap GetImage(const QString& str, int idx, Zoom zoom, bool cache) = 0;
 
   /*!
    * Get device pixel ratio for current skin, see Qt documentation for details.
