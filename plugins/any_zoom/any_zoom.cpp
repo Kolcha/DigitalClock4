@@ -32,7 +32,7 @@ AnyZoom::AnyZoom()
 
   InitTranslator(QLatin1String(":/any_zoom/any_zoom_"));
   info_.display_name = tr("Any zoom");
-  info_.description = tr("Allows to set any clock zoom.");
+  info_.description = tr("Allows to set any clock zoom, even different values for X and Y axis.");
   InitIcon(":/any_zoom/icon.svg.p");
 }
 
@@ -73,7 +73,7 @@ void AnyZoom::Configure()
   settings_dlg->show();
 }
 
-void AnyZoom::TrackChange(const skin_draw::Zoom &zoom)
+void AnyZoom::TrackChange(const skin_draw::Zoom& zoom)
 {
   settings_->SetOption(OPT_CURRENT_ZOOM_X, zoom.zoom_x * 100);
   settings_->SetOption(OPT_CURRENT_ZOOM_Y, zoom.zoom_y * 100);
@@ -88,10 +88,10 @@ void AnyZoom::RevertSettings()
 
 skin_draw::Zoom AnyZoom::LoadZoom() const
 {
-    ::skin_draw::Zoom curr_zoom;
-    curr_zoom.zoom_x = settings_->GetOption(OPT_CURRENT_ZOOM_X).toInt() / 100.;
-    curr_zoom.zoom_y = settings_->GetOption(OPT_CURRENT_ZOOM_Y).toInt() / 100.;
-    return curr_zoom;
+  ::skin_draw::Zoom curr_zoom;
+  curr_zoom.zoom_x = settings_->GetOption(OPT_CURRENT_ZOOM_X).toInt() / 100.;
+  curr_zoom.zoom_y = settings_->GetOption(OPT_CURRENT_ZOOM_Y).toInt() / 100.;
+  return curr_zoom;
 }
 
 void AnyZoom::SettingsListener(Option option, const QVariant& value)

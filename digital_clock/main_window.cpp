@@ -166,15 +166,15 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event)
   if (event->button() == Qt::LeftButton) {
     QPoint last_pos;
     switch (cur_alignment_) {
-    case CAlignment::A_LEFT:
+      case CAlignment::A_LEFT:
         last_pos = this->pos();
         break;
 
-    case CAlignment::A_RIGHT:
+      case CAlignment::A_RIGHT:
         last_pos = this->frameGeometry().topRight();
         break;
 
-    case CAlignment::A_CENTER:
+      case CAlignment::A_CENTER:
         last_pos = this->frameGeometry().center();
         break;
     }
@@ -199,11 +199,11 @@ void MainWindow::resizeEvent(QResizeEvent* event)
   if (cur_alignment_ != CAlignment::A_LEFT && event->oldSize().isValid()) {
     QPoint cur_pos = this->pos();
     if (cur_alignment_ == CAlignment::A_RIGHT) {
-        cur_pos.setX(cur_pos.x() + event->oldSize().width() - event->size().width());
+      cur_pos.setX(cur_pos.x() + event->oldSize().width() - event->size().width());
     } else {
-        Q_ASSERT(cur_alignment_ == CAlignment::A_CENTER);
-        cur_pos.setX(cur_pos.x() + (event->oldSize().width() - event->size().width()) / 2);
-        cur_pos.setY(cur_pos.y() + (event->oldSize().height() - event->size().height()) / 2);
+      Q_ASSERT(cur_alignment_ == CAlignment::A_CENTER);
+      cur_pos.setX(cur_pos.x() + (event->oldSize().width() - event->size().width()) / 2);
+      cur_pos.setY(cur_pos.y() + (event->oldSize().height() - event->size().height()) / 2);
     }
     this->move(cur_pos);
   }
@@ -364,16 +364,16 @@ void MainWindow::LoadState()
 
   CAlignment last_align = static_cast<CAlignment>(app_config_->GetValue(OPT_ALIGNMENT).toInt());
   switch (last_align) {
-  case CAlignment::A_RIGHT:
+    case CAlignment::A_RIGHT:
       last_pos.setX(last_pos.x() - sizeHint().width());
       break;
 
-  case CAlignment::A_CENTER:
+    case CAlignment::A_CENTER:
       last_pos.setX(last_pos.x() - sizeHint().width() / 2);
       last_pos.setY(last_pos.y() - sizeHint().height() / 2);
       break;
 
-  default:
+    default:
       Q_ASSERT(last_align == CAlignment::A_LEFT);
   }
   cur_alignment_ = last_align;
@@ -384,15 +384,15 @@ void MainWindow::SaveState()
 {
   QPoint last_pos;
   switch (cur_alignment_) {
-  case CAlignment::A_LEFT:
+    case CAlignment::A_LEFT:
       last_pos = this->pos();
       break;
 
-  case CAlignment::A_RIGHT:
+    case CAlignment::A_RIGHT:
       last_pos = this->frameGeometry().topRight();
       break;
 
-  case CAlignment::A_CENTER:
+    case CAlignment::A_CENTER:
       last_pos = this->frameGeometry().center();
       break;
   }

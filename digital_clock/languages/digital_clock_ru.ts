@@ -295,7 +295,7 @@
     <message>
         <location filename="../gui/settings_dialog.ui" line="665"/>
         <source>center</source>
-        <translation type="unfinished"></translation>
+        <translation>по центру</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="672"/>
