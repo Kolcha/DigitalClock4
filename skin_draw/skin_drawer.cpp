@@ -50,10 +50,10 @@ void SkinDrawer::SetString(const QString& str)
   Redraw();
 }
 
-void SkinDrawer::SetZoom(qreal new_zoom)
+void SkinDrawer::SetZoom(Zoom new_zoom)
 {
-  if (qFuzzyIsNull(new_zoom)) return;
-  if (qFuzzyCompare(zoom_, new_zoom)) return;
+  if (!new_zoom.isValid()) return;
+  if (zoom_ == new_zoom) return;
   zoom_ = new_zoom;
   emit zoomChanged(zoom_);
   Redraw();

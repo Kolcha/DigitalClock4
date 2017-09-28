@@ -85,8 +85,11 @@ void ClockWidget::ApplyOption(Option option, const QVariant& value)
       break;
 
     case OPT_ZOOM:
-      drawer_->SetZoom(value.toReal());
+    {
+      ::skin_draw::Zoom zoom = value.value< ::skin_draw::Zoom>();
+      drawer_->SetZoom(zoom.isValid() ? zoom : value.toReal());
       break;
+    }
 
     case OPT_COLOR:
       drawer_->SetColor(value.value<QColor>());
