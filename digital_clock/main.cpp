@@ -23,8 +23,6 @@
 #include <QTranslator>
 #include <QLibraryInfo>
 
-#include "core/clock_logger.h"
-
 int main(int argc, char* argv[])
 {
   // set application info
@@ -40,8 +38,6 @@ int main(int argc, char* argv[])
 #ifdef Q_OS_MACOS
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
-
-  digital_clock::core::Logger::init();
 
   QApplication app(argc, argv);
   app.setWindowIcon(QIcon(":/clock/images/clock.svg.p"));
