@@ -120,7 +120,7 @@ void Updater::RunCheckForUpdates(bool force)
   was_error_ = false;
   data_.clear();
   last_update_ = QDate::currentDate();
-  downloader_->startRequest(QUrl("http://digitalclock4.sourceforge.net/cgi-bin/update.py"));
+  downloader_->startRequest(QUrl("https://digitalclock4.sourceforge.io/update/"));
 }
 
 } // namespace core
