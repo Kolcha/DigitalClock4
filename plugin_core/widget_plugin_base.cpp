@@ -264,6 +264,12 @@ void WidgetPluginBase::TimeUpdateListener()
   private_->last_text_ = cur_text;
 }
 
+void WidgetPluginBase::SetSkin(skin_draw::ISkin::SkinPtr skin)
+{
+  private_->clock_skin_ = skin;
+  private_->ApplySkin(skin);
+}
+
 void WidgetPluginBase::InitSettingsDefaults(QSettings::SettingsMap* defaults)
 {
   Q_UNUSED(defaults);

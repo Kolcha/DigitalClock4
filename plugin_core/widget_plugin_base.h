@@ -21,7 +21,7 @@
 
 #include <QSettings>
 
-#include "iclock_plugin.h"
+#include "iskin_user_plugin.h"
 #include "iplugin_init.h"
 
 #include "plugin_core_global.h"
@@ -45,12 +45,12 @@ class WidgetPluginBasePrivate;
  *
  * @see WidgetPluginOption
  */
-class PLUGIN_CORE_SHARED_EXPORT WidgetPluginBase : public IClockPlugin,
+class PLUGIN_CORE_SHARED_EXPORT WidgetPluginBase : public ISkinUserPlugin,
     public ISettingsPluginInit,
     public IWidgetPluginInit
 {
   Q_OBJECT
-  Q_INTERFACES(IClockPlugin ISettingsPluginInit IWidgetPluginInit)
+  Q_INTERFACES(IClockPlugin ISkinUserPlugin ISettingsPluginInit IWidgetPluginInit)
 
 public:
   /*! Constructor */
@@ -109,6 +109,14 @@ public slots:
    * Used as timer. Redraws widget if needed.
    */
   virtual void TimeUpdateListener() override;
+  /*!
+   * @brief Skin changes listener.
+   *
+   * This slot is called in 2 cases:
+   * @li exact one time on plugin initoalization, to pass current clock @a skin
+   * @li on any clock skin change, new @a skin will be passed as argument
+   */
+  virtual void SetSkin(skin_draw::ISkin::SkinPtr skin) override;
 
 protected:
   /*!

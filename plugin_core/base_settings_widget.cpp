@@ -54,7 +54,6 @@ BaseSettingsWidget::BaseSettingsWidget(QWidget* parent) :
 
   ui->setupUi(this);
   layout()->setMargin(0);
-  ui->use_clock_skin->hide();           // TODO: remove with release 4.6
 }
 
 BaseSettingsWidget::~BaseSettingsWidget()

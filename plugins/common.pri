@@ -29,4 +29,7 @@ else:unix: LIBS += -L$$OUT_PWD/../../clock_common/ -lclock_common
 INCLUDEPATH += $$PWD/../clock_common
 DEPENDPATH += $$PWD/../clock_common
 
+INCLUDEPATH += $$PWD/../skin_draw
+DEPENDPATH += $$PWD/../skin_draw
+
 *-g++*:QMAKE_CXXFLAGS += -Wno-switch
