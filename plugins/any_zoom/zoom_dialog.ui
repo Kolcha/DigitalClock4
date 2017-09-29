@@ -24,10 +24,10 @@
    <item row="0" column="1">
     <widget class="QSlider" name="x_zoom_slider">
      <property name="minimum">
-      <number>25</number>
+      <number>9</number>
      </property>
      <property name="maximum">
-      <number>999</number>
+      <number>9999</number>
      </property>
      <property name="value">
       <number>425</number>
@@ -46,10 +46,10 @@
       <string notr="true">%</string>
      </property>
      <property name="minimum">
-      <number>25</number>
+      <number>9</number>
      </property>
      <property name="maximum">
-      <number>999</number>
+      <number>9999</number>
      </property>
      <property name="value">
       <number>425</number>
@@ -66,10 +66,10 @@
    <item row="1" column="1">
     <widget class="QSlider" name="y_zoom_slider">
      <property name="minimum">
-      <number>25</number>
+      <number>9</number>
      </property>
      <property name="maximum">
-      <number>999</number>
+      <number>9999</number>
      </property>
      <property name="value">
       <number>425</number>
@@ -88,10 +88,10 @@
       <string notr="true">%</string>
      </property>
      <property name="minimum">
-      <number>25</number>
+      <number>9</number>
      </property>
      <property name="maximum">
-      <number>999</number>
+      <number>9999</number>
      </property>
      <property name="value">
       <number>425</number>
