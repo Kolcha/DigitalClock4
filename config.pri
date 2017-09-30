@@ -16,7 +16,8 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-CONFIG += c++11
+CONFIG += c++14
 QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.9
 
 DEFINES += QT_DEPRECATED_WARNINGS
+DEFINES += QT_USE_QSTRINGBUILDER
