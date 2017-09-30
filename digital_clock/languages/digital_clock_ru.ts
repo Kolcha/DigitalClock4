@@ -68,32 +68,26 @@
     </message>
     <message>
         <location filename="../gui/about_dialog.ui" line="178"/>
-        <source>&lt;a href=&quot;http://digitalclock4.sourceforge.net/&quot;&gt;project home page&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;http://digitalclock4.sourceforge.net/&quot;&gt;домашняя страница проекта&lt;/a&gt;</translation>
+        <source>&lt;a href=&quot;https://digitalclock4.sourceforge.io/&quot;&gt;project home page&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;https://digitalclock4.sourceforge.io/&quot;&gt;домашняя страница проекта&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../gui/about_dialog.ui" line="191"/>
-        <source>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;bug report/feature request&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;сообщить об ошибке/предложить функцию&lt;/a&gt;</translation>
+        <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;bug report/feature request&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;сообщить об ошибке/предложить функцию&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../gui/about_dialog.ui" line="204"/>
-        <source>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;view full changelog&lt;/a&gt;</source>
-        <translatorcomment>просмотреть историю изменений</translatorcomment>
-        <translation>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;полный список изменений&lt;/a&gt;</translation>
+        <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;view full changelog&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;полный список изменений&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../gui/about_dialog.ui" line="217"/>
-        <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;how to create own skin&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;как создать собственный стиль&lt;/a&gt;</translation>
+        <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/&quot;&gt;project Wiki home page&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/&quot;&gt;Wiki проекта&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="230"/>
-        <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20translate/&quot;&gt;help to translate&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20translate/&quot;&gt;помочь с переводом на другой язык&lt;/a&gt;</translation>
-    </message>
-    <message>
-        <location filename="../gui/about_dialog.ui" line="246"/>
+        <location filename="../gui/about_dialog.ui" line="233"/>
         <source>More info</source>
         <translation>Информация на других сайтах</translation>
     </message>

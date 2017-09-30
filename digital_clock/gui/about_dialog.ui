@@ -175,7 +175,7 @@
           <item>
            <widget class="QLabel" name="homepage_lbl">
             <property name="text">
-             <string>&lt;a href=&quot;http://digitalclock4.sourceforge.net/&quot;&gt;project home page&lt;/a&gt;</string>
+             <string>&lt;a href=&quot;https://digitalclock4.sourceforge.io/&quot;&gt;project home page&lt;/a&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -188,7 +188,7 @@
           <item>
            <widget class="QLabel" name="support_lbl">
             <property name="text">
-             <string>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;bug report/feature request&lt;/a&gt;</string>
+             <string>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;bug report/feature request&lt;/a&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -201,7 +201,7 @@
           <item>
            <widget class="QLabel" name="changelog_lbl">
             <property name="text">
-             <string>&lt;a href=&quot;http://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;view full changelog&lt;/a&gt;</string>
+             <string>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;view full changelog&lt;/a&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -212,22 +212,9 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="create_skin_lbl">
+           <widget class="QLabel" name="wiki_home_lbl">
             <property name="text">
-             <string>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/&quot;&gt;how to create own skin&lt;/a&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="openExternalLinks">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="translate_lbl">
-            <property name="text">
-             <string>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/How%20to%20translate/&quot;&gt;help to translate&lt;/a&gt;</string>
+             <string>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/&quot;&gt;project Wiki home page&lt;/a&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
