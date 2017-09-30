@@ -30,6 +30,11 @@ void BaseSkin::SetSeparators(const QString& seps)
 {
   seps_ = seps;
   seps_.remove(' ');
+  seps_ += ":./";
+  QString tmp = seps_;
+  seps_.clear();
+  for (int i = 0; i < tmp.size(); ++i)
+    if (!seps_.contains(tmp[i])) seps_ += tmp[i];
   ProcSeparators();
 }
 
