@@ -18,8 +18,7 @@
 
 #include "settings_storage.h"
 
-#include <QFile>
-#include <QDataStream>
+#include "config_serialization.h"
 
 #ifdef PORTABLE_VERSION
 #include <QApplication>
@@ -135,24 +134,20 @@ void SettingsStorage::Forget(const QString& key)
 
 void SettingsStorage::Export(const QString& filename) const
 {
-  QFile file(filename);
-  if (!file.open(QIODevice::WriteOnly)) return;
-  QDataStream stream(&file);
-  stream << current_;
-  file.close();
+  QString ext = filename.mid(filename.lastIndexOf('.') + 1).toLower();
+  if (ext == "dcs") config::ExportDCS(filename, current_);
+  if (ext == "ini") config::ExportINI(filename, current_);
 }
 
 void SettingsStorage::Import(const QString& filename)
 {
-  QFile file(filename);
-  if (!file.open(QIODevice::ReadOnly)) return;
-  QDataStream stream(&file);
-  stream >> imported_;
-  file.close();
-  for (auto i = imported_.begin(); i != imported_.end(); ++i) {
+  QString ext = filename.mid(filename.lastIndexOf('.') + 1).toLower();
+  imported_.clear();
+  if (ext == "dcs") config::ImportDCS(filename, imported_);
+  if (ext == "ini") config::ImportINI(filename, imported_);
+  for (auto i = imported_.cbegin(); i != imported_.cend(); ++i)
     this->SetValue(i.key(), i.value());
-  }
-  emit reloaded();
+  if (!imported_.isEmpty()) emit reloaded();
 }
 
 void SettingsStorage::Accept()

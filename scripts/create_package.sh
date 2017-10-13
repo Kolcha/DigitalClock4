@@ -39,7 +39,7 @@ mkdir "$TARGET_APP_FOLDER"
 
 # copy all app files to target folder
 cp digital_clock/digital_clock "$TARGET_APP_FOLDER/"
-cp clock_common/libclock_common.so.1.1.5 "$TARGET_APP_FOLDER/libclock_common.so.1"
+cp clock_common/libclock_common.so.1.1.6 "$TARGET_APP_FOLDER/libclock_common.so.1"
 cp plugin_core/libplugin_core.so.1.2.0 "$TARGET_APP_FOLDER/libplugin_core.so.1"
 cp skin_draw/libskin_draw.so.1.4.0 "$TARGET_APP_FOLDER/libskin_draw.so.1"
 [ -d "$TARGET_APP_FOLDER/plugins" ] || mkdir "$TARGET_APP_FOLDER/plugins"

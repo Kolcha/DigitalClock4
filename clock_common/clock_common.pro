@@ -33,6 +33,7 @@ DEFINES += CLOCK_COMMON_LIBRARY
 
 SOURCES += \
     config_base.cpp \
+    config_serialization.cpp \
     led_tool_button.cpp \
     message_box.cpp \
     plugin_base.cpp \
@@ -43,6 +44,7 @@ SOURCES += \
 HEADERS += \
     clock_common_global.h \
     config_base.h \
+    config_serialization.h \
     iclock_plugin.h \
     iplugin_init.h \
     led_tool_button.h \
@@ -54,5 +56,5 @@ HEADERS += \
     settings_storage_wrapper.h
 
 win32:RC_FILE = clock_common.rc
-unix:VERSION = 1.1.5
+unix:VERSION = 1.1.6
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
