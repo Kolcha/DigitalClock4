@@ -81,8 +81,11 @@ void ClockWidget::ApplyOption(Option option, const QVariant& value)
       break;
 
     case OPT_TIME_ZONE:
-      display_->SetTimeZone(QTimeZone(value.toByteArray()));
+    {
+      QByteArray ba = value.type() == QVariant::String ? value.toString().toLatin1() : value.toByteArray();
+      display_->SetTimeZone(QTimeZone(ba));
       break;
+    }
 
     case OPT_ZOOM:
     {

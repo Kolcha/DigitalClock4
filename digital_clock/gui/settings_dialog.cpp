@@ -228,8 +228,10 @@ void SettingsDialog::InitControls()
   ui->change_time_zone_cbx->setChecked(!config_->GetValue(OPT_DISPLAY_LOCAL_TIME).toBool());
   ui->time_zone_box->clear();
   for (auto& tz : QTimeZone::availableTimeZoneIds())
-    ui->time_zone_box->addItem(QString(tz), tz);
-  ui->time_zone_box->setCurrentText(QString(config_->GetValue(OPT_TIME_ZONE).toByteArray()));
+    ui->time_zone_box->addItem(QString::fromLatin1(tz));
+  QVariant tzvar = config_->GetValue(OPT_TIME_ZONE);
+  QString tz = tzvar.type() == QVariant::String ? tzvar.toString() : QString::fromLatin1(tzvar.toByteArray());
+  ui->time_zone_box->setCurrentText(tz);
 
   // "Plugins" tab
   active_plugins_ = config_->GetValue(OPT_PLUGINS).toStringList();
@@ -547,5 +549,5 @@ void digital_clock::gui::SettingsDialog::on_keep_always_visible_clicked(bool che
 
 void digital_clock::gui::SettingsDialog::on_time_zone_box_activated(int index)
 {
-  emit OptionChanged(OPT_TIME_ZONE, ui->time_zone_box->itemData(index, Qt::UserRole).toByteArray());
+  emit OptionChanged(OPT_TIME_ZONE, ui->time_zone_box->itemText(index));
 }

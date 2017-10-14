@@ -142,7 +142,7 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_FULLSCREEN_DETECT:     return false;
     case OPT_SHOW_ON_ALL_DESKTOPS:  return false;
     case OPT_DISPLAY_LOCAL_TIME:    return true;
-    case OPT_TIME_ZONE:             return QTimeZone::systemTimeZoneId();
+    case OPT_TIME_ZONE:             return QString::fromLatin1(QTimeZone::systemTimeZoneId());
     // skin settings
     case OPT_SKIN_NAME:             return QString("Electronic (default)");
     case OPT_FONT:                  return QFont();

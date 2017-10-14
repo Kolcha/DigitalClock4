@@ -58,7 +58,7 @@ enum Option {
   OPT_FULLSCREEN_DETECT,        /*!< detect fullscreen windows flag, bool, true/false */
   OPT_SHOW_ON_ALL_DESKTOPS,     /*!< show clock on all desktops flag, bool, true/false */
   OPT_DISPLAY_LOCAL_TIME,       /*!< display local time, bool, true/false */
-  OPT_TIME_ZONE,                /*!< custom time zone, QByteArray, IANA ID for the time zone */
+  OPT_TIME_ZONE,                /*!< custom time zone, QString, IANA ID for the time zone */
   // skin settings
   OPT_SKIN_NAME,                /*!< skin name to use, QString, skin name */
   OPT_FONT,                     /*!< font to use, QFont, any available font */

@@ -455,28 +455,28 @@
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="326"/>
+        <location filename="../gui/settings_dialog.cpp" line="328"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="328"/>
+        <location filename="../gui/settings_dialog.cpp" line="330"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="411"/>
+        <location filename="../gui/settings_dialog.cpp" line="413"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="413"/>
-        <location filename="../gui/settings_dialog.cpp" line="421"/>
+        <location filename="../gui/settings_dialog.cpp" line="415"/>
+        <location filename="../gui/settings_dialog.cpp" line="423"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="419"/>
+        <location filename="../gui/settings_dialog.cpp" line="421"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>
