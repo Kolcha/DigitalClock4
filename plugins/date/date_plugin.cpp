@@ -44,7 +44,7 @@ void DatePlugin::Init(const QMap<Option, QVariant>& current_settings)
   ::plugin::WidgetPluginBase::Init(current_settings);
   local_time_ = current_settings.value(OPT_DISPLAY_LOCAL_TIME, local_time_).toBool();
   QVariant tz_value = current_settings.value(OPT_TIME_ZONE, time_zone_.id());
-  QByteArray tz_ba = tz_value.type() == QVariant::String ? tz_value.toString().toLatin1() : tz_value.toByteArray();
+  QByteArray tz_ba = tz_value.canConvert<QString>() ? tz_value.toString().toLatin1() : tz_value.toByteArray();
   time_zone_ = QTimeZone(tz_ba);
 }
 

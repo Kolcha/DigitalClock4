@@ -230,7 +230,7 @@ void SettingsDialog::InitControls()
   for (auto& tz : QTimeZone::availableTimeZoneIds())
     ui->time_zone_box->addItem(QString::fromLatin1(tz));
   QVariant tzvar = config_->GetValue(OPT_TIME_ZONE);
-  QString tz = tzvar.type() == QVariant::String ? tzvar.toString() : QString::fromLatin1(tzvar.toByteArray());
+  QString tz = tzvar.canConvert<QString>() ? tzvar.toString() : QString::fromLatin1(tzvar.toByteArray());
   ui->time_zone_box->setCurrentText(tz);
 
   // "Plugins" tab
