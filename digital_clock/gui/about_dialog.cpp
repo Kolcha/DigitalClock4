@@ -39,6 +39,7 @@ static QString compilerString()
   if (_MSC_VER >= 1500) { // 1500: MSVC 2008, 1600: MSVC 2010, ...
     int ver = 2008 + 2 * ((_MSC_VER / 100) - 15);
     if (_MSC_VER >= 1800) ver -= 1;
+    if (_MSC_VER == 1911) ver = 2017;
     return QLatin1String("MSVC ") + QString::number(ver);
   }
 #endif
