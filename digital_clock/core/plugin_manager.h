@@ -43,9 +43,9 @@ class ClockSettings;
 
 /*! Data to init plugins. */
 struct TPluginData {
-  ClockSettings* settings;                    /*!< clock settings object */
-  gui::ClockWidget* window;                   /*!< clock widget */
-  QSystemTrayIcon* tray;                      /*!< tray icon object */
+  ClockSettings* settings = nullptr;          /*!< clock settings object */
+  gui::ClockWidget* window = nullptr;         /*!< clock widget */
+  QSystemTrayIcon* tray = nullptr;            /*!< tray icon object */
 };
 
 

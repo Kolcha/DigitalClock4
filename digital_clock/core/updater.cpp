@@ -75,7 +75,7 @@ void Updater::SetUpdatePeriod(int period)
 
 void Updater::TimeoutHandler()
 {
-  if (!autoupdate_ || (downloader_ && downloader_->isRunning())) return;
+  if (!autoupdate_ || downloader_->isRunning()) return;
   if (last_update_.daysTo(QDate::currentDate()) >= update_period_) RunCheckForUpdates(false);
 }
 

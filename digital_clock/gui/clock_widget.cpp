@@ -29,7 +29,10 @@
 namespace digital_clock {
 namespace gui {
 
-ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent)
+ClockWidget::ClockWidget(QWidget* parent) :
+  QWidget(parent),
+  colorize_color_(Qt::magenta), colorize_level_(0.8), colorize_enabled_(false),
+  preview_mode_(false)
 {
   display_ = new ClockDisplay(this);
   QGridLayout* main_layout = new QGridLayout(this);
@@ -43,9 +46,6 @@ ClockWidget::ClockWidget(QWidget* parent) : QWidget(parent)
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
   connect(display_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), this, SLOT(DrawImage(QImage)));
-
-  colorize_enabled_ = false;
-  preview_mode_ = false;
 }
 
 ClockDisplay* ClockWidget::GetDisplay() const

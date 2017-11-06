@@ -26,7 +26,7 @@ typedef void (*pSetItemName)(LPCWSTR);
 typedef void (*pStartFunc)(void);
 typedef void (*pStopFunc)(void);
 
-WinOnTop::WinOnTop()
+WinOnTop::WinOnTop() : lib_(0)
 {
   InitTranslator(QLatin1String(":/win_on_top/win_on_top_"));
   info_.display_name = tr("\"Always on top\" for any window");

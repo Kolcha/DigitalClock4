@@ -53,7 +53,7 @@ VoiceConfigDialog::VoiceConfigDialog(const QSettings::SettingsMap& settings, QWi
   if (lang_idx >= 0 && lang_idx < ui->language->count())
     ui->language->setCurrentIndex(lang_idx);
   int voice_idx = settings.value(OPT_SYNTHESIS_VOICE, -1).toInt();
-  if (voice_idx >= 0 && lang_idx < ui->voice->count())
+  if (voice_idx >= 0 && voice_idx < ui->voice->count())
     ui->voice->setCurrentIndex(voice_idx);
 
   connect(ui->speakButton, &QPushButton::clicked, this, &VoiceConfigDialog::speak);
@@ -129,7 +129,7 @@ void VoiceConfigDialog::stateChanged(QTextToSpeech::State state)
 {
   ui->pauseButton->setEnabled(state == QTextToSpeech::Speaking);
   ui->resumeButton->setEnabled(state == QTextToSpeech::Paused);
-  ui->stopButton->setEnabled(state == QTextToSpeech::Speaking || QTextToSpeech::Paused);
+  ui->stopButton->setEnabled(state == QTextToSpeech::Speaking || state == QTextToSpeech::Paused);
 }
 
 void VoiceConfigDialog::engineSelected(int index)

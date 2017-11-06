@@ -42,7 +42,7 @@ public slots:
 private:
   qreal old_opacity_;
   qreal cur_opacity_;
-  qreal op_stap_;
+  qreal op_step_;
 };
 
 } // namespace var_translucency
