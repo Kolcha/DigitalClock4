@@ -22,7 +22,7 @@
 #include <QFontDialog>
 #include <QColorDialog>
 #include <QTranslator>
-#include <QApplication>
+#include <QCoreApplication>
 #include <QLocale>
 
 namespace plugin {
@@ -37,7 +37,7 @@ BaseSettingsWidget::BaseSettingsWidget(QWidget* parent) :
   foreach (QString locale, ui_languages) {
     locale = QLocale(locale).name();
     if (gui_translator_->load(prefix + locale)) {
-      QApplication::installTranslator(gui_translator_);
+      QCoreApplication::installTranslator(gui_translator_);
       break;
     } else if (locale == QLatin1String("C") /* overrideLanguage == "English" */) {
       // use built-in
@@ -47,7 +47,7 @@ BaseSettingsWidget::BaseSettingsWidget(QWidget* parent) :
       break;
     } else if (locale.contains("ua", Qt::CaseInsensitive)) { /* Ukrainian, use russian */
       if (gui_translator_->load(prefix + "ru"))
-        QApplication::installTranslator(gui_translator_);
+        QCoreApplication::installTranslator(gui_translator_);
       break;
     }
   }
@@ -59,7 +59,7 @@ BaseSettingsWidget::BaseSettingsWidget(QWidget* parent) :
 BaseSettingsWidget::~BaseSettingsWidget()
 {
   delete ui;
-  QApplication::removeTranslator(gui_translator_);
+  QCoreApplication::removeTranslator(gui_translator_);
   delete gui_translator_;
 }
 

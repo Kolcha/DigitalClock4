@@ -28,7 +28,7 @@ class PaletteIconEnginePlugin : public QIconEnginePlugin
   Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QIconEngineFactoryInterface" FILE "paletteicon.json")
 
 public:
-  PaletteIconEnginePlugin(QObject* parent = nullptr);
+  explicit PaletteIconEnginePlugin(QObject* parent = Q_NULLPTR);
 
   QIconEngine* create(const QString& filename = QString()) Q_DECL_OVERRIDE;
 };

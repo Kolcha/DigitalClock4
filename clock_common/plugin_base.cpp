@@ -20,7 +20,7 @@
 
 #include <QTranslator>
 #include <QLocale>
-#include <QApplication>
+#include <QCoreApplication>
 #include <QIcon>
 
 #include "plugin_settings.h"
@@ -31,7 +31,7 @@ PluginBase::PluginBase() : settings_(nullptr), translator_(nullptr)
 
 PluginBase::~PluginBase()
 {
-  if (translator_) QApplication::removeTranslator(translator_);
+  if (translator_) QCoreApplication::removeTranslator(translator_);
 }
 
 const TPluginGUIInfo& PluginBase::GetInfo() const
@@ -59,7 +59,7 @@ void PluginBase::InitTranslator(const QLatin1String& prefix)
       locale = QLatin1String("ru");                   // use Russian
 
     if (translator_->load(prefix + locale)) {
-      QApplication::installTranslator(translator_);
+      QCoreApplication::installTranslator(translator_);
       break;
     }
   }

@@ -121,7 +121,7 @@ void WidgetPluginBase::Start()
       layout->addWidget(private_->plg_widget_, layout->rowCount(), 0, 1, layout->columnCount());
     }
   }
-  connect(private_->drawer_, &skin_draw::SkinDrawer::DrawingFinished, [=] (const QImage& img) {
+  connect(private_->drawer_, &skin_draw::SkinDrawer::DrawingFinished, [this] (const QImage& img) {
     this->DisplayImage(img);
   });
 
@@ -206,7 +206,8 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       private_->drawer_->SetTextureDrawMode(new_value.value< ::skin_draw::SkinDrawer::DrawMode>());
       break;
 
-    case OPT_CUSTOMIZATION: {
+    case OPT_CUSTOMIZATION:
+    {
       Customization cust = static_cast<Customization>(new_value.toInt());
       switch (cust) {
         case Customization::C_NONE:

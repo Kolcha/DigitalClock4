@@ -18,22 +18,22 @@
 
 #include "autostart.h"
 
-#include <QApplication>
+#include <QCoreApplication>
 #include <QDir>
 #include <QSettings>
 
 bool IsAutoStartEnabled()
 {
   QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
-  return settings.value(QApplication::applicationName()).toString() == QDir::toNativeSeparators(QApplication::applicationFilePath());
+  return settings.value(QCoreApplication::applicationName()).toString() == QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
 }
 
 void SetAutoStart(bool enable)
 {
   QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
   if (enable) {
-    settings.setValue(QApplication::applicationName(), QDir::toNativeSeparators(QApplication::applicationFilePath()));
+    settings.setValue(QCoreApplication::applicationName(), QDir::toNativeSeparators(QCoreApplication::applicationFilePath()));
   } else {
-    settings.remove(QApplication::applicationName());
+    settings.remove(QCoreApplication::applicationName());
   }
 }

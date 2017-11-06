@@ -18,14 +18,14 @@
 
 #include "autostart.h"
 
-#include <QApplication>
+#include <QCoreApplication>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
 
 static QString GetAppFileName()
 {
-  QFileInfo fi(QApplication::applicationFilePath());
+  QFileInfo fi(QCoreApplication::applicationFilePath());
   return fi.fileName();
 }
 
@@ -65,10 +65,10 @@ void SetAutoStart(bool enable)
           "Icon=%4\n"
           "StartupNotify=false\n")
         .arg(
-          QApplication::applicationName(),
-          QApplication::applicationName() + " " + QApplication::applicationVersion() + " by " + QApplication::organizationName(),
-          QApplication::applicationFilePath() + ".sh",
-          QApplication::applicationFilePath() + ".svg");
+          QCoreApplication::applicationName(),
+          QCoreApplication::applicationName() + " by " + QCoreApplication::organizationName(),
+          QCoreApplication::applicationFilePath() + ".sh",
+          QCoreApplication::applicationFilePath() + ".svg");
     // *INDENT-ON*
     QFile file(desktop_file);
     file.open(QIODevice::WriteOnly | QIODevice::Text);

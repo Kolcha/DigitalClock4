@@ -40,11 +40,11 @@ Updater::Updater(ClockState* state, QObject* parent) :
 {
   last_update_ = state_->GetVariable(S_OPT_LAST_UPDATE, QDate(2013, 6, 18)).value<QDate>();
   downloader_ = new HttpClient(this);
-  connect(downloader_, &HttpClient::ErrorMessage, [=] (const QString& msg) {
+  connect(downloader_, &HttpClient::ErrorMessage, [this] (const QString& msg) {
     was_error_ = true;
     emit ErrorMessage(msg);
   });
-  connect(downloader_, &HttpClient::DataDownloaded, [=] (const QByteArray& data) { data_.append(data); });
+  connect(downloader_, &HttpClient::DataDownloaded, [this] (const QByteArray& data) { data_.append(data); });
   connect(downloader_, &HttpClient::finished, this, &Updater::ProcessData);
 }
 

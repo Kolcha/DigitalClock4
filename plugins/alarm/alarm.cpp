@@ -139,7 +139,7 @@ void Alarm::Configure()
     settings_->SetDefaultValues(curr_settings);
   }
   dlg->setLastMediaPath(settings_->GetOption(OPT_LAST_MEDIA_PATH).toString());
-  connect(dlg, &AlarmsListDialog::lastMediaPathChanged, [=] (const QString& last_path) {
+  connect(dlg, &AlarmsListDialog::lastMediaPathChanged, [this] (const QString& last_path) {
     settings_->SetOption(OPT_LAST_MEDIA_PATH, last_path);
   });
   connect(dlg, &AlarmsListDialog::accepted, settings_, &PluginSettings::Save);

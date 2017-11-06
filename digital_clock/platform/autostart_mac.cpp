@@ -18,7 +18,7 @@
 
 #include "autostart.h"
 
-#include <QApplication>
+#include <QCoreApplication>
 #include <QDir>
 #include <QFile>
 
@@ -29,7 +29,7 @@ static QString GetAutoStartDir()
 
 static QString GetPackageName()
 {
-  QStringList domain_parts = QApplication::organizationDomain().split('.', QString::SkipEmptyParts);
+  QStringList domain_parts = QCoreApplication::organizationDomain().split('.', QString::SkipEmptyParts);
   std::reverse(domain_parts.begin(), domain_parts.end());
   return domain_parts.join('.');
 }
@@ -67,7 +67,7 @@ void SetAutoStart(bool enable)
           "    <true/>\n"
           "</dict>\n"
           "</plist>\n")
-        .arg(GetPackageName(), QApplication::applicationFilePath());
+        .arg(GetPackageName(), QCoreApplication::applicationFilePath());
     // *INDENT-ON*
     QFile file(plist_file);
     file.open(QIODevice::WriteOnly | QIODevice::Text);

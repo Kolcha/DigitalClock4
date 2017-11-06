@@ -67,7 +67,7 @@ void QuickNotePlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults)
 QWidget* QuickNotePlugin::InitWidget(QGridLayout* layout)
 {
   msg_widget_ = new MessageWidget();
-  connect(msg_widget_, &MessageWidget::textEdited, [=] (const QString& str) {
+  connect(msg_widget_, &MessageWidget::textEdited, [this] (const QString& str) {
     settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
     settings_->Save();
   });
