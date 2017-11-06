@@ -1,0 +1,9 @@
+*.user
+*.qm
+*.msi
+*.orig
+*.wixobj
+*.wixpdb
+desktop.ini
+.DS_Store
+*_en.ts

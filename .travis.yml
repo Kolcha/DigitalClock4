@@ -1,0 +1,27 @@
+language: cpp
+
+os: osx
+osx_image: xcode9.1
+
+branches:
+  only:
+    - master
+
+before_install:
+  # clone 3rd-party repos
+  - git clone -q https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey
+
+install:
+  # download resources & prebuilt libraries
+  - |
+    src_path=$PWD
+    cd /usr/local
+    curl https://www.dropbox.com/s/lixbkg2q819vkck/Qt-5.8.1.tar.xz?dl=1 -L -s | sudo tar xJ
+    cd $src_path
+
+before_script:
+  - export PATH="/usr/local/Qt-5.8.1/bin:$PATH"
+
+script:
+  - qmake -config release
+  - make -j2

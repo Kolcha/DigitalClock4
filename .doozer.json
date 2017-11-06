@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "xenial-amd64": {
+      "buildenv": "xenial-amd64",
+      "builddeps": ["build-essential", "libgl1-mesa-dev", "wget", "git"],
+      "buildcmd": [
+        "[ -d $HOME/Qt-5.6.3 ] || { wget -q -O - https://www.dropbox.com/s/gwsro2zw004vfed/Qt-5.6.3.tar.xz?dl=1 | tar xJ && mv Qt-5.6.3 $HOME/ ; }",
+        "git clone -q https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey",
+        "$HOME/Qt-5.6.3/bin/qmake -config release",
+        "make -j${PARALLEL}"
+      ]
+    }
+  }
+}

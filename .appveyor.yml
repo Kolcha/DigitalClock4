@@ -1,0 +1,44 @@
+version: '{branch}-{build}'
+
+# Visual Studio 2017 image doesn't have MinGW Qt
+image: Visual Studio 2015
+
+branches:
+  only:
+    - master
+
+environment:
+  matrix:
+    # installer
+    - compiler: msvc
+      qt: 5.9.1\msvc2015_64
+
+    # portable
+    - compiler: mingw
+      qt: 5.9.1\mingw53_32
+
+init:
+  # clone 3rd-party repos
+  - git clone -q https://github.com/Skycoder42/QHotkey.git ..\3rdparty\QHotkey
+
+install:
+  # download jom for MSVC build
+  - if %compiler% == msvc (
+      curl http://download.qt.io/official_releases/jom/jom.zip -O -J -L -s
+      & 7z x *.zip -oC:\jom > nul
+      & del *.zip
+    )
+
+before_build:
+  - set src_path=%cd%
+  - call "C:\Qt\%qt%\bin\qtenv2.bat"
+  - if %compiler% == msvc call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
+  - set PATH=C:\jom;%PATH%
+  - cd %src_path%
+
+build_script:
+  - qmake -config release
+  - if %compiler% == msvc jom -j4
+  - if %compiler% == mingw mingw32-make -j4
+
+test: off
