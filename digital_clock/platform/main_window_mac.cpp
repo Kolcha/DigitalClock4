@@ -28,7 +28,7 @@ void MainWindow::SetVisibleOnAllDesktops(bool set)
   WId windowObject = this->winId();
   objc_object* nsviewObject = reinterpret_cast<objc_object*>(windowObject);
   objc_object* nsWindowObject = objc_msgSend(nsviewObject, sel_registerName("window"));
-  int NSWindowCollectionBehaviorCanJoinAllSpaces = set ? 1 << 0 : 0 << 0;
+  int NSWindowCollectionBehaviorCanJoinAllSpaces = set ? 1 : 0;
   int NSWindowCollectionBehaviorFullScreenNone = 1 << 9;
   int collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces | NSWindowCollectionBehaviorFullScreenNone;
   objc_msgSend(nsWindowObject, sel_registerName("setCollectionBehavior:"), collectionBehavior);

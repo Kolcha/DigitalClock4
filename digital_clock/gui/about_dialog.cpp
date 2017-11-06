@@ -42,8 +42,9 @@ static QString compilerString()
     if (_MSC_VER == 1911) ver = 2017;
     return QLatin1String("MSVC ") + QString::number(ver);
   }
-#endif
+#else
   return QLatin1String("<unknown compiler>");
+#endif
 }
 
 AboutDialog::AboutDialog(QWidget* parent) :
