@@ -23,5 +23,6 @@ before_script:
   - export PATH="/usr/local/Qt-5.8.1/bin:$PATH"
 
 script:
-  - qmake -config release
+  - lupdate -no-obsolete DigitalClock.pro
+  - qmake -config release -r DigitalClock.pro
   - make -j2
