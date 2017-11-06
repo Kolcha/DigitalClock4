@@ -22,7 +22,16 @@ install:
 before_script:
   - export PATH="/usr/local/Qt-5.8.1/bin:$PATH"
 
+addons:
+  sonarcloud:
+    organization: "kolcha-github"
+
 script:
   - lupdate -no-obsolete DigitalClock.pro
   - qmake -config release -r DigitalClock.pro
-  - make -j2
+  - build-wrapper-macosx-x86 --out-dir bw-output make -j2 clean all
+  - sonar-scanner
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
