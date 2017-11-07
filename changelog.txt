@@ -1,3 +1,23 @@
+Whats new in 4.6.0:
+-------------------
+Features:
+ - align center
+ - independent scaling for width and height (through 'any zoom' plugin)
+ - plugins can use current clock skin to draw own content (affected plugins are: 'countdown timer', 'date', 'ip address', 'quick note')
+
+Core:
+ - HTTPS URL in updater
+ - switched to strict C++14
+ - decreased binaries size for Linux systems
+ - macOS: compiled with Xcode 9
+ - Qt 5.9.2 for Windows
+ - 64-bit installer version compiled with MSVC2017
+
+GUI:
+ - fix clock position after settings reset
+ - updated links in About dialog, used HTTPS where available
+
+
 Whats new in 4.5.7:
 -------------------
 Features:
