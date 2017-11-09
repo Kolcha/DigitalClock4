@@ -96,15 +96,3 @@ rm -rf "$build_dir"
 rm -f digital_clock_4-linux.tar.xz
 tar cJvf digital_clock_4-linux.tar.xz "$CLOCK_APP_NAME"
 [[ $? == 0 ]] || exit 1
-
-# create source tarball
-cd "$CLOCK_SRC_PATH/.."
-cp -r "$CLOCK_SRC_PATH" digital_clock_4-src
-cd digital_clock_4-src
-hg clean --all
-rm -rf .hg*
-cd ..
-rm -f digital_clock_4-src.tar.xz
-tar cJvf digital_clock_4-src.tar.xz digital_clock_4-src
-[[ $? == 0 ]] || exit 1
-rm -rf digital_clock_4-src
