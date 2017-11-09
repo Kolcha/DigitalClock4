@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	1,0,2,45
-PRODUCTVERSION	4,6,0,0
+FILEVERSION	1,0,3,48
+PRODUCTVERSION	4,7,0,0
 FILEFLAGSMASK	0x3F
 FILEFLAGS	0x0
 FILEOS		0x40004
@@ -14,12 +14,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Talking clock"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "1.0.2.45"
+		VALUE "FileVersion", "1.0.3.48"
 		VALUE "InternalName", "talking_clock.dll"
 		VALUE "LegalCopyright", "© 2016-2017 Nick Korotysh"
 		VALUE "OriginalFilename", "talking_clock.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.6.0"
+		VALUE "ProductVersion", "4.7.0"
 	}
 }
 
