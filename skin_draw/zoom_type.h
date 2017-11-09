@@ -34,8 +34,7 @@ struct Zoom {
 
   Q_DECL_CONSTEXPR bool isValid() const Q_DECL_NOEXCEPT
   {
-    return !qFuzzyIsNull(zoom_x) && (zoom_x > 0.0) &&
-           !qFuzzyIsNull(zoom_y) && (zoom_y > 0.0);
+    return !qFuzzyIsNull(zoom_x) && (zoom_x > 0.0) && !qFuzzyIsNull(zoom_y) && (zoom_y > 0.0);
   }
 };
 
@@ -48,9 +47,7 @@ inline Q_DECL_CONSTEXPR bool operator !=(const Zoom& lhs, const Zoom& rhs) Q_DEC
 }
 
 inline Q_DECL_CONSTEXPR bool operator <(const Zoom& lhs, const Zoom& rhs) Q_DECL_NOEXCEPT {
-  return !qFuzzyCompare(lhs.zoom_x, rhs.zoom_x) ?
-  lhs.zoom_x < rhs.zoom_x :
-  lhs.zoom_y < rhs.zoom_y;
+  return !qFuzzyCompare(lhs.zoom_x, rhs.zoom_x) ? lhs.zoom_x < rhs.zoom_x : lhs.zoom_y < rhs.zoom_y;
 }
 
 inline Q_DECL_CONSTEXPR bool operator >(const Zoom& lhs, const Zoom& rhs) Q_DECL_NOEXCEPT {
