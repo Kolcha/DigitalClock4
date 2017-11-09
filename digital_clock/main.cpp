@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
   // set application info
   QApplication::setApplicationDisplayName("Digital Clock");
   QApplication::setApplicationName("Digital Clock");
-  QApplication::setApplicationVersion("4.6.0");
+  QApplication::setApplicationVersion("4.6.0+");
   QApplication::setOrganizationName("Nick Korotysh");
   QApplication::setOrganizationDomain("digitalclock4.sourceforge.net");
 

@@ -140,7 +140,7 @@ void PluginManager::ConfigurePlugin(const QString& name)
       QPluginLoader* loader = new QPluginLoader(file, this);
       IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
       if (plugin) {
-        plugin->InitSettings(data_.settings->GetBackend());
+        plugin->InitSettings(data_.settings->GetBackend(), name);
         InitPlugin(plugin, false);
         plugin->Configure();
       }
@@ -157,7 +157,7 @@ void PluginManager::LoadPlugin(const QString& name)
   QPluginLoader* loader = new QPluginLoader(file, this);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
   if (plugin) {
-    plugin->InitSettings(data_.settings->GetBackend());
+    plugin->InitSettings(data_.settings->GetBackend(), name);
     InitPlugin(plugin, true);
     plugin->Start();
     loaded_[name] = loader;

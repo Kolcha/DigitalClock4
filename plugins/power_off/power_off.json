@@ -1,6 +1,6 @@
 {
     "name" : "power_off",
-    "version" : "2.2.1",
+    "version" : "2.2.2",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
     "configurable" : true,

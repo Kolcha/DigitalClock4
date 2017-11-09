@@ -56,10 +56,11 @@ public:
   /*! Constructor */
   WidgetPluginBase();
   /*!
-   * Create PluginSettings object.
-   * @param backend - storage backend
+   * Initializes plugin configuration storage.
+   * @param backend - config storage backend
+   * @param name - current plugin's name
    */
-  void InitSettings(SettingsStorage* backend) override;
+  void InitSettings(SettingsStorage* backend, const QString& name) override;
   /*!
    * @brief Init internals with current clock settings.
    *
@@ -173,8 +174,6 @@ protected:
    */
   QSize GetImageSize(const QString& text, qreal zoom) const;
 
-  /// plugin name, some meaning string, must be set in child class constructor
-  QString plg_name_;
   /// maximum available width for plugin widget
   int avail_width_;
 

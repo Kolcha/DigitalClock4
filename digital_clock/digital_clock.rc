@@ -1,7 +1,7 @@
 1	ICON	resources\clock_icon_win.ico
 1	VERSIONINFO
-FILEVERSION	4,6,0,1090
-PRODUCTVERSION	4,6,0,0
+FILEVERSION	4,7,0,1094
+PRODUCTVERSION	4,7,0,0
 FILEFLAGSMASK	0x3F
 FILEFLAGS	0x0
 FILEOS		0x40004
@@ -15,12 +15,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Beautiful clock"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock 4"
-		VALUE "FileVersion", "4.6.0.1090"
+		VALUE "FileVersion", "4.7.0.1094"
 		VALUE "InternalName", "digital_clock.exe"
 		VALUE "LegalCopyright", "© 2013-2017 Nick Korotysh"
 		VALUE "OriginalFilename", "digital_clock.exe"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.6.0"
+		VALUE "ProductVersion", "4.7.0"
 	}
 }
 

@@ -37,8 +37,9 @@ Schedule::Schedule() : tray_menu_(nullptr), backend_(nullptr), invoker_(nullptr)
   InitIcon(":/schedule/schedule.svg");
 }
 
-void Schedule::InitSettings(SettingsStorage* backend)
+void Schedule::InitSettings(SettingsStorage* backend, const QString& name)
 {
+  Q_UNUSED(name);
   backend_ = new TasksStorage(backend, this);
 }
 

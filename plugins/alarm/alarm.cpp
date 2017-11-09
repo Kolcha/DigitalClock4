@@ -55,10 +55,10 @@ void Alarm::Init(QSystemTrayIcon* tray_icon)
   old_icon_ = tray_icon->icon();
 }
 
-void Alarm::InitSettings(SettingsStorage* backend)
+void Alarm::InitSettings(SettingsStorage* backend, const QString& name)
 {
   storage_ = new AlarmsStorage(backend, this);
-  IClockPlugin::InitSettings(backend);
+  IClockPlugin::InitSettings(backend, name);
 }
 
 void Alarm::Start()

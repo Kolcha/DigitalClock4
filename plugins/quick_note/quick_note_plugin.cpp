@@ -34,7 +34,6 @@ QuickNotePlugin::QuickNotePlugin() : msg_widget_(nullptr)
   info_.display_name = tr("Quick note");
   info_.description = tr("Allows to display any short message under clock.");
   InitIcon(":/quick_note/icon.svg.p");
-  plg_name_ = QString("quick_note");
 }
 
 void QuickNotePlugin::Configure()

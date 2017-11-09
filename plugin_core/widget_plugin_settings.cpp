@@ -23,20 +23,18 @@
 
 namespace plugin {
 
-QString OptionKey(const plugin::WidgetPluginOption opt, const QString& plg_name)
+QString OptionKey(const plugin::WidgetPluginOption opt)
 {
-  QString fmt_str("plugins/%1/%2");
-
   switch (opt) {
-    case OPT_USE_CLOCK_FONT:      return fmt_str.arg(plg_name, "use_clock_font");
-    case OPT_CUSTOM_FONT:         return fmt_str.arg(plg_name, "custom_font");
-    case OPT_ZOOM_MODE:           return fmt_str.arg(plg_name, "zoom_mode");
-    case OPT_SPACE_PERCENT:       return fmt_str.arg(plg_name, "space_percent");
-    case OPT_ALIGNMENT:           return fmt_str.arg(plg_name, "alignment");
-    case OPT_WIDGET_LOCATION:     return fmt_str.arg(plg_name, "widget_location");
-    case OPT_USE_CUSTOM_COLOR:    return fmt_str.arg(plg_name, "use_custom_color");
-    case OPT_CUSTOM_COLOR:        return fmt_str.arg(plg_name, "custom_color");
-    case OPT_USE_CLOCK_SKIN:      return fmt_str.arg(plg_name, "use_clock_skin");
+    case OPT_USE_CLOCK_FONT:      return QLatin1String("use_clock_font");
+    case OPT_CUSTOM_FONT:         return QLatin1String("custom_font");
+    case OPT_ZOOM_MODE:           return QLatin1String("zoom_mode");
+    case OPT_SPACE_PERCENT:       return QLatin1String("space_percent");
+    case OPT_ALIGNMENT:           return QLatin1String("alignment");
+    case OPT_WIDGET_LOCATION:     return QLatin1String("widget_location");
+    case OPT_USE_CUSTOM_COLOR:    return QLatin1String("use_custom_color");
+    case OPT_CUSTOM_COLOR:        return QLatin1String("custom_color");
+    case OPT_USE_CLOCK_SKIN:      return QLatin1String("use_clock_skin");
   }
 
   Q_ASSERT(false);

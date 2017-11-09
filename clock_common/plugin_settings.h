@@ -45,9 +45,10 @@ public:
   /*!
    * Constructor.
    * @param backend - storage backend
+   * @param name - plugin's name
    * @param parent - parent object
    */
-  PluginSettings(SettingsStorage* backend, QObject* parent = nullptr);
+  PluginSettings(SettingsStorage* backend, const QString& name, QObject* parent = nullptr);
   /*! Destructor. */
   ~PluginSettings();
 
@@ -96,10 +97,19 @@ private slots:
   void Reload();
 
 private:
+  /*!
+   * Converts plugin-specific config @a key to unique key (path) in global settings storage.
+   * @return unique path in settings storage
+   */
+  QString WrapKey(const QString& key) const;
+
+private:
   SettingsStorage* backend_;
   QSettings::SettingsMap default_map_;
   QSettings::SettingsMap current_map_;
   bool track_changes_;
+  const QString prefix_mask_;     // prefix must not have '/' at the end!
+  const QString plugin_name_;
 };
 
 #endif // PLUGIN_SETTINGS_H

@@ -23,22 +23,22 @@
 
 namespace chime {
 
-const char* const OPT_EVERY_HOUR_ENABLED     = "plugins/chime/every_hour/enabled";
-const char* const OPT_EVERY_HOUR_SIGNAL      = "plugins/chime/every_hour/signal";
-const char* const OPT_EVERY_HOUR_VOLUME      = "plugins/chime/every_hour/volume";
-const char* const OPT_EVERY_HOUR_REPEAT      = "plugins/chime/every_hour/repeat";
+const char* const OPT_EVERY_HOUR_ENABLED     = "every_hour/enabled";
+const char* const OPT_EVERY_HOUR_SIGNAL      = "every_hour/signal";
+const char* const OPT_EVERY_HOUR_VOLUME      = "every_hour/volume";
+const char* const OPT_EVERY_HOUR_REPEAT      = "every_hour/repeat";
 
-const char* const OPT_QUARTER_HOUR_ENABLED   = "plugins/chime/quarter_hour/enabled";
-const char* const OPT_QUARTER_HOUR_SIGNAL    = "plugins/chime/quarter_hour/signal";
-const char* const OPT_QUARTER_HOUR_VOLUME    = "plugins/chime/quarter_hour/volume";
-const char* const OPT_QUARTER_HOUR_REPEAT    = "plugins/chime/quarter_hour/repeat";
+const char* const OPT_QUARTER_HOUR_ENABLED   = "quarter_hour/enabled";
+const char* const OPT_QUARTER_HOUR_SIGNAL    = "quarter_hour/signal";
+const char* const OPT_QUARTER_HOUR_VOLUME    = "quarter_hour/volume";
+const char* const OPT_QUARTER_HOUR_REPEAT    = "quarter_hour/repeat";
 
-const char* const OPT_QUIET_HOURS_ENABLED    = "plugins/chime/quiet_hours/enabled";
-const char* const OPT_QUIET_HOURS_START      = "plugins/chime/quiet_hours/start_time";
-const char* const OPT_QUIET_HOURS_END        = "plugins/chime/quiet_hours/end_end";
+const char* const OPT_QUIET_HOURS_ENABLED    = "quiet_hours/enabled";
+const char* const OPT_QUIET_HOURS_START      = "quiet_hours/start_time";
+const char* const OPT_QUIET_HOURS_END        = "quiet_hours/end_end";
 
-const char* const OPT_EVERY_HOUR_LAST_FILE   = "plugins/chime/state/last_every_hour_file";
-const char* const OPT_QUARTER_HOUR_LAST_FILE = "plugins/chime/state/last_quarter_hour_file";
+const char* const OPT_EVERY_HOUR_LAST_FILE   = "state/last_every_hour_file";
+const char* const OPT_QUARTER_HOUR_LAST_FILE = "state/last_quarter_hour_file";
 
 void InitDefaults(QSettings::SettingsMap* defaults);
 

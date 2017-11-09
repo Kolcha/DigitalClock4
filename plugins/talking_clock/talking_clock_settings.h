@@ -23,17 +23,17 @@
 
 namespace talking_clock {
 
-const char* const OPT_EVERY_HOUR_ENABLED   = "plugins/talking_clock/every_hour/enabled";
-const char* const OPT_EVERY_HOUR_FORMAT    = "plugins/talking_clock/every_hour/format";
-const char* const OPT_QUARTER_HOUR_ENABLED = "plugins/talking_clock/quarter_hour/enabled";
-const char* const OPT_QUARTER_HOUR_FORMAT  = "plugins/talking_clock/quarter_hour/format";
+const char* const OPT_EVERY_HOUR_ENABLED   = "every_hour/enabled";
+const char* const OPT_EVERY_HOUR_FORMAT    = "every_hour/format";
+const char* const OPT_QUARTER_HOUR_ENABLED = "quarter_hour/enabled";
+const char* const OPT_QUARTER_HOUR_FORMAT  = "quarter_hour/format";
 
-const char* const OPT_SYNTHESIS_VOLUME     = "plugins/talking_clock/volume";
-const char* const OPT_SYNTHESIS_RATE       = "plugins/talking_clock/synthesis/rate";
-const char* const OPT_SYNTHESIS_PITCH      = "plugins/talking_clock/synthesis/pitch";
-const char* const OPT_SYNTHESIS_ENGINE     = "plugins/talking_clock/synthesis/engine";
-const char* const OPT_SYNTHESIS_LANGUAGE   = "plugins/talking_clock/synthesis/language";
-const char* const OPT_SYNTHESIS_VOICE      = "plugins/talking_clock/synthesis/voice";
+const char* const OPT_SYNTHESIS_VOLUME     = "volume";
+const char* const OPT_SYNTHESIS_RATE       = "synthesis/rate";
+const char* const OPT_SYNTHESIS_PITCH      = "synthesis/pitch";
+const char* const OPT_SYNTHESIS_ENGINE     = "synthesis/engine";
+const char* const OPT_SYNTHESIS_LANGUAGE   = "synthesis/language";
+const char* const OPT_SYNTHESIS_VOICE      = "synthesis/voice";
 
 void InitDefaults(QSettings::SettingsMap* defaults);
 

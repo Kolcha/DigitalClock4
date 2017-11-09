@@ -40,7 +40,7 @@ class Schedule : public IClockPlugin
 public:
   Schedule();
 
-  void InitSettings(SettingsStorage* backend) override;
+  void InitSettings(SettingsStorage* backend, const QString& name) override;
 
 public slots:
   void Start()     override;

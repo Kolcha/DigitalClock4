@@ -20,18 +20,17 @@
 
 #include "settings_storage.h"
 
-PluginSettings::PluginSettings(SettingsStorage* backend, QObject* parent) :
+PluginSettings::PluginSettings(SettingsStorage* backend, const QString& name, QObject* parent) :
   QObject(parent),
-  backend_(backend), track_changes_(false)
+  backend_(backend), track_changes_(false),
+  prefix_mask_("plugins/%1"), plugin_name_(name)
 {
   connect(backend_, &SettingsStorage::reloaded, this, &PluginSettings::Reload);
 }
 
 PluginSettings::~PluginSettings()
 {
-  for (auto iter = default_map_.begin(); iter != default_map_.end(); ++iter) {
-    backend_->Forget(iter.key());
-  }
+  backend_->Forget(prefix_mask_.arg(plugin_name_));
 }
 
 void PluginSettings::SetDefaultValues(const QSettings::SettingsMap& values)
@@ -43,15 +42,16 @@ QVariant PluginSettings::GetOption(const QString& key) const
 {
   auto iter = current_map_.find(key);
   if (iter != current_map_.end()) return iter.value();
-  return backend_->GetValue(key, default_map_.find(key).value());   // TODO: track key name
+  return backend_->GetValue(WrapKey(key), default_map_.find(key).value());
 }
 
 void PluginSettings::Load()
 {
   current_map_.clear();
   for (auto iter = default_map_.begin(); iter != default_map_.end(); ++iter) {
-    backend_->Revert(iter.key());
-    QVariant value = backend_->GetValue(iter.key(), iter.value());
+    QString key = WrapKey(iter.key());
+    backend_->Revert(key);
+    QVariant value = backend_->GetValue(key, iter.value());
     if (track_changes_) emit OptionChanged(iter.key(), value);
   }
 }
@@ -59,14 +59,14 @@ void PluginSettings::Load()
 void PluginSettings::Save()
 {
   for (auto iter = current_map_.begin(); iter != current_map_.end(); ++iter) {
-    backend_->Commit(iter.key());
+    backend_->Commit(WrapKey(iter.key()));
   }
 }
 
 void PluginSettings::SetOption(const QString& key, const QVariant& value)
 {
-  current_map_[key] = value;       // TODO: add some key prefix (plugins/<plugin name>)
-  backend_->SetValue(key, value);
+  current_map_[key] = value;
+  backend_->SetValue(WrapKey(key), value);
   if (track_changes_) emit OptionChanged(key, value);
 }
 
@@ -81,4 +81,9 @@ void PluginSettings::Reload()
   track_changes_ = true;
   Load();
   track_changes_ = old_value;
+}
+
+QString PluginSettings::WrapKey(const QString& key) const
+{
+  return prefix_mask_.arg(plugin_name_) + "/" + key;
 }
