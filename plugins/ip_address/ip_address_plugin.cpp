@@ -41,7 +41,6 @@ IpAddressPlugin::IpAddressPlugin() : msg_label_(nullptr), ip_update_timer_(nullp
   info_.display_name = tr("IP address");
   info_.description = tr("Displays local IP address(es) under clock.");
   InitIcon(":/ip_address/icon.svg.p");
-  plg_name_ = QString("ip_address");
   qnam_ = new QNetworkAccessManager(this);
 }
 

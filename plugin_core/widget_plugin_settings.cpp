@@ -23,9 +23,8 @@
 
 namespace plugin {
 
-QString OptionKey(const plugin::WidgetPluginOption opt, const QString& plg_name)
+QString OptionKey(const plugin::WidgetPluginOption opt)
 {
-  Q_UNUSED(plg_name);     // TODO: remove
   switch (opt) {
     case OPT_USE_CLOCK_FONT:      return QLatin1String("use_clock_font");
     case OPT_CUSTOM_FONT:         return QLatin1String("custom_font");

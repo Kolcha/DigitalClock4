@@ -114,7 +114,7 @@ void WidgetPluginBase::Start()
   QGridLayout* layout = private_->main_layout_;
   private_->plg_widget_ = InitWidget(private_->main_layout_);
   if (private_->main_layout_->indexOf(private_->plg_widget_) == -1) {
-    int w_loc = settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION, plg_name_)).toInt();
+    int w_loc = settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION)).toInt();
     if (static_cast<WidgetLocation>(w_loc) == WidgetLocation::WL_RIGHT) {
       layout->addWidget(private_->plg_widget_, 0, layout->columnCount(), 1, 1);
     } else {
@@ -143,7 +143,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
     case OPT_SKIN_NAME:
       avail_width_ = private_->CalculateAvailableSpace();
 
-      switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE, plg_name_)).toInt())) {
+      switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE)).toInt())) {
         case ZoomMode::ZM_NOT_ZOOM:
           private_->drawer_->SetZoom(1.0);
           break;
@@ -159,9 +159,9 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
     case OPT_FONT:
     {
       private_->clock_font_ = new_value.value<QFont>();
-      if (!settings_->GetOption(OptionKey(OPT_USE_CLOCK_FONT, plg_name_)).toBool()) break;
+      if (!settings_->GetOption(OptionKey(OPT_USE_CLOCK_FONT)).toBool()) break;
       private_->font_ = private_->clock_font_;
-      if (settings_->GetOption(OptionKey(OPT_USE_CLOCK_SKIN, plg_name_)).toBool()) break;
+      if (settings_->GetOption(OptionKey(OPT_USE_CLOCK_SKIN)).toBool()) break;
       skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(private_->font_));
       txt_skin->SetDevicePixelRatio(private_->main_wnd_->devicePixelRatioF());
       private_->ApplySkin(txt_skin);
@@ -169,7 +169,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
     }
 
     case OPT_ZOOM:
-      switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE, plg_name_)).toInt())) {
+      switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE)).toInt())) {
         case ZoomMode::ZM_NOT_ZOOM:
           private_->drawer_->SetZoom(1.0);
           break;
@@ -184,7 +184,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
 
     case OPT_COLOR:
       private_->clock_color_ = new_value.value<QColor>();
-      if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)).toBool()) break;
+      if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR)).toBool()) break;
       private_->drawer_->SetColor(private_->clock_color_);
       break;
 
@@ -194,7 +194,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
 
     case OPT_TEXTURE_TYPE:
       private_->clock_customization_ = new_value.value< ::skin_draw::SkinDrawer::CustomizationType>();
-      if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)).toBool()) break;
+      if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR)).toBool()) break;
       private_->drawer_->SetCustomizationType(private_->clock_customization_);
       break;
 
@@ -213,7 +213,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
         case Customization::C_NONE:
         case Customization::C_COLORIZE:
           private_->clock_customization_ = ::skin_draw::SkinDrawer::CT_NONE;
-          if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR, plg_name_)).toBool()) break;
+          if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR)).toBool()) break;
           private_->drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
           break;
 
@@ -234,7 +234,7 @@ void WidgetPluginBase::TimeUpdateListener()
 
   int cur_avail_width = private_->CalculateAvailableSpace();
 
-  switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE, plg_name_)).toInt())) {
+  switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE)).toInt())) {
     case ZoomMode::ZM_NOT_ZOOM:
       break;
 
@@ -251,7 +251,7 @@ void WidgetPluginBase::TimeUpdateListener()
 
   avail_width_ = cur_avail_width;
 
-  switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE, plg_name_)).toInt())) {
+  switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE)).toInt())) {
     case ZoomMode::ZM_NOT_ZOOM:
       break;
 
@@ -282,7 +282,7 @@ QWidget* WidgetPluginBase::InitConfigWidget(QWidget* parent)
   QMap<WidgetPluginOption, QVariant> cur_values;
   InitDefaults(&cur_values);
   for (auto iter = cur_values.begin(); iter != cur_values.end(); ++iter)
-    *iter = settings_->GetOption(OptionKey(iter.key(), plg_name_));
+    *iter = settings_->GetOption(OptionKey(iter.key()));
   cfg_widget->InitWidgets(cur_values);
   connect(cfg_widget, &BaseSettingsWidget::OptionChanged, private_, &WidgetPluginBasePrivate::onBaseOptionChanged);
   return cfg_widget;
@@ -312,12 +312,12 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
 qreal WidgetPluginBase::CalculateZoom(const QString& text) const
 {
   Q_ASSERT(!text.isEmpty());
-  int iw_loc = settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION, plg_name_)).toInt();
+  int iw_loc = settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION)).toInt();
   WidgetLocation w_loc = static_cast<WidgetLocation>(iw_loc);
 
   qreal tw = w_loc == WidgetLocation::WL_RIGHT ?  GetImageSize(text, 1.0).height() : GetImageSize(text, 1.0).width();
   qreal avail_width = avail_width_ * private_->plg_widget_->devicePixelRatioF();
-  avail_width *= 0.01 * settings_->GetOption(OptionKey(OPT_SPACE_PERCENT, plg_name_)).toInt();
+  avail_width *= 0.01 * settings_->GetOption(OptionKey(OPT_SPACE_PERCENT)).toInt();
   qreal c_zoom = avail_width / tw;
 
   int c_img_w = w_loc == WidgetLocation::WL_RIGHT ? GetImageSize(text, c_zoom).height() : GetImageSize(text, c_zoom).width();

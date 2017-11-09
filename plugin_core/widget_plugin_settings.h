@@ -47,14 +47,12 @@ enum WidgetPluginOption {
  *
  * Generates unique string for each WidgetPluginOption value, which later will used as key
  * during setting save/load.
- * Generated string looks like filesystem path: "plugins/<plugin_name>/<option_name>"
+ *
  * @param opt - one of WidgetPluginOption
- * @param plg_name - plugin name, used to make keys unique for each plugin
  * @return option key (path)
  * @note All WidgetPluginOption values *must* be handled.
- * @see WidgetPluginBase::plg_name_
  */
-QString PLUGIN_CORE_SHARED_EXPORT OptionKey(const WidgetPluginOption opt, const QString& plg_name);
+QString PLUGIN_CORE_SHARED_EXPORT OptionKey(const WidgetPluginOption opt);
 
 /*!
  * Widget zoom modes.

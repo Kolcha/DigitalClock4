@@ -37,7 +37,6 @@ CountdownTimerPlugin::CountdownTimerPlugin() : msg_label_(nullptr), cd_timer_(nu
   info_.display_name = tr("Countdown timer");
   info_.description = tr("Just a countdown timer.");
   InitIcon(":/countdown_timer/icon.svg.p");
-  plg_name_ = QString("countdown_timer");
 }
 
 void CountdownTimerPlugin::Start()

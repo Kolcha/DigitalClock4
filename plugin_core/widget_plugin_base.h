@@ -174,8 +174,6 @@ protected:
    */
   QSize GetImageSize(const QString& text, qreal zoom) const;
 
-  /// plugin name, some meaning string, must be set in child class constructor
-  QString plg_name_;
   /// maximum available width for plugin widget
   int avail_width_;
 
