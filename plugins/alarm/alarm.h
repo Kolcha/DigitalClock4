@@ -43,7 +43,7 @@ public:
   Alarm();
   void Init(QSystemTrayIcon* tray_icon) override;
 
-  void InitSettings(SettingsStorage* backend) override;
+  void InitSettings(SettingsStorage* backend, const QString& name) override;
 
 public slots:
   void Start() override;

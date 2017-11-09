@@ -62,10 +62,11 @@ public:
    */
   const TPluginGUIInfo& GetInfo() const;
   /*!
-   * Create PluginSettings object.
-   * @param backend - storage backend
+   * Initializes plugin configuration storage.
+   * @param backend - config storage backend
+   * @param name - current plugin's name
    */
-  virtual void InitSettings(SettingsStorage* backend);
+  virtual void InitSettings(SettingsStorage* backend, const QString& name);
 
 protected:
   /*!

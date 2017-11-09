@@ -39,10 +39,10 @@ const TPluginGUIInfo& PluginBase::GetInfo() const
   return info_;
 }
 
-void PluginBase::InitSettings(SettingsStorage* backend)
+void PluginBase::InitSettings(SettingsStorage* backend, const QString& name)
 {
   Q_ASSERT(backend);
-  settings_ = new PluginSettings(backend, this);
+  settings_ = new PluginSettings(backend, name, this);
 }
 
 void PluginBase::InitTranslator(const QLatin1String& prefix)

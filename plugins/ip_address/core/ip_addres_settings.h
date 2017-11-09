@@ -23,9 +23,9 @@
 
 namespace ip_address {
 
-const char* const OPT_DISPLAY_INTERNAL_ADDRESSES = "plugins/ip_address/display_internal_addresses";
-const char* const OPT_INTERNAL_INTERFACES_LIST   = "plugins/ip_address/internal_interfaces_list";
-const char* const OPT_DISPLAY_EXTERNAL_ADDRESS   = "plugins/ip_address/display_external_address";
+const char* const OPT_DISPLAY_INTERNAL_ADDRESSES = "display_internal_addresses";
+const char* const OPT_INTERNAL_INTERFACES_LIST   = "internal_interfaces_list";
+const char* const OPT_DISPLAY_EXTERNAL_ADDRESS   = "display_external_address";
 
 void InitDefaults(QSettings::SettingsMap* defaults);
 

@@ -25,8 +25,8 @@
 namespace power_off {
 
 // power_off plugin settings
-const char* const OPT_TIME  = "plugins/power_off/time";
-const char* const OPT_FORCE = "plugins/power_off/force";
+const char* const OPT_TIME  = "time";
+const char* const OPT_FORCE = "force";
 
 inline void InitDefaults(QSettings::SettingsMap* defaults)
 {

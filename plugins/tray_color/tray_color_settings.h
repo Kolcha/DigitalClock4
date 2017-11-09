@@ -25,7 +25,7 @@
 namespace tray_color {
 
 // alarm plugin settings keys
-const char* const OPT_TRAY_COLOR = "plugins/tray_color/color";
+const char* const OPT_TRAY_COLOR = "color";
 
 inline void InitDefaults(QSettings::SettingsMap* defaults)
 {

@@ -24,7 +24,7 @@
 namespace quick_note {
 
 // quick note plugin settings keys
-const char* const OPT_QUICK_NOTE_MSG = "plugins/quick_note/message";
+const char* const OPT_QUICK_NOTE_MSG = "message";
 
 inline void InitDefaults(QSettings::SettingsMap* defaults)
 {
