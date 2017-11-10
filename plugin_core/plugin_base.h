@@ -19,7 +19,7 @@
 #ifndef PLUGIN_BASE_H
 #define PLUGIN_BASE_H
 
-#include "clock_common_global.h"
+#include "plugin_core_global.h"
 #include <QObject>
 #include <QPixmap>
 #include <QString>
@@ -47,7 +47,7 @@ class PluginSettings;
  * This class provides some common logic for all plugins and it inherited by all plugin interfaces.
  * Do not use it directly, use only interfaces.
  */
-class CLOCK_COMMON_EXPORT PluginBase : public QObject
+class PLUGIN_CORE_SHARED_EXPORT PluginBase : public QObject
 {
   Q_OBJECT
 

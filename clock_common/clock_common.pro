@@ -36,8 +36,6 @@ SOURCES += \
     config_serialization.cpp \
     led_tool_button.cpp \
     message_box.cpp \
-    plugin_base.cpp \
-    plugin_settings.cpp \
     settings_storage.cpp \
     settings_storage_wrapper.cpp
 
@@ -45,12 +43,8 @@ HEADERS += \
     clock_common_global.h \
     config_base.h \
     config_serialization.h \
-    iclock_plugin.h \
-    iplugin_init.h \
     led_tool_button.h \
     message_box.h \
-    plugin_base.h \
-    plugin_settings.h \
     settings_keys.h \
     settings_storage.h \
     settings_storage_wrapper.h
