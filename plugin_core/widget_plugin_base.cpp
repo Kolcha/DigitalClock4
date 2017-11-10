@@ -95,7 +95,7 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
         break;
     }
   }
-  private_->drawer_->SetSpace(0);
+  private_->drawer_->SetSpace(2);
 }
 
 void WidgetPluginBase::Init(QWidget* main_wnd)
@@ -293,6 +293,7 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
   QStringList ss = text.split('\n');
   int tw = 0;
   int th = 0;
+  const int space = private_->drawer_->spacing() * private_->drawer_->currentSkin()->GetDevicePixelRatio();
 
   for (auto& s : ss) {
     int lw = 0;
@@ -300,11 +301,11 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
     for (int i = 0; i < s.length(); ++i) {
       QPixmap img = private_->drawer_->currentSkin()->GetImage(s, i, zoom, true);
       if (!img) continue;
-      lw += img.width();
+      lw += img.width() + space;
       lh = qMax(lh, img.height());
     }
     tw = qMax(tw, lw);
-    th += lh;
+    th += lh + space;
   }
   return QSize(tw, th);
 }
