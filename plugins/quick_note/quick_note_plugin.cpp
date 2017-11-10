@@ -39,6 +39,7 @@ QuickNotePlugin::QuickNotePlugin() : msg_widget_(nullptr)
 void QuickNotePlugin::Configure()
 {
   SettingsDialog* dialog = new SettingsDialog();
+  connect(dialog, &SettingsDialog::destroyed, this, &QuickNotePlugin::configured);
   // load current settings to dialog
   QSettings::SettingsMap curr_settings;
   InitDefaults(&curr_settings);

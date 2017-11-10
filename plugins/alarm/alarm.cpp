@@ -132,6 +132,7 @@ void Alarm::Stop()
 void Alarm::Configure()
 {
   AlarmsListDialog* dlg = new AlarmsListDialog();
+  connect(dlg, &AlarmsListDialog::destroyed, this, &Alarm::configured);
 
   if (!icon_changed_) {
     QSettings::SettingsMap curr_settings;

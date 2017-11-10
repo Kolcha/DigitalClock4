@@ -89,6 +89,13 @@ public slots:
    * It can be used as timer. Clock provides current time value as QString.
    */
   virtual void TimeUpdateListener() {}
+
+signals:
+    /*!
+     * Signal to notify plugin management system when plugin configuration
+     * was finished. Usually this means configuration dialog was destroyed.
+     */
+    void configured();
 };
 
 /*! Clock plugin interface IID */

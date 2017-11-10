@@ -63,6 +63,7 @@ void IpAddressPlugin::Stop()
 void IpAddressPlugin::Configure()
 {
   SettingsDialog* dialog = new SettingsDialog();
+  connect(dialog, &SettingsDialog::destroyed, this, &IpAddressPlugin::configured);
   // load current settings to dialog
   QSettings::SettingsMap curr_settings;
   InitDefaults(&curr_settings);

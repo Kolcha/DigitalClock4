@@ -77,6 +77,7 @@ void Schedule::Stop()
 void Schedule::Configure()
 {
   ScheduleDialog* dlg = new ScheduleDialog();
+  connect(dlg, &ScheduleDialog::destroyed, this, &Schedule::configured);
   connect(backend_, &TasksStorage::datesLoaded, dlg, &ScheduleDialog::setDates);
   connect(backend_, &TasksStorage::tasksLoaded, dlg, &ScheduleDialog::setTasks);
   connect(dlg, &ScheduleDialog::dateChanged, backend_, &TasksStorage::LoadTasks);

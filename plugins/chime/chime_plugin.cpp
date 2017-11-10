@@ -72,6 +72,7 @@ void ChimePlugin::Stop()
 void ChimePlugin::Configure()
 {
   SettingsDialog* dialog = new SettingsDialog();
+  connect(dialog, &SettingsDialog::destroyed, this, &ChimePlugin::configured);
   // load current settings to dialog
   QSettings::SettingsMap curr_settings;
   InitDefaults(&curr_settings);

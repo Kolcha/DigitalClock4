@@ -110,10 +110,6 @@ void PluginManager::UnloadPlugins(const QStringList& names)
   } else {
     QList<QString> plugins = loaded_.keys();
     for (auto& plugin : plugins) UnloadPlugin(plugin);
-    for (auto i = tmp_loaded_.begin(); i != tmp_loaded_.end(); ++i) {
-      i.value()->unload();
-    }
-    tmp_loaded_.clear();
   }
 }
 
@@ -129,22 +125,16 @@ void PluginManager::ConfigurePlugin(const QString& name)
     IClockPlugin* plugin = qobject_cast<IClockPlugin*>(iter.value()->instance());
     if (plugin) plugin->Configure();
   } else {
-    auto iter = tmp_loaded_.find(name);
-    if (iter != tmp_loaded_.end()) {
-      QPluginLoader* loader = iter.value();
-      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
-      if (plugin) plugin->Configure();
-    } else {
-      QString file = available_[name];
-      if (!QFile::exists(file)) return;
-      QPluginLoader* loader = new QPluginLoader(file, this);
-      IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
-      if (plugin) {
-        plugin->InitSettings(data_.settings->GetBackend(), name);
-        InitPlugin(plugin, false);
-        plugin->Configure();
-      }
-      tmp_loaded_[name] = loader;
+    QString file = available_[name];
+    if (!QFile::exists(file)) return;
+    QPluginLoader* loader = new QPluginLoader(file, this);
+    IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
+    if (plugin) {
+      connect(plugin, &IClockPlugin::configured, loader, &QPluginLoader::unload);
+      connect(plugin, &IClockPlugin::destroyed, loader, &QPluginLoader::deleteLater);
+      plugin->InitSettings(data_.settings->GetBackend(), name);
+      InitPlugin(plugin, false);
+      plugin->Configure();
     }
   }
 }
@@ -175,6 +165,7 @@ void PluginManager::UnloadPlugin(const QString& name)
     disconnect(&timer_, SIGNAL(timeout()), plugin, SLOT(TimeUpdateListener()));
     plugin->Stop();
     loader->unload();
+    loader->deleteLater();
     loaded_.erase(iter);
   }
 }

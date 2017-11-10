@@ -62,6 +62,7 @@ void PowerOff::Start()
 void PowerOff::Configure()
 {
   SettingsDialog* dialog = new SettingsDialog();
+  connect(dialog, &SettingsDialog::destroyed, this, &PowerOff::configured);
   // load current settings to dialog
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
           dialog, SLOT(SettingsListener(QString,QVariant)));
