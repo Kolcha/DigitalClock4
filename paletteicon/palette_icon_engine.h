@@ -27,7 +27,7 @@ class PaletteIconEngine : public QIconEngine
 {
 public:
   PaletteIconEngine();
-  explicit PaletteIconEngine(const PaletteIconEngine& other);
+  PaletteIconEngine(const PaletteIconEngine& other);
   ~PaletteIconEngine();
 
   void addFile(const QString& fileName, const QSize& size, QIcon::Mode mode, QIcon::State state) Q_DECL_OVERRIDE;

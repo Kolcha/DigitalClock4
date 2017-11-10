@@ -38,7 +38,7 @@ PaletteIconEngine::PaletteIconEngine()
   renderer_ = new QSvgRenderer();
 }
 
-PaletteIconEngine::PaletteIconEngine(const PaletteIconEngine& other)
+PaletteIconEngine::PaletteIconEngine(const PaletteIconEngine& other) : QIconEngine(other)
 {
   src_file_ = other.src_file_;
   renderer_ = new QSvgRenderer();
