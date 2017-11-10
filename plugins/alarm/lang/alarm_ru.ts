@@ -40,9 +40,9 @@
     <message>
         <location filename="../alarm.cpp" line="88"/>
         <location filename="../alarm.cpp" line="102"/>
-        <location filename="../alarm.cpp" line="180"/>
-        <location filename="../alarm.cpp" line="191"/>
-        <location filename="../alarm.cpp" line="201"/>
+        <location filename="../alarm.cpp" line="181"/>
+        <location filename="../alarm.cpp" line="192"/>
+        <location filename="../alarm.cpp" line="202"/>
         <source>Digital Clock Alarm</source>
         <translation>Будильник Digital Clock</translation>
     </message>
@@ -59,14 +59,14 @@
 %1</translation>
     </message>
     <message>
-        <location filename="../alarm.cpp" line="181"/>
+        <location filename="../alarm.cpp" line="182"/>
         <source>File not found:
 %1</source>
         <translation>Файл не найден:
 %1</translation>
     </message>
     <message>
-        <location filename="../alarm.cpp" line="192"/>
+        <location filename="../alarm.cpp" line="193"/>
         <source>Alarm at %1</source>
         <translation>Будильник в %1</translation>
     </message>

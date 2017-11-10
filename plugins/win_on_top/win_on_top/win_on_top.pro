@@ -44,5 +44,7 @@ OTHER_FILES += win_on_top.json
 
 win32:RC_FILE = win_on_top.rc
 
+win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../../plugin_core/debug/
+else:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../../plugin_core/release/
 win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../../clock_common/debug/
 else:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../../clock_common/release/

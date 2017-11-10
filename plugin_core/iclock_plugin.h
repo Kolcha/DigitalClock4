@@ -54,7 +54,7 @@
 #include <QtPlugin>
 #include <QVariant>
 
-#include "clock_common_global.h"
+#include "plugin_core_global.h"
 #include "settings_keys.h"
 
 /*!
@@ -62,7 +62,7 @@
  *
  * Common interface for all plugins.
  */
-class CLOCK_COMMON_EXPORT IClockPlugin : public PluginBase
+class PLUGIN_CORE_SHARED_EXPORT IClockPlugin : public PluginBase
 {
   Q_OBJECT
 
@@ -89,6 +89,13 @@ public slots:
    * It can be used as timer. Clock provides current time value as QString.
    */
   virtual void TimeUpdateListener() {}
+
+signals:
+    /*!
+     * Signal to notify plugin management system when plugin configuration
+     * was finished. Usually this means configuration dialog was destroyed.
+     */
+    void configured();
 };
 
 /*! Clock plugin interface IID */
@@ -105,7 +112,7 @@ Q_DECLARE_INTERFACE(IClockPlugin, CLOCK_PLUGIN_INTERFACE_IID)
  * inside clock, be carefull.
  * @see settings_keys.h
  */
-class CLOCK_COMMON_EXPORT ISettingsPlugin : public IClockPlugin
+class PLUGIN_CORE_SHARED_EXPORT ISettingsPlugin : public IClockPlugin
 {
   Q_OBJECT
 

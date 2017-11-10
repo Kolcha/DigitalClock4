@@ -33,14 +33,20 @@ DEFINES += PLUGIN_CORE_LIBRARY
 
 SOURCES += \
     base_settings_widget.cpp \
+    plugin_base.cpp \
+    plugin_settings.cpp \
     widget_plugin_base.cpp \
     widget_plugin_base_private.cpp \
     widget_plugin_settings.cpp
 
 HEADERS += \
     base_settings_widget.h \
+    iclock_plugin.h \
+    iplugin_init.h \
     iskin_user_plugin.h \
+    plugin_base.h \
     plugin_core_global.h \
+    plugin_settings.h \
     widget_plugin_base.h \
     widget_plugin_base_private.h \
     widget_plugin_settings.h

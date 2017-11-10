@@ -49,6 +49,3 @@ RESOURCES += any_zoom.qrc
 OTHER_FILES += any_zoom.json
 
 win32:RC_FILE = any_zoom.rc
-
-INCLUDEPATH += $$PWD/../../skin_draw
-DEPENDPATH += $$PWD/../../skin_draw

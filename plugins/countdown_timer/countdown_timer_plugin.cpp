@@ -61,6 +61,7 @@ void CountdownTimerPlugin::Stop()
 void CountdownTimerPlugin::Configure()
 {
   SettingsDialog* dialog = new SettingsDialog();
+  connect(dialog, &SettingsDialog::destroyed, this, &CountdownTimerPlugin::configured);
   // load current settings to dialog
   QSettings::SettingsMap curr_settings;
   InitDefaults(&curr_settings);

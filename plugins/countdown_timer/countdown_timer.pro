@@ -56,10 +56,3 @@ RESOURCES += countdown_timer.qrc
 OTHER_FILES += countdown_timer.json
 
 win32:RC_FILE = countdown_timer.rc
-
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/release/ -lplugin_core
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/debug/ -lplugin_core
-else:unix: LIBS += -L$$OUT_PWD/../../plugin_core/ -lplugin_core
-
-INCLUDEPATH += $$PWD/../../plugin_core
-DEPENDPATH += $$PWD/../../plugin_core

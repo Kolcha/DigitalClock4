@@ -64,6 +64,7 @@ void TalkingClockPlugin::Configure()
     *iter = settings_->GetOption(iter.key());
 
   SettingsDialog dlg(curr_settings);
+  connect(&dlg, &SettingsDialog::destroyed, this, &TalkingClockPlugin::configured);
 
   // connect main signals/slots
   connect(&dlg, &SettingsDialog::OptionChanged, settings_, &PluginSettings::SetOption);

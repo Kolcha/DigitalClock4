@@ -144,7 +144,6 @@ private:
   QStringList search_paths_;
   QMap<QString, QString> available_;
   QMap<QString, QPluginLoader*> loaded_;
-  QMap<QString, QPluginLoader*> tmp_loaded_;
   TPluginData data_;
 };
 

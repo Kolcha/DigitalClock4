@@ -68,6 +68,7 @@ void TrayColor::Configure()
     if (is_enabled_) RedrawTrayIcon(color);
   }
   settings_->Save();
+  emit configured();
 }
 
 void TrayColor::RedrawTrayIcon(const QColor& color)

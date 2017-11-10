@@ -66,6 +66,7 @@ void AnyZoom::Configure()
 
   settings_dlg->setZoom(LoadZoom());
 
+  connect(settings_dlg, &ZoomDialog::destroyed, this, &AnyZoom::configured);
   connect(settings_dlg, &ZoomDialog::zoomChanged, this, &AnyZoom::TrackChange);
   connect(settings_dlg, SIGNAL(accepted()), settings_, SLOT(Save()));
   connect(settings_dlg, SIGNAL(rejected()), this, SLOT(RevertSettings()));

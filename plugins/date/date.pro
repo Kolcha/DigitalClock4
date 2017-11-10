@@ -51,10 +51,3 @@ RESOURCES += date.qrc
 OTHER_FILES += date.json
 
 win32:RC_FILE = date.rc
-
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/release/ -lplugin_core
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/debug/ -lplugin_core
-else:unix: LIBS += -L$$OUT_PWD/../../plugin_core/ -lplugin_core
-
-INCLUDEPATH += $$PWD/../../plugin_core
-DEPENDPATH += $$PWD/../../plugin_core

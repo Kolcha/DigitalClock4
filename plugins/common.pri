@@ -22,9 +22,16 @@ CONFIG += plugin
 
 include($$PWD/../config.pri)
 
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/release/ -lplugin_core
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/debug/ -lplugin_core
+else:unix: LIBS += -L$$OUT_PWD/../../plugin_core/ -lplugin_core
+
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../clock_common/release/ -lclock_common
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../clock_common/debug/ -lclock_common
 else:unix: LIBS += -L$$OUT_PWD/../../clock_common/ -lclock_common
+
+INCLUDEPATH += $$PWD/../plugin_core
+DEPENDPATH += $$PWD/../plugin_core
 
 INCLUDEPATH += $$PWD/../clock_common
 DEPENDPATH += $$PWD/../clock_common
