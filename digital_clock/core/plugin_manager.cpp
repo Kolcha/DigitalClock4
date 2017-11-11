@@ -129,12 +129,14 @@ void PluginManager::ConfigurePlugin(const QString& name)
     if (!QFile::exists(file)) return;
     QPluginLoader* loader = new QPluginLoader(file, this);
     IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
+    connect(plugin, &IClockPlugin::destroyed, loader, &QPluginLoader::deleteLater);
     if (plugin) {
       connect(plugin, &IClockPlugin::configured, loader, &QPluginLoader::unload);
-      connect(plugin, &IClockPlugin::destroyed, loader, &QPluginLoader::deleteLater);
       plugin->InitSettings(data_.settings->GetBackend(), name);
       InitPlugin(plugin, false);
       plugin->Configure();
+    } else {
+      loader->unload();
     }
   }
 }
@@ -151,6 +153,9 @@ void PluginManager::LoadPlugin(const QString& name)
     InitPlugin(plugin, true);
     plugin->Start();
     loaded_[name] = loader;
+  } else {
+    loader->unload();
+    delete loader;
   }
 }
 
@@ -164,10 +169,10 @@ void PluginManager::UnloadPlugin(const QString& name)
   if (plugin) {
     disconnect(&timer_, SIGNAL(timeout()), plugin, SLOT(TimeUpdateListener()));
     plugin->Stop();
-    loader->unload();
-    loader->deleteLater();
-    loaded_.erase(iter);
   }
+  loader->unload();
+  loader->deleteLater();
+  loaded_.erase(iter);
 }
 
 void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
