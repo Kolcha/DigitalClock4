@@ -45,7 +45,7 @@
 #include "gui/about_dialog.h"
 
 
-#define S_OPT_POSITION              "clock_position"
+static const char* const S_OPT_POSITION = "clock_position";
 
 
 namespace digital_clock {

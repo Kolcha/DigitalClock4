@@ -27,7 +27,7 @@
 #include "core/clock_state.h"
 #include "core/http_client.h"
 
-#define S_OPT_LAST_UPDATE       "last_update"
+static const char* const S_OPT_LAST_UPDATE = "last_update";
 
 namespace digital_clock {
 namespace core {

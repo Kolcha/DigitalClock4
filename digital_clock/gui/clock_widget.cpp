@@ -48,11 +48,6 @@ ClockWidget::ClockWidget(QWidget* parent) :
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), this, SLOT(DrawImage(QImage)));
 }
 
-ClockDisplay* ClockWidget::GetDisplay() const
-{
-  return display_;
-}
-
 skin_draw::ISkin::SkinPtr ClockWidget::skin() const
 {
   return drawer_->currentSkin();

@@ -38,8 +38,8 @@
 #include "gui/plugin_list_item_widget.h"
 
 
-#define S_OPT_LAST_TIME_FORMAT_KEY        "last_time_format"
-#define S_OPT_GEOMETRY_KEY                "settings_dialog_geometry"
+static const char* const S_OPT_LAST_TIME_FORMAT_KEY = "last_time_format";
+static const char* const S_OPT_GEOMETRY_KEY = "settings_dialog_geometry";
 
 #ifdef Q_OS_MACOS
 #define DEFAULT_TEXTURE_PATH              (QApplication::applicationDirPath() + "/../Resources/textures")

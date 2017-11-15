@@ -42,7 +42,6 @@ class ClockWidget : public QWidget
 
 public:
   explicit ClockWidget(QWidget* parent = nullptr);
-  ClockDisplay* GetDisplay() const;
 
   bool preview() const { return preview_mode_; }
   ::skin_draw::ISkin::SkinPtr skin() const;
