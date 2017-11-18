@@ -11,11 +11,11 @@ environment:
   matrix:
     # installer
     - compiler: msvc
-      qt: 5.9.1\msvc2015_64
+      qt: 5.9.2\msvc2015_64
 
     # portable
     - compiler: mingw
-      qt: 5.9.1\mingw53_32
+      qt: 5.9.2\mingw53_32
 
 init:
   # clone 3rd-party repos
