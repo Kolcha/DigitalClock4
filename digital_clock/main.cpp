@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
   QApplication::setPalette(p);
 
   digital_clock::MainWindow wnd;
-  wnd.show();
+  Q_UNUSED(wnd);    // window decides to be visible itself
 
   return app.exec();
 }

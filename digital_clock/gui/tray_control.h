@@ -45,7 +45,6 @@ signals:
 
 private slots:
   void TrayEventHandler(QSystemTrayIcon::ActivationReason reason);
-  void ShowHideHandler();
 
 private:
   QSystemTrayIcon* tray_icon_;

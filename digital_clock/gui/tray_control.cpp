@@ -32,11 +32,9 @@ namespace gui {
 TrayControl::TrayControl(QWidget* parent) : QObject(parent)
 {
   QMenu* tray_menu = new QMenu(parent);
-  // *INDENT-OFF*
-  show_hide_action_ = tray_menu->addAction(QIcon(":/clock/images/clock.svg.p"), tr("&Hide Clock"),
-                                           this, SLOT(ShowHideHandler()));
-  // *INDENT-ON*
-  show_hide_action_->setData(false);
+  show_hide_action_ = tray_menu->addAction(tr("&Visible"), this, SIGNAL(VisibilityChanged(bool)));
+  show_hide_action_->setCheckable(true);
+  show_hide_action_->setChecked(true);
   tray_menu->addSeparator();
   tray_menu->addAction(QIcon(":/clock/images/settings.svg.p"), tr("&Settings"),
                        this, SIGNAL(ShowSettingsDlg()));
@@ -75,19 +73,6 @@ QAction* TrayControl::GetShowHideAction() const
 void TrayControl::TrayEventHandler(QSystemTrayIcon::ActivationReason reason)
 {
   if (reason == QSystemTrayIcon::DoubleClick) emit ShowSettingsDlg();
-}
-
-void TrayControl::ShowHideHandler()
-{
-  Q_ASSERT(show_hide_action_);
-  bool widget_will_visible = show_hide_action_->data().toBool();
-  if (widget_will_visible) {
-    show_hide_action_->setText(tr("&Hide Clock"));
-  } else {
-    show_hide_action_->setText(tr("S&how Clock"));
-  }
-  show_hide_action_->setData(!widget_will_visible);
-  emit VisibilityChanged(widget_will_visible);
 }
 
 } // namespace gui

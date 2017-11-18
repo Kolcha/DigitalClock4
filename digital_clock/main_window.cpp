@@ -46,6 +46,7 @@
 
 
 static const char* const S_OPT_POSITION = "clock_position";
+static const char* const S_OPT_VISIBILE = "visible";
 
 
 namespace digital_clock {
@@ -116,6 +117,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
 
   connect(QApplication::desktop(), &QDesktopWidget::resized, this, &MainWindow::LoadState);
   connect(QApplication::desktop(), &QDesktopWidget::resized, this, &MainWindow::CorrectPosition);
+  connect(tray_control_, &gui::TrayControl::VisibilityChanged, this, &MainWindow::SaveState);
 }
 
 MainWindow::~MainWindow()
@@ -378,6 +380,10 @@ void MainWindow::LoadState()
   }
   cur_alignment_ = last_align;
   this->move(last_pos);
+
+  this->setVisible(state_->GetVariable(S_OPT_VISIBILE, true).toBool());
+  tray_control_->GetShowHideAction()->setChecked(this->isVisible());
+  last_visibility_ = this->isVisible();
 }
 
 void MainWindow::SaveState()
@@ -397,6 +403,7 @@ void MainWindow::SaveState()
       break;
   }
   state_->SetVariable(S_OPT_POSITION, last_pos);
+  state_->SetVariable(S_OPT_VISIBILE, this->isVisible());
 }
 
 void MainWindow::ShowSettingsDialog()
