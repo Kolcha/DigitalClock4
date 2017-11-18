@@ -367,12 +367,12 @@ void MainWindow::LoadState()
   CAlignment last_align = static_cast<CAlignment>(app_config_->GetValue(OPT_ALIGNMENT).toInt());
   switch (last_align) {
     case CAlignment::A_RIGHT:
-      last_pos.setX(last_pos.x() - sizeHint().width());
+      last_pos.setX(last_pos.x() - sizeHint().width() + 1);
       break;
 
     case CAlignment::A_CENTER:
-      last_pos.setX(last_pos.x() - sizeHint().width() / 2);
-      last_pos.setY(last_pos.y() - sizeHint().height() / 2);
+      last_pos.setX(last_pos.x() - sizeHint().width() / 2 + 1);
+      last_pos.setY(last_pos.y() - sizeHint().height() / 2 + 1);
       break;
 
     default:
