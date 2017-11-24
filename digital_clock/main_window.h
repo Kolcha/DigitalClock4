@@ -112,6 +112,7 @@ private:
   bool keep_always_visible_;
   QStringList window_ignore_list_;
 
+  bool show_border_;
   bool snap_to_edges_;
   int snap_threshold_;
 };

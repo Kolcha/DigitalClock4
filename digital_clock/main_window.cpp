@@ -194,6 +194,11 @@ void MainWindow::paintEvent(QPaintEvent* /*event*/)
     p.setCompositionMode(QPainter::CompositionMode_Source);
     p.fillRect(this->rect(), bg_color_);
   }
+  if (clock_widget_->preview() && show_border_) {
+    p.setCompositionMode(QPainter::CompositionMode_SourceOver);
+    p.setPen(QPen(Qt::red, 2, Qt::DotLine, Qt::SquareCap, Qt::MiterJoin));
+    p.drawRect(rect().adjusted(1, 1, -1, -1));
+  }
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event)
@@ -222,6 +227,7 @@ void MainWindow::Reset()
   ApplyOption(OPT_ALIGNMENT, app_config_->GetValue(OPT_ALIGNMENT));
   ApplyOption(OPT_BACKGROUND_COLOR, app_config_->GetValue(OPT_BACKGROUND_COLOR));
   ApplyOption(OPT_BACKGROUND_ENABLED, app_config_->GetValue(OPT_BACKGROUND_ENABLED));
+  ApplyOption(OPT_SHOW_WINDOW_BORDER, app_config_->GetValue(OPT_SHOW_WINDOW_BORDER));
   ApplyOption(OPT_SNAP_TO_EDGES, app_config_->GetValue(OPT_SNAP_TO_EDGES));
   ApplyOption(OPT_SNAP_THRESHOLD, app_config_->GetValue(OPT_SNAP_THRESHOLD));
 
@@ -299,6 +305,10 @@ void MainWindow::ApplyOption(const Option opt, const QVariant& value)
     case OPT_BACKGROUND_COLOR:
       bg_color_ = value.value<QColor>();
       this->repaint();
+      break;
+
+    case OPT_SHOW_WINDOW_BORDER:
+      show_border_ = value.toBool();
       break;
 
     case OPT_SNAP_TO_EDGES:
@@ -436,7 +446,9 @@ void MainWindow::ShowSettingsDialog()
     skin_manager_->ListSkins();
     // 'preview mode' support
     clock_widget_->EnablePreviewMode();
+    this->update();
     connect(dlg.data(), &gui::SettingsDialog::destroyed, clock_widget_, &gui::ClockWidget::DisablePreviewMode);
+    connect(dlg.data(), &gui::SettingsDialog::destroyed, this, static_cast<void(MainWindow::*)()>(&MainWindow::update));
 
     // plugins engine
     connect(dlg.data(), &gui::SettingsDialog::OptionChanged, plugin_manager_, &core::PluginManager::UpdateSettings);

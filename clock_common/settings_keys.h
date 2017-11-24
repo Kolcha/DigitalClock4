@@ -85,6 +85,7 @@ enum Option {
   OPT_EXPORT_STATE,             /*!< enable/disable state export with settings, bool, true/false */
   OPT_KEEP_ALWAYS_VISIBLE,      /*!< prevent out of range positions, bool, true/false */
   // window settings
+  OPT_SHOW_WINDOW_BORDER,       /*!< highlight window border during configuration, bool, true/false */
   OPT_SNAP_TO_EDGES,            /*!< snap to edges/corners flag, bool, true/false */
   OPT_SNAP_THRESHOLD            /*!< maximum distance when snap will be activated, int, 5..50 */
 };
