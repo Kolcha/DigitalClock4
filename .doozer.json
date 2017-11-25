@@ -2,12 +2,24 @@
   "targets": {
     "xenial-amd64": {
       "buildenv": "xenial-amd64",
-      "builddeps": ["build-essential", "libgl1-mesa-dev", "wget", "git"],
+      "builddeps": ["build-essential", "libgl1-mesa-dev", "wget", "git", "python"],
       "buildcmd": [
         "[ -d $HOME/Qt-5.6.3 ] || { wget -q -O - https://www.dropbox.com/s/gwsro2zw004vfed/Qt-5.6.3.tar.xz?dl=1 | tar xJ && mv Qt-5.6.3 $HOME/ ; }",
+        "./scripts/patch_qt.py -q $HOME/Qt-5.6.3 -d $HOME/Qt-5.6.3",
         "git clone -q https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey",
         "$HOME/Qt-5.6.3/bin/lupdate -no-obsolete DigitalClock.pro",
         "$HOME/Qt-5.6.3/bin/qmake -config release -r DigitalClock.pro",
+        "make -j${PARALLEL}"
+      ]
+    },
+    "osx": {
+      "buildenv": "osx",
+      "buildcmd": [
+        "[ -d $HOME/Qt-5.8.1 ] || { curl https://www.dropbox.com/s/lixbkg2q819vkck/Qt-5.8.1.tar.xz?dl=1 -L -s | tar xJ && mv Qt-5.8.1 $HOME/ ; }",
+        "./scripts/patch_qt.py -q $HOME/Qt-5.8.1 -d $HOME/Qt-5.8.1",
+        "git clone -q https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey",
+        "$HOME/Qt-5.8.1/bin/lupdate -no-obsolete DigitalClock.pro",
+        "$HOME/Qt-5.8.1/bin/qmake -config release -r DigitalClock.pro",
         "make -j${PARALLEL}"
       ]
     }
