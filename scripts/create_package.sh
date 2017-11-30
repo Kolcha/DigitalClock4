@@ -72,6 +72,10 @@ done
 # copy custom Qt plugins
 cp "$build_dir/paletteicon/libpaletteicon.so" "$TARGET_APP_FOLDER/plugins/iconengines/"
 
+# copy SSL libs
+cp "/lib/x86_64-linux-gnu/libssl.so.1.0.0" "$TARGET_APP_FOLDER/"
+cp "/lib/x86_64-linux-gnu/libcrypto.so.1.0.0" "$TARGET_APP_FOLDER/"
+
 # generate qt.conf
 rm -f qt.conf
 echo "[Paths]"                     >> qt.conf
