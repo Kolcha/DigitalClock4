@@ -58,6 +58,7 @@ protected:
   void mouseReleaseEvent(QMouseEvent* event) override;
   void paintEvent(QPaintEvent* event) override;
   void resizeEvent(QResizeEvent* event) override;
+  void moveEvent(QMoveEvent* event) override;
 
 private slots:
   void Reset();
@@ -102,6 +103,7 @@ private:
 
   QTimer timer_;
 
+  bool dragging_;
   QPoint drag_position_;
   CAlignment cur_alignment_;
 

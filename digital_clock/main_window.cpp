@@ -102,6 +102,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent, Qt::Window)
   main_layout->setMargin(2);
   setLayout(main_layout);
 
+  dragging_ = false;
   last_visibility_ = true;
   fullscreen_detect_enabled_ = false;
   keep_always_visible_ = true;
@@ -138,6 +139,7 @@ void MainWindow::mousePressEvent(QMouseEvent* event)
 {
   if (event->button() == Qt::LeftButton) {
     drag_position_ = event->globalPos() - frameGeometry().topLeft();
+    dragging_ = true;
     event->accept();
   }
 }
@@ -182,6 +184,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent* event)
     }
     state_->SetVariable(S_OPT_POSITION, last_pos, !clock_widget_->preview());
     event->accept();
+    dragging_ = false;
   }
 }
 
@@ -215,6 +218,12 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     this->move(cur_pos);
   }
   CorrectPosition();
+}
+
+void MainWindow::moveEvent(QMoveEvent* event)
+{
+  if (!dragging_ && event->pos() != event->oldPos()) SaveState();
+  QWidget::moveEvent(event);
 }
 
 void MainWindow::Reset()

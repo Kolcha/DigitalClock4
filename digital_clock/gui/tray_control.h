@@ -47,6 +47,9 @@ private slots:
   void TrayEventHandler(QSystemTrayIcon::ActivationReason reason);
 
 private:
+  void MoveWindow(Qt::Alignment align);
+
+private:
   QSystemTrayIcon* tray_icon_;
   QAction* show_hide_action_;
 };
