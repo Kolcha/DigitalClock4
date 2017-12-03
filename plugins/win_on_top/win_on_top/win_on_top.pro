@@ -38,8 +38,6 @@ TRANSLATIONS += \
 
 include(../../../qm_gen.pri)
 
-RESOURCES += win_on_top.qrc
-
 OTHER_FILES += win_on_top.json
 
 win32:RC_FILE = win_on_top.rc

@@ -4,12 +4,12 @@
 <context>
     <name>chime::ChimePlugin</name>
     <message>
-        <location filename="../chime_plugin.cpp" line="45"/>
+        <location filename="../chime_plugin.cpp" line="44"/>
         <source>Chime</source>
         <translation>Звуковой сигнал</translation>
     </message>
     <message>
-        <location filename="../chime_plugin.cpp" line="46"/>
+        <location filename="../chime_plugin.cpp" line="45"/>
         <source>Chimes with selected period.This plugin replaces all chiming plugins:
 &quot;Every hour signal&quot;, &quot;Quarter of an hour signal&quot;, &quot;Tower clock hour signal&quot;.
 Sounds from these plugins are included as default sounds.</source>

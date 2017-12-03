@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/spectrum_clock">
-        <file>spectrum_clock_ru.qm</file>
         <file alias="icon.png">spectrum_clock-128.png</file>
     </qresource>
 </RCC>

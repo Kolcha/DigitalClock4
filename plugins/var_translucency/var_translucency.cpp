@@ -23,7 +23,6 @@ namespace var_translucency {
 VarTranslucency::VarTranslucency() :
   old_opacity_(1.0), cur_opacity_(1.0), op_step_(-0.01)
 {
-  InitTranslator(QLatin1String(":/var_translucency/var_translucency_"));
   info_.display_name = tr("Variable translucency");
   info_.description = tr("Changes clock opacity level during time.");
 }

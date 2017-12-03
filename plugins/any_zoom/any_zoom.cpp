@@ -30,7 +30,6 @@ AnyZoom::AnyZoom()
   is_enabled_ = false;
   last_zoom_ = 1.0;
 
-  InitTranslator(QLatin1String(":/any_zoom/any_zoom_"));
   info_.display_name = tr("Any zoom");
   info_.description = tr("Allows to set any clock zoom, even different values for X and Y axis.");
   InitIcon(":/any_zoom/icon.svg.p");

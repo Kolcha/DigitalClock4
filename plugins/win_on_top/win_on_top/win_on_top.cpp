@@ -28,7 +28,6 @@ typedef void (*pStopFunc)(void);
 
 WinOnTop::WinOnTop() : lib_(0)
 {
-  InitTranslator(QLatin1String(":/win_on_top/win_on_top_"));
   info_.display_name = tr("\"Always on top\" for any window");
   info_.description = tr("Adds \"Always on Top\" menu item to system menu for any window.");
 }

@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/countdown_timer">
-        <file alias="countdown_timer_ru.qm">lang/countdown_timer_ru.qm</file>
         <file alias="icon.svg.p">if_timer_172599.svg</file>
     </qresource>
 </RCC>

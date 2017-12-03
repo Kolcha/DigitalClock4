@@ -4,12 +4,12 @@
 <context>
     <name>date::DatePlugin</name>
     <message>
-        <location filename="../date_plugin.cpp" line="35"/>
+        <location filename="../date_plugin.cpp" line="34"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../date_plugin.cpp" line="36"/>
+        <location filename="../date_plugin.cpp" line="35"/>
         <source>Allows to display current date under clock.</source>
         <translation>Отображает текущую дату под часами.</translation>
     </message>
