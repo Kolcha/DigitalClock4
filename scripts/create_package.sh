@@ -82,6 +82,14 @@ echo "[Paths]"                     >> qt.conf
 echo "Plugins = plugins"           >> qt.conf
 echo "Translations = translations" >> qt.conf
 
+# deploy app translations
+langs=$(ls -1 "$CLOCK_SRC_PATH/digital_clock/languages/" | grep '\.qm$' | sed 's/digital_clock_\(.*\)\.qm/\1/g')
+for lang in $langs
+do
+  lang_files=$(find "$CLOCK_SRC_PATH" -name "*_$lang.qm")
+  $QT_ROOT/bin/lconvert -o "$TARGET_APP_FOLDER/translations/digital_clock_$lang.qm" $lang_files
+done
+
 # copy resources and some specific stuff
 cp "$CLOCK_SRC_PATH/digital_clock/resources/digital_clock.desktop" "$TARGET_APP_FOLDER/"
 cp "$CLOCK_SRC_PATH/digital_clock/resources/images/time-24.svg" "$TARGET_APP_FOLDER/digital_clock.svg"
