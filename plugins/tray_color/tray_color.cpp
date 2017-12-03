@@ -31,7 +31,6 @@ TrayColor::TrayColor() : tray_icon_(nullptr)
 {
   is_enabled_ = false;
 
-  InitTranslator(QLatin1String(":/tray_color/tray_color_"));
   info_.display_name = tr("Tray icon color");
   info_.description = tr("Allows to change tray icon color.");
   InitIcon(":/tray_color/icon.png");

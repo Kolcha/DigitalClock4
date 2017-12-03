@@ -33,7 +33,6 @@ namespace countdown_timer {
 
 CountdownTimerPlugin::CountdownTimerPlugin() : msg_label_(nullptr), cd_timer_(nullptr)
 {
-  InitTranslator(QLatin1String(":/countdown_timer/countdown_timer_"));
   info_.display_name = tr("Countdown timer");
   info_.description = tr("Just a countdown timer.");
   InitIcon(":/countdown_timer/icon.svg.p");
