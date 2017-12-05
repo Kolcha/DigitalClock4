@@ -39,7 +39,7 @@ before_build:
 build_script:
   - lupdate -no-obsolete DigitalClock.pro
   - qmake -config release -r DigitalClock.pro
-  - if %compiler% == msvc jom -j4
+  - if %compiler% == msvc jom
   - if %compiler% == mingw mingw32-make -j4
 
 test: off
