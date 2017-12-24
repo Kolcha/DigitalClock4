@@ -98,6 +98,9 @@
             <Component Id="cmpBCB69B3F433ABDFA829622661FE097E9" Directory="dir714CDB49A7D3261D21A4321BF14039D2" Guid="{3439DBC5-BA3F-4EBD-BD56-C2E148290AC3}" Win64="yes">
                 <File Id="filA1DA4CDE70C942035990E426C4544B60" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\playlistformats\qtmultimedia_m3u.dll" />
             </Component>
+            <Component Id="cmp68C268AEB9787BA2B9E1E5C51ED36AF3" Directory="dirDB2D03FD80E110C5D67A547A8D04CBD3" Guid="{E0E4EF3A-ED0E-467C-B8B9-DF88455E5160}" Win64="yes">
+                <File Id="fil671796BA2B70107DBA0BA618B24C5E80" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\styles\qwindowsvistastyle.dll" />
+            </Component>
             <Component Id="cmp14EF22A303E6189FA057C5D2D9F6CA78" Directory="dirFD1BCE11301C261726ED73090AF7A818" Guid="{6E864B23-8393-4D1E-A922-F43C0AD9808E}" Win64="yes">
                 <File Id="fil63C3882A52CED0212AB97283131F3730" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\texttospeech\qtexttospeech_sapi.dll" />
             </Component>
@@ -196,6 +199,11 @@
     <Fragment>
         <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
             <Directory Id="dirD97694D95A5C47981248FBF5CBA0999C" Name="bearer" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
+            <Directory Id="dirDB2D03FD80E110C5D67A547A8D04CBD3" Name="styles" />
         </DirectoryRef>
     </Fragment>
     <Fragment>
