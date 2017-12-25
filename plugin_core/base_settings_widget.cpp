@@ -91,6 +91,7 @@ void BaseSettingsWidget::InitWidgets(const QMap<WidgetPluginOption, QVariant>& c
 
       case OPT_CUSTOM_COLOR:
         last_color_ = iter.value().value<QColor>();
+        ui->custom_color_button->setColor(last_color_);
         break;
 
       case OPT_USE_CLOCK_SKIN:
@@ -195,6 +196,7 @@ void BaseSettingsWidget::on_custom_color_button_clicked()
   QColor color = QColorDialog::getColor(last_color_, this);
   if (!color.isValid()) return;
   last_color_ = color;
+  ui->custom_color_button->setColor(color);
   emit OptionChanged(OPT_CUSTOM_COLOR, color);
 }
 
