@@ -186,15 +186,19 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
   // init skin user plugins
   ISkinUserPlugin* su = qobject_cast<ISkinUserPlugin*>(plugin);
   if (su) {
+    // TODO: what about if each window will have own settings in future?
+    // for now (and first release with "multiwindow support") all windows will have same settings
     if (connected)
-      connect(data_.window, &gui::ClockWidget::SkinChanged, su, &ISkinUserPlugin::SetSkin);
-    su->SetSkin(data_.window->skin());
+      connect(data_.windows[0], &gui::ClockWidget::SkinChanged, su, &ISkinUserPlugin::SetSkin);
+    su->SetSkin(data_.windows[0]->skin());
   }
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
   if (sp && connected) {
-    connect(sp, SIGNAL(OptionChanged(Option,QVariant)),
-            data_.window, SLOT(ApplyOption(Option,QVariant)));
+    for (auto& w : data_.windows) {
+      connect(sp, SIGNAL(OptionChanged(Option,QVariant)),
+              w, SLOT(ApplyOption(Option,QVariant)));
+    }
     connect(sp, SIGNAL(OptionChanged(Option,QVariant)),
             this, SIGNAL(UpdateSettings(Option,QVariant)));
   }
@@ -205,7 +209,12 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
   if (tpi) tpi->Init(data_.tray);
   // init widget plugins
   IWidgetPluginInit* wpi = qobject_cast<IWidgetPluginInit*>(plugin);
-  if (wpi) wpi->Init(data_.window);
+  // TODO: prepare plugin engine for multiple Init calls
+  // problem: how to manage plugin widgets lifetime
+  // possible solutions:
+  // - 1: clock widget's parent manages lifetime (passed as parent) and plugin waits for its destruction
+  // - 2: plugin waits for clock widget destruction and then destroys own widget(s)
+  if (wpi) for (auto& w : data_.windows) wpi->Init(w);
 }
 
 } // namespace core

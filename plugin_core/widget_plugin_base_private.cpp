@@ -32,7 +32,6 @@ namespace plugin {
 
 WidgetPluginBasePrivate::WidgetPluginBasePrivate(WidgetPluginBase* obj, QObject* parent) :
   QObject(parent),
-  main_layout_(nullptr), main_wnd_(nullptr),
   clock_customization_(::skin_draw::SkinDrawer::CT_COLOR),
   clock_color_(0, 170, 255),
   last_text_("-----"),
@@ -53,9 +52,9 @@ int WidgetPluginBasePrivate::CalculateAvailableSpace() const
 {
   int w_loc = obj_->settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION)).toInt();
   if (static_cast<WidgetLocation>(w_loc) == WidgetLocation::WL_RIGHT) {
-    return main_layout_->itemAtPosition(0, 0)->sizeHint().height();
+    return main_layouts_[0]->itemAtPosition(0, 0)->sizeHint().height();
   } else {
-    return main_layout_->itemAtPosition(0, 0)->sizeHint().width();
+    return main_layouts_[0]->itemAtPosition(0, 0)->sizeHint().width();
   }
 }
 
@@ -66,7 +65,7 @@ void WidgetPluginBasePrivate::onBaseOptionChanged(const WidgetPluginOption opt, 
 
 void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const QVariant& value)
 {
-  if (!plg_widget_) return;  // not started
+  if (plg_widgets_.isEmpty()) return;  // not started
 
   if (key == OptionKey(OPT_USE_CLOCK_FONT)) {
     QString font_key = OptionKey(OPT_CUSTOM_FONT);
@@ -97,17 +96,22 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
     }
   }
   if (key == OptionKey(OPT_WIDGET_LOCATION)) {
-    main_layout_->removeWidget(plg_widget_);
-    switch (static_cast<WidgetLocation>(value.toInt())) {
-      case WidgetLocation::WL_BOTTOM:
-        obj_->avail_width_ = main_layout_->itemAtPosition(0, 0)->sizeHint().width();
-        main_layout_->addWidget(plg_widget_, main_layout_->rowCount(), 0, 1, main_layout_->columnCount());
-        break;
+    Q_ASSERT(main_layouts_.size() == plg_widgets_.size());
+    for (int i = 0; i < plg_widgets_.size(); ++i) {
+      QGridLayout* layout = main_layouts_[i];
+      QWidget* plg_widget = plg_widgets_[i];
+      layout->removeWidget(plg_widget);
+      switch (static_cast<WidgetLocation>(value.toInt())) {
+        case WidgetLocation::WL_BOTTOM:
+          obj_->avail_width_ = layout->itemAtPosition(0, 0)->sizeHint().width();
+          layout->addWidget(plg_widget, layout->rowCount(), 0, 1, layout->columnCount());
+          break;
 
-      case WidgetLocation::WL_RIGHT:
-        obj_->avail_width_ = main_layout_->itemAtPosition(0, 0)->sizeHint().height();
-        main_layout_->addWidget(plg_widget_, 0, main_layout_->columnCount(), 1, 1);
-        break;
+        case WidgetLocation::WL_RIGHT:
+          obj_->avail_width_ = layout->itemAtPosition(0, 0)->sizeHint().height();
+          layout->addWidget(plg_widget, 0, layout->columnCount(), 1, 1);
+          break;
+      }
     }
 
     int c_zoom_mode = obj_->settings_->GetOption(OptionKey(OPT_ZOOM_MODE)).toInt();
@@ -116,8 +120,10 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
     }
   }
   if (key == OptionKey(OPT_ALIGNMENT)) {
-    QLabel* lbl = qobject_cast<QLabel*>(plg_widget_.data());
-    if (lbl) lbl->setAlignment(static_cast<Qt::Alignment>(value.toInt()));
+    for (auto& plg_widget : plg_widgets_) {
+      QLabel* lbl = qobject_cast<QLabel*>(plg_widget);
+      if (lbl) lbl->setAlignment(static_cast<Qt::Alignment>(value.toInt()));
+    }
   }
   if (key == OptionKey(OPT_USE_CUSTOM_COLOR)) {
     drawer_->SetString(QString());    // set empty string to do not redraw twice
@@ -140,10 +146,48 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
   }
 }
 
+void WidgetPluginBasePrivate::AddClockWidget(QWidget* main_wnd)
+{
+  main_layouts_.append(qobject_cast<QGridLayout*>(main_wnd->layout()));
+  main_wnds_.append(main_wnd);
+}
+
+void WidgetPluginBasePrivate::CreateWidgets()
+{
+  for (auto layout : main_layouts_) {
+    plg_widgets_.append(obj_->InitWidget(layout));
+    if (layout->indexOf(plg_widgets_.last()) == -1) {
+      int w_loc = obj_->settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION)).toInt();
+      if (static_cast<WidgetLocation>(w_loc) == WidgetLocation::WL_RIGHT) {
+        layout->addWidget(plg_widgets_.last(), 0, layout->columnCount(), 1, 1);
+      } else {
+        layout->addWidget(plg_widgets_.last(), layout->rowCount(), 0, 1, layout->columnCount());
+      }
+    }
+  }
+  connect(drawer_, &skin_draw::SkinDrawer::DrawingFinished, [this] (const QImage& img) {
+    for (auto& widget : plg_widgets_) obj_->DisplayImage(widget, img);
+  });
+}
+
+void WidgetPluginBasePrivate::DestroyWidgets()
+{
+  disconnect(drawer_, &skin_draw::SkinDrawer::DrawingFinished, 0, 0);
+  Q_ASSERT(plg_widgets_.size() <= main_layouts_.size());
+  Q_ASSERT(main_wnds_.size() == main_layouts_.size());
+  for (int i = 0; i < plg_widgets_.size(); ++i) {
+    main_layouts_[i]->removeWidget(plg_widgets_[i]);
+    delete plg_widgets_[i];
+  }
+  plg_widgets_.clear();
+  main_layouts_.clear();
+  main_wnds_.clear();
+}
+
 skin_draw::ISkin::SkinPtr WidgetPluginBasePrivate::CreateTextSkin(const QFont& fnt)
 {
   skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(fnt));
-  txt_skin->SetDevicePixelRatio(main_wnd_->devicePixelRatioF());
+  txt_skin->SetDevicePixelRatio(main_wnds_[0]->devicePixelRatioF());
   return txt_skin;
 }
 

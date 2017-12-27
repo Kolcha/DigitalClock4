@@ -24,6 +24,7 @@
 #include <QSettings>
 #include <QPointer>
 #include <QFont>
+#include <QVector>
 
 #include "skin_drawer.h"
 
@@ -42,6 +43,8 @@ class WidgetPluginBase;
  * This class contains 'private' part of WidgetPluginBase class. WidgetPluginBase
  * contains only pointer to this. This class was created to keep binary compatibility
  * when implementation was changed.
+ *
+ * @note Current implementation assumes that all windows have the same settings and DPI.
  */
 class WidgetPluginBasePrivate : public QObject
 {
@@ -93,14 +96,31 @@ public slots:
    * @see PluginSettings
    */
   void SettingsChangeListener(const QString& key, const QVariant& value);
+  /*!
+   * Registers given @a widget internally and performs all required init actions.
+   * @see IWidgetPluginInit::Init()
+   */
+  void AddClockWidget(QWidget* widget);
+  /*!
+   * Creates all plugin widgets.
+   * @see WidgetPluginBase::InitWidget()
+   */
+  void CreateWidgets();
+  /*!
+   * Destroys all created plugin widgets.
+   * @see CreateWidgets()
+   */
+  void DestroyWidgets();
+
+private:
+  /// clock main window layout
+  QVector<QGridLayout*> main_layouts_;
+  /// clock main window widget
+  QVector<QWidget*> main_wnds_;
 
 public:
-  /// clock main window layout
-  QGridLayout* main_layout_;
-  /// clock main window widget
-  QWidget* main_wnd_;
   /// plugin's widget
-  QPointer<QWidget> plg_widget_;
+  QVector<QWidget*> plg_widgets_;
   /// current plugin font (custom font)
   QFont font_;
   /// current clock font

@@ -24,6 +24,7 @@
 #include <QMap>
 #include <QString>
 #include <QList>
+#include <QVector>
 #include <QTimer>
 
 #include "iclock_plugin.h"
@@ -44,7 +45,7 @@ class ClockSettings;
 /*! Data to init plugins. */
 struct TPluginData {
   ClockSettings* settings = nullptr;          /*!< clock settings object */
-  gui::ClockWidget* window = nullptr;         /*!< clock widget */
+  QVector<gui::ClockWidget*> windows;         /*!< all clock widgets */
   QSystemTrayIcon* tray = nullptr;            /*!< tray icon object */
 };
 

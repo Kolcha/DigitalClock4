@@ -498,7 +498,7 @@ void MainWindow::InitPluginSystem()
   core::TPluginData plugin_data;
   plugin_data.settings = app_config_;
   plugin_data.tray = tray_control_->GetTrayIcon();
-  plugin_data.window = clock_widget_;
+  plugin_data.windows.append(clock_widget_);
 
   plugin_manager_->SetInitData(plugin_data);
 }
