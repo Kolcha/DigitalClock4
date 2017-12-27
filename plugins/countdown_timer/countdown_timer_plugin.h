@@ -21,9 +21,6 @@
 
 #include "widget_plugin_base.h"
 
-class QGridLayout;
-class QLabel;
-
 namespace countdown_timer {
 
 class CountdownTimer;
@@ -45,7 +42,7 @@ public slots:
 protected:
   void InitSettingsDefaults(QSettings::SettingsMap* defaults) override;
   QWidget* InitWidget(QGridLayout* layout) override;
-  void DisplayImage(const QImage& image) override;
+  void DisplayImage(QWidget* widget, const QImage& image) override;
   QString GetWidgetText() override;
 
 private slots:
@@ -53,7 +50,6 @@ private slots:
   void HandleTimeout();
 
 private:
-  QLabel* msg_label_;
   CountdownTimer* cd_timer_;
 };
 

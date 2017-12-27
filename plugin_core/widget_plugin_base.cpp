@@ -18,7 +18,6 @@
 
 #include "widget_plugin_base.h"
 
-#include <QGridLayout>
 #include <QFontMetricsF>
 
 #include "skin_drawer.h"

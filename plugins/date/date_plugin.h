@@ -23,9 +23,6 @@
 
 #include <QTimeZone>
 
-class QGridLayout;
-class QLabel;
-
 namespace date {
 
 class DatePlugin : public ::plugin::WidgetPluginBase
@@ -46,11 +43,10 @@ public slots:
 protected:
   void InitSettingsDefaults(QSettings::SettingsMap* defaults) override;
   QWidget* InitWidget(QGridLayout* layout) override;
-  void DisplayImage(const QImage& image) override;
+  void DisplayImage(QWidget* widget, const QImage& image) override;
   QString GetWidgetText() override;
 
 private:
-  QLabel* msg_label_;
   bool local_time_;
   QTimeZone time_zone_;
 };

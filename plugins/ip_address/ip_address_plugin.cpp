@@ -35,7 +35,7 @@
 
 namespace ip_address {
 
-IpAddressPlugin::IpAddressPlugin() : msg_label_(nullptr), ip_update_timer_(nullptr), getting_external_ip_(false)
+IpAddressPlugin::IpAddressPlugin() : ip_update_timer_(nullptr), getting_external_ip_(false)
 {
   info_.display_name = tr("IP address");
   info_.description = tr("Displays local IP address(es) under clock.");
@@ -91,14 +91,13 @@ void IpAddressPlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults)
 
 QWidget* IpAddressPlugin::InitWidget(QGridLayout* layout)
 {
-  msg_label_ = new QLabel();
   Q_UNUSED(layout);
-  return msg_label_;
+  return new QLabel();
 }
 
-void IpAddressPlugin::DisplayImage(const QImage& image)
+void IpAddressPlugin::DisplayImage(QWidget* widget, const QImage& image)
 {
-  msg_label_->setPixmap(QPixmap::fromImage(image));
+  static_cast<QLabel*>(widget)->setPixmap(QPixmap::fromImage(image));
 }
 
 QString IpAddressPlugin::GetWidgetText()

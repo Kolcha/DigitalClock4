@@ -21,7 +21,7 @@
 
 #include "widget_plugin_base.h"
 
-class QGridLayout;
+#include <QVector>
 
 namespace quick_note {
 
@@ -36,19 +36,20 @@ public:
   QuickNotePlugin();
 
 public slots:
+  void Stop() override;
   void Configure() override;
 
 protected:
   void InitSettingsDefaults(QSettings::SettingsMap* defaults) override;
   QWidget* InitWidget(QGridLayout* layout) override;
-  void DisplayImage(const QImage& image) override;
+  void DisplayImage(QWidget* widget, const QImage& image) override;
   QString GetWidgetText() override;
 
 private slots:
   void SettingsUpdateListener(const QString& key, const QVariant& value);
 
 private:
-  MessageWidget* msg_widget_;
+  QVector<MessageWidget*> msg_widgets_;
 };
 
 } // namespace quick_note

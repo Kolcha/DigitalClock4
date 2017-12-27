@@ -28,11 +28,17 @@
 
 namespace quick_note {
 
-QuickNotePlugin::QuickNotePlugin() : msg_widget_(nullptr)
+QuickNotePlugin::QuickNotePlugin()
 {
   info_.display_name = tr("Quick note");
   info_.description = tr("Allows to display any short message under clock.");
   InitIcon(":/quick_note/icon.svg.p");
+}
+
+void QuickNotePlugin::Stop()
+{
+  ::plugin::WidgetPluginBase::Stop();
+  msg_widgets_.clear();
 }
 
 void QuickNotePlugin::Configure()
@@ -65,20 +71,21 @@ void QuickNotePlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults)
 
 QWidget* QuickNotePlugin::InitWidget(QGridLayout* layout)
 {
-  msg_widget_ = new MessageWidget();
-  connect(msg_widget_, &MessageWidget::textEdited, [this] (const QString& str) {
+  MessageWidget* msg_widget = new MessageWidget();
+  msg_widgets_.append(msg_widget);
+  connect(msg_widget, &MessageWidget::textEdited, [this] (const QString& str) {
     settings_->SetOption(OPT_QUICK_NOTE_MSG, str);
     settings_->Save();
   });
-  connect(msg_widget_, &MessageWidget::textChanged, this, &QuickNotePlugin::TimeUpdateListener);
+  connect(msg_widget, &MessageWidget::textChanged, this, &QuickNotePlugin::TimeUpdateListener);
   connect(settings_, &PluginSettings::OptionChanged, this, &QuickNotePlugin::SettingsUpdateListener);
   Q_UNUSED(layout);
-  return msg_widget_;
+  return msg_widget;
 }
 
-void QuickNotePlugin::DisplayImage(const QImage& image)
+void QuickNotePlugin::DisplayImage(QWidget* widget, const QImage& image)
 {
-  msg_widget_->setPixmap(QPixmap::fromImage(image));
+  static_cast<MessageWidget*>(widget)->setPixmap(QPixmap::fromImage(image));
 }
 
 QString QuickNotePlugin::GetWidgetText()
@@ -89,7 +96,8 @@ QString QuickNotePlugin::GetWidgetText()
 void QuickNotePlugin::SettingsUpdateListener(const QString& key, const QVariant& value)
 {
   if (key == OPT_QUICK_NOTE_MSG) {
-    msg_widget_->setText(value.toString());
+    for (auto& msg_widget : msg_widgets_)
+      msg_widget->setText(value.toString());
   }
 }
 

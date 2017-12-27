@@ -31,7 +31,7 @@
 
 namespace countdown_timer {
 
-CountdownTimerPlugin::CountdownTimerPlugin() : msg_label_(nullptr), cd_timer_(nullptr)
+CountdownTimerPlugin::CountdownTimerPlugin() : cd_timer_(nullptr)
 {
   info_.display_name = tr("Countdown timer");
   info_.description = tr("Just a countdown timer.");
@@ -92,13 +92,12 @@ void CountdownTimerPlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults
 QWidget* CountdownTimerPlugin::InitWidget(QGridLayout* layout)
 {
   Q_UNUSED(layout);
-  msg_label_ = new QLabel();
-  return msg_label_;
+  return new QLabel();
 }
 
-void CountdownTimerPlugin::DisplayImage(const QImage& image)
+void CountdownTimerPlugin::DisplayImage(QWidget* widget, const QImage& image)
 {
-  msg_label_->setPixmap(QPixmap::fromImage(image));
+  static_cast<QLabel*>(widget)->setPixmap(QPixmap::fromImage(image));
 }
 
 QString CountdownTimerPlugin::GetWidgetText()

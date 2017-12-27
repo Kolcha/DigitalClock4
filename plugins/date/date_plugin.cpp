@@ -29,7 +29,7 @@
 
 namespace date {
 
-DatePlugin::DatePlugin() : msg_label_(nullptr), local_time_(true)
+DatePlugin::DatePlugin() : local_time_(true)
 {
   info_.display_name = tr("Date");
   info_.description = tr("Allows to display current date under clock.");
@@ -91,14 +91,13 @@ void DatePlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults)
 
 QWidget* DatePlugin::InitWidget(QGridLayout* layout)
 {
-  msg_label_ = new QLabel();
   Q_UNUSED(layout);
-  return msg_label_;
+  return new QLabel();
 }
 
-void DatePlugin::DisplayImage(const QImage& image)
+void DatePlugin::DisplayImage(QWidget* widget, const QImage& image)
 {
-  msg_label_->setPixmap(QPixmap::fromImage(image));
+  static_cast<QLabel*>(widget)->setPixmap(QPixmap::fromImage(image));
 }
 
 QString DatePlugin::GetWidgetText()
