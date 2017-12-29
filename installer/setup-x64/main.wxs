@@ -9,9 +9,9 @@
       InstallerVersion="405" InstallScope="perMachine" Compressed="yes" Languages="1033" SummaryCodepage="1252" />
 
     <Property Id="ARPCONTACT">mailto:nick.korotysh@gmail.com</Property>
-    <Property Id="ARPHELPLINK">http://sourceforge.net/projects/digitalclock4/support</Property>
-    <Property Id="ARPURLINFOABOUT">http://sourceforge.net/projects/digitalclock4/</Property>
-    <Property Id="ARPURLUPDATEINFO">http://sourceforge.net/projects/digitalclock4/</Property>
+    <Property Id="ARPHELPLINK">https://sourceforge.net/projects/digitalclock4/support</Property>
+    <Property Id="ARPURLINFOABOUT">https://digitalclock4.sourceforge.io</Property>
+    <Property Id="ARPURLUPDATEINFO">https://digitalclock4.sourceforge.io</Property>
 
     <Property Id="ARPPRODUCTICON">app_icon.ico</Property>
 
