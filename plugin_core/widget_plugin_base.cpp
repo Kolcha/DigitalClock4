@@ -18,7 +18,6 @@
 
 #include "widget_plugin_base.h"
 
-#include <QGridLayout>
 #include <QFontMetricsF>
 
 #include "skin_drawer.h"
@@ -100,8 +99,7 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
 
 void WidgetPluginBase::Init(QWidget* main_wnd)
 {
-  private_->main_layout_ = qobject_cast<QGridLayout*>(main_wnd->layout());
-  private_->main_wnd_ = main_wnd;
+  private_->AddClockWidget(main_wnd);
 
   connect(settings_, SIGNAL(OptionChanged(QString,QVariant)),
           private_, SLOT(SettingsChangeListener(QString,QVariant)));
@@ -111,33 +109,18 @@ void WidgetPluginBase::Init(QWidget* main_wnd)
 
 void WidgetPluginBase::Start()
 {
-  QGridLayout* layout = private_->main_layout_;
-  private_->plg_widget_ = InitWidget(private_->main_layout_);
-  if (private_->main_layout_->indexOf(private_->plg_widget_) == -1) {
-    int w_loc = settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION)).toInt();
-    if (static_cast<WidgetLocation>(w_loc) == WidgetLocation::WL_RIGHT) {
-      layout->addWidget(private_->plg_widget_, 0, layout->columnCount(), 1, 1);
-    } else {
-      layout->addWidget(private_->plg_widget_, layout->rowCount(), 0, 1, layout->columnCount());
-    }
-  }
-  connect(private_->drawer_, &skin_draw::SkinDrawer::DrawingFinished, [this] (const QImage& img) {
-    this->DisplayImage(img);
-  });
-
+  private_->CreateWidgets();
   settings_->Load();
 }
 
 void WidgetPluginBase::Stop()
 {
-  disconnect(private_->drawer_, &skin_draw::SkinDrawer::DrawingFinished, 0, 0);
-  private_->main_layout_->removeWidget(private_->plg_widget_);
-  delete private_->plg_widget_;
+  private_->DestroyWidgets();
 }
 
 void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value)
 {
-  if (!private_->plg_widget_) return;  // not started
+  if (private_->plg_widgets_.isEmpty()) return;  // not started
 
   switch (option) {
     case OPT_SKIN_NAME:
@@ -163,7 +146,10 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       private_->font_ = private_->clock_font_;
       if (settings_->GetOption(OptionKey(OPT_USE_CLOCK_SKIN)).toBool()) break;
       skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(private_->font_));
-      txt_skin->SetDevicePixelRatio(private_->main_wnd_->devicePixelRatioF());
+      // TODO: what about monitors with different DPI?
+      // for now assume that all monitors have same DPI
+      // related to "different config per window"
+      txt_skin->SetDevicePixelRatio(private_->plg_widgets_[0]->devicePixelRatioF());
       private_->ApplySkin(txt_skin);
       break;
     }
@@ -230,7 +216,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
 
 void WidgetPluginBase::TimeUpdateListener()
 {
-  if (!private_->plg_widget_) return;  // not started
+  if (private_->plg_widgets_.isEmpty()) return;  // not started
 
   int cur_avail_width = private_->CalculateAvailableSpace();
 
@@ -317,7 +303,8 @@ qreal WidgetPluginBase::CalculateZoom(const QString& text) const
   WidgetLocation w_loc = static_cast<WidgetLocation>(iw_loc);
 
   qreal tw = w_loc == WidgetLocation::WL_RIGHT ?  GetImageSize(text, 1.0).height() : GetImageSize(text, 1.0).width();
-  qreal avail_width = avail_width_ * private_->plg_widget_->devicePixelRatioF();
+  // TODO: again, assume that all windows have the same DPI
+  qreal avail_width = avail_width_ * private_->plg_widgets_[0]->devicePixelRatioF();
   avail_width *= 0.01 * settings_->GetOption(OptionKey(OPT_SPACE_PERCENT)).toInt();
   qreal c_zoom = avail_width / tw;
 

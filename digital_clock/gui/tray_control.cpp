@@ -18,53 +18,27 @@
 
 #include "tray_control.h"
 
-#include <functional>
-
-#include <QMenu>
 #include <QIcon>
 #ifdef Q_OS_MACOS
 #include <QSysInfo>
 #include <QVersionNumber>
 #endif
 #include <QApplication>
-#include <QScreen>
-#include <QWindow>
+
+#include "gui/context_menu.h"
 
 namespace digital_clock {
 namespace gui {
 
-TrayControl::TrayControl(QWidget* parent) : QObject(parent)
+TrayControl::TrayControl(QObject* parent) : QObject(parent)
 {
-  QMenu* tray_menu = new QMenu(parent);
-  show_hide_action_ = tray_menu->addAction(tr("&Visible"), this, SIGNAL(VisibilityChanged(bool)));
-  show_hide_action_->setCheckable(true);
-  show_hide_action_->setChecked(true);
-  tray_menu->addAction(QIcon(":/clock/images/settings.svg.p"), tr("&Settings"),
-                       this, SIGNAL(ShowSettingsDlg()));
-
-  QMenu* p_menu = tray_menu->addMenu(tr("Position"));
-  QMenu* t_menu = p_menu->addMenu(tr("Top"));
-  t_menu->addAction(tr("Left"), [this] () { MoveWindow(Qt::AlignTop | Qt::AlignLeft); });
-  t_menu->addAction(tr("Middle"), [this] () { MoveWindow(Qt::AlignTop | Qt::AlignHCenter); });
-  t_menu->addAction(tr("Right"), [this] () { MoveWindow(Qt::AlignTop | Qt::AlignRight); });
-  QMenu* c_menu = p_menu->addMenu(tr("Middle"));
-  c_menu->addAction(tr("Left"), [this] () { MoveWindow(Qt::AlignVCenter | Qt::AlignLeft); });
-  c_menu->addAction(tr("Middle"), [this] () { MoveWindow(Qt::AlignVCenter | Qt::AlignHCenter); });
-  c_menu->addAction(tr("Right"), [this] () { MoveWindow(Qt::AlignVCenter | Qt::AlignRight); });
-  QMenu* b_menu = p_menu->addMenu(tr("Bottom"));
-  b_menu->addAction(tr("Left"), [this] () { MoveWindow(Qt::AlignBottom | Qt::AlignLeft); });
-  b_menu->addAction(tr("Middle"), [this] () { MoveWindow(Qt::AlignBottom | Qt::AlignHCenter); });
-  b_menu->addAction(tr("Right"), [this] () { MoveWindow(Qt::AlignBottom | Qt::AlignRight); });
-  tray_menu->addSeparator();
-
-  tray_menu->addAction(QIcon(":/clock/images/info.svg.p"), tr("&About"),
-                       this, SIGNAL(ShowAboutDlg()));
-  tray_menu->addSeparator();
-  tray_menu->addAction(QIcon(":/clock/images/update.svg.p"), tr("&Update"),
-                       this, SIGNAL(CheckForUpdates()));
-  tray_menu->addSeparator();
-  tray_menu->addAction(QIcon(":/clock/images/quit.svg.p"), tr("&Quit"),
-                       this, SIGNAL(AppExit()));
+  tray_menu_ = new ContextMenu(this);
+  connect(tray_menu_, &ContextMenu::VisibilityChanged, this, &TrayControl::VisibilityChanged);
+  connect(tray_menu_, &ContextMenu::PositionChanged, this, &TrayControl::PositionChanged);
+  connect(tray_menu_, &ContextMenu::ShowSettingsDlg, this, &TrayControl::ShowSettingsDlg);
+  connect(tray_menu_, &ContextMenu::ShowAboutDlg, this, &TrayControl::ShowAboutDlg);
+  connect(tray_menu_, &ContextMenu::CheckForUpdates, this, &TrayControl::CheckForUpdates);
+  connect(tray_menu_, &ContextMenu::AppExit, this, &TrayControl::AppExit);
 
   QIcon tray_icon(":/clock/images/clock.svg");
 #ifdef Q_OS_MACOS
@@ -73,10 +47,9 @@ TrayControl::TrayControl(QWidget* parent) : QObject(parent)
     tray_icon.setIsMask(true);
   tray_icon_ = new QSystemTrayIcon(tray_icon, this);
   tray_icon_->setVisible(true);
-  tray_icon_->setContextMenu(tray_menu);
+  tray_icon_->setContextMenu(tray_menu_->menu());
   tray_icon_->setToolTip(QApplication::applicationDisplayName() + " " + QApplication::applicationVersion());
-  connect(tray_icon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-          this, SLOT(TrayEventHandler(QSystemTrayIcon::ActivationReason)));
+  connect(tray_icon_, &QSystemTrayIcon::activated, this, &TrayControl::TrayEventHandler);
 }
 
 QSystemTrayIcon* TrayControl::GetTrayIcon() const
@@ -86,26 +59,12 @@ QSystemTrayIcon* TrayControl::GetTrayIcon() const
 
 QAction* TrayControl::GetShowHideAction() const
 {
-  return show_hide_action_;
+  return tray_menu_->visibilityAction();
 }
 
 void TrayControl::TrayEventHandler(QSystemTrayIcon::ActivationReason reason)
 {
   if (reason == QSystemTrayIcon::DoubleClick) emit ShowSettingsDlg();
-}
-
-void TrayControl::MoveWindow(Qt::Alignment align)
-{
-  for (auto wnd : QApplication::topLevelWindows()) {
-    QRect screen = wnd->screen()->availableGeometry();
-    QRect window = wnd->frameGeometry();
-    if (align & Qt::AlignLeft) wnd->setX(screen.left());
-    if (align & Qt::AlignHCenter) wnd->setX(screen.center().x() - window.width() / 2);
-    if (align & Qt::AlignRight) wnd->setX(screen.right() - window.width());
-    if (align & Qt::AlignTop) wnd->setY(screen.top());
-    if (align & Qt::AlignVCenter) wnd->setY(screen.center().y() - window.height() / 2);
-    if (align & Qt::AlignBottom) wnd->setY(screen.bottom() - window.height());
-  }
 }
 
 } // namespace gui

@@ -2,31 +2,31 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru">
 <context>
-    <name>digital_clock::MainWindow</name>
+    <name>digital_clock::core::ClockApplication</name>
     <message>
-        <location filename="../main_window.cpp" line="518"/>
-        <location filename="../main_window.cpp" line="528"/>
-        <location filename="../main_window.cpp" line="538"/>
+        <location filename="../core/clock_application.cpp" line="289"/>
+        <location filename="../core/clock_application.cpp" line="299"/>
+        <location filename="../core/clock_application.cpp" line="309"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="519"/>
+        <location filename="../core/clock_application.cpp" line="290"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="529"/>
+        <location filename="../core/clock_application.cpp" line="300"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="539"/>
+        <location filename="../core/clock_application.cpp" line="310"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../main_window.cpp" line="551"/>
+        <location filename="../core/clock_application.cpp" line="322"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -101,6 +101,71 @@
         <source>build date: %1</source>
         <translatorcomment>дата компиляции приложения</translatorcomment>
         <translation>дата сборки: %1</translation>
+    </message>
+</context>
+<context>
+    <name>digital_clock::gui::ContextMenu</name>
+    <message>
+        <location filename="../gui/context_menu.cpp" line="32"/>
+        <source>&amp;Visible</source>
+        <translation>О&amp;тображать</translation>
+    </message>
+    <message>
+        <location filename="../gui/context_menu.cpp" line="35"/>
+        <source>&amp;Settings</source>
+        <translation>&amp;Настройки</translation>
+    </message>
+    <message>
+        <location filename="../gui/context_menu.cpp" line="38"/>
+        <source>Position</source>
+        <translation>Расположение</translation>
+    </message>
+    <message>
+        <location filename="../gui/context_menu.cpp" line="39"/>
+        <source>Top</source>
+        <translation>Верх</translation>
+    </message>
+    <message>
+        <location filename="../gui/context_menu.cpp" line="40"/>
+        <location filename="../gui/context_menu.cpp" line="44"/>
+        <location filename="../gui/context_menu.cpp" line="48"/>
+        <source>Left</source>
+        <translation>Лево</translation>
+    </message>
+    <message>
+        <location filename="../gui/context_menu.cpp" line="41"/>
+        <location filename="../gui/context_menu.cpp" line="43"/>
+        <location filename="../gui/context_menu.cpp" line="45"/>
+        <location filename="../gui/context_menu.cpp" line="49"/>
+        <source>Middle</source>
+        <translation>Центр</translation>
+    </message>
+    <message>
+        <location filename="../gui/context_menu.cpp" line="42"/>
+        <location filename="../gui/context_menu.cpp" line="46"/>
+        <location filename="../gui/context_menu.cpp" line="50"/>
+        <source>Right</source>
+        <translation>Право</translation>
+    </message>
+    <message>
+        <location filename="../gui/context_menu.cpp" line="47"/>
+        <source>Bottom</source>
+        <translation>Низ</translation>
+    </message>
+    <message>
+        <location filename="../gui/context_menu.cpp" line="53"/>
+        <source>&amp;About</source>
+        <translation>&amp;О программе</translation>
+    </message>
+    <message>
+        <location filename="../gui/context_menu.cpp" line="56"/>
+        <source>&amp;Update</source>
+        <translation>О&amp;бновление</translation>
+    </message>
+    <message>
+        <location filename="../gui/context_menu.cpp" line="59"/>
+        <source>&amp;Quit</source>
+        <translation>&amp;Выход</translation>
     </message>
 </context>
 <context>
@@ -343,12 +408,17 @@
         <translation>всегда держать часы видимыми на экране, избегать положения вне экрана</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="904"/>
+        <location filename="../gui/settings_dialog.ui" line="898"/>
+        <source>show clock on all available monitors</source>
+        <translation>показывать часы на всех мониторах</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="911"/>
         <source>Please restart clock after changing any of theese options!</source>
         <translation>Пожалуйста перезапустите часы после изменения любой из данных опций!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="924"/>
+        <location filename="../gui/settings_dialog.ui" line="931"/>
         <source>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in &apos;About&apos; dialog.</source>
         <translation>На этой вкладке представлены экспериментальные опции. По умолчанию они отключены. Их включение и использование полностью безопасно для Вашего компьютера, но они могут привести к непредсказуемому поведению часов. Пробуйте их если хотите, но любое тестирование только приветствуется. Если после включения любой из данных опций Вы заметите некорректное поведение часов, пожалуйста сообщите мне об этом. Контактную информацию можно найти в окошке &apos;О программе&apos;.</translation>
     </message>
@@ -455,96 +525,30 @@
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="328"/>
+        <location filename="../gui/settings_dialog.cpp" line="329"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="330"/>
+        <location filename="../gui/settings_dialog.cpp" line="331"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="413"/>
+        <location filename="../gui/settings_dialog.cpp" line="414"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="415"/>
-        <location filename="../gui/settings_dialog.cpp" line="423"/>
+        <location filename="../gui/settings_dialog.cpp" line="416"/>
+        <location filename="../gui/settings_dialog.cpp" line="424"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="421"/>
+        <location filename="../gui/settings_dialog.cpp" line="422"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
-    </message>
-</context>
-<context>
-    <name>digital_clock::gui::TrayControl</name>
-    <message>
-        <location filename="../gui/tray_control.cpp" line="39"/>
-        <source>&amp;Visible</source>
-        <translatorcomment>отображать часы на экране</translatorcomment>
-        <translation>О&amp;тображать</translation>
-    </message>
-    <message>
-        <location filename="../gui/tray_control.cpp" line="42"/>
-        <source>&amp;Settings</source>
-        <translation>&amp;Настройки</translation>
-    </message>
-    <message>
-        <location filename="../gui/tray_control.cpp" line="45"/>
-        <source>Position</source>
-        <translation>Расположение</translation>
-    </message>
-    <message>
-        <location filename="../gui/tray_control.cpp" line="46"/>
-        <source>Top</source>
-        <translation>Верх</translation>
-    </message>
-    <message>
-        <location filename="../gui/tray_control.cpp" line="47"/>
-        <location filename="../gui/tray_control.cpp" line="51"/>
-        <location filename="../gui/tray_control.cpp" line="55"/>
-        <source>Left</source>
-        <translation>Лево</translation>
-    </message>
-    <message>
-        <location filename="../gui/tray_control.cpp" line="48"/>
-        <location filename="../gui/tray_control.cpp" line="50"/>
-        <location filename="../gui/tray_control.cpp" line="52"/>
-        <location filename="../gui/tray_control.cpp" line="56"/>
-        <source>Middle</source>
-        <translation>Центр</translation>
-    </message>
-    <message>
-        <location filename="../gui/tray_control.cpp" line="49"/>
-        <location filename="../gui/tray_control.cpp" line="53"/>
-        <location filename="../gui/tray_control.cpp" line="57"/>
-        <source>Right</source>
-        <translation>Право</translation>
-    </message>
-    <message>
-        <location filename="../gui/tray_control.cpp" line="54"/>
-        <source>Bottom</source>
-        <translation>Низ</translation>
-    </message>
-    <message>
-        <location filename="../gui/tray_control.cpp" line="60"/>
-        <source>&amp;About</source>
-        <translation>&amp;О программе</translation>
-    </message>
-    <message>
-        <location filename="../gui/tray_control.cpp" line="63"/>
-        <source>&amp;Update</source>
-        <translation>О&amp;бновление</translation>
-    </message>
-    <message>
-        <location filename="../gui/tray_control.cpp" line="66"/>
-        <source>&amp;Quit</source>
-        <translation>&amp;Выход</translation>
     </message>
 </context>
 </TS>

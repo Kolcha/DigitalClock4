@@ -1,6 +1,6 @@
 /*
     Digital Clock - beautiful customizable clock with plugins
-    Copyright (C) 2016-2017  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,11 +16,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DIGITAL_CLOCK_MAIN_WINDOW_H
-#define DIGITAL_CLOCK_MAIN_WINDOW_H
+#ifndef DIGITAL_CLOCK_CORE_CLOCK_APPLICATION_H
+#define DIGITAL_CLOCK_CORE_CLOCK_APPLICATION_H
 
-#include <QWidget>
-
+#include <QApplication>
+#include <QVector>
 #include <QTimer>
 
 #include "settings_keys.h"
@@ -29,66 +29,41 @@ class SettingsStorage;
 
 namespace digital_clock {
 
+namespace gui {
+class TrayControl;
+class ClockWindow;
+}
+
 namespace core {
+
 class ClockSettings;
 class ClockState;
 class SkinManager;
 class Updater;
 class PluginManager;
-}
 
-namespace gui {
-class TrayControl;
-class ClockWidget;
-}
-
-
-class MainWindow : public QWidget
+class ClockApplication : public QApplication
 {
   Q_OBJECT
 
 public:
-  explicit MainWindow(QWidget* parent = nullptr);
-  ~MainWindow();
-
-protected:
-  void showEvent(QShowEvent* event) override;
-  void mousePressEvent(QMouseEvent* event) override;
-  void mouseMoveEvent(QMouseEvent* event) override;
-  void mouseReleaseEvent(QMouseEvent* event) override;
-  void paintEvent(QPaintEvent* event) override;
-  void resizeEvent(QResizeEvent* event) override;
-  void moveEvent(QMoveEvent* event) override;
+  ClockApplication(int &argc, char **argv);
+  ~ClockApplication();
 
 private slots:
   void Reset();
   void ApplyOption(const Option opt, const QVariant& value);
 
-  void EnsureVisible();
-  void RestoreVisibility();
-
-  void LoadState();
-  void SaveState();
-
   void ShowSettingsDialog();
   void ShowAboutDialog();
 
-  void ShowContextMenu(const QPoint& p);
-#ifdef Q_OS_WIN
-  void WinOnTopWorkaround();
-#endif
   // temporary, will be changed later
   void InitPluginSystem();
   void ShutdownPluginSystem();
 
 private:
+  void CreateWindows();
   void ConnectTrayMessages();
-
-  void SetWindowFlag(Qt::WindowFlags flag, bool set);
-
-  void CorrectPosition();
-
-  void SetVisibleOnAllDesktops(bool set);
 
   SettingsStorage* config_backend_;
 
@@ -99,26 +74,13 @@ private:
   core::PluginManager* plugin_manager_;
 
   gui::TrayControl* tray_control_;
-  gui::ClockWidget* clock_widget_;
 
   QTimer timer_;
 
-  bool dragging_;
-  QPoint drag_position_;
-  CAlignment cur_alignment_;
-
-  QColor bg_color_;
-
-  bool last_visibility_;
-  bool fullscreen_detect_enabled_;
-  bool keep_always_visible_;
-  QStringList window_ignore_list_;
-
-  bool show_border_;
-  bool snap_to_edges_;
-  int snap_threshold_;
+  QVector<gui::ClockWindow*> clock_windows_;
 };
 
+} // namespace core
 } // namespace digital_clock
 
-#endif // DIGITAL_CLOCK_MAIN_WINDOW_H
+#endif // DIGITAL_CLOCK_CORE_CLOCK_APPLICATION_H

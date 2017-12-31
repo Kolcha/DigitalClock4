@@ -74,6 +74,7 @@ QMap<Option, QVariant> ClockSettings::GetSettings() const
   all_settings[OPT_SHOW_WINDOW_BORDER]    = GetValue(OPT_SHOW_WINDOW_BORDER);
   all_settings[OPT_SNAP_TO_EDGES]         = GetValue(OPT_SNAP_TO_EDGES);
   all_settings[OPT_SNAP_THRESHOLD]        = GetValue(OPT_SNAP_THRESHOLD);
+  all_settings[OPT_SHOW_ON_ALL_MONITORS]  = GetValue(OPT_SHOW_ON_ALL_MONITORS);
   return all_settings;
 }
 
@@ -123,6 +124,7 @@ QString ClockSettings::GetKey(const int id) const
     case OPT_SHOW_WINDOW_BORDER:    return "window/show_border";
     case OPT_SNAP_TO_EDGES:         return "window/snap_to_edges";
     case OPT_SNAP_THRESHOLD:        return "window/snap_threshold";
+    case OPT_SHOW_ON_ALL_MONITORS:  return "window/show_on_all_monitors";
   }
   Q_ASSERT(false);
   return QString();
@@ -174,6 +176,7 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_SHOW_WINDOW_BORDER:    return true;
     case OPT_SNAP_TO_EDGES:         return true;
     case OPT_SNAP_THRESHOLD:        return 15;
+    case OPT_SHOW_ON_ALL_MONITORS:  return false;
   }
   return QVariant();
 }

@@ -14,7 +14,7 @@
         <translation>Отображает локальный(е) IP адрес(а) под часами.</translation>
     </message>
     <message>
-        <location filename="../ip_address_plugin.cpp" line="130"/>
+        <location filename="../ip_address_plugin.cpp" line="129"/>
         <source>&lt;no interfaces found&gt;</source>
         <translation>&lt;интерфейсы не найдены&gt;</translation>
     </message>

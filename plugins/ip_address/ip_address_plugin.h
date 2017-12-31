@@ -21,8 +21,6 @@
 
 #include "widget_plugin_base.h"
 
-class QGridLayout;
-class QLabel;
 class QTimer;
 class QNetworkAccessManager;
 
@@ -44,14 +42,13 @@ public slots:
 protected:
   void InitSettingsDefaults(QSettings::SettingsMap* defaults) override;
   QWidget* InitWidget(QGridLayout* layout) override;
-  void DisplayImage(const QImage& image) override;
+  void DisplayImage(QWidget* widget, const QImage& image) override;
   QString GetWidgetText() override;
 
 private slots:
   void UpdateIPsList();
 
 private:
-  QLabel* msg_label_;
   QTimer* ip_update_timer_;
   QString last_ip_list_;
   QNetworkAccessManager* qnam_;

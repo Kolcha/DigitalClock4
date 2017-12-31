@@ -87,7 +87,8 @@ enum Option {
   // window settings
   OPT_SHOW_WINDOW_BORDER,       /*!< highlight window border during configuration, bool, true/false */
   OPT_SNAP_TO_EDGES,            /*!< snap to edges/corners flag, bool, true/false */
-  OPT_SNAP_THRESHOLD            /*!< maximum distance when snap will be activated, int, 5..50 */
+  OPT_SNAP_THRESHOLD,           /*!< maximum distance when snap will be activated, int, 5..50 */
+  OPT_SHOW_ON_ALL_MONITORS      /*!< show clock window on all monitors flag, bool, true/false */
 };
 
 #endif // SETTINGS_KEYS_H

@@ -27,17 +27,21 @@ class QAction;
 namespace digital_clock {
 namespace gui {
 
+class ContextMenu;
+
 class TrayControl : public QObject
 {
   Q_OBJECT
 
 public:
-  explicit TrayControl(QWidget* parent = nullptr);
+  explicit TrayControl(QObject* parent = nullptr);
+
   QSystemTrayIcon* GetTrayIcon() const;
   QAction* GetShowHideAction() const;
 
 signals:
   void VisibilityChanged(bool visible);
+  void PositionChanged(Qt::Alignment pos);
   void ShowSettingsDlg();
   void ShowAboutDlg();
   void CheckForUpdates();
@@ -47,11 +51,8 @@ private slots:
   void TrayEventHandler(QSystemTrayIcon::ActivationReason reason);
 
 private:
-  void MoveWindow(Qt::Alignment align);
-
-private:
   QSystemTrayIcon* tray_icon_;
-  QAction* show_hide_action_;
+  ContextMenu* tray_menu_;
 };
 
 } // namespace gui

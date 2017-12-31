@@ -16,24 +16,42 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/clock_window.h"
+#ifndef DIGITAL_CLOCK_GUI_CONTEXT_MENU_H
+#define DIGITAL_CLOCK_GUI_CONTEXT_MENU_H
 
-#include <objc/objc-runtime.h>
+#include <QObject>
+
+class QMenu;
+class QAction;
 
 namespace digital_clock {
 namespace gui {
 
-void ClockWindow::SetVisibleOnAllDesktops(bool set)
+class ContextMenu : public QObject
 {
-  // http://stackoverflow.com/questions/16775352/keep-a-application-window-always-on-current-desktop-on-linux-and-mac/
-  WId windowObject = this->winId();
-  objc_object* nsviewObject = reinterpret_cast<objc_object*>(windowObject);
-  objc_object* nsWindowObject = objc_msgSend(nsviewObject, sel_registerName("window"));
-  int NSWindowCollectionBehaviorCanJoinAllSpaces = set ? 1 : 0;
-  int NSWindowCollectionBehaviorFullScreenNone = 1 << 9;
-  int collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces | NSWindowCollectionBehaviorFullScreenNone;
-  objc_msgSend(nsWindowObject, sel_registerName("setCollectionBehavior:"), collectionBehavior);
-}
+  Q_OBJECT
+
+public:
+  explicit ContextMenu(QObject* parent = nullptr);
+  ~ContextMenu();
+
+  QMenu* menu() const Q_DECL_NOEXCEPT { return menu_; }
+  QAction* visibilityAction() const Q_DECL_NOEXCEPT { return visibility_action_; }
+
+signals:
+  void VisibilityChanged(bool visible);
+  void PositionChanged(Qt::Alignment pos);
+  void ShowSettingsDlg();
+  void ShowAboutDlg();
+  void CheckForUpdates();
+  void AppExit();
+
+private:
+  QMenu* menu_;
+  QAction* visibility_action_;
+};
 
 } // namespace gui
 } // namespace digital_clock
+
+#endif // DIGITAL_CLOCK_GUI_CONTEXT_MENU_H

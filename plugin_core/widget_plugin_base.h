@@ -141,13 +141,13 @@ protected:
    */
   virtual QWidget* InitWidget(QGridLayout* layout) = 0;
   /*!
-   * @brief Display rendered @a image on own widget.
+   * @brief Display rendered @a image on given @a widget.
    *
    * This function must implement way to display @a image on own created widget.
    * This will called every time when widget redraw will needed or data changed.
    * @see InitWidget(), TimeUpdateListener(), GetWidgetText(), CalculateZoom()
    */
-  virtual void DisplayImage(const QImage& image) = 0;
+  virtual void DisplayImage(QWidget* widget, const QImage& image) = 0;
   /*!
    * @brief Get text for rendering.
    *
