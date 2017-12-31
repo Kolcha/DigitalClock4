@@ -28,7 +28,7 @@ void InitDefaults(QSettings::SettingsMap* defaults)
   defaults->insert(OPT_INTERVAL_MINUTES, 0);
   defaults->insert(OPT_INTERVAL_SECONDS, 0);
 
-  defaults->insert(OPT_USE_TARGET_TIME, false);
+  defaults->insert(OPT_USE_TARGET_TIME, true);
   defaults->insert(OPT_TARGET_DATETIME, QDateTime(QDate(QDate::currentDate().year() + 1, 1, 1)));
 
   defaults->insert(OPT_SHOW_MESSAGE, false);
