@@ -91,11 +91,11 @@ public slots:
   virtual void TimeUpdateListener() {}
 
 signals:
-    /*!
-     * Signal to notify plugin management system when plugin configuration
-     * was finished. Usually this means configuration dialog was destroyed.
-     */
-    void configured();
+  /*!
+   * Signal to notify plugin management system when plugin configuration
+   * was finished. Usually this means configuration dialog was destroyed.
+   */
+  void configured();
 };
 
 /*! Clock plugin interface IID */

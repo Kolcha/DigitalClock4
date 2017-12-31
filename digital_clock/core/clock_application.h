@@ -47,7 +47,7 @@ class ClockApplication : public QApplication
   Q_OBJECT
 
 public:
-  ClockApplication(int &argc, char **argv);
+  ClockApplication(int& argc, char** argv);
   ~ClockApplication();
 
 private slots:
