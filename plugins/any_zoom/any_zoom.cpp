@@ -1,6 +1,6 @@
 /*
     Digital Clock: any zoom plugin
-    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2013-2018  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
