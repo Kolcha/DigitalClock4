@@ -16,13 +16,14 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "main_window.h"
+#include "gui/clock_window.h"
 
 #include <objc/objc-runtime.h>
 
 namespace digital_clock {
+namespace gui {
 
-void MainWindow::SetVisibleOnAllDesktops(bool set)
+void ClockWindow::SetVisibleOnAllDesktops(bool set)
 {
   // http://stackoverflow.com/questions/16775352/keep-a-application-window-always-on-current-desktop-on-linux-and-mac/
   WId windowObject = this->winId();
@@ -34,4 +35,5 @@ void MainWindow::SetVisibleOnAllDesktops(bool set)
   objc_msgSend(nsWindowObject, sel_registerName("setCollectionBehavior:"), collectionBehavior);
 }
 
+} // namespace gui
 } // namespace digital_clock

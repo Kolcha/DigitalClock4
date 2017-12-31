@@ -16,14 +16,15 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "main_window.h"
+#include "gui/clock_window.h"
 
 #include "core/clock_settings.h"
 #include "platform/fullscreen_detect.h"
 
 namespace digital_clock {
+namespace gui {
 
-void MainWindow::WinOnTopWorkaround()
+void ClockWindow::WinOnTopWorkaround()
 {
   // always on top problem workaround
   // https://sourceforge.net/p/digitalclock4/tickets/3/
@@ -45,4 +46,5 @@ void MainWindow::WinOnTopWorkaround()
   }
 }
 
+} // namespace gui
 } // namespace digital_clock

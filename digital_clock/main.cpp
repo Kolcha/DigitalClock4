@@ -16,12 +16,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "main_window.h"
-
 #include <QApplication>
 #include <QIcon>
 #include <QTranslator>
 #include <QLibraryInfo>
+#include <QPalette>
 
 #include "core/clock_application.h"
 

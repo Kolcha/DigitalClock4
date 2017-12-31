@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "main_window.h"
+#include "gui/clock_window.h"
 
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
@@ -24,8 +24,9 @@
 #include <QX11Info>
 
 namespace digital_clock {
+namespace gui {
 
-void MainWindow::SetVisibleOnAllDesktops(bool set)
+void ClockWindow::SetVisibleOnAllDesktops(bool set)
 {
   // http://stackoverflow.com/questions/16775352/keep-a-application-window-always-on-current-desktop-on-linux-and-mac/
   unsigned int data = set ? 0xFFFFFFFF : 0x00000000;
@@ -39,4 +40,5 @@ void MainWindow::SetVisibleOnAllDesktops(bool set)
                   1);
 }
 
+} // namespace gui
 } // namespace digital_clock

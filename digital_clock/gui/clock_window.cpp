@@ -426,11 +426,11 @@ void ClockWindow::SetWindowFlag(Qt::WindowFlags flag, bool set)
   if (last_visible != isVisible()) show();
   if (aw) aw->activateWindow();
 }
-//#if !defined(Q_OS_MACOS) && !defined(Q_OS_LINUX)
+#if !defined(Q_OS_MACOS) && !defined(Q_OS_LINUX)
 void ClockWindow::SetVisibleOnAllDesktops(bool set)
 {
   Q_UNUSED(set)
 }
-//#endif
+#endif
 } // namespace gui
 } // namespace digital_clock

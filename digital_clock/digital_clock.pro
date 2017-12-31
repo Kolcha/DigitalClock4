@@ -55,8 +55,7 @@ SOURCES += main.cpp \
     skin/clock_base_skin.cpp \
     skin/clock_raster_skin.cpp \
     skin/clock_text_skin.cpp \
-    skin/clock_vector_skin.cpp \
-    main_window.cpp
+    skin/clock_vector_skin.cpp
 
 HEADERS += \
     platform/autostart.h \
@@ -84,8 +83,7 @@ HEADERS += \
     skin/clock_base_skin.h \
     skin/clock_raster_skin.h \
     skin/clock_text_skin.h \
-    skin/clock_vector_skin.h \
-    main_window.h
+    skin/clock_vector_skin.h
 
 # platform-specific sources
 win32 {
