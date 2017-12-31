@@ -1,6 +1,6 @@
 /*
     Digital Clock - beautiful customizable clock with plugins
-    Copyright (C) 2013-2017  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2017  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,28 +16,27 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DIGITAL_CLOCK_GUI_TRAY_CONTROL_H
-#define DIGITAL_CLOCK_GUI_TRAY_CONTROL_H
+#ifndef DIGITAL_CLOCK_GUI_CONTEXT_MENU_H
+#define DIGITAL_CLOCK_GUI_CONTEXT_MENU_H
 
 #include <QObject>
-#include <QSystemTrayIcon>
 
+class QMenu;
 class QAction;
 
 namespace digital_clock {
 namespace gui {
 
-class ContextMenu;
-
-class TrayControl : public QObject
+class ContextMenu : public QObject
 {
   Q_OBJECT
 
 public:
-  explicit TrayControl(QObject* parent = nullptr);
+  explicit ContextMenu(QObject* parent = nullptr);
+  ~ContextMenu();
 
-  QSystemTrayIcon* GetTrayIcon() const;
-  QAction* GetShowHideAction() const;
+  QMenu* menu() const Q_DECL_NOEXCEPT { return menu_; }
+  QAction* visibilityAction() const Q_DECL_NOEXCEPT { return visibility_action_; }
 
 signals:
   void VisibilityChanged(bool visible);
@@ -47,15 +46,12 @@ signals:
   void CheckForUpdates();
   void AppExit();
 
-private slots:
-  void TrayEventHandler(QSystemTrayIcon::ActivationReason reason);
-
 private:
-  QSystemTrayIcon* tray_icon_;
-  ContextMenu* tray_menu_;
+  QMenu* menu_;
+  QAction* visibility_action_;
 };
 
 } // namespace gui
 } // namespace digital_clock
 
-#endif // DIGITAL_CLOCK_GUI_TRAY_CONTROL_H
+#endif // DIGITAL_CLOCK_GUI_CONTEXT_MENU_H

@@ -34,6 +34,7 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     core/build_date.cpp \
+    core/clock_application.cpp \
     core/clock_settings.cpp \
     core/clock_state.cpp \
     core/http_client.cpp \
@@ -44,7 +45,9 @@ SOURCES += main.cpp \
     gui/clickable_label.cpp \
     gui/clock_display.cpp \
     gui/clock_widget.cpp \
+    gui/clock_window.cpp \
     gui/colorize_effect.cpp \
+    gui/context_menu.cpp \
     gui/plugin_info_dialog.cpp \
     gui/plugin_list_item_widget.cpp \
     gui/settings_dialog.cpp \
@@ -59,6 +62,7 @@ HEADERS += \
     platform/autostart.h \
     core/build_date.h \
     core/build_defs.h \
+    core/clock_application.h \
     core/clock_settings.h \
     core/clock_state.h \
     core/http_client.h \
@@ -70,7 +74,9 @@ HEADERS += \
     gui/clickable_label.h \
     gui/clock_display.h \
     gui/clock_widget.h \
+    gui/clock_window.h \
     gui/colorize_effect.h \
+    gui/context_menu.h \
     gui/plugin_info_dialog.h \
     gui/plugin_list_item_widget.h \
     gui/settings_dialog.h \

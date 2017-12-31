@@ -23,6 +23,8 @@
 #include <QTranslator>
 #include <QLibraryInfo>
 
+#include "core/clock_application.h"
+
 int main(int argc, char* argv[])
 {
   // set application info
@@ -39,7 +41,7 @@ int main(int argc, char* argv[])
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
-  QApplication app(argc, argv);
+  digital_clock::core::ClockApplication app(argc, argv);
   app.setWindowIcon(QIcon(":/clock/images/clock.svg.p"));
   app.setQuitOnLastWindowClosed(false);
 
@@ -71,9 +73,6 @@ int main(int argc, char* argv[])
   p.setColor(QPalette::Link, p.color(QPalette::Active, QPalette::Text));
   p.setColor(QPalette::LinkVisited, p.color(QPalette::Inactive, QPalette::Text));
   QApplication::setPalette(p);
-
-  digital_clock::MainWindow wnd;
-  Q_UNUSED(wnd);    // window decides to be visible itself
 
   return app.exec();
 }
