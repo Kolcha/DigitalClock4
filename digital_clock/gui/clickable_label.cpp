@@ -35,7 +35,7 @@ ClickableLabel::ClickableLabel(QWidget* parent) :
   connect(timer_, &QTimer::timeout, this, &ClickableLabel::onTimer);
 }
 
-int ClickableLabel::requiredClicksCount() const
+int ClickableLabel::requiredClicksCount() const noexcept
 {
   return req_clicks_;
 }
@@ -45,7 +45,7 @@ int ClickableLabel::clickTimeout() const
   return timer_->interval();
 }
 
-void ClickableLabel::setRequiredClicksCount(int req_clicks)
+void ClickableLabel::setRequiredClicksCount(int req_clicks) noexcept
 {
   req_clicks_ = req_clicks;
 }
@@ -66,7 +66,7 @@ void ClickableLabel::mouseReleaseEvent(QMouseEvent* event)
   QLabel::mouseReleaseEvent(event);
 }
 
-void ClickableLabel::onTimer()
+void ClickableLabel::onTimer() noexcept
 {
   cur_clicks_ = 0;
 }

@@ -52,12 +52,12 @@ TrayControl::TrayControl(QObject* parent) : QObject(parent)
   connect(tray_icon_, &QSystemTrayIcon::activated, this, &TrayControl::TrayEventHandler);
 }
 
-QSystemTrayIcon* TrayControl::GetTrayIcon() const
+QSystemTrayIcon* TrayControl::GetTrayIcon() const noexcept
 {
   return tray_icon_;
 }
 
-QAction* TrayControl::GetShowHideAction() const
+QAction* TrayControl::GetShowHideAction() const noexcept
 {
   return tray_menu_->visibilityAction();
 }

@@ -43,7 +43,7 @@ class ClockWidget : public QWidget
 public:
   explicit ClockWidget(QWidget* parent = nullptr);
 
-  bool preview() const { return preview_mode_; }
+  bool preview() const noexcept { return preview_mode_; }
   ::skin_draw::ISkin::SkinPtr skin() const;
 
 signals:

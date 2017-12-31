@@ -34,21 +34,21 @@ class ClickableLabel : public QLabel
 public:
   explicit ClickableLabel(QWidget* parent = nullptr);
 
-  int requiredClicksCount() const;
+  int requiredClicksCount() const noexcept;
   int clickTimeout() const;
 
 signals:
   void clicked();
 
 public slots:
-  void setRequiredClicksCount(int req_clicks);
+  void setRequiredClicksCount(int req_clicks) noexcept;
   void setClickTimeout(int timeout);
 
 protected:
   void mouseReleaseEvent(QMouseEvent* event) override;
 
 private slots:
-  void onTimer();
+  void onTimer() noexcept;
 
 private:
   QTimer* timer_;
