@@ -47,8 +47,8 @@ ClockApplication::ClockApplication(int& argc, char** argv) : QApplication(argc, 
   config_backend_ = new SettingsStorage(this);
   app_config_ = new core::ClockSettings(config_backend_, config_backend_);
   state_ = new core::ClockState(config_backend_);
-  clock_windows_.append(new gui::ClockWindow(app_config_, 1));    // TODO: create N windows depending on config
-  clock_windows_.append(new gui::ClockWindow(app_config_, 2));    // TODO: create N windows depending on config
+
+  CreateWindows();
 
   skin_manager_ = new core::SkinManager(this);
   skin_manager_->ListSkins();
@@ -269,6 +269,14 @@ void ClockApplication::InitPluginSystem()
 void ClockApplication::ShutdownPluginSystem()
 {
   plugin_manager_->UnloadPlugins();
+}
+
+void ClockApplication::CreateWindows()
+{
+  int n = app_config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool() ? QApplication::screens().size() : 1;
+  for (int i = 0; i < n; ++i) {
+    clock_windows_.append(new gui::ClockWindow(app_config_, i + 1));
+  }
 }
 
 void ClockApplication::ConnectTrayMessages()

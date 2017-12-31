@@ -62,6 +62,7 @@ private slots:
   void ShutdownPluginSystem();
 
 private:
+  void CreateWindows();
   void ConnectTrayMessages();
 
   SettingsStorage* config_backend_;

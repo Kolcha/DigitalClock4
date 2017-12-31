@@ -893,6 +893,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="show_on_all_monitors">
+         <property name="text">
+          <string>show clock on all available monitors</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLabel" name="restart_warning_label">
          <property name="font">
           <font>

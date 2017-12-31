@@ -39,7 +39,9 @@
 static const char* const S_OPT_POSITION_KEY = "position";
 static const char* const S_OPT_VISIBLE_KEY = "visible";
 
-#define S_OPT_POSITION QString("%1/%2").arg(id_).arg(S_OPT_POSITION_KEY)
+#define S_OPT_POSITION_ID(X) QString("%1/%2").arg(X).arg(S_OPT_POSITION_KEY)
+
+#define S_OPT_POSITION S_OPT_POSITION_ID(id_)
 #define S_OPT_VISIBLE QString("%1/%2").arg(id_).arg(S_OPT_VISIBLE_KEY)
 
 
@@ -317,7 +319,31 @@ void ClockWindow::TimeoutHandler()
 
 void ClockWindow::LoadState()
 {
-  QPoint last_pos = state_->GetVariable(S_OPT_POSITION, QPoint(50, 20)).toPoint();
+  QPoint last_pos;
+  QVariant var = state_->GetVariable(S_OPT_POSITION);
+  if (var.isValid()) {
+    last_pos = var.toPoint();
+  } else {
+    // no position was found for this windows...
+    // try to get for first window
+    var = state_->GetVariable(S_OPT_POSITION_ID(1));
+    if (var.isValid()) {
+      // found! calculate current window position based on first window position
+      last_pos = var.toPoint();
+      last_pos -= QApplication::screens()[0]->availableGeometry().topLeft();
+    } else {
+      // no luck... trying to read old position key
+      var = state_->GetVariable("clock_position");
+      if (var.isValid()) {
+        // found! calculate current window position based on old clock position
+        last_pos = var.toPoint();
+      } else {
+        // nothing found... falling back to default value
+        last_pos = QPoint(50, 20);
+      }
+    }
+    last_pos += QApplication::screens()[id_-1]->availableGeometry().topLeft();
+  }
 
   CAlignment last_align = static_cast<CAlignment>(app_config_->GetValue(OPT_ALIGNMENT).toInt());
   switch (last_align) {

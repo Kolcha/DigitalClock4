@@ -249,6 +249,7 @@ void SettingsDialog::InitControls()
   ui->show_on_all_workspaces->setChecked(config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
   ui->better_stay_on_top->setChecked(config_->GetValue(OPT_BETTER_STAY_ON_TOP).toBool());
   ui->keep_always_visible->setChecked(config_->GetValue(OPT_KEEP_ALWAYS_VISIBLE).toBool());
+  ui->show_on_all_monitors->setChecked(config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool());
 }
 
 void SettingsDialog::ChangePluginState(const QString& name, bool activated)
@@ -545,6 +546,11 @@ void digital_clock::gui::SettingsDialog::on_change_time_zone_cbx_clicked(bool ch
 void digital_clock::gui::SettingsDialog::on_keep_always_visible_clicked(bool checked)
 {
   emit OptionChanged(OPT_KEEP_ALWAYS_VISIBLE, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_show_on_all_monitors_clicked(bool checked)
+{
+  emit OptionChanged(OPT_SHOW_ON_ALL_MONITORS, checked);
 }
 
 void digital_clock::gui::SettingsDialog::on_time_zone_box_activated(int index)
