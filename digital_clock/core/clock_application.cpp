@@ -184,7 +184,7 @@ void ClockApplication::ApplyOption(const Option opt, const QVariant& value)
 
     case OPT_SHOW_HIDE_ENABLED:
       tray_control_->GetShowHideAction()->setVisible(value.toBool());
-      Q_FALLTHROUGH();
+      // fallthrough
 
     default:
       for (auto w : clock_windows_) w->ApplyOption(opt, value);

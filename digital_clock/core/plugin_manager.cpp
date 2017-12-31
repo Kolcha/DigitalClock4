@@ -209,11 +209,6 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
   if (tpi) tpi->Init(data_.tray);
   // init widget plugins
   IWidgetPluginInit* wpi = qobject_cast<IWidgetPluginInit*>(plugin);
-  // TODO: prepare plugin engine for multiple Init calls
-  // problem: how to manage plugin widgets lifetime
-  // possible solutions:
-  // - 1: clock widget's parent manages lifetime (passed as parent) and plugin waits for its destruction
-  // - 2: plugin waits for clock widget destruction and then destroys own widget(s)
   if (wpi) for (auto& w : data_.windows) wpi->Init(w);
 }
 
