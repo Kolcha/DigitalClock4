@@ -12,6 +12,18 @@
         "make -j${PARALLEL}"
       ]
     },
+    "fedora24-x86_64": {
+      "buildenv": "fedora24-x86_64",
+      "builddeps": ["gcc-c++", "make", "mesa-libGL-devel", "wget", "tar", "xz", "git", "python"],
+      "buildcmd": [
+        "[ -d $HOME/Qt-5.6.3 ] || { wget -q -O - https://www.dropbox.com/s/7baa7s1kz8be381/Qt-5.6.3-rh-gcc6.tar.xz?dl=1 | tar xJ && mv Qt-5.6.3 $HOME/ ; }",
+        "./patch-qt.py -q $HOME/Qt-5.6.3 -d $HOME/Qt-5.6.3",
+        "rm -rf ../3rdparty/QHotkey && git clone -q https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey",
+        "$HOME/Qt-5.6.3/bin/lupdate -no-obsolete DigitalClock.pro",
+        "$HOME/Qt-5.6.3/bin/qmake -config release -r DigitalClock.pro",
+        "make -j${PARALLEL}"
+      ]
+    },
     "osx": {
       "buildenv": "osx",
       "buildcmd": [
