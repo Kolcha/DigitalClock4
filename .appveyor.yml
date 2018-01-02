@@ -1,7 +1,6 @@
 version: '{branch}-{build}'
 
-# Visual Studio 2017 image doesn't have MinGW Qt
-image: Visual Studio 2015
+image: Visual Studio 2017
 
 branches:
   only:
@@ -11,7 +10,7 @@ environment:
   matrix:
     # installer
     - compiler: msvc
-      qt: 5.9.2\msvc2015_64
+      qt: 5.9.2\msvc2017_64
 
     # portable
     - compiler: mingw
@@ -32,7 +31,7 @@ install:
 before_build:
   - set src_path=%cd%
   - call "C:\Qt\%qt%\bin\qtenv2.bat"
-  - if %compiler% == msvc call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
+  - if %compiler% == msvc call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
   - set PATH=C:\jom;%PATH%
   - cd %src_path%
 

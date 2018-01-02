@@ -72,15 +72,14 @@ def main():
 
     parser = argparse.ArgumentParser(description="Patch Qt files to make them usable at new place.")
     parser.add_argument('-d', '--dst', type=str, required=True, metavar='path',
-                        help="Qt destination path (must be absolute)")
+                        help="Qt destination path")
     parser.add_argument('-q', '--qt', type=str, default=os.getcwd(), metavar='path',
                         help="Qt root path to be patched. Current directory will be used if not specified.")
 
     args = parser.parse_args()
 
     qt_path = args.qt
-    dst_path = args.dst
-    if dst_path[-1] == os.path.sep: dst_path = dst_path[:-1]
+    dst_path = os.path.abspath(args.dst)
 
     patch_qt(qt_path, dst_path)
 

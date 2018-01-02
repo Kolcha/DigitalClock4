@@ -10,7 +10,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-5
+            - g++-6
 
         coverity_scan:
           project:
@@ -26,8 +26,8 @@ matrix:
           organization: "kolcha-github"
 
       env:
-         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
-         - QT_URL="https://www.dropbox.com/s/gwsro2zw004vfed/Qt-5.6.3.tar.xz?dl=1"
+         - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
+           QT_URL="https://www.dropbox.com/s/7baa7s1kz8be381/Qt-5.6.3-rh-gcc6.tar.xz?dl=1"
 
       script:
         - build-wrapper-linux-x86-64 --out-dir bw-output make clean all
@@ -38,7 +38,7 @@ matrix:
           - '$HOME/.sonar/cache'
 
     - os: osx
-      osx_image: xcode9.1
+      osx_image: xcode9.2
       env:
         - QT_URL="https://www.dropbox.com/s/lixbkg2q819vkck/Qt-5.8.1.tar.xz?dl=1"
 
