@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/tray_color">
+        <file>tray_color_ru.qm</file>
         <file alias="icon.png">spectrum_clock-128.png</file>
     </qresource>
 </RCC>

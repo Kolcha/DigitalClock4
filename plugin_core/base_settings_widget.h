@@ -23,6 +23,8 @@
 
 #include "widget_plugin_settings.h"
 
+class QTranslator;
+
 namespace plugin {
 
 namespace Ui {
@@ -98,6 +100,7 @@ private:
   Ui::BaseSettingsWidget* ui;
   QFont last_font_;
   QColor last_color_;
+  QTranslator* gui_translator_;
 };
 
 } // namespace plugin

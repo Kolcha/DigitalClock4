@@ -37,6 +37,7 @@ namespace ip_address {
 
 IpAddressPlugin::IpAddressPlugin() : ip_update_timer_(nullptr), getting_external_ip_(false)
 {
+  InitTranslator(QLatin1String(":/ip_address/ip_address_"));
   info_.display_name = tr("IP address");
   info_.description = tr("Displays local IP address(es) under clock.");
   InitIcon(":/ip_address/icon.svg.p");

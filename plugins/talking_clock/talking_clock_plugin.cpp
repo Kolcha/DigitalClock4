@@ -31,6 +31,7 @@ namespace talking_clock {
 
 TalkingClockPlugin::TalkingClockPlugin() : started_(false), speech_(nullptr), playback_allowed_(true)
 {
+  InitTranslator(QLatin1String(":/talking_clock/talking_clock_"));
   info_.display_name = tr("Talking clock");
   info_.description = tr("Announces time with selected period.");
   InitIcon(":/talking_clock/icon.svg");

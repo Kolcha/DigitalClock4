@@ -27,12 +27,12 @@
 <context>
     <name>talking_clock::TalkingClockPlugin</name>
     <message>
-        <location filename="../talking_clock_plugin.cpp" line="34"/>
+        <location filename="../talking_clock_plugin.cpp" line="35"/>
         <source>Talking clock</source>
         <translation>Говорящие часы</translation>
     </message>
     <message>
-        <location filename="../talking_clock_plugin.cpp" line="35"/>
+        <location filename="../talking_clock_plugin.cpp" line="36"/>
         <source>Announces time with selected period.</source>
         <translation>Произносят время через указанный период.</translation>
     </message>

@@ -5,6 +5,7 @@
         <file alias="play.svg.p">res/1473644868_icon-play.svg</file>
         <file alias="stop.svg.p">res/1473644880_icon-stop.svg</file>
         <file alias="hour_signal.wav">res/hour_signal.wav</file>
+        <file alias="chime_ru.qm">lang/chime_ru.qm</file>
         <file alias="big_ben_strikes_1.mp3">res/bigbenstrikes1.mp3</file>
         <file alias="quarter_hour_chime_beg.mp3">res/quarterhourchimebeg.mp3</file>
     </qresource>

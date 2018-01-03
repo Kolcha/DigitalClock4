@@ -38,6 +38,8 @@ TRANSLATIONS += \
 
 include(../../qm_gen.pri)
 
+RESOURCES += var_translucency.qrc
+
 OTHER_FILES += var_translucency.json
 
 win32:RC_FILE = var_translucency.rc
