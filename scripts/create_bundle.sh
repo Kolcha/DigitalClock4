@@ -85,14 +85,6 @@ do
 done
 popd > /dev/null
 
-# deploy app translations
-langs=$(ls -1 $CLOCK_SRC_PATH/digital_clock/languages/ | grep '\.qm$' | sed 's/digital_clock_\(.*\)\.qm/\1/g')
-for lang in $langs
-do
-  lang_files=$(find $CLOCK_SRC_PATH -name "*_$lang.qm")
-  $QT_ROOT/bin/lconvert -o "$tr_path/digital_clock_$lang.qm" $lang_files
-done
-
 # copy resources
 cp -r $CLOCK_DATA_PATH/skins digital_clock/digital_clock.app/Contents/Resources/
 cp -r $CLOCK_DATA_PATH/textures digital_clock/digital_clock.app/Contents/Resources/

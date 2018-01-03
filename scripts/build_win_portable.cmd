@@ -50,21 +50,6 @@ for %%f in ("plugins\*.dll") do (
   windeployqt %deploy_flags% --no-translations "%%f"
 )
 
-SETLOCAL ENABLEDELAYEDEXPANSION
-for /f "usebackq tokens=*" %%g in (`dir /b /s "%src_root%\digital_clock\languages\digital_clock_*.qm"`) do (
-  set f=%%~ng
-  set langs=!f:~14! !langs!
-)
-
-for %%g in (%langs%) do (
-  echo -------------------- lang: %%g --------------------
-  set lang_files=
-  for /f "usebackq" %%l in (`dir /b /s "%src_root%\*%%g.qm"`) do set lang_files=!lang_files! %%l
-  for %%x in (!lang_files!) do echo %%x
-  lconvert -o "translations\digital_clock_%%g.qm" !lang_files!
-)
-ENDLOCAL
-
 xcopy /y "%build_dir%\paletteicon\%variant%\paletteicon.dll" "%dst_path%\plugins\iconengines\"
 
 xcopy /s /y "%data_dir%\textures" "%dst_path%\textures\"
