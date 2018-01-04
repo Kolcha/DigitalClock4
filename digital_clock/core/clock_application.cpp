@@ -59,7 +59,7 @@ ClockApplication::ClockApplication(int& argc, char** argv) : QApplication(argc, 
 
   tray_control_ = new gui::TrayControl(this);
   for (auto w : clock_windows_) {
-    connect(tray_control_, &gui::TrayControl::VisibilityChanged, w, &gui::ClockWindow::setVisible);
+    connect(tray_control_, &gui::TrayControl::VisibilityChanged, w, &gui::ClockWindow::ChangeVisibility);
     connect(tray_control_, &gui::TrayControl::PositionChanged, w, &gui::ClockWindow::MoveWindow);
   }
   connect(tray_control_, &gui::TrayControl::ShowSettingsDlg, this, &ClockApplication::ShowSettingsDialog);
@@ -72,6 +72,7 @@ ClockApplication::ClockApplication(int& argc, char** argv) : QApplication(argc, 
     connect(skin_manager_, &SkinManager::SkinLoaded, w, &gui::ClockWindow::ApplySkin);
     connect(w->clockWidget(), &gui::ClockWidget::SeparatorsChanged, skin_manager_, &SkinManager::SetSeparators);
     // window context menu
+    connect(w->contextMenu(), &gui::ContextMenu::VisibilityChanged, this, &ClockApplication::UpdateVisibilityAction);
     connect(w->contextMenu(), &gui::ContextMenu::ShowSettingsDlg, this, &ClockApplication::ShowSettingsDialog);
     connect(w->contextMenu(), &gui::ContextMenu::ShowAboutDlg, this, &ClockApplication::ShowAboutDialog);
     connect(w->contextMenu(), &gui::ContextMenu::CheckForUpdates, updater_, &Updater::CheckForUpdates);
@@ -83,14 +84,7 @@ ClockApplication::ClockApplication(int& argc, char** argv) : QApplication(argc, 
   InitPluginSystem();
   Reset();
   for (auto w : clock_windows_) w->LoadState();
-
-  tray_control_->GetShowHideAction()->setChecked(false);
-  for (auto w : clock_windows_) {
-    if (w->isVisible()) {
-      tray_control_->GetShowHideAction()->setChecked(true);
-      break;
-    }
-  }
+  UpdateVisibilityAction();
 
   timer_.setInterval(500);
   timer_.setSingleShot(false);
@@ -104,6 +98,16 @@ ClockApplication::~ClockApplication()
   for (auto w : clock_windows_) delete w;
   delete state_;
   delete tray_control_;
+}
+
+void ClockApplication::UpdateVisibilityAction()
+{
+  bool checked = false;
+  for (auto w : clock_windows_) {
+    checked = checked || w->isVisible();
+    if (checked) break;
+  }
+  tray_control_->GetShowHideAction()->setChecked(checked);
 }
 
 void ClockApplication::Reset()

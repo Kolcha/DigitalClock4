@@ -51,6 +51,8 @@ public:
   ~ClockApplication();
 
 private slots:
+  void UpdateVisibilityAction();
+
   void Reset();
   void ApplyOption(const Option opt, const QVariant& value);
 

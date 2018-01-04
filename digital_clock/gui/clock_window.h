@@ -63,6 +63,7 @@ public slots:
   void ApplyOption(const Option opt, const QVariant& value);
   void ApplySkin(skin_draw::ISkin::SkinPtr skin);
 
+  void ChangeVisibility(bool visible);
   void EnsureVisible();
   void RestoreVisibility();
 

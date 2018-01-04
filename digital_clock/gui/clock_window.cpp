@@ -64,7 +64,7 @@ ClockWindow::ClockWindow(core::ClockSettings* app_config, int id, QWidget* paren
   setContextMenuPolicy(Qt::CustomContextMenu);
   c_menu_ = new ContextMenu(this);
   connect(this, &ClockWindow::customContextMenuRequested, this, &ClockWindow::ShowContextMenu);
-  connect(c_menu_, &ContextMenu::VisibilityChanged, this, &ClockWindow::setVisible);
+  connect(c_menu_, &ContextMenu::VisibilityChanged, this, &ClockWindow::ChangeVisibility);
   connect(c_menu_, &ContextMenu::PositionChanged, this, &ClockWindow::MoveWindow);
 
   state_ = new core::ClockState(app_config_->GetBackend(), this);
@@ -103,14 +103,12 @@ void ClockWindow::showEvent(QShowEvent* event)
   SetVisibleOnAllDesktops(app_config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
   CorrectPosition();
   c_menu_->visibilityAction()->setChecked(true);
-  if (!clock_widget_->preview()) state_->SetVariable(S_OPT_VISIBLE, true);
   QWidget::showEvent(event);
 }
 
 void ClockWindow::hideEvent(QHideEvent* event)
 {
   c_menu_->visibilityAction()->setChecked(false);
-  if (!clock_widget_->preview()) state_->SetVariable(S_OPT_VISIBLE, false);
   QWidget::hideEvent(event);
 }
 
@@ -277,6 +275,13 @@ void ClockWindow::ApplySkin(skin_draw::ISkin::SkinPtr skin)
   clock_widget_->ApplySkin(skin);
 }
 
+void ClockWindow::ChangeVisibility(bool visible)
+{
+  c_menu_->visibilityAction()->setChecked(visible);
+  this->setVisible(visible);
+  state_->SetVariable(S_OPT_VISIBLE, visible);
+}
+
 void ClockWindow::EnsureVisible()
 {
   last_visibility_ = this->isVisible();
@@ -337,6 +342,7 @@ void ClockWindow::LoadState()
       if (var.isValid()) {
         // found! calculate current window position based on old clock position
         last_pos = var.toPoint();
+        last_pos -= QApplication::screens()[0]->availableGeometry().topLeft();
       } else {
         // nothing found... falling back to default value
         last_pos = QPoint(50, 20);
