@@ -57,8 +57,7 @@ int main(int argc, char* argv[])
     if (locale.contains("ua", Qt::CaseInsensitive))   // Ukrainian,
       locale = QLatin1String("ru");                   // use Russian
 
-    if (app_translator.load(QLatin1String("digital_clock_") + locale,
-                            QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
+    if (app_translator.load(QLatin1String(":/clock/languages/digital_clock_") + locale)) {
       app.installTranslator(&app_translator);
       if (qt_translator.load(QLatin1String("qt_") + locale,
                              QLibraryInfo::location(QLibraryInfo::TranslationsPath)))

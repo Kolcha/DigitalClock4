@@ -60,6 +60,9 @@ TRANSLATIONS += \
 
 include(../qm_gen.pri)
 
+RESOURCES += \
+    plugin_core.qrc
+
 win32:RC_FILE = plugin_core.rc
 unix:VERSION = 1.3.0
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/

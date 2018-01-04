@@ -18,12 +18,20 @@
 
 #include "plugin_base.h"
 
+#include <QTranslator>
+#include <QLocale>
+#include <QCoreApplication>
 #include <QIcon>
 
 #include "plugin_settings.h"
 
-PluginBase::PluginBase() : settings_(nullptr)
+PluginBase::PluginBase() : settings_(nullptr), translator_(nullptr)
 {
+}
+
+PluginBase::~PluginBase()
+{
+  if (translator_) QCoreApplication::removeTranslator(translator_);
 }
 
 const TPluginGUIInfo& PluginBase::GetInfo() const
@@ -35,6 +43,26 @@ void PluginBase::InitSettings(SettingsStorage* backend, const QString& name)
 {
   Q_ASSERT(backend);
   settings_ = new PluginSettings(backend, name, this);
+}
+
+void PluginBase::InitTranslator(const QLatin1String& prefix)
+{
+  translator_ = new QTranslator(this);
+  QStringList ui_languages = QLocale::system().uiLanguages();
+  foreach (QString locale, ui_languages) {
+    locale = QLocale(locale).name();
+    if (locale == QLatin1String("C") ||               // overrideLanguage == "English"
+        locale.startsWith(QLatin1String("en")))       // "English" is built-in
+      break;                                          // use built-in
+
+    if (locale.contains("ua", Qt::CaseInsensitive))   // Ukrainian,
+      locale = QLatin1String("ru");                   // use Russian
+
+    if (translator_->load(prefix + locale)) {
+      QCoreApplication::installTranslator(translator_);
+      break;
+    }
+  }
 }
 
 void PluginBase::InitIcon(const QString& file_path)

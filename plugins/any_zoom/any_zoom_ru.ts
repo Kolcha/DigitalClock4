@@ -4,12 +4,12 @@
 <context>
     <name>any_zoom::AnyZoom</name>
     <message>
-        <location filename="any_zoom.cpp" line="33"/>
+        <location filename="any_zoom.cpp" line="34"/>
         <source>Any zoom</source>
         <translation>Любое увеличение</translation>
     </message>
     <message>
-        <location filename="any_zoom.cpp" line="34"/>
+        <location filename="any_zoom.cpp" line="35"/>
         <source>Allows to set any clock zoom, even different values for X and Y axis.</source>
         <oldsource>Allows to set any clock zoom, even separately for X and Y axis.</oldsource>
         <translation>Позволяет устанавливать любое значение увеличения, даже разные значения по осям X и Y.</translation>

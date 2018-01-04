@@ -21,6 +21,9 @@
 
 #include <QFontDialog>
 #include <QColorDialog>
+#include <QTranslator>
+#include <QCoreApplication>
+#include <QLocale>
 
 namespace plugin {
 
@@ -28,6 +31,27 @@ BaseSettingsWidget::BaseSettingsWidget(QWidget* parent) :
   QWidget(parent),
   ui(new Ui::BaseSettingsWidget)
 {
+  gui_translator_ = new QTranslator();
+  QStringList ui_languages = QLocale::system().uiLanguages();
+  QString prefix(":/plugin_core/lang/plugin_core_");
+  foreach (QString locale, ui_languages) {
+    locale = QLocale(locale).name();
+    if (gui_translator_->load(prefix + locale)) {
+      QCoreApplication::installTranslator(gui_translator_);
+      break;
+    } else if (locale == QLatin1String("C") /* overrideLanguage == "English" */) {
+      // use built-in
+      break;
+    } else if (locale.startsWith(QLatin1String("en")) /* "English" is built-in */) {
+      // use built-in
+      break;
+    } else if (locale.contains("ua", Qt::CaseInsensitive)) { /* Ukrainian, use russian */
+      if (gui_translator_->load(prefix + "ru"))
+        QCoreApplication::installTranslator(gui_translator_);
+      break;
+    }
+  }
+
   ui->setupUi(this);
   layout()->setMargin(0);
 }
@@ -35,6 +59,8 @@ BaseSettingsWidget::BaseSettingsWidget(QWidget* parent) :
 BaseSettingsWidget::~BaseSettingsWidget()
 {
   delete ui;
+  QCoreApplication::removeTranslator(gui_translator_);
+  delete gui_translator_;
 }
 
 void BaseSettingsWidget::InitWidgets(const QMap<WidgetPluginOption, QVariant>& cur_values)

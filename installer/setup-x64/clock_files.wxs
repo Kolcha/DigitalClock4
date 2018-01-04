@@ -19,13 +19,6 @@
         <File Id="plugin_core.dll" KeyPath="yes" Source="..\..\..\build-msi-x64\plugin_core\release\plugin_core.dll" />
       </Component>
 
-      <Component Id="lang_en" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{719AE6E7-645D-4852-9EB7-CC3CA1F9AB4A}" Win64="yes">
-        <File Id="digital_clock_en.qm" KeyPath="yes" Source="..\..\..\build-msi-x64\translations\digital_clock_en.qm" />
-      </Component>
-      <Component Id="lang_ru" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{F4C6A7F8-37B7-40ED-A996-3FA2EAB2326A}" Win64="yes">
-        <File Id="digital_clock_ru.qm" KeyPath="yes" Source="..\..\..\build-msi-x64\translations\digital_clock_ru.qm" />
-      </Component>
-
       <Component Id="plugin_dll01" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{CA061806-FCBF-400F-9528-9D3815371033}" Win64="yes">
         <File Id="alarm.dll" KeyPath="yes" Source="..\..\..\build-msi-x64\plugins\alarm\release\alarm.dll" />
       </Component>

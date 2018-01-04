@@ -41,6 +41,7 @@ static bool is_quiet_time(const QTime& c_time, const QTime& s_time, const QTime&
 
 ChimePlugin::ChimePlugin() : started_(false), playback_allowed_(true), player_(nullptr)
 {
+  InitTranslator(QLatin1String(":/chime/chime_"));
   info_.display_name = tr("Chime");
   info_.description = tr("Chimes with selected period."
                          "This plugin replaces all chiming plugins:\n"

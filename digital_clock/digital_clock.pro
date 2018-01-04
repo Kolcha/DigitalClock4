@@ -121,6 +121,7 @@ TRANSLATIONS += \
 include(../qm_gen.pri)
 
 RESOURCES += \
+    languages/languages.qrc \
     resources/icons.qrc \
     resources/skins.qrc
 

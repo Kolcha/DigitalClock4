@@ -37,6 +37,7 @@ struct TPluginGUIInfo {
   QPixmap icon;           /*!< plugin icon (logo) */
 };
 
+class QTranslator;
 class SettingsStorage;
 class PluginSettings;
 
@@ -53,6 +54,8 @@ class PLUGIN_CORE_SHARED_EXPORT PluginBase : public QObject
 public:
   /*! Constructor. */
   PluginBase();
+  /*! Destructor. */
+  virtual ~PluginBase();
   /*!
    * Get translatable plugin info.
    * @return structure with plugin info
@@ -67,6 +70,11 @@ public:
 
 protected:
   /*!
+   * Autodetect system UI language and load translation.
+   * @param prefix - language file path prefix (example: ":/lang/example_")
+   */
+  void InitTranslator(const QLatin1String& prefix);
+  /*!
    * Load plugin icon and init need filed in plugin info structure with it.
    * @param file_path - path to icon file (svg file from plugin resource, for example)
    * @see TPluginGUIInfo
@@ -76,6 +84,9 @@ protected:
   TPluginGUIInfo info_;
   /// PluginSettings object, will be available only if plugin is configurable
   PluginSettings* settings_;
+
+private:
+  QTranslator* translator_;
 };
 
 #endif // PLUGIN_BASE_H
