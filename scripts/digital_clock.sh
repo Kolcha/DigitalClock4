@@ -39,6 +39,6 @@ then
   dirname=$PWD/$dirname
 fi
 
+export LD_LIBRARY_PATH="$dirname/qt:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH="$dirname:$LD_LIBRARY_PATH"
 "$dirname/$appname" "${ARGS[@]}"
-

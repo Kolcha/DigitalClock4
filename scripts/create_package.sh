@@ -55,32 +55,28 @@ cd ..
 
 # deploy qt runtime
 cd "$TARGET_APP_FOLDER"
-
-"$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "digital_clock"
-"$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "libclock_common.so.1"
-"$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "libplugin_core.so.1"
-"$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "libskin_draw.so.1"
+qt_rt="./qt"
+mkdir "$qt_rt"
+"$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "digital_clock" "$qt_rt"
+"$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "libclock_common.so.1" "$qt_rt"
+"$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "libplugin_core.so.1" "$qt_rt"
+"$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "libskin_draw.so.1" "$qt_rt"
 
 for i in $(ls -1 plugins)
 do
   if [[ -f "plugins/$i" ]]
   then
-    "$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "plugins/$i"
+    "$CLOCK_SRC_PATH/scripts/linux_deploy_qt.sh" "plugins/$i" "$qt_rt"
   fi
 done
 
 # copy custom Qt plugins
-cp "$build_dir/paletteicon/libpaletteicon.so" "$TARGET_APP_FOLDER/plugins/iconengines/"
+mkdir "$TARGET_APP_FOLDER/iconengines"
+cp "$build_dir/paletteicon/libpaletteicon.so" "$TARGET_APP_FOLDER/iconengines/"
 
 # copy SSL libs
-cp "/lib/x86_64-linux-gnu/libssl.so.1.0.0" "$TARGET_APP_FOLDER/"
-cp "/lib/x86_64-linux-gnu/libcrypto.so.1.0.0" "$TARGET_APP_FOLDER/"
-
-# generate qt.conf
-rm -f qt.conf
-echo "[Paths]"                     >> qt.conf
-echo "Plugins = plugins"           >> qt.conf
-echo "Translations = translations" >> qt.conf
+cp "/lib/x86_64-linux-gnu/libssl.so.1.0.0" "$TARGET_APP_FOLDER/$qt_rt/"
+cp "/lib/x86_64-linux-gnu/libcrypto.so.1.0.0" "$TARGET_APP_FOLDER/$qt_rt/"
 
 # copy resources and some specific stuff
 cp "$CLOCK_SRC_PATH/digital_clock/resources/digital_clock.desktop" "$TARGET_APP_FOLDER/"
