@@ -25,10 +25,10 @@ namespace skin_draw {
 
 SkinDrawer::SkinDrawer(QObject* parent) :
   QObject(parent),
+  zoom_(1.0),
   texture_(8, 8), txd_draw_mode_(DM_TILE),
   color_(Qt::magenta), cust_type_(CT_COLOR)
 {
-  zoom_ = 1.0;
   txd_per_elem_ = false;
   preview_mode_ = false;
   space_ = 4;

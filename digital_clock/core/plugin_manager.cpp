@@ -128,8 +128,12 @@ void PluginManager::ConfigurePlugin(const QString& name)
     QString file = available_[name];
     if (!QFile::exists(file)) return;
     QPluginLoader* loader = new QPluginLoader(file, this);
+    if (!loader->instance()) {
+      delete loader;
+      return;
+    }
+    connect(loader->instance(), &IClockPlugin::destroyed, loader, &QPluginLoader::deleteLater);
     IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
-    connect(plugin, &IClockPlugin::destroyed, loader, &QPluginLoader::deleteLater);
     if (plugin) {
       connect(plugin, &IClockPlugin::configured, loader, &QPluginLoader::unload);
       plugin->InitSettings(data_.settings->GetBackend(), name);
