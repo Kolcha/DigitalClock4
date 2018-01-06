@@ -14,7 +14,7 @@ matrix:
 
         coverity_scan:
           project:
-            name: Kolcha/DigitalClock4
+            name: DigitalClock4
             version: 4.7.0
             description: "Build submitted via Travis CI"
 
