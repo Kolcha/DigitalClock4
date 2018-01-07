@@ -50,5 +50,5 @@ HEADERS += \
     zoom_type.h
 
 win32:RC_FILE = skin_draw.rc
-unix:VERSION = 1.4.0
+unix:VERSION = 1.4.1
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/

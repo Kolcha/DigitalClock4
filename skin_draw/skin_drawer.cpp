@@ -23,9 +23,9 @@
 
 namespace skin_draw {
 
-SkinDrawer::SkinDrawer(QObject* parent) :
+SkinDrawer::SkinDrawer(QObject* parent, qreal scale_factor) :
   QObject(parent),
-  zoom_(1.0),
+  zoom_(1.0), scale_factor_(scale_factor),
   texture_(8, 8), txd_draw_mode_(DM_TILE),
   color_(Qt::magenta), cust_type_(CT_COLOR)
 {
@@ -179,7 +179,7 @@ void SkinDrawer::Redraw()
       continue;
     }
 
-    QPixmap elem = skin_->GetImage(str_, i, zoom_, !preview_mode_);
+    QPixmap elem = skin_->GetImage(str_, i, zoom_ * scale_factor_, !preview_mode_);
     if (!elem || elem.isNull()) continue;
     row_elements.append(elem);
 

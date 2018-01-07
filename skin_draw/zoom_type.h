@@ -63,11 +63,15 @@ inline Q_DECL_CONSTEXPR bool operator >=(const Zoom& lhs, const Zoom& rhs) Q_DEC
 }
 
 inline Q_DECL_CONSTEXPR QSize operator *(const QSize& sz, const Zoom& z) Q_DECL_NOEXCEPT {
-  return QSize(sz.width() * z.zoom_x, sz.height() * z.zoom_y);
+  return QSize(qRound(sz.width() * z.zoom_x), qRound(sz.height() * z.zoom_y));
 }
 
 inline Q_DECL_CONSTEXPR QSizeF operator *(const QSizeF& sz, const Zoom& z) Q_DECL_NOEXCEPT {
   return QSizeF(sz.width() * z.zoom_x, sz.height() * z.zoom_y);
+}
+
+inline Q_DECL_CONSTEXPR Zoom operator *(const Zoom& z, const qreal k) Q_DECL_NOEXCEPT {
+  return Zoom(z.zoom_x * k, z.zoom_y * k);
 }
 
 } // namespace skin_draw

@@ -42,7 +42,7 @@ ClockWidget::ClockWidget(QWidget* parent) :
   main_layout->setSpacing(4);
   setLayout(main_layout);
 
-  drawer_ = new ::skin_draw::SkinDrawer(this);
+  drawer_ = new ::skin_draw::SkinDrawer(this, ::skin_draw::scale_factor(this->logicalDpiY()));
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
   connect(display_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), this, SLOT(DrawImage(QImage)));

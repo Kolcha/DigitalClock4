@@ -31,6 +31,27 @@
 namespace skin_draw {
 
 /*!
+ * @brief Helper function to calculate required scale factor from logical DPI.
+ *
+ * This function is a part of HiDPI workaround, because Qt still have issues
+ * related with HiDPI painting/scaling on most Linux systems...
+ * This function make sense only on Linux systems, on any other system it
+ * always returns 1.0 (Qt handles HiDPI correctly).
+ *
+ * @param ldpi - screen logical DPI
+ * @return scale factor
+ */
+Q_DECL_CONSTEXPR inline qreal scale_factor(qreal ldpi) Q_DECL_NOEXCEPT
+{
+#ifdef Q_OS_LINUX
+  return ldpi / 96.0;
+#else
+  Q_UNUSED(ldpi);
+  return 1.0;
+#endif
+}
+
+/*!
  * @brief Skin draw engine.
  *
  * SkinDrawer can draw any given text using some skin. Skin can be customized.
@@ -57,8 +78,10 @@ public:
   /*!
    * Constructor.
    * @param parent - parent object
+   * @param scale_factor - GUI scale factor (HiDPI workaround)
+   * @see skin_draw::scale_factor()
    */
-  explicit SkinDrawer(QObject* parent = nullptr);
+  explicit SkinDrawer(QObject* parent = nullptr, qreal scale_factor = 1.0);
 
   /*! texture draw modes */
   enum DrawMode {
@@ -317,6 +340,7 @@ private:
   ISkin::SkinPtr skin_;
   QString str_;
   Zoom zoom_;
+  qreal scale_factor_;
   QPixmap texture_;
   bool txd_per_elem_;
   DrawMode txd_draw_mode_;
