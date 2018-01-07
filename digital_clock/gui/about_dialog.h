@@ -40,6 +40,9 @@ private slots:
   void on_logo_lbl_clicked();
 
 private:
+  int logoSize() const Q_DECL_NOEXCEPT;
+
+private:
   Ui::AboutDialog* ui;
   int click_counter_;
 };

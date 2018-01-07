@@ -55,7 +55,7 @@ AboutDialog::AboutDialog(QWidget* parent) :
   ui->setupUi(this);
   setAttribute(Qt::WA_DeleteOnClose);
 
-  ui->logo_lbl->setPixmap(QApplication::windowIcon().pixmap(128));
+  ui->logo_lbl->setPixmap(QApplication::windowIcon().pixmap(logoSize()));
 
   QString version = QCoreApplication::applicationVersion();
   QString build_type = version[version.length() - 1].isDigit() ? "stable" : "testing";
@@ -76,18 +76,28 @@ void AboutDialog::on_logo_lbl_clicked()
 {
   switch (++click_counter_) {
     case 1:
-      ui->logo_lbl->setPixmap(QIcon(":/clock/about/about-1.png").pixmap(128));
+      ui->logo_lbl->setPixmap(QIcon(":/clock/about/about-1.png").pixmap(logoSize()));
       break;
 
     case 2:
-      ui->logo_lbl->setPixmap(QIcon(":/clock/about/about-2.png").pixmap(128));
+      ui->logo_lbl->setPixmap(QIcon(":/clock/about/about-2.png").pixmap(logoSize()));
       break;
 
     default:
-      ui->logo_lbl->setPixmap(QApplication::windowIcon().pixmap(128));
+      ui->logo_lbl->setPixmap(QApplication::windowIcon().pixmap(logoSize()));
       click_counter_ = 0;
       break;
   }
+}
+
+int AboutDialog::logoSize() const Q_DECL_NOEXCEPT
+{
+  Q_DECL_CONSTEXPR const int logo_size = 128;
+#ifdef Q_OS_LINUX
+  return qRound(this->logicalDpiY() / 96.0 * logo_size);
+#else
+  return logo_size;
+#endif
 }
 
 } // namespace gui
