@@ -22,7 +22,7 @@
 #include <QPixmap>
 #include <QSharedPointer>
 
-#include "zoom_type.h"
+#include "zoom_type.hpp"
 
 namespace skin_draw {
 

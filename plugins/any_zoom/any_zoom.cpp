@@ -76,8 +76,8 @@ void AnyZoom::Configure()
 
 void AnyZoom::TrackChange(const skin_draw::Zoom& zoom)
 {
-  settings_->SetOption(OPT_CURRENT_ZOOM_X, zoom.zoom_x * 100);
-  settings_->SetOption(OPT_CURRENT_ZOOM_Y, zoom.zoom_y * 100);
+  settings_->SetOption(OPT_CURRENT_ZOOM_X, zoom.zoomX() * 100);
+  settings_->SetOption(OPT_CURRENT_ZOOM_Y, zoom.zoomY() * 100);
   if (is_enabled_) emit OptionChanged(OPT_ZOOM, QVariant::fromValue(zoom));
 }
 
@@ -90,8 +90,8 @@ void AnyZoom::RevertSettings()
 skin_draw::Zoom AnyZoom::LoadZoom() const
 {
   ::skin_draw::Zoom curr_zoom;
-  curr_zoom.zoom_x = settings_->GetOption(OPT_CURRENT_ZOOM_X).toInt() / 100.;
-  curr_zoom.zoom_y = settings_->GetOption(OPT_CURRENT_ZOOM_Y).toInt() / 100.;
+  curr_zoom.setZoomX(settings_->GetOption(OPT_CURRENT_ZOOM_X).toInt() / 100.);
+  curr_zoom.setZoomY(settings_->GetOption(OPT_CURRENT_ZOOM_Y).toInt() / 100.);
   return curr_zoom;
 }
 

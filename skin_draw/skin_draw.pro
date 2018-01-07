@@ -47,7 +47,7 @@ HEADERS += \
     skin_drawer.h \
     text_skin.h \
     vector_skin.h \
-    zoom_type.h
+    zoom_type.hpp
 
 win32:RC_FILE = skin_draw.rc
 unix:VERSION = 1.4.1

@@ -21,7 +21,7 @@
 
 #include <QDialog>
 
-#include "zoom_type.h"
+#include "zoom_type.hpp"
 
 namespace any_zoom {
 

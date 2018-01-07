@@ -39,8 +39,8 @@ void ZoomDialog::setZoom(const skin_draw::Zoom& zoom)
 {
   if (m_zoom == zoom) return;
 
-  ui->x_zoom_edit->setValue(zoom.zoom_x * 100);
-  ui->y_zoom_edit->setValue(zoom.zoom_y * 100);
+  ui->x_zoom_edit->setValue(zoom.zoomX() * 100);
+  ui->y_zoom_edit->setValue(zoom.zoomY() * 100);
 
   m_zoom = zoom;
   emit zoomChanged(m_zoom);

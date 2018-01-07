@@ -22,7 +22,7 @@
 #include "iclock_plugin.h"
 #include "iplugin_init.h"
 
-#include "zoom_type.h"
+#include "zoom_type.hpp"
 
 namespace any_zoom {
 
