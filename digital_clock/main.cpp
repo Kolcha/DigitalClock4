@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
-  digital_clock::core::ClockApplication app(argc, argv);
+  QApplication app(argc, argv);
   app.setWindowIcon(QIcon(":/clock/images/clock.svg.p"));
   app.setQuitOnLastWindowClosed(false);
 
@@ -71,6 +71,9 @@ int main(int argc, char* argv[])
   p.setColor(QPalette::Link, p.color(QPalette::Active, QPalette::Text));
   p.setColor(QPalette::LinkVisited, p.color(QPalette::Inactive, QPalette::Text));
   QApplication::setPalette(p);
+
+  digital_clock::core::ClockApplication clock_app;
+  Q_UNUSED(clock_app);
 
   return app.exec();
 }

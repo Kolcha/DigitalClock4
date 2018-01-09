@@ -19,7 +19,7 @@
 #ifndef DIGITAL_CLOCK_CORE_CLOCK_APPLICATION_H
 #define DIGITAL_CLOCK_CORE_CLOCK_APPLICATION_H
 
-#include <QApplication>
+#include <QObject>
 #include <QVector>
 #include <QTimer>
 
@@ -42,12 +42,12 @@ class SkinManager;
 class Updater;
 class PluginManager;
 
-class ClockApplication : public QApplication
+class ClockApplication : public QObject
 {
   Q_OBJECT
 
 public:
-  ClockApplication(int& argc, char** argv);
+  ClockApplication(QObject* parent = nullptr);
   ~ClockApplication();
 
 private slots:

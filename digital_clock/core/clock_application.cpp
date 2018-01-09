@@ -23,6 +23,7 @@
 #include <QAction>
 #include <QUrl>
 #include <QDesktopServices>
+#include <QApplication>
 
 #include "settings_storage.h"
 
@@ -42,7 +43,7 @@
 namespace digital_clock {
 namespace core {
 
-ClockApplication::ClockApplication(int& argc, char** argv) : QApplication(argc, argv)
+ClockApplication::ClockApplication(QObject* parent) : QObject(parent)
 {
   config_backend_ = new SettingsStorage(this);
   app_config_ = new core::ClockSettings(config_backend_, config_backend_);
@@ -65,7 +66,7 @@ ClockApplication::ClockApplication(int& argc, char** argv) : QApplication(argc, 
   connect(tray_control_, &gui::TrayControl::ShowSettingsDlg, this, &ClockApplication::ShowSettingsDialog);
   connect(tray_control_, &gui::TrayControl::ShowAboutDlg, this, &ClockApplication::ShowAboutDialog);
   connect(tray_control_, &gui::TrayControl::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
-  connect(tray_control_, &gui::TrayControl::AppExit, this, &ClockApplication::quit);
+  connect(tray_control_, &gui::TrayControl::AppExit, qApp, &QApplication::quit);
 
   for (auto w : clock_windows_) {
     connect(&timer_, &QTimer::timeout, w, &gui::ClockWindow::TimeoutHandler);
@@ -76,7 +77,7 @@ ClockApplication::ClockApplication(int& argc, char** argv) : QApplication(argc, 
     connect(w->contextMenu(), &gui::ContextMenu::ShowSettingsDlg, this, &ClockApplication::ShowSettingsDialog);
     connect(w->contextMenu(), &gui::ContextMenu::ShowAboutDlg, this, &ClockApplication::ShowAboutDialog);
     connect(w->contextMenu(), &gui::ContextMenu::CheckForUpdates, updater_, &Updater::CheckForUpdates);
-    connect(w->contextMenu(), &gui::ContextMenu::AppExit, this, &ClockApplication::quit);
+    connect(w->contextMenu(), &gui::ContextMenu::AppExit, qApp, &QApplication::quit);
   }
 
   ConnectTrayMessages();
