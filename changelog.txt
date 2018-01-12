@@ -1,3 +1,31 @@
+Whats new in 4.7.0:
+-------------------
+Features:
+ - "quick positioning" menu with 9 predefined positions
+ - show clock on each monitor
+
+Core:
+ - significant changes to plugins API and plugins engine in general
+ - better error handling in plugin engine
+ - Qt 5.10.0 for Windows
+
+GUI:
+ - save clock visibility (Show/Hide menu item state) between restarts
+ - fixed saved position loading (it was loaded incorrectly in some cases)
+ - display clock window border during clock configuration
+ - allow item selection in plugins list
+ - better HiDPI support for Linux systems
+
+Plugins:
+ - don't keep plugins in memory after unload
+ - fixed incorrect color of currently used color indicator
+ - customized "talking clock" plugin icon
+
+General:
+ - linux: fixed launch on modern systems
+ - linux: deploy Qt runtime into separated folder
+
+
 Whats new in 4.6.0:
 -------------------
 Features:
