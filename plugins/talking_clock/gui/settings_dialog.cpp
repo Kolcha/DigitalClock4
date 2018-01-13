@@ -19,25 +19,28 @@
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
-#include <QTime>
+#include <QDateTime>
 
 #include "talking_clock_settings.h"
 #include "voice_config_dialog.h"
 
+#define CURRENT_TIME()    QDateTime::currentDateTime().toTimeZone(tz_).time()
+
 namespace talking_clock {
 
-SettingsDialog::SettingsDialog(const QSettings::SettingsMap& settings, QWidget* parent) :
+SettingsDialog::SettingsDialog(const QSettings::SettingsMap& settings, const QTimeZone& tz, QWidget* parent) :
   QDialog(parent),
   ui(new Ui::SettingsDialog),
-  settings_(settings)
+  settings_(settings),
+  tz_(tz)
 {
   ui->setupUi(this);
   ui->every_hour->setChecked(settings.value(OPT_EVERY_HOUR_ENABLED).toBool());
   ui->hour_format_edit->setText(settings.value(OPT_EVERY_HOUR_FORMAT).toString());
-  ui->hour_format_edit->setToolTip(QTime::currentTime().toString(ui->hour_format_edit->text()));
+  ui->hour_format_edit->setToolTip(CURRENT_TIME().toString(ui->hour_format_edit->text()));
   ui->quarter_hour->setChecked(settings.value(OPT_QUARTER_HOUR_ENABLED).toBool());
   ui->quarter_format_edit->setText(settings.value(OPT_QUARTER_HOUR_FORMAT).toString());
-  ui->quarter_format_edit->setToolTip(QTime::currentTime().toString(ui->quarter_format_edit->text()));
+  ui->quarter_format_edit->setToolTip(CURRENT_TIME().toString(ui->quarter_format_edit->text()));
 }
 
 SettingsDialog::~SettingsDialog()
@@ -76,13 +79,13 @@ void SettingsDialog::on_quarter_hour_clicked(bool checked)
 
 void SettingsDialog::on_hour_format_edit_textEdited(const QString& arg1)
 {
-  ui->hour_format_edit->setToolTip(QTime::currentTime().toString(arg1));
+  ui->hour_format_edit->setToolTip(CURRENT_TIME().toString(arg1));
   emit OptionChanged(OPT_EVERY_HOUR_FORMAT, arg1);
 }
 
 void SettingsDialog::on_quarter_format_edit_textEdited(const QString& arg1)
 {
-  ui->quarter_format_edit->setToolTip(QTime::currentTime().toString(arg1));
+  ui->quarter_format_edit->setToolTip(CURRENT_TIME().toString(arg1));
   emit OptionChanged(OPT_QUARTER_HOUR_FORMAT, arg1);
 }
 

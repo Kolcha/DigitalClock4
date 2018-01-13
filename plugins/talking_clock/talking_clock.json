@@ -1,10 +1,10 @@
 {
     "name" : "talking_clock",
-    "version" : "1.0.3",
+    "version" : "1.0.4",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
     "configurable" : true,
-    "settings_listener" : false,
+    "settings_listener" : true,
     "needs_in_timer" : true,
     "needs_in_drawer" : false
 }

@@ -21,7 +21,7 @@
 #include "plugin_settings.h"
 
 #include <QTextToSpeech>
-#include <QTime>
+#include <QDateTime>
 
 #include "talking_clock_settings.h"
 #include "gui/settings_dialog.h"
@@ -29,12 +29,22 @@
 
 namespace talking_clock {
 
-TalkingClockPlugin::TalkingClockPlugin() : started_(false), speech_(nullptr), playback_allowed_(true)
+TalkingClockPlugin::TalkingClockPlugin() :
+  started_(false), speech_(nullptr), playback_allowed_(true), local_time_(true)
 {
   InitTranslator(QLatin1String(":/talking_clock/talking_clock_"));
   info_.display_name = tr("Talking clock");
   info_.description = tr("Announces time with selected period.");
   InitIcon(":/talking_clock/icon.svg.p");
+  time_zone_ = QTimeZone::systemTimeZone();
+}
+
+void TalkingClockPlugin::Init(const QMap<Option, QVariant>& current_settings)
+{
+  local_time_ = current_settings.value(OPT_DISPLAY_LOCAL_TIME, local_time_).toBool();
+  QVariant tz_value = current_settings.value(OPT_TIME_ZONE, time_zone_.id());
+  QByteArray tz_ba = tz_value.canConvert<QString>() ? tz_value.toString().toLatin1() : tz_value.toByteArray();
+  time_zone_ = QTimeZone(tz_ba);
 }
 
 void TalkingClockPlugin::Start()
@@ -63,7 +73,7 @@ void TalkingClockPlugin::Configure()
   for (auto iter = curr_settings.begin(); iter != curr_settings.end(); ++iter)
     *iter = settings_->GetOption(iter.key());
 
-  SettingsDialog dlg(curr_settings);
+  SettingsDialog dlg(curr_settings, local_time_ ? QTimeZone::systemTimeZone() : time_zone_);
   connect(&dlg, &SettingsDialog::destroyed, this, &TalkingClockPlugin::configured);
 
   // connect main signals/slots
@@ -77,11 +87,22 @@ void TalkingClockPlugin::Configure()
   dlg.exec();
 }
 
+void TalkingClockPlugin::SettingsListener(Option option, const QVariant& new_value)
+{
+  if (option == OPT_DISPLAY_LOCAL_TIME)
+    local_time_ = new_value.toBool();
+
+  if (option == OPT_TIME_ZONE)
+    time_zone_ = QTimeZone(new_value.toByteArray());
+}
+
 void TalkingClockPlugin::TimeUpdateListener()
 {
   if (!started_ || !speech_ || speech_->state() == QTextToSpeech::Speaking) return;
 
-  QTime cur_time = QTime::currentTime();
+  QDateTime dt = QDateTime::currentDateTime();
+  if (!local_time_) dt = dt.toTimeZone(time_zone_);
+  QTime cur_time = dt.time();
 
   if (cur_time.minute() == 0 &&   // hour
       playback_allowed_ && settings_->GetOption(OPT_EVERY_HOUR_ENABLED).toBool()) {

@@ -22,6 +22,7 @@
 #include <QDialog>
 
 #include <QSettings>
+#include <QTimeZone>
 
 namespace talking_clock {
 
@@ -34,7 +35,9 @@ class SettingsDialog : public QDialog
   Q_OBJECT
 
 public:
-  explicit SettingsDialog(const QSettings::SettingsMap& settings, QWidget* parent = nullptr);
+  explicit SettingsDialog(const QSettings::SettingsMap& settings,
+                          const QTimeZone& tz = QTimeZone::systemTimeZone(),
+                          QWidget* parent = nullptr);
   ~SettingsDialog();
 
 signals:
@@ -52,6 +55,7 @@ private slots:
 private:
   Ui::SettingsDialog* ui;
   QSettings::SettingsMap settings_;
+  QTimeZone tz_;
 };
 
 } // namespace talking_clock

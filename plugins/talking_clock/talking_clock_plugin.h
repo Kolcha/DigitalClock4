@@ -20,20 +20,24 @@
 #define TALKING_CLOCK_TALKING_CLOCK_PLUGIN_H
 
 #include <iclock_plugin.h>
+#include <iplugin_init.h>
 
+#include <QTimeZone>
 
 class QTextToSpeech;
 
 namespace talking_clock {
 
-class TalkingClockPlugin : public IClockPlugin
+class TalkingClockPlugin : public IClockPlugin, public ISettingsPluginInit
 {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "talking_clock.json")
-  Q_INTERFACES(IClockPlugin)
+  Q_INTERFACES(IClockPlugin ISettingsPluginInit)
 
 public:
   TalkingClockPlugin();
+
+  void Init(const QMap<Option, QVariant>& current_settings) override;
 
 public slots:
   void Start() override;
@@ -41,6 +45,7 @@ public slots:
 
   void Configure() override;
 
+  void SettingsListener(Option option, const QVariant& new_value) override;
   void TimeUpdateListener() override;
 
 private slots:
@@ -50,6 +55,8 @@ private:
   bool started_;
   QTextToSpeech* speech_;
   bool playback_allowed_;
+  bool local_time_;
+  QTimeZone time_zone_;
 };
 
 } // namespace talking_clock
