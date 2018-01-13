@@ -39,6 +39,7 @@ then
   dirname=$PWD/$dirname
 fi
 
+export QT_QPA_PLATFORMTHEME=gtk2
 export LD_LIBRARY_PATH="$dirname/qt:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH="$dirname:$LD_LIBRARY_PATH"
 "$dirname/$appname" "${ARGS[@]}"

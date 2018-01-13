@@ -27,7 +27,11 @@ matrix:
 
       env:
          - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
-           QT_URL="https://www.dropbox.com/s/gwsro2zw004vfed/Qt-5.6.3.tar.xz?dl=1"
+           QT_URL="https://www.dropbox.com/s/n8w1pg7jsk769g3/Qt-5.8.0-u16-gcc5.tar.xz?dl=1"
+
+      before_install:
+        - sudo apt-get -qq update
+        - sudo apt-get install -y libpulse-dev
 
       script:
         - build-wrapper-linux-x86-64 --out-dir bw-output make clean all
@@ -48,11 +52,9 @@ branches:
   only:
     - master
 
-before_install:
+install:
   # clone 3rd-party repos
   - git clone -q https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey
-
-install:
   # download resources & prebuilt libraries
   - |
     curl $QT_URL -L -s | tar xJ
