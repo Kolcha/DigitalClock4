@@ -135,7 +135,7 @@ void PluginManager::ConfigurePlugin(const QString& name)
     connect(loader->instance(), &IClockPlugin::destroyed, loader, &QPluginLoader::deleteLater);
     IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());
     if (plugin) {
-      connect(plugin, &IClockPlugin::configured, loader, &QPluginLoader::unload);
+      connect(plugin, &IClockPlugin::configured, loader, &QPluginLoader::unload, Qt::QueuedConnection);
       plugin->InitSettings(data_.settings->GetBackend(), name);
       InitPlugin(plugin, false);
       plugin->Configure();
