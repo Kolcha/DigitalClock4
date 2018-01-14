@@ -33,8 +33,8 @@ public:
   Q_DECL_CONSTEXPR qreal zoomX() const Q_DECL_NOEXCEPT { return zx_; }
   Q_DECL_CONSTEXPR qreal zoomY() const Q_DECL_NOEXCEPT { return zy_; }
 
-  Q_DECL_CONSTEXPR void setZoomX(qreal x) Q_DECL_NOEXCEPT { zx_ = x; }
-  Q_DECL_CONSTEXPR void setZoomY(qreal y) Q_DECL_NOEXCEPT { zy_ = y; }
+  void setZoomX(qreal x) Q_DECL_NOEXCEPT { zx_ = x; }
+  void setZoomY(qreal y) Q_DECL_NOEXCEPT { zy_ = y; }
 
   Q_DECL_CONSTEXPR bool isValid() const Q_DECL_NOEXCEPT
   {
