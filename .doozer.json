@@ -15,11 +15,11 @@
     "osx": {
       "buildenv": "osx",
       "buildcmd": [
-        "[ -d $HOME/Qt-5.8.1 ] || { curl https://www.dropbox.com/s/lixbkg2q819vkck/Qt-5.8.1.tar.xz?dl=1 -L -s | tar xJ && mv Qt-5.8.1 $HOME/ ; }",
-        "./scripts/patch_qt.py -q $HOME/Qt-5.8.1 -d $HOME/Qt-5.8.1",
+        "[ -d $HOME/Qt-5.9.3 ] || { curl https://www.dropbox.com/s/15s4v2eos5p6fcv/Qt-5.9.3-m13-clang9.tar.xz?dl=1 -L -s | tar xJ && mv Qt-5.9.3 $HOME/ ; }",
+        "./scripts/patch_qt.py -q $HOME/Qt-5.9.3 -d $HOME/Qt-5.9.3",
         "rm -rf ../3rdparty/QHotkey && git clone -q https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey",
-        "$HOME/Qt-5.8.1/bin/lupdate -no-obsolete DigitalClock.pro",
-        "$HOME/Qt-5.8.1/bin/qmake -config release -r DigitalClock.pro",
+        "$HOME/Qt-5.9.3/bin/lupdate -no-obsolete DigitalClock.pro",
+        "$HOME/Qt-5.9.3/bin/qmake -config release -r DigitalClock.pro",
         "make -j${PARALLEL}"
       ]
     }

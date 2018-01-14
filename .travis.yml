@@ -44,7 +44,7 @@ matrix:
     - os: osx
       osx_image: xcode9.2
       env:
-        - QT_URL="https://www.dropbox.com/s/lixbkg2q819vkck/Qt-5.8.1.tar.xz?dl=1"
+        - QT_URL="https://www.dropbox.com/s/15s4v2eos5p6fcv/Qt-5.9.3-m13-clang9.tar.xz?dl=1"
 
       script: make
 
