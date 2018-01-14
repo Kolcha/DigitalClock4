@@ -1,52 +1,7 @@
 language: cpp
 
-matrix:
-  include:
-    - os: linux
-      dist: trusty
-      sudo: required
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-5
-
-        coverity_scan:
-          project:
-            name: DigitalClock4
-            version: 4.7.0
-            description: "Build submitted via Travis CI"
-
-          build_command: make
-
-          branch_pattern: master
-
-        sonarcloud:
-          organization: "kolcha-github"
-
-      env:
-         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
-           QT_URL="https://www.dropbox.com/s/n8w1pg7jsk769g3/Qt-5.8.0-u16-gcc5.tar.xz?dl=1"
-
-      before_install:
-        - sudo apt-get -qq update
-        - sudo apt-get install -y libpulse-dev
-
-      script:
-        - build-wrapper-linux-x86-64 --out-dir bw-output make clean all
-        - sonar-scanner
-
-      cache:
-        directories:
-          - '$HOME/.sonar/cache'
-
-    - os: osx
-      osx_image: xcode9.2
-      env:
-        - QT_URL="https://www.dropbox.com/s/15s4v2eos5p6fcv/Qt-5.9.3-m13-clang9.tar.xz?dl=1"
-
-      script: make
+os: osx
+osx_image: xcode9.2
 
 branches:
   only:
@@ -57,13 +12,14 @@ install:
   - git clone -q https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey
   # download resources & prebuilt libraries
   - |
-    curl $QT_URL -L -s | tar xJ
+    curl "https://www.dropbox.com/s/15s4v2eos5p6fcv/Qt-5.9.3-m13-clang9.tar.xz?dl=1" -L -s | tar xJ
     qtdir=$(ls | grep Qt)
     ./scripts/patch_qt.py -q $qtdir -d /usr/local/$qtdir
     sudo mv $qtdir /usr/local/
     export PATH="/usr/local/$qtdir/bin:$PATH"
 
 before_script:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then eval "${MATRIX_EVAL}"; fi
   - lupdate -no-obsolete DigitalClock.pro
   - qmake -config release -r DigitalClock.pro
+
+script: make -j2
