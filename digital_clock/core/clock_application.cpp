@@ -43,10 +43,11 @@
 namespace digital_clock {
 namespace core {
 
-ClockApplication::ClockApplication(QObject* parent) : QObject(parent)
+ClockApplication::ClockApplication(ClockSettings* config, QObject* parent) :
+  QObject(parent),
+  config_backend_(config->GetBackend()),
+  app_config_(config)
 {
-  config_backend_ = new SettingsStorage(this);
-  app_config_ = new core::ClockSettings(config_backend_, config_backend_);
   state_ = new core::ClockState(config_backend_);
 
   CreateWindows();
