@@ -16,7 +16,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef HAVE_SINGLEAPPLICATION
+#include <singleapplication.h>
+#else
 #include <QApplication>
+#endif
 #include <QIcon>
 #include <QTranslator>
 #include <QLibraryInfo>
@@ -39,8 +43,11 @@ int main(int argc, char* argv[])
 #ifdef Q_OS_MACOS
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
-
+#ifdef HAVE_SINGLEAPPLICATION
+  SingleApplication app(argc, argv);
+#else
   QApplication app(argc, argv);
+#endif
   app.setWindowIcon(QIcon(":/clock/images/clock.svg.p"));
   app.setQuitOnLastWindowClosed(false);
 
