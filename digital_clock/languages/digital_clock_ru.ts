@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::core::ClockApplication</name>
     <message>
-        <location filename="../core/clock_application.cpp" line="294"/>
-        <location filename="../core/clock_application.cpp" line="304"/>
-        <location filename="../core/clock_application.cpp" line="314"/>
+        <location filename="../core/clock_application.cpp" line="295"/>
+        <location filename="../core/clock_application.cpp" line="305"/>
+        <location filename="../core/clock_application.cpp" line="315"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="295"/>
+        <location filename="../core/clock_application.cpp" line="296"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="305"/>
+        <location filename="../core/clock_application.cpp" line="306"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="315"/>
+        <location filename="../core/clock_application.cpp" line="316"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="327"/>
+        <location filename="../core/clock_application.cpp" line="328"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -413,12 +413,17 @@
         <translation>показывать часы на всех мониторах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="911"/>
+        <location filename="../gui/settings_dialog.ui" line="905"/>
+        <source>allow only one clock instance at time</source>
+        <translation>не запускать более одной копии приложения</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="918"/>
         <source>Please restart clock after changing any of theese options!</source>
         <translation>Пожалуйста перезапустите часы после изменения любой из данных опций!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="931"/>
+        <location filename="../gui/settings_dialog.ui" line="938"/>
         <source>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in &apos;About&apos; dialog.</source>
         <translation>На этой вкладке представлены экспериментальные опции. По умолчанию они отключены. Их включение и использование полностью безопасно для Вашего компьютера, но они могут привести к непредсказуемому поведению часов. Пробуйте их если хотите, но любое тестирование только приветствуется. Если после включения любой из данных опций Вы заметите некорректное поведение часов, пожалуйста сообщите мне об этом. Контактную информацию можно найти в окошке &apos;О программе&apos;.</translation>
     </message>
@@ -500,53 +505,53 @@
         <translation>Плагины</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="214"/>
+        <location filename="../gui/settings_dialog.cpp" line="217"/>
         <source>1 day</source>
         <translation>1 день</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="215"/>
+        <location filename="../gui/settings_dialog.cpp" line="218"/>
         <source>3 days</source>
         <translation>3 дня</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="216"/>
+        <location filename="../gui/settings_dialog.cpp" line="219"/>
         <source>1 week</source>
         <translation>1 неделя</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="217"/>
+        <location filename="../gui/settings_dialog.cpp" line="220"/>
         <source>2 weeks</source>
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="116"/>
+        <location filename="../gui/settings_dialog.cpp" line="119"/>
         <source>unknown</source>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="329"/>
+        <location filename="../gui/settings_dialog.cpp" line="333"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="331"/>
+        <location filename="../gui/settings_dialog.cpp" line="335"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="414"/>
+        <location filename="../gui/settings_dialog.cpp" line="418"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="416"/>
-        <location filename="../gui/settings_dialog.cpp" line="424"/>
+        <location filename="../gui/settings_dialog.cpp" line="420"/>
+        <location filename="../gui/settings_dialog.cpp" line="428"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="422"/>
+        <location filename="../gui/settings_dialog.cpp" line="426"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>
