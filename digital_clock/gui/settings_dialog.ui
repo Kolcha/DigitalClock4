@@ -900,6 +900,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="only_one_instance">
+         <property name="text">
+          <string>allow only one clock instance at time</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLabel" name="restart_warning_label">
          <property name="font">
           <font>

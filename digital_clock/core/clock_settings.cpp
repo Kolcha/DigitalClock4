@@ -71,6 +71,7 @@ QMap<Option, QVariant> ClockSettings::GetSettings() const
   all_settings[OPT_SHOW_HIDE_ENABLED]     = GetValue(OPT_SHOW_HIDE_ENABLED);
   all_settings[OPT_EXPORT_STATE]          = GetValue(OPT_EXPORT_STATE);
   all_settings[OPT_KEEP_ALWAYS_VISIBLE]   = GetValue(OPT_KEEP_ALWAYS_VISIBLE);
+  all_settings[OPT_ONLY_ONE_INSTANCE]     = GetValue(OPT_ONLY_ONE_INSTANCE);
   all_settings[OPT_SHOW_WINDOW_BORDER]    = GetValue(OPT_SHOW_WINDOW_BORDER);
   all_settings[OPT_SNAP_TO_EDGES]         = GetValue(OPT_SNAP_TO_EDGES);
   all_settings[OPT_SNAP_THRESHOLD]        = GetValue(OPT_SNAP_THRESHOLD);
@@ -120,6 +121,7 @@ QString ClockSettings::GetKey(const int id) const
     case OPT_SHOW_HIDE_ENABLED:     return "misc/show_hide_enabled";
     case OPT_EXPORT_STATE:          return "misc/export_state";
     case OPT_KEEP_ALWAYS_VISIBLE:   return "window/always_visible";
+    case OPT_ONLY_ONE_INSTANCE:     return "app/single_instance";
     // window settings
     case OPT_SHOW_WINDOW_BORDER:    return "window/show_border";
     case OPT_SNAP_TO_EDGES:         return "window/snap_to_edges";
@@ -172,6 +174,7 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_SHOW_HIDE_ENABLED:     return true;
     case OPT_EXPORT_STATE:          return true;
     case OPT_KEEP_ALWAYS_VISIBLE:   return false;
+    case OPT_ONLY_ONE_INSTANCE:     return false;
     // window settings
     case OPT_SHOW_WINDOW_BORDER:    return true;
     case OPT_SNAP_TO_EDGES:         return true;

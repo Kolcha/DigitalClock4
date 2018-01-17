@@ -78,6 +78,9 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* st
 #if !defined(Q_OS_LINUX) && !defined(Q_OS_MACOS)
   ui->show_on_all_workspaces->setVisible(false);  // supported on Linux/Mac
 #endif
+#ifndef HAVE_SINGLEAPPLICATION
+  ui->only_one_instance->setVisible(false);
+#endif
 
   connect(config->GetBackend(), &SettingsStorage::reloaded, this, &SettingsDialog::InitControls);
 
@@ -250,6 +253,7 @@ void SettingsDialog::InitControls()
   ui->better_stay_on_top->setChecked(config_->GetValue(OPT_BETTER_STAY_ON_TOP).toBool());
   ui->keep_always_visible->setChecked(config_->GetValue(OPT_KEEP_ALWAYS_VISIBLE).toBool());
   ui->show_on_all_monitors->setChecked(config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool());
+  ui->only_one_instance->setChecked(config_->GetValue(OPT_ONLY_ONE_INSTANCE).toBool());
 }
 
 void SettingsDialog::ChangePluginState(const QString& name, bool activated)
@@ -551,6 +555,11 @@ void digital_clock::gui::SettingsDialog::on_keep_always_visible_clicked(bool che
 void digital_clock::gui::SettingsDialog::on_show_on_all_monitors_clicked(bool checked)
 {
   emit OptionChanged(OPT_SHOW_ON_ALL_MONITORS, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_only_one_instance_clicked(bool checked)
+{
+  emit OptionChanged(OPT_ONLY_ONE_INSTANCE, checked);
 }
 
 void digital_clock::gui::SettingsDialog::on_time_zone_box_activated(int index)
