@@ -47,7 +47,7 @@ class ClockApplication : public QObject
   Q_OBJECT
 
 public:
-  ClockApplication(QObject* parent = nullptr);
+  explicit ClockApplication(ClockSettings* config, QObject* parent = nullptr);
   ~ClockApplication();
 
 private slots:

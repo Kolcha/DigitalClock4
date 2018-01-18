@@ -16,12 +16,19 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef HAVE_SINGLEAPPLICATION
+#include <singleapplication.h>
+#else
 #include <QApplication>
+#endif
 #include <QIcon>
 #include <QTranslator>
 #include <QLibraryInfo>
 #include <QPalette>
 
+#include "settings_keys.h"
+#include "settings_storage.h"
+#include "core/clock_settings.h"
 #include "core/clock_application.h"
 
 int main(int argc, char* argv[])
@@ -40,7 +47,13 @@ int main(int argc, char* argv[])
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
+  SettingsStorage config_backend;
+  digital_clock::core::ClockSettings app_config(&config_backend);
+#ifdef HAVE_SINGLEAPPLICATION
+  SingleApplication app(argc, argv, !app_config.GetValue(OPT_ONLY_ONE_INSTANCE).toBool());
+#else
   QApplication app(argc, argv);
+#endif
   app.setWindowIcon(QIcon(":/clock/images/clock.svg.p"));
   app.setQuitOnLastWindowClosed(false);
 
@@ -72,7 +85,7 @@ int main(int argc, char* argv[])
   p.setColor(QPalette::LinkVisited, p.color(QPalette::Inactive, QPalette::Text));
   QApplication::setPalette(p);
 
-  digital_clock::core::ClockApplication clock_app;
+  digital_clock::core::ClockApplication clock_app(&app_config);
   Q_UNUSED(clock_app);
 
   return app.exec();

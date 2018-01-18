@@ -28,6 +28,7 @@ unix:!macx {
 }
 
 include(../config.pri)
+include(../3rdparty/single_application.pri)
 
 TARGET   = digital_clock
 TEMPLATE = app

@@ -18,7 +18,8 @@ environment:
 
 init:
   # clone 3rd-party repos
-  - git clone -q https://github.com/Skycoder42/QHotkey.git ..\3rdparty\QHotkey
+  - git clone -q -b master --depth 1 https://github.com/Skycoder42/QHotkey.git ..\3rdparty\QHotkey
+  - git clone -q -b master --depth 1 https://github.com/itay-grudev/SingleApplication.git ..\3rdparty\SingleApplication
 
 install:
   # download jom for MSVC build

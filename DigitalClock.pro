@@ -31,5 +31,7 @@ plugin_core.depends = clock_common skin_draw
 plugins.depends = plugin_core
 
 OTHER_FILES += \
+    3rdparty/qhotkey.pri \
+    3rdparty/single_application.pri \
     config.pri \
     qm_gen.pri
