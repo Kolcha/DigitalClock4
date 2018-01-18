@@ -6,7 +6,8 @@
       "buildcmd": [
         "[ -d $HOME/Qt-5.8.0 ] || { wget -q -O - https://www.dropbox.com/s/n8w1pg7jsk769g3/Qt-5.8.0-u16-gcc5.tar.xz?dl=1 | tar xJ && mv Qt-5.8.0 $HOME/ ; }",
         "./scripts/patch_qt.py -q $HOME/Qt-5.8.0 -d $HOME/Qt-5.8.0",
-        "rm -rf ../3rdparty/QHotkey && git clone -q https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey",
+        "rm -rf ../3rdparty/QHotkey && git clone -q -b master --depth 1 https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey",
+        "rm -rf ../3rdparty/SingleApplication && git clone -q -b master --depth 1 https://github.com/itay-grudev/SingleApplication.git ../3rdparty/SingleApplication",
         "$HOME/Qt-5.8.0/bin/lupdate -no-obsolete DigitalClock.pro",
         "$HOME/Qt-5.8.0/bin/qmake -config release -r DigitalClock.pro",
         "make -j${PARALLEL}"
@@ -17,7 +18,8 @@
       "buildcmd": [
         "[ -d $HOME/Qt-5.9.3 ] || { curl https://www.dropbox.com/s/15s4v2eos5p6fcv/Qt-5.9.3-m13-clang9.tar.xz?dl=1 -L -s | tar xJ && mv Qt-5.9.3 $HOME/ ; }",
         "./scripts/patch_qt.py -q $HOME/Qt-5.9.3 -d $HOME/Qt-5.9.3",
-        "rm -rf ../3rdparty/QHotkey && git clone -q https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey",
+        "rm -rf ../3rdparty/QHotkey && git clone -q -b master --depth 1 https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey",
+        "rm -rf ../3rdparty/SingleApplication && git clone -q -b master --depth 1 https://github.com/itay-grudev/SingleApplication.git ../3rdparty/SingleApplication",
         "$HOME/Qt-5.9.3/bin/lupdate -no-obsolete DigitalClock.pro",
         "$HOME/Qt-5.9.3/bin/qmake -config release -r DigitalClock.pro",
         "make -j${PARALLEL}"
