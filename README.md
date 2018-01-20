@@ -1,17 +1,9 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/esy0atbi1fsrpln1/branch/master?svg=true)](https://ci.appveyor.com/project/Kolcha/digitalclock4/branch/master)
-[![Build Status](https://doozer.io/badge/Kolcha/DigitalClock4/buildstatus/master)](https://doozer.io/user/Kolcha/DigitalClock4)
-[![Build Status](https://travis-ci.org/Kolcha/DigitalClock4.svg?branch=master)](https://travis-ci.org/Kolcha/DigitalClock4)
-
-[![license](https://img.shields.io/github/license/kolcha/digitalclock4.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![Open Hub](https://www.openhub.net/p/digitalclock4/widgets/project_thin_badge?format=gif)](https://www.openhub.net/p/digitalclock4)
-
-[![Download Digital Clock 4](https://img.shields.io/sourceforge/dm/digitalclock4.svg)](https://sourceforge.net/projects/digitalclock4/files/)
-[![Download Digital Clock 4](https://img.shields.io/sourceforge/dt/digitalclock4.svg)](https://sourceforge.net/projects/digitalclock4/files/)
+[![Build status](https://ci.appveyor.com/api/projects/status/esy0atbi1fsrpln1/branch/master?svg=true)](https://ci.appveyor.com/project/Kolcha/digitalclock4/branch/master) [![Build Status](https://doozer.io/badge/Kolcha/DigitalClock4/buildstatus/master)](https://doozer.io/user/Kolcha/DigitalClock4) [![Build Status](https://travis-ci.org/Kolcha/DigitalClock4.svg?branch=master)](https://travis-ci.org/Kolcha/DigitalClock4) [![license](https://img.shields.io/github/license/kolcha/digitalclock4.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html) [![Open Hub](https://www.openhub.net/p/digitalclock4/widgets/project_thin_badge?format=gif)](https://www.openhub.net/p/digitalclock4) [![Download Digital Clock 4](https://img.shields.io/sourceforge/dm/digitalclock4.svg)](https://sourceforge.net/projects/digitalclock4/files/)
 
 Digital Clock 4
 ===============
 
-Looking for the replacement for boring system clock? If it is true, this clock may be right for you! This pretty small software has a lot of cutomization options + several plugins which can extend its functionality or slightly change behavior or appearance. Give it a try, even if you will not like it, it can be uninstalled very easy.
+Looking for the replacement for boring system clock? If it is true, this clock may be right for you! This pretty small software has a lot of customization options + several plugins which can extend its functionality or slightly change behavior or appearance. Give it a try, even if you will not like it, it can be uninstalled very easy.
 
 Key features:
 
