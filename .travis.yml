@@ -13,7 +13,7 @@ install:
   - git clone -q -b master --depth 1 https://github.com/itay-grudev/SingleApplication.git ../3rdparty/SingleApplication
   # download resources & prebuilt libraries
   - |
-    curl "https://www.dropbox.com/s/15s4v2eos5p6fcv/Qt-5.9.3-m13-clang9.tar.xz?dl=1" -L -s | tar xJ
+    curl "https://www.dropbox.com/s/phjzg4bd52qbndb/Qt-5.9.4-m13-clang9.tar.xz?dl=1" -L -s | tar xJ
     qtdir=$(ls | grep Qt)
     ./scripts/patch_qt.py -q $qtdir -d /usr/local/$qtdir
     sudo mv $qtdir /usr/local/
