@@ -165,6 +165,8 @@ void WidgetPluginBasePrivate::CreateWidgets()
       }
     }
   }
+  // TODO: create drawer per widget
+  drawer_->SetDevicePixelRatio(plg_widgets_[0]->devicePixelRatioF());
   connect(drawer_, &skin_draw::SkinDrawer::DrawingFinished, [this] (const QImage& img) {
     for (auto& widget : plg_widgets_) obj_->DisplayImage(widget, img);
   });
@@ -187,7 +189,6 @@ void WidgetPluginBasePrivate::DestroyWidgets()
 skin_draw::ISkin::SkinPtr WidgetPluginBasePrivate::CreateTextSkin(const QFont& fnt)
 {
   skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(fnt));
-  txt_skin->SetDevicePixelRatio(main_wnds_[0]->devicePixelRatioF());
   return txt_skin;
 }
 

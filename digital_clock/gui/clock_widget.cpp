@@ -31,8 +31,7 @@ namespace gui {
 
 ClockWidget::ClockWidget(QWidget* parent) :
   QWidget(parent),
-  colorize_color_(Qt::magenta), colorize_level_(0.8), colorize_enabled_(false),
-  preview_mode_(false)
+  colorize_color_(Qt::magenta), colorize_level_(0.8), colorize_enabled_(false)
 {
   display_ = new ClockDisplay(this);
   QGridLayout* main_layout = new QGridLayout(this);
@@ -43,9 +42,16 @@ ClockWidget::ClockWidget(QWidget* parent) :
   setLayout(main_layout);
 
   drawer_ = new ::skin_draw::SkinDrawer(this, ::skin_draw::scale_factor(this->logicalDpiY()));
+  drawer_->SetDevicePixelRatio(this->devicePixelRatioF());
   connect(display_, SIGNAL(SeparatorsChanged(QString)), this, SIGNAL(SeparatorsChanged(QString)));
   connect(display_, SIGNAL(ImageNeeded(QString)), drawer_, SLOT(SetString(QString)));
   connect(drawer_, SIGNAL(DrawingFinished(QImage)), this, SLOT(DrawImage(QImage)));
+  connect(drawer_, &skin_draw::SkinDrawer::skinChanged, this, &ClockWidget::SkinChanged);
+}
+
+bool ClockWidget::preview() const
+{
+  return drawer_->previewMode();
 }
 
 skin_draw::ISkin::SkinPtr ClockWidget::skin() const
@@ -55,9 +61,7 @@ skin_draw::ISkin::SkinPtr ClockWidget::skin() const
 
 void ClockWidget::ApplySkin(skin_draw::ISkin::SkinPtr skin)
 {
-  skin->SetDevicePixelRatio(this->devicePixelRatioF());
   drawer_->ApplySkin(skin);
-  emit SkinChanged(skin);
 }
 
 void ClockWidget::ApplyOption(Option option, const QVariant& value)
@@ -163,18 +167,18 @@ void ClockWidget::ApplyOption(Option option, const QVariant& value)
 
 void ClockWidget::EnablePreviewMode()
 {
-  preview_mode_ = true;
   drawer_->SetPreviewMode(true);
 }
 
 void ClockWidget::DisablePreviewMode()
 {
-  preview_mode_ = false;
   drawer_->SetPreviewMode(false);
 }
 
 void ClockWidget::TimeoutHandler()
 {
+  if (!qFuzzyCompare(drawer_->devicePixelRatio(), this->devicePixelRatioF()))
+    drawer_->SetDevicePixelRatio(this->devicePixelRatioF());
   display_->TimeoutHandler();
 }
 

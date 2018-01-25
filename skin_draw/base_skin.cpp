@@ -45,7 +45,7 @@ private:
 };
 
 
-BaseSkin::BaseSkin() : cached_zoom_(1.0), device_pixel_ratio_(1.0)
+BaseSkin::BaseSkin() : cached_zoom_(1.0)
 {
   img_cache_ = ImageCachePtr(new CharImageCache());
 }
@@ -73,16 +73,6 @@ QPixmap BaseSkin::GetImage(const QString& str, int idx, Zoom zoom, bool cache)
   }
 
   return result;
-}
-
-qreal BaseSkin::GetDevicePixelRatio() const
-{
-  return device_pixel_ratio_;
-}
-
-void BaseSkin::SetDevicePixelRatio(qreal ratio)
-{
-  device_pixel_ratio_ = ratio;
 }
 
 } // namespace skin_draw

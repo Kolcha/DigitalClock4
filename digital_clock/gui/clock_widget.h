@@ -43,7 +43,7 @@ class ClockWidget : public QWidget
 public:
   explicit ClockWidget(QWidget* parent = nullptr);
 
-  bool preview() const noexcept { return preview_mode_; }
+  bool preview() const;
   ::skin_draw::ISkin::SkinPtr skin() const;
 
 signals:
@@ -68,7 +68,6 @@ private:
   QColor colorize_color_;
   qreal colorize_level_;
   bool colorize_enabled_;
-  bool preview_mode_;
 
   QImage last_image_;
 };

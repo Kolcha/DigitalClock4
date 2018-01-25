@@ -39,7 +39,7 @@ mkdir -p digital_clock/digital_clock.app/Contents/PlugIns
 # deploy Qt for libs
 cp clock_common/libclock_common.1.2.0.dylib digital_clock/digital_clock.app/Contents/Frameworks/libclock_common.1.dylib
 cp plugin_core/libplugin_core.1.3.0.dylib digital_clock/digital_clock.app/Contents/Frameworks/libplugin_core.1.dylib
-cp skin_draw/libskin_draw.1.4.1.dylib digital_clock/digital_clock.app/Contents/Frameworks/libskin_draw.1.dylib
+cp skin_draw/libskin_draw.1.5.0.dylib digital_clock/digital_clock.app/Contents/Frameworks/libskin_draw.1.dylib
 $QT_ROOT/bin/macdeployqt digital_clock/digital_clock.app -executable=digital_clock/digital_clock.app/Contents/Frameworks/libclock_common.1.dylib
 $QT_ROOT/bin/macdeployqt digital_clock/digital_clock.app -executable=digital_clock/digital_clock.app/Contents/Frameworks/libplugin_core.1.dylib
 $QT_ROOT/bin/macdeployqt digital_clock/digital_clock.app -executable=digital_clock/digital_clock.app/Contents/Frameworks/libskin_draw.1.dylib

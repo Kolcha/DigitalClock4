@@ -30,7 +30,7 @@ QPixmap VectorSkin::ResizeImage(const QString& str, int idx, Zoom zoom)
   if (!QFile::exists(img_file)) return QPixmap();
 
   QSvgRenderer renderer(img_file);
-  QPixmap result(renderer.defaultSize() * zoom * GetDevicePixelRatio());
+  QPixmap result(renderer.defaultSize() * zoom);
   QPainter painter(&result);
   painter.setCompositionMode(QPainter::CompositionMode_Source);
   painter.fillRect(result.rect(), Qt::transparent);

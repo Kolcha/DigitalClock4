@@ -149,7 +149,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       // TODO: what about monitors with different DPI?
       // for now assume that all monitors have same DPI
       // related to "different config per window"
-      txt_skin->SetDevicePixelRatio(private_->plg_widgets_[0]->devicePixelRatioF());
+      private_->drawer_->SetDevicePixelRatio(private_->plg_widgets_[0]->devicePixelRatioF());
       private_->ApplySkin(txt_skin);
       break;
     }
@@ -279,7 +279,7 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
   QStringList ss = text.split('\n');
   int tw = 0;
   int th = 0;
-  const int space = private_->drawer_->spacing() * private_->drawer_->currentSkin()->GetDevicePixelRatio();
+  const int space = private_->drawer_->spacing();
 
   for (auto& s : ss) {
     int lw = 0;
@@ -303,8 +303,7 @@ qreal WidgetPluginBase::CalculateZoom(const QString& text) const
   WidgetLocation w_loc = static_cast<WidgetLocation>(iw_loc);
 
   qreal tw = w_loc == WidgetLocation::WL_RIGHT ?  GetImageSize(text, 1.0).height() : GetImageSize(text, 1.0).width();
-  // TODO: again, assume that all windows have the same DPI
-  qreal avail_width = avail_width_ * private_->plg_widgets_[0]->devicePixelRatioF();
+  qreal avail_width = avail_width_;
   avail_width *= 0.01 * settings_->GetOption(OptionKey(OPT_SPACE_PERCENT)).toInt();
   qreal c_zoom = avail_width / tw;
 
