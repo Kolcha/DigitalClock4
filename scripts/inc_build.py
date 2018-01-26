@@ -24,9 +24,7 @@ if (len(sys.argv) > 1):
     for arg in sys.argv[1:]:
         inc_build(arg)
 else:
-    import os
     from glob import glob
     pwd = os.getcwd()
     lst = [y for x in os.walk(pwd) for y in glob(os.path.join(x[0], '*.rc'))]
     for arg in lst: inc_build(arg)
-

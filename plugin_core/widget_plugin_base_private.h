@@ -72,7 +72,7 @@ public:
   int CalculateAvailableSpace() const;
 
   ::skin_draw::ISkin::SkinPtr currentSkin() const { return skin_; }
-  Q_DECL_CONSTEXPR int spacing() const Q_DECL_NOEXCEPT { return spacing_; }
+  int spacing() const { return spacing_; }
 
 public slots:
   /*!

@@ -27,7 +27,7 @@ mkdir "$build_dir"
 cd "$build_dir"
 
 $QT_ROOT/bin/qmake -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
-cores=`cat /proc/cpuinfo | grep "processor" | wc -l`
+cores=$(grep processor < /proc/cpuinfo | wc -l)
 make -j$cores
 [[ $? == 0 ]] || exit 1
 

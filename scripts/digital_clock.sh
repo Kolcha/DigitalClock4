@@ -29,9 +29,9 @@ done
 [[ $autostart -ne 0 ]] && sleep 15
 
 
-appname=`basename "$0" | sed s,\.sh$,,`
+appname=$(basename "$0" | sed s,\.sh$,,)
 
-dirname=`dirname "$0"`
+dirname=$(dirname "$0")
 tmp="${dirname#?}"
 
 if [[ "${dirname%$tmp}" != "/" ]]
