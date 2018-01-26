@@ -70,10 +70,9 @@ public:
    * @see WidgetLocation, WidgetPluginBase::avail_width_
    */
   int CalculateAvailableSpace() const;
-  /*!
-   * Set given @a skin to skin darw engine.
-   */
-  void ApplySkin(::skin_draw::ISkin::SkinPtr skin);
+
+  ::skin_draw::ISkin::SkinPtr currentSkin() const { return skin_; }
+  Q_DECL_CONSTEXPR int spacing() const Q_DECL_NOEXCEPT { return spacing_; }
 
 public slots:
   /*!
@@ -112,11 +111,34 @@ public slots:
    */
   void DestroyWidgets();
 
+  void ApplySkin(::skin_draw::ISkin::SkinPtr skin);
+  void SetColor(const QColor& color);
+  void SetTexture(const QString& texture);
+  void SetCustomizationType(const ::skin_draw::SkinDrawer::CustomizationType ct);
+  void SetTexturePerElement(bool enable);
+  void SetTextureDrawMode(const ::skin_draw::SkinDrawer::DrawMode dm);
+  void SetSpacing(const int spacing);
+  void SetZoom(const qreal zoom);
+
+  void DrawText(const QString& text);
+
 private:
   /// clock main window layout
   QVector<QGridLayout*> main_layouts_;
   /// clock main window widget
   QVector<QWidget*> main_wnds_;
+  /// all drawers
+  QVector< ::skin_draw::SkinDrawer*> drawers_;
+
+  // current drawer settings
+  ::skin_draw::ISkin::SkinPtr skin_;
+  QColor color_{Qt::magenta};
+  QString texture_;
+  ::skin_draw::SkinDrawer::CustomizationType customization_{::skin_draw::SkinDrawer::CT_COLOR};
+  bool texture_per_element_{true};
+  ::skin_draw::SkinDrawer::DrawMode draw_mode_{::skin_draw::SkinDrawer::DM_TILE};
+  int spacing_{2};
+  qreal zoom_{1.0};
 
 public:
   /// plugin's widget
@@ -133,8 +155,6 @@ public:
   QColor clock_color_;
   /// last rendered text
   QString last_text_;
-  /// text renderer
-  ::skin_draw::SkinDrawer* drawer_;
 
 private:
   ::skin_draw::ISkin::SkinPtr CreateTextSkin(const QFont& fnt);

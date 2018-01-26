@@ -130,6 +130,15 @@ void SkinDrawer::SetSpace(int new_space)
   Redraw();
 }
 
+void SkinDrawer::SetDevicePixelRatio(qreal ratio)
+{
+  if (qFuzzyIsNull(ratio)) return;
+  if (qFuzzyCompare(device_pixel_ratio_, ratio)) return;
+  device_pixel_ratio_ = ratio;
+  emit devicePixelRatioChanged(device_pixel_ratio_);
+  Redraw();
+}
+
 void SkinDrawer::SetPreviewMode(bool set)
 {
   if (preview_mode_ == set) return;
@@ -161,7 +170,7 @@ void SkinDrawer::Redraw()
   QList<QList<QPixmap> > elements;
   QList<QPixmap> row_elements;
 
-  const int space = space_ * skin_->GetDevicePixelRatio();
+  const int space = spacing() * devicePixelRatio();
 
   int result_w = 0;
   int result_h = 0;
@@ -179,7 +188,7 @@ void SkinDrawer::Redraw()
       continue;
     }
 
-    QPixmap elem = skin_->GetImage(str_, i, zoom_ * scale_factor_, !preview_mode_);
+    QPixmap elem = skin_->GetImage(str_, i, zoom() * scale_factor_ * devicePixelRatio(), !previewMode());
     if (!elem || elem.isNull()) continue;
     row_elements.append(elem);
 
@@ -221,7 +230,7 @@ void SkinDrawer::Redraw()
     if (!txd_per_elem_ && cust_type_ != CT_NONE)
       DrawTexture(painter, result.rect());
   }
-  result.setDevicePixelRatio(skin_->GetDevicePixelRatio());
+  result.setDevicePixelRatio(devicePixelRatio());
   emit DrawingFinished(result);
 }
 

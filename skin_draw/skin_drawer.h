@@ -72,6 +72,7 @@ class SKIN_DRAWSHARED_EXPORT SkinDrawer : public QObject
   Q_PROPERTY(QPixmap texture READ texture NOTIFY textureChanged)
   Q_PROPERTY(bool texturePerElement READ texturePerElement WRITE SetTexturePerElement NOTIFY texturePerElementChanged)
   Q_PROPERTY(DrawMode textureMode READ textureMode WRITE SetTextureDrawMode NOTIFY textureModeChanged)
+  Q_PROPERTY(qreal devicePixelRatio READ devicePixelRatio WRITE SetDevicePixelRatio NOTIFY devicePixelRatioChanged)
   Q_PROPERTY(bool previewMode READ previewMode WRITE SetPreviewMode NOTIFY previewModeChanged)
 
 public:
@@ -175,6 +176,11 @@ public:
    */
   DrawMode textureMode() const { return txd_draw_mode_; }
   /*!
+   * @property SkinDrawer::devicePixelRatio
+   * Current device/pixel ratio
+   */
+  qreal devicePixelRatio() const Q_DECL_NOEXCEPT { return device_pixel_ratio_; }
+  /*!
    * @property SkinDrawer::previewMode
    * @brief indicates is SkinDrawer in preview mode
    *
@@ -239,6 +245,11 @@ signals:
    * This signal is emitted when textureMode property has changed, with the new @a mode as an argument.
    */
   void textureModeChanged(DrawMode mode);
+  /*!
+   * @fn void SkinDrawer::devicePixelRatioChanged(qreal ratio)
+   * This signal is emitted when devicePixelRatio property has changed, with the new @a ratio as an argument.
+   */
+  void devicePixelRatioChanged(qreal ratio);
   /*!
    * @fn void SkinDrawer::previewModeChanged(bool state)
    * This signal is emitted when the preview mode has toggled, with the new @a state as an argument.
@@ -307,6 +318,12 @@ public slots:
    */
   void SetSpace(int new_space);
   /*!
+   * Explicitly set device pixel ratio for result images.
+   * @param ratio - device pixel ratio to set
+   * @note default device pixel ratio value is 1.0
+   */
+  void SetDevicePixelRatio(qreal ratio);
+  /*!
    * @brief Enable/disable preview mode.
    *
    * Preview mode is enabled only when user changes clock settings. Disabled by default.
@@ -349,6 +366,7 @@ private:
   QColor color_;
   CustomizationType cust_type_;
   int space_;
+  qreal device_pixel_ratio_ = 1.0;
 };
 
 } // namespace skin_draw

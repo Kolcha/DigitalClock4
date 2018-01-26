@@ -74,7 +74,7 @@ QPixmap TextSkin::ResizeImage(const QString& str, int idx, Zoom zoom)
 
   if (idx == str.length() - 1 || str[idx + 1] == '\n' || char_map_.contains(str[idx + 1]) || char_map_.contains(str[idx])) {
     QFont new_font(font_);
-    new_font.setPointSizeF(font_.pointSizeF() * zoom.zoomY() * GetDevicePixelRatio());
+    new_font.setPointSizeF(font_.pointSizeF() * zoom.zoomY());
     QFontMetrics fm(new_font);
     int res_w = fm.width(curr_text_);
     // add some extra spacing for italic fonts

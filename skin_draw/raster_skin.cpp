@@ -25,7 +25,7 @@ QPixmap RasterSkin::ResizeImage(const QString& str, int idx, Zoom zoom)
   const QPixmap& original = orig_images_[str[idx]];
   if (original.isNull()) return QPixmap();
 
-  return original.scaled(original.size() * zoom * GetDevicePixelRatio(),
+  return original.scaled(original.size() * zoom,
                          Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 }
 
