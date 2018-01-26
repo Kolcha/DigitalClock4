@@ -35,7 +35,6 @@ WidgetPluginBasePrivate::WidgetPluginBasePrivate(WidgetPluginBase* obj, QObject*
   clock_customization_(::skin_draw::SkinDrawer::CT_COLOR),
   clock_color_(0, 170, 255),
   last_text_("-----"),
-  drawer_(new ::skin_draw::SkinDrawer(this)),
   obj_(obj)
 {
 }
@@ -80,19 +79,19 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
   if (key == OptionKey(OPT_ZOOM_MODE)) {
     switch (static_cast<ZoomMode>(value.toInt())) {
       case ZoomMode::ZM_NOT_ZOOM:
-        drawer_->SetZoom(1.0);
+        SetZoom(1.0);
         break;
 
       case ZoomMode::ZM_AUTOSIZE:
         obj_->avail_width_ = CalculateAvailableSpace();
-        drawer_->SetZoom(obj_->CalculateZoom(last_text_));
+        SetZoom(obj_->CalculateZoom(last_text_));
         break;
     }
   }
   if (key == OptionKey(OPT_SPACE_PERCENT)) {
     int c_zoom_mode = obj_->settings_->GetOption(OptionKey(OPT_ZOOM_MODE)).toInt();
     if (static_cast<ZoomMode>(c_zoom_mode) == ZoomMode::ZM_AUTOSIZE) {
-      drawer_->SetZoom(obj_->CalculateZoom(last_text_));
+      SetZoom(obj_->CalculateZoom(last_text_));
     }
   }
   if (key == OptionKey(OPT_WIDGET_LOCATION)) {
@@ -116,7 +115,7 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
 
     int c_zoom_mode = obj_->settings_->GetOption(OptionKey(OPT_ZOOM_MODE)).toInt();
     if (static_cast<ZoomMode>(c_zoom_mode) == ZoomMode::ZM_AUTOSIZE) {
-      drawer_->SetZoom(obj_->CalculateZoom(last_text_));
+      SetZoom(obj_->CalculateZoom(last_text_));
     }
   }
   if (key == OptionKey(OPT_ALIGNMENT)) {
@@ -126,19 +125,19 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
     }
   }
   if (key == OptionKey(OPT_USE_CUSTOM_COLOR)) {
-    drawer_->SetString(QString());    // set empty string to do not redraw twice
+    DrawText(QString());    // set empty string to do not redraw twice
     if (value.toBool()) {
-      drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_COLOR);
-      drawer_->SetColor(obj_->settings_->GetOption(OptionKey(OPT_CUSTOM_COLOR)).value<QColor>());
+      SetCustomizationType(::skin_draw::SkinDrawer::CT_COLOR);
+      SetColor(obj_->settings_->GetOption(OptionKey(OPT_CUSTOM_COLOR)).value<QColor>());
     } else {
-      drawer_->SetCustomizationType(clock_customization_);
-      drawer_->SetColor(clock_color_);
+      SetCustomizationType(clock_customization_);
+      SetColor(clock_color_);
     }
-    if (last_text_ != QString("-")) drawer_->SetString(last_text_);
+    if (last_text_ != QString("-")) DrawText(last_text_);
   }
   if (key == OptionKey(OPT_CUSTOM_COLOR)) {
     if (obj_->settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR)).toBool()) {
-      drawer_->SetColor(value.value<QColor>());
+      SetColor(value.value<QColor>());
     }
   }
   if (key == OptionKey(OPT_USE_CLOCK_SKIN)) {
@@ -155,7 +154,8 @@ void WidgetPluginBasePrivate::AddClockWidget(QWidget* main_wnd)
 void WidgetPluginBasePrivate::CreateWidgets()
 {
   for (auto layout : main_layouts_) {
-    plg_widgets_.append(obj_->InitWidget(layout));
+    QWidget* widget = obj_->InitWidget(layout);
+    plg_widgets_.append(widget);
     if (layout->indexOf(plg_widgets_.last()) == -1) {
       int w_loc = obj_->settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION)).toInt();
       if (static_cast<WidgetLocation>(w_loc) == WidgetLocation::WL_RIGHT) {
@@ -164,40 +164,108 @@ void WidgetPluginBasePrivate::CreateWidgets()
         layout->addWidget(plg_widgets_.last(), layout->rowCount(), 0, 1, layout->columnCount());
       }
     }
+    ::skin_draw::SkinDrawer* drawer = new ::skin_draw::SkinDrawer(widget);
+    drawer->SetDevicePixelRatio(widget->devicePixelRatioF());
+    connect(drawer, &skin_draw::SkinDrawer::DrawingFinished, [this, widget] (const QImage& img) {
+      obj_->DisplayImage(widget, img);
+    });
+    drawer->ApplySkin(skin_);
+    drawer->SetColor(color_);
+    drawer->SetTexture(texture_);
+    drawer->SetCustomizationType(customization_);
+    drawer->SetTexturePerElement(texture_per_element_);
+    drawer->SetTextureDrawMode(draw_mode_);
+    drawer->SetSpace(spacing_);
+    drawer->SetZoom(zoom_);
+    drawers_.append(drawer);
   }
-  // TODO: create drawer per widget
-  drawer_->SetDevicePixelRatio(plg_widgets_[0]->devicePixelRatioF());
-  connect(drawer_, &skin_draw::SkinDrawer::DrawingFinished, [this] (const QImage& img) {
-    for (auto& widget : plg_widgets_) obj_->DisplayImage(widget, img);
-  });
 }
 
 void WidgetPluginBasePrivate::DestroyWidgets()
 {
-  disconnect(drawer_, &skin_draw::SkinDrawer::DrawingFinished, 0, 0);
+  Q_ASSERT(drawers_.size() == plg_widgets_.size());
   Q_ASSERT(plg_widgets_.size() <= main_layouts_.size());
   Q_ASSERT(main_wnds_.size() == main_layouts_.size());
   for (int i = 0; i < plg_widgets_.size(); ++i) {
+    delete drawers_[i];
     main_layouts_[i]->removeWidget(plg_widgets_[i]);
     delete plg_widgets_[i];
   }
+  drawers_.clear();
   plg_widgets_.clear();
   main_layouts_.clear();
   main_wnds_.clear();
 }
 
-skin_draw::ISkin::SkinPtr WidgetPluginBasePrivate::CreateTextSkin(const QFont& fnt)
-{
-  skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(fnt));
-  return txt_skin;
-}
-
 void WidgetPluginBasePrivate::ApplySkin(skin_draw::ISkin::SkinPtr skin)
 {
-  drawer_->SetString(QString());
-  drawer_->ApplySkin(skin);
+  skin_ = skin;
+  for (auto& drawer : drawers_) {
+    drawer->SetString(QString());
+    drawer->ApplySkin(skin);
+  }
   last_text_ = "-";             // reset last date to recalculate zoom
   obj_->TimeUpdateListener();   // force redraw
+}
+
+void WidgetPluginBasePrivate::SetColor(const QColor& color)
+{
+  if (!color.isValid() || color_ == color) return;
+  color_ = color;
+  for (auto& drawer : drawers_) drawer->SetColor(color);
+}
+
+void WidgetPluginBasePrivate::SetTexture(const QString& texture)
+{
+  if (texture.isEmpty() || texture_ == texture) return;
+  texture_ = texture;
+  for (auto& drawer : drawers_) drawer->SetTexture(texture);
+}
+
+void WidgetPluginBasePrivate::SetCustomizationType(const skin_draw::SkinDrawer::CustomizationType ct)
+{
+  if (customization_ == ct) return;
+  customization_ = ct;
+  for (auto& drawer : drawers_) drawer->SetCustomizationType(ct);
+}
+
+void WidgetPluginBasePrivate::SetTexturePerElement(bool enable)
+{
+  if (texture_per_element_ == enable) return;
+  texture_per_element_ = enable;
+  for (auto& drawer : drawers_) drawer->SetTexturePerElement(enable);
+}
+
+void WidgetPluginBasePrivate::SetTextureDrawMode(const skin_draw::SkinDrawer::DrawMode dm)
+{
+  if (draw_mode_ == dm) return;
+  draw_mode_ = dm;
+  for (auto& drawer : drawers_) drawer->SetTextureDrawMode(dm);
+}
+
+void WidgetPluginBasePrivate::SetSpacing(const int spacing)
+{
+  if (spacing_ != spacing) return;
+  spacing_ = spacing;
+  for (auto& drawer : drawers_) drawer->SetSpace(spacing);
+}
+
+void WidgetPluginBasePrivate::SetZoom(const qreal zoom)
+{
+  if (qFuzzyIsNull(zoom) || qFuzzyCompare(zoom_, zoom)) return;
+  zoom_ = zoom;
+  for (auto& drawer : drawers_) drawer->SetZoom(zoom);
+}
+
+void WidgetPluginBasePrivate::DrawText(const QString& text)
+{
+  if (!text.isEmpty()) last_text_ = text;
+  for (auto& drawer : drawers_) drawer->SetString(text);
+}
+
+skin_draw::ISkin::SkinPtr WidgetPluginBasePrivate::CreateTextSkin(const QFont& fnt)
+{
+  return skin_draw::ISkin::SkinPtr(new ::skin_draw::TextSkin(fnt));
 }
 
 } // namespace plugin

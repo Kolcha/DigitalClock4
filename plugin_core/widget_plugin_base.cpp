@@ -54,24 +54,24 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
 
       case OPT_COLOR:
         private_->clock_color_ = iter.value().value<QColor>();
-        private_->drawer_->SetColor(private_->clock_color_);
+        private_->SetColor(private_->clock_color_);
         break;
 
       case OPT_TEXTURE:
-        private_->drawer_->SetTexture(iter.value().toString());
+        private_->SetTexture(iter.value().toString());
         break;
 
       case OPT_TEXTURE_TYPE:
         private_->clock_customization_ = iter.value().value< ::skin_draw::SkinDrawer::CustomizationType>();
-        private_->drawer_->SetCustomizationType(private_->clock_customization_);
+        private_->SetCustomizationType(private_->clock_customization_);
         break;
 
       case OPT_TEXTURE_PER_ELEMENT:
-        private_->drawer_->SetTexturePerElement(iter.value().toBool());
+        private_->SetTexturePerElement(iter.value().toBool());
         break;
 
       case OPT_TEXTURE_DRAW_MODE:
-        private_->drawer_->SetTextureDrawMode(iter.value().value< ::skin_draw::SkinDrawer::DrawMode>());
+        private_->SetTextureDrawMode(iter.value().value< ::skin_draw::SkinDrawer::DrawMode>());
         break;
 
       case OPT_CUSTOMIZATION:
@@ -81,7 +81,7 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
           case Customization::C_NONE:
           case Customization::C_COLORIZE:
             private_->clock_customization_ = ::skin_draw::SkinDrawer::CT_NONE;
-            private_->drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
+            private_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
             break;
 
           default:
@@ -94,7 +94,7 @@ void WidgetPluginBase::Init(const QMap<Option, QVariant>& current_settings)
         break;
     }
   }
-  private_->drawer_->SetSpace(2);
+  private_->SetSpacing(2);
 }
 
 void WidgetPluginBase::Init(QWidget* main_wnd)
@@ -128,7 +128,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
 
       switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE)).toInt())) {
         case ZoomMode::ZM_NOT_ZOOM:
-          private_->drawer_->SetZoom(1.0);
+          private_->SetZoom(1.0);
           break;
 
         case ZoomMode::ZM_AUTOSIZE:
@@ -145,24 +145,19 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
       if (!settings_->GetOption(OptionKey(OPT_USE_CLOCK_FONT)).toBool()) break;
       private_->font_ = private_->clock_font_;
       if (settings_->GetOption(OptionKey(OPT_USE_CLOCK_SKIN)).toBool()) break;
-      skin_draw::ISkin::SkinPtr txt_skin(new ::skin_draw::TextSkin(private_->font_));
-      // TODO: what about monitors with different DPI?
-      // for now assume that all monitors have same DPI
-      // related to "different config per window"
-      private_->drawer_->SetDevicePixelRatio(private_->plg_widgets_[0]->devicePixelRatioF());
-      private_->ApplySkin(txt_skin);
+      private_->ApplySkin(skin_draw::ISkin::SkinPtr(new ::skin_draw::TextSkin(private_->font_)));
       break;
     }
 
     case OPT_ZOOM:
       switch (static_cast<ZoomMode>(settings_->GetOption(OptionKey(OPT_ZOOM_MODE)).toInt())) {
         case ZoomMode::ZM_NOT_ZOOM:
-          private_->drawer_->SetZoom(1.0);
+          private_->SetZoom(1.0);
           break;
 
         case ZoomMode::ZM_AUTOSIZE:
           avail_width_ = private_->CalculateAvailableSpace();
-          private_->drawer_->SetZoom(CalculateZoom(private_->last_text_));
+          private_->SetZoom(CalculateZoom(private_->last_text_));
           break;
       }
 
@@ -171,25 +166,25 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
     case OPT_COLOR:
       private_->clock_color_ = new_value.value<QColor>();
       if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR)).toBool()) break;
-      private_->drawer_->SetColor(private_->clock_color_);
+      private_->SetColor(private_->clock_color_);
       break;
 
     case OPT_TEXTURE:
-      private_->drawer_->SetTexture(new_value.toString());
+      private_->SetTexture(new_value.toString());
       break;
 
     case OPT_TEXTURE_TYPE:
       private_->clock_customization_ = new_value.value< ::skin_draw::SkinDrawer::CustomizationType>();
       if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR)).toBool()) break;
-      private_->drawer_->SetCustomizationType(private_->clock_customization_);
+      private_->SetCustomizationType(private_->clock_customization_);
       break;
 
     case OPT_TEXTURE_PER_ELEMENT:
-      private_->drawer_->SetTexturePerElement(new_value.toBool());
+      private_->SetTexturePerElement(new_value.toBool());
       break;
 
     case OPT_TEXTURE_DRAW_MODE:
-      private_->drawer_->SetTextureDrawMode(new_value.value< ::skin_draw::SkinDrawer::DrawMode>());
+      private_->SetTextureDrawMode(new_value.value< ::skin_draw::SkinDrawer::DrawMode>());
       break;
 
     case OPT_CUSTOMIZATION:
@@ -200,7 +195,7 @@ void WidgetPluginBase::SettingsListener(Option option, const QVariant& new_value
         case Customization::C_COLORIZE:
           private_->clock_customization_ = ::skin_draw::SkinDrawer::CT_NONE;
           if (settings_->GetOption(OptionKey(OPT_USE_CUSTOM_COLOR)).toBool()) break;
-          private_->drawer_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
+          private_->SetCustomizationType(::skin_draw::SkinDrawer::CT_NONE);
           break;
 
         default:
@@ -242,19 +237,18 @@ void WidgetPluginBase::TimeUpdateListener()
       break;
 
     case ZoomMode::ZM_AUTOSIZE:
-      private_->drawer_->SetString(QString());  // set empty string to do not redraw twice
-      private_->drawer_->SetZoom(CalculateZoom(cur_text));
+      private_->DrawText(QString());  // set empty string to do not redraw twice
+      private_->SetZoom(CalculateZoom(cur_text));
       break;
   }
 
-  private_->drawer_->SetString(cur_text);
-  private_->last_text_ = cur_text;
+  private_->DrawText(cur_text);
 }
 
 void WidgetPluginBase::SetSkin(skin_draw::ISkin::SkinPtr skin)
 {
   private_->clock_skin_ = skin;
-  private_->ApplySkin(skin);
+  if (settings_->GetOption(OptionKey(OPT_USE_CLOCK_SKIN)).toBool()) private_->ApplySkin(skin);
 }
 
 void WidgetPluginBase::InitSettingsDefaults(QSettings::SettingsMap* defaults)
@@ -279,13 +273,13 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
   QStringList ss = text.split('\n');
   int tw = 0;
   int th = 0;
-  const int space = private_->drawer_->spacing();
+  const int space = private_->spacing();
 
   for (auto& s : ss) {
     int lw = 0;
     int lh = 0;
     for (int i = 0; i < s.length(); ++i) {
-      QPixmap img = private_->drawer_->currentSkin()->GetImage(s, i, zoom, true);
+      QPixmap img = private_->currentSkin()->GetImage(s, i, zoom, true);
       if (!img) continue;
       lw += img.width() + space;
       lh = qMax(lh, img.height());
