@@ -228,6 +228,7 @@ void ClockWindow::ApplyOption(const Option opt, const QVariant& value)
 
     case OPT_ALIGNMENT:
       cur_alignment_ = static_cast<CAlignment>(value.toInt());
+      clock_widget_->ApplyOption(opt, value);
       break;
 
     case OPT_BACKGROUND_ENABLED:

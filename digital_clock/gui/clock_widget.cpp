@@ -160,6 +160,26 @@ void ClockWidget::ApplyOption(Option option, const QVariant& value)
       display_->SetURL(value.toString());
       break;
 
+    case OPT_ALIGNMENT:
+      switch (static_cast<CAlignment>(value.toInt())) {
+        case CAlignment::A_LEFT:
+          display_->setAlignment(Qt::AlignLeft);
+          break;
+
+        case CAlignment::A_CENTER:
+          display_->setAlignment(Qt::AlignCenter);
+          break;
+
+        case CAlignment::A_RIGHT:
+          display_->setAlignment(Qt::AlignRight);
+          break;
+
+        default:
+          Q_ASSERT(false);
+          break;
+      }
+      break;
+
     default:
       break;
   }
