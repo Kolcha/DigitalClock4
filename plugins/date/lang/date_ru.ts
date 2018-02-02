@@ -37,6 +37,16 @@
         <translation>пользовательский</translation>
     </message>
     <message>
+        <location filename="../gui/settings_dialog.ui" line="124"/>
+        <source>MMMM d, yyyy&apos;\nWeek: &apos;WW</source>
+        <translation>MMMM d, yyyy&apos;\nНеделя: &apos;WW</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="134"/>
+        <source>yyyy-MM-dd&apos;\nweek&apos;: WW&apos;\nday&apos;: J</source>
+        <translation>yyyy-MM-dd&apos;\nнеделя&apos;: WW&apos;\nдень&apos;: J</translation>
+    </message>
+    <message>
         <location filename="../gui/settings_dialog.cpp" line="33"/>
         <source>default</source>
         <translation>по умолчанию</translation>

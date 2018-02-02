@@ -61,12 +61,27 @@
         </item>
         <item>
          <property name="text">
+          <string notr="true">dd.MM.yy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string notr="true">MM/dd/yyyy</string>
          </property>
         </item>
         <item>
          <property name="text">
           <string notr="true">M/d/yyyy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string notr="true">MM/dd/yy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string notr="true">M/d/yy</string>
          </property>
         </item>
         <item>
@@ -106,7 +121,7 @@
         </item>
         <item>
          <property name="text">
-          <string notr="true">MMMM d, yyyy'\nWeek: 'WW</string>
+          <string>MMMM d, yyyy'\nWeek: 'WW</string>
          </property>
         </item>
         <item>
@@ -116,7 +131,7 @@
         </item>
         <item>
          <property name="text">
-          <string notr="true">yyyy-MM-dd'\nweek': WW'\nday': J</string>
+          <string>yyyy-MM-dd'\nweek': WW'\nday': J</string>
          </property>
         </item>
        </widget>
