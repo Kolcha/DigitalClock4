@@ -125,7 +125,9 @@ void PluginManager::ConfigurePlugin(const QString& name)
     IClockPlugin* plugin = qobject_cast<IClockPlugin*>(iter.value()->instance());
     if (plugin) plugin->Configure();
   } else {
-    QString file = available_[name];
+    auto iter = available_.constFind(name);
+    if (iter == available_.constEnd()) return;
+    const QString& file = iter.value();
     if (!QFile::exists(file)) return;
     QPluginLoader* loader = new QPluginLoader(file, this);
     if (!loader->instance()) {
@@ -148,7 +150,9 @@ void PluginManager::ConfigurePlugin(const QString& name)
 void PluginManager::LoadPlugin(const QString& name)
 {
   if (loaded_.contains(name)) return;
-  QString file = available_[name];
+  auto iter = available_.constFind(name);
+  if (iter == available_.constEnd()) return;
+  const QString& file = iter.value();
   if (!QFile::exists(file)) return;
   QPluginLoader* loader = new QPluginLoader(file, this);
   IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader->instance());

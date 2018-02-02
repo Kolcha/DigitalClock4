@@ -22,7 +22,10 @@ namespace skin_draw {
 
 QPixmap RasterSkin::ResizeImage(const QString& str, int idx, Zoom zoom)
 {
-  const QPixmap& original = orig_images_[str[idx]];
+  auto iter = orig_images_.constFind(str[idx]);
+  if (iter == orig_images_.constEnd()) return QPixmap();
+
+  const QPixmap& original = iter.value();
   if (original.isNull()) return QPixmap();
 
   return original.scaled(original.size() * zoom,
