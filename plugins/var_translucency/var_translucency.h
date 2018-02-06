@@ -24,6 +24,17 @@
 
 namespace var_translucency {
 
+class IOpacityChanger
+{
+public:
+  virtual ~IOpacityChanger() = default;
+
+  virtual void setOpacity(const qreal opacity) = 0;
+  virtual qreal opacity() const = 0;
+
+  virtual IOpacityChanger& operator ++() = 0;
+};
+
 class VarTranslucency : public ISettingsPlugin, public ISettingsPluginInit
 {
   Q_OBJECT
@@ -41,8 +52,7 @@ public slots:
 
 private:
   qreal old_opacity_;
-  qreal cur_opacity_;
-  qreal op_step_;
+  IOpacityChanger* changer_;
 };
 
 } // namespace var_translucency
