@@ -29,8 +29,8 @@
 
 #include "core/clock_settings.h"
 
-#include "gui/clock_display.h"
 #include "gui/clock_widget.h"
+#include "gui/clock_window.h"
 
 namespace digital_clock {
 namespace core {
@@ -197,8 +197,8 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
     // TODO: what about if each window will have own settings in future?
     // for now (and first release with "multiwindow support") all windows will have same settings
     if (connected)
-      connect(data_.windows[0], &gui::ClockWidget::SkinChanged, su, &ISkinUserPlugin::SetSkin);
-    su->SetSkin(data_.windows[0]->skin());
+      connect(data_.windows[0]->clockWidget(), &gui::ClockWidget::SkinChanged, su, &ISkinUserPlugin::SetSkin);
+    su->SetSkin(data_.windows[0]->clockWidget()->skin());
   }
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
