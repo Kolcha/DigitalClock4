@@ -1,3 +1,24 @@
+Whats new in 4.7.1:
+-------------------
+Features:
+ - single instance
+
+Core:
+ - Qt 5.9.4 for macOS and Linux
+ - fixed unstable bug related with plugins unload
+ - descreased disk I/O usage
+
+GUI:
+ - better support for multimonitor systems with different DPI
+ - ability to align clock to plugins messages
+
+Plugins:
+ - talking clock: respect custom time zone
+ - date: added few date formats
+ - widget plugins: allow sizes >100%
+ - fixed few plugins after previous update
+
+
 Whats new in 4.7.0:
 -------------------
 Features:
