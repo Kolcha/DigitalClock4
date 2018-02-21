@@ -18,11 +18,18 @@ export LD_LIBRARY_PATH="$QT_ROOT/lib"
 src_binary=$1
 [[ -z $2 ]] && target_path="." || target_path=$2
 
+
+function copy_file() {
+  name=$(basename "$1")
+  [[ -f "$target_path/$name" ]] || cp -L "$1" "$target_path/"
+}
+
+
 function deploy_plugin() {
   qt_libs=$(ldd "$QT_ROOT/$1" | grep "$QT_ROOT" | grep -o -e '\/.*\.so\.[0-9]\+')
   for f in $qt_libs
   do
-    [[ -f $(basename "$f") ]] || cp -L "$f" "$target_path/"
+    copy_file "$f"
   done
 }
 
@@ -39,12 +46,12 @@ function deploy_plugins_list() {
 }
 
 
-[[ -d "$target_path/plugins" ]] || mkdir "$target_path/plugins"
+[[ -d "$target_path/plugins" ]] || mkdir -p "$target_path/plugins"
 
 qt_libs=$(ldd "$src_binary" | grep "$QT_ROOT" | grep -o -e '\/.*\.so\.[0-9]\+')
 for f in $qt_libs
 do
-  [[ -f $(basename "$f") ]] || cp -L "$f" "$target_path/"
+  copy_file "$f"
   [[ $(echo "$f" | grep -i "gui") != "" ]] && deploy_plugins_list "$gui_lst"
   [[ $(echo "$f" | grep -i "network") != "" ]] && deploy_plugins_list "$net_lst"
   [[ $(echo "$f" | grep -i "multimedia") != "" ]] && deploy_plugins_list "$mm_lst"
