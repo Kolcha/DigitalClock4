@@ -19,10 +19,6 @@
 #include "tray_control.h"
 
 #include <QIcon>
-#ifdef Q_OS_MACOS
-#include <QSysInfo>
-#include <QVersionNumber>
-#endif
 #include <QApplication>
 
 #include "gui/context_menu.h"
@@ -45,10 +41,7 @@ TrayControl::TrayControl(QObject* parent) : QObject(parent)
 #else
   QIcon tray_icon(":/clock/icons/tray/clock.svg");
 #endif
-#ifdef Q_OS_MACOS
-  if (QVersionNumber::fromString(QSysInfo::productVersion()) >= QVersionNumber(10, 10))
-#endif
-    tray_icon.setIsMask(true);
+  tray_icon.setIsMask(true);
   tray_icon_ = new QSystemTrayIcon(tray_icon, this);
   tray_icon_->setVisible(true);
   tray_icon_->setContextMenu(tray_menu_->menu());
