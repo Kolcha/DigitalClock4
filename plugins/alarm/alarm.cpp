@@ -63,7 +63,11 @@ void Alarm::InitSettings(SettingsStorage* backend, const QString& name)
 
 void Alarm::Start()
 {
+#ifdef Q_OS_WIN
+  QIcon tray_icon(":/alarm/alarm_clock-alt.svg");
+#else
   QIcon tray_icon(":/alarm/alarm_clock.svg.p");
+#endif
   tray_icon.setIsMask(true);
   tray_icon_->setIcon(tray_icon);
   icon_changed_ = true;

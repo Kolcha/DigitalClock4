@@ -40,7 +40,11 @@ TrayControl::TrayControl(QObject* parent) : QObject(parent)
   connect(tray_menu_, &ContextMenu::CheckForUpdates, this, &TrayControl::CheckForUpdates);
   connect(tray_menu_, &ContextMenu::AppExit, this, &TrayControl::AppExit);
 
-  QIcon tray_icon(":/clock/images/clock.svg");
+#ifdef Q_OS_WIN
+  QIcon tray_icon(":/clock/icons/tray/clock-alt.svg");
+#else
+  QIcon tray_icon(":/clock/icons/tray/clock.svg");
+#endif
 #ifdef Q_OS_MACOS
   if (QVersionNumber::fromString(QSysInfo::productVersion()) >= QVersionNumber(10, 10))
 #endif
