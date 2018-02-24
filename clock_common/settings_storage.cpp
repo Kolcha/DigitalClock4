@@ -20,26 +20,15 @@
 
 #include "config_serialization.h"
 
-#ifdef PORTABLE_VERSION
-#include <QApplication>
-#include <QDir>
-
-static QString GetConfigFileName()
-{
-  QDir app_dir(QApplication::applicationDirPath());
-  return app_dir.filePath("settings.ini");
-}
-
-SettingsStorage::SettingsStorage(QObject* parent) :
-  QObject(parent),
-  storage_(GetConfigFileName(), QSettings::IniFormat)
-{
-}
-#else
 SettingsStorage::SettingsStorage(QObject* parent) : QObject(parent)
 {
 }
-#endif
+
+SettingsStorage::SettingsStorage(const QString& filename, QObject* parent) :
+  QObject(parent),
+  storage_(filename, QSettings::IniFormat)
+{
+}
 
 void SettingsStorage::SetValue(const QString& key, const QVariant& value)
 {

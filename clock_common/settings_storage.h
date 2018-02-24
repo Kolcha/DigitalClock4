@@ -46,6 +46,12 @@ class CLOCK_COMMON_EXPORT SettingsStorage : public QObject
 public:
   /*! Constructor */
   explicit SettingsStorage(QObject* parent = nullptr);
+  /*!
+   * Constructs file-based settigs storage.
+   * @param filename - file path where to store all settings
+   * @param parent - parent QObject
+   */
+  explicit SettingsStorage(const QString& filename, QObject* parent = nullptr);
 
   /*!
    * Change option value only in runtime storage.

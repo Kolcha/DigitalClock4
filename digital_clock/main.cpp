@@ -16,6 +16,10 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifdef PORTABLE_VERSION
+#include <QDir>
+#include <QFileInfo>
+#endif
 #ifdef HAVE_SINGLEAPPLICATION
 #include <singleapplication.h>
 #else
@@ -47,7 +51,12 @@ int main(int argc, char* argv[])
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
+#ifdef PORTABLE_VERSION
+  QFileInfo fi{QDir::fromNativeSeparators(QLatin1String(argv[0]))};
+  SettingsStorage config_backend{fi.absoluteDir().absoluteFilePath("settings.ini")};
+#else
   SettingsStorage config_backend;
+#endif
   digital_clock::core::ClockSettings app_config(&config_backend);
 #ifdef HAVE_SINGLEAPPLICATION
   SingleApplication app(argc, argv, !app_config.GetValue(OPT_ONLY_ONE_INSTANCE).toBool());
