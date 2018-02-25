@@ -80,9 +80,10 @@ public slots:
 
 private slots:
   void ShowContextMenu(const QPoint& p);
+  void CorrectPosition();
 
 private:
-  void CorrectPosition();
+  void CorrectPositionImpl();
 #ifdef Q_OS_WIN
   void WinOnTopWorkaround();
 #endif

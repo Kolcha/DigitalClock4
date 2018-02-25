@@ -101,7 +101,7 @@ bool ClockWindow::previewMode() const
 void ClockWindow::showEvent(QShowEvent* event)
 {
   SetVisibleOnAllDesktops(app_config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
-  CorrectPosition();
+  CorrectPositionImpl();
   c_menu_->visibilityAction()->setChecked(true);
   QWidget::showEvent(event);
 }
@@ -414,7 +414,11 @@ void ClockWindow::ShowContextMenu(const QPoint& p)
 
 void ClockWindow::CorrectPosition()
 {
-  if (!keep_always_visible_) return;
+  if (keep_always_visible_) CorrectPositionImpl();
+}
+
+void ClockWindow::CorrectPositionImpl()
+{
   QPoint curr_pos = this->pos();
   QScreen* screen = QApplication::screens()[id_-1];
   QDesktopWidget* desktop = QApplication::desktop();
