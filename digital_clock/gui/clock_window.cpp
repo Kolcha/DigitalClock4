@@ -199,7 +199,8 @@ void ClockWindow::resizeEvent(QResizeEvent* event)
 
 void ClockWindow::moveEvent(QMoveEvent* event)
 {
-  if (!dragging_ && event->pos() != event->oldPos()) SaveState();
+  if (!dragging_ && (event->pos() != event->oldPos()) && !clock_widget_->preview())
+    SaveState();
   QWidget::moveEvent(event);
 }
 
