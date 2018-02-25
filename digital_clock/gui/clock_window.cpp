@@ -27,7 +27,6 @@
 #include <QScreen>
 #include <QDesktopWidget>
 #include <QMenu>
-#include <QWindow>
 
 #include "core/clock_settings.h"
 #include "core/clock_state.h"
@@ -396,15 +395,18 @@ void ClockWindow::SaveState()
 
 void ClockWindow::MoveWindow(Qt::Alignment align)
 {
-  QWindow* wnd = this->windowHandle();
-  QRect screen = wnd->screen()->availableGeometry();
-  QRect window = wnd->frameGeometry();
-  if (align & Qt::AlignLeft) wnd->setX(screen.left());
-  if (align & Qt::AlignHCenter) wnd->setX(screen.center().x() - window.width() / 2);
-  if (align & Qt::AlignRight) wnd->setX(screen.right() - window.width());
-  if (align & Qt::AlignTop) wnd->setY(screen.top());
-  if (align & Qt::AlignVCenter) wnd->setY(screen.center().y() - window.height() / 2);
-  if (align & Qt::AlignBottom) wnd->setY(screen.bottom() - window.height());
+  bool show_on_all_monitors = app_config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool();
+  int screen_idx = show_on_all_monitors ? id_-1 : QApplication::desktop()->screenNumber(this->pos());
+  QRect screen = QApplication::screens()[screen_idx]->availableGeometry();
+  QRect window = this->frameGeometry();
+  QPoint curr_pos = this->pos();
+  if (align & Qt::AlignLeft) curr_pos.setX(screen.left());
+  if (align & Qt::AlignHCenter) curr_pos.setX(screen.center().x() - window.width() / 2);
+  if (align & Qt::AlignRight) curr_pos.setX(screen.right() - window.width());
+  if (align & Qt::AlignTop) curr_pos.setY(screen.top());
+  if (align & Qt::AlignVCenter) curr_pos.setY(screen.center().y() - window.height() / 2);
+  if (align & Qt::AlignBottom) curr_pos.setY(screen.bottom() - window.height());
+  if (curr_pos != this->pos()) this->move(curr_pos);
 }
 
 void ClockWindow::ShowContextMenu(const QPoint& p)
@@ -420,14 +422,13 @@ void ClockWindow::CorrectPosition()
 void ClockWindow::CorrectPositionImpl()
 {
   QPoint curr_pos = this->pos();
-  QScreen* screen = QApplication::screens()[id_-1];
-  QDesktopWidget* desktop = QApplication::desktop();
   bool show_on_all_monitors = app_config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool();
-  QRect target_rect = show_on_all_monitors ? screen->geometry() : desktop->geometry();
-  curr_pos.setX(std::max(curr_pos.x(), target_rect.left()));
-  curr_pos.setX(std::min(curr_pos.x(), target_rect.left() + target_rect.width() - this->width()));
-  curr_pos.setY(std::max(curr_pos.y(), target_rect.top()));
-  curr_pos.setY(std::min(curr_pos.y(), target_rect.top() + target_rect.height() - this->height()));
+  int screen_idx = show_on_all_monitors ? id_-1 : QApplication::desktop()->screenNumber(this->pos());
+  QRect screen = QApplication::screens()[screen_idx]->availableGeometry();
+  curr_pos.setX(std::max(curr_pos.x(), screen.left()));
+  curr_pos.setX(std::min(curr_pos.x(), screen.left() + screen.width() - this->width()));
+  curr_pos.setY(std::max(curr_pos.y(), screen.top()));
+  curr_pos.setY(std::min(curr_pos.y(), screen.top() + screen.height() - this->height()));
   if (curr_pos != this->pos()) this->move(curr_pos);
 }
 
