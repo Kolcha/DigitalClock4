@@ -415,11 +415,14 @@ void ClockWindow::CorrectPosition()
 {
   if (!keep_always_visible_) return;
   QPoint curr_pos = this->pos();
+  QScreen* screen = QApplication::screens()[id_-1];
   QDesktopWidget* desktop = QApplication::desktop();
-  curr_pos.setX(std::max(curr_pos.x(), desktop->geometry().left()));
-  curr_pos.setX(std::min(curr_pos.x(), desktop->geometry().right() - this->width()));
-  curr_pos.setY(std::max(curr_pos.y(), desktop->geometry().top()));
-  curr_pos.setY(std::min(curr_pos.y(), desktop->geometry().bottom() - this->height()));
+  bool show_on_all_monitors = app_config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool();
+  QRect target_rect = show_on_all_monitors ? screen->geometry() : desktop->geometry();
+  curr_pos.setX(std::max(curr_pos.x(), target_rect.left()));
+  curr_pos.setX(std::min(curr_pos.x(), target_rect.left() + target_rect.width() - this->width()));
+  curr_pos.setY(std::max(curr_pos.y(), target_rect.top()));
+  curr_pos.setY(std::min(curr_pos.y(), target_rect.top() + target_rect.height() - this->height()));
   if (curr_pos != this->pos()) this->move(curr_pos);
 }
 
