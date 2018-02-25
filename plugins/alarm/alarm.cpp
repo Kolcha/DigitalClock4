@@ -19,6 +19,10 @@
 #include "alarm.h"
 
 #include <QSystemTrayIcon>
+#ifdef Q_OS_WIN
+#include <QSysInfo>
+#include <QVersionNumber>
+#endif
 #include <QMenu>
 #include <QFile>
 #include <QDir>
@@ -64,7 +68,11 @@ void Alarm::InitSettings(SettingsStorage* backend, const QString& name)
 void Alarm::Start()
 {
 #ifdef Q_OS_WIN
-  QIcon tray_icon(":/alarm/alarm_clock-alt.svg");
+  QIcon tray_icon;
+  if (QVersionNumber::fromString(QSysInfo::productVersion()) >= QVersionNumber(10))
+    tray_icon = QIcon(":/alarm/alarm_clock-alt.svg");
+  else
+    tray_icon = QIcon(":/alarm/alarm_clock.svg.p");
 #else
   QIcon tray_icon(":/alarm/alarm_clock.svg.p");
 #endif

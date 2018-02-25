@@ -19,6 +19,10 @@
 #include "tray_control.h"
 
 #include <QIcon>
+#ifdef Q_OS_WIN
+#include <QSysInfo>
+#include <QVersionNumber>
+#endif
 #include <QApplication>
 
 #include "gui/context_menu.h"
@@ -37,7 +41,11 @@ TrayControl::TrayControl(QObject* parent) : QObject(parent)
   connect(tray_menu_, &ContextMenu::AppExit, this, &TrayControl::AppExit);
 
 #ifdef Q_OS_WIN
-  QIcon tray_icon(":/clock/icons/tray/clock-alt.svg");
+  QIcon tray_icon;
+  if (QVersionNumber::fromString(QSysInfo::productVersion()) >= QVersionNumber(10))
+    tray_icon = QIcon(":/clock/icons/tray/clock-alt.svg");
+  else
+    tray_icon = QIcon(":/clock/icons/tray/clock.svg");
 #else
   QIcon tray_icon(":/clock/icons/tray/clock.svg");
 #endif
