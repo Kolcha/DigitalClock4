@@ -50,9 +50,6 @@
             <Component Id="cmpAA3D914703C06C9AB58FC4425223E6E8" Directory="dirD97694D95A5C47981248FBF5CBA0999C" Guid="{ABAA9114-5D4C-42BE-874B-09963451C5D1}" Win64="yes">
                 <File Id="fil11A67234958E64E05DF7D434AD2C21BB" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\bearer\qgenericbearer.dll" />
             </Component>
-            <Component Id="cmpF183D8CFFBD5B37BB5AD4ED65683ACFB" Directory="dirD97694D95A5C47981248FBF5CBA0999C" Guid="{D05362E4-8EAB-4B63-B65C-BBA0066ACC3F}" Win64="yes">
-                <File Id="fil723D25665013F184931C8ACAC2357D19" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\bearer\qnativewifibearer.dll" />
-            </Component>
             <Component Id="cmp8868342A11EC1A5F0F368534A0870AAB" Directory="dir2C41C47317919F7F40F42C2D5CABDBDE" Guid="{783BF0F3-E0E6-47F2-8682-41789F9C53A8}" Win64="yes">
                 <File Id="filACA0F8188FFBA3FCA53DDF584A3C92BA" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\iconengines\qsvgicon.dll" />
             </Component>
@@ -103,6 +100,9 @@
             </Component>
             <Component Id="cmp14EF22A303E6189FA057C5D2D9F6CA78" Directory="dirFD1BCE11301C261726ED73090AF7A818" Guid="{6E864B23-8393-4D1E-A922-F43C0AD9808E}" Win64="yes">
                 <File Id="fil63C3882A52CED0212AB97283131F3730" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\texttospeech\qtexttospeech_sapi.dll" />
+            </Component>
+            <Component Id="cmpBCDC6995284E75B9A24E4646E6117744" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{DDA65A70-9099-467F-B9F2-C3398BC3B6B4}" Win64="yes">
+                <File Id="fil694FD3DFB9C088844BF9929014423509" KeyPath="yes" Source="..\..\..\qt-files-x64\translations\qt_ar.qm" />
             </Component>
             <Component Id="cmp3B3D2ADEE08668758CB9FDB1D243AA11" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{A8732195-1CD9-4125-B326-DA960812A668}" Win64="yes">
                 <File Id="fil0877F2432B761D0289C5DB92EC1E528E" KeyPath="yes" Source="..\..\..\qt-files-x64\translations\qt_bg.qm" />
