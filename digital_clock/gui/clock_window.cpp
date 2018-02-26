@@ -424,7 +424,7 @@ void ClockWindow::CorrectPositionImpl()
   QPoint curr_pos = this->pos();
   bool show_on_all_monitors = app_config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool();
   int screen_idx = show_on_all_monitors ? id_-1 : QApplication::desktop()->screenNumber(this->pos());
-  QRect screen = QApplication::screens()[screen_idx]->availableGeometry();
+  QRect screen = QApplication::screens()[screen_idx]->geometry();
   curr_pos.setX(std::max(curr_pos.x(), screen.left()));
   curr_pos.setX(std::min(curr_pos.x(), screen.left() + screen.width() - this->width()));
   curr_pos.setY(std::max(curr_pos.y(), screen.top()));
