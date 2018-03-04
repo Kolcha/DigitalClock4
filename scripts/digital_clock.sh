@@ -9,10 +9,67 @@
 #
 # Clock launcher script
 #
-# This script is improved version of script from
-# http://doc.qt.io/qt-5/linux-deployment.html#creating-the-application-package
-#
 
+function detect_kde()
+{
+  if [[ "$XDG_CURRENT_DESKTOP" == "KDE" || "$XDG_SESSION_DESKTOP" == "KDE" ]]
+  then
+    echo 1
+  else
+    echo 0
+  fi
+}
+
+
+function compare_versions()
+{
+  lhs=($(echo $1 | tr '.' '\n'))
+  rhs=($(echo $2 | tr '.' '\n'))
+  res=0
+  for ((i=0; i<3; i++))
+  do
+    [[ $res -ne 0 ]] && break
+    [[ ${lhs[i]} -gt ${rhs[i]} ]] && { res=1; }
+    [[ ${lhs[i]} -lt ${rhs[i]} ]] && { res=-1; }
+  done
+  echo $res
+}
+
+
+function validate_system_qt()
+{
+  required_vers=$(echo $1 | sed 's/\..$/\.0/g')
+  required_libs=$2
+
+  qt_core=$(find /usr/lib* -name libQt5Core.so.5 2> /dev/null)
+  if [[ -n "$qt_core" ]]
+  then
+    version=$(ls -1 $qt_core* | grep -Po '\d+\.\d+\.\d+')
+
+   # validate system Qt version
+    if [[ $(compare_versions $version $required_vers) -ge 0 ]]
+    then
+      qt_path=$(dirname $qt_core)
+      # check is all required libraries are available
+      all_found=1
+      for lib in $required_libs
+      do
+        [[ $all_found -eq 1 ]] && [[ -f "$qt_path/$lib" ]] || { all_found=0; }
+      done
+
+      if [[ $all_found -eq 1 ]]
+      then
+        echo 1
+        return
+      fi
+    fi
+  fi
+
+  echo 0
+}
+
+
+# handle script arguments
 autostart=0
 
 ARGS=()
@@ -39,7 +96,17 @@ then
   dirname=$PWD/$dirname
 fi
 
-export QT_QPA_PLATFORMTHEME=gtk2
-export LD_LIBRARY_PATH="$dirname/qt:$LD_LIBRARY_PATH"
+# work in application directory
+cd "$dirname"
+
+qt_vers=$("./qt/libQt5Core.so.5" | grep -Po 'Qt \d+\.\d+\.\d+' | cut -c 3- -)
+qt_libs=$(ls -1 "qt/" | grep libQt5 | grep -vi gl | grep -vi qpa)
+
+# on KDE systems try to use system Qt libraries instead of shipped ones
+if [[ $(detect_kde) -eq 0 || $(validate_system_qt "$qt_vers" "$qt_libs") -eq 0 ]]
+then
+  export QT_QPA_PLATFORMTHEME=gtk2
+  export LD_LIBRARY_PATH="$dirname/qt:$LD_LIBRARY_PATH"
+fi
 export LD_LIBRARY_PATH="$dirname:$LD_LIBRARY_PATH"
-"$dirname/$appname" "${ARGS[@]}"
+"./$appname" ${ARGS[@]}
