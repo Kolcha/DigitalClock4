@@ -26,9 +26,9 @@
 namespace digital_clock {
 namespace gui {
 
-ContextMenu::ContextMenu(QObject* parent) : QObject(parent)
+ContextMenu::ContextMenu(QWidget* parent) : QObject(parent)
 {
-  menu_ = new QMenu();
+  menu_ = new QMenu(parent);
   visibility_action_ = menu_->addAction(tr("&Visible"), this, &ContextMenu::VisibilityChanged);
   visibility_action_->setCheckable(true);
   visibility_action_->setChecked(true);

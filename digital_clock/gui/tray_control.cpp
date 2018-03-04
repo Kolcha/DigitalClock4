@@ -32,7 +32,7 @@ namespace gui {
 
 TrayControl::TrayControl(QObject* parent) : QObject(parent)
 {
-  tray_menu_ = new ContextMenu(this);
+  tray_menu_ = new ContextMenu();
   connect(tray_menu_, &ContextMenu::VisibilityChanged, this, &TrayControl::VisibilityChanged);
   connect(tray_menu_, &ContextMenu::PositionChanged, this, &TrayControl::PositionChanged);
   connect(tray_menu_, &ContextMenu::ShowSettingsDlg, this, &TrayControl::ShowSettingsDlg);
@@ -55,6 +55,11 @@ TrayControl::TrayControl(QObject* parent) : QObject(parent)
   tray_icon_->setContextMenu(tray_menu_->menu());
   tray_icon_->setToolTip(QApplication::applicationDisplayName() + " " + QApplication::applicationVersion());
   connect(tray_icon_, &QSystemTrayIcon::activated, this, &TrayControl::TrayEventHandler);
+}
+
+TrayControl::~TrayControl()
+{
+  delete tray_menu_;
 }
 
 QSystemTrayIcon* TrayControl::GetTrayIcon() const noexcept

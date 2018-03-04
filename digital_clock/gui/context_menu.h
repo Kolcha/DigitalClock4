@@ -32,7 +32,7 @@ class ContextMenu : public QObject
   Q_OBJECT
 
 public:
-  explicit ContextMenu(QObject* parent = nullptr);
+  explicit ContextMenu(QWidget* parent = nullptr);
   ~ContextMenu();
 
   QMenu* menu() const Q_DECL_NOEXCEPT { return menu_; }
