@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::core::ClockApplication</name>
     <message>
-        <location filename="../core/clock_application.cpp" line="295"/>
-        <location filename="../core/clock_application.cpp" line="305"/>
-        <location filename="../core/clock_application.cpp" line="315"/>
+        <location filename="../core/clock_application.cpp" line="296"/>
+        <location filename="../core/clock_application.cpp" line="306"/>
+        <location filename="../core/clock_application.cpp" line="316"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="296"/>
+        <location filename="../core/clock_application.cpp" line="297"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="306"/>
+        <location filename="../core/clock_application.cpp" line="307"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="316"/>
+        <location filename="../core/clock_application.cpp" line="317"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="328"/>
+        <location filename="../core/clock_application.cpp" line="329"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>

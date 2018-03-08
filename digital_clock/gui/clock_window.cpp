@@ -99,7 +99,6 @@ bool ClockWindow::previewMode() const
 
 void ClockWindow::showEvent(QShowEvent* event)
 {
-  SetVisibleOnAllDesktops(app_config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
   CorrectPositionImpl();
   c_menu_->visibilityAction()->setChecked(true);
   QWidget::showEvent(event);
@@ -264,6 +263,10 @@ void ClockWindow::ApplyOption(const Option opt, const QVariant& value)
 
     case OPT_SHOW_HIDE_ENABLED:
       c_menu_->visibilityAction()->setVisible(value.toBool());
+      break;
+
+    case OPT_SHOW_ON_ALL_DESKTOPS:
+      SetVisibleOnAllDesktops(value.toBool());
       break;
 
     default:

@@ -160,6 +160,7 @@ void ClockApplication::Reset()
   ApplyOption(OPT_SHOW_HIDE_ENABLED, app_config_->GetValue(OPT_SHOW_HIDE_ENABLED));
   ApplyOption(OPT_EXPORT_STATE, app_config_->GetValue(OPT_EXPORT_STATE));
   ApplyOption(OPT_KEEP_ALWAYS_VISIBLE, app_config_->GetValue(OPT_KEEP_ALWAYS_VISIBLE));
+  ApplyOption(OPT_SHOW_ON_ALL_DESKTOPS, app_config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS));
 
   plugin_manager_->UnloadPlugins();
   plugin_manager_->LoadPlugins(app_config_->GetValue(OPT_PLUGINS).toStringList());
