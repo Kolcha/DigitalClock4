@@ -1,3 +1,24 @@
+Whats new in 4.7.2:
+-------------------
+Features:
+ - Linux: KDE integration (use system Qt instead of shipped if possible)
+
+Core:
+ - allow to change "show on all workspaces" option on runtime
+ - fixed config loading in portable version
+ - fixed out of range position detection/handling
+ - prevent out of range position on startup
+
+GUI:
+ - Linux: fixed notifications in GNOME
+ - don't display "Show/Hide" menu item by default
+ - fixed "invisible" tray icons on Win10
+ - fixed quick positioning on multimonitor systems
+
+General:
+ - added ["Known issues" article](https://sourceforge.net/p/digitalclock4/wiki/Known%20issues/) to [wiki](https://sourceforge.net/p/digitalclock4/wiki/)
+
+
 Whats new in 4.7.1:
 -------------------
 Features:
