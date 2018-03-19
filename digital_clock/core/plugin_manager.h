@@ -35,7 +35,7 @@ class QSystemTrayIcon;
 
 namespace digital_clock {
 namespace gui {
-class ClockWindow;
+class ClockWidget;
 }
 
 namespace core {
@@ -45,7 +45,7 @@ class ClockSettings;
 /*! Data to init plugins. */
 struct TPluginData {
   ClockSettings* settings = nullptr;          /*!< clock settings object */
-  QVector<gui::ClockWindow*> windows;         /*!< all clock widgets */
+  QVector<gui::ClockWidget*> windows;         /*!< all clock widgets */
   QSystemTrayIcon* tray = nullptr;            /*!< tray icon object */
 };
 

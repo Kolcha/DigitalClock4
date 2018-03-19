@@ -268,7 +268,7 @@ void ClockApplication::InitPluginSystem()
   plugin_data.settings = app_config_;
   plugin_data.tray = tray_control_->GetTrayIcon();
   for (auto w : clock_windows_)
-    plugin_data.windows.append(w);
+    plugin_data.windows.append(w->clockWidget());
 
   plugin_manager_->SetInitData(plugin_data);
 }
