@@ -39,7 +39,7 @@ signals:
 
 public slots:
   void DrawImage(const QImage& image);
-  void SetSeparatorFlash(bool set) noexcept;
+  void SetSeparatorFlash(bool set);
   void SetTimeFormat(const QString& format);
   void SetDisplayLocalTime(bool set);
   void SetTimeZone(const QTimeZone& tz);

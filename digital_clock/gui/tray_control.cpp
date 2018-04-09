@@ -62,12 +62,12 @@ TrayControl::~TrayControl()
   delete tray_menu_;
 }
 
-QSystemTrayIcon* TrayControl::GetTrayIcon() const noexcept
+QSystemTrayIcon* TrayControl::GetTrayIcon() const Q_DECL_NOEXCEPT
 {
   return tray_icon_;
 }
 
-QAction* TrayControl::GetShowHideAction() const noexcept
+QAction* TrayControl::GetShowHideAction() const Q_DECL_NOEXCEPT
 {
   return tray_menu_->visibilityAction();
 }

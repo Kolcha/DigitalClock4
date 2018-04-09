@@ -37,8 +37,8 @@ public:
   explicit TrayControl(QObject* parent = nullptr);
   ~TrayControl();
 
-  QSystemTrayIcon* GetTrayIcon() const noexcept;
-  QAction* GetShowHideAction() const noexcept;
+  QSystemTrayIcon* GetTrayIcon() const Q_DECL_NOEXCEPT;
+  QAction* GetShowHideAction() const Q_DECL_NOEXCEPT;
 
 signals:
   void VisibilityChanged(bool visible);
