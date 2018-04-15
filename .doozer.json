@@ -4,24 +4,24 @@
       "buildenv": "xenial-amd64",
       "builddeps": ["build-essential", "libgl1-mesa-dev", "libharfbuzz-dev", "libpulse-dev", "libglib2.0-dev", "wget", "git", "python"],
       "buildcmd": [
-        "[ -d $HOME/Qt-5.9.4 ] || { wget -q -O - https://www.dropbox.com/s/2xbx1cvh0dpnk5a/Qt-5.9.4-u16-gcc5.tar.xz?dl=1 | tar xJ && mv Qt-5.9.4 $HOME/ ; }",
-        "./scripts/patch_qt.py -q $HOME/Qt-5.9.4 -d $HOME/Qt-5.9.4",
+        "[ -d $HOME/Qt-5.9.5 ] || { wget -q -O - https://www.dropbox.com/s/55aqi35xo4ug7uj/Qt-5.9.5-u16-gcc5.4.0.tar.xz?dl=1 | tar xJ && mv Qt-5.9.5 $HOME/ ; }",
+        "./scripts/patch_qt.py -q $HOME/Qt-5.9.5 -d $HOME/Qt-5.9.5",
         "rm -rf ../3rdparty/QHotkey && git clone -q -b master --depth 1 https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey",
         "rm -rf ../3rdparty/SingleApplication && git clone -q -b master --depth 1 https://github.com/itay-grudev/SingleApplication.git ../3rdparty/SingleApplication",
-        "$HOME/Qt-5.9.4/bin/lupdate -no-obsolete DigitalClock.pro",
-        "$HOME/Qt-5.9.4/bin/qmake -config release -r DigitalClock.pro",
+        "$HOME/Qt-5.9.5/bin/lupdate -no-obsolete DigitalClock.pro",
+        "$HOME/Qt-5.9.5/bin/qmake -config release -r DigitalClock.pro",
         "make -j${PARALLEL}"
       ]
     },
     "osx": {
       "buildenv": "osx",
       "buildcmd": [
-        "[ -d $HOME/Qt-5.9.4 ] || { curl https://www.dropbox.com/s/phjzg4bd52qbndb/Qt-5.9.4-m13-clang9.tar.xz?dl=1 -L -s | tar xJ && mv Qt-5.9.4 $HOME/ ; }",
-        "./scripts/patch_qt.py -q $HOME/Qt-5.9.4 -d $HOME/Qt-5.9.4",
+        "[ -d $HOME/Qt-5.9.5 ] || { curl https://www.dropbox.com/s/v9j4pzsqi2z4ned/Qt-5.9.5-m13-xcode9.3.tar.xz?dl=1 -L -s | tar xJ && mv Qt-5.9.5 $HOME/ ; }",
+        "./scripts/patch_qt.py -q $HOME/Qt-5.9.5 -d $HOME/Qt-5.9.5",
         "rm -rf ../3rdparty/QHotkey && git clone -q -b master --depth 1 https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey",
         "rm -rf ../3rdparty/SingleApplication && git clone -q -b master --depth 1 https://github.com/itay-grudev/SingleApplication.git ../3rdparty/SingleApplication",
-        "$HOME/Qt-5.9.4/bin/lupdate -no-obsolete DigitalClock.pro",
-        "$HOME/Qt-5.9.4/bin/qmake -config release -r DigitalClock.pro",
+        "$HOME/Qt-5.9.5/bin/lupdate -no-obsolete DigitalClock.pro",
+        "$HOME/Qt-5.9.5/bin/qmake -config release -r DigitalClock.pro",
         "make -j${PARALLEL}"
       ]
     }
