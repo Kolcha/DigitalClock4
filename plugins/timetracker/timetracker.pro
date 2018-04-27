@@ -1,6 +1,6 @@
 #
-#   Digital Clock - beautiful customizable clock with plugins
-#   Copyright (C) 2013-2018  Nick Korotysh <nick.korotysh@gmail.com>
+#   Digital Clock: timetracker plugin
+#   Copyright (C) 2018  Nick Korotysh <nick.korotysh@gmail.com>
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -16,32 +16,28 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-TEMPLATE = subdirs
+#-------------------------------------------------
+#
+# Project created by QtCreator 2018-04-27T01:26:34
+#
+#-------------------------------------------------
 
-SUBDIRS += \
-    spectrum_clock \
-    var_translucency \
-    alarm \
-    tray_color \
-    any_zoom \
-    schedule \
-    quick_note \
-    date \
-    ip_address \
-    chime \
-    countdown_timer \
-    timetracker
+QT       += core gui widgets
 
-windows {
-SUBDIRS += \
-    power_off
+include(../common.pri)
 
-win32-msvc* {
-SUBDIRS += \
-    win_on_top
-}
-}
+TARGET = timetracker
 
-qtHaveModule(texttospeech):SUBDIRS += talking_clock
+SOURCES += \
+    timetracker_plugin.cpp \
+    timetracker.cpp \
+    tracker_widget.cpp
 
-OTHER_FILES += common.pri
+HEADERS += \
+    timetracker_plugin.h \
+    timetracker.h \
+    tracker_widget.h
+
+DISTFILES += timetracker.json
+
+win32:RC_FILE = timetracker.rc

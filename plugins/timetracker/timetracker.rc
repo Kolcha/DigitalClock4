@@ -1,0 +1,30 @@
+1	VERSIONINFO
+FILEVERSION	1,0,0,9
+PRODUCTVERSION	4,7,2,0
+FILEFLAGSMASK	0x3F
+FILEFLAGS	0x0
+FILEOS		0x40004
+FILETYPE	0x2
+FILESUBTYPE	0x0
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904E4"
+	{
+		VALUE "Comments", "Simple timetracker"
+		VALUE "CompanyName", "Nick Korotysh"
+		VALUE "FileDescription", "Digital Clock Plugin"
+		VALUE "FileVersion", "1.0.0.9"
+		VALUE "InternalName", "timetracker.dll"
+		VALUE "LegalCopyright", "© 2018 Nick Korotysh"
+		VALUE "OriginalFilename", "timetracker.dll"
+		VALUE "ProductName", "Digital Clock"
+		VALUE "ProductVersion", "4.7.2"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0409, 0x04E4
+}
+}

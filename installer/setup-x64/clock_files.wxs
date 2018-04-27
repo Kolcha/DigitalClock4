@@ -61,6 +61,9 @@
       <Component Id="plugin_dll19" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{392B46A2-A7F2-4E60-A4E2-178991F6B600}" Win64="yes">
         <File Id="countdown_timer.dll" KeyPath="yes" Source="..\..\..\build-msi-x64\plugins\countdown_timer\release\countdown_timer.dll" />
       </Component>
+      <Component Id="plugin_dll20" Directory="dir280A744A3793B4E73B0B13172DB8683E" Guid="{88204229-49CF-41AB-93C5-8E3BBE549A6F}" Win64="yes">
+        <File Id="timetracker.dll" KeyPath="yes" Source="..\..\..\build-msi-x64\plugins\timetracker\release\timetracker.dll" />
+      </Component>
 
       <Component Id="win_on_top_ext" Directory="plugins_special" Guid="{FD532380-2989-4BA0-8649-36AC73C64839}" Win64="yes">
         <File Id="win_on_top_hook.dll" KeyPath="yes" Source="..\..\..\build-msi-x64\plugins\win_on_top\win_on_top_hook\release\win_on_top_hook.dll" />
