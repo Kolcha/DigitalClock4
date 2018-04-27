@@ -33,6 +33,11 @@ static QString time_to_str(const QTime& t, const QString& fmt)
   QString out_str;
   for (int i = 0; i < fmt.length();) {
     QStringRef ss = fmt.midRef(i, 2);
+    if (ss == "\\n") {
+      out_str += QChar('\n');
+      i += 2;
+      continue;
+    }
     if (ss == "HH") {
       out_str += QString("%1").arg(t.hour(), 2, 10, QLatin1Char('0'));
       i += 2;

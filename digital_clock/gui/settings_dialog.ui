@@ -638,6 +638,21 @@
               <string notr="true">HH:mm:ss</string>
              </property>
             </item>
+            <item>
+             <property name="text">
+              <string notr="true">hh\nmm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">HH\nmm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">hh\nmm\nA</string>
+             </property>
+            </item>
            </widget>
           </item>
           <item>

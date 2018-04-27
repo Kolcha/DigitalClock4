@@ -336,94 +336,94 @@
         <translation>другой</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="649"/>
+        <location filename="../gui/settings_dialog.ui" line="664"/>
         <source>Apply</source>
         <translation>Применить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="659"/>
+        <location filename="../gui/settings_dialog.ui" line="674"/>
         <source>Alignment</source>
         <translation>Выравнивание</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="665"/>
+        <location filename="../gui/settings_dialog.ui" line="680"/>
         <source>left</source>
         <translatorcomment>выравнивание по левому краю</translatorcomment>
         <translation>по левому</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="675"/>
+        <location filename="../gui/settings_dialog.ui" line="690"/>
         <source>center</source>
         <translation>по центру</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="682"/>
+        <location filename="../gui/settings_dialog.ui" line="697"/>
         <source>right</source>
         <translatorcomment>выравнивание по правому краю</translatorcomment>
         <translation>по правому</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="692"/>
+        <location filename="../gui/settings_dialog.ui" line="707"/>
         <source>Space between digits</source>
         <translation>расстояние между цифрами</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="698"/>
+        <location filename="../gui/settings_dialog.ui" line="713"/>
         <source>less</source>
         <translation>меньше</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="724"/>
+        <location filename="../gui/settings_dialog.ui" line="739"/>
         <source>more</source>
         <translation>больше</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="734"/>
+        <location filename="../gui/settings_dialog.ui" line="749"/>
         <source>Autoupdate</source>
         <translation>автообновление</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="833"/>
+        <location filename="../gui/settings_dialog.ui" line="848"/>
         <source>display time in another time zome</source>
         <translation>показывать время в другом часовом поясе</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="874"/>
+        <location filename="../gui/settings_dialog.ui" line="889"/>
         <source>Experimental</source>
         <translation>Экспериментальные</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="887"/>
+        <location filename="../gui/settings_dialog.ui" line="902"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation>показывать часы на всех рабочих столах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="894"/>
+        <location filename="../gui/settings_dialog.ui" line="909"/>
         <source>better &apos;stay on top&apos; for Linux</source>
         <translation>альтернативный режим &apos;поверх всех окон&apos;</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="901"/>
+        <location filename="../gui/settings_dialog.ui" line="916"/>
         <source>always keep clock visible on screen, prevent out of sceen postion</source>
         <translation>всегда держать часы видимыми на экране, избегать положения вне экрана</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="908"/>
+        <location filename="../gui/settings_dialog.ui" line="923"/>
         <source>show clock on all available monitors</source>
         <translation>показывать часы на всех мониторах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="915"/>
+        <location filename="../gui/settings_dialog.ui" line="930"/>
         <source>allow only one clock instance at time</source>
         <translation>не запускать более одной копии приложения</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="928"/>
+        <location filename="../gui/settings_dialog.ui" line="943"/>
         <source>Please restart clock after changing any of theese options!</source>
         <translation>Пожалуйста перезапустите часы после изменения любой из данных опций!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="948"/>
+        <location filename="../gui/settings_dialog.ui" line="963"/>
         <source>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in &apos;About&apos; dialog.</source>
         <translation>На этой вкладке представлены экспериментальные опции. По умолчанию они отключены. Их включение и использование полностью безопасно для Вашего компьютера, но они могут привести к непредсказуемому поведению часов. Пробуйте их если хотите, но любое тестирование только приветствуется. Если после включения любой из данных опций Вы заметите некорректное поведение часов, пожалуйста сообщите мне об этом. Контактную информацию можно найти в окошке &apos;О программе&apos;.</translation>
     </message>
@@ -439,23 +439,23 @@
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="428"/>
-        <location filename="../gui/settings_dialog.ui" line="793"/>
+        <location filename="../gui/settings_dialog.ui" line="808"/>
         <source>enable</source>
         <translation>включить</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="746"/>
+        <location filename="../gui/settings_dialog.ui" line="761"/>
         <source>Check for updates every</source>
         <translation>Проверять обновления каждые</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="761"/>
+        <location filename="../gui/settings_dialog.ui" line="776"/>
         <source>Check now!</source>
         <translatorcomment>проверить наличие обновлений</translatorcomment>
         <translation>Проверить!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="774"/>
+        <location filename="../gui/settings_dialog.ui" line="789"/>
         <source>check for beta releases</source>
         <translation>обновляться до бета релизов</translation>
     </message>
@@ -470,37 +470,37 @@
         <translation>По умолчанию</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="784"/>
+        <location filename="../gui/settings_dialog.ui" line="799"/>
         <source>If enabled, given URL will be opened with default web browser when you click on clock</source>
         <translation>Если включено, указанный адрес будет открыт в браузере по умолчанию когда кликнете по часам</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="787"/>
+        <location filename="../gui/settings_dialog.ui" line="802"/>
         <source>Clock URL</source>
         <translation>ссылка на часах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="813"/>
+        <location filename="../gui/settings_dialog.ui" line="828"/>
         <source>Browse for local file instead of URL</source>
         <translation>Выбрать локальный файл вместо URL</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="880"/>
+        <location filename="../gui/settings_dialog.ui" line="895"/>
         <source>prevent appearing above fullscreen windows</source>
         <translation>не появляться поверх полноэкранных окон</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="826"/>
+        <location filename="../gui/settings_dialog.ui" line="841"/>
         <source>display &apos;Show/Hide&apos; menu item</source>
         <translation>показывать пункт меню &quot;Показать/Скрыть&quot;</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="840"/>
+        <location filename="../gui/settings_dialog.ui" line="855"/>
         <source>export state (e.g. position)</source>
         <translation>экспортировать состояние (т.е. позицию)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="855"/>
+        <location filename="../gui/settings_dialog.ui" line="870"/>
         <source>Plugins</source>
         <translation>Плагины</translation>
     </message>
