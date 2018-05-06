@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>607</width>
+    <width>610</width>
     <height>446</height>
    </rect>
   </property>
@@ -928,6 +928,13 @@
         <widget class="QCheckBox" name="only_one_instance">
          <property name="text">
           <string>allow only one clock instance at time</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="hover_buttons_enabled">
+         <property name="text">
+          <string>show navigation buttons on clock on mouse hover</string>
          </property>
         </widget>
        </item>

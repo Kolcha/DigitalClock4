@@ -125,6 +125,8 @@ void ClockApplication::Reset()
   ApplyOption(OPT_SHOW_WINDOW_BORDER, app_config_->GetValue(OPT_SHOW_WINDOW_BORDER));
   ApplyOption(OPT_SNAP_TO_EDGES, app_config_->GetValue(OPT_SNAP_TO_EDGES));
   ApplyOption(OPT_SNAP_THRESHOLD, app_config_->GetValue(OPT_SNAP_THRESHOLD));
+  ApplyOption(OPT_USE_HOVER_BUTTONS, app_config_->GetValue(OPT_USE_HOVER_BUTTONS));
+  ApplyOption(OPT_WINDOW_MOVE_STEP, app_config_->GetValue(OPT_WINDOW_MOVE_STEP));
 
   // load time format first to update separators where it required
   ApplyOption(OPT_TIME_FORMAT, app_config_->GetValue(OPT_TIME_FORMAT));

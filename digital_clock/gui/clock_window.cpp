@@ -121,6 +121,7 @@ void ClockWindow::mousePressEvent(QMouseEvent* event)
   if (event->button() == Qt::LeftButton) {
     drag_position_ = event->globalPos() - frameGeometry().topLeft();
     dragging_ = true;
+    this->layout()->itemAt(0)->widget()->setDisabled(true);
     event->accept();
   }
 }
@@ -164,6 +165,7 @@ void ClockWindow::mouseReleaseEvent(QMouseEvent* event)
         break;
     }
     state_->SetVariable(S_OPT_POSITION, last_pos, !clock_widget_->preview());
+    this->layout()->itemAt(0)->widget()->setEnabled(app_config_->GetValue(OPT_USE_HOVER_BUTTONS).toBool());
     event->accept();
     dragging_ = false;
   }
@@ -273,6 +275,10 @@ void ClockWindow::ApplyOption(const Option opt, const QVariant& value)
 
     case OPT_SHOW_ON_ALL_DESKTOPS:
       SetVisibleOnAllDesktops(value.toBool());
+      break;
+
+    case OPT_USE_HOVER_BUTTONS:
+      this->layout()->itemAt(0)->widget()->setEnabled(value.toBool());
       break;
 
     default:
@@ -421,7 +427,7 @@ void ClockWindow::MoveWindow(Qt::Alignment align)
 void ClockWindow::onHoverButtonClicked(HoverButtons::Direction direction)
 {
   QPoint p = this->pos();
-  const int step = 20;
+  const int step = app_config_->GetValue(OPT_WINDOW_MOVE_STEP).toInt();
 
   switch (direction) {
     case HoverButtons::Left:
