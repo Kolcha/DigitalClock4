@@ -112,7 +112,7 @@
          <item>
           <widget class="QCheckBox" name="transp_for_input">
            <property name="text">
-            <string>transparent for input</string>
+            <string>transparent for mouse</string>
            </property>
           </widget>
          </item>
@@ -934,7 +934,7 @@
        <item>
         <widget class="QCheckBox" name="hover_buttons_enabled">
          <property name="text">
-          <string>show navigation buttons on clock on mouse hover</string>
+          <string>move clock on click on it (has no effect if &quot;transparent for mouse&quot; is enabled)</string>
          </property>
         </widget>
        </item>
