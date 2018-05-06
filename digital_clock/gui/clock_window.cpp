@@ -77,14 +77,15 @@ ClockWindow::ClockWindow(core::ClockSettings* app_config, int id, QWidget* paren
 
   clock_widget_ = new gui::ClockWidget(this);
 
+  HoverButtons* hb = new HoverButtons(this);
+  connect(hb, &HoverButtons::buttonClicked, this, &ClockWindow::onHoverButtonClicked);
+
   CardLayout* main_layout = new CardLayout(this);
   main_layout->setSizeConstraint(QLayout::SetFixedSize);
   main_layout->setSpacing(0);
-
-  HoverButtons* hb = new HoverButtons(this);
+  main_layout->setMargin(2);
   main_layout->addWidget(hb);
   main_layout->addWidget(clock_widget_);
-  main_layout->setMargin(2);
   setLayout(main_layout);
 
   dragging_ = false;
@@ -415,6 +416,36 @@ void ClockWindow::MoveWindow(Qt::Alignment align)
   if (align & Qt::AlignVCenter) curr_pos.setY(screen.center().y() - window.height() / 2);
   if (align & Qt::AlignBottom) curr_pos.setY(screen.bottom() - window.height());
   if (curr_pos != this->pos()) this->move(curr_pos);
+}
+
+void ClockWindow::onHoverButtonClicked(HoverButtons::Direction direction)
+{
+  QPoint p = this->pos();
+  const int step = 20;
+
+  switch (direction) {
+    case HoverButtons::Left:
+      p.rx() -= step;
+      break;
+
+    case HoverButtons::Right:
+      p.rx() += step;
+      break;
+
+    case HoverButtons::Top:
+      p.ry() -= step;
+      break;
+
+    case HoverButtons::Bottom:
+      p.ry() += step;
+      break;
+
+    default:
+      break;
+  }
+
+  this->move(p);
+  CorrectPositionImpl();
 }
 
 void ClockWindow::ShowContextMenu(const QPoint& p)

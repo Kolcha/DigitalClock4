@@ -24,6 +24,8 @@
 #include "settings_keys.h"
 #include "iskin.h"
 
+#include "gui/hover_buttons.h"
+
 namespace digital_clock {
 
 namespace core {
@@ -79,6 +81,7 @@ public slots:
   void MoveWindow(Qt::Alignment align);
 
 private slots:
+  void onHoverButtonClicked(HoverButtons::Direction direction);
   void ShowContextMenu(const QPoint& p);
   void CorrectPosition();
 
