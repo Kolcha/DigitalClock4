@@ -42,6 +42,13 @@ cp digital_clock/digital_clock "$TARGET_APP_FOLDER/"
 cp clock_common/libclock_common.so.1.2.1 "$TARGET_APP_FOLDER/libclock_common.so.1"
 cp plugin_core/libplugin_core.so.1.3.1 "$TARGET_APP_FOLDER/libplugin_core.so.1"
 cp skin_draw/libskin_draw.so.1.5.1 "$TARGET_APP_FOLDER/libskin_draw.so.1"
+
+# strip binaries
+strip -s "$TARGET_APP_FOLDER/digital_clock"
+strip -s "$TARGET_APP_FOLDER/libclock_common.so.1"
+strip -s "$TARGET_APP_FOLDER/libplugin_core.so.1"
+strip -s "$TARGET_APP_FOLDER/libskin_draw.so.1"
+
 [ -d "$TARGET_APP_FOLDER/plugins" ] || mkdir "$TARGET_APP_FOLDER/plugins"
 cd plugins
 for i in *
@@ -49,6 +56,7 @@ do
   if [ -d "$i" ] && [ -f "$i/lib$i.so" ]
   then
     cp "$i/lib$i.so" "$TARGET_APP_FOLDER/plugins/"
+    strip -s "$TARGET_APP_FOLDER/plugins/lib$i.so"
   fi
 done
 cd ..
@@ -73,10 +81,11 @@ done
 # copy custom Qt plugins
 mkdir "$TARGET_APP_FOLDER/iconengines"
 cp "$build_dir/paletteicon/libpaletteicon.so" "$TARGET_APP_FOLDER/iconengines/"
+strip -s "$TARGET_APP_FOLDER/iconengines/libpaletteicon.so"
 
 # copy SSL libs
-cp "/lib/x86_64-linux-gnu/libssl.so.1.0.0" "$TARGET_APP_FOLDER/$qt_rt/"
-cp "/lib/x86_64-linux-gnu/libcrypto.so.1.0.0" "$TARGET_APP_FOLDER/$qt_rt/"
+cp "/usr/lib/x86_64-linux-gnu/libssl.so.1.0.0" "$TARGET_APP_FOLDER/$qt_rt/"
+cp "/usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0" "$TARGET_APP_FOLDER/$qt_rt/"
 
 # copy resources and some specific stuff
 cp "$CLOCK_SRC_PATH/digital_clock/resources/digital_clock.desktop" "$TARGET_APP_FOLDER/"
