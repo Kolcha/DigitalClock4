@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>607</width>
+    <width>610</width>
     <height>446</height>
    </rect>
   </property>
@@ -112,7 +112,7 @@
          <item>
           <widget class="QCheckBox" name="transp_for_input">
            <property name="text">
-            <string>transparent for input</string>
+            <string>transparent for mouse</string>
            </property>
           </widget>
          </item>
@@ -928,6 +928,13 @@
         <widget class="QCheckBox" name="only_one_instance">
          <property name="text">
           <string>allow only one clock instance at time</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="hover_buttons_enabled">
+         <property name="text">
+          <string>move clock on click on it (has no effect if &quot;transparent for mouse&quot; is enabled)</string>
          </property>
         </widget>
        </item>

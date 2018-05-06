@@ -21,7 +21,6 @@
 #include <functional>
 
 #include <QApplication>
-#include <QGridLayout>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QScreen>
@@ -31,8 +30,10 @@
 #include "core/clock_settings.h"
 #include "core/clock_state.h"
 
+#include "gui/card_layout.h"
 #include "gui/clock_widget.h"
 #include "gui/context_menu.h"
+#include "gui/hover_buttons.h"
 
 
 static const char* const S_OPT_POSITION_KEY = "position";
@@ -76,10 +77,15 @@ ClockWindow::ClockWindow(core::ClockSettings* app_config, int id, QWidget* paren
 
   clock_widget_ = new gui::ClockWidget(this);
 
-  QGridLayout* main_layout = new QGridLayout(this);
+  HoverButtons* hb = new HoverButtons(this);
+  connect(hb, &HoverButtons::buttonClicked, this, &ClockWindow::onHoverButtonClicked);
+
+  CardLayout* main_layout = new CardLayout(this);
   main_layout->setSizeConstraint(QLayout::SetFixedSize);
-  main_layout->addWidget(clock_widget_);
+  main_layout->setSpacing(0);
   main_layout->setMargin(2);
+  main_layout->addWidget(hb);
+  main_layout->addWidget(clock_widget_);
   setLayout(main_layout);
 
   dragging_ = false;
@@ -115,6 +121,7 @@ void ClockWindow::mousePressEvent(QMouseEvent* event)
   if (event->button() == Qt::LeftButton) {
     drag_position_ = event->globalPos() - frameGeometry().topLeft();
     dragging_ = true;
+    this->layout()->itemAt(0)->widget()->setDisabled(true);
     event->accept();
   }
 }
@@ -158,6 +165,7 @@ void ClockWindow::mouseReleaseEvent(QMouseEvent* event)
         break;
     }
     state_->SetVariable(S_OPT_POSITION, last_pos, !clock_widget_->preview());
+    this->layout()->itemAt(0)->widget()->setEnabled(app_config_->GetValue(OPT_USE_HOVER_BUTTONS).toBool());
     event->accept();
     dragging_ = false;
   }
@@ -267,6 +275,10 @@ void ClockWindow::ApplyOption(const Option opt, const QVariant& value)
 
     case OPT_SHOW_ON_ALL_DESKTOPS:
       SetVisibleOnAllDesktops(value.toBool());
+      break;
+
+    case OPT_USE_HOVER_BUTTONS:
+      this->layout()->itemAt(0)->widget()->setEnabled(value.toBool());
       break;
 
     default:
@@ -410,6 +422,36 @@ void ClockWindow::MoveWindow(Qt::Alignment align)
   if (align & Qt::AlignVCenter) curr_pos.setY(screen.center().y() - window.height() / 2);
   if (align & Qt::AlignBottom) curr_pos.setY(screen.bottom() - window.height());
   if (curr_pos != this->pos()) this->move(curr_pos);
+}
+
+void ClockWindow::onHoverButtonClicked(HoverButtons::Direction direction)
+{
+  QPoint p = this->pos();
+  const int step = app_config_->GetValue(OPT_WINDOW_MOVE_STEP).toInt();
+
+  switch (direction) {
+    case HoverButtons::Left:
+      p.rx() -= step;
+      break;
+
+    case HoverButtons::Right:
+      p.rx() += step;
+      break;
+
+    case HoverButtons::Top:
+      p.ry() -= step;
+      break;
+
+    case HoverButtons::Bottom:
+      p.ry() += step;
+      break;
+
+    default:
+      break;
+  }
+
+  this->move(p);
+  CorrectPositionImpl();
 }
 
 void ClockWindow::ShowContextMenu(const QPoint& p)
