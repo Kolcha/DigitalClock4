@@ -87,6 +87,12 @@ strip -s "$TARGET_APP_FOLDER/iconengines/libpaletteicon.so"
 cp "/usr/lib/x86_64-linux-gnu/libssl.so.1.0.0" "$TARGET_APP_FOLDER/$qt_rt/"
 cp "/usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0" "$TARGET_APP_FOLDER/$qt_rt/"
 
+# remove unused styles
+for i in $(ls -1 "$qt_rt/plugins/styles" | grep -v gtk)
+do
+  rm "$qt_rt/plugins/styles/$i"
+done
+
 # copy resources and some specific stuff
 cp "$CLOCK_SRC_PATH/digital_clock/resources/digital_clock.desktop" "$TARGET_APP_FOLDER/"
 cp "$CLOCK_SRC_PATH/digital_clock/resources/images/time-24.svg" "$TARGET_APP_FOLDER/digital_clock.svg"

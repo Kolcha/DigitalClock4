@@ -37,6 +37,7 @@ function deploy_plugin() {
 function deploy_plugins_list() {
   for i in $1
   do
+    [[ -d "$QT_ROOT/plugins/$i" ]] || continue
     [[ -d "$target_path/plugins/$i" ]] || cp -r "$QT_ROOT/plugins/$i" "$target_path/plugins/"
     for plg in $(ls -1 "$target_path/plugins/$i/")
     do
@@ -58,6 +59,9 @@ do
   [[ $(echo "$f" | grep -i "svg") != "" ]] && deploy_plugins_list "$svg_lst"
   [[ $(echo "$f" | grep -i "texttospeech") != "" ]] && deploy_plugins_list "$tts_lst"
 done
+
+rm -f "$target_path/plugins/platforms"/libqminimal*.so
+rm -f "$target_path/plugins/platforms"/libqoffscreen.so
 
 if ! [[ -d "$target_path/translations" ]]
 then
