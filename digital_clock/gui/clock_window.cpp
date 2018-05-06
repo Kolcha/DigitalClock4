@@ -21,7 +21,6 @@
 #include <functional>
 
 #include <QApplication>
-#include <QGridLayout>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QScreen>
@@ -31,8 +30,10 @@
 #include "core/clock_settings.h"
 #include "core/clock_state.h"
 
+#include "gui/card_layout.h"
 #include "gui/clock_widget.h"
 #include "gui/context_menu.h"
+#include "gui/hover_buttons.h"
 
 
 static const char* const S_OPT_POSITION_KEY = "position";
@@ -76,8 +77,12 @@ ClockWindow::ClockWindow(core::ClockSettings* app_config, int id, QWidget* paren
 
   clock_widget_ = new gui::ClockWidget(this);
 
-  QGridLayout* main_layout = new QGridLayout(this);
+  CardLayout* main_layout = new CardLayout(this);
   main_layout->setSizeConstraint(QLayout::SetFixedSize);
+  main_layout->setSpacing(0);
+
+  HoverButtons* hb = new HoverButtons(this);
+  main_layout->addWidget(hb);
   main_layout->addWidget(clock_widget_);
   main_layout->setMargin(2);
   setLayout(main_layout);

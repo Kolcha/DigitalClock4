@@ -43,12 +43,14 @@ SOURCES += main.cpp \
     core/skin_manager.cpp \
     core/updater.cpp \
     gui/about_dialog.cpp \
+    gui/card_layout.cpp \
     gui/clickable_label.cpp \
     gui/clock_display.cpp \
     gui/clock_widget.cpp \
     gui/clock_window.cpp \
     gui/colorize_effect.cpp \
     gui/context_menu.cpp \
+    gui/hover_buttons.cpp \
     gui/plugin_info_dialog.cpp \
     gui/plugin_list_item_widget.cpp \
     gui/settings_dialog.cpp \
@@ -71,12 +73,14 @@ HEADERS += \
     core/skin_manager.h \
     core/updater.h \
     gui/about_dialog.h \
+    gui/card_layout.h \
     gui/clickable_label.h \
     gui/clock_display.h \
     gui/clock_widget.h \
     gui/clock_window.h \
     gui/colorize_effect.h \
     gui/context_menu.h \
+    gui/hover_buttons.h \
     gui/plugin_info_dialog.h \
     gui/plugin_list_item_widget.h \
     gui/settings_dialog.h \
