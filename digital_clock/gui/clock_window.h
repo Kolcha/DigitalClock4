@@ -104,18 +104,18 @@ private:
 
   bool dragging_;
   QPoint drag_position_;
-  CAlignment cur_alignment_;
+  CAlignment cur_alignment_ = A_LEFT;
   bool last_visibility_;
 
   QColor bg_color_;
-  bool show_border_;
+  bool show_border_ = true;
 
   bool fullscreen_detect_enabled_;
   bool keep_always_visible_;
   QStringList window_ignore_list_;
 
-  bool snap_to_edges_;
-  int snap_threshold_;
+  bool snap_to_edges_ = true;
+  int snap_threshold_ = 20;
 };
 
 } // namespace gui
