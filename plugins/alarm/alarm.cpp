@@ -245,7 +245,6 @@ void Alarm::onPluginOptionChanged(const QString& key, const QVariant& value)
     stop_hotkey_ = new QHotkey(QKeySequence(key_seq_str), true);
     connect(stop_hotkey_, &QHotkey::activated, player_.data(), &QMediaPlayer::stop);
 #endif
-    return;
   }
 }
 
