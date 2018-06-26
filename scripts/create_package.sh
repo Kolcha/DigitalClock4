@@ -101,6 +101,7 @@ cp "$CLOCK_SRC_PATH/scripts/config_desktop.sh" "$TARGET_APP_FOLDER/"
 cp -r "$CLOCK_DATA_PATH/skins" "$TARGET_APP_FOLDER/"
 cp -r "$CLOCK_DATA_PATH/textures" "$TARGET_APP_FOLDER/"
 [[ -f "$CLOCK_DATA_PATH/install_linux.rtf" ]] && cp "$CLOCK_DATA_PATH/install_linux.rtf" "$TARGET_APP_FOLDER/INSTALL.rtf"
+cp "$CLOCK_SRC_PATH/installer/postinstall_readme.txt" "$TARGET_APP_FOLDER/README.txt"
 
 cd "$TARGET_APP_FOLDER/.."
 

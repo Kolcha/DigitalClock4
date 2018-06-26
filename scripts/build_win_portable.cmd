@@ -58,6 +58,8 @@ xcopy /s /y "%data_dir%\skins" "%dst_path%\skins\"
 xcopy /y "%data_dir%\mingw-ssl\libeay32.dll" "%dst_path%\"
 xcopy /y "%data_dir%\mingw-ssl\ssleay32.dll" "%dst_path%\"
 
+copy /y "%src_root%\installer\postinstall_readme.txt" "%dst_path%\README.txt"
+
 cd "%build_dir%\.."
 rmdir /s /q "%build_dir%"
 
