@@ -1,3 +1,25 @@
+Whats new in 4.7.3:
+-------------------
+Features:
+ - move clock on click on it (doesn't work if "transparent for mouse" is enabled)
+
+Core:
+ - Qt 5.9.6 for Linux and macOS
+ - Qt 5.11.1 for Windows
+ - Linux build compiled with GCC 7
+ - macOS build compiled with Xcode 9.4
+
+GUI:
+ - Linux: display clock on current workspace instead of first
+ - multiline time format support
+
+Plugins:
+ - added very simple timetracker plugin
+
+General:
+ - Linux: slightly decreased package size
+
+
 Whats new in 4.7.2:
 -------------------
 Features:
