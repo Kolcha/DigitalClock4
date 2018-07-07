@@ -42,8 +42,8 @@ QSize CardLayout::sizeHint() const
   QSize s(0,0);
   int n = m_list.count();
   if (n > 0)
-    s = QSize(100,70);  // start with a nice default size
-  int i = 0;
+    s = m_list.first()->sizeHint();
+  int i = 1;
   while (i < n) {
     QLayoutItem* o = m_list.at(i);
     s = s.expandedTo(o->sizeHint());
