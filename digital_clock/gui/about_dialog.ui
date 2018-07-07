@@ -262,7 +262,7 @@
           <item>
            <widget class="QLabel" name="lnk_lbl_2">
             <property name="text">
-             <string notr="true">&lt;a href=&quot;http://mac.softpedia.com/get/Utilities/Digital-Clock-Nick-Korotysh.shtml&quot;&gt;mac.softpedia.com&lt;/a&gt;</string>
+             <string notr="true">&lt;a href=&quot;https://mac.softpedia.com/get/Utilities/Digital-Clock-Nick-Korotysh.shtml&quot;&gt;mac.softpedia.com&lt;/a&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -275,7 +275,7 @@
           <item>
            <widget class="QLabel" name="lnk_lbl_3">
             <property name="text">
-             <string notr="true">&lt;a href=&quot;http://www.filecluster.com/Desktop-Utilities/Clocks-Alarms/Download-Digital-Clock.html&quot;&gt;www.filecluster.com&lt;/a&gt;</string>
+             <string notr="true">&lt;a href=&quot;https://www.filecluster.com/Digital-Clock.html&quot;&gt;www.filecluster.com&lt;/a&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

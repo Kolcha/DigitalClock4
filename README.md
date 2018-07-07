@@ -25,3 +25,11 @@ Any bug reports, notes, suggestions and anything else can be sent through the [t
 Important
 ---------
 Please note, [GitHub repository](https://github.com/Kolcha/DigitalClock4) is **just a read-only mirror**, existing mainly for public build servers and possible will be dropped later. It is not always up to date, I update it only when I think it is important, but be sure it's always up to date when release happens. My **main repository** located at [SourceForge](https://sourceforge.net/p/digitalclock4/code/), so latest code can be found only here.
+
+External links
+--------------
+
+* [showroom.qt.io](https://showroom.qt.io/digital-clock/)
+* [www.softpedia.com](http://www.softpedia.com/get/Desktop-Enhancements/Clocks-Time-Management/Korotysh-Digital-Clock.shtml) - good review, screenshots, Windows downloads (including portable version)
+* [mac.softpedia.com](https://mac.softpedia.com/get/Utilities/Digital-Clock-Nick-Korotysh.shtml) - good review, screenshots, macOS downloads
+* [www.filecluster.com](https://www.filecluster.com/Digital-Clock.html) - very old screenshot, Windows installer downloads (direct links to [SourceForge](https://sourceforge.net/p/digitalclock4/files/))
