@@ -815,7 +815,7 @@
              <bool>false</bool>
             </property>
             <property name="text">
-             <string notr="true">http://digitalclock4.sourceforge.net/</string>
+             <string notr="true">https://digitalclock4.sourceforge.io/</string>
             </property>
            </widget>
           </item>
