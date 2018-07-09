@@ -278,7 +278,7 @@ void ClockWindow::ApplyOption(const Option opt, const QVariant& value)
       break;
 
     case OPT_USE_HOVER_BUTTONS:
-      this->layout()->itemAt(0)->widget()->setEnabled(value.toBool());
+      this->layout()->itemAt(0)->widget()->setVisible(value.toBool());
       break;
 
     default:
