@@ -193,6 +193,7 @@ void ClockApplication::ApplyOption(const Option opt, const QVariant& value)
 
     case OPT_SHOW_HIDE_ENABLED:
       tray_control_->GetShowHideAction()->setVisible(value.toBool());
+      Q_FALLTHROUGH();
       // fallthrough
 
     default:
@@ -292,7 +293,7 @@ void ClockApplication::ConnectTrayMessages()
 {
   // updater messages
   connect(updater_, &core::Updater::ErrorMessage, [this] (const QString& msg) {
-    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, nullptr, nullptr);
     // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(qApp->applicationName()),
@@ -302,7 +303,7 @@ void ClockApplication::ConnectTrayMessages()
   });
 
   connect(updater_, &core::Updater::UpToDate, [this] () {
-    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, nullptr, nullptr);
     // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(qApp->applicationName()),
@@ -312,7 +313,7 @@ void ClockApplication::ConnectTrayMessages()
   });
 
   connect(updater_, &core::Updater::NewVersion, [this] (const QString& version, const QString& link) {
-    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, nullptr, nullptr);
     // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Update").arg(qApp->applicationName()),
@@ -325,7 +326,7 @@ void ClockApplication::ConnectTrayMessages()
 
   // skin_manager messages
   connect(skin_manager_, &core::SkinManager::ErrorMessage, [this] (const QString& msg) {
-    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, 0, 0);
+    disconnect(tray_control_->GetTrayIcon(), &QSystemTrayIcon::messageClicked, nullptr, nullptr);
     // *INDENT-OFF*
     tray_control_->GetTrayIcon()->showMessage(
           tr("%1 Error").arg(qApp->applicationName()), msg, QSystemTrayIcon::Warning);

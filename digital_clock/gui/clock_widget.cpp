@@ -173,10 +173,6 @@ void ClockWidget::ApplyOption(Option option, const QVariant& value)
         case CAlignment::A_RIGHT:
           display_->setAlignment(Qt::AlignRight);
           break;
-
-        default:
-          Q_ASSERT(false);
-          break;
       }
       break;
 

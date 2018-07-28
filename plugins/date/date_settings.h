@@ -35,7 +35,7 @@ enum class FormatType {
 
 inline void InitDefaults(QSettings::SettingsMap* defaults)
 {
-  defaults->insert(OPT_DATE_FORMAT_TYPE, (int)FormatType::FT_INT);
+  defaults->insert(OPT_DATE_FORMAT_TYPE, static_cast<int>(FormatType::FT_INT));
   defaults->insert(OPT_DATE_FORMAT_STR, QLocale().dateFormat());
   defaults->insert(OPT_DATE_FORMAT_INT, Qt::DefaultLocaleLongDate);
 }

@@ -49,11 +49,11 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
 {
   for (auto iter = settings.constBegin(); iter != settings.constEnd(); ++iter) {
     if (iter.key() == OPT_DATE_FORMAT_TYPE) {
-      ui->int_type_button->setChecked((FormatType)(iter.value().toInt()) == FormatType::FT_INT);
-      ui->str_type_button->setChecked((FormatType)(iter.value().toInt()) == FormatType::FT_STR);
+      ui->int_type_button->setChecked(static_cast<FormatType>(iter.value().toInt()) == FormatType::FT_INT);
+      ui->str_type_button->setChecked(static_cast<FormatType>(iter.value().toInt()) == FormatType::FT_STR);
     }
     if (iter.key() == OPT_DATE_FORMAT_INT) {
-      ui->int_type_box->setCurrentText(date_formats_[(Qt::DateFormat)(iter.value().toInt())]);
+      ui->int_type_box->setCurrentText(date_formats_[static_cast<Qt::DateFormat>(iter.value().toInt())]);
     }
     if (iter.key() == OPT_DATE_FORMAT_STR) {
       ui->str_type_box->setCurrentText(iter.value().toString());
@@ -63,12 +63,12 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
 
 void SettingsDialog::on_int_type_button_toggled(bool checked)
 {
-  if (checked) emit OptionChanged(OPT_DATE_FORMAT_TYPE, (int)FormatType::FT_INT);
+  if (checked) emit OptionChanged(OPT_DATE_FORMAT_TYPE, static_cast<int>(FormatType::FT_INT));
 }
 
 void SettingsDialog::on_str_type_button_toggled(bool checked)
 {
-  if (checked) emit OptionChanged(OPT_DATE_FORMAT_TYPE, (int)FormatType::FT_STR);
+  if (checked) emit OptionChanged(OPT_DATE_FORMAT_TYPE, static_cast<int>(FormatType::FT_STR));
 }
 
 void SettingsDialog::on_int_type_box_currentIndexChanged(int index)

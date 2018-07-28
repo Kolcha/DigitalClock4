@@ -94,7 +94,7 @@ void HttpClient::httpFinished()
   }
 
   reply_->deleteLater();
-  reply_ = 0;
+  reply_ = nullptr;
   is_running_ = false;
 }
 

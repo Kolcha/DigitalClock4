@@ -90,7 +90,7 @@ QLayoutItem* CardLayout::itemAt(int idx) const
 
 QLayoutItem* CardLayout::takeAt(int idx)
 {
-  return idx >= 0 && idx < m_list.size() ? m_list.takeAt(idx) : 0;
+  return idx >= 0 && idx < m_list.size() ? m_list.takeAt(idx) : nullptr;
 }
 
 int CardLayout::count() const

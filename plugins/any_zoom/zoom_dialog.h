@@ -35,7 +35,7 @@ class ZoomDialog : public QDialog
   Q_PROPERTY(::skin_draw::Zoom zoom READ zoom WRITE setZoom NOTIFY zoomChanged)
 
 public:
-  explicit ZoomDialog(QWidget* parent = 0);
+  explicit ZoomDialog(QWidget* parent = nullptr);
   ~ZoomDialog();
 
   ::skin_draw::Zoom zoom() const Q_DECL_NOEXCEPT { return m_zoom; }

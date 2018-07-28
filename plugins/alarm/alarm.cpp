@@ -110,7 +110,7 @@ void Alarm::Start()
   }
 
   if (!bad_files.isEmpty()) {
-    disconnect(tray_icon_, &QSystemTrayIcon::messageClicked, 0, 0);
+    disconnect(tray_icon_, &QSystemTrayIcon::messageClicked, nullptr, nullptr);
     tray_icon_->showMessage(tr("Digital Clock Alarm"),
                             tr("Next media files was NOT found:\n%1").arg(bad_files.join('\n')),
                             QSystemTrayIcon::Warning);
@@ -188,7 +188,7 @@ void Alarm::TimeUpdateListener()
     if (alarm->time().hour() != curr_time.time().hour() ||
         alarm->time().minute() != curr_time.time().minute()) continue;
 
-    disconnect(tray_icon_, &QSystemTrayIcon::messageClicked, 0, 0);
+    disconnect(tray_icon_, &QSystemTrayIcon::messageClicked, nullptr, nullptr);
     if (alarm->media().isLocalFile() && !QFile::exists(alarm->media().toLocalFile())) {
       tray_icon_->showMessage(tr("Digital Clock Alarm"),
                               tr("File not found:\n%1").arg(QDir::toNativeSeparators(alarm->media().toLocalFile())),
