@@ -210,11 +210,11 @@ void SkinDrawer::Redraw()
 
     QPoint pt(0, 0);
 
-    for (auto& row : elements) {
+    for (auto& row : qAsConst(elements)) {
       pt.setX(0);
       int row_h = 0;
 
-      for (auto& elem : row) {
+      for (auto& elem : qAsConst(row)) {
         row_h = std::max(elem.height(), row_h);
         painter.drawPixmap(pt, elem);
 

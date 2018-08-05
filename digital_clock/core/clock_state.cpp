@@ -50,9 +50,9 @@ QVariant ClockState::GetVariable(const QString& key, const QVariant& default_val
 void ClockState::SetExportable(bool exportable)
 {
   if (exportable) {
-    for (auto& key : state_keys_) GetBackend()->GetValue(key);
+    for (auto& key : qAsConst(state_keys_)) GetBackend()->GetValue(key);
   } else {
-    for (auto& key : state_keys_) GetBackend()->Forget(key);
+    for (auto& key : qAsConst(state_keys_)) GetBackend()->Forget(key);
   }
   is_exportable_ = exportable;
 }

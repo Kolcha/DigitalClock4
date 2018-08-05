@@ -97,7 +97,7 @@ QString QuickNotePlugin::GetWidgetText()
 void QuickNotePlugin::SettingsUpdateListener(const QString& key, const QVariant& value)
 {
   if (key == OPT_QUICK_NOTE_MSG) {
-    for (auto& msg_widget : msg_widgets_)
+    for (auto& msg_widget : qAsConst(msg_widgets_))
       msg_widget->setText(value.toString());
   }
 }

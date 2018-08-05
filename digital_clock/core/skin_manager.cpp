@@ -68,10 +68,9 @@ ClockSkinPtr SkinManager::CurrentSkin() const
 void SkinManager::ListSkins()
 {
   skins_.clear();
-  for (auto& s_path : search_paths_) {
+  for (auto& s_path : qAsConst(search_paths_)) {
     QDir s_dir(s_path);
-    QStringList f_dirs = s_dir.entryList(QDir::NoDotAndDotDot | QDir::AllDirs);
-    for (auto& f_dir : f_dirs) {
+    for (auto& f_dir : s_dir.entryList(QDir::NoDotAndDotDot | QDir::AllDirs)) {
       QDir skin_root(s_dir.filePath(f_dir));
       ClockSkinPtr tmp = CreateSkin(skin_root);
       if (!tmp) continue;

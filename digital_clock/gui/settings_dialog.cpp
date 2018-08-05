@@ -127,7 +127,7 @@ void SettingsDialog::SetPluginsList(const QList<QPair<TPluginInfo, bool> >& plug
   ui->plugins_list->clear();
   QList<QPair<TPluginInfo, bool> > sorted_plugins = plugins;
   std::sort(sorted_plugins.begin(), sorted_plugins.end(), plugin_info_cmp);
-  for (auto& plugin : sorted_plugins) {
+  for (auto& plugin : qAsConst(sorted_plugins)) {
     QListWidgetItem* item = new QListWidgetItem();
     PluginListItemWidget* widget = new PluginListItemWidget(ui->plugins_list);
     widget->SetInfo(plugin.first);

@@ -58,7 +58,7 @@ static Qt::DayOfWeek index2day(int i)
 static int encode_days(const QSet<Qt::DayOfWeek>& days)
 {
   int res = 0;
-  for (auto& day : days) res |= (1 << day2index(day));
+  for (auto& day : qAsConst(days)) res |= (1 << day2index(day));
   return res;
 }
 
@@ -100,7 +100,7 @@ void AlarmsStorage::setAlarms(const QList<AlarmItem*>& alarms)
 
   auto max_id_iter = std::max_element(alarms_.begin(), alarms_.end(), AlarmItem::idCompare);
   int id_c = alarms_.isEmpty() ? 1 : (*max_id_iter)->id() + 1;
-  for (auto& item : alarms) {
+  for (auto& item : qAsConst(alarms)) {
     if (!alarms_.contains(item)) {
       item->setParent(this);
       item->setId(id_c++);
@@ -151,7 +151,7 @@ void AlarmsStorage::onAlarmEdited()
 void AlarmsStorage::writeAlarms()
 {
   this->remove(key_prefix_);
-  for (auto& item : alarms_) {
+  for (auto& item : qAsConst(alarms_)) {
     writeItem(item);
   }
 }
@@ -161,7 +161,7 @@ void AlarmsStorage::readAlarms()
   qDeleteAll(alarms_);
   alarms_.clear();
   QStringList alarms_keys = this->GetBackend()->ListChildren(key_prefix_);
-  for (auto& key : alarms_keys) {
+  for (auto& key : qAsConst(alarms_keys)) {
     bool id_ok = false;
     int id = key.toInt(&id_ok);
     if (!id_ok) continue;

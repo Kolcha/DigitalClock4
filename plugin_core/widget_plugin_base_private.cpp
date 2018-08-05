@@ -119,7 +119,7 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
     }
   }
   if (key == OptionKey(OPT_ALIGNMENT)) {
-    for (auto& plg_widget : plg_widgets_) {
+    for (auto& plg_widget : qAsConst(plg_widgets_)) {
       QLabel* lbl = qobject_cast<QLabel*>(plg_widget);
       if (lbl) lbl->setAlignment(static_cast<Qt::Alignment>(value.toInt()));
     }
@@ -153,7 +153,7 @@ void WidgetPluginBasePrivate::AddClockWidget(QWidget* main_wnd)
 
 void WidgetPluginBasePrivate::CreateWidgets()
 {
-  for (auto layout : main_layouts_) {
+  for (auto layout : qAsConst(main_layouts_)) {
     QWidget* widget = obj_->InitWidget(layout);
     plg_widgets_.append(widget);
     if (layout->indexOf(plg_widgets_.last()) == -1) {
@@ -200,7 +200,7 @@ void WidgetPluginBasePrivate::DestroyWidgets()
 void WidgetPluginBasePrivate::ApplySkin(skin_draw::ISkin::SkinPtr skin)
 {
   skin_ = skin;
-  for (auto& drawer : drawers_) {
+  for (auto& drawer : qAsConst(drawers_)) {
     drawer->SetString(QString());
     drawer->ApplySkin(skin);
   }
@@ -212,55 +212,55 @@ void WidgetPluginBasePrivate::SetColor(const QColor& color)
 {
   if (!color.isValid() || color_ == color) return;
   color_ = color;
-  for (auto& drawer : drawers_) drawer->SetColor(color);
+  for (auto& drawer : qAsConst(drawers_)) drawer->SetColor(color);
 }
 
 void WidgetPluginBasePrivate::SetTexture(const QString& texture)
 {
   if (texture.isEmpty() || texture_ == texture) return;
   texture_ = texture;
-  for (auto& drawer : drawers_) drawer->SetTexture(texture);
+  for (auto& drawer : qAsConst(drawers_)) drawer->SetTexture(texture);
 }
 
 void WidgetPluginBasePrivate::SetCustomizationType(const skin_draw::SkinDrawer::CustomizationType ct)
 {
   if (customization_ == ct) return;
   customization_ = ct;
-  for (auto& drawer : drawers_) drawer->SetCustomizationType(ct);
+  for (auto& drawer : qAsConst(drawers_)) drawer->SetCustomizationType(ct);
 }
 
 void WidgetPluginBasePrivate::SetTexturePerElement(bool enable)
 {
   if (texture_per_element_ == enable) return;
   texture_per_element_ = enable;
-  for (auto& drawer : drawers_) drawer->SetTexturePerElement(enable);
+  for (auto& drawer : qAsConst(drawers_)) drawer->SetTexturePerElement(enable);
 }
 
 void WidgetPluginBasePrivate::SetTextureDrawMode(const skin_draw::SkinDrawer::DrawMode dm)
 {
   if (draw_mode_ == dm) return;
   draw_mode_ = dm;
-  for (auto& drawer : drawers_) drawer->SetTextureDrawMode(dm);
+  for (auto& drawer : qAsConst(drawers_)) drawer->SetTextureDrawMode(dm);
 }
 
 void WidgetPluginBasePrivate::SetSpacing(const int spacing)
 {
   if (spacing_ != spacing) return;
   spacing_ = spacing;
-  for (auto& drawer : drawers_) drawer->SetSpace(spacing);
+  for (auto& drawer : qAsConst(drawers_)) drawer->SetSpace(spacing);
 }
 
 void WidgetPluginBasePrivate::SetZoom(const qreal zoom)
 {
   if (qFuzzyIsNull(zoom) || qFuzzyCompare(zoom_, zoom)) return;
   zoom_ = zoom;
-  for (auto& drawer : drawers_) drawer->SetZoom(zoom);
+  for (auto& drawer : qAsConst(drawers_)) drawer->SetZoom(zoom);
 }
 
 void WidgetPluginBasePrivate::DrawText(const QString& text)
 {
   if (!text.isEmpty()) last_text_ = text;
-  for (auto& drawer : drawers_) drawer->SetString(text);
+  for (auto& drawer : qAsConst(drawers_)) drawer->SetString(text);
 }
 
 skin_draw::ISkin::SkinPtr WidgetPluginBasePrivate::CreateTextSkin(const QFont& fnt)

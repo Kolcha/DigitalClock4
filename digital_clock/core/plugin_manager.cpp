@@ -66,10 +66,9 @@ void PluginManager::ListAvailable()
 {
   available_.clear();
   QList<QPair<TPluginInfo, bool> > plugins;
-  for (auto& path : search_paths_) {
+  for (auto& path : qAsConst(search_paths_)) {
     QDir dir(path);
-    QStringList files = dir.entryList(QDir::Files);
-    for (auto& file : files) {
+    for (auto& file : dir.entryList(QDir::Files)) {
       QString abs_path = dir.filePath(file);
       QPluginLoader loader(abs_path);
       IClockPlugin* plugin = qobject_cast<IClockPlugin*>(loader.instance());
@@ -100,16 +99,16 @@ void PluginManager::ListAvailable()
 
 void PluginManager::LoadPlugins(const QStringList& names)
 {
-  for (auto& name : names) LoadPlugin(name);
+  for (auto& name : qAsConst(names)) LoadPlugin(name);
 }
 
 void PluginManager::UnloadPlugins(const QStringList& names)
 {
   if (!names.isEmpty()) {
-    for (auto& name : names) UnloadPlugin(name);
+    for (auto& name : qAsConst(names)) UnloadPlugin(name);
   } else {
     QList<QString> plugins = loaded_.keys();
-    for (auto& plugin : plugins) UnloadPlugin(plugin);
+    for (auto& plugin : qAsConst(plugins)) UnloadPlugin(plugin);
   }
 }
 
@@ -203,7 +202,7 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
   if (sp && connected) {
-    for (auto& w : data_.windows) {
+    for (auto& w : qAsConst(data_.windows)) {
       connect(sp, SIGNAL(OptionChanged(Option,QVariant)),
               w, SLOT(ApplyOption(Option,QVariant)));
     }
@@ -217,7 +216,7 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
   if (tpi) tpi->Init(data_.tray);
   // init widget plugins
   IWidgetPluginInit* wpi = qobject_cast<IWidgetPluginInit*>(plugin);
-  if (wpi) for (auto& w : data_.windows) wpi->Init(w);
+  if (wpi) for (auto& w : qAsConst(data_.windows)) wpi->Init(w);
 }
 
 } // namespace core

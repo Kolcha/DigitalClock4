@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::core::ClockApplication</name>
     <message>
-        <location filename="../core/clock_application.cpp" line="298"/>
-        <location filename="../core/clock_application.cpp" line="308"/>
-        <location filename="../core/clock_application.cpp" line="318"/>
+        <location filename="../core/clock_application.cpp" line="299"/>
+        <location filename="../core/clock_application.cpp" line="309"/>
+        <location filename="../core/clock_application.cpp" line="319"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="299"/>
+        <location filename="../core/clock_application.cpp" line="300"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="309"/>
+        <location filename="../core/clock_application.cpp" line="310"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="319"/>
+        <location filename="../core/clock_application.cpp" line="320"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="331"/>
+        <location filename="../core/clock_application.cpp" line="332"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -34,7 +34,7 @@
 <context>
     <name>digital_clock::core::SkinManager</name>
     <message>
-        <location filename="../core/skin_manager.cpp" line="94"/>
+        <location filename="../core/skin_manager.cpp" line="93"/>
         <source>Skin &apos;%1&apos; is not loaded, using default skin.</source>
         <translation>Стиль &apos;%1&apos; не загружен, использован стиль по умолчанию.</translation>
     </message>

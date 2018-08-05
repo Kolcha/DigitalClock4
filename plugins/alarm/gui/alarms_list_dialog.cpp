@@ -59,7 +59,7 @@ void AlarmsListDialog::setAlarmsList(const QList<AlarmItem*>& alarms_list)
   alarms_ = alarms_list;
   std::sort(alarms_.begin(), alarms_.end(), AlarmItem::timeCompare);
   ui->alarms_list->clear();
-  for (auto& alarm : alarms_) {
+  for (auto& alarm : qAsConst(alarms_)) {
     QListWidgetItem* item = new QListWidgetItem();
     AlarmListItemWidget* widget = new AlarmListItemWidget(alarm, ui->alarms_list);
     widget->setChecked(alarm->isEnabled());
@@ -106,7 +106,7 @@ void AlarmsListDialog::on_add_btn_clicked()
 void AlarmsListDialog::on_del_btn_clicked()
 {
   QList<QListWidgetItem*> selected_items = ui->alarms_list->selectedItems();
-  for (auto& item : selected_items) {
+  for (auto& item : qAsConst(selected_items)) {
     int row = ui->alarms_list->row(item);
     AlarmItem* alarm = alarms_[row];
     alarms_.removeAt(row);
@@ -118,13 +118,13 @@ void AlarmsListDialog::on_del_btn_clicked()
 
 void AlarmsListDialog::on_disable_all_btn_clicked()
 {
-  for (auto& alarm : alarms_) alarm->setEnabled(false);
+  for (auto& alarm : qAsConst(alarms_)) alarm->setEnabled(false);
 }
 
 void AlarmsListDialog::on_delete_all_btn_clicked()
 {
   ui->alarms_list->clear();
-  for (auto& alarm : alarms_) {
+  for (auto& alarm : qAsConst(alarms_)) {
     emit alarmRemoved(alarm);
   }
   alarms_.clear();

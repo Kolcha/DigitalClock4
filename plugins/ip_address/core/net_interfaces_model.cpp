@@ -87,7 +87,7 @@ void NetInterfacesModel::setCheckedInterfaces(const QStringList& ifaces_list)
 
   for (auto iter = checked_interfaces_.begin(); iter != checked_interfaces_.end();) {
     bool exists = false;
-    for (auto& iface : interfaces_) {
+    for (auto& iface : qAsConst(interfaces_)) {
       if (*iter == iface.name()) {
         exists = true;
         break;

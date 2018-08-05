@@ -60,7 +60,7 @@ ClockApplication::ClockApplication(ClockSettings* config, QObject* parent) :
   connect(&timer_, &QTimer::timeout, updater_, &core::Updater::TimeoutHandler);
 
   tray_control_ = new gui::TrayControl(this);
-  for (auto w : clock_windows_) {
+  for (auto w : qAsConst(clock_windows_)) {
     connect(tray_control_, &gui::TrayControl::VisibilityChanged, w, &gui::ClockWindow::ChangeVisibility);
     connect(tray_control_, &gui::TrayControl::PositionChanged, w, &gui::ClockWindow::MoveWindow);
   }
@@ -69,7 +69,7 @@ ClockApplication::ClockApplication(ClockSettings* config, QObject* parent) :
   connect(tray_control_, &gui::TrayControl::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
   connect(tray_control_, &gui::TrayControl::AppExit, qApp, &QApplication::quit);
 
-  for (auto w : clock_windows_) {
+  for (auto w : qAsConst(clock_windows_)) {
     connect(&timer_, &QTimer::timeout, w, &gui::ClockWindow::TimeoutHandler);
     connect(skin_manager_, &SkinManager::SkinLoaded, w, &gui::ClockWindow::ApplySkin);
     connect(w->clockWidget(), &gui::ClockWidget::SeparatorsChanged, skin_manager_, &SkinManager::SetSeparators);
@@ -85,7 +85,7 @@ ClockApplication::ClockApplication(ClockSettings* config, QObject* parent) :
 
   InitPluginSystem();
   Reset();
-  for (auto w : clock_windows_) w->LoadState();
+  for (auto w : qAsConst(clock_windows_)) w->LoadState();
   UpdateVisibilityAction();
 
   timer_.setInterval(500);
@@ -97,7 +97,7 @@ ClockApplication::~ClockApplication()
 {
   ShutdownPluginSystem();
   timer_.stop();
-  for (auto w : clock_windows_) delete w;
+  for (auto w : qAsConst(clock_windows_)) delete w;
   delete state_;
   delete tray_control_;
 }
@@ -105,7 +105,7 @@ ClockApplication::~ClockApplication()
 void ClockApplication::UpdateVisibilityAction()
 {
   bool checked = false;
-  for (auto w : clock_windows_) {
+  for (auto w : qAsConst(clock_windows_)) {
     checked = checked || w->isVisible();
     if (checked) break;
   }
@@ -130,7 +130,7 @@ void ClockApplication::Reset()
 
   // load time format first to update separators where it required
   ApplyOption(OPT_TIME_FORMAT, app_config_->GetValue(OPT_TIME_FORMAT));
-  for (auto w : clock_windows_) w->blockSignals(true);
+  for (auto w : qAsConst(clock_windows_)) w->blockSignals(true);
   ApplyOption(OPT_SEPARATOR_FLASH, app_config_->GetValue(OPT_SEPARATOR_FLASH));
   ApplyOption(OPT_TIME_ZONE, app_config_->GetValue(OPT_TIME_ZONE));
   ApplyOption(OPT_DISPLAY_LOCAL_TIME, app_config_->GetValue(OPT_DISPLAY_LOCAL_TIME));
@@ -147,9 +147,9 @@ void ClockApplication::Reset()
 
   ApplyOption(OPT_FONT, app_config_->GetValue(OPT_FONT));
   ApplyOption(OPT_SKIN_NAME, app_config_->GetValue(OPT_SKIN_NAME));
-  for (auto w : clock_windows_) w->blockSignals(false);
+  for (auto w : qAsConst(clock_windows_)) w->blockSignals(false);
 
-  for (auto w : clock_windows_) w->TimeoutHandler();      // to apply changes
+  for (auto w : qAsConst(clock_windows_)) w->TimeoutHandler();      // to apply changes
 
   // updater settings
   ApplyOption(OPT_USE_AUTOUPDATE, app_config_->GetValue(OPT_USE_AUTOUPDATE));
@@ -197,7 +197,7 @@ void ClockApplication::ApplyOption(const Option opt, const QVariant& value)
       // fallthrough
 
     default:
-      for (auto w : clock_windows_) w->ApplyOption(opt, value);
+      for (auto w : qAsConst(clock_windows_)) w->ApplyOption(opt, value);
   }
 }
 
@@ -229,7 +229,7 @@ void ClockApplication::ShowSettingsDialog()
     skin_manager_->ListSkins();
     // 'preview mode' support
     tray_control_->GetShowHideAction()->setEnabled(false);
-    for (auto w : clock_windows_) {
+    for (auto w : qAsConst(clock_windows_)) {
       w->EnablePreviewMode();
       w->EnsureVisible();
       connect(dlg.data(), &gui::SettingsDialog::destroyed, w, &gui::ClockWindow::RestoreVisibility);
@@ -270,7 +270,7 @@ void ClockApplication::InitPluginSystem()
   core::TPluginData plugin_data;
   plugin_data.settings = app_config_;
   plugin_data.tray = tray_control_->GetTrayIcon();
-  for (auto w : clock_windows_)
+  for (auto w : qAsConst(clock_windows_))
     plugin_data.windows.append(w->clockWidget());
 
   plugin_manager_->SetInitData(plugin_data);

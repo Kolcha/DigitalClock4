@@ -32,9 +32,8 @@ BaseSettingsWidget::BaseSettingsWidget(QWidget* parent) :
   ui(new Ui::BaseSettingsWidget)
 {
   gui_translator_ = new QTranslator();
-  QStringList ui_languages = QLocale::system().uiLanguages();
   QString prefix(":/plugin_core/lang/plugin_core_");
-  foreach (QString locale, ui_languages) {
+  for (QString locale : QLocale::system().uiLanguages()) {
     locale = QLocale(locale).name();
     if (gui_translator_->load(prefix + locale)) {
       QCoreApplication::installTranslator(gui_translator_);

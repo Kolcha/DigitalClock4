@@ -54,7 +54,7 @@ QVariant SettingsStorage::GetValue(const QString& key, const QVariant& default_v
 void SettingsStorage::Remove(const QString& key)
 {
   QStringList children = findKeyChildren(key, current_);
-  for (auto& c : children) {
+  for (auto& c : qAsConst(children)) {
     this->Remove(QString("%1/%2").arg(key, c));
   }
   removed_keys_.insert(key);
@@ -69,7 +69,7 @@ QStringList SettingsStorage::ListChildren(const QString& key)
   p_keys.append(storage_.childGroups());
   p_keys.append(storage_.childKeys());
   storage_.endGroup();
-  for (auto& c : p_keys) {
+  for (auto& c : qAsConst(p_keys)) {
     if (!isDeleted(QString("%1/%2").arg(key, c)) && !result.contains(c)) {
       result.append(c);
     }
@@ -149,7 +149,7 @@ void SettingsStorage::Reject()
 {
   QStringList keys = imported_.keys();
   imported_.clear();
-  for (auto& key : keys) this->Revert(key);
+  for (auto& key : qAsConst(keys)) this->Revert(key);
   emit reloaded();
 }
 
@@ -160,7 +160,7 @@ void SettingsStorage::Reset()
 
 bool SettingsStorage::isDeleted(const QString& key) const
 {
-  for (auto& i : removed_keys_) {
+  for (auto& i : qAsConst(removed_keys_)) {
     if (key.mid(0, i.length()) == i) return true;
   }
   return false;

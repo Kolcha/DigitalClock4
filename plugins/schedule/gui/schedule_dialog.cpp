@@ -57,7 +57,7 @@ void ScheduleDialog::setDates(const QList<QDate>& dates)
   QString last_date;
   if (ui->dates_box->count() != 0) last_date = ui->dates_box->currentText();
   ui->dates_box->clear();
-  for (auto& dt : dates) {
+  for (auto& dt : qAsConst(dates)) {
     ui->dates_box->addItem(dt.toString(), dt);
   }
   if (ui->dates_box->count() != 0) {
@@ -79,7 +79,7 @@ void ScheduleDialog::onTaskDetailsChanged(const QModelIndex& tl, const QModelInd
   QModelIndexList changed_indexes;
   for (int i = tl.row(); i <= br.row(); ++i)
     changed_indexes.append(tasks_model_->index(i, 0));
-  for (auto& idx : changed_indexes)
+  for (auto& idx : qAsConst(changed_indexes))
     emit taskEdited(tasks_model_->getTask(idx));
 }
 
@@ -122,7 +122,7 @@ void ScheduleDialog::on_del_btn_clicked()
   QModelIndexList selected = ui->tasks_view->selectionModel()->selectedRows();
   if (selected.isEmpty()) return;
 
-  for (auto& index : selected) {
+  for (auto& index : qAsConst(selected)) {
     TaskPtr task = tasks_model_->getTask(sort_model_->mapToSource(index));
     emit taskDeleted(task);
   }

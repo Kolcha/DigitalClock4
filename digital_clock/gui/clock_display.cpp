@@ -177,7 +177,7 @@ void ClockDisplay::TimeoutHandler()
   }
 
   if (sep_flashes_) {
-    for (auto& sep_pos : seps_pos) {
+    for (auto& sep_pos : qAsConst(seps_pos)) {
       if (!sep_visible_) str_time[sep_pos] = ' ';
     }
     sep_visible_ = !sep_visible_;

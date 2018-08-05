@@ -29,7 +29,7 @@ SettingsStorageWrapper::SettingsStorageWrapper(SettingsStorage* backend, QObject
 
 void SettingsStorageWrapper::Accept()
 {
-  for (auto& key : changed_keys_) {
+  for (auto& key : qAsConst(changed_keys_)) {
     backend_->Commit(key);
   }
   changed_keys_.clear();
@@ -38,7 +38,7 @@ void SettingsStorageWrapper::Accept()
 
 void SettingsStorageWrapper::Reject()
 {
-  for (auto& key : changed_keys_) {
+  for (auto& key : qAsConst(changed_keys_)) {
     backend_->Revert(key);
   }
   changed_keys_.clear();

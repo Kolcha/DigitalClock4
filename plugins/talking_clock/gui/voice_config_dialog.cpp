@@ -32,7 +32,7 @@ VoiceConfigDialog::VoiceConfigDialog(const QSettings::SettingsMap& settings, QWi
 
   // Populate engine selection list
   ui->engine->addItem(tr("Default"), QString("default"));
-  foreach (QString engine, QTextToSpeech::availableEngines())
+  for (QString engine : QTextToSpeech::availableEngines())
     ui->engine->addItem(engine, engine);
 
   // init controls state
@@ -145,7 +145,7 @@ void VoiceConfigDialog::engineSelected(int index)
   // Populate the languages combobox before connecting its signal.
   QVector<QLocale> locales = m_speech->availableLocales();
   QLocale current = m_speech->locale();
-  foreach (const QLocale& locale, locales) {
+  for (const QLocale& locale : qAsConst(locales)) {
     QString name(QString("%1 (%2)")
                  .arg(QLocale::languageToString(locale.language()))
                  .arg(QLocale::countryToString(locale.country())));
@@ -189,7 +189,7 @@ void VoiceConfigDialog::localeChanged(const QLocale& locale)
 
   m_voices = m_speech->availableVoices();
   QVoice currentVoice = m_speech->voice();
-  foreach (const QVoice& voice, m_voices) {
+  for (const QVoice& voice : qAsConst(m_voices)) {
     ui->voice->addItem(QString("%1 - %2 - %3").arg(voice.name())
                        .arg(QVoice::genderName(voice.gender()))
                        .arg(QVoice::ageName(voice.age())));

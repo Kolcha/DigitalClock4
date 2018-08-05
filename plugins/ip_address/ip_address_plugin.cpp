@@ -118,7 +118,7 @@ void IpAddressPlugin::UpdateIPsList()
       QNetworkInterface iface = QNetworkInterface::interfaceFromName(iname);
       if (!iface.isValid()) continue;
       if (iface.flags() & QNetworkInterface::IsUp) {
-        foreach (const QNetworkAddressEntry& addren, iface.addressEntries()) {
+        for (const QNetworkAddressEntry& addren : iface.addressEntries()) {
           if (addren.ip().protocol() == QAbstractSocket::IPv4Protocol) {
             last_ip_list_ += addren.ip().toString() + '\n';
           }

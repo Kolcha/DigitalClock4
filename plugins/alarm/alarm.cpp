@@ -95,7 +95,7 @@ void Alarm::Start()
 
   QList<AlarmItem*> alarms = storage_->getAlarms();
   QStringList bad_files;
-  for (auto& alarm : alarms) {
+  for (auto& alarm : qAsConst(alarms)) {
     if (!alarm->media().isValid() || alarm->media().isEmpty()) {
       tray_icon_->showMessage(tr("Digital Clock Alarm"),
                               tr("Invalid media source is set for one of alarms. Click this message to fix."),
@@ -182,7 +182,7 @@ void Alarm::TimeUpdateListener()
   if (player_->state() == QMediaPlayer::PlayingState) return;
 
   QList<AlarmItem*> alarms = storage_->getAlarms();
-  for (auto& alarm : alarms) {
+  for (auto& alarm : qAsConst(alarms)) {
     if (!alarm->isEnabled()) continue;
     if (!alarm->days().contains(static_cast<Qt::DayOfWeek>(curr_time.date().dayOfWeek()))) continue;
     if (alarm->time().hour() != curr_time.time().hour() ||

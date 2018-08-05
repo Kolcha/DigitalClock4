@@ -48,8 +48,7 @@ void PluginBase::InitSettings(SettingsStorage* backend, const QString& name)
 void PluginBase::InitTranslator(const QLatin1String& prefix)
 {
   translator_ = new QTranslator(this);
-  QStringList ui_languages = QLocale::system().uiLanguages();
-  foreach (QString locale, ui_languages) {
+  for (QString locale : QLocale::system().uiLanguages()) {
     locale = QLocale(locale).name();
     if (locale == QLatin1String("C") ||               // overrideLanguage == "English"
         locale.startsWith(QLatin1String("en")))       // "English" is built-in

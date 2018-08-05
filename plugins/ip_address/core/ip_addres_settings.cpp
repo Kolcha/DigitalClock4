@@ -25,7 +25,7 @@ namespace ip_address {
 void InitDefaults(QSettings::SettingsMap* defaults)
 {
   QStringList def_iface;
-  foreach (const QNetworkInterface& iface, QNetworkInterface::allInterfaces()) {
+  for (const QNetworkInterface& iface : QNetworkInterface::allInterfaces()) {
     if (iface.flags() & QNetworkInterface::IsLoopBack) continue;
     if (iface.flags() & QNetworkInterface::IsUp) {
       def_iface.append(iface.name());

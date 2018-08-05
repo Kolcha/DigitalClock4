@@ -36,7 +36,7 @@ void TasksStorage::LoadTasks(const QDate& dt)
   QList<TaskPtr> tasks;
   QString date_key = QString("plugins/schedule/tasks/%1").arg(dt.toString("dd-MM-yyyy"));
   QStringList items = this->GetBackend()->ListChildren(date_key);
-  for (auto& i : items) {
+  for (auto& i : qAsConst(items)) {
     bool id_ok = false;
     int id = i.toInt(&id_ok);
     if (!id_ok) continue;
@@ -103,7 +103,7 @@ QList<QDate> TasksStorage::listDates() const
 {
   QList<QDate> dates;
   QStringList items = this->GetBackend()->ListChildren("plugins/schedule/tasks");
-  for (auto& i : items) {
+  for (auto& i : qAsConst(items)) {
     QDate dt = QDate::fromString(i, "dd-MM-yyyy");
     if (!dt.isValid()) continue;
     dates.append(dt);

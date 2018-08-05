@@ -275,7 +275,7 @@ QSize WidgetPluginBase::GetImageSize(const QString& text, qreal zoom) const
   int th = 0;
   const int space = private_->spacing();
 
-  for (auto& s : ss) {
+  for (auto& s : qAsConst(ss)) {
     int lw = 0;
     int lh = 0;
     for (int i = 0; i < s.length(); ++i) {

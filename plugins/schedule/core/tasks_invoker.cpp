@@ -35,7 +35,7 @@ void TasksInvoker::setDailyTasks(const QList<TaskPtr>& tasks)
 {
   if (!timer_->isActive()) return;
   tasks_.clear();
-  for (auto& tsk : tasks) {
+  for (auto& tsk : qAsConst(tasks)) {
     tasks_.insert(tsk->time(), tsk);
   }
   Q_ASSERT(tasks_.size() == tasks.size());
