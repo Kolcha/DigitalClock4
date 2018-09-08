@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	1,5,1,248
-PRODUCTVERSION	4,7,3,0
+FILEVERSION	1,5,1,249
+PRODUCTVERSION	4,7,4,0
 FILEFLAGSMASK	0x3F
 FILEFLAGS	0x0
 FILEOS		0x40004
@@ -14,12 +14,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Digital Clock skin drawing library"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Skin drawing library"
-		VALUE "FileVersion", "1.5.1.248"
+		VALUE "FileVersion", "1.5.1.249"
 		VALUE "InternalName", "skin_draw.dll"
 		VALUE "LegalCopyright", "© 2013-2018 Nick Korotysh"
 		VALUE "OriginalFilename", "skin_draw.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.7.3"
+		VALUE "ProductVersion", "4.7.4"
 	}
 }
 
