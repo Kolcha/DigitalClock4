@@ -89,6 +89,7 @@ private:
   void CorrectPositionImpl();
 #ifdef Q_OS_WIN
   void WinOnTopWorkaround();
+  void KeepOnDesktop();
 #endif
   void SetWindowFlag(Qt::WindowFlags flag, bool set);
 

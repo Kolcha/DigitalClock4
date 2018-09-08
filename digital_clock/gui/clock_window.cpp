@@ -386,6 +386,9 @@ void ClockWindow::LoadState()
 
   this->setVisible(state_->GetVariable(S_OPT_VISIBLE, true).toBool());
   last_visibility_ = this->isVisible();
+#ifdef Q_OS_WIN
+  if (this->isVisible()) KeepOnDesktop();
+#endif
 }
 
 void ClockWindow::SaveState()

@@ -18,6 +18,11 @@
 
 #include "gui/clock_window.h"
 
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#include <Windows.h>
+
 #include "core/clock_settings.h"
 #include "platform/fullscreen_detect.h"
 
@@ -42,6 +47,20 @@ void ClockWindow::WinOnTopWorkaround()
       }
       // https://forum.qt.io/topic/28739/flags-windows-7-window-always-on-top-including-the-win7-taskbar-custom-error/4
       if (!this->isActiveWindow()) this->raise();
+    }
+  }
+}
+
+void ClockWindow::KeepOnDesktop()
+{
+  // keep window visible after Win+D (show desktop)
+  // https://sourceforge.net/p/digitalclock4/tickets/28/
+  // https://stackoverflow.com/questions/35045060/how-to-keep-window-visible-at-all-times-but-not-force-it-to-be-on-top
+  HWND hWndTmp = FindWindowEx(NULL, NULL, L"Progman", NULL);
+  if (hWndTmp) {
+    hWndTmp = FindWindowEx(hWndTmp, NULL, L"SHELLDLL_DefView", NULL);
+    if (hWndTmp) {
+      SetWindowLongPtr((HWND)this->winId(), GWLP_HWNDPARENT, (LONG_PTR)hWndTmp);
     }
   }
 }
