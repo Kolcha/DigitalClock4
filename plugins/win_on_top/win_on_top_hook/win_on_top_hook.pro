@@ -33,4 +33,6 @@ SOURCES += win_on_top_hook.cpp
 
 RC_FILE = win_on_top_hook.rc
 
+QMAKE_LFLAGS_RELEASE += /RELEASE
+
 LIBS += -luser32

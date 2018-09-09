@@ -41,3 +41,5 @@ HEADERS += \
 DISTFILES += paletteicon.json
 
 win32:RC_FILE = paletteicon.rc
+
+win32-msvc*: QMAKE_LFLAGS_RELEASE += /RELEASE
