@@ -33,8 +33,7 @@
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFiles64Folder" Name="PFiles">
         <Directory Id="manufacturer_dir" Name="Nick Korotysh">
-          <Directory Id="INSTALLDIR" Name="Digital Clock">
-          </Directory>
+          <Directory Id="INSTALLDIR" Name="Digital Clock" />
         </Directory>
       </Directory>
 
@@ -46,9 +45,14 @@
           </Component>
         </Directory>
       </Directory>
-
-      <Directory Id="DesktopFolder" Name="Desktop" />
     </Directory>
+
+    <ComponentGroup Id="OnlineShortcuts">
+      <Component Id="cmp_wiki_shortcut" Directory="ProgramMenuDir" Guid="{17893509-4EB7-492C-ACFF-A2E49F28A049}" Win64="yes">
+        <util:InternetShortcut Id="wiki_shortcut" Name="Documentation" Target="https://sourceforge.net/p/digitalclock4/wiki/" Type="url" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="wiki_shortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
 
     <Feature Id="Complete" Level="1">
       <ComponentGroupRef Id="QtFiles" />
@@ -56,6 +60,7 @@
       <ComponentGroupRef Id="skins" />
       <ComponentGroupRef Id="textures" />
       <ComponentRef Id="ProgramMenuDir" />
+      <ComponentGroupRef Id="OnlineShortcuts" />
     </Feature>
 
     <Icon Id="app_icon.ico" SourceFile="..\..\digital_clock\resources\clock_icon_win.ico" />
