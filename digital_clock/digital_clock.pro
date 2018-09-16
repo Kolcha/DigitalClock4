@@ -130,6 +130,9 @@ RESOURCES += \
     resources/icons.qrc \
     resources/skins.qrc
 
+DISTFILES += \
+    digital_clock.rc
+
 win32:RC_FILE = digital_clock.rc
 macx {
     ICON = resources/clock_icon_mac.icns
