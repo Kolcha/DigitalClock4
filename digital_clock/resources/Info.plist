@@ -28,7 +28,7 @@
 	<key>CFBundleSpokenName</key>
 	<string>Digital Clock 4</string>
 	<key>CFBundleVersion</key>
-	<string>1298</string>
+	<string>1300</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSArchitecturePriority</key>
