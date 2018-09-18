@@ -144,9 +144,6 @@
       </item>
       <item row="0" column="4">
        <widget class="QToolButton" name="browse_btn">
-        <property name="text">
-         <string notr="true">...</string>
-        </property>
         <property name="icon">
          <iconset resource="../alarm.qrc">
           <normaloff>:/alarm/browse.svg.p</normaloff>:/alarm/browse.svg.p</iconset>
@@ -189,9 +186,6 @@
       </item>
       <item row="1" column="4">
        <widget class="QToolButton" name="preview_btn">
-        <property name="text">
-         <string notr="true">...</string>
-        </property>
         <property name="icon">
          <iconset resource="../alarm.qrc">
           <normaloff>:/alarm/play.svg.p</normaloff>:/alarm/play.svg.p</iconset>

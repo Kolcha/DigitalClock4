@@ -51,9 +51,6 @@
       </item>
       <item row="0" column="3">
        <widget class="QToolButton" name="hour_sound_btn">
-        <property name="text">
-         <string notr="true">...</string>
-        </property>
         <property name="icon">
          <iconset resource="../chime.qrc">
           <normaloff>:/chime/icon.svg.p</normaloff>:/chime/icon.svg.p</iconset>
@@ -85,9 +82,6 @@
       </item>
       <item row="1" column="3">
        <widget class="QToolButton" name="quarter_sound_btn">
-        <property name="text">
-         <string notr="true">...</string>
-        </property>
         <property name="icon">
          <iconset resource="../chime.qrc">
           <normaloff>:/chime/icon.svg.p</normaloff>:/chime/icon.svg.p</iconset>

@@ -26,9 +26,6 @@
      <property name="toolTip">
       <string>Add new alarm</string>
      </property>
-     <property name="text">
-      <string notr="true">...</string>
-     </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
        <normaloff>:/alarm/add.svg.p</normaloff>:/alarm/add.svg.p</iconset>
@@ -39,9 +36,6 @@
     <widget class="QToolButton" name="del_btn">
      <property name="toolTip">
       <string>Delete selected</string>
-     </property>
-     <property name="text">
-      <string notr="true">...</string>
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
@@ -67,9 +61,6 @@
      <property name="toolTip">
       <string>Disable all alarms</string>
      </property>
-     <property name="text">
-      <string notr="true">...</string>
-     </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
        <normaloff>:/alarm/disable_all.svg.p</normaloff>:/alarm/disable_all.svg.p</iconset>
@@ -80,9 +71,6 @@
     <widget class="QToolButton" name="delete_all_btn">
      <property name="toolTip">
       <string>Remove all alarms</string>
-     </property>
-     <property name="text">
-      <string notr="true">...</string>
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
@@ -107,9 +95,6 @@
     <widget class="QToolButton" name="adv_settings_btn">
      <property name="toolTip">
       <string>Advanced settings</string>
-     </property>
-     <property name="text">
-      <string notr="true">...</string>
      </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">

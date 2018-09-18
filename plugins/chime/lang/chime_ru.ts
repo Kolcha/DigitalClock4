@@ -31,17 +31,17 @@ Sounds from these plugins are included as default sounds.</source>
         <translation>Звуки</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="66"/>
+        <location filename="../gui/settings_dialog.ui" line="63"/>
         <source>Quarter</source>
         <translation>Четверть часа</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="103"/>
+        <location filename="../gui/settings_dialog.ui" line="97"/>
         <source>Quiet time</source>
         <translation>Тихие часы</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="109"/>
+        <location filename="../gui/settings_dialog.ui" line="103"/>
         <source>Enable</source>
         <translation>Включить</translation>
     </message>

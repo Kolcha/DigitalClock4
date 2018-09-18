@@ -19,7 +19,7 @@
         <translation>настройка голоса</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="53"/>
+        <location filename="../gui/settings_dialog.ui" line="50"/>
         <source>quarter hour</source>
         <translation>четверть часа</translation>
     </message>

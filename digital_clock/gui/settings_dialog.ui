@@ -250,9 +250,6 @@
           </item>
           <item>
            <widget class="QToolButton" name="skin_info_btn">
-            <property name="text">
-             <string notr="true">...</string>
-            </property>
             <property name="icon">
              <iconset resource="../resources/icons.qrc">
               <normaloff>:/clock/images/info.svg.p</normaloff>:/clock/images/info.svg.p</iconset>
@@ -437,9 +434,6 @@
             <property name="toolTip">
              <string>Current background color</string>
             </property>
-            <property name="text">
-             <string notr="true">...</string>
-            </property>
            </widget>
           </item>
          </layout>
@@ -455,11 +449,7 @@
          </property>
          <layout class="QHBoxLayout" name="colorize_layout">
           <item>
-           <widget class="LedToolButton" name="img_color_btn">
-            <property name="text">
-             <string notr="true">...</string>
-            </property>
-           </widget>
+           <widget class="LedToolButton" name="img_color_btn"/>
           </item>
           <item>
            <spacer name="horizontalSpacer_3">
@@ -586,12 +576,6 @@
             </property>
             <property name="editable">
              <bool>true</bool>
-            </property>
-            <property name="currentText">
-             <string notr="true"/>
-            </property>
-            <property name="currentIndex">
-             <number>-1</number>
             </property>
             <item>
              <property name="text">

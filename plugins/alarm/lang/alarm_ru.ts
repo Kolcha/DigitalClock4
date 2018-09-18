@@ -84,22 +84,22 @@
         <translation>Добавить новый будильник</translation>
     </message>
     <message>
-        <location filename="../gui/alarms_list_dialog.ui" line="41"/>
+        <location filename="../gui/alarms_list_dialog.ui" line="38"/>
         <source>Delete selected</source>
         <translation>Удалить выбранное</translation>
     </message>
     <message>
-        <location filename="../gui/alarms_list_dialog.ui" line="68"/>
+        <location filename="../gui/alarms_list_dialog.ui" line="62"/>
         <source>Disable all alarms</source>
         <translation>Отключить все будильники</translation>
     </message>
     <message>
-        <location filename="../gui/alarms_list_dialog.ui" line="82"/>
+        <location filename="../gui/alarms_list_dialog.ui" line="73"/>
         <source>Remove all alarms</source>
         <translation>Удалить все будильники</translation>
     </message>
     <message>
-        <location filename="../gui/alarms_list_dialog.ui" line="109"/>
+        <location filename="../gui/alarms_list_dialog.ui" line="97"/>
         <source>Advanced settings</source>
         <translation>Дополнительные настройки</translation>
     </message>
@@ -137,7 +137,7 @@
         <translation>Файл:</translation>
     </message>
     <message>
-        <location filename="../gui/edit_alarm_dialog.ui" line="159"/>
+        <location filename="../gui/edit_alarm_dialog.ui" line="156"/>
         <source>Volume:</source>
         <translation>Громкость:</translation>
     </message>

@@ -61,9 +61,6 @@
      <property name="toolTip">
       <string>Advanced task settings</string>
      </property>
-     <property name="text">
-      <string notr="true">...</string>
-     </property>
      <property name="icon">
       <iconset resource="../schedule.qrc">
        <normaloff>:/schedule/notification.svg.p</normaloff>:/schedule/notification.svg.p</iconset>

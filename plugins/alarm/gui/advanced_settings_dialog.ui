@@ -26,9 +26,6 @@
    </item>
    <item row="0" column="2">
     <widget class="QToolButton" name="shortcut_clear_btn">
-     <property name="text">
-      <string notr="true">...</string>
-     </property>
      <property name="icon">
       <iconset resource="../alarm.qrc">
        <normaloff>:/alarm/remove_all.svg.p</normaloff>:/alarm/remove_all.svg.p</iconset>

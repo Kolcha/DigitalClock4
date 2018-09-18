@@ -32,9 +32,6 @@
      <property name="toolTip">
       <string>voice configuration</string>
      </property>
-     <property name="text">
-      <string notr="true">...</string>
-     </property>
      <property name="icon">
       <iconset resource="../talking_clock.qrc">
        <normaloff>:/talking_clock/voice-config.svg.p</normaloff>:/talking_clock/voice-config.svg.p</iconset>
