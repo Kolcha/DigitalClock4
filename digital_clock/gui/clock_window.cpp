@@ -24,7 +24,6 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <QScreen>
-#include <QDesktopWidget>
 #include <QMenu>
 
 #include "core/clock_settings.h"
@@ -94,8 +93,8 @@ ClockWindow::ClockWindow(core::ClockSettings* app_config, int id, QWidget* paren
   keep_always_visible_ = true;
   window_ignore_list_ = app_config_->GetValue(OPT_FULLSCREEN_IGNORE_LST).toStringList();
 
-  connect(QApplication::desktop(), &QDesktopWidget::resized, this, &ClockWindow::LoadState);
-  connect(QApplication::desktop(), &QDesktopWidget::resized, this, &ClockWindow::CorrectPosition);
+  connect(QGuiApplication::screens()[id-1], &QScreen::geometryChanged, this, &ClockWindow::LoadState);
+  connect(QGuiApplication::screens()[id-1], &QScreen::geometryChanged, this, &ClockWindow::CorrectPosition);
 }
 
 bool ClockWindow::previewMode() const
@@ -131,7 +130,7 @@ void ClockWindow::mouseMoveEvent(QMouseEvent* event)
   if (event->buttons() & Qt::LeftButton) {
     QPoint target_pos = event->globalPos() - drag_position_;
     if (snap_to_edges_) {
-      QRect screen = QApplication::screens()[QApplication::desktop()->screenNumber(this)]->availableGeometry();
+      QRect screen = QGuiApplication::screenAt(pos())->availableGeometry();
       QRect widget = frameGeometry();
       if (qAbs(target_pos.x() - screen.left()) <= snap_threshold_)
         target_pos.setX(screen.left());
@@ -351,20 +350,20 @@ void ClockWindow::LoadState()
     if (var.isValid()) {
       // found! calculate current window position based on first window position
       last_pos = var.toPoint();
-      last_pos -= QApplication::screens()[0]->availableGeometry().topLeft();
+      last_pos -= QGuiApplication::primaryScreen()->availableGeometry().topLeft();
     } else {
       // no luck... trying to read old position key
       var = state_->GetVariable("clock_position");
       if (var.isValid()) {
         // found! calculate current window position based on old clock position
         last_pos = var.toPoint();
-        last_pos -= QApplication::screens()[0]->availableGeometry().topLeft();
+        last_pos -= QGuiApplication::primaryScreen()->availableGeometry().topLeft();
       } else {
         // nothing found... falling back to default value
         last_pos = QPoint(50, 20);
       }
     }
-    last_pos += QApplication::screens()[id_-1]->availableGeometry().topLeft();
+    last_pos += QGuiApplication::screens()[id_-1]->availableGeometry().topLeft();
   }
 
   CAlignment last_align = static_cast<CAlignment>(app_config_->GetValue(OPT_ALIGNMENT).toInt());
@@ -414,8 +413,8 @@ void ClockWindow::SaveState()
 void ClockWindow::MoveWindow(Qt::Alignment align)
 {
   bool show_on_all_monitors = app_config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool();
-  int screen_idx = show_on_all_monitors ? id_-1 : QApplication::desktop()->screenNumber(this->pos());
-  QRect screen = QApplication::screens()[screen_idx]->availableGeometry();
+  QScreen* scr = show_on_all_monitors ? QGuiApplication::screens()[id_-1] : QGuiApplication::screenAt(this->pos());
+  QRect screen = scr->availableGeometry();
   QRect window = this->frameGeometry();
   QPoint curr_pos = this->pos();
   if (align & Qt::AlignLeft) curr_pos.setX(screen.left());
@@ -471,8 +470,8 @@ void ClockWindow::CorrectPositionImpl()
 {
   QPoint curr_pos = this->pos();
   bool show_on_all_monitors = app_config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool();
-  int screen_idx = show_on_all_monitors ? id_-1 : QApplication::desktop()->screenNumber(this->pos());
-  QRect screen = QApplication::screens()[screen_idx]->geometry();
+  QScreen* scr = show_on_all_monitors ? QGuiApplication::screens()[id_-1] : QGuiApplication::screenAt(this->pos());
+  QRect screen = scr->geometry();
   curr_pos.setX(std::max(curr_pos.x(), screen.left()));
   curr_pos.setX(std::min(curr_pos.x(), screen.left() + screen.width() - this->width()));
   curr_pos.setY(std::max(curr_pos.y(), screen.top()));
