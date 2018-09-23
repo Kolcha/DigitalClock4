@@ -874,9 +874,9 @@
       </attribute>
       <layout class="QVBoxLayout" name="experimental_layout">
        <item>
-        <widget class="QCheckBox" name="fullscreen_detect">
+        <widget class="QCheckBox" name="show_in_fullscreen">
          <property name="text">
-          <string>prevent appearing above fullscreen windows</string>
+          <string>show clock in fullscreen mode (may not work for some apps)</string>
          </property>
         </widget>
        </item>

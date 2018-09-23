@@ -393,6 +393,11 @@
         <translation>Экспериментальные</translation>
     </message>
     <message>
+        <location filename="../gui/settings_dialog.ui" line="879"/>
+        <source>show clock in fullscreen mode (may not work for some apps)</source>
+        <translation>показывать часы в полноэкранном режиме (может не работать для некоторых приложений)</translation>
+    </message>
+    <message>
         <location filename="../gui/settings_dialog.ui" line="886"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation>показывать часы на всех рабочих столах</translation>
@@ -488,11 +493,6 @@
         <location filename="../gui/settings_dialog.ui" line="812"/>
         <source>Browse for local file instead of URL</source>
         <translation>Выбрать локальный файл вместо URL</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="879"/>
-        <source>prevent appearing above fullscreen windows</source>
-        <translation>не появляться поверх полноэкранных окон</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="825"/>

@@ -70,7 +70,7 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* st
   ui->skin_info_btn->setVisible(false);  // temporary, not implemented
   ui->defaults_bth->setVisible(false);   // temporary, not implemented
 #ifndef Q_OS_WIN
-  ui->fullscreen_detect->setVisible(false);   // supported only on Windows
+  ui->show_in_fullscreen->setVisible(false);   // supported only on Windows
 #endif
 #ifndef Q_OS_LINUX
   ui->better_stay_on_top->setVisible(false);  // supported only on Linux
@@ -248,7 +248,7 @@ void SettingsDialog::InitControls()
   }
 
   // "Experimental" tab
-  ui->fullscreen_detect->setChecked(config_->GetValue(OPT_FULLSCREEN_DETECT).toBool());
+  ui->show_in_fullscreen->setChecked(!config_->GetValue(OPT_FULLSCREEN_DETECT).toBool());
   ui->show_on_all_workspaces->setChecked(config_->GetValue(OPT_SHOW_ON_ALL_DESKTOPS).toBool());
   ui->better_stay_on_top->setChecked(config_->GetValue(OPT_BETTER_STAY_ON_TOP).toBool());
   ui->keep_always_visible->setChecked(config_->GetValue(OPT_KEEP_ALWAYS_VISIBLE).toBool());
@@ -528,9 +528,9 @@ void digital_clock::gui::SettingsDialog::on_export_state_clicked(bool checked)
   emit OptionChanged(OPT_EXPORT_STATE, checked);
 }
 
-void digital_clock::gui::SettingsDialog::on_fullscreen_detect_clicked(bool checked)
+void digital_clock::gui::SettingsDialog::on_show_in_fullscreen_clicked(bool checked)
 {
-  emit OptionChanged(OPT_FULLSCREEN_DETECT, checked);
+  emit OptionChanged(OPT_FULLSCREEN_DETECT, !checked);
 }
 
 void digital_clock::gui::SettingsDialog::on_show_on_all_workspaces_clicked(bool checked)

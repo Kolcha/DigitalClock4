@@ -117,7 +117,7 @@ private slots:
   void on_show_hide_enable_clicked(bool checked);
   void on_export_state_clicked(bool checked);
 
-  void on_fullscreen_detect_clicked(bool checked);
+  void on_show_in_fullscreen_clicked(bool checked);
   void on_show_on_all_workspaces_clicked(bool checked);
   void on_better_stay_on_top_clicked(bool checked);
   void on_keep_always_visible_clicked(bool checked);
