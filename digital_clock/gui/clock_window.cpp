@@ -52,11 +52,11 @@ ClockWindow::ClockWindow(core::ClockSettings* app_config, int id, QWidget* paren
   app_config_(app_config),
   id_(id)
 {
-  setWindowFlags(Qt::FramelessWindowHint);
+  setWindowFlag(Qt::FramelessWindowHint);
 #ifdef Q_OS_MACOS
-  setWindowFlags(windowFlags() | Qt::NoDropShadowWindowHint);
+  setWindowFlag(Qt::NoDropShadowWindowHint);
 #else
-  setWindowFlags(windowFlags() | Qt::Tool);
+  setWindowFlag(Qt::Tool);
 #endif
   setAttribute(Qt::WA_TranslucentBackground);
 
@@ -221,11 +221,9 @@ void ClockWindow::ApplyOption(const Option opt, const QVariant& value)
       break;
 
     case OPT_STAY_ON_TOP:
-      if (app_config_->GetValue(OPT_BETTER_STAY_ON_TOP).toBool()) {
-        SetWindowFlag(Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint, value.toBool());
-      } else {
-        SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
-      }
+      SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
+      if (app_config_->GetValue(OPT_BETTER_STAY_ON_TOP).toBool())
+        SetWindowFlag(Qt::X11BypassWindowManagerHint, value.toBool());
       break;
 
     case OPT_TRANSP_FOR_INPUT:
@@ -479,13 +477,11 @@ void ClockWindow::CorrectPositionImpl()
   if (curr_pos != this->pos()) this->move(curr_pos);
 }
 
-void ClockWindow::SetWindowFlag(Qt::WindowFlags flag, bool set)
+void ClockWindow::SetWindowFlag(Qt::WindowType flag, bool set)
 {
   QWidget* aw = QApplication::activeWindow();
-  Qt::WindowFlags flags = windowFlags();
-  set ? flags |= flag : flags &= ~flag;
   bool last_visible = isVisible();
-  setWindowFlags(flags);
+  setWindowFlag(flag, set);
   if (last_visible != isVisible()) show();
   if (aw) aw->activateWindow();
 }

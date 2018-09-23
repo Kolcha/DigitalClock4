@@ -91,7 +91,7 @@ private:
   void WinOnTopWorkaround();
   void KeepOnDesktop();
 #endif
-  void SetWindowFlag(Qt::WindowFlags flag, bool set);
+  void SetWindowFlag(Qt::WindowType flag, bool set);
 
   void SetVisibleOnAllDesktops(bool set);
 
