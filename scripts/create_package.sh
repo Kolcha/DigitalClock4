@@ -84,8 +84,8 @@ cp "$build_dir/paletteicon/libpaletteicon.so" "$TARGET_APP_FOLDER/iconengines/"
 strip -s "$TARGET_APP_FOLDER/iconengines/libpaletteicon.so"
 
 # copy SSL libs
-cp "/usr/lib/x86_64-linux-gnu/libssl.so.1.0.0" "$TARGET_APP_FOLDER/$qt_rt/"
-cp "/usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0" "$TARGET_APP_FOLDER/$qt_rt/"
+cp "/usr/lib/x86_64-linux-gnu/libssl.so.1.1" "$TARGET_APP_FOLDER/$qt_rt/"
+cp "/usr/lib/x86_64-linux-gnu/libcrypto.so.1.1" "$TARGET_APP_FOLDER/$qt_rt/"
 
 # remove unused styles
 for i in $(ls -1 "$qt_rt/plugins/styles" | grep -v gtk)
