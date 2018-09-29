@@ -52,7 +52,7 @@ ClockWindow::ClockWindow(core::ClockSettings* app_config, int id, QWidget* paren
   app_config_(app_config),
   id_(id)
 {
-  setWindowFlag(Qt::FramelessWindowHint);
+  setWindowFlags(Qt::FramelessWindowHint);
 #ifdef Q_OS_MACOS
   setWindowFlag(Qt::NoDropShadowWindowHint);
 #else
