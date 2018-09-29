@@ -11,12 +11,6 @@
             <Component Id="cmp17131BA271257D72FB32E0B8CD164BCA" Directory="INSTALLDIR" Guid="{51DB23BD-117D-4A7C-BAA1-B42C514B2156}" Win64="yes">
                 <File Id="fil0936B3F06B062CC85604526F0DFF963B" KeyPath="yes" Source="..\..\..\qt-files-x64\libeay32.dll" />
             </Component>
-            <Component Id="cmp5DDCF0CE56D406D1B8B1F93E988AED6B" Directory="INSTALLDIR" Guid="{D4DF0E3E-493C-43C4-B219-334ACC636621}" Win64="yes">
-                <File Id="fil0F4CD3729AF07C1C460E292E0F081D0A" KeyPath="yes" Source="..\..\..\qt-files-x64\libEGL.dll" />
-            </Component>
-            <Component Id="cmp936F93A6D920FB403211F0AE426037A0" Directory="INSTALLDIR" Guid="{F73ECF9E-C4BF-43ED-86B8-F1AC6D86678C}" Win64="yes">
-                <File Id="filAF89F998C93BD10CB677322009EB192E" KeyPath="yes" Source="..\..\..\qt-files-x64\libGLESV2.dll" />
-            </Component>
             <Component Id="cmp01229088A6F1DEA1BE391E6E7CC3D3EE" Directory="INSTALLDIR" Guid="{F9BBEDBB-99ED-41D4-A8E5-4AA5CC4C4423}" Win64="yes">
                 <File Id="filAD80F4724AAE3D8B0682F5982CC2548D" KeyPath="yes" Source="..\..\..\qt-files-x64\Qt5Core.dll" />
             </Component>
@@ -47,17 +41,8 @@
             <Component Id="cmp0A3EA57EB677109190A07DB8452B32F6" Directory="dir0549B3D8BCB345376D7DA16235134304" Guid="{8CE0F6B0-7E4C-4416-BC79-F3C7DC967702}" Win64="yes">
                 <File Id="fil053628F956B07B10E3C4E87C0CE8ABF7" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\audio\qtaudio_windows.dll" />
             </Component>
-            <Component Id="cmpAA3D914703C06C9AB58FC4425223E6E8" Directory="dirD97694D95A5C47981248FBF5CBA0999C" Guid="{ABAA9114-5D4C-42BE-874B-09963451C5D1}" Win64="yes">
-                <File Id="fil11A67234958E64E05DF7D434AD2C21BB" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\bearer\qgenericbearer.dll" />
-            </Component>
             <Component Id="cmp8868342A11EC1A5F0F368534A0870AAB" Directory="dir2C41C47317919F7F40F42C2D5CABDBDE" Guid="{783BF0F3-E0E6-47F2-8682-41789F9C53A8}" Win64="yes">
                 <File Id="filACA0F8188FFBA3FCA53DDF584A3C92BA" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\iconengines\qsvgicon.dll" />
-            </Component>
-            <Component Id="cmp59F2CC1FC0003B3C2DC2E59B669C1485" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{9AD666F9-6FE5-40A4-A03D-4BBF13078F5B}" Win64="yes">
-                <File Id="fil706689E2C7B5A960108A3851CA1FFFB5" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\imageformats\qgif.dll" />
-            </Component>
-            <Component Id="cmp6FB78818D91522EEF11835938524CAA2" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{7E39A7C9-8BAB-4912-A466-80AAC0BF60AB}" Win64="yes">
-                <File Id="fil0A82059D502389A6C6F393F0DC857D8F" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\imageformats\qicns.dll" />
             </Component>
             <Component Id="cmp715C1286E8B00FFDC913B863D49664A7" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{5723A27D-65E1-43CB-979D-BF8A9B8C437F}" Win64="yes">
                 <File Id="filA1C4CFCEA4776592E7A7B3708B0E39F5" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\imageformats\qico.dll" />
@@ -67,18 +52,6 @@
             </Component>
             <Component Id="cmp75085EA01AF53C1C4393D459D1D6951C" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{AFC7C1D7-FB06-4283-A458-959741B909E9}" Win64="yes">
                 <File Id="filE9B34AC1DE1A10992341BF7A70583E2F" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\imageformats\qsvg.dll" />
-            </Component>
-            <Component Id="cmpE757721F807C2BF87C8E838648807E41" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{2809F605-8372-4060-A4FD-5E60D4F8AA7F}" Win64="yes">
-                <File Id="filD1501C8638A304E960D5BD13EC32B0C4" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\imageformats\qtga.dll" />
-            </Component>
-            <Component Id="cmp4532D35F12ACC340796CCC2898BAD222" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{D1A9C9F1-9526-43CA-9DC4-7DE5F590D74C}" Win64="yes">
-                <File Id="filFA0D58ADB1871DEFE58B2E38C8A20A54" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\imageformats\qtiff.dll" />
-            </Component>
-            <Component Id="cmpE361B2F2F2C313ABC3DC7CD756240FEA" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{8367DF86-C7C5-4BAD-BEC8-25FC0781B5C8}" Win64="yes">
-                <File Id="fil56CF4E2EDC7A48235E689A8737B69AB8" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\imageformats\qwbmp.dll" />
-            </Component>
-            <Component Id="cmp55D3B5F14A47B895D41318BEF87A73BD" Directory="dirC7D12466D9D4EFB37CFFCE0FE430D862" Guid="{7E43D9E9-B6F9-4D83-BD42-6F9ECF058315}" Win64="yes">
-                <File Id="filC417BF80A35F4D0348603D09CFB25E1B" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\imageformats\qwebp.dll" />
             </Component>
             <Component Id="cmp098B8555FD3ACDA25FC0E48FB8FA1724" Directory="dir38D1F3EF7754C1BA5FF82908E02510CA" Guid="{ABB71F13-DB33-424B-B392-CFD286972F6E}" Win64="yes">
                 <File Id="filE27F3C57761005ED07CDF80E8245B303" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\mediaservice\dsengine.dll" />
@@ -194,11 +167,6 @@
     <Fragment>
         <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
             <Directory Id="dirC7D12466D9D4EFB37CFFCE0FE430D862" Name="imageformats" />
-        </DirectoryRef>
-    </Fragment>
-    <Fragment>
-        <DirectoryRef Id="dir280A744A3793B4E73B0B13172DB8683E">
-            <Directory Id="dirD97694D95A5C47981248FBF5CBA0999C" Name="bearer" />
         </DirectoryRef>
     </Fragment>
     <Fragment>
