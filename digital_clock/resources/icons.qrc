@@ -13,5 +13,6 @@
     <qresource prefix="/clock/icons/tray">
         <file alias="clock.svg">images/time-24.svg</file>
         <file alias="clock-alt.svg">images/if_clock_2561404.svg</file>
+        <file alias="clock-smaller.svg">images/if_time-24_103169.svg</file>
     </qresource>
 </RCC>

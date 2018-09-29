@@ -47,7 +47,7 @@ TrayControl::TrayControl(QObject* parent) : QObject(parent)
   else
     tray_icon = QIcon(":/clock/icons/tray/clock.svg");
 #else
-  QIcon tray_icon(":/clock/icons/tray/clock.svg");
+  QIcon tray_icon(":/clock/icons/tray/clock-smaller.svg");
 #endif
   tray_icon.setIsMask(true);
   tray_icon_ = new QSystemTrayIcon(tray_icon, this);
