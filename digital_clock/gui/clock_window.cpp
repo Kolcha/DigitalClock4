@@ -47,6 +47,31 @@ static const char* const S_OPT_VISIBLE_KEY = "visible";
 namespace digital_clock {
 namespace gui {
 
+namespace {
+
+QScreen* findScreen(const QRect& r)
+{
+  QScreen* screen = QGuiApplication::screenAt(r.topLeft());
+  if (!screen) {
+    int max_intersected = 0;
+    for (QScreen* s : QGuiApplication::screens()) {
+      QRect ir = r.intersected(s->availableGeometry());
+      int sq = ir.width() * ir.height();
+      if (sq > max_intersected) {
+        max_intersected = sq;
+        screen = s;
+      }
+    }
+  }
+
+  if (!screen)
+    screen = QGuiApplication::primaryScreen();
+
+  return screen;
+}
+
+}
+
 ClockWindow::ClockWindow(core::ClockSettings* app_config, int id, QWidget* parent) :
   QWidget(parent, Qt::Window),
   app_config_(app_config),
@@ -130,7 +155,7 @@ void ClockWindow::mouseMoveEvent(QMouseEvent* event)
   if (event->buttons() & Qt::LeftButton) {
     QPoint target_pos = event->globalPos() - drag_position_;
     if (snap_to_edges_) {
-      QRect screen = QGuiApplication::screenAt(pos())->availableGeometry();
+      QRect screen = findScreen(frameGeometry())->availableGeometry();
       QRect widget = frameGeometry();
       if (qAbs(target_pos.x() - screen.left()) <= snap_threshold_)
         target_pos.setX(screen.left());
@@ -411,7 +436,7 @@ void ClockWindow::SaveState()
 void ClockWindow::MoveWindow(Qt::Alignment align)
 {
   bool show_on_all_monitors = app_config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool();
-  QScreen* scr = show_on_all_monitors ? QGuiApplication::screens()[id_-1] : QGuiApplication::screenAt(this->pos());
+  QScreen* scr = show_on_all_monitors ? QGuiApplication::screens()[id_-1] : findScreen(this->frameGeometry());
   QRect screen = scr->availableGeometry();
   QRect window = this->frameGeometry();
   QPoint curr_pos = this->pos();
@@ -468,7 +493,7 @@ void ClockWindow::CorrectPositionImpl()
 {
   QPoint curr_pos = this->pos();
   bool show_on_all_monitors = app_config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool();
-  QScreen* scr = show_on_all_monitors ? QGuiApplication::screens()[id_-1] : QGuiApplication::screenAt(this->pos());
+  QScreen* scr = show_on_all_monitors ? QGuiApplication::screens()[id_-1] : findScreen(this->frameGeometry());
   QRect screen = scr->geometry();
   curr_pos.setX(std::max(curr_pos.x(), screen.left()));
   curr_pos.setX(std::min(curr_pos.x(), screen.left() + screen.width() - this->width()));

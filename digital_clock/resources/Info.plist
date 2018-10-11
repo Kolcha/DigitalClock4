@@ -7,9 +7,9 @@
 	<key>CFBundleDisplayName</key>
 	<string>Digital Clock</string>
 	<key>CFBundleExecutable</key>
-	<string>digital_clock</string>
+	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>clock_icon_mac.icns</string>
+	<string>${ASSETCATALOG_COMPILER_APPICON_NAME}</string>
 	<key>CFBundleIdentifier</key>
 	<string>io.sourceforge.digitalclock4</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -26,7 +26,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>4.7.4</string>
 	<key>CFBundleVersion</key>
-	<string>1308</string>
+	<string>1310</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSArchitecturePriority</key>
@@ -34,7 +34,7 @@
 		<string>x86_64</string>
 	</array>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.11.0</string>
+	<string>${MACOSX_DEPLOYMENT_TARGET}.0</string>
 	<key>LSRequiresNativeExecution</key>
 	<true/>
 	<key>LSUIElement</key>
