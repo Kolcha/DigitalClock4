@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	3,1,5,314
+FILEVERSION	3,1,5,315
 PRODUCTVERSION	4,7,4,0
 FILEFLAGSMASK	0x3F
 FILEFLAGS	0x0
@@ -14,7 +14,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Alarm"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "3.1.5.314"
+		VALUE "FileVersion", "3.1.5.315"
 		VALUE "InternalName", "alarm.dll"
 		VALUE "LegalCopyright", "© 2013-2018 Nick Korotysh"
 		VALUE "OriginalFilename", "alarm.dll"

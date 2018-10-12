@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	1,1,2,67
+FILEVERSION	1,1,2,68
 PRODUCTVERSION	4,7,4,0
 FILEFLAGSMASK	0x3F
 FILEFLAGS	0x0
@@ -14,7 +14,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Countdown timer"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "1.1.2.67"
+		VALUE "FileVersion", "1.1.2.68"
 		VALUE "InternalName", "countdown_timer.dll"
 		VALUE "LegalCopyright", "© 2017-2018 Nick Korotysh"
 		VALUE "OriginalFilename", "countdown_timer.dll"
