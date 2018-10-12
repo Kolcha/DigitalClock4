@@ -255,6 +255,9 @@ void SettingsDialog::InitControls()
   ui->show_on_all_monitors->setChecked(config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool());
   ui->only_one_instance->setChecked(config_->GetValue(OPT_ONLY_ONE_INSTANCE).toBool());
   ui->hover_buttons_enabled->setChecked(config_->GetValue(OPT_USE_HOVER_BUTTONS).toBool());
+  ui->snap_to_edges->setChecked(config_->GetValue(OPT_SNAP_TO_EDGES).toBool());
+  ui->snap_threshold->setValue(config_->GetValue(OPT_SNAP_THRESHOLD).toInt());
+  ui->refresh_interval->setValue(config_->GetValue(OPT_REFRESH_INTERVAL).toInt());
 }
 
 void SettingsDialog::ChangePluginState(const QString& name, bool activated)
@@ -566,6 +569,21 @@ void digital_clock::gui::SettingsDialog::on_only_one_instance_clicked(bool check
 void digital_clock::gui::SettingsDialog::on_hover_buttons_enabled_clicked(bool checked)
 {
   emit OptionChanged(OPT_USE_HOVER_BUTTONS, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_snap_to_edges_clicked(bool checked)
+{
+  emit OptionChanged(OPT_SNAP_TO_EDGES, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_snap_threshold_valueChanged(int value)
+{
+  emit OptionChanged(OPT_SNAP_THRESHOLD, value);
+}
+
+void digital_clock::gui::SettingsDialog::on_refresh_interval_valueChanged(int value)
+{
+  emit OptionChanged(OPT_REFRESH_INTERVAL, value);
 }
 
 void digital_clock::gui::SettingsDialog::on_time_zone_box_activated(int index)

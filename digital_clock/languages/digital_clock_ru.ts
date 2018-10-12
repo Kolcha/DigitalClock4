@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::core::ClockApplication</name>
     <message>
-        <location filename="../core/clock_application.cpp" line="299"/>
-        <location filename="../core/clock_application.cpp" line="309"/>
-        <location filename="../core/clock_application.cpp" line="319"/>
+        <location filename="../core/clock_application.cpp" line="304"/>
+        <location filename="../core/clock_application.cpp" line="314"/>
+        <location filename="../core/clock_application.cpp" line="324"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="300"/>
+        <location filename="../core/clock_application.cpp" line="305"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="310"/>
+        <location filename="../core/clock_application.cpp" line="315"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="320"/>
+        <location filename="../core/clock_application.cpp" line="325"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="332"/>
+        <location filename="../core/clock_application.cpp" line="337"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -428,12 +428,32 @@
         <translation>перемещать часы по клику по ним (не работает когда включено &quot;прозрачность для мыши&quot;)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="934"/>
+        <location filename="../gui/settings_dialog.ui" line="955"/>
+        <source>threshold</source>
+        <translation>порог</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="987"/>
+        <source>window refresh interval</source>
+        <translation>интервал обновления окна</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="1002"/>
+        <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
+        <translation>ВНИМАНИЕ! Очень частое обновление может привести к повышенной нагрузке CPU. По умолчанию 500мс.</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="1022"/>
+        <source>snap to edges</source>
+        <translation>привязывать к краям</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="1040"/>
         <source>Please restart clock after changing any of theese options!</source>
         <translation>Пожалуйста перезапустите часы после изменения любой из данных опций!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="954"/>
+        <location filename="../gui/settings_dialog.ui" line="1060"/>
         <source>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in &apos;About&apos; dialog.</source>
         <translation>На этой вкладке представлены экспериментальные опции. По умолчанию они отключены. Их включение и использование полностью безопасно для Вашего компьютера, но они могут привести к непредсказуемому поведению часов. Пробуйте их если хотите, но любое тестирование только приветствуется. Если после включения любой из данных опций Вы заметите некорректное поведение часов, пожалуйста сообщите мне об этом. Контактную информацию можно найти в окошке &apos;О программе&apos;.</translation>
     </message>
@@ -535,28 +555,28 @@
         <translation>неизвестно</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="334"/>
+        <location filename="../gui/settings_dialog.cpp" line="337"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="336"/>
+        <location filename="../gui/settings_dialog.cpp" line="339"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="419"/>
+        <location filename="../gui/settings_dialog.cpp" line="422"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="421"/>
-        <location filename="../gui/settings_dialog.cpp" line="429"/>
+        <location filename="../gui/settings_dialog.cpp" line="424"/>
+        <location filename="../gui/settings_dialog.cpp" line="432"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="427"/>
+        <location filename="../gui/settings_dialog.cpp" line="430"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>

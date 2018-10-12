@@ -75,6 +75,7 @@ QMap<Option, QVariant> ClockSettings::GetSettings() const
   all_settings[OPT_SHOW_WINDOW_BORDER]    = GetValue(OPT_SHOW_WINDOW_BORDER);
   all_settings[OPT_SNAP_TO_EDGES]         = GetValue(OPT_SNAP_TO_EDGES);
   all_settings[OPT_SNAP_THRESHOLD]        = GetValue(OPT_SNAP_THRESHOLD);
+  all_settings[OPT_REFRESH_INTERVAL]      = GetValue(OPT_REFRESH_INTERVAL);
   all_settings[OPT_SHOW_ON_ALL_MONITORS]  = GetValue(OPT_SHOW_ON_ALL_MONITORS);
   all_settings[OPT_USE_HOVER_BUTTONS]     = GetValue(OPT_USE_HOVER_BUTTONS);
   all_settings[OPT_WINDOW_MOVE_STEP]      = GetValue(OPT_WINDOW_MOVE_STEP);
@@ -128,6 +129,7 @@ QString ClockSettings::GetKey(const int id) const
     case OPT_SHOW_WINDOW_BORDER:    return "window/show_border";
     case OPT_SNAP_TO_EDGES:         return "window/snap_to_edges";
     case OPT_SNAP_THRESHOLD:        return "window/snap_threshold";
+    case OPT_REFRESH_INTERVAL:      return "window/refresh_interval";
     case OPT_SHOW_ON_ALL_MONITORS:  return "window/show_on_all_monitors";
     case OPT_USE_HOVER_BUTTONS:     return "window/hover_buttons";
     case OPT_WINDOW_MOVE_STEP:      return "window/move_step";
@@ -183,6 +185,7 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_SHOW_WINDOW_BORDER:    return true;
     case OPT_SNAP_TO_EDGES:         return true;
     case OPT_SNAP_THRESHOLD:        return 15;
+    case OPT_REFRESH_INTERVAL:      return 500;
     case OPT_SHOW_ON_ALL_MONITORS:  return false;
     case OPT_USE_HOVER_BUTTONS:     return false;
     case OPT_WINDOW_MOVE_STEP:      return 20;

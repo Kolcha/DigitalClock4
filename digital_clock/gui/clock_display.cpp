@@ -180,7 +180,7 @@ void ClockDisplay::TimeoutHandler()
     for (auto& sep_pos : qAsConst(seps_pos)) {
       if (!sep_visible_) str_time[sep_pos] = ' ';
     }
-    sep_visible_ = !sep_visible_;
+    sep_visible_ = dt.time().msec() < 500; // !sep_visible_;
   }
   emit ImageNeeded(str_time);
 }

@@ -124,6 +124,9 @@ private slots:
   void on_show_on_all_monitors_clicked(bool checked);
   void on_only_one_instance_clicked(bool checked);
   void on_hover_buttons_enabled_clicked(bool checked);
+  void on_snap_to_edges_clicked(bool checked);
+  void on_snap_threshold_valueChanged(int value);
+  void on_refresh_interval_valueChanged(int value);
 
   void on_change_time_zone_cbx_clicked(bool checked);
   void on_time_zone_box_activated(int index);

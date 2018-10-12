@@ -88,9 +88,7 @@ ClockApplication::ClockApplication(ClockSettings* config, QObject* parent) :
   for (auto w : qAsConst(clock_windows_)) w->LoadState();
   UpdateVisibilityAction();
 
-  timer_.setInterval(500);
   timer_.setSingleShot(false);
-  timer_.start();
 }
 
 ClockApplication::~ClockApplication()
@@ -166,6 +164,9 @@ void ClockApplication::Reset()
 
   plugin_manager_->UnloadPlugins();
   plugin_manager_->LoadPlugins(app_config_->GetValue(OPT_PLUGINS).toStringList());
+
+  // refresh interval
+  ApplyOption(OPT_REFRESH_INTERVAL, app_config_->GetValue(OPT_REFRESH_INTERVAL));
 }
 
 void ClockApplication::ApplyOption(const Option opt, const QVariant& value)
@@ -189,6 +190,10 @@ void ClockApplication::ApplyOption(const Option opt, const QVariant& value)
 
     case OPT_CHECK_FOR_BETA:
       updater_->SetCheckForBeta(value.toBool());
+      break;
+
+    case OPT_REFRESH_INTERVAL:
+      timer_.start(value.toInt());
       break;
 
     case OPT_SHOW_HIDE_ENABLED:
