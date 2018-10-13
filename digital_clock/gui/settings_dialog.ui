@@ -927,7 +927,24 @@
          <property name="verticalSpacing">
           <number>2</number>
          </property>
-         <item row="0" column="5">
+         <item row="1" column="0" colspan="5">
+          <widget class="QLabel" name="refresh_interval_warning_label">
+           <property name="text">
+            <string>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="snap_to_edges">
+           <property name="text">
+            <string>snap to edges, threshold</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
           <widget class="QSpinBox" name="refresh_interval">
            <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -943,39 +960,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="snap_threshold_label">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>threshold</string>
-           </property>
-           <property name="buddy">
-            <cstring>snap_threshold</cstring>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QSpinBox" name="snap_threshold">
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-           <property name="suffix">
-            <string notr="true"> px</string>
-           </property>
-           <property name="minimum">
-            <number>10</number>
-           </property>
-           <property name="maximum">
-            <number>50</number>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="4">
+         <item row="0" column="3">
           <widget class="QLabel" name="refresh_interval_label">
            <property name="sizePolicy">
             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -991,19 +976,7 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="4" colspan="2">
-          <widget class="QLabel" name="refresh_interval_warning_label">
-           <property name="font">
-            <font>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="3">
+         <item row="0" column="2">
           <spacer name="horizontalSpacer_4">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -1016,13 +989,19 @@
            </property>
           </spacer>
          </item>
-         <item row="0" column="0">
-          <widget class="QCheckBox" name="snap_to_edges">
-           <property name="text">
-            <string>snap to edges</string>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="snap_threshold">
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
-           <property name="checked">
-            <bool>true</bool>
+           <property name="suffix">
+            <string notr="true"> px</string>
+           </property>
+           <property name="minimum">
+            <number>10</number>
+           </property>
+           <property name="maximum">
+            <number>50</number>
            </property>
           </widget>
          </item>
@@ -1430,22 +1409,6 @@
     <hint type="destinationlabel">
      <x>527</x>
      <y>104</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>snap_to_edges</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>snap_threshold_label</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>111</x>
-     <y>252</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>153</x>
-     <y>249</y>
     </hint>
    </hints>
   </connection>
