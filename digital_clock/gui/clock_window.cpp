@@ -25,6 +25,9 @@
 #include <QPainter>
 #include <QScreen>
 #include <QMenu>
+#if (QT_VERSION < QT_VERSION_CHECK(5, 10, 0))
+#include <QDesktopWidget>
+#endif
 
 #include "core/clock_settings.h"
 #include "core/clock_state.h"
@@ -49,9 +52,14 @@ namespace gui {
 
 namespace {
 
-QScreen* findScreen(const QRect& r)
+QScreen* findScreen(QWidget* w)
 {
+  QRect r = w->frameGeometry();
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
   QScreen* screen = QGuiApplication::screenAt(r.topLeft());
+#else
+  QScreen* screen = QGuiApplication::screens()[QApplication::desktop()->screenNumber(w)];
+#endif
   if (!screen) {
     int max_intersected = 0;
     for (QScreen* s : QGuiApplication::screens()) {
@@ -155,7 +163,7 @@ void ClockWindow::mouseMoveEvent(QMouseEvent* event)
   if (event->buttons() & Qt::LeftButton) {
     QPoint target_pos = event->globalPos() - drag_position_;
     if (snap_to_edges_) {
-      QRect screen = findScreen(frameGeometry())->availableGeometry();
+      QRect screen = findScreen(this)->availableGeometry();
       QRect widget = frameGeometry();
       if (qAbs(target_pos.x() - screen.left()) <= snap_threshold_)
         target_pos.setX(screen.left());
@@ -436,7 +444,7 @@ void ClockWindow::SaveState()
 void ClockWindow::MoveWindow(Qt::Alignment align)
 {
   bool show_on_all_monitors = app_config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool();
-  QScreen* scr = show_on_all_monitors ? QGuiApplication::screens()[id_-1] : findScreen(this->frameGeometry());
+  QScreen* scr = show_on_all_monitors ? QGuiApplication::screens()[id_-1] : findScreen(this);
   QRect screen = scr->availableGeometry();
   QRect window = this->frameGeometry();
   QPoint curr_pos = this->pos();
@@ -493,7 +501,7 @@ void ClockWindow::CorrectPositionImpl()
 {
   QPoint curr_pos = this->pos();
   bool show_on_all_monitors = app_config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool();
-  QScreen* scr = show_on_all_monitors ? QGuiApplication::screens()[id_-1] : findScreen(this->frameGeometry());
+  QScreen* scr = show_on_all_monitors ? QGuiApplication::screens()[id_-1] : findScreen(this);
   QRect screen = scr->geometry();
   curr_pos.setX(std::max(curr_pos.x(), screen.left()));
   curr_pos.setX(std::min(curr_pos.x(), screen.left() + screen.width() - this->width()));
