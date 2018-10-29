@@ -45,11 +45,7 @@ HEADERS += \
 FORMS += \
     gui/settings_dialog.ui
 
-TRANSLATIONS += \
-    lang/countdown_timer_en.ts \
-    lang/countdown_timer_pt_PT.ts \
-    lang/countdown_timer_ru.ts
-
+include(lang/lang.pri)
 include(../../qm_gen.pri)
 
 RESOURCES += countdown_timer.qrc

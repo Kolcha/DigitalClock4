@@ -22,7 +22,7 @@ namespace spectrum_clock {
 
 SpectrumClock::SpectrumClock()
 {
-  InitTranslator(QLatin1String(":/spectrum_clock/spectrum_clock_"));
+  InitTranslator(QLatin1String(":/spectrum_clock/lang/spectrum_clock_"));
   info_.display_name = QLatin1String("\"Spectrum clock\"");
   info_.description = tr("Changes clock color during time.");
   InitIcon(":/spectrum_clock/icon.png");

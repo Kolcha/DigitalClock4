@@ -38,11 +38,7 @@ HEADERS += power_off.h \
 FORMS += \
     gui/settings_dialog.ui
 
-TRANSLATIONS += \
-    lang/power_off_en.ts \
-    lang/power_off_pt_PT.ts \
-    lang/power_off_ru.ts
-
+include(lang/lang.pri)
 include(../../qm_gen.pri)
 
 RESOURCES += power_off.qrc

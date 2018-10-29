@@ -33,11 +33,7 @@ SOURCES += tray_color.cpp
 HEADERS += tray_color.h \
     tray_color_settings.h
 
-TRANSLATIONS += \
-    tray_color_en.ts \
-    tray_color_pt_PT.ts \
-    tray_color_ru.ts
-
+include(lang/lang.pri)
 include(../../qm_gen.pri)
 
 RESOURCES += tray_color.qrc

@@ -32,14 +32,8 @@ SOURCES += var_translucency.cpp
 
 HEADERS += var_translucency.h
 
-TRANSLATIONS += \
-    var_translucency_en.ts \
-    var_translucency_pt_PT.ts \
-    var_translucency_ru.ts
-
+include(lang/lang.pri)
 include(../../qm_gen.pri)
-
-RESOURCES += var_translucency.qrc
 
 OTHER_FILES += var_translucency.json
 

@@ -54,15 +54,8 @@ HEADERS += \
 FORMS += \
     base_settings_widget.ui
 
-TRANSLATIONS += \
-    plugin_core_en.ts \
-    plugin_core_pt_PT.ts \
-    plugin_core_ru.ts
-
+include(lang/lang.pri)
 include(../qm_gen.pri)
-
-RESOURCES += \
-    plugin_core.qrc
 
 win32:RC_FILE = plugin_core.rc
 unix:VERSION = 1.3.1

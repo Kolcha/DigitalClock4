@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/var_translucency">
-        <file>var_translucency_pt_PT.qm</file>
-        <file>var_translucency_ru.qm</file>
-    </qresource>
-</RCC>

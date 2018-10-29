@@ -47,7 +47,7 @@ Alarm::Alarm() :
   alarm_menu_(nullptr),
   stop_hotkey_(nullptr)
 {
-  InitTranslator(QLatin1String(":/alarm/alarm_"));
+  InitTranslator(QLatin1String(":/alarm/lang/alarm_"));
   info_.display_name = tr("Alarm");
   info_.description = tr("Allows to set multiple alarms.");
   InitIcon(":/alarm/alarm_clock.svg.p");
