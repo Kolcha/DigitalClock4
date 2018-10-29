@@ -38,7 +38,7 @@ public:
   QPixmap pixmap(const QSize& size, QIcon::Mode mode, QIcon::State state) Q_DECL_OVERRIDE;
 
 private:
-  PaletteIconEngine &operator=(const PaletteIconEngine &other) Q_DECL_EQ_DELETE;
+  PaletteIconEngine& operator=(const PaletteIconEngine& other) Q_DECL_EQ_DELETE;
 
   void paintIcon(QPainter* painter, const QRect& rect, const QColor& color);
 
