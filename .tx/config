@@ -2,8 +2,8 @@
 host = https://www.transifex.com
 
 [digitalclock4.digital_clock]
-file_filter = digital_clock/languages/digital_clock_<lang>.ts
-source_file = digital_clock/languages/digital_clock_en.ts
+file_filter = digital_clock/lang/digital_clock_<lang>.ts
+source_file = digital_clock/lang/digital_clock_en.ts
 source_lang = en
 type = QT
 minimum_perc = 30
@@ -14,8 +14,8 @@ source_lang = en
 type = DESKTOP
 
 [digitalclock4.plugin_core]
-file_filter = plugin_core/plugin_core_<lang>.ts
-source_file = plugin_core/plugin_core_en.ts
+file_filter = plugin_core/lang/plugin_core_<lang>.ts
+source_file = plugin_core/lang/plugin_core_en.ts
 source_lang = en
 type = QT
 
@@ -26,8 +26,8 @@ source_lang = en
 type = QT
 
 [digitalclock4.plugin_any_zoom]
-file_filter = plugins/any_zoom/any_zoom_<lang>.ts
-source_file = plugins/any_zoom/any_zoom_en.ts
+file_filter = plugins/any_zoom/lang/any_zoom_<lang>.ts
+source_file = plugins/any_zoom/lang/any_zoom_en.ts
 source_lang = en
 type = QT
 
@@ -74,8 +74,8 @@ source_lang = en
 type = QT
 
 [digitalclock4.plugin_spectrum_clock]
-file_filter = plugins/spectrum_clock/spectrum_clock_<lang>.ts
-source_file = plugins/spectrum_clock/spectrum_clock_en.ts
+file_filter = plugins/spectrum_clock/lang/spectrum_clock_<lang>.ts
+source_file = plugins/spectrum_clock/lang/spectrum_clock_en.ts
 source_lang = en
 type = QT
 
@@ -86,19 +86,19 @@ source_lang = en
 type = QT
 
 [digitalclock4.plugin_tray_color]
-file_filter = plugins/tray_color/tray_color_<lang>.ts
-source_file = plugins/tray_color/tray_color_en.ts
+file_filter = plugins/tray_color/lang/tray_color_<lang>.ts
+source_file = plugins/tray_color/lang/tray_color_en.ts
 source_lang = en
 type = QT
 
 [digitalclock4.plugin_var_translucency]
-file_filter = plugins/var_translucency/var_translucency_<lang>.ts
-source_file = plugins/var_translucency/var_translucency_en.ts
+file_filter = plugins/var_translucency/lang/var_translucency_<lang>.ts
+source_file = plugins/var_translucency/lang/var_translucency_en.ts
 source_lang = en
 type = QT
 
 [digitalclock4.plugin_win_on_top]
-file_filter = plugins/win_on_top/win_on_top/win_on_top_<lang>.ts
-source_file = plugins/win_on_top/win_on_top/win_on_top_en.ts
+file_filter = plugins/win_on_top/win_on_top/lang/win_on_top_<lang>.ts
+source_file = plugins/win_on_top/win_on_top/lang/win_on_top_en.ts
 source_lang = en
 type = QT

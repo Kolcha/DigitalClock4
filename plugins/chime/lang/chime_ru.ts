@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU">
+<TS version="2.1" language="ru">
 <context>
     <name>chime::ChimePlugin</name>
     <message>
@@ -31,6 +31,11 @@ Sounds from these plugins are included as default sounds.</source>
         <translation>Звуки</translation>
     </message>
     <message>
+        <location filename="../gui/settings_dialog.ui" line="32"/>
+        <source>Hour</source>
+        <translation>Каждый час</translation>
+    </message>
+    <message>
         <location filename="../gui/settings_dialog.ui" line="63"/>
         <source>Quarter</source>
         <translation>Четверть часа</translation>
@@ -44,11 +49,6 @@ Sounds from these plugins are included as default sounds.</source>
         <location filename="../gui/settings_dialog.ui" line="103"/>
         <source>Enable</source>
         <translation>Включить</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="32"/>
-        <source>Hour</source>
-        <translation>Каждый час</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.cpp" line="36"/>
