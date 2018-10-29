@@ -93,9 +93,7 @@ ClockWindow::ClockWindow(core::ClockSettings* app_config, int id, QWidget* paren
 #endif
   setAttribute(Qt::WA_TranslucentBackground);
 
-  setContextMenuPolicy(Qt::CustomContextMenu);
   c_menu_ = new ContextMenu(this);
-  connect(this, &ClockWindow::customContextMenuRequested, this, &ClockWindow::ShowContextMenu);
   connect(c_menu_, &ContextMenu::VisibilityChanged, this, &ClockWindow::ChangeVisibility);
   connect(c_menu_, &ContextMenu::PositionChanged, this, &ClockWindow::MoveWindow);
 
@@ -240,6 +238,12 @@ void ClockWindow::moveEvent(QMoveEvent* event)
   if (!dragging_ && (event->pos() != event->oldPos()) && !clock_widget_->preview())
     SaveState();
   QWidget::moveEvent(event);
+}
+
+void ClockWindow::contextMenuEvent(QContextMenuEvent* event)
+{
+  c_menu_->menu()->popup(event->globalPos());
+  event->accept();
 }
 
 void ClockWindow::ApplyOption(const Option opt, const QVariant& value)
@@ -485,11 +489,6 @@ void ClockWindow::onHoverButtonClicked(HoverButtons::Direction direction)
 
   this->move(p);
   CorrectPositionImpl();
-}
-
-void ClockWindow::ShowContextMenu(const QPoint& p)
-{
-  c_menu_->menu()->popup(this->mapToGlobal(p));
 }
 
 void ClockWindow::CorrectPosition()

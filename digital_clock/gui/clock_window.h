@@ -60,6 +60,7 @@ protected:
   void paintEvent(QPaintEvent* event) override;
   void resizeEvent(QResizeEvent* event) override;
   void moveEvent(QMoveEvent* event) override;
+  void contextMenuEvent(QContextMenuEvent* event) override;
 
 public slots:
   void ApplyOption(const Option opt, const QVariant& value);
@@ -82,7 +83,6 @@ public slots:
 
 private slots:
   void onHoverButtonClicked(HoverButtons::Direction direction);
-  void ShowContextMenu(const QPoint& p);
   void CorrectPosition();
 
 private:
