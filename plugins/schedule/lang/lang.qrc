@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/schedule/lang">
+        <file>schedule_en.qm</file>
+        <file>schedule_pt_PT.qm</file>
+        <file>schedule_ru.qm</file>
+    </qresource>
+</RCC>

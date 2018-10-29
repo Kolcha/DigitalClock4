@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/date/lang">
+        <file>date_en.qm</file>
+        <file>date_pt_PT.qm</file>
+        <file>date_ru.qm</file>
+    </qresource>
+</RCC>

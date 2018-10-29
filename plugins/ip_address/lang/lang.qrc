@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/ip_address/lang">
+        <file>ip_address_en.qm</file>
+        <file>ip_address_pt_PT.qm</file>
+        <file>ip_address_ru.qm</file>
+    </qresource>
+</RCC>

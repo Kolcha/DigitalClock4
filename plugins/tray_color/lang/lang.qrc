@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/tray_color/lang">
+        <file>tray_color_en.qm</file>
+        <file>tray_color_pt_PT.qm</file>
+        <file>tray_color_ru.qm</file>
+    </qresource>
+</RCC>

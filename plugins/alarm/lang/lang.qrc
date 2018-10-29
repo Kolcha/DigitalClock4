@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/alarm/lang">
+        <file>alarm_en.qm</file>
+        <file>alarm_pt_PT.qm</file>
+        <file>alarm_ru.qm</file>
+    </qresource>
+</RCC>
