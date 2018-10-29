@@ -42,6 +42,7 @@ FORMS += \
 
 TRANSLATIONS += \
     lang/date_en.ts \
+    lang/date_pt_PT.ts \
     lang/date_ru.ts
 
 include(../../qm_gen.pri)

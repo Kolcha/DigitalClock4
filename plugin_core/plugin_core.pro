@@ -56,6 +56,7 @@ FORMS += \
 
 TRANSLATIONS += \
     plugin_core_en.ts \
+    plugin_core_pt_PT.ts \
     plugin_core_ru.ts
 
 include(../qm_gen.pri)

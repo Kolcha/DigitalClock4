@@ -55,6 +55,7 @@ FORMS += \
 
 TRANSLATIONS += \
     lang/alarm_en.ts \
+    lang/alarm_pt_PT.ts \
     lang/alarm_ru.ts
 
 include(../../qm_gen.pri)

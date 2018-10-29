@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/talking_clock">
+        <file alias="talking_clock_pt_PT.qm">lang/talking_clock_pt_PT.qm</file>
         <file alias="talking_clock_ru.qm">lang/talking_clock_ru.qm</file>
         <file alias="icon.svg.p">res/1479091174_Message.svg</file>
         <file alias="voice-config.svg.p">res/1483194805_message-load.svg</file>

@@ -34,6 +34,7 @@ HEADERS += var_translucency.h
 
 TRANSLATIONS += \
     var_translucency_en.ts \
+    var_translucency_pt_PT.ts \
     var_translucency_ru.ts
 
 include(../../qm_gen.pri)

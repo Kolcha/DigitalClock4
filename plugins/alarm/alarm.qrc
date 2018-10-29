@@ -2,6 +2,7 @@
     <qresource prefix="/alarm">
         <file alias="play.svg.p">res/play-24.svg</file>
         <file alias="stop.svg.p">res/stop-24.svg</file>
+        <file alias="alarm_pt_PT.qm">lang/alarm_pt_PT.qm</file>
         <file alias="alarm_ru.qm">lang/alarm_ru.qm</file>
         <file alias="add.svg.p">res/plus-24.svg</file>
         <file alias="del.svg.p">res/minus-24.svg</file>

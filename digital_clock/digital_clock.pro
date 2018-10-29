@@ -121,6 +121,7 @@ FORMS += \
 
 TRANSLATIONS += \
     languages/digital_clock_en.ts \
+    languages/digital_clock_pt_PT.ts \
     languages/digital_clock_ru.ts
 
 include(../qm_gen.pri)

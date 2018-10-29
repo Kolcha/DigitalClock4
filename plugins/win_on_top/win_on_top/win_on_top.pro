@@ -34,6 +34,7 @@ HEADERS += win_on_top.h
 
 TRANSLATIONS += \
     win_on_top_en.ts \
+    win_on_top_pt_PT.ts \
     win_on_top_ru.ts
 
 include(../../../qm_gen.pri)

@@ -40,6 +40,7 @@ FORMS += \
 
 TRANSLATIONS += \
     any_zoom_en.ts \
+    any_zoom_pt_PT.ts \
     any_zoom_ru.ts
 
 include(../../qm_gen.pri)

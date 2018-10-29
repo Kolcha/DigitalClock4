@@ -47,6 +47,7 @@ FORMS += \
 
 TRANSLATIONS += \
     lang/chime_en.ts \
+    lang/chime_pt_PT.ts \
     lang/chime_ru.ts
 
 include(../../qm_gen.pri)
