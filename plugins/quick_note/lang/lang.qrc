@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/quick_note/lang">
+        <file>quick_note_en.qm</file>
+        <file>quick_note_pt_PT.qm</file>
+        <file>quick_note_ru.qm</file>
+    </qresource>
+</RCC>

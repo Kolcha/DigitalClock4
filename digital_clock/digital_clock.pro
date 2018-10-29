@@ -119,15 +119,10 @@ FORMS += \
     gui/plugin_list_item_widget.ui \
     gui/settings_dialog.ui
 
-TRANSLATIONS += \
-    languages/digital_clock_en.ts \
-    languages/digital_clock_pt_PT.ts \
-    languages/digital_clock_ru.ts
-
+include(lang/lang.pri)
 include(../qm_gen.pri)
 
 RESOURCES += \
-    languages/languages.qrc \
     resources/icons.qrc \
     resources/skins.qrc
 

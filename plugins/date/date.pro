@@ -40,11 +40,7 @@ HEADERS += \
 FORMS += \
     gui/settings_dialog.ui
 
-TRANSLATIONS += \
-    lang/date_en.ts \
-    lang/date_pt_PT.ts \
-    lang/date_ru.ts
-
+include(lang/lang.pri)
 include(../../qm_gen.pri)
 
 RESOURCES += date.qrc

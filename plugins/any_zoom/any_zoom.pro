@@ -38,11 +38,7 @@ HEADERS += any_zoom.h \
 FORMS += \
     zoom_dialog.ui
 
-TRANSLATIONS += \
-    any_zoom_en.ts \
-    any_zoom_pt_PT.ts \
-    any_zoom_ru.ts
-
+include(lang/lang.pri)
 include(../../qm_gen.pri)
 
 RESOURCES += any_zoom.qrc

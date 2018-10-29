@@ -30,7 +30,7 @@ namespace quick_note {
 
 QuickNotePlugin::QuickNotePlugin()
 {
-  InitTranslator(QLatin1String(":/quick_note/quick_note_"));
+  InitTranslator(QLatin1String(":/quick_note/lang/quick_note_"));
   info_.display_name = tr("Quick note");
   info_.description = tr("Allows to display any short message under clock.");
   InitIcon(":/quick_note/icon.svg.p");

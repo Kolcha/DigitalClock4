@@ -51,7 +51,7 @@ private:
 VarTranslucency::VarTranslucency() :
   old_opacity_(1.0), changer_(nullptr)
 {
-  InitTranslator(QLatin1String(":/var_translucency/var_translucency_"));
+  InitTranslator(QLatin1String(":/var_translucency/lang/var_translucency_"));
   info_.display_name = tr("Variable translucency");
   info_.description = tr("Changes clock opacity level during time.");
 }

@@ -32,14 +32,8 @@ SOURCES += win_on_top.cpp
 
 HEADERS += win_on_top.h
 
-TRANSLATIONS += \
-    win_on_top_en.ts \
-    win_on_top_pt_PT.ts \
-    win_on_top_ru.ts
-
+include(lang/lang.pri)
 include(../../../qm_gen.pri)
-
-RESOURCES += win_on_top.qrc
 
 OTHER_FILES += win_on_top.json
 

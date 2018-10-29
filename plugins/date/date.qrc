@@ -1,7 +1,5 @@
 <RCC>
     <qresource prefix="/date">
-        <file alias="date_pt_PT.qm">lang/date_pt_PT.qm</file>
-        <file alias="date_ru.qm">lang/date_ru.qm</file>
         <file alias="icon.svg.p">1464840078_common-calendar-day-outline-stroke.svg</file>
     </qresource>
 </RCC>

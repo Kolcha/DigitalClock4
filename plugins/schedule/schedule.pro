@@ -53,11 +53,7 @@ FORMS += \
     gui/task_advanced_settings_dialog.ui \
     gui/task_edit_dialog.ui
 
-TRANSLATIONS += \
-    lang/schedule_en.ts \
-    lang/schedule_pt_PT.ts \
-    lang/schedule_ru.ts
-
+include(lang/lang.pri)
 include(../../qm_gen.pri)
 
 RESOURCES += schedule.qrc

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/countdown_timer/lang">
+        <file>countdown_timer_en.qm</file>
+        <file>countdown_timer_pt_PT.qm</file>
+        <file>countdown_timer_ru.qm</file>
+    </qresource>
+</RCC>

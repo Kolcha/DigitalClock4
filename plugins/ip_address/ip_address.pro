@@ -43,11 +43,7 @@ HEADERS += \
 FORMS += \
     gui/settings_dialog.ui
 
-TRANSLATIONS += \
-    lang/ip_address_en.ts \
-    lang/ip_address_pt_PT.ts \
-    lang/ip_address_ru.ts
-
+include(lang/lang.pri)
 include(../../qm_gen.pri)
 
 RESOURCES += ip_address.qrc

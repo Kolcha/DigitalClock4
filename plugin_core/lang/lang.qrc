@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/plugin_core/lang">
+        <file>plugin_core_en.qm</file>
+        <file>plugin_core_pt_PT.qm</file>
+        <file>plugin_core_ru.qm</file>
+    </qresource>
+</RCC>

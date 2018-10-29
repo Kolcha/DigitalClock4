@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU">
+<TS version="2.1" language="ru">
 <context>
     <name>alarm_plugin::AdvancedSettingsDialog</name>
     <message>
@@ -149,7 +149,6 @@
     <message>
         <location filename="../gui/edit_alarm_dialog.cpp" line="156"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)</source>
-        <translatorcomment>фильтр файлов</translatorcomment>
         <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a);;Все файлы (*.*)</translation>
     </message>
 </context>

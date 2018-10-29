@@ -53,11 +53,7 @@ FORMS += \
     gui/alarm_list_item_widget.ui \
     gui/edit_alarm_dialog.ui
 
-TRANSLATIONS += \
-    lang/alarm_en.ts \
-    lang/alarm_pt_PT.ts \
-    lang/alarm_ru.ts
-
+include(lang/lang.pri)
 include(../../qm_gen.pri)
 
 RESOURCES += alarm.qrc

@@ -31,7 +31,7 @@ namespace schedule {
 
 Schedule::Schedule() : tray_menu_(nullptr), backend_(nullptr), invoker_(nullptr)
 {
-  InitTranslator(QLatin1String(":/schedule/schedule_"));
+  InitTranslator(QLatin1String(":/schedule/lang/schedule_"));
   info_.display_name = tr("Scheduler");
   info_.description = tr("Allow to schedule a task and display notification at specified time.");
   InitIcon(":/schedule/schedule.svg");

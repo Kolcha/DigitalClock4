@@ -45,11 +45,7 @@ FORMS += \
     gui/settings_dialog.ui \
     gui/sound_dialog.ui
 
-TRANSLATIONS += \
-    lang/chime_en.ts \
-    lang/chime_pt_PT.ts \
-    lang/chime_ru.ts
-
+include(lang/lang.pri)
 include(../../qm_gen.pri)
 
 DISTFILES += chime.json
