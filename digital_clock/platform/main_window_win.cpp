@@ -31,6 +31,11 @@ namespace gui {
 
 void ClockWindow::WinOnTopWorkaround()
 {
+  // calling this->winId() for invisible window causes move event from (0,0) to (289,160)
+  // during startup (doesn't matter what saved coordinates were, each time the same),
+  // as result real saved position will be overwritten even before it will be read
+  // so do nothing if window is not visible
+  if (!this->isVisible()) return;
   // always on top problem workaround
   // https://sourceforge.net/p/digitalclock4/tickets/3/
   // https://sourceforge.net/p/digitalclock4/tickets/9/
