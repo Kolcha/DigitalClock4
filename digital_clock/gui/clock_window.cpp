@@ -261,6 +261,9 @@ void ClockWindow::ApplyOption(const Option opt, const QVariant& value)
       SetWindowFlag(Qt::WindowStaysOnTopHint, value.toBool());
       if (app_config_->GetValue(OPT_BETTER_STAY_ON_TOP).toBool())
         SetWindowFlag(Qt::X11BypassWindowManagerHint, value.toBool());
+#ifdef Q_OS_WIN
+      WinOnTopWorkaround();
+#endif
       break;
 
     case OPT_TRANSP_FOR_INPUT:
