@@ -897,7 +897,7 @@
        <item>
         <widget class="QCheckBox" name="keep_always_visible">
          <property name="text">
-          <string>always keep clock visible on screen, prevent out of sceen postion</string>
+          <string>always keep clock visible on screen, prevent out of screen postion</string>
          </property>
         </widget>
        </item>

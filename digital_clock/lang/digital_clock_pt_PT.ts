@@ -477,7 +477,7 @@
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="900"/>
-        <source>always keep clock visible on screen, prevent out of sceen postion</source>
+        <source>always keep clock visible on screen, prevent out of screen postion</source>
         <translation>manter sempre o relógio visível no ecrã, previne que seja posicionado fora do ecrã</translation>
     </message>
     <message>
