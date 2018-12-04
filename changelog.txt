@@ -1,3 +1,29 @@
+Whats new in 4.7.4:
+-------------------
+Features:
+ - Windows: keep clock window visible after Win+D (show desktop)
+
+Core:
+ - Qt 5.11.2 for Windows and Linux
+ - Qt development branch for macOS
+ - Linux build compiled with GCC 6 on Debian, used OpenSSL 1.1
+ - macOS build compiled with Xcode 10.1 (SDK 10.14)
+ - macOS: cleanup Info.plist
+ - added another workaround for "always on top" problem on Windows
+ - fixed unstable crash on clock move
+ - fixed bug with position saving when "show clock in fullscreen mode" is disabled
+
+GUI:
+ - slightly decreased tray icon size
+ - added Portugal (pt-PT) translation, thanks to Rui
+ - configurable snap to edge threshold (see Experimental tab)
+ - configurable window refresh interval (see Experimental tab)
+
+Installer:
+ - Windows: added shortcut to documentation
+ - macOS: created pretty dmg
+
+
 Whats new in 4.7.3:
 -------------------
 Features:
