@@ -53,8 +53,8 @@
     </message>
     <message>
         <location filename="../gui/about_dialog.ui" line="155"/>
-        <source>© 2013-2018 Nick Korotysh</source>
-        <translation>© 2013-2018 Николай Коротыш</translation>
+        <source>© 2013-2019 Nick Korotysh</source>
+        <translation>© 2013-2019 Николай Коротыш</translation>
     </message>
     <message>
         <location filename="../gui/about_dialog.ui" line="166"/>
