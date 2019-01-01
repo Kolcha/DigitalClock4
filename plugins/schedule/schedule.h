@@ -26,6 +26,8 @@
 
 #include "core/task.h"
 
+class QMediaPlayer;
+
 namespace schedule {
 
 class TasksStorage;
@@ -58,6 +60,8 @@ private:
 
   TasksStorage* backend_;
   TasksInvoker* invoker_;
+
+  QMediaPlayer* player_;
 };
 
 } // namespace schedule

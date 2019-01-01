@@ -22,7 +22,8 @@ namespace schedule {
 
 Notification::Notification() :
   type_(TrayMessage),
-  timeout_(10)
+  timeout_(10),
+  play_sound_(false)
 {
 }
 
@@ -36,6 +37,16 @@ int Notification::timeout() const
   return timeout_;
 }
 
+bool Notification::playSound() const
+{
+  return play_sound_;
+}
+
+QString Notification::soundFile() const
+{
+  return sound_file_;
+}
+
 void Notification::setType(const Notification::Type t)
 {
   type_ = t;
@@ -44,6 +55,16 @@ void Notification::setType(const Notification::Type t)
 void Notification::setTimeout(const int t)
 {
   timeout_ = t;
+}
+
+void Notification::setPlaySound(const bool p)
+{
+  play_sound_ = p;
+}
+
+void Notification::setSoundFile(const QString& f)
+{
+  sound_file_ = f;
 }
 
 } // namespace schedule

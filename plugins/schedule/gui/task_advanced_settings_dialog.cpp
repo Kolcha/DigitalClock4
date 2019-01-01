@@ -21,6 +21,7 @@
 
 #include <QSystemTrayIcon>
 #include <QTimer>
+#include <QFileDialog>
 
 #include "message_box.h"
 
@@ -44,6 +45,8 @@ Notification TaskAdvancedSettingsDialog::notification() const
   if (ui->msg_balloon_rbtn->isChecked()) nt.setType(Notification::TrayMessage);
   if (ui->msg_dialog_rbtn->isChecked()) nt.setType(Notification::MessageBox);
   nt.setTimeout(ui->timeout_edit->value());
+  nt.setPlaySound(ui->play_sound_enabled->isChecked());
+  nt.setSoundFile(curr_sound_file_);
   return nt;
 }
 
@@ -52,6 +55,8 @@ void TaskAdvancedSettingsDialog::setNotification(const Notification& nt)
   ui->msg_balloon_rbtn->setChecked(nt.type() == Notification::TrayMessage);
   ui->msg_dialog_rbtn->setChecked(nt.type() == Notification::MessageBox);
   ui->timeout_edit->setValue(nt.timeout());
+  ui->play_sound_enabled->setChecked(nt.playSound());
+  curr_sound_file_ = nt.soundFile();
 }
 
 void TaskAdvancedSettingsDialog::on_preview_btn_clicked()
@@ -83,6 +88,14 @@ void TaskAdvancedSettingsDialog::on_preview_btn_clicked()
       QMessageBox::information(nullptr, tr("Task preview"), task_text, QMessageBox::Ok);
     }
   }
+}
+
+void TaskAdvancedSettingsDialog::on_browse_btn_clicked()
+{
+  QString last_path = curr_sound_file_.isEmpty() ? QDir::homePath() : QFileInfo(curr_sound_file_).path();
+  QString sound_file = QFileDialog::getOpenFileName(this, tr("Select sound"), last_path,
+                                                    tr("Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)"));
+  if (!sound_file.isEmpty()) curr_sound_file_ = sound_file;
 }
 
 } // namespace schedule

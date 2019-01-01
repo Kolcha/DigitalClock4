@@ -19,6 +19,8 @@
 #include "schedule.h"
 
 #include <QMenu>
+#include <QTimer>
+#include <QMediaPlayer>
 
 #include "message_box.h"
 
@@ -45,6 +47,7 @@ void Schedule::InitSettings(SettingsStorage* backend, const QString& name)
 
 void Schedule::Start()
 {
+  player_ = new QMediaPlayer();
   tray_icon_ = new QSystemTrayIcon(QIcon(":/schedule/schedule.svg"));
   tray_menu_ = new QMenu();
   tray_menu_->addAction(QIcon(":/schedule/settings.svg.p"), "Settings", this, SLOT(Configure()));
@@ -53,6 +56,7 @@ void Schedule::Start()
   tray_icon_->setVisible(true);
   connect(tray_icon_, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
           this, SLOT(TrayActivated(QSystemTrayIcon::ActivationReason)));
+  connect(tray_icon_, &QSystemTrayIcon::messageClicked, player_, &QMediaPlayer::stop);
 
   invoker_ = new TasksInvoker(this);
 
@@ -72,6 +76,9 @@ void Schedule::Stop()
   tray_icon_->setVisible(false);
   delete tray_icon_;
   delete tray_menu_;
+
+  player_->stop();
+  delete player_;
 }
 
 void Schedule::Configure()
@@ -109,6 +116,11 @@ void Schedule::TrayActivated(QSystemTrayIcon::ActivationReason reason)
 
 void Schedule::TaskCompleted(const TaskPtr& task)
 {
+  if (task->notification().playSound() && QFile::exists(task->notification().soundFile())) {
+    player_->setMedia(QUrl::fromLocalFile(task->notification().soundFile()));
+    player_->play();
+  }
+
   switch (task->notification().type()) {
     case Notification::TrayMessage:
       if (!tray_icon_) return;
@@ -127,7 +139,17 @@ void Schedule::TaskCompleted(const TaskPtr& task)
       } else {
         QMessageBox::information(nullptr, tr("Scheduled task"), task->note(), QMessageBox::Ok);
       }
+      player_->stop();
       break;
+  }
+
+  if (player_->state() == QMediaPlayer::PlayingState && task->notification().timeout() > 0) {
+    QTimer* timer = new QTimer(this);
+    timer->setInterval(task->notification().timeout() * 1000 + 500);
+    timer->setSingleShot(true);
+    connect(timer, &QTimer::timeout, player_, &QMediaPlayer::stop);
+    connect(timer, &QTimer::timeout, timer, &QTimer::deleteLater);
+    timer->start();
   }
 }
 

@@ -49,6 +49,8 @@ void TasksStorage::LoadTasks(const QDate& dt)
     Notification nt;
     nt.setType(this->getValue(QString("%1/%2").arg(task_key, "notification/type")).value<Notification::Type>());
     nt.setTimeout(this->getValue(QString("%1/%2").arg(task_key, "notification/timeout")).toInt());
+    nt.setPlaySound(this->getValue(QString("%1/%2").arg(task_key, "notification/play_sound")).toBool());
+    nt.setSoundFile(this->getValue(QString("%1/%2").arg(task_key, "notification/sound_file")).toString());
     task->setNotification(nt);
     if (task->isValid()) tasks.append(task);
   }
@@ -71,6 +73,8 @@ void TasksStorage::addTask(const TaskPtr& task)
   this->setValue(QString("%1/%2").arg(task_key, "note"), task->note());
   this->setValue(QString("%1/%2").arg(task_key, "notification/type"), task->notification().type());
   this->setValue(QString("%1/%2").arg(task_key, "notification/timeout"), task->notification().timeout());
+  this->setValue(QString("%1/%2").arg(task_key, "notification/play_sound"), task->notification().playSound());
+  this->setValue(QString("%1/%2").arg(task_key, "notification/sound_file"), task->notification().soundFile());
 
   QList<QDate> new_dates = listDates();
   if (new_dates.size() != old_count) emit datesLoaded(new_dates);

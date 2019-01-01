@@ -4,19 +4,19 @@
 <context>
     <name>schedule::Schedule</name>
     <message>
-        <location filename="../schedule.cpp" line="35"/>
+        <location filename="../schedule.cpp" line="37"/>
         <source>Scheduler</source>
         <translation>Планировщик</translation>
     </message>
     <message>
-        <location filename="../schedule.cpp" line="36"/>
+        <location filename="../schedule.cpp" line="38"/>
         <source>Allow to schedule a task and display notification at specified time.</source>
         <translation>Позволяет запланировать задание и отображает уведомление в указанное время.</translation>
     </message>
     <message>
-        <location filename="../schedule.cpp" line="115"/>
-        <location filename="../schedule.cpp" line="122"/>
-        <location filename="../schedule.cpp" line="128"/>
+        <location filename="../schedule.cpp" line="127"/>
+        <location filename="../schedule.cpp" line="134"/>
+        <location filename="../schedule.cpp" line="140"/>
         <source>Scheduled task</source>
         <translation>Запланированое задание</translation>
     </message>
@@ -52,36 +52,63 @@
         <translation>Настройки уведомлений</translation>
     </message>
     <message>
-        <location filename="../gui/task_advanced_settings_dialog.ui" line="20"/>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="70"/>
         <source>&amp;Balloon message</source>
         <translation>&amp;Всплывающее сообщение</translation>
     </message>
     <message>
-        <location filename="../gui/task_advanced_settings_dialog.ui" line="30"/>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="20"/>
         <source>&amp;Timeout:</source>
         <translation>&amp;Таймаут:</translation>
     </message>
     <message>
-        <location filename="../gui/task_advanced_settings_dialog.ui" line="46"/>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="43"/>
         <source>Message &amp;dialog</source>
         <translation>&amp;Диалоговое окно</translation>
     </message>
     <message>
-        <location filename="../gui/task_advanced_settings_dialog.ui" line="66"/>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="63"/>
         <source>Preview</source>
         <translation>Просмотр</translation>
     </message>
     <message>
-        <location filename="../gui/task_advanced_settings_dialog.cpp" line="59"/>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="80"/>
+        <source> sec</source>
+        <extracomment>seconds</extracomment>
+        <translatorcomment>секунды</translatorcomment>
+        <translation> сек</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="87"/>
+        <source>&amp;Play sound</source>
+        <translation>Воспроизводить &amp;звук</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="94"/>
+        <source>Browse</source>
+        <translation>Обзор</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.cpp" line="64"/>
         <source>This is sample task text. Just to test how notification looks.</source>
         <translation>Пример текста задания. Только для просмотра вида уведомления.</translation>
     </message>
     <message>
-        <location filename="../gui/task_advanced_settings_dialog.cpp" line="72"/>
         <location filename="../gui/task_advanced_settings_dialog.cpp" line="77"/>
-        <location filename="../gui/task_advanced_settings_dialog.cpp" line="83"/>
+        <location filename="../gui/task_advanced_settings_dialog.cpp" line="82"/>
+        <location filename="../gui/task_advanced_settings_dialog.cpp" line="88"/>
         <source>Task preview</source>
         <translation>Предварительный просмотр</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.cpp" line="96"/>
+        <source>Select sound</source>
+        <translation>Выберите звук</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.cpp" line="97"/>
+        <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)</source>
+        <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a);;Все файлы (*.*)</translation>
     </message>
 </context>
 <context>

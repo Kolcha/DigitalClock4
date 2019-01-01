@@ -38,13 +38,19 @@ public:
 
   Type type() const;
   int timeout() const;
+  bool playSound() const;
+  QString soundFile() const;
 
   void setType(const Type t);
   void setTimeout(const int t);
+  void setPlaySound(const bool p);
+  void setSoundFile(const QString& f);
 
 private:
   Type type_;
   int timeout_;
+  bool play_sound_;
+  QString sound_file_;
 };
 
 } // namespace schedule

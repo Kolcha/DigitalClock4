@@ -42,9 +42,11 @@ public:
 
 private slots:
   void on_preview_btn_clicked();
+  void on_browse_btn_clicked();
 
 private:
   Ui::TaskAdvancedSettingsDialog* ui;
+  QString curr_sound_file_;
 };
 
 } // namespace schedule

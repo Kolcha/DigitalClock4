@@ -6,24 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>327</width>
-    <height>103</height>
+    <width>328</width>
+    <height>133</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Notification Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QRadioButton" name="msg_balloon_rbtn">
-     <property name="text">
-      <string>&amp;Balloon message</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="1">
     <widget class="QLabel" name="timeout_label">
      <property name="text">
@@ -37,8 +27,15 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="2">
-    <widget class="QSpinBox" name="timeout_edit"/>
+   <item row="3" column="0" colspan="3">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
    </item>
    <item row="1" column="0">
     <widget class="QRadioButton" name="msg_dialog_rbtn">
@@ -67,13 +64,34 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="3">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+   <item row="0" column="0">
+    <widget class="QRadioButton" name="msg_balloon_rbtn">
+     <property name="text">
+      <string>&amp;Balloon message</string>
      </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QSpinBox" name="timeout_edit">
+     <property name="suffix">
+      <string extracomment="seconds"> sec</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QCheckBox" name="play_sound_enabled">
+     <property name="text">
+      <string>&amp;Play sound</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="browse_btn">
+     <property name="text">
+      <string>Browse</string>
      </property>
     </widget>
    </item>
