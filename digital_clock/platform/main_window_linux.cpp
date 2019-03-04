@@ -54,6 +54,8 @@ static unsigned long GetCurrentDesktop(Display* display)
 
 void ClockWindow::SetVisibleOnAllDesktops(bool set)
 {
+  if (!QX11Info::isPlatformX11()) return;
+
   unsigned long desktop = GetCurrentDesktop(QX11Info::display());
   // http://stackoverflow.com/questions/16775352/keep-a-application-window-always-on-current-desktop-on-linux-and-mac/
   unsigned long data = set ? 0xFFFFFFFF : desktop;
