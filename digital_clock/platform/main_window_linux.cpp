@@ -26,13 +26,13 @@
 namespace digital_clock {
 namespace gui {
 
-static long GetCurrentDesktop(Display* display)
+static unsigned long GetCurrentDesktop(Display* display)
 {
   Atom actual_type_return;
   int actual_format_return = 0;
   unsigned long nitems_return = 0;
   unsigned long bytes_after_return = 0;
-  unsigned long* desktop = 0;
+  unsigned long* desktop = nullptr;
   unsigned long ret;
 
   if (XGetWindowProperty(display, DefaultRootWindow(display),
