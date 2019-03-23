@@ -1,9 +1,7 @@
 @echo off
 call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+set PATH=%PATH%;C:\Qt\Tools\QtCreator\bin
 set PATH=%PATH%;C:\Program Files (x86)\WiX Toolset v3.11\bin
-set PATH=C:\clock\tools\jom;%PATH%
-set PATH=C:\clock\OpenSSL-1.0.2\bin;%PATH%
-set PATH=C:\clock\Qt-5.11.2\bin;%PATH%
 
 where >nul 2>&1 jom
 if %ERRORLEVEL% equ 0 (
@@ -37,7 +35,7 @@ if %ERRORLEVEL% neq 0 (
   exit /b 1
 )
 
-set deploy_flags=--libdir "%qt_files%" --plugindir "%qt_files%\plugins" --no-system-d3d-compiler --no-compiler-runtime --no-angle --no-opengl-sw
+set deploy_flags=--libdir "%qt_files%" --plugindir "%qt_files%\plugins" --no-system-d3d-compiler --no-compiler-runtime --no-opengl-sw
 
 windeployqt %deploy_flags% "clock_common\%variant%\clock_common.dll"
 windeployqt %deploy_flags% "digital_clock\%variant%\digital_clock.exe"
@@ -54,8 +52,8 @@ cd ..
 
 xcopy /s /y "digital_clock\%variant%\translations" "%qt_files%\translations\"
 
-xcopy /y "C:\clock\OpenSSL-1.0.2\bin\libeay32.dll" "%qt_files%\"
-xcopy /y "C:\clock\OpenSSL-1.0.2\bin\ssleay32.dll" "%qt_files%\"
+xcopy /y "%data_dir%\msvc-ssl\libeay32.dll" "%qt_files%\"
+xcopy /y "%data_dir%\msvc-ssl\ssleay32.dll" "%qt_files%\"
 
 cd "%src_root%\installer\setup-x64"
 nmake
