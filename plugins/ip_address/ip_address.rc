@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	1,3,1,107
-PRODUCTVERSION	4,7,4,0
+FILEVERSION	1,3,1,108
+PRODUCTVERSION	4,7,5,0
 FILEFLAGSMASK	0x3F
 FILEFLAGS	0x0
 FILEOS		0x40004
@@ -14,12 +14,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "IP address"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "1.3.1.107"
+		VALUE "FileVersion", "1.3.1.108"
 		VALUE "InternalName", "ip_address.dll"
 		VALUE "LegalCopyright", "© 2016-2019 Nick Korotysh"
 		VALUE "OriginalFilename", "ip_address.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.7.4"
+		VALUE "ProductVersion", "4.7.5"
 	}
 }
 

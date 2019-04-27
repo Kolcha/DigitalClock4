@@ -1,3 +1,9 @@
+Whats new in 4.7.5:
+-------------------
+Core:
+ - Qt 5.12.3 for all supported platforms
+
+
 Whats new in 4.7.4:
 -------------------
 Features:
