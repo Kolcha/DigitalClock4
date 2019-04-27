@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[[ -n $QT_ROOT ]] || QT_ROOT="/usr/local/Qt-5.12.0"
+[[ -n $QT_ROOT ]] || QT_ROOT="/usr/local/Qt-5.12.3"
 
 CLOCK_APP_NAME="Digital Clock 4"
 
