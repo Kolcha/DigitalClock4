@@ -140,6 +140,12 @@ QString ClockSettings::GetKey(const int id) const
 
 QVariant ClockSettings::GetDefaultValue(const int id) const
 {
+  QStringList ignored_fullscreen_windows({
+    QString("Chrome_WidgetWin_0"),
+    QString("CEF-OSR-WIDGET"),
+    QString("Windows.UI.Core.CoreWindow"),
+    QString("WorkerW")});
+
   switch (static_cast<Option>(id)) {
     // clock settings
     case OPT_OPACITY:               return 0.75;
@@ -175,7 +181,7 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     // misc settings
     case OPT_CLOCK_URL_ENABLED:     return false;
     case OPT_CLOCK_URL_STRING:      return QString("https://digitalclock4.sourceforge.io/");
-    case OPT_FULLSCREEN_IGNORE_LST: return QStringList() << "Chrome_WidgetWin_0" << "CEF-OSR-WIDGET" << "Windows.UI.Core.CoreWindow";
+    case OPT_FULLSCREEN_IGNORE_LST: return ignored_fullscreen_windows;
     case OPT_BETTER_STAY_ON_TOP:    return false;
     case OPT_SHOW_HIDE_ENABLED:     return false;
     case OPT_EXPORT_STATE:          return true;
