@@ -35,6 +35,8 @@ void InitDefaults(QSettings::SettingsMap* defaults)
   defaults->insert(OPT_MESSAGE_TEXT, QString());
 
   defaults->insert(OPT_WIDGET_IS_VISIBLE, true);
+
+  defaults->insert(OPT_HIDE_DAYS_THRESHOLD, 0);
 }
 
 } // namespace countdown_timer

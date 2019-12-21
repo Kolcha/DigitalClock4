@@ -56,6 +56,8 @@ private slots:
   void on_show_msg_clicked(bool checked);
   void on_msg_text_edit_textChanged();
 
+  void on_min_days_edit_valueChanged(int arg1);
+
 private:
   Ui::SettingsDialog* ui;
 };

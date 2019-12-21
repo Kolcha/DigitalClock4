@@ -27,32 +27,43 @@
         <translation>Таймер</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="42"/>
+        <location filename="../gui/settings_dialog.ui" line="56"/>
         <source>target time</source>
         <translation>конкретное время</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="56"/>
+        <location filename="../gui/settings_dialog.ui" line="70"/>
         <source>interval</source>
         <translation>интервал</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="66"/>
+        <location filename="../gui/settings_dialog.ui" line="80"/>
         <source>hours</source>
         <translation>часы</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="73"/>
+        <location filename="../gui/settings_dialog.ui" line="87"/>
         <source>minutes</source>
         <translation>минуты</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="80"/>
+        <location filename="../gui/settings_dialog.ui" line="94"/>
         <source>seconds</source>
         <translation>секунды</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="90"/>
+        <location filename="../gui/settings_dialog.ui" line="106"/>
+        <source>minimum days to show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="116"/>
+        <source>If remaining days count less than this value, days will not be shown.
+Set this to -1 to never show days count, or to 0 to always show.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="33"/>
         <source>show custom message on timeout</source>
         <translation>показывать сообщение по истечении времени</translation>
     </message>

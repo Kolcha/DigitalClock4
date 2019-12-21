@@ -50,6 +50,7 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
   ui->h_edit->setValue(settings.value(OPT_INTERVAL_HOURS).toInt());
   ui->m_edit->setValue(settings.value(OPT_INTERVAL_MINUTES).toInt());
   ui->s_edit->setValue(settings.value(OPT_INTERVAL_SECONDS).toInt());
+  ui->min_days_edit->setValue(settings.value(OPT_HIDE_DAYS_THRESHOLD).toInt());
   ui->show_msg->setChecked(settings.value(OPT_SHOW_MESSAGE).toBool());
   ui->msg_text_edit->setPlainText(settings.value(OPT_MESSAGE_TEXT).toString());
 }
@@ -92,6 +93,11 @@ void SettingsDialog::on_show_msg_clicked(bool checked)
 void SettingsDialog::on_msg_text_edit_textChanged()
 {
   emit OptionChanged(OPT_MESSAGE_TEXT, ui->msg_text_edit->toPlainText());
+}
+
+void SettingsDialog::on_min_days_edit_valueChanged(int arg1)
+{
+  emit OptionChanged(OPT_HIDE_DAYS_THRESHOLD, arg1);
 }
 
 } // namespace countdown_timer
