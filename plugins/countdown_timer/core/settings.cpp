@@ -22,6 +22,11 @@
 
 namespace countdown_timer {
 
+QDateTime GetDefaultDate()
+{
+  return QDateTime(QDate(QDate::currentDate().year() + 1, 1, 1));
+}
+
 void InitDefaults(QSettings::SettingsMap* defaults)
 {
   defaults->insert(OPT_INTERVAL_HOURS, 0);
@@ -29,7 +34,7 @@ void InitDefaults(QSettings::SettingsMap* defaults)
   defaults->insert(OPT_INTERVAL_SECONDS, 0);
 
   defaults->insert(OPT_USE_TARGET_TIME, true);
-  defaults->insert(OPT_TARGET_DATETIME, QDateTime(QDate(QDate::currentDate().year() + 1, 1, 1)));
+  defaults->insert(OPT_TARGET_DATETIME, GetDefaultDate());
 
   defaults->insert(OPT_SHOW_MESSAGE, false);
   defaults->insert(OPT_MESSAGE_TEXT, QString());

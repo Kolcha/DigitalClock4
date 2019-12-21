@@ -35,6 +35,8 @@ const char* const OPT_MESSAGE_TEXT      = "message_text";
 
 const char* const OPT_HIDE_DAYS_THRESHOLD = "hide_days_threshold";
 
+QDateTime GetDefaultDate();
+
 void InitDefaults(QSettings::SettingsMap* defaults);
 
 } // namespace countdown_timer

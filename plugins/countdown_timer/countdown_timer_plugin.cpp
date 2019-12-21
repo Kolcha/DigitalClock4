@@ -112,6 +112,10 @@ void CountdownTimerPlugin::InitTimer()
     QDateTime now = QDateTime::currentDateTime();
     now = now.addMSecs(-now.time().msec());
     QDateTime target = settings_->GetOption(OPT_TARGET_DATETIME).toDateTime();
+    if (target < now) {
+      target = GetDefaultDate();
+      settings_->SetOption(OPT_TARGET_DATETIME, target);
+    }
     if (target > now) {
       cd_timer_->setTimeout(now.secsTo(target));
       cd_timer_->start();
