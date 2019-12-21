@@ -18,6 +18,7 @@
 
 #include "schedule.h"
 
+#include <QFile>
 #include <QMenu>
 #include <QTimer>
 #include <QMediaPlayer>
