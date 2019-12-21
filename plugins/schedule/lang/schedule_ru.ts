@@ -52,11 +52,6 @@
         <translation>Настройки уведомлений</translation>
     </message>
     <message>
-        <location filename="../gui/task_advanced_settings_dialog.ui" line="70"/>
-        <source>&amp;Balloon message</source>
-        <translation>&amp;Всплывающее сообщение</translation>
-    </message>
-    <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="20"/>
         <source>&amp;Timeout:</source>
         <translation>&amp;Таймаут:</translation>
@@ -72,10 +67,14 @@
         <translation>Просмотр</translation>
     </message>
     <message>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="70"/>
+        <source>&amp;Balloon message</source>
+        <translation>&amp;Всплывающее сообщение</translation>
+    </message>
+    <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="80"/>
         <source> sec</source>
         <extracomment>seconds</extracomment>
-        <translatorcomment>секунды</translatorcomment>
         <translation> сек</translation>
     </message>
     <message>

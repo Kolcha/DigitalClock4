@@ -52,11 +52,6 @@
         <translation>Configurações de Notificação</translation>
     </message>
     <message>
-        <location filename="../gui/task_advanced_settings_dialog.ui" line="70"/>
-        <source>&amp;Balloon message</source>
-        <translation>Mensagem &amp;Balão</translation>
-    </message>
-    <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="20"/>
         <source>&amp;Timeout:</source>
         <translation>&amp;Tempo final:</translation>
@@ -70,6 +65,11 @@
         <location filename="../gui/task_advanced_settings_dialog.ui" line="63"/>
         <source>Preview</source>
         <translation>Prever</translation>
+    </message>
+    <message>
+        <location filename="../gui/task_advanced_settings_dialog.ui" line="70"/>
+        <source>&amp;Balloon message</source>
+        <translation>Mensagem &amp;Balão</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="80"/>
@@ -102,12 +102,12 @@
     <message>
         <location filename="../gui/task_advanced_settings_dialog.cpp" line="96"/>
         <source>Select sound</source>
-        <translation>Selecionar som</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.cpp" line="97"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)</source>
-        <translation>Sons (*.wav *.mp3 *.ogg *.oga *.m4a);;Todos os ficheiros (*.*)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

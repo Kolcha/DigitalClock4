@@ -54,7 +54,7 @@
     <message>
         <location filename="../gui/about_dialog.ui" line="155"/>
         <source>© 2013-2019 Nick Korotysh</source>
-        <translation>© 2013-2019 Nick Korotysh</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../gui/about_dialog.ui" line="166"/>
@@ -478,7 +478,7 @@
     <message>
         <location filename="../gui/settings_dialog.ui" line="900"/>
         <source>always keep clock visible on screen, prevent out of screen postion</source>
-        <translation>manter sempre o relógio visível no ecrã, previne que seja posicionado fora do ecrã</translation>
+        <translation>manter o relógio sempre visível no ecrã, previne que saia da área do ecrã</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="907"/>
@@ -496,6 +496,11 @@
         <translation>mover o relógio ao clicar nele (não tem efeito se estiver ativa a opção &quot;transparente para o rato&quot;)</translation>
     </message>
     <message>
+        <location filename="../gui/settings_dialog.ui" line="933"/>
+        <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
+        <translation>ATENÇÃO! Refrescar a uma taxa rápida pode sobrecarregar o processador. O padrão é 500ms.</translation>
+    </message>
+    <message>
         <location filename="../gui/settings_dialog.ui" line="940"/>
         <source>snap to edges, threshold</source>
         <translation>atrair às bordas, limiar</translation>
@@ -504,11 +509,6 @@
         <location filename="../gui/settings_dialog.ui" line="972"/>
         <source>window refresh interval</source>
         <translation>intervalo de refrescamento da janela</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="933"/>
-        <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
-        <translation>ATENÇÃO! Refrescar a uma taxa rápida pode sobrecarregar o processador. O padrão é 500ms.</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="1019"/>
