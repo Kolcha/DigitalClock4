@@ -79,7 +79,7 @@ QPixmap PaletteIconEngine::pixmap(const QSize& size, QIcon::Mode mode, QIcon::St
   pmckey += color.name();
 
   QPixmap pxm(size);
-  if (QPixmapCache::find(pmckey, pxm)) return pxm;
+  if (QPixmapCache::find(pmckey, &pxm)) return pxm;
 
   pxm.fill(Qt::transparent);
   {
