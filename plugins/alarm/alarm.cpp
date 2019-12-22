@@ -197,7 +197,11 @@ void Alarm::TimeUpdateListener()
     }
 
     player_->playlist()->clear();
-    player_->playlist()->addMedia(alarm->media());
+    QString path = alarm->media().path();
+    if (path.endsWith(".m3u", Qt::CaseInsensitive) || path.endsWith(".m3u8", Qt::CaseInsensitive))
+      player_->playlist()->load(alarm->media());
+    else
+      player_->playlist()->addMedia(QMediaContent(alarm->media()));
     player_->setVolume(alarm->volume());
     player_->play();
 

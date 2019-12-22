@@ -25,6 +25,7 @@
 #include <QDate>
 #include <QLocale>
 #include <QFileDialog>
+#include <QMediaPlaylist>
 
 #include "core/alarm_item.h"
 
@@ -153,12 +154,20 @@ void EditAlarmDialog::on_browse_btn_clicked()
   // *INDENT-OFF*
   QUrl new_file = QFileDialog::getOpenFileUrl(this, tr("Select sound"),
                                               QUrl::fromLocalFile(last_media_path_),
-                                              tr("Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)"));
+                                              tr("Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;Playlists (*.m3u *.m3u8);;All files (*.*)"));
   // *INDENT-ON*
   if (!new_file.isValid()) return;
   ui->filepath_edit->setText(new_file.toString());
   ui->filepath_edit->setToolTip(new_file.toString());
-  player_->setMedia(new_file);
+  if (new_file.path().endsWith(".m3u", Qt::CaseInsensitive) || new_file.path().endsWith(".m3u8", Qt::CaseInsensitive)) {
+    if (!player_->playlist())
+      player_->setPlaylist(new QMediaPlaylist(this));
+    else
+      player_->playlist()->clear();
+    player_->playlist()->load(new_file);
+  } else {
+    player_->setMedia(QMediaContent(new_file));
+  }
   if (new_file.isLocalFile()) setLastMediaPath(QFileInfo(new_file.toLocalFile()).absolutePath());
 }
 
