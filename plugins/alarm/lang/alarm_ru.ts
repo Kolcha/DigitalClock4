@@ -41,8 +41,8 @@
         <location filename="../alarm.cpp" line="100"/>
         <location filename="../alarm.cpp" line="114"/>
         <location filename="../alarm.cpp" line="193"/>
-        <location filename="../alarm.cpp" line="204"/>
-        <location filename="../alarm.cpp" line="214"/>
+        <location filename="../alarm.cpp" line="208"/>
+        <location filename="../alarm.cpp" line="218"/>
         <source>Digital Clock Alarm</source>
         <translation>Будильник Digital Clock</translation>
     </message>
@@ -66,7 +66,7 @@
 %1</translation>
     </message>
     <message>
-        <location filename="../alarm.cpp" line="205"/>
+        <location filename="../alarm.cpp" line="209"/>
         <source>Alarm at %1</source>
         <translation>Будильник в %1</translation>
     </message>
@@ -142,14 +142,14 @@
         <translation>Громкость:</translation>
     </message>
     <message>
-        <location filename="../gui/edit_alarm_dialog.cpp" line="154"/>
+        <location filename="../gui/edit_alarm_dialog.cpp" line="155"/>
         <source>Select sound</source>
         <translation>Выберите звук</translation>
     </message>
     <message>
-        <location filename="../gui/edit_alarm_dialog.cpp" line="156"/>
-        <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)</source>
-        <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a);;Все файлы (*.*)</translation>
+        <location filename="../gui/edit_alarm_dialog.cpp" line="157"/>
+        <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;Playlists (*.m3u *.m3u8);;All files (*.*)</source>
+        <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a);;Списки воспроизведения (*.m3u *.m3u8);;Все файлы (*.*)</translation>
     </message>
 </context>
 </TS>

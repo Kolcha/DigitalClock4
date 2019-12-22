@@ -53,14 +53,15 @@
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="106"/>
-        <source>minimum days to show</source>
-        <translation type="unfinished"></translation>
+        <source>minimum days count to show</source>
+        <translation>минимальное количество дней для отображения</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="116"/>
         <source>If remaining days count less than this value, days will not be shown.
 Set this to -1 to never show days count, or to 0 to always show.</source>
-        <translation type="unfinished"></translation>
+        <translation>Если количество оставшихся дней меньше данного значения, дни не будут отображаться.
+Установите данное значение в -1 чтобы никогда не отображать дни, или в 0 чтобы отображать всегда.</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="33"/>

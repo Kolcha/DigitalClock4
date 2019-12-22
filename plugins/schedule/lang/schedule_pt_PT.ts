@@ -4,19 +4,19 @@
 <context>
     <name>schedule::Schedule</name>
     <message>
-        <location filename="../schedule.cpp" line="37"/>
+        <location filename="../schedule.cpp" line="38"/>
         <source>Scheduler</source>
         <translation>Agendamento</translation>
     </message>
     <message>
-        <location filename="../schedule.cpp" line="38"/>
+        <location filename="../schedule.cpp" line="39"/>
         <source>Allow to schedule a task and display notification at specified time.</source>
         <translation>Permite agentar uma tarefa e mostrar a notificação a uma hora específica.</translation>
     </message>
     <message>
-        <location filename="../schedule.cpp" line="127"/>
-        <location filename="../schedule.cpp" line="134"/>
-        <location filename="../schedule.cpp" line="140"/>
+        <location filename="../schedule.cpp" line="128"/>
+        <location filename="../schedule.cpp" line="135"/>
+        <location filename="../schedule.cpp" line="141"/>
         <source>Scheduled task</source>
         <translation>Tarefa agendada</translation>
     </message>

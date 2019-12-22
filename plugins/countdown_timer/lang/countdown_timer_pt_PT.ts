@@ -53,7 +53,7 @@
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="106"/>
-        <source>minimum days to show</source>
+        <source>minimum days count to show</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

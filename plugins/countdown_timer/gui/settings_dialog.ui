@@ -103,7 +103,7 @@
          <item>
           <widget class="QLabel" name="min_days_label">
            <property name="text">
-            <string>minimum days to show</string>
+            <string>minimum days count to show</string>
            </property>
            <property name="buddy">
             <cstring>min_days_edit</cstring>
