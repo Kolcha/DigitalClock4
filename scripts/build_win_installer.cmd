@@ -52,8 +52,8 @@ cd ..
 
 xcopy /s /y "digital_clock\%variant%\translations" "%qt_files%\translations\"
 
-xcopy /y "%data_dir%\msvc-ssl\libeay32.dll" "%qt_files%\"
-xcopy /y "%data_dir%\msvc-ssl\ssleay32.dll" "%qt_files%\"
+xcopy /y "C:\Qt\Tools\OpenSSL\Win_x64\bin\libcrypto-1_1-x64.dll" "%qt_files%\"
+xcopy /y "C:\Qt\Tools\OpenSSL\Win_x64\bin\libssl-1_1-x64.dll" "%qt_files%\"
 
 cd "%src_root%\installer\setup-x64"
 nmake

@@ -8,14 +8,17 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="QtFiles">
-            <Component Id="cmp17131BA271257D72FB32E0B8CD164BCA" Directory="INSTALLDIR" Guid="{51DB23BD-117D-4A7C-BAA1-B42C514B2156}" Win64="yes">
-                <File Id="fil0936B3F06B062CC85604526F0DFF963B" KeyPath="yes" Source="..\..\..\qt-files-x64\libeay32.dll" />
+            <Component Id="cmpB60B52D038613C3F20F84A0E1C83D4D4" Directory="INSTALLDIR" Guid="{7127090C-1F72-4314-8D36-BE4E22203C05}" Win64="yes">
+                <File Id="fil09D765981E2E493119D2DBD2DA179B9D" KeyPath="yes" Source="..\..\..\qt-files-x64\libcrypto-1_1-x64.dll" />
             </Component>
             <Component Id="cmp5DDCF0CE56D406D1B8B1F93E988AED6B" Directory="INSTALLDIR" Guid="{D4DF0E3E-493C-43C4-B219-334ACC636621}" Win64="yes">
                 <File Id="fil0F4CD3729AF07C1C460E292E0F081D0A" KeyPath="yes" Source="..\..\..\qt-files-x64\libEGL.dll" />
             </Component>
             <Component Id="cmp936F93A6D920FB403211F0AE426037A0" Directory="INSTALLDIR" Guid="{F73ECF9E-C4BF-43ED-86B8-F1AC6D86678C}" Win64="yes">
                 <File Id="filAF89F998C93BD10CB677322009EB192E" KeyPath="yes" Source="..\..\..\qt-files-x64\libGLESV2.dll" />
+            </Component>
+            <Component Id="cmp809509D62BD9EA848EF243F03D83758F" Directory="INSTALLDIR" Guid="{FED0FB2D-9BAF-4582-B3BB-99137F36F039}" Win64="yes">
+                <File Id="filCE00A8B273087E758109FEC2AC699195" KeyPath="yes" Source="..\..\..\qt-files-x64\libssl-1_1-x64.dll" />
             </Component>
             <Component Id="cmp01229088A6F1DEA1BE391E6E7CC3D3EE" Directory="INSTALLDIR" Guid="{F9BBEDBB-99ED-41D4-A8E5-4AA5CC4C4423}" Win64="yes">
                 <File Id="filAD80F4724AAE3D8B0682F5982CC2548D" KeyPath="yes" Source="..\..\..\qt-files-x64\Qt5Core.dll" />
@@ -37,9 +40,6 @@
             </Component>
             <Component Id="cmp975651B71289ACA70B3EB154C08A27F0" Directory="INSTALLDIR" Guid="{688451D0-6954-47D5-9FFE-C3B116D88F08}" Win64="yes">
                 <File Id="filE89B28CF105C7A7691C046E6516D540E" KeyPath="yes" Source="..\..\..\qt-files-x64\Qt5Widgets.dll" />
-            </Component>
-            <Component Id="cmpAD26CD129A22547CE847B9393B35EB23" Directory="INSTALLDIR" Guid="{E7850553-9DD7-4880-854F-723B3330F977}" Win64="yes">
-                <File Id="fil9EEC1809405C3DAFE3D442BC731EE069" KeyPath="yes" Source="..\..\..\qt-files-x64\ssleay32.dll" />
             </Component>
             <Component Id="cmp20410C8B159D2B6311B36667DC339085" Directory="dir0549B3D8BCB345376D7DA16235134304" Guid="{05E043FC-500F-4FB6-BB9F-997B30CF6EB6}" Win64="yes">
                 <File Id="fil905480DA94931B508E0DD1E95FF887C0" KeyPath="yes" Source="..\..\..\qt-files-x64\plugins\audio\qtaudio_wasapi.dll" />
@@ -163,6 +163,9 @@
             </Component>
             <Component Id="cmpA214B663A372012F5DCBA6A5CDAE421D" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{7D84A1BD-09AF-4FA9-88CE-0FAA38912B59}" Win64="yes">
                 <File Id="fil1380C741E2DBC1F60AA4DC32D66B1E6C" KeyPath="yes" Source="..\..\..\qt-files-x64\translations\qt_uk.qm" />
+            </Component>
+            <Component Id="cmpFDB70117D8E46EB188997470A3793B5D" Directory="dirF1C5FA08924D46D2A43D5134DF70C0A8" Guid="{529826BB-5E04-479A-8DBC-717FDCABABD6}" Win64="yes">
+                <File Id="fil9085627E4E33630ABCDB62A5CC05B794" KeyPath="yes" Source="..\..\..\qt-files-x64\translations\qt_zh_TW.qm" />
             </Component>
         </ComponentGroup>
     </Fragment>

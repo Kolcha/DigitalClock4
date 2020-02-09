@@ -55,8 +55,8 @@ xcopy /y "%build_dir%\paletteicon\%variant%\paletteicon.dll" "%dst_path%\plugins
 xcopy /s /y "%data_dir%\textures" "%dst_path%\textures\"
 xcopy /s /y "%data_dir%\skins" "%dst_path%\skins\"
 
-xcopy /y "%data_dir%\mingw-ssl\libeay32.dll" "%dst_path%\"
-xcopy /y "%data_dir%\mingw-ssl\ssleay32.dll" "%dst_path%\"
+xcopy /y "C:\Qt\Tools\OpenSSL\Win_x86\bin\libcrypto-1_1.dll" "%dst_path%\"
+xcopy /y "C:\Qt\Tools\OpenSSL\Win_x86\bin\libssl-1_1.dll" "%dst_path%\"
 
 copy /y "%src_root%\installer\postinstall_readme.txt" "%dst_path%\README.txt"
 
