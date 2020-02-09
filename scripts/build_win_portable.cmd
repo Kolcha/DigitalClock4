@@ -1,8 +1,11 @@
 @echo off
-
-set src_path=%cd%
+setlocal
 
 set src_root=%~dp0..
+
+call C:\Qt\5.12.7\mingw73_32\bin\qtenv2.bat
+set PATH=%PATH%;C:\Program Files\7-Zip
+
 set data_dir=%src_root%\..\data
 set dst_path=%src_root%\..\Digital Clock 4
 
@@ -67,4 +70,4 @@ cd "%dst_path%\.."
 if exist "%archive_name%" del /f /q "%archive_name%"
 7z a "%archive_name%" "%dst_path%"
 
-cd "%src_path%"
+endlocal

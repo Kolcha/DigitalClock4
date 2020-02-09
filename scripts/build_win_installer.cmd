@@ -1,4 +1,9 @@
 @echo off
+setlocal
+
+set src_root=%~dp0..
+
+call C:\Qt\5.12.7\msvc2017_64\bin\qtenv2.bat
 call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
 set PATH=%PATH%;C:\Qt\Tools\QtCreator\bin
 set PATH=%PATH%;C:\Program Files (x86)\WiX Toolset v3.11\bin
@@ -10,9 +15,6 @@ if %ERRORLEVEL% equ 0 (
   set make=nmake
 )
 
-set src_path=%cd%
-
-set src_root=%~dp0..
 set data_dir=%src_root%\..\data
 set qt_files=%src_root%\..\qt-files-x64
 set archive_name=%src_root%\..\digital_clock_4-x64.msi
@@ -31,7 +33,6 @@ qmake -config %variant% -r "%src_root%\DigitalClock.pro"
 %make%
 
 if %ERRORLEVEL% neq 0 (
-  cd "%src_path%"
   exit /b 1
 )
 
@@ -58,7 +59,6 @@ xcopy /y "C:\Qt\Tools\OpenSSL\Win_x64\bin\libssl-1_1-x64.dll" "%qt_files%\"
 cd "%src_root%\installer\setup-x64"
 nmake
 if %ERRORLEVEL% neq 0 (
-  cd "%src_path%"
   exit /b 1
 )
 
@@ -71,4 +71,4 @@ rmdir /s /q "%build_dir%"
 cd "%qt_files%\.."
 rmdir /s /q "%qt_files%"
 
-cd "%src_path%"
+endlocal
