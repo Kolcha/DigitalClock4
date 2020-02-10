@@ -1,3 +1,14 @@
+Whats new in 4.7.6:
+-------------------
+Core:
+ - Qt 5.12.7 for all supported platforms
+ - OpenSSL 1.1 on Windows
+
+Plugins:
+ - alarm: m3u playlists support
+ - countdown_timer: added ability to show remaining days
+
+
 Whats new in 4.7.5:
 -------------------
 Core:
