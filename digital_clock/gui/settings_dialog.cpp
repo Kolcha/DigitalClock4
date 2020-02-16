@@ -50,7 +50,7 @@ static QString default_texture_path()
 {
 #ifdef Q_OS_MACOS
   return QApplication::applicationDirPath() + "/../Resources/textures";
-#endif
+#else
 #ifdef Q_OS_LINUX
   QStringList texture_paths;
   texture_paths << QDir::home().absoluteFilePath(".local/share/digitalclock4/textures");
@@ -61,6 +61,7 @@ static QString default_texture_path()
       return path;
 #endif
   return QApplication::applicationDirPath() + "/textures";
+#endif
 }
 
 
