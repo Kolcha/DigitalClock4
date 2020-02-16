@@ -90,6 +90,24 @@ QPixmap PaletteIconEngine::pixmap(const QSize& size, QIcon::Mode mode, QIcon::St
   return pxm;
 }
 
+void PaletteIconEngine::virtual_hook(int id, void* data)
+{
+  switch (id) {
+    case QIconEngine::AvailableSizesHook: {
+      QIconEngine::AvailableSizesArgument& arg = *reinterpret_cast<QIconEngine::AvailableSizesArgument*>(data);
+      arg.sizes.clear();
+      arg.sizes << QSize(512, 512);   // just workaround to make tray icon visible on KDE
+      break;
+    }
+    case QIconEngine::IsNullHook:
+      *reinterpret_cast<bool*>(data) = (!renderer_ || !renderer_->isValid());
+      break;
+
+    default:
+      QIconEngine::virtual_hook(id, data);
+  }
+}
+
 void PaletteIconEngine::paintIcon(QPainter* painter, const QRect& rect, const QColor& color)
 {
   if (!renderer_ || !renderer_->isValid()) return;
