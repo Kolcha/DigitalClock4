@@ -41,16 +41,28 @@
 static const char* const S_OPT_LAST_TIME_FORMAT_KEY = "last_time_format";
 static const char* const S_OPT_GEOMETRY_KEY = "settings_dialog_geometry";
 
-#ifdef Q_OS_MACOS
-#define DEFAULT_TEXTURE_PATH              (QApplication::applicationDirPath() + "/../Resources/textures")
-#else
-#define DEFAULT_TEXTURE_PATH              (QApplication::applicationDirPath() + "/textures")
-#endif
-
 using skin_draw::SkinDrawer;
 
 namespace digital_clock {
 namespace gui {
+
+static QString default_texture_path()
+{
+#ifdef Q_OS_MACOS
+  return QApplication::applicationDirPath() + "/../Resources/textures";
+#endif
+#ifdef Q_OS_LINUX
+  QStringList texture_paths;
+  texture_paths << QDir::home().absoluteFilePath(".local/share/digitalclock4/textures");
+  texture_paths << QLatin1String("/usr/local/share/digitalclock4/textures");
+  texture_paths << QLatin1String("/usr/share/digitalclock4/textures");
+  for (auto& path : qAsConst(texture_paths))
+    if (QFileInfo::exists(path))
+      return path;
+#endif
+  return QApplication::applicationDirPath() + "/textures";
+}
+
 
 static bool plugin_info_cmp(const QPair<TPluginInfo, bool>& a, const QPair<TPluginInfo, bool>& b)
 {
@@ -179,7 +191,7 @@ void SettingsDialog::InitControls()
   ui->type_image->setChecked(txd_type == SkinDrawer::CT_TEXTURE);
   last_color_ = config_->GetValue(OPT_COLOR).value<QColor>();
   QString texture = config_->GetValue(OPT_TEXTURE).toString();
-  last_txd_path_ = texture.isEmpty() ? DEFAULT_TEXTURE_PATH : QFileInfo(texture).absolutePath();
+  last_txd_path_ = texture.isEmpty() ? default_texture_path() : QFileInfo(texture).absolutePath();
 
   ui->txd_per_elem->setChecked(config_->GetValue(OPT_TEXTURE_PER_ELEMENT).toBool());
   SkinDrawer::DrawMode mode = config_->GetValue(OPT_TEXTURE_DRAW_MODE).value<SkinDrawer::DrawMode>();
@@ -339,7 +351,7 @@ void SettingsDialog::on_sel_image_btn_clicked()
                     tr("Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)"));
   if (!texture.isEmpty()) {
     emit OptionChanged(OPT_TEXTURE, texture);
-    if (last_txd_path_ == DEFAULT_TEXTURE_PATH) {
+    if (last_txd_path_ == default_texture_path()) {
       emit OptionChanged(OPT_TEXTURE_TYPE, SkinDrawer::CT_TEXTURE);
     }
     last_txd_path_ = QFileInfo(texture).absolutePath();
