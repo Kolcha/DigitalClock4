@@ -30,6 +30,22 @@
 namespace digital_clock {
 namespace gui {
 
+static QIcon platform_tray_icon()
+{
+  QIcon tray_icon(":/clock/icons/tray/clock.svg");            // default tray icon
+#if defined(Q_OS_WIN)
+  if (QVersionNumber::fromString(QSysInfo::productVersion()) >= QVersionNumber(10))
+    tray_icon = QIcon(":/clock/icons/tray/clock-alt.svg");
+#endif
+#if defined(Q_OS_MACOS) && !defined(HAVE_NATIVE_TRAY_ICON)
+  tray_icon = QIcon(":/clock/icons/tray/clock-smaller.svg");  // Qt is NOT patched
+#endif
+#if defined(Q_OS_LINUX)
+  tray_icon = QIcon(":/clock/icons/tray/clock-smaller.svg.p");
+#endif
+  return tray_icon;
+}
+
 TrayControl::TrayControl(QObject* parent) : QObject(parent)
 {
   tray_menu_ = new ContextMenu();
@@ -40,15 +56,7 @@ TrayControl::TrayControl(QObject* parent) : QObject(parent)
   connect(tray_menu_, &ContextMenu::CheckForUpdates, this, &TrayControl::CheckForUpdates);
   connect(tray_menu_, &ContextMenu::AppExit, this, &TrayControl::AppExit);
 
-#ifdef Q_OS_WIN
-  QIcon tray_icon;
-  if (QVersionNumber::fromString(QSysInfo::productVersion()) >= QVersionNumber(10))
-    tray_icon = QIcon(":/clock/icons/tray/clock-alt.svg");
-  else
-    tray_icon = QIcon(":/clock/icons/tray/clock.svg");
-#else
-  QIcon tray_icon(":/clock/icons/tray/clock-smaller.svg");
-#endif
+  QIcon tray_icon = platform_tray_icon();
   tray_icon.setIsMask(true);
   tray_icon_ = new QSystemTrayIcon(tray_icon, this);
   tray_icon_->setVisible(true);
