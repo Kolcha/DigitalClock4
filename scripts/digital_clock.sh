@@ -10,14 +10,10 @@
 # Clock launcher script
 #
 
-function detect_kde()
+function running_on_kde()
 {
-  if [[ "$XDG_CURRENT_DESKTOP" == "KDE" || "$XDG_SESSION_DESKTOP" == "KDE" ]]
-  then
-    echo 1
-  else
-    echo 0
-  fi
+  [[ "$XDG_CURRENT_DESKTOP" == "KDE" || "$XDG_SESSION_DESKTOP" == "KDE" ]]
+  return $?
 }
 
 
@@ -36,58 +32,56 @@ function compare_versions()
 }
 
 
-function validate_system_qt()
+function has_suitable_system_qt()
 {
   required_vers=$(echo $1 | sed 's/\..$/\.0/g')
-  res=0
   qt_core=$(find /usr/lib* -name libQt5Core.so.5 2> /dev/null)
-  if [[ -n "$qt_core" ]]
-  then
-    version=$(ls -1 $qt_core* | grep -Po '\d+\.\d+\.\d+')
-    # validate system Qt version
-    [[ $(compare_versions $version $required_vers) -ge 0 ]] && { res=1; }
-  fi
-  echo $res
+  [[ -e "$qt_core" ]] || return $?
+  version=$(ls -1 $qt_core* | grep -Po '\d+\.\d+\.\d+')
+  [[ $(compare_versions $version $required_vers) -ge 0 ]]
+  return $?
 }
 
 
 # handle script arguments
-autostart=0
+is_autostart=0
 
-ARGS=()
-for var in "$@"
+app_args=()
+while [[ $# -gt 0 ]]
 do
-  if [[ "$var" != '--autostart' ]]
-  then
-    ARGS+=("$var")
-  else
-    autostart=1
-  fi
+  key="$1"
+  case $key in
+    --autostart)
+      is_autostart=1
+      shift
+      ;;
+
+    *)
+      app_args+=("$1")
+      shift
+      ;;
+  esac
 done
+set -- "${app_args[@]}"     # set everything unhandled back to $@
 
-[[ $autostart -ne 0 ]] && sleep 15
+[[ $is_autostart -ne 0 ]] && sleep 15
 
+this_script=$(readlink -ne "$0")
+script_path=$(dirname "$this_script")
 
-appname=$(basename "$0" | sed s,\.sh$,,)
+export LD_LIBRARY_PATH=$script_path:$LD_LIBRARY_PATH
 
-dirname=$(dirname "$0")
-tmp="${dirname#?}"
-
-if [[ "${dirname%$tmp}" != "/" ]]
+local_qt_core="$script_path/qt/libQt5Core.so.5"
+if [[ -x "$local_qt_core" ]]
 then
-  dirname=$PWD/$dirname
+  cd "$script_path"         # work in application directory
+  qt_vers=$("$local_qt_core" | grep -Po 'Qt \d+\.\d+\.\d+' | cut -c 3- -)
+  # on KDE systems try to use system Qt libraries instead of shipped ones
+  if !(running_on_kde) || !(has_suitable_system_qt "$qt_vers")
+  then
+    export QT_QPA_PLATFORMTHEME=gtk2
+    export LD_LIBRARY_PATH="$script_path/qt:$LD_LIBRARY_PATH"
+  fi
 fi
 
-# work in application directory
-cd "$dirname"
-
-qt_vers=$("./qt/libQt5Core.so.5" | grep -Po 'Qt \d+\.\d+\.\d+' | cut -c 3- -)
-
-# on KDE systems try to use system Qt libraries instead of shipped ones
-if [[ $(detect_kde) -eq 0 || $(validate_system_qt "$qt_vers") -eq 0 ]]
-then
-  export QT_QPA_PLATFORMTHEME=gtk2
-  export LD_LIBRARY_PATH="$dirname/qt:$LD_LIBRARY_PATH"
-fi
-export LD_LIBRARY_PATH="$dirname:$LD_LIBRARY_PATH"
-"./$appname" ${ARGS[@]}
+"${this_script/%.sh}" "$@"
