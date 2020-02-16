@@ -74,9 +74,12 @@ QPixmap PaletteIconEngine::pixmap(const QSize& size, QIcon::Mode mode, QIcon::St
 {
   QColor color = getIconColor(mode, state);
 
-  QString pmckey("pie_%1:%2x%3:%4-%5");
-  pmckey = pmckey.arg(src_file_).arg(size.width()).arg(size.height()).arg(mode).arg(state);
-  pmckey += color.name();
+  QString pmckey = QString("pie_%1:%2x%3:%4-%5%6")
+                   .arg(src_file_)
+                   .arg(size.width()).arg(size.height())
+                   .arg(mode)
+                   .arg(state)
+                   .arg(color.name(QColor::HexArgb));
 
   QPixmap pxm(size);
   if (QPixmapCache::find(pmckey, &pxm)) return pxm;
