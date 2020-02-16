@@ -54,9 +54,9 @@ SkinManager::SkinManager(QObject* parent) : QObject(parent)
   search_paths_.append(qApp->applicationDirPath() + "/skins");
 #endif
 #ifdef Q_OS_LINUX
-  search_paths_.append("/usr/share/digital_clock/skins");
-  search_paths_.append("/usr/local/share/digital_clock/skins");
-  search_paths_.append(QDir::homePath() + "/.local/share/digital_clock/skins");
+  search_paths_.append("/usr/share/digitalclock4/skins");
+  search_paths_.append("/usr/local/share/digitalclock4/skins");
+  search_paths_.append(QDir::homePath() + "/.local/share/digitalclock4/skins");
 #endif
 }
 
