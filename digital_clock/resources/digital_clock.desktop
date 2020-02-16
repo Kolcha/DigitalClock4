@@ -4,8 +4,8 @@ GenericName=Digital Clock
 Comment=Beautiful very customizable clock with plugins
 Type=Application
 Terminal=false
-Exec=digital_clock
-Icon=digital_clock
+Exec=digitalclock4
+Icon=digitalclock4
 StartupNotify=false
 Categories=Utility;Clock;
 
