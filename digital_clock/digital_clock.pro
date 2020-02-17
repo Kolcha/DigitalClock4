@@ -95,10 +95,12 @@ win32 {
 SOURCES += \
     platform/autostart_win.cpp \
     platform/fullscreen_detect.cpp \
-    platform/main_window_win.cpp
+    platform/main_window_win.cpp \
+    platform/system_theme_tracker.cpp
 
 HEADERS += \
-    platform/fullscreen_detect.h
+    platform/fullscreen_detect.h \
+    platform/system_theme_tracker.h
 }
 
 unix {
@@ -138,7 +140,7 @@ macx {
 unix:!macx {
     LIBS += -lX11
 }
-win32:LIBS += -luser32
+win32:LIBS += -ladvapi32 -luser32
 
 # add plugin_core library
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../plugin_core/release/ -lplugin_core

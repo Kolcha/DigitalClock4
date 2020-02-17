@@ -25,6 +25,9 @@
 class QAction;
 
 namespace digital_clock {
+#ifdef Q_OS_WIN
+class SystemThemeTracker;
+#endif
 namespace gui {
 
 class ContextMenu;
@@ -50,10 +53,18 @@ signals:
 
 private slots:
   void TrayEventHandler(QSystemTrayIcon::ActivationReason reason);
+#ifdef Q_OS_WIN
+  void SysThemeChangedHandler(bool is_light_theme);
+#endif
 
 private:
+  QIcon platform_tray_icon() const;
+
   QSystemTrayIcon* tray_icon_;
   ContextMenu* tray_menu_;
+#ifdef Q_OS_WIN
+  SystemThemeTracker* sys_theme_tracker_;
+#endif
 };
 
 } // namespace gui

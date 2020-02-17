@@ -26,16 +26,25 @@
 #include <QApplication>
 
 #include "gui/context_menu.h"
+#ifdef Q_OS_WIN
+#include "platform/system_theme_tracker.h"
+#endif
 
 namespace digital_clock {
 namespace gui {
+#ifdef Q_OS_WIN
+static QIcon pick_win10_tray_icon(bool is_light_theme)
+{
+  return is_light_theme ? QIcon(":/clock/icons/tray/clock-alt-b.svg") : QIcon(":/clock/icons/tray/clock-alt-w.svg");
+}
+#endif
 
-static QIcon platform_tray_icon()
+QIcon TrayControl::platform_tray_icon() const
 {
   QIcon tray_icon(":/clock/icons/tray/clock.svg");            // default tray icon
 #if defined(Q_OS_WIN)
   if (QVersionNumber::fromString(QSysInfo::productVersion()) >= QVersionNumber(10))
-    tray_icon = QIcon(":/clock/icons/tray/clock-alt.svg");
+    tray_icon = pick_win10_tray_icon(sys_theme_tracker_->isLightTheme());
 #endif
 #if defined(Q_OS_MACOS) && !defined(HAVE_NATIVE_TRAY_ICON)
   tray_icon = QIcon(":/clock/icons/tray/clock-smaller.svg");  // Qt is NOT patched
@@ -48,6 +57,14 @@ static QIcon platform_tray_icon()
 
 TrayControl::TrayControl(QObject* parent) : QObject(parent)
 {
+#ifdef Q_OS_WIN
+  sys_theme_tracker_ = nullptr;
+  if (QVersionNumber::fromString(QSysInfo::productVersion()) >= QVersionNumber(10)) {
+    sys_theme_tracker_ = new SystemThemeTracker();
+    connect(sys_theme_tracker_, &SystemThemeTracker::themeChanged, this, &TrayControl::SysThemeChangedHandler);
+    sys_theme_tracker_->start();
+  }
+#endif
   tray_menu_ = new ContextMenu();
   connect(tray_menu_, &ContextMenu::VisibilityChanged, this, &TrayControl::VisibilityChanged);
   connect(tray_menu_, &ContextMenu::PositionChanged, this, &TrayControl::PositionChanged);
@@ -67,6 +84,14 @@ TrayControl::TrayControl(QObject* parent) : QObject(parent)
 
 TrayControl::~TrayControl()
 {
+#ifdef Q_OS_WIN
+  if (sys_theme_tracker_) {
+    sys_theme_tracker_->stop();
+    while (!sys_theme_tracker_->isFinished())
+      QThread::yieldCurrentThread();
+    delete sys_theme_tracker_;
+  }
+#endif
   delete tray_menu_;
 }
 
@@ -85,5 +110,11 @@ void TrayControl::TrayEventHandler(QSystemTrayIcon::ActivationReason reason)
   if (reason == QSystemTrayIcon::DoubleClick) emit ShowSettingsDlg();
 }
 
+#ifdef Q_OS_WIN
+void TrayControl::SysThemeChangedHandler(bool is_light_theme)
+{
+  tray_icon_->setIcon(pick_win10_tray_icon(is_light_theme));
+}
+#endif
 } // namespace gui
 } // namespace digital_clock
