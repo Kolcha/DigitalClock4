@@ -37,7 +37,7 @@ public:
   void paint(QPainter* painter, const QRect& rect, QIcon::Mode mode, QIcon::State state) Q_DECL_OVERRIDE;
   QPixmap pixmap(const QSize& size, QIcon::Mode mode, QIcon::State state) Q_DECL_OVERRIDE;
 
-  void virtual_hook(int id, void *data) Q_DECL_OVERRIDE;
+  void virtual_hook(int id, void* data) Q_DECL_OVERRIDE;
 
 private:
   PaletteIconEngine& operator=(const PaletteIconEngine& other) Q_DECL_EQ_DELETE;

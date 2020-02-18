@@ -36,10 +36,10 @@ QString format_time(qint64 time_left, int days_threshold)
     return QString("%1:%2:%3").arg(h).arg(m, fw, b, ch).arg(s, fw, b, ch);
 
   return QString("%1:%2:%3:%4")
-      .arg(days_left)
-      .arg(h - days_left * 24, fw, b, ch)
-      .arg(m, fw, b, ch)
-      .arg(s, fw, b, ch);
+         .arg(days_left)
+         .arg(h - days_left * 24, fw, b, ch)
+         .arg(m, fw, b, ch)
+         .arg(s, fw, b, ch);
 }
 
 } // namespace countdown_timer
