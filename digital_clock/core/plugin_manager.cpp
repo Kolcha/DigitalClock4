@@ -47,6 +47,7 @@ PluginManager::PluginManager(QObject* parent) : QObject(parent)
   search_paths_.append("/usr/local/lib/digitalclock4/plugins");
   search_paths_.append(QDir::homePath() + "/.local/lib/digitalclock4/plugins");
 #endif
+  std::reverse(search_paths_.begin(), search_paths_.end());
   timer_.setInterval(500);
   timer_.setSingleShot(false);
   timer_.start();
