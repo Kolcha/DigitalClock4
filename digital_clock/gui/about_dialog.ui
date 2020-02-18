@@ -249,7 +249,7 @@
           <item>
            <widget class="QLabel" name="lnk_lbl_1">
             <property name="text">
-             <string notr="true">&lt;a href=&quot;http://www.softpedia.com/get/Desktop-Enhancements/Clocks-Time-Management/Korotysh-Digital-Clock.shtml&quot;&gt;www.softpedia.com&lt;/a&gt;</string>
+             <string notr="true">&lt;a href=&quot;https://www.softpedia.com/get/Desktop-Enhancements/Clocks-Time-Management/Korotysh-Digital-Clock.shtml&quot;&gt;www.softpedia.com&lt;/a&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -275,7 +275,7 @@
           <item>
            <widget class="QLabel" name="lnk_lbl_3">
             <property name="text">
-             <string notr="true">&lt;a href=&quot;https://www.filecluster.com/Digital-Clock.html&quot;&gt;www.filecluster.com&lt;/a&gt;</string>
+             <string notr="true">&lt;a href=&quot;https://www.softpedia.com/get/PORTABLE-SOFTWARE/Other-Portable-Applications/Digital-Clock-Portable.shtml&quot;&gt;www.softpedia.com&lt;/a&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
