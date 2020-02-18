@@ -521,53 +521,53 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="119"/>
+        <location filename="../gui/settings_dialog.cpp" line="132"/>
         <source>unknown</source>
         <translation>onbekend</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="217"/>
+        <location filename="../gui/settings_dialog.cpp" line="230"/>
         <source>1 day</source>
         <translation>1 dag</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="218"/>
+        <location filename="../gui/settings_dialog.cpp" line="231"/>
         <source>3 days</source>
         <translation>3 dagen</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="219"/>
+        <location filename="../gui/settings_dialog.cpp" line="232"/>
         <source>1 week</source>
         <translation>1 week</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="220"/>
+        <location filename="../gui/settings_dialog.cpp" line="233"/>
         <source>2 weeks</source>
         <translation>2 weken</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="337"/>
+        <location filename="../gui/settings_dialog.cpp" line="350"/>
         <source>Open texture file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="339"/>
+        <location filename="../gui/settings_dialog.cpp" line="352"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="422"/>
+        <location filename="../gui/settings_dialog.cpp" line="435"/>
         <source>Export settings to ...</source>
         <translation>Exporteer instellingen naar ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="424"/>
-        <location filename="../gui/settings_dialog.cpp" line="432"/>
+        <location filename="../gui/settings_dialog.cpp" line="437"/>
+        <location filename="../gui/settings_dialog.cpp" line="445"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>Digital Clock instelling bestanden (*.dcs)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="430"/>
+        <location filename="../gui/settings_dialog.cpp" line="443"/>
         <source>Import settings from ...</source>
         <translation>Importeer instellingen van ...</translation>
     </message>
