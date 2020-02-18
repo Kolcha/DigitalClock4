@@ -1,6 +1,6 @@
 /*
     Digital Clock: timetracker plugin
-    Copyright (C) 2018-2019  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2018-2020  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

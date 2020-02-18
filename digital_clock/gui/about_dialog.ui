@@ -152,7 +152,7 @@
           </font>
          </property>
          <property name="text">
-          <string>© 2013-2019 Nick Korotysh</string>
+          <string>© 2013-2020 Nick Korotysh</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
