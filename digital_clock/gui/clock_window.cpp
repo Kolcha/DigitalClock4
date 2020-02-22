@@ -219,6 +219,14 @@ void ClockWindow::paintEvent(QPaintEvent* /*event*/)
 
 void ClockWindow::resizeEvent(QResizeEvent* event)
 {
+  // ignore spontaneous resize events sent by system
+  // they often have incorrect window geometry, which leads to strange
+  // effects when right or center alignment is used, especially on Linux
+  if (event->spontaneous()) {
+    event->ignore();
+    return;
+  }
+
   if (cur_alignment_ != CAlignment::A_LEFT && event->oldSize().isValid()) {
     QPoint cur_pos = this->pos();
     if (cur_alignment_ == CAlignment::A_RIGHT) {
@@ -231,6 +239,7 @@ void ClockWindow::resizeEvent(QResizeEvent* event)
     this->move(cur_pos);
   }
   CorrectPosition();
+  event->accept();
 }
 
 void ClockWindow::moveEvent(QMoveEvent* event)
