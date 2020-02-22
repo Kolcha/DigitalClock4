@@ -28,8 +28,8 @@ rm -rf "$build_dir"
 mkdir "$build_dir"
 cd "$build_dir"
 
-$QT_ROOT/bin/qmake -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
-make -j4
+$QT_ROOT/bin/qmake $CUSTOM_QMAKE_FLAGS -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
+make -j$(sysctl -n hw.ncpu)
 [[ $? == 0 ]] || exit 1
 
 # create directories
