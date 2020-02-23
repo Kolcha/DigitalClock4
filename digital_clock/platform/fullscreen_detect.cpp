@@ -47,6 +47,9 @@ BOOL CALLBACK CheckMaximized(HWND hwnd, LPARAM lParam)
   // skip desktop window
   if (hwnd == GetDesktopWindow() || hwnd == GetShellWindow()) return TRUE;
 
+  // skip any invisible windows (Windows has a lot of them! Ugh...)
+  if (!(GetWindowLongPtr(hwnd, GWL_STYLE) & WS_VISIBLE)) return TRUE;
+
   // skip ignored windows
   WCHAR class_name[256];
   GetClassName(hwnd, class_name, 256);
