@@ -39,7 +39,7 @@ void CardLayout::addItem(QLayoutItem* item)
 
 QSize CardLayout::sizeHint() const
 {
-  QSize s(0,0);
+  QSize s(0, 0);
   int n = m_list.count();
   if (n > 0)
     s = m_list.first()->sizeHint();
@@ -54,7 +54,7 @@ QSize CardLayout::sizeHint() const
 
 QSize CardLayout::minimumSize() const
 {
-  QSize s(0,0);
+  QSize s(0, 0);
   int n = m_list.count();
   int i = 0;
   while (i < n) {

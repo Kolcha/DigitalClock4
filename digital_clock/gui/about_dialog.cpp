@@ -31,7 +31,7 @@ static QString compilerString()
 #if defined(__apple_build_version__) // Apple clang has other version numbers
   isAppleString = QLatin1String(" (Apple)");
 #endif
-  return QLatin1String("Clang " ) + QString::number(__clang_major__) + QLatin1Char('.')
+  return QLatin1String("Clang ") + QString::number(__clang_major__) + QLatin1Char('.')
          + QString::number(__clang_minor__) + isAppleString;
 #elif defined(Q_CC_GNU)
   return QString("GCC %1.%2.%3").arg(__GNUC__).arg(__GNUC_MINOR__).arg(__GNUC_PATCHLEVEL__);

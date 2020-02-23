@@ -55,9 +55,9 @@ BOOL CALLBACK CheckMaximized(HWND hwnd, LPARAM lParam)
   RECT r;
   GetWindowRect(hwnd, &r);
 
-  if((r.right - r.left == data->width) && (r.bottom - r.top == data->height)) {
+  if ((r.right - r.left == data->width) && (r.bottom - r.top == data->height)) {
     data->found = true;
-    return FALSE; //there can be only one so quit here
+    return FALSE;   // there can be only one so quit here
   }
 
   return TRUE;
