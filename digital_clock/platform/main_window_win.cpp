@@ -37,6 +37,13 @@ void ClockWindow::WinOnTopWorkaround()
   // so do nothing if window is not visible
   if (!this->isVisible()) return;
 
+  // remember all fullscreen windows on app startup, and ignore them later
+  if (window_ignore_list_.isEmpty()) {
+    QStringList user_list = app_config_->GetValue(OPT_FULLSCREEN_IGNORE_LST).toStringList();
+    window_ignore_list_ = GetFullscreenWindowsOnSameMonitor(this->winId());
+    window_ignore_list_.unite(QSet<QString>::fromList(user_list));
+  }
+
   if (app_config_->GetValue(OPT_STAY_ON_TOP).toBool()) {
     if (fullscreen_detect_enabled_ && IsFullscreenWndOnSameMonitor(this->winId(), window_ignore_list_)) {
       // don't stay above fullscreen windows

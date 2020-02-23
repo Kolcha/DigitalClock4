@@ -25,21 +25,23 @@
 
 namespace digital_clock {
 
-struct wnd_find_t {
+typedef BOOL (*enum_fullscreen_proc)(HWND, void*);
+
+struct enum_fullscreen_data_t {
   HMONITOR monitor;
-  int width;
-  int height;
-  bool found;
-  QStringList ignore_list;
+  LONG width;
+  LONG height;
+  enum_fullscreen_proc proc_func;
+  void* proc_data;
 };
 
 // parts of solution was found there:
 // http://stackoverflow.com/questions/3797802/how-to-check-if-an-other-program-is-running-in-fullscreen-mode-eg-a-media-play
 // http://stackoverflow.com/questions/7009080/detecting-full-screen-mode-in-windows
 
-BOOL CALLBACK CheckMaximized(HWND hwnd, LPARAM lParam)
+static BOOL CALLBACK CheckFullscreen(HWND hwnd, LPARAM lParam)
 {
-  wnd_find_t* data = (wnd_find_t*)lParam;
+  enum_fullscreen_data_t* data = (enum_fullscreen_data_t*)lParam;
   // skip windows from other monitors
   HMONITOR hMonitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
   if (hMonitor != data->monitor) return TRUE;
@@ -47,36 +49,84 @@ BOOL CALLBACK CheckMaximized(HWND hwnd, LPARAM lParam)
   // skip desktop window
   if (hwnd == GetDesktopWindow() || hwnd == GetShellWindow()) return TRUE;
 
-  // skip ignored windows
-  WCHAR class_name[256];
-  GetClassName(hwnd, class_name, 256);
-  if (data->ignore_list.contains(QString::fromWCharArray(class_name))) return TRUE;
+  // skip any invisible windows (Windows has a lot of them! Ugh...)
+  if (!(GetWindowLongPtr(hwnd, GWL_STYLE) & WS_VISIBLE)) return TRUE;
 
   RECT r;
-  GetWindowRect(hwnd, &r);
+  if (!GetWindowRect(hwnd, &r)) return TRUE;
 
-  if ((r.right - r.left == data->width) && (r.bottom - r.top == data->height)) {
-    data->found = true;
-    return FALSE;   // there can be only one so quit here
-  }
+  if ((r.right - r.left == data->width) && (r.bottom - r.top == data->height))
+    return data->proc_func(hwnd, data->proc_data);
 
   return TRUE;
 }
 
-bool IsFullscreenWndOnSameMonitor(WId wid, const QStringList& ignore_list)
+static void EnumFullscreenWindowsOnSameScreen(HWND hwnd, enum_fullscreen_proc proc_func, void* proc_data)
 {
-  wnd_find_t data;
-  data.monitor = MonitorFromWindow((HWND)wid, MONITOR_DEFAULTTONEAREST);
-  data.ignore_list = ignore_list;
+  enum_fullscreen_data_t data;
+  data.monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
+
   MONITORINFO info;
   info.cbSize = sizeof(MONITORINFO);
   if (GetMonitorInfo(data.monitor, &info)) {
     data.width = info.rcMonitor.right - info.rcMonitor.left;
     data.height = info.rcMonitor.bottom - info.rcMonitor.top;
   }
-  data.found = false;
-  EnumWindows(CheckMaximized, (LPARAM)(&data));
-  return data.found;
+
+  data.proc_func = proc_func;
+  data.proc_data = proc_data;
+
+  EnumWindows(CheckFullscreen, (LPARAM)(&data));
+}
+
+
+static QString GetWindowClassName(HWND hwnd)
+{
+  WCHAR class_name[256];
+  GetClassName(hwnd, class_name, 256);
+  return QString::fromWCharArray(class_name);
+}
+
+
+struct is_fullscreen_data_t {
+  QSet<QString> ignore_list;
+  bool fullscreen_found;
+};
+
+static BOOL CALLBACK IsFullscreenProc(HWND hwnd, void* data)
+{
+  is_fullscreen_data_t* fdata = reinterpret_cast<is_fullscreen_data_t*>(data);
+
+  if (fdata->ignore_list.contains(GetWindowClassName(hwnd)))
+    return TRUE;
+
+  fdata->fullscreen_found = true;
+  return FALSE;
+}
+
+bool IsFullscreenWndOnSameMonitor(WId wid, const QSet<QString>& ignore_list)
+{
+  is_fullscreen_data_t proc_data;
+  proc_data.ignore_list = ignore_list;
+  proc_data.fullscreen_found = false;
+
+  EnumFullscreenWindowsOnSameScreen((HWND)wid, &IsFullscreenProc, &proc_data);
+
+  return proc_data.fullscreen_found;
+}
+
+
+static BOOL CALLBACK StoreFullscreenProc(HWND hwnd, void* data)
+{
+  reinterpret_cast<QSet<QString>*>(data)->insert(GetWindowClassName(hwnd));
+  return TRUE;
+}
+
+QSet<QString> GetFullscreenWindowsOnSameMonitor(WId wid)
+{
+  QSet<QString> fullscreen_list;
+  EnumFullscreenWindowsOnSameScreen((HWND)wid, &StoreFullscreenProc, &fullscreen_list);
+  return fullscreen_list;
 }
 
 } // namespace digital_clock
