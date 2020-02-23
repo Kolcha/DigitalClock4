@@ -27,8 +27,7 @@ mkdir "$build_dir"
 cd "$build_dir"
 
 $QT_ROOT/bin/qmake -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
-cores=$(grep processor < /proc/cpuinfo | wc -l)
-make -j$cores
+make -j$(nproc)
 [[ $? == 0 ]] || exit 1
 
 # create targer folder
