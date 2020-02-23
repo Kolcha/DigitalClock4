@@ -93,7 +93,7 @@ struct is_fullscreen_data_t {
   bool fullscreen_found;
 };
 
-static BOOL CALLBACK IsFullscreenProc(HWND hwnd, void* data)
+static BOOL IsFullscreenProc(HWND hwnd, void* data)
 {
   is_fullscreen_data_t* fdata = reinterpret_cast<is_fullscreen_data_t*>(data);
 
@@ -116,7 +116,7 @@ bool IsFullscreenWndOnSameMonitor(WId wid, const QSet<QString>& ignore_list)
 }
 
 
-static BOOL CALLBACK StoreFullscreenProc(HWND hwnd, void* data)
+static BOOL StoreFullscreenProc(HWND hwnd, void* data)
 {
   reinterpret_cast<QSet<QString>*>(data)->insert(GetWindowClassName(hwnd));
   return TRUE;
