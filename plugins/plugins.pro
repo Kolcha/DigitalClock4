@@ -19,18 +19,18 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    spectrum_clock \
-    var_translucency \
     alarm \
-    tray_color \
     any_zoom \
-    schedule \
-    quick_note \
-    date \
-    ip_address \
     chime \
     countdown_timer \
-    timetracker
+    date \
+    ip_address \
+    quick_note \
+    schedule \
+    spectrum_clock \
+    timetracker \
+    tray_color \
+    var_translucency
 
 windows {
 SUBDIRS += \
