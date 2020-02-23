@@ -122,7 +122,6 @@ ClockWindow::ClockWindow(core::ClockSettings* app_config, int id, QWidget* paren
   last_visibility_ = true;
   fullscreen_detect_enabled_ = false;
   keep_always_visible_ = true;
-  window_ignore_list_ = app_config_->GetValue(OPT_FULLSCREEN_IGNORE_LST).toStringList();
 
   connect(QGuiApplication::screens()[id-1], &QScreen::geometryChanged, this, &ClockWindow::LoadState);
   connect(QGuiApplication::screens()[id-1], &QScreen::geometryChanged, this, &ClockWindow::CorrectPosition);
