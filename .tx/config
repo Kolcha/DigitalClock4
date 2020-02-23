@@ -67,6 +67,12 @@ source_file = plugins/quick_note/lang/quick_note_en.ts
 source_lang = en
 type = QT
 
+[digitalclock4.plugin_random_position]
+file_filter = plugins/random_position/lang/random_position_<lang>.ts
+source_file = plugins/random_position/lang/random_position_en.ts
+source_lang = en
+type = QT
+
 [digitalclock4.plugin_schedule]
 file_filter = plugins/schedule/lang/schedule_<lang>.ts
 source_file = plugins/schedule/lang/schedule_en.ts

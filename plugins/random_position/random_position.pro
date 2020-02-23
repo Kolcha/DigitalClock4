@@ -1,6 +1,6 @@
 #
-#   Digital Clock - beautiful customizable clock with plugins
-#   Copyright (C) 2013-2020  Nick Korotysh <nick.korotysh@gmail.com>
+#   Digital Clock: random position plugin
+#   Copyright (C) 2020  Nick Korotysh <nick.korotysh@gmail.com>
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -16,33 +16,25 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-TEMPLATE = subdirs
+#-------------------------------------------------
+#
+# Project created by QtCreator 2020-02-23T18:59:00
+#
+#-------------------------------------------------
 
-SUBDIRS += \
-    alarm \
-    any_zoom \
-    chime \
-    countdown_timer \
-    date \
-    ip_address \
-    quick_note \
-    random_position \
-    schedule \
-    spectrum_clock \
-    timetracker \
-    tray_color \
-    var_translucency
+QT       += widgets
 
-windows {
-SUBDIRS += \
-    power_off
+include(../common.pri)
 
-win32-msvc* {
-SUBDIRS += \
-    win_on_top
-}
-}
+TARGET = random_position
 
-qtHaveModule(texttospeech):SUBDIRS += talking_clock
+SOURCES += random_position.cpp
 
-OTHER_FILES += common.pri
+HEADERS += random_position.h
+
+include(lang/lang.pri)
+include(../../qm_gen.pri)
+
+OTHER_FILES += random_position.json
+
+win32:RC_FILE = random_position.rc
