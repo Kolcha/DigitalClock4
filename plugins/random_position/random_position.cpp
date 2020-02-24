@@ -21,6 +21,10 @@
 #include <cstdlib>
 #include <ctime>
 
+#if (QT_VERSION < QT_VERSION_CHECK(5, 10, 0))
+#include <QApplication>
+#include <QDesktopWidget>
+#endif
 #include <QGuiApplication>
 #include <QScreen>
 #include <QWidget>
