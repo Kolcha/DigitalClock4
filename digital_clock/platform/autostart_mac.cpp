@@ -21,6 +21,7 @@
 #include <QCoreApplication>
 #include <QDir>
 #include <QFile>
+#include <QRegularExpression>
 
 static QString GetAutoStartDir()
 {
@@ -40,17 +41,40 @@ static QString GetPlistFile()
   return auto_start_dir.absoluteFilePath(GetPackageName() + ".plist");
 }
 
+static QString GetAutoStartCmd()
+{
+  return QCoreApplication::applicationFilePath();
+}
+
+static bool IsAutoStartFileHasCorrectCmd(const QString& path, const QString& cmd)
+{
+  QFile f(path);
+
+  if (f.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    QString data(f.readAll());
+    f.close();
+
+    QRegularExpression re(QString("^\\s*<string>%1<\\/string>$").arg(QRegularExpression::escape(cmd)),
+                          QRegularExpression::MultilineOption);
+    QRegularExpressionMatch m = re.match(data);
+    return m.hasMatch();
+  }
+
+  return false;
+}
+
 
 bool IsAutoStartEnabled()
 {
-  return QFile::exists(GetPlistFile());
+  return IsAutoStartFileHasCorrectCmd(GetPlistFile(), GetAutoStartCmd());
 }
 
 void SetAutoStart(bool enable)
 {
   QString plist_file = GetPlistFile();
   if (enable) {
-    if (QFile::exists(plist_file)) return;
+    QString autostart_cmd = GetAutoStartCmd();
+    if (IsAutoStartFileHasCorrectCmd(plist_file, autostart_cmd)) return;
     QString startup_dir = GetAutoStartDir();
     if (!QFile::exists(startup_dir)) QDir::home().mkpath(startup_dir);
     // *INDENT-OFF*
@@ -67,7 +91,7 @@ void SetAutoStart(bool enable)
           "    <true/>\n"
           "</dict>\n"
           "</plist>\n")
-        .arg(GetPackageName(), QCoreApplication::applicationFilePath());
+        .arg(GetPackageName(), autostart_cmd);
     // *INDENT-ON*
     QFile file(plist_file);
     file.open(QIODevice::WriteOnly | QIODevice::Text);
