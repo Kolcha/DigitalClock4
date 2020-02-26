@@ -22,6 +22,7 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QRegularExpression>
 
 static QString GetAppFileName()
 {
@@ -40,17 +41,40 @@ static QString GetDesktopFile()
   return auto_start_dir.absoluteFilePath(GetAppFileName() + ".desktop");
 }
 
+static QString GetAutoStartCmd()
+{
+  return QString("\"%1\" --autostart").arg(QCoreApplication::applicationFilePath() + ".sh");
+}
+
+static bool IsAutoStartFileHasCorrectCmd(const QString& path, const QString& cmd)
+{
+  QFile f(path);
+
+  if (f.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    QString data(f.readAll());
+    f.close();
+
+    QRegularExpression re(QLatin1String("^Exec=(.*)$"), QRegularExpression::MultilineOption);
+    QRegularExpressionMatch m = re.match(data);
+    if (m.hasMatch())
+      return m.captured(1) == cmd;
+  }
+
+  return false;
+}
+
 
 bool IsAutoStartEnabled()
 {
-  return QFile::exists(GetDesktopFile());
+  return IsAutoStartFileHasCorrectCmd(GetDesktopFile(), GetAutoStartCmd());
 }
 
 void SetAutoStart(bool enable)
 {
   QString desktop_file = GetDesktopFile();
   if (enable) {
-    if (QFile::exists(desktop_file)) return;
+    QString autostart_cmd = GetAutoStartCmd();
+    if (IsAutoStartFileHasCorrectCmd(desktop_file, autostart_cmd)) return;
     QString startup_dir = GetAutoStartDir();
     if (!QFile::exists(startup_dir)) QDir::home().mkpath(startup_dir);
 
@@ -61,13 +85,13 @@ void SetAutoStart(bool enable)
           "Comment=%2\n"
           "Type=Application\n"
           "Terminal=false\n"
-          "Exec=\"%3\" --autostart\n"
+          "Exec=%3\n"
           "Icon=%4\n"
           "StartupNotify=false\n")
         .arg(
           QCoreApplication::applicationName(),
           QCoreApplication::applicationName() + " by " + QCoreApplication::organizationName(),
-          QCoreApplication::applicationFilePath() + ".sh",
+          autostart_cmd,
           QCoreApplication::applicationFilePath() + ".svg");
     // *INDENT-ON*
     QFile file(desktop_file);
