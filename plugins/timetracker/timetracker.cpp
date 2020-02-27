@@ -21,36 +21,43 @@ namespace timetracker {
 
 Timetracker::Timetracker(QObject* parent) : QObject(parent)
 {
-  timer_.setInterval(1000);
-  connect(&timer_, &QTimer::timeout, [this] { ++counter_; });
 }
 
 int Timetracker::elapsed() const
 {
-  return counter_ * timer_.interval() / 1000;
+  int elapsed = last_elapsed_;
+  if (timer_.isValid())
+    elapsed += timer_.elapsed() / 1000;
+  return elapsed;
 }
 
 bool Timetracker::isActive() const
 {
-  return timer_.isActive();
+  return timer_.isValid();
 }
 
 void Timetracker::start()
 {
+  if (timer_.isValid())
+    return;
+
   timer_.start();
 }
 
 void Timetracker::stop()
 {
-  timer_.stop();
+  if (!timer_.isValid())
+    return;
+
+  last_elapsed_ = timer_.elapsed() / 1000;
+  timer_.invalidate();
 }
 
 void Timetracker::reset()
 {
-  bool was_active = timer_.isActive();
-  if (was_active) stop();
-  counter_ = 0;
-  if (was_active) start();
+  last_elapsed_ = 0;
+  if (timer_.isValid())
+    timer_.restart();
 }
 
 } // namespace timetracker

@@ -19,7 +19,7 @@
 #define TIMETRACKER_TIMETRACKER_H
 
 #include <QObject>
-#include <QTimer>
+#include <QElapsedTimer>
 
 namespace timetracker {
 
@@ -39,8 +39,8 @@ public slots:
   void reset();
 
 private:
-  QTimer timer_;
-  int counter_ = 0;
+  QElapsedTimer timer_;
+  int last_elapsed_ = 0;
 };
 
 } // namespace timetracker
