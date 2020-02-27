@@ -38,6 +38,8 @@ public slots:
   void stop();
   void reset();
 
+  void setElapsed(int elapsed_secs);
+
 private:
   QElapsedTimer timer_;
   int last_elapsed_ = 0;

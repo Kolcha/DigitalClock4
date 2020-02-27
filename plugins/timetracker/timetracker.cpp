@@ -60,4 +60,9 @@ void Timetracker::reset()
     timer_.restart();
 }
 
+void Timetracker::setElapsed(int elapsed_secs)
+{
+  last_elapsed_ = elapsed_secs;
+}
+
 } // namespace timetracker

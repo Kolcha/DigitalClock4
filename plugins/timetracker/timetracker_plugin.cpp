@@ -17,6 +17,7 @@
  */
 #include "timetracker_plugin.h"
 
+#include <QCoreApplication>
 #include <QGridLayout>
 
 #include "plugin_settings.h"
@@ -26,6 +27,13 @@
 #include "tracker_widget.h"
 
 namespace timetracker {
+
+// THIS IS A TRICK!
+// these variables exist just to survive after plugins
+// reload on settings changes (it happens in any case)
+// but plugin state is reset after application restart
+static const char* const PROP_STATE_ELAPSED = "dcp_timetracker_state_last_elapsed";
+static const char* const PROP_STATE_ACTIVE = "dcp_timetracker_state_last_active";
 
 TimetrackerPlugin::TimetrackerPlugin() : tracker_(nullptr)
 {
@@ -41,6 +49,12 @@ void TimetrackerPlugin::Start()
 {
   if (tracker_) return;
   tracker_ = new Timetracker();
+  // TRICK! restore state from dynamic app properties
+  QVariant prop_var = QCoreApplication::instance()->property(PROP_STATE_ELAPSED);
+  if (prop_var.isValid()) tracker_->setElapsed(prop_var.toInt());
+  prop_var = QCoreApplication::instance()->property(PROP_STATE_ACTIVE);
+  if (prop_var.isValid() && prop_var.toBool()) tracker_->start();
+  // state is restored before widget initialization to prevent flickering
   ::plugin::WidgetPluginBase::Start();
   settings_->SetOption(::plugin::OptionKey(::plugin::OPT_USE_CLOCK_SKIN), true);
 }
@@ -48,6 +62,12 @@ void TimetrackerPlugin::Start()
 void TimetrackerPlugin::Stop()
 {
   ::plugin::WidgetPluginBase::Stop();
+  if (tracker_) {
+    // TRICK! save state to dynamic app properties
+    QCoreApplication::instance()->setProperty(PROP_STATE_ACTIVE, tracker_->isActive());
+    QCoreApplication::instance()->setProperty(PROP_STATE_ELAPSED, tracker_->elapsed());
+    tracker_->stop();
+  }
   delete tracker_;
   tracker_ = nullptr;
 }
