@@ -84,6 +84,8 @@ public slots:
 
   void MoveWindow(Qt::Alignment align);
 
+  void HandleMouseMove(const QPoint& global_pos);
+
 private slots:
   void onHoverButtonClicked(HoverButtons::Direction direction);
   void CorrectPosition();

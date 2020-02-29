@@ -85,6 +85,7 @@ HEADERS += \
     gui/plugin_list_item_widget.h \
     gui/settings_dialog.h \
     gui/tray_control.h \
+    platform/mouse_tracker.h \
     skin/clock_base_skin.h \
     skin/clock_raster_skin.h \
     skin/clock_text_skin.h \
@@ -96,6 +97,7 @@ SOURCES += \
     platform/autostart_win.cpp \
     platform/fullscreen_detect.cpp \
     platform/main_window_win.cpp \
+    platform/mouse_tracker_win.cpp \
     platform/system_theme_tracker.cpp
 
 HEADERS += \
@@ -107,11 +109,13 @@ unix {
 macx {
 SOURCES += \
     platform/autostart_mac.cpp \
-    platform/main_window_mac.cpp
+    platform/main_window_mac.cpp \
+    platform/mouse_tracker_mac.mm
 } else {
 SOURCES += \
     platform/autostart_linux.cpp \
-    platform/main_window_linux.cpp
+    platform/main_window_linux.cpp \
+    platform/mouse_tracker_linux.cpp
 }
 }
 
@@ -136,9 +140,11 @@ macx {
     ICON = resources/clock_icon_mac.icns
     QMAKE_INFO_PLIST = resources/Info.plist
     LIBS += -lobjc
+    LIBS += -framework AppKit
 }
 unix:!macx {
-    LIBS += -lX11
+    CONFIG += link_pkgconfig
+    PKGCONFIG += x11 xi
 }
 win32:LIBS += -ladvapi32 -luser32
 

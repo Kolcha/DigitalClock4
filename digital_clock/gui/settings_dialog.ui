@@ -923,6 +923,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="transparent_on_hover">
+         <property name="text">
+          <string>become almost transparent on mouse hover</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <layout class="QGridLayout" name="gridLayout_2">
          <property name="verticalSpacing">
           <number>2</number>

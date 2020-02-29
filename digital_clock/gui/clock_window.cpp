@@ -472,6 +472,30 @@ void ClockWindow::MoveWindow(Qt::Alignment align)
   if (curr_pos != this->pos()) this->move(curr_pos);
 }
 
+void ClockWindow::HandleMouseMove(const QPoint& global_pos)
+{
+  if (!app_config_->GetValue(OPT_TRANSPARENT_ON_HOVER).toBool())
+    return;
+
+  static bool entered = false;
+
+  QRect rect = frameGeometry();
+#ifndef Q_OS_MACOS
+  QTransform t;
+  t.scale(devicePixelRatioF(), devicePixelRatioF());
+  rect = t.mapRect(rect);
+#endif
+  if (rect.contains(global_pos) && !entered) {
+    entered = true;
+    setWindowOpacity(0.25);
+  }
+
+  if (!rect.contains(global_pos) && entered) {
+    entered = false;
+    setWindowOpacity(app_config_->GetValue(OPT_OPACITY).toReal());
+  }
+}
+
 void ClockWindow::onHoverButtonClicked(HoverButtons::Direction direction)
 {
   QPoint p = this->pos();
