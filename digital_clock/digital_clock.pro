@@ -109,7 +109,7 @@ unix {
 macx {
 SOURCES += \
     platform/autostart_mac.cpp \
-    platform/main_window_mac.cpp \
+    platform/main_window_mac.mm \
     platform/mouse_tracker_mac.mm
 } else {
 SOURCES += \
@@ -139,7 +139,6 @@ win32:RC_FILE = digital_clock.rc
 macx {
     ICON = resources/clock_icon_mac.icns
     QMAKE_INFO_PLIST = resources/Info.plist
-    LIBS += -lobjc
     LIBS += -framework AppKit
 }
 unix:!macx {
