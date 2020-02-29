@@ -109,7 +109,8 @@ unix {
 macx {
 SOURCES += \
     platform/autostart_mac.cpp \
-    platform/main_window_mac.cpp
+    platform/main_window_mac.cpp \
+    platform/mouse_tracker_mac.mm
 } else {
 SOURCES += \
     platform/autostart_linux.cpp \
@@ -139,6 +140,7 @@ macx {
     ICON = resources/clock_icon_mac.icns
     QMAKE_INFO_PLIST = resources/Info.plist
     LIBS += -lobjc
+    LIBS += -framework AppKit
 }
 unix:!macx {
     CONFIG += link_pkgconfig
