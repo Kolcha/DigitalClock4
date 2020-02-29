@@ -40,6 +40,8 @@
 #include "gui/settings_dialog.h"
 #include "gui/tray_control.h"
 
+#include "platform/mouse_tracker.h"
+
 namespace digital_clock {
 namespace core {
 
@@ -69,6 +71,9 @@ ClockApplication::ClockApplication(ClockSettings* config, QObject* parent) :
   connect(tray_control_, &gui::TrayControl::CheckForUpdates, updater_, &core::Updater::CheckForUpdates);
   connect(tray_control_, &gui::TrayControl::AppExit, qApp, &QApplication::quit);
 
+  mouse_tracker_ = new MouseTracker(this);
+  mouse_tracker_->start();
+
   for (auto w : qAsConst(clock_windows_)) {
     connect(&timer_, &QTimer::timeout, w, &gui::ClockWindow::TimeoutHandler);
     connect(skin_manager_, &SkinManager::SkinLoaded, w, &gui::ClockWindow::ApplySkin);
@@ -79,6 +84,8 @@ ClockApplication::ClockApplication(ClockSettings* config, QObject* parent) :
     connect(w->contextMenu(), &gui::ContextMenu::ShowAboutDlg, this, &ClockApplication::ShowAboutDialog);
     connect(w->contextMenu(), &gui::ContextMenu::CheckForUpdates, updater_, &Updater::CheckForUpdates);
     connect(w->contextMenu(), &gui::ContextMenu::AppExit, qApp, &QApplication::quit);
+    // global mouse tracking
+    connect(mouse_tracker_, &MouseTracker::mousePositionChanged, w, &gui::ClockWindow::HandleMouseMove);
   }
 
   ConnectTrayMessages();
@@ -95,6 +102,8 @@ ClockApplication::~ClockApplication()
 {
   ShutdownPluginSystem();
   timer_.stop();
+  mouse_tracker_->stop();
+  delete mouse_tracker_;
   for (auto w : qAsConst(clock_windows_)) delete w;
   delete state_;
   delete tray_control_;

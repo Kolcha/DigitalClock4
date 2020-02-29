@@ -91,6 +91,7 @@ enum Option {
   OPT_SNAP_THRESHOLD,           /*!< maximum distance when snap will be activated, int, 5..50 */
   OPT_REFRESH_INTERVAL,         /*!< window refresh interval in milliseconds, int, 50..500 */
   OPT_SHOW_ON_ALL_MONITORS,     /*!< show clock window on all monitors flag, bool, true/false */
+  OPT_TRANSPARENT_ON_HOVER,     /*!< become almost transparent on mouse hover, bool, true/false */
   OPT_USE_HOVER_BUTTONS,        /*!< enable/disable navigation buttons on mouse hover, bool, true/false */
   OPT_WINDOW_MOVE_STEP          /*!< movement distance when hover button is clicked, int, 5..100 */
 };

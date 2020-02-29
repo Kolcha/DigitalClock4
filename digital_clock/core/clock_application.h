@@ -29,6 +29,8 @@ class SettingsStorage;
 
 namespace digital_clock {
 
+class MouseTracker;
+
 namespace gui {
 class TrayControl;
 class ClockWindow;
@@ -76,6 +78,7 @@ private:
   core::PluginManager* plugin_manager_;
 
   gui::TrayControl* tray_control_;
+  MouseTracker* mouse_tracker_;
 
   QTimer timer_;
 
