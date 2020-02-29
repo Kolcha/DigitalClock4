@@ -85,6 +85,7 @@ HEADERS += \
     gui/plugin_list_item_widget.h \
     gui/settings_dialog.h \
     gui/tray_control.h \
+    platform/mouse_tracker.h \
     skin/clock_base_skin.h \
     skin/clock_raster_skin.h \
     skin/clock_text_skin.h \
