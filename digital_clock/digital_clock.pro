@@ -97,6 +97,7 @@ SOURCES += \
     platform/autostart_win.cpp \
     platform/fullscreen_detect.cpp \
     platform/main_window_win.cpp \
+    platform/mouse_tracker_win.cpp \
     platform/system_theme_tracker.cpp
 
 HEADERS += \
