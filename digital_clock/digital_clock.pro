@@ -112,7 +112,8 @@ SOURCES += \
 } else {
 SOURCES += \
     platform/autostart_linux.cpp \
-    platform/main_window_linux.cpp
+    platform/main_window_linux.cpp \
+    platform/mouse_tracker_linux.cpp
 }
 }
 
@@ -139,7 +140,8 @@ macx {
     LIBS += -lobjc
 }
 unix:!macx {
-    LIBS += -lX11
+    CONFIG += link_pkgconfig
+    PKGCONFIG += x11 xi
 }
 win32:LIBS += -ladvapi32 -luser32
 
