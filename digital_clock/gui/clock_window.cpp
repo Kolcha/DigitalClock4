@@ -487,7 +487,7 @@ void ClockWindow::HandleMouseMove(const QPoint& global_pos)
 #endif
   if (rect.contains(global_pos) && !entered) {
     entered = true;
-    setWindowOpacity(0.25);
+    setWindowOpacity(0.15);
   }
 
   if (!rect.contains(global_pos) && entered) {
