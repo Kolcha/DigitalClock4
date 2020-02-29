@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::core::ClockApplication</name>
     <message>
-        <location filename="../core/clock_application.cpp" line="304"/>
-        <location filename="../core/clock_application.cpp" line="314"/>
-        <location filename="../core/clock_application.cpp" line="324"/>
+        <location filename="../core/clock_application.cpp" line="313"/>
+        <location filename="../core/clock_application.cpp" line="323"/>
+        <location filename="../core/clock_application.cpp" line="333"/>
         <source>%1 Update</source>
         <translation>%1 Atualização</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="305"/>
+        <location filename="../core/clock_application.cpp" line="314"/>
         <source>Update error. %1</source>
         <translation>Erro na atualização. %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="315"/>
+        <location filename="../core/clock_application.cpp" line="324"/>
         <source>You already have latest version (%1).</source>
         <translation>Já tem a última versão (%1).</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="325"/>
+        <location filename="../core/clock_application.cpp" line="334"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Atualização disponível (%1). Clique nesta mensagem para descarregar.</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="337"/>
+        <location filename="../core/clock_application.cpp" line="346"/>
         <source>%1 Error</source>
         <translation>%1 Erro</translation>
     </message>
@@ -496,27 +496,32 @@
         <translation>mover o relógio ao clicar nele (não tem efeito se estiver ativa a opção &quot;transparente para o rato&quot;)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="933"/>
+        <location filename="../gui/settings_dialog.ui" line="928"/>
+        <source>become almost transparent on mouse hover</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="940"/>
         <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
         <translation>ATENÇÃO! Refrescar a uma taxa rápida pode sobrecarregar o processador. O padrão é 500ms.</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="940"/>
+        <location filename="../gui/settings_dialog.ui" line="947"/>
         <source>snap to edges, threshold</source>
         <translation>atrair às bordas, limiar</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="972"/>
+        <location filename="../gui/settings_dialog.ui" line="979"/>
         <source>window refresh interval</source>
         <translation>intervalo de refrescamento da janela</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1019"/>
+        <location filename="../gui/settings_dialog.ui" line="1026"/>
         <source>Please restart clock after changing any of theese options!</source>
         <translation>Por favor reinicie o relógio após alterar qualquer uma destas opções!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1039"/>
+        <location filename="../gui/settings_dialog.ui" line="1046"/>
         <source>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in &apos;About&apos; dialog.</source>
         <translation>Existem funcionalidades experimentais neste separador. Estas estão desativadas por padrão. Ativar e usá-las é completamente seguro para o computador, mas pode levar a comportamentos do relógio inesperados. Teste-as conforme quiser. Se notar algum comportamento estranho após ativar qualquer uma destas opções, por favor indique-me. Pode encontrar a informação de contacto na janela &apos;Sobre&apos;.</translation>
     </message>
@@ -546,28 +551,28 @@
         <translation>2 semanas</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="350"/>
+        <location filename="../gui/settings_dialog.cpp" line="351"/>
         <source>Open texture file</source>
         <translation>Abrir ficheiro de textura</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="352"/>
+        <location filename="../gui/settings_dialog.cpp" line="353"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Imagens (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="435"/>
+        <location filename="../gui/settings_dialog.cpp" line="436"/>
         <source>Export settings to ...</source>
         <translation>Exportar configurações para...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="437"/>
-        <location filename="../gui/settings_dialog.cpp" line="445"/>
+        <location filename="../gui/settings_dialog.cpp" line="438"/>
+        <location filename="../gui/settings_dialog.cpp" line="446"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>Ficheiros de configuração do Relógio Digital (*.dcs)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="443"/>
+        <location filename="../gui/settings_dialog.cpp" line="444"/>
         <source>Import settings from ...</source>
         <translation>Importar configuração de...</translation>
     </message>

@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::core::ClockApplication</name>
     <message>
-        <location filename="../core/clock_application.cpp" line="304"/>
-        <location filename="../core/clock_application.cpp" line="314"/>
-        <location filename="../core/clock_application.cpp" line="324"/>
+        <location filename="../core/clock_application.cpp" line="313"/>
+        <location filename="../core/clock_application.cpp" line="323"/>
+        <location filename="../core/clock_application.cpp" line="333"/>
         <source>%1 Update</source>
         <translation>%1 Bijwerken</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="305"/>
+        <location filename="../core/clock_application.cpp" line="314"/>
         <source>Update error. %1</source>
         <translation>Bijwerk fout. %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="315"/>
+        <location filename="../core/clock_application.cpp" line="324"/>
         <source>You already have latest version (%1).</source>
         <translation>Je hebt al de laatste versie (%1).</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="325"/>
+        <location filename="../core/clock_application.cpp" line="334"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Update beschikbaar (%1). Klik op dit bericht om te downloaden.</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="337"/>
+        <location filename="../core/clock_application.cpp" line="346"/>
         <source>%1 Error</source>
         <translation>%1 Fout</translation>
     </message>
@@ -496,27 +496,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="933"/>
-        <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
+        <location filename="../gui/settings_dialog.ui" line="928"/>
+        <source>become almost transparent on mouse hover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="940"/>
+        <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="947"/>
         <source>snap to edges, threshold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="972"/>
+        <location filename="../gui/settings_dialog.ui" line="979"/>
         <source>window refresh interval</source>
         <translation>venster vernieuwingsinterval</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1019"/>
+        <location filename="../gui/settings_dialog.ui" line="1026"/>
         <source>Please restart clock after changing any of theese options!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1039"/>
+        <location filename="../gui/settings_dialog.ui" line="1046"/>
         <source>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in &apos;About&apos; dialog.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -546,28 +551,28 @@
         <translation>2 weken</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="350"/>
+        <location filename="../gui/settings_dialog.cpp" line="351"/>
         <source>Open texture file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="352"/>
+        <location filename="../gui/settings_dialog.cpp" line="353"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="435"/>
+        <location filename="../gui/settings_dialog.cpp" line="436"/>
         <source>Export settings to ...</source>
         <translation>Exporteer instellingen naar ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="437"/>
-        <location filename="../gui/settings_dialog.cpp" line="445"/>
+        <location filename="../gui/settings_dialog.cpp" line="438"/>
+        <location filename="../gui/settings_dialog.cpp" line="446"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>Digital Clock instelling bestanden (*.dcs)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="443"/>
+        <location filename="../gui/settings_dialog.cpp" line="444"/>
         <source>Import settings from ...</source>
         <translation>Importeer instellingen van ...</translation>
     </message>

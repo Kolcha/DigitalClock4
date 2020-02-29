@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::core::ClockApplication</name>
     <message>
-        <location filename="../core/clock_application.cpp" line="304"/>
-        <location filename="../core/clock_application.cpp" line="314"/>
-        <location filename="../core/clock_application.cpp" line="324"/>
+        <location filename="../core/clock_application.cpp" line="313"/>
+        <location filename="../core/clock_application.cpp" line="323"/>
+        <location filename="../core/clock_application.cpp" line="333"/>
         <source>%1 Update</source>
         <translation>Обновление %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="305"/>
+        <location filename="../core/clock_application.cpp" line="314"/>
         <source>Update error. %1</source>
         <translation>Ошибка обновления. %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="315"/>
+        <location filename="../core/clock_application.cpp" line="324"/>
         <source>You already have latest version (%1).</source>
         <translation>У Вас установлена последния версия (%1).</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="325"/>
+        <location filename="../core/clock_application.cpp" line="334"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Доступно обновление (%1). Щелкните здесь чтобы начать загрузку.</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="337"/>
+        <location filename="../core/clock_application.cpp" line="346"/>
         <source>%1 Error</source>
         <translation>%1 - Ошибка</translation>
     </message>
@@ -496,27 +496,32 @@
         <translation>перемещать часы по клику по ним (не работает когда включено &quot;прозрачность для мыши&quot;)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="933"/>
+        <location filename="../gui/settings_dialog.ui" line="928"/>
+        <source>become almost transparent on mouse hover</source>
+        <translation>изменять прозрачность при наведении мыши</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="940"/>
         <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
         <translation>ВНИМАНИЕ! Очень частое обновление может привести к повышенной нагрузке CPU. По умолчанию 500мс.</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="940"/>
+        <location filename="../gui/settings_dialog.ui" line="947"/>
         <source>snap to edges, threshold</source>
         <translation>привязывать к краям, порог</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="972"/>
+        <location filename="../gui/settings_dialog.ui" line="979"/>
         <source>window refresh interval</source>
         <translation>интервал обновления окна</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1019"/>
+        <location filename="../gui/settings_dialog.ui" line="1026"/>
         <source>Please restart clock after changing any of theese options!</source>
         <translation>Пожалуйста перезапустите часы после изменения любой из данных опций!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1039"/>
+        <location filename="../gui/settings_dialog.ui" line="1046"/>
         <source>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in &apos;About&apos; dialog.</source>
         <translation>На этой вкладке представлены экспериментальные опции. По умолчанию они отключены. Их включение и использование полностью безопасно для Вашего компьютера, но они могут привести к непредсказуемому поведению часов. Пробуйте их если хотите, но любое тестирование только приветствуется. Если после включения любой из данных опций Вы заметите некорректное поведение часов, пожалуйста сообщите мне об этом. Контактную информацию можно найти в окошке &apos;О программе&apos;.</translation>
     </message>
@@ -546,28 +551,28 @@
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="350"/>
+        <location filename="../gui/settings_dialog.cpp" line="351"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="352"/>
+        <location filename="../gui/settings_dialog.cpp" line="353"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="435"/>
+        <location filename="../gui/settings_dialog.cpp" line="436"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="437"/>
-        <location filename="../gui/settings_dialog.cpp" line="445"/>
+        <location filename="../gui/settings_dialog.cpp" line="438"/>
+        <location filename="../gui/settings_dialog.cpp" line="446"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="443"/>
+        <location filename="../gui/settings_dialog.cpp" line="444"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>
