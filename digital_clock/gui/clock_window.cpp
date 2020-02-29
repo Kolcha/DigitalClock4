@@ -479,12 +479,18 @@ void ClockWindow::HandleMouseMove(const QPoint& global_pos)
 
   static bool entered = false;
 
-  if (frameGeometry().contains(global_pos) && !entered) {
+  QRect rect = frameGeometry();
+#ifndef Q_OS_MACOS
+  QTransform t;
+  t.scale(devicePixelRatioF(), devicePixelRatioF());
+  rect = t.mapRect(rect);
+#endif
+  if (rect.contains(global_pos) && !entered) {
     entered = true;
     setWindowOpacity(0.25);
   }
 
-  if (!frameGeometry().contains(global_pos) && entered) {
+  if (!rect.contains(global_pos) && entered) {
     entered = false;
     setWindowOpacity(app_config_->GetValue(OPT_OPACITY).toReal());
   }
