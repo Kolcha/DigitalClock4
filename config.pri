@@ -22,3 +22,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += QT_USE_QSTRINGBUILDER
 
 win32-msvc*: QMAKE_LFLAGS_RELEASE += /RELEASE
+
+unix:!macx {
+    isEmpty(prefix): prefix = /usr/local
+    isEmpty(lib_dir): lib_dir = $$prefix/lib
+    clock_libs_path = $$lib_dir/digitalclock4
+}

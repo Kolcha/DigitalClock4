@@ -30,6 +30,8 @@ unix:!macx {
 include(../config.pri)
 include(../3rdparty/single_application.pri)
 
+unix:!macx:DEFINES += CLOCK_LIBS_PATH=\\\"$$clock_libs_path\\\"
+
 TARGET   = digital_clock
 TEMPLATE = app
 
@@ -127,6 +129,7 @@ FORMS += \
 
 include(lang/lang.pri)
 include(../qm_gen.pri)
+include(install.pri)
 
 RESOURCES += \
     resources/icons.qrc \

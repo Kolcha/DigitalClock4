@@ -61,6 +61,11 @@ win32:RC_FILE = plugin_core.rc
 unix:VERSION = 1.3.1
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
 
+unix:!macx {
+    target.path = $$clock_libs_path
+    INSTALLS += target
+}
+
 # add skin_draw library
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../skin_draw/release/ -lskin_draw
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../skin_draw/debug/ -lskin_draw

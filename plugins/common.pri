@@ -22,6 +22,11 @@ CONFIG += plugin
 
 include($$PWD/../config.pri)
 
+unix:!macx {
+    target.path = $$clock_libs_path/plugins
+    INSTALLS += target
+}
+
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/release/ -lplugin_core
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../plugin_core/debug/ -lplugin_core
 else:unix: LIBS += -L$$OUT_PWD/../../plugin_core/ -lplugin_core

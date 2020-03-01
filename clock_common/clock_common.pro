@@ -52,3 +52,8 @@ HEADERS += \
 win32:RC_FILE = clock_common.rc
 unix:VERSION = 1.2.1
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
+
+unix:!macx {
+    target.path = $$clock_libs_path
+    INSTALLS += target
+}

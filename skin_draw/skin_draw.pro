@@ -52,3 +52,8 @@ HEADERS += \
 win32:RC_FILE = skin_draw.rc
 unix:VERSION = 1.5.1
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
+
+unix:!macx {
+    target.path = $$clock_libs_path
+    INSTALLS += target
+}

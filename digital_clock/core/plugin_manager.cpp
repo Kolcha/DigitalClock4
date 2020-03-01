@@ -43,7 +43,7 @@ PluginManager::PluginManager(QObject* parent) : QObject(parent)
   search_paths_.append(qApp->applicationDirPath() + "/plugins");
 #endif
 #ifdef Q_OS_LINUX
-  search_paths_.append("/usr/lib/digitalclock4/plugins");
+  search_paths_.append(CLOCK_LIBS_PATH"/plugins");
   search_paths_.append("/usr/local/lib/digitalclock4/plugins");
   search_paths_.append(QDir::homePath() + "/.local/lib/digitalclock4/plugins");
 #endif
