@@ -477,7 +477,7 @@ void ClockWindow::HandleMouseMove(const QPoint& global_pos)
   if (!app_config_->GetValue(OPT_TRANSPARENT_ON_HOVER).toBool())
     return;
 
-  static bool entered = false;
+  bool entered = property("dc_mouse_entered").toBool();
 
   QRect rect = frameGeometry();
 #ifndef Q_OS_MACOS
@@ -494,6 +494,8 @@ void ClockWindow::HandleMouseMove(const QPoint& global_pos)
     entered = false;
     setWindowOpacity(app_config_->GetValue(OPT_OPACITY).toReal());
   }
+
+  setProperty("dc_mouse_entered", entered);
 }
 
 void ClockWindow::onHoverButtonClicked(HoverButtons::Direction direction)
