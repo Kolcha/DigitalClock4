@@ -62,7 +62,6 @@ protected:
   void mouseReleaseEvent(QMouseEvent* event) override;
   void paintEvent(QPaintEvent* event) override;
   void resizeEvent(QResizeEvent* event) override;
-  void moveEvent(QMoveEvent* event) override;
   void contextMenuEvent(QContextMenuEvent* event) override;
 
 public slots:

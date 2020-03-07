@@ -241,13 +241,6 @@ void ClockWindow::resizeEvent(QResizeEvent* event)
   event->accept();
 }
 
-void ClockWindow::moveEvent(QMoveEvent* event)
-{
-  if (!dragging_ && (event->pos() != event->oldPos()) && !clock_widget_->preview())
-    SaveState();
-  QWidget::moveEvent(event);
-}
-
 void ClockWindow::contextMenuEvent(QContextMenuEvent* event)
 {
   c_menu_->menu()->popup(event->globalPos());
@@ -470,6 +463,7 @@ void ClockWindow::MoveWindow(Qt::Alignment align)
   if (align & Qt::AlignVCenter) curr_pos.setY(screen.center().y() - window.height() / 2);
   if (align & Qt::AlignBottom) curr_pos.setY(screen.bottom() - window.height());
   if (curr_pos != this->pos()) this->move(curr_pos);
+  SaveState();
 }
 
 void ClockWindow::HandleMouseMove(const QPoint& global_pos)
@@ -526,6 +520,7 @@ void ClockWindow::onHoverButtonClicked(HoverButtons::Direction direction)
 
   this->move(p);
   CorrectPositionImpl();
+  SaveState();
 }
 
 void ClockWindow::CorrectPosition()
