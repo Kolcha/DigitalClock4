@@ -1,0 +1,38 @@
+language: cpp
+
+os:
+  - linux
+  - osx
+
+dist: bionic
+osx_image: xcode11.3
+
+addons:
+  apt:
+    packages:
+      - pkg-config
+      - libx11-dev
+      - libxi-dev
+      - qtbase5-dev
+      - qtmultimedia5-dev
+      - libqt5svg5-dev
+      - libqt5texttospeech5-dev
+      - libqt5x11extras5-dev
+      - qttools5-dev-tools
+
+  homebrew:
+    packages:
+      - qt
+
+install:
+  - git clone -q -b master --depth 1 https://github.com/Skycoder42/QHotkey.git ..\3rdparty\QHotkey
+  - git clone -q -b master --depth 1 https://github.com/itay-grudev/SingleApplication.git ..\3rdparty\SingleApplication
+
+before_script:
+  - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then brew link --force qt; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export QARGS="-qt=5"; fi
+
+script:
+  - lupdate ${QARGS} -no-obsolete DigitalClock.pro
+  - qmake ${QARGS} -config release -r
+  - make -j2
