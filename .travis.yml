@@ -25,8 +25,8 @@ addons:
       - qt
 
 install:
-  - git clone -q -b master --depth 1 https://github.com/Skycoder42/QHotkey.git ..\3rdparty\QHotkey
-  - git clone -q -b master --depth 1 https://github.com/itay-grudev/SingleApplication.git ..\3rdparty\SingleApplication
+  - git clone -q -b master --depth 1 https://github.com/Skycoder42/QHotkey.git ../3rdparty/QHotkey
+  - git clone -q -b master --depth 1 https://github.com/itay-grudev/SingleApplication.git ../3rdparty/SingleApplication
 
 before_script:
   - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then brew link --force qt; fi
