@@ -101,6 +101,16 @@
         </item>
         <item>
          <property name="text">
+          <string notr="true">ddd dd-MMM-yyyy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string notr="true">dddd'\n'dd-MMM-yyyy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string notr="true">dddd, MMMM d</string>
          </property>
         </item>
