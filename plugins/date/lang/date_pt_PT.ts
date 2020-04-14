@@ -37,12 +37,12 @@
         <translation>personalizado</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="124"/>
+        <location filename="../gui/settings_dialog.ui" line="134"/>
         <source>MMMM d, yyyy&apos;\nWeek: &apos;WW</source>
         <translation>MMMM d, aaaa&apos;\nSemana: &apos;SS</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="134"/>
+        <location filename="../gui/settings_dialog.ui" line="144"/>
         <source>yyyy-MM-dd&apos;\nweek&apos;: WW&apos;\nday&apos;: J</source>
         <translation>aaaa-MM-dd&apos;\nsemana&apos;: SS&apos;\ndia&apos;: J</translation>
     </message>
