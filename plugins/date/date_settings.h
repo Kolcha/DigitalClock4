@@ -21,6 +21,7 @@
 
 #include <QSettings>
 #include <QLocale>
+#include <QDate>
 
 namespace date {
 
@@ -39,6 +40,8 @@ inline void InitDefaults(QSettings::SettingsMap* defaults)
   defaults->insert(OPT_DATE_FORMAT_STR, QLocale().dateFormat());
   defaults->insert(OPT_DATE_FORMAT_INT, Qt::DefaultLocaleLongDate);
 }
+
+QString DateToString(const QDate& date, QString format);
 
 } // namespace date
 

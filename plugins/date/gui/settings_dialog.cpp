@@ -38,6 +38,10 @@ SettingsDialog::SettingsDialog(QWidget* parent) :
   for (auto iter = date_formats_.begin(); iter != date_formats_.end(); ++iter) {
     ui->int_type_box->addItem(iter.value(), iter.key());
   }
+
+  for (int i = 0; i < ui->str_type_box->count(); ++i) {
+    ui->str_type_box->setItemData(i, DateToString(QDate::currentDate(), ui->str_type_box->itemText(i)), Qt::ToolTipRole);
+  }
 }
 
 SettingsDialog::~SettingsDialog()

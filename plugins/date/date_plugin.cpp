@@ -101,6 +101,40 @@ void DatePlugin::DisplayImage(QWidget* widget, const QImage& image)
   static_cast<QLabel*>(widget)->setPixmap(QPixmap::fromImage(image));
 }
 
+QString DateToString(const QDate& date, QString format)
+{
+  int prev = -1;
+  bool is_start = false;
+  while (true) {
+    int pos = format.indexOf('\'', prev + 1);
+    QString substr = format.mid(prev + 1, pos - prev - 1);
+    if (is_start) {
+      int s_pos = substr.indexOf("\\n");
+      if (s_pos != -1) substr.replace(s_pos, 2, '\n');
+      is_start = false;
+    } else {
+      // parse 'WW' or 'W' -- week number
+      int s_pos = substr.indexOf("WW", 0, Qt::CaseInsensitive);
+      if (s_pos != -1) {
+        substr.replace(s_pos, 2, QString("%1").arg(date.weekNumber(), 2, 10, QChar('0')));
+      } else {
+        s_pos = substr.indexOf('W', 0, Qt::CaseInsensitive);
+        if (s_pos != -1) substr.replace(s_pos, 1, QString::number(date.weekNumber()));
+      }
+      // parse 'J' -- day of year
+      s_pos = substr.indexOf('J', 0, Qt::CaseSensitive);
+      if (s_pos != -1) substr.replace(s_pos, 1, QString::number(date.dayOfYear()));
+      is_start = true;
+    }
+    format.replace(prev + 1, pos != -1 ? pos - prev - 1 : format.length() - prev - 1, substr);
+    pos = format.indexOf('\'', prev + 1);
+    if (pos == -1) break;
+    prev = pos;
+  }
+
+  return date.toString(format);
+}
+
 QString DatePlugin::GetWidgetText()
 {
   QString date;
@@ -114,41 +148,8 @@ QString DatePlugin::GetWidgetText()
       break;
 
     case FormatType::FT_STR:
-    {
-      QString format = settings_->GetOption(OPT_DATE_FORMAT_STR).toString();
-
-      int prev = -1;
-      bool is_start = false;
-      while (true) {
-        int pos = format.indexOf('\'', prev + 1);
-        QString substr = format.mid(prev + 1, pos - prev - 1);
-        if (is_start) {
-          int s_pos = substr.indexOf("\\n");
-          if (s_pos != -1) substr.replace(s_pos, 2, '\n');
-          is_start = false;
-        } else {
-          // parse 'WW' or 'W' -- week number
-          int s_pos = substr.indexOf("WW", 0, Qt::CaseInsensitive);
-          if (s_pos != -1) {
-            substr.replace(s_pos, 2, QString("%1").arg(d_date.weekNumber(), 2, 10, QChar('0')));
-          } else {
-            s_pos = substr.indexOf('W', 0, Qt::CaseInsensitive);
-            if (s_pos != -1) substr.replace(s_pos, 1, QString::number(d_date.weekNumber()));
-          }
-          // parse 'J' -- day of year
-          s_pos = substr.indexOf('J', 0, Qt::CaseSensitive);
-          if (s_pos != -1) substr.replace(s_pos, 1, QString::number(d_date.dayOfYear()));
-          is_start = true;
-        }
-        format.replace(prev + 1, pos != -1 ? pos - prev - 1 : format.length() - prev - 1, substr);
-        pos = format.indexOf('\'', prev + 1);
-        if (pos == -1) break;
-        prev = pos;
-      }
-
-      date = d_date.toString(format);
+      date = DateToString(d_date, settings_->GetOption(OPT_DATE_FORMAT_STR).toString());
       break;
-    }
   }
   return date;
 }
