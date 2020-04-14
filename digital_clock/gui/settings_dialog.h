@@ -94,6 +94,7 @@ private slots:
   void on_apply_btn_clicked();
   void on_system_format_clicked();
   void on_custom_format_clicked();
+  void on_format_box_currentTextChanged(const QString& arg1);
   void on_enable_autoupdate_clicked(bool checked);
   void on_update_period_box_activated(int index);
   void on_check_for_beta_clicked(bool checked);

@@ -28,7 +28,7 @@ namespace digital_clock {
 namespace gui {
 
 
-static QString time_to_str(const QTime& t, const QString& fmt)
+QString time_to_str(const QTime& t, const QString& fmt)
 {
   QString out_str;
   for (int i = 0; i < fmt.length();) {

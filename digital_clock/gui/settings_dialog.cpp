@@ -35,6 +35,7 @@
 #include "core/clock_settings.h"
 #include "core/clock_state.h"
 
+#include "gui/clock_display.h"
 #include "gui/plugin_list_item_widget.h"
 
 
@@ -214,6 +215,9 @@ void SettingsDialog::InitControls()
   QString time_format = config_->GetValue(OPT_TIME_FORMAT).toString();
   bool is_system = time_format.isEmpty();
   if (!is_system) ui->format_box->setCurrentText(time_format);
+  for (int i = 0; i < ui->format_box->count(); ++i)
+    ui->format_box->setItemData(i, time_to_str(QTime::currentTime(), ui->format_box->itemText(i)), Qt::ToolTipRole);
+  if (!is_system) ui->format_box->setToolTip(time_to_str(QTime::currentTime(), ui->format_box->currentText()));
   ui->system_format->setChecked(is_system);
   ui->custom_format->setChecked(!is_system);
 
@@ -408,6 +412,11 @@ void SettingsDialog::on_system_format_clicked()
 void SettingsDialog::on_custom_format_clicked()
 {
   emit OptionChanged(OPT_TIME_FORMAT, ui->format_box->currentText());
+}
+
+void SettingsDialog::on_format_box_currentTextChanged(const QString& arg1)
+{
+  ui->format_box->setToolTip(time_to_str(QTime::currentTime(), arg1));
 }
 
 void SettingsDialog::on_enable_autoupdate_clicked(bool checked)

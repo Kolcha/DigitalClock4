@@ -26,6 +26,8 @@
 namespace digital_clock {
 namespace gui {
 
+QString time_to_str(const QTime& t, const QString& fmt);
+
 class ClockDisplay : public QLabel
 {
   Q_OBJECT
