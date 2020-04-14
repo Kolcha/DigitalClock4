@@ -97,7 +97,9 @@ void RandomPosition::TimeUpdateListener()
     QScreen* screen = findScreen(window);
     Q_ASSERT(screen);
     QRect sg = screen->availableGeometry();
-    window->move(sg.x() + std::rand() % sg.width(), sg.y() + std::rand() % sg.height());
+    QRect wg = window->frameGeometry();
+    window->move(sg.x() + std::rand() % (sg.width() - wg.width()),
+                 sg.y() + std::rand() % (sg.height() - wg.height()));
   }
 }
 
