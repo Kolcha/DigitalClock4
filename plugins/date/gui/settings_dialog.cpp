@@ -61,6 +61,7 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
     }
     if (iter.key() == OPT_DATE_FORMAT_STR) {
       ui->str_type_box->setCurrentText(iter.value().toString());
+      ui->str_type_box->setToolTip(DateToString(QDate::currentDate(), ui->str_type_box->currentText()));
     }
   }
 }
@@ -82,6 +83,7 @@ void SettingsDialog::on_int_type_box_currentIndexChanged(int index)
 
 void SettingsDialog::on_str_type_box_currentTextChanged(const QString& arg1)
 {
+  ui->str_type_box->setToolTip(DateToString(QDate::currentDate(), arg1));
   emit OptionChanged(OPT_DATE_FORMAT_STR, arg1);
 }
 
