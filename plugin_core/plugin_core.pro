@@ -58,7 +58,7 @@ include(lang/lang.pri)
 include(../qm_gen.pri)
 
 win32:RC_FILE = plugin_core.rc
-unix:VERSION = 1.3.1
+unix:VERSION = 1.3.2
 macx:QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/
 
 unix:!macx {
