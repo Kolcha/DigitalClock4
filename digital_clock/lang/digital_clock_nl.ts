@@ -4,29 +4,29 @@
 <context>
     <name>digital_clock::core::ClockApplication</name>
     <message>
-        <location filename="../core/clock_application.cpp" line="313"/>
-        <location filename="../core/clock_application.cpp" line="323"/>
-        <location filename="../core/clock_application.cpp" line="333"/>
+        <location filename="../core/clock_application.cpp" line="332"/>
+        <location filename="../core/clock_application.cpp" line="342"/>
+        <location filename="../core/clock_application.cpp" line="352"/>
         <source>%1 Update</source>
         <translation>%1 Bijwerken</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="314"/>
+        <location filename="../core/clock_application.cpp" line="333"/>
         <source>Update error. %1</source>
         <translation>Bijwerk fout. %1</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="324"/>
+        <location filename="../core/clock_application.cpp" line="343"/>
         <source>You already have latest version (%1).</source>
         <translation>Je hebt al de laatste versie (%1).</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="334"/>
+        <location filename="../core/clock_application.cpp" line="353"/>
         <source>Update available (%1). Click this message to download.</source>
         <translation>Update beschikbaar (%1). Klik op dit bericht om te downloaden.</translation>
     </message>
     <message>
-        <location filename="../core/clock_application.cpp" line="346"/>
+        <location filename="../core/clock_application.cpp" line="365"/>
         <source>%1 Error</source>
         <translation>%1 Fout</translation>
     </message>
