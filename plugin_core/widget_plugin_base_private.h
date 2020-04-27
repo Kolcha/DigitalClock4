@@ -124,11 +124,9 @@ public slots:
 
 private:
   /// clock main window layout
-  QVector<QGridLayout*> main_layouts_;
-  /// clock main window widget
-  QVector<QWidget*> main_wnds_;
-  /// all drawers
-  QVector< ::skin_draw::SkinDrawer*> drawers_;
+  QVector<QPointer<QGridLayout>> main_layouts_;
+  /// all drawers (per widget, to handle displays with different DPI)
+  QVector<QPointer<::skin_draw::SkinDrawer>> drawers_;
 
   // current drawer settings
   ::skin_draw::ISkin::SkinPtr skin_;
@@ -142,7 +140,7 @@ private:
 
 public:
   /// plugin's widget
-  QVector<QWidget*> plg_widgets_;
+  QVector<QPointer<QWidget>> plg_widgets_;
   /// current plugin font (custom font)
   QFont font_;
   /// current clock font

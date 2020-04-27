@@ -54,6 +54,8 @@ public:
   gui::ClockWidget* clockWidget() const Q_DECL_NOEXCEPT { return clock_widget_; }
   gui::ContextMenu* contextMenu() const Q_DECL_NOEXCEPT { return c_menu_; }
 
+  QPoint savedPosition() const;
+
 protected:
   void showEvent(QShowEvent* event) override;
   void hideEvent(QHideEvent* event) override;
@@ -109,6 +111,9 @@ private:
 
   bool dragging_;
   QPoint drag_position_;
+  // Qt sends QGuiApplication::screenRemoved() **after** it moves windows to primary screen,
+  // so there is no way to get window position in handler, this variable used as workaround.
+  QPoint saved_position_;
   CAlignment cur_alignment_ = A_LEFT;
   bool last_visibility_;
 

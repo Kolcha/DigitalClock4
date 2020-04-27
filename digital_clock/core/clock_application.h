@@ -21,6 +21,7 @@
 
 #include <QObject>
 #include <QVector>
+#include <QScreen>
 #include <QTimer>
 
 #include "settings_keys.h"
@@ -60,6 +61,8 @@ private slots:
 
   void ShowSettingsDialog();
   void ShowAboutDialog();
+
+  void OnScreenRemoved(QScreen* screen);
 
   // temporary, will be changed later
   void InitPluginSystem();

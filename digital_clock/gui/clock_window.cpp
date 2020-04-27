@@ -132,6 +132,25 @@ bool ClockWindow::previewMode() const
   return clock_widget_->preview();
 }
 
+QPoint ClockWindow::savedPosition() const
+{
+  QPoint last_pos = saved_position_;
+  switch (cur_alignment_) {
+    case CAlignment::A_RIGHT:
+      last_pos.setX(last_pos.x() - sizeHint().width() + 1);
+      break;
+
+    case CAlignment::A_CENTER:
+      last_pos.setX(last_pos.x() - sizeHint().width() / 2 + 1);
+      last_pos.setY(last_pos.y() - sizeHint().height() / 2 + 1);
+      break;
+
+    default:
+      Q_ASSERT(cur_alignment_ == CAlignment::A_LEFT);
+  }
+  return last_pos;
+}
+
 void ClockWindow::showEvent(QShowEvent* event)
 {
   CorrectPositionImpl();
@@ -404,6 +423,7 @@ void ClockWindow::LoadState()
     }
     last_pos += QGuiApplication::screens()[id_-1]->availableGeometry().topLeft();
   }
+  saved_position_ = last_pos;
 
   CAlignment last_align = static_cast<CAlignment>(app_config_->GetValue(OPT_ALIGNMENT).toInt());
   switch (last_align) {
@@ -445,6 +465,7 @@ void ClockWindow::SaveState()
       last_pos = this->frameGeometry().center();
       break;
   }
+  saved_position_ = last_pos;
   state_->SetVariable(S_OPT_POSITION, last_pos);
   state_->SetVariable(S_OPT_VISIBLE, last_visibility_);
 }

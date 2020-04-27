@@ -90,6 +90,8 @@ ClockApplication::ClockApplication(ClockSettings* config, QObject* parent) :
 
   ConnectTrayMessages();
 
+  connect(qApp, &QGuiApplication::screenRemoved, this, &ClockApplication::OnScreenRemoved);
+
   InitPluginSystem();
   Reset();
   for (auto w : qAsConst(clock_windows_)) w->LoadState();
@@ -274,6 +276,23 @@ void ClockApplication::ShowAboutDialog()
   }
   dlg->raise();
   dlg->activateWindow();
+}
+
+void ClockApplication::OnScreenRemoved(QScreen* screen)
+{
+  auto iter = std::find_if(clock_windows_.begin(), clock_windows_.end(), [screen] (gui::ClockWindow* w) {
+    return screen->geometry().contains(w->savedPosition());
+  });
+  if (iter != clock_windows_.end()) {
+    if (clock_windows_.size() > 1) {
+      (*iter)->deleteLater();
+      clock_windows_.erase(iter);
+    } else {
+      gui::ClockWindow* w = *iter;
+      QPoint delta = w->savedPosition() - screen->geometry().topLeft();
+      w->move(QApplication::primaryScreen()->geometry().topLeft() + delta);
+    }
+  }
 }
 
 void ClockApplication::InitPluginSystem()

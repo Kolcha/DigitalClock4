@@ -18,6 +18,9 @@
 
 #include "plugin_manager.h"
 
+#include <algorithm>
+#include <functional>
+
 #include <QDir>
 #include <QFile>
 #include <QJsonObject>
@@ -196,14 +199,18 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
   if (su) {
     // TODO: what about if each window will have own settings in future?
     // for now (and first release with "multiwindow support") all windows will have same settings
-    if (connected)
-      connect(data_.windows[0], &gui::ClockWidget::SkinChanged, su, &ISkinUserPlugin::SetSkin);
-    su->SetSkin(data_.windows[0]->skin());
+    auto iter = std::find_if_not(
+                  data_.windows.begin(), data_.windows.end(),
+                  std::bind(&QPointer<gui::ClockWidget>::isNull, std::placeholders::_1));
+    if (iter != data_.windows.end() && connected)
+      connect(*iter, &gui::ClockWidget::SkinChanged, su, &ISkinUserPlugin::SetSkin);
+    su->SetSkin((*iter)->skin());
   }
   // init settings plugins
   ISettingsPlugin* sp = qobject_cast<ISettingsPlugin*>(plugin);
   if (sp && connected) {
     for (auto& w : qAsConst(data_.windows)) {
+      if (!w) continue;       // clock window doesn't exist anymore
       connect(sp, SIGNAL(OptionChanged(Option,QVariant)),
               w, SLOT(ApplyOption(Option,QVariant)));
     }
@@ -217,7 +224,7 @@ void PluginManager::InitPlugin(IClockPlugin* plugin, bool connected)
   if (tpi) tpi->Init(data_.tray);
   // init widget plugins
   IWidgetPluginInit* wpi = qobject_cast<IWidgetPluginInit*>(plugin);
-  if (wpi) for (auto& w : qAsConst(data_.windows)) wpi->Init(w);
+  if (wpi) for (auto& w : qAsConst(data_.windows)) if (w) wpi->Init(w);
 }
 
 } // namespace core

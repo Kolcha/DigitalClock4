@@ -18,6 +18,9 @@
 
 #include "widget_plugin_base_private.h"
 
+#include <algorithm>
+#include <functional>
+
 #include <QWidget>
 #include <QGridLayout>
 #include <QLabel>
@@ -49,12 +52,13 @@ void WidgetPluginBasePrivate::InitBaseSettingsDefaults(QSettings::SettingsMap* d
 
 int WidgetPluginBasePrivate::CalculateAvailableSpace() const
 {
-  int w_loc = obj_->settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION)).toInt();
-  if (static_cast<WidgetLocation>(w_loc) == WidgetLocation::WL_RIGHT) {
-    return main_layouts_[0]->itemAtPosition(0, 0)->sizeHint().height();
-  } else {
-    return main_layouts_[0]->itemAtPosition(0, 0)->sizeHint().width();
+  auto iter = std::find_if_not(main_layouts_.begin(), main_layouts_.end(), std::bind(&QPointer<QGridLayout>::isNull, std::placeholders::_1));
+  if (iter != main_layouts_.end()) {
+    QSize size_hint = (*iter)->itemAtPosition(0, 0)->sizeHint();
+    int w_loc = obj_->settings_->GetOption(OptionKey(OPT_WIDGET_LOCATION)).toInt();
+    return static_cast<WidgetLocation>(w_loc) == WidgetLocation::WL_RIGHT ? size_hint.height() : size_hint.width();
   }
+  return 0;
 }
 
 void WidgetPluginBasePrivate::onBaseOptionChanged(const WidgetPluginOption opt, const QVariant& value)
@@ -98,6 +102,7 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
     Q_ASSERT(main_layouts_.size() == plg_widgets_.size());
     for (int i = 0; i < plg_widgets_.size(); ++i) {
       QGridLayout* layout = main_layouts_[i];
+      if (!layout) continue;    // clock window doesn't exist anymore
       QWidget* plg_widget = plg_widgets_[i];
       layout->removeWidget(plg_widget);
       switch (static_cast<WidgetLocation>(value.toInt())) {
@@ -148,7 +153,6 @@ void WidgetPluginBasePrivate::SettingsChangeListener(const QString& key, const Q
 void WidgetPluginBasePrivate::AddClockWidget(QWidget* main_wnd)
 {
   main_layouts_.append(qobject_cast<QGridLayout*>(main_wnd->layout()));
-  main_wnds_.append(main_wnd);
 }
 
 void WidgetPluginBasePrivate::CreateWidgets()
@@ -185,16 +189,15 @@ void WidgetPluginBasePrivate::DestroyWidgets()
 {
   Q_ASSERT(drawers_.size() == plg_widgets_.size());
   Q_ASSERT(plg_widgets_.size() <= main_layouts_.size());
-  Q_ASSERT(main_wnds_.size() == main_layouts_.size());
   for (int i = 0; i < plg_widgets_.size(); ++i) {
     delete drawers_[i];
-    main_layouts_[i]->removeWidget(plg_widgets_[i]);
+    if (main_layouts_[i])   // clock window may not exist
+      main_layouts_[i]->removeWidget(plg_widgets_[i]);
     delete plg_widgets_[i];
   }
   drawers_.clear();
   plg_widgets_.clear();
   main_layouts_.clear();
-  main_wnds_.clear();
 }
 
 void WidgetPluginBasePrivate::ApplySkin(skin_draw::ISkin::SkinPtr skin)
