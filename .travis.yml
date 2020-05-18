@@ -4,8 +4,8 @@ os:
   - linux
   - osx
 
-dist: bionic
-osx_image: xcode11.3
+dist: focal
+osx_image: xcode11.4
 
 addons:
   apt:
