@@ -21,7 +21,6 @@
 #include <cstdlib>
 #include <ctime>
 
-#include <QGuiApplication>
 #include <QScreen>
 #include <QWidget>
 #include <QWindow>
