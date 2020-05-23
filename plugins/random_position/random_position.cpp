@@ -21,40 +21,12 @@
 #include <cstdlib>
 #include <ctime>
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 10, 0))
-#include <QApplication>
-#include <QDesktopWidget>
-#endif
 #include <QGuiApplication>
 #include <QScreen>
 #include <QWidget>
+#include <QWindow>
 
 namespace random_position {
-
-
-static QScreen* findScreen(QWidget* w)
-{
-  QRect r = w->frameGeometry();
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
-  QScreen* screen = QGuiApplication::screenAt(r.topLeft());
-#else
-  QScreen* screen = QGuiApplication::screens()[QApplication::desktop()->screenNumber(w)];
-#endif
-  if (!screen) {
-    int max_intersected = 0;
-    for (QScreen* s : QGuiApplication::screens()) {
-      QRect ir = r.intersected(s->availableGeometry());
-      int sq = ir.width() * ir.height();
-      if (sq > max_intersected) {
-        max_intersected = sq;
-        screen = s;
-      }
-    }
-  }
-
-  return screen ? screen : QGuiApplication::primaryScreen();
-}
-
 
 RandomPosition::RandomPosition()
   : is_active_(false)
@@ -94,7 +66,7 @@ void RandomPosition::TimeUpdateListener()
   for (auto iter = windows_.cbegin(); iter != windows_.cend(); ++iter) {
     QWidget* window = iter.key();
     Q_ASSERT(window);
-    QScreen* screen = findScreen(window);
+    QScreen* screen = window->windowHandle()->screen();
     Q_ASSERT(screen);
     QRect sg = screen->availableGeometry();
     QRect wg = window->frameGeometry();
