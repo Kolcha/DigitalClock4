@@ -1,3 +1,35 @@
+Whats new in 4.7.7:
+-------------------
+Features:
+ - become almost transparent on mouse hover
+
+Core:
+ - Qt 5.12.8 for all supported platforms
+ - drop autostart flag after app path change
+ - don't save state on each clock position change, do it only when it is required
+ - restore clock position after screen resolution change
+ - handle secondary screen removal (nothing has changed related to adding)
+
+GUI:
+ - use slightly different tray icons on different platforms
+ - fixed invisible tray icon on KDE when system Qt is used
+ - change tray icon depending on Windows 10 system theme
+ - fixed strange behavior on some Linux systems when right alignment is used
+ - updated external links in About dialog
+ - updated copyright year
+ - added another workaround for "stay on on top" on Windows
+ - show previews for custom time formats as tooltips
+
+Plugins:
+ - added random position plugin
+ - timetracker: do not reset progress on app settings change
+ - date: show previews for custom date formats as tooltips
+ - date: added 2 more custom formats
+
+Installer:
+ - packaged for various Linux systems
+
+
 Whats new in 4.7.6:
 -------------------
 Core:

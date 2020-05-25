@@ -1,6 +1,6 @@
 1	VERSIONINFO
-FILEVERSION	1,5,4,169
-PRODUCTVERSION	4,7,6,0
+FILEVERSION	1,5,4,170
+PRODUCTVERSION	4,7,7,0
 FILEFLAGSMASK	0x3F
 FILEFLAGS	0x0
 FILEOS		0x40004
@@ -14,12 +14,12 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Date"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "1.5.4.169"
+		VALUE "FileVersion", "1.5.4.170"
 		VALUE "InternalName", "date.dll"
 		VALUE "LegalCopyright", "© 2014-2020 Nick Korotysh"
 		VALUE "OriginalFilename", "date.dll"
 		VALUE "ProductName", "Digital Clock"
-		VALUE "ProductVersion", "4.7.6"
+		VALUE "ProductVersion", "4.7.7"
 	}
 }
 
