@@ -18,9 +18,9 @@ I have no plans to stuck on some compiler or Qt version just to support some anc
 
 Few screenshots, latest news, system requirements can be found at [project home page](https://digitalclock4.sourceforge.io/).
 
-Also there is [mini wiki](https://sourceforge.net/p/digitalclock4/wiki/) (really mini :) ) exists, where you can find [how to create your own skin](https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/) for this clock (it is really very easy, no any special skills required), [how to translate into your language](https://sourceforge.net/p/digitalclock4/wiki/How%20to%20translate/) or even how to build sources.
+Also there is [mini wiki](https://sourceforge.net/p/digitalclock4/wiki/) (really mini :) ) exists, where you can find [how to create your own skin](https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/) for this clock (it is really very easy, no any special skills are required), [how to translate into your language](https://sourceforge.net/p/digitalclock4/wiki/How%20to%20translate/) or even how to build sources.
 
-**Please, [help to translate](https://www.transifex.com/nick-korotysh/digitalclock4/)!** Few languages where requested, I added them to [transifex project][transifex-link], feel free to join it and translate. Nothing required from my side, I configured project that anyone can be added as translator automatically. Only one thing is required - you must have transifex account (GitHub and few other accounts can be used to login it). Translations to Korean and Chinese are really appreciated.
+**Please, [help to translate][transifex-link]!** Few languages where requested, I added them to [transifex project][transifex-link], feel free to join it and translate. Nothing required from my side, I configured project that anyone can be added as translator automatically. Only one thing is required - you must have transifex account (GitHub and few other accounts can be used to login it). Translations to Korean and Chinese are really appreciated.
 
 Any bug reports, notes, suggestions and anything else can be sent through the [tickets](https://sourceforge.net/p/digitalclock4/tickets/) or directly to me. My contact information can be be found in "About" dialog.
 
@@ -36,3 +36,5 @@ External Links
 * [www.softpedia.com](https://www.softpedia.com/get/Desktop-Enhancements/Clocks-Time-Management/Korotysh-Digital-Clock.shtml) - good review, screenshots, Windows downloads (including portable version)
 * [mac.softpedia.com](https://mac.softpedia.com/get/Utilities/Digital-Clock-Nick-Korotysh.shtml) - good review, screenshots, macOS downloads
 * [softx64.com](https://www.softx64.com/windows/digital-clock.html) - more screenshots from [Windows](https://www.softx64.com/windows/digital-clock.html) / [Linux](https://www.softx64.com/linux/digital-clock-for-linux.html) / [macOS](https://www.softx64.com/mac/digital-clock-for-mac.html), downloads from their website
+
+[transifex-link]: https://www.transifex.com/nick-korotysh/digitalclock4/
