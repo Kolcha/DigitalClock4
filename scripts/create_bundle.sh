@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 [[ -n $QT_ROOT ]] || QT_ROOT="/usr/local/Qt-5.12.8"
 
@@ -30,7 +30,6 @@ cd "$build_dir"
 
 $QT_ROOT/bin/qmake $CUSTOM_QMAKE_FLAGS -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
 make -j$(sysctl -n hw.ncpu)
-[[ $? == 0 ]] || exit 1
 
 # create directories
 mkdir -p digital_clock/digital_clock.app/Contents/Frameworks

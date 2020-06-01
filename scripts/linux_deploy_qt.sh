@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -eu
+set -o pipefail
 
 # plugins lists
 # core gui widgets
@@ -16,7 +17,7 @@ tts_lst="texttospeech"
 export LD_LIBRARY_PATH="$QT_ROOT/lib"
 
 src_binary=$1
-[[ -z $2 ]] && target_path="." || target_path=$2
+[[ -z $2 ]] && target_path="." || target_path=${2%/}
 
 
 function copy_file() {

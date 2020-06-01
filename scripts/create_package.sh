@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 [[ -n $QT_ROOT ]] || export QT_ROOT="/usr/local/Qt-5.12.8"
 
@@ -28,13 +28,11 @@ cd "$build_dir"
 
 $QT_ROOT/bin/qmake -config release -r "$CLOCK_SRC_PATH/DigitalClock.pro"
 make -j$(nproc)
-[[ $? == 0 ]] || exit 1
 
 # create targer folder
 TARGET_APP_FOLDER="$CLOCK_SRC_PATH/../$CLOCK_APP_NAME"
 rm -rf "$TARGET_APP_FOLDER"
 mkdir "$TARGET_APP_FOLDER"
-[[ $? == 0 ]] || exit 1
 
 # copy all app files to target folder
 cp digital_clock/digital_clock "$TARGET_APP_FOLDER/"
@@ -110,4 +108,3 @@ rm -rf "$build_dir"
 # create archive
 rm -f digital_clock_4-linux.tar.xz
 tar cJvf digital_clock_4-linux.tar.xz "$CLOCK_APP_NAME"
-[[ $? == 0 ]] || exit 1
