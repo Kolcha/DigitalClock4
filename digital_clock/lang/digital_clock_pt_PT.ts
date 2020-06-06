@@ -92,12 +92,12 @@
         <translation>Mais informações</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="63"/>
+        <location filename="../gui/about_dialog.cpp" line="57"/>
         <source>version: %1 (%2)</source>
         <translation>versão: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="66"/>
+        <location filename="../gui/about_dialog.cpp" line="60"/>
         <source>build date: %1</source>
         <translation>data de compilação: %1</translation>
     </message>
@@ -526,53 +526,53 @@
         <translation>Existem funcionalidades experimentais neste separador. Estas estão desativadas por padrão. Ativar e usá-las é completamente seguro para o computador, mas pode levar a comportamentos do relógio inesperados. Teste-as conforme quiser. Se notar algum comportamento estranho após ativar qualquer uma destas opções, por favor indique-me. Pode encontrar a informação de contacto na janela &apos;Sobre&apos;.</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="133"/>
+        <location filename="../gui/settings_dialog.cpp" line="136"/>
         <source>unknown</source>
         <translation>desconhecido</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="234"/>
+        <location filename="../gui/settings_dialog.cpp" line="237"/>
         <source>1 day</source>
         <translation>1 dia</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="235"/>
+        <location filename="../gui/settings_dialog.cpp" line="238"/>
         <source>3 days</source>
         <translation>3 dias</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="236"/>
+        <location filename="../gui/settings_dialog.cpp" line="239"/>
         <source>1 week</source>
         <translation>1 semana</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="237"/>
+        <location filename="../gui/settings_dialog.cpp" line="240"/>
         <source>2 weeks</source>
         <translation>2 semanas</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="355"/>
+        <location filename="../gui/settings_dialog.cpp" line="361"/>
         <source>Open texture file</source>
         <translation>Abrir ficheiro de textura</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="357"/>
+        <location filename="../gui/settings_dialog.cpp" line="363"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Imagens (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="445"/>
+        <location filename="../gui/settings_dialog.cpp" line="451"/>
         <source>Export settings to ...</source>
         <translation>Exportar configurações para...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="447"/>
-        <location filename="../gui/settings_dialog.cpp" line="455"/>
+        <location filename="../gui/settings_dialog.cpp" line="453"/>
+        <location filename="../gui/settings_dialog.cpp" line="461"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>Ficheiros de configuração do Relógio Digital (*.dcs)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="453"/>
+        <location filename="../gui/settings_dialog.cpp" line="459"/>
         <source>Import settings from ...</source>
         <translation>Importar configuração de...</translation>
     </message>
