@@ -27,7 +27,9 @@
 #include <QFontDialog>
 #include <QFileInfo>
 #include <QTimeZone>
+#ifdef Q_OS_LINUX
 #include <QX11Info>
+#endif
 
 #include "skin_drawer.h"
 #include "settings_storage.h"
@@ -274,7 +276,9 @@ void SettingsDialog::InitControls()
   ui->only_one_instance->setChecked(config_->GetValue(OPT_ONLY_ONE_INSTANCE).toBool());
   ui->hover_buttons_enabled->setChecked(config_->GetValue(OPT_USE_HOVER_BUTTONS).toBool());
   ui->transparent_on_hover->setChecked(config_->GetValue(OPT_TRANSPARENT_ON_HOVER).toBool());
+#ifdef Q_OS_LINUX
   ui->transparent_on_hover->setEnabled(QX11Info::isPlatformX11());
+#endif
   ui->snap_to_edges->setChecked(config_->GetValue(OPT_SNAP_TO_EDGES).toBool());
   ui->snap_threshold->setValue(config_->GetValue(OPT_SNAP_THRESHOLD).toInt());
   ui->refresh_interval->setValue(config_->GetValue(OPT_REFRESH_INTERVAL).toInt());
