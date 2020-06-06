@@ -26,6 +26,7 @@
 #include <X11/extensions/XInput2.h>
 
 #include <QThread>
+#include <QX11Info>
 
 namespace digital_clock {
 
@@ -173,11 +174,17 @@ MouseTracker::~MouseTracker() = default;
 
 void MouseTracker::start()
 {
+  if (!QX11Info::isPlatformX11())
+    return;
+
   impl_->start();
 }
 
 void MouseTracker::stop()
 {
+  if (!impl_->isRunning())
+    return;
+
   impl_->stop();
   while (!impl_->isFinished())
     QThread::yieldCurrentThread();
