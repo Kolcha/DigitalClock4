@@ -3,7 +3,7 @@ setlocal
 
 set src_root=%~dp0..
 
-call C:\Qt\5.15.0\mingw81_32\bin\qtenv2.bat
+call C:\Qt\5.12.9\mingw73_32\bin\qtenv2.bat
 set PATH=%PATH%;C:\Program Files\7-Zip
 
 set data_dir=%src_root%\..\data
