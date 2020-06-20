@@ -20,7 +20,7 @@ Few screenshots, latest news, system requirements can be found at [project home 
 
 Also there is [mini wiki](https://sourceforge.net/p/digitalclock4/wiki/) (really mini :) ) exists, where you can find [how to create your own skin](https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/) for this clock (it is really very easy, no any special skills are required), [how to translate into your language](https://sourceforge.net/p/digitalclock4/wiki/How%20to%20translate/) or even how to build sources.
 
-**Please, [help to translate][transifex-link]!** Few languages where requested, I added them to [transifex project][transifex-link], feel free to join it and translate. Nothing required from my side, I configured project that anyone can be added as translator automatically. Only one thing is required - you must have transifex account (GitHub and few other accounts can be used to login it). Translations to Korean and Chinese are really appreciated.
+**Please, [help to translate][transifex-link]! Few languages where requested, I added them to [transifex project][transifex-link], feel free to join it and translate. Nothing required from my side, I configured project that anyone can be added as translator automatically. Only one thing is required - you must have transifex account (GitHub and few other accounts can be used to login it). Translations to Korean and Chinese are really appreciated.**
 
 Any bug reports, notes, suggestions and anything else can be sent through the [tickets](https://sourceforge.net/p/digitalclock4/tickets/) or directly to me. My contact information can be be found in "About" dialog.
 
