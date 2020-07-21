@@ -27,6 +27,11 @@
         <translation>Таймер</translation>
     </message>
     <message>
+        <location filename="../gui/settings_dialog.ui" line="33"/>
+        <source>show custom message on timeout</source>
+        <translation>показывать сообщение по истечении времени</translation>
+    </message>
+    <message>
         <location filename="../gui/settings_dialog.ui" line="56"/>
         <source>target time</source>
         <translation>конкретное время</translation>
@@ -62,11 +67,6 @@
 Set this to -1 to never show days count, or to 0 to always show.</source>
         <translation>Если количество оставшихся дней меньше данного значения, дни не будут отображаться.
 Установите данное значение в -1 чтобы никогда не отображать дни, или в 0 чтобы отображать всегда.</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="33"/>
-        <source>show custom message on timeout</source>
-        <translation>показывать сообщение по истечении времени</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.cpp" line="42"/>

@@ -3,5 +3,6 @@
         <file>any_zoom_en.qm</file>
         <file>any_zoom_pt_PT.qm</file>
         <file>any_zoom_ru.qm</file>
+        <file>any_zoom_zh_CN.qm</file>
     </qresource>
 </RCC>

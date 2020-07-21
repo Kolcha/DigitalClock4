@@ -3,5 +3,6 @@
         <file>date_en.qm</file>
         <file>date_pt_PT.qm</file>
         <file>date_ru.qm</file>
+        <file>date_zh_CN.qm</file>
     </qresource>
 </RCC>

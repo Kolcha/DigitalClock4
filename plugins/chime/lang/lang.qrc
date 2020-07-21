@@ -3,5 +3,6 @@
         <file>chime_en.qm</file>
         <file>chime_pt_PT.qm</file>
         <file>chime_ru.qm</file>
+        <file>chime_zh_CN.qm</file>
     </qresource>
 </RCC>

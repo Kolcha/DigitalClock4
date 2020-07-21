@@ -3,5 +3,6 @@
         <file>tray_color_en.qm</file>
         <file>tray_color_pt_PT.qm</file>
         <file>tray_color_ru.qm</file>
+        <file>tray_color_zh_CN.qm</file>
     </qresource>
 </RCC>

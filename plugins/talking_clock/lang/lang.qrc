@@ -3,5 +3,6 @@
         <file>talking_clock_en.qm</file>
         <file>talking_clock_pt_PT.qm</file>
         <file>talking_clock_ru.qm</file>
+        <file>talking_clock_zh_CN.qm</file>
     </qresource>
 </RCC>

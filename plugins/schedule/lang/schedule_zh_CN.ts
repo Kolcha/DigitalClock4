@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt_PT">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>schedule::Schedule</name>
     <message>
         <location filename="../schedule.cpp" line="38"/>
         <source>Scheduler</source>
-        <translation>Agendamento</translation>
+        <translation>日程表</translation>
     </message>
     <message>
         <location filename="../schedule.cpp" line="39"/>
         <source>Allow to schedule a task and display notification at specified time.</source>
-        <translation>Permite agentar uma tarefa e mostrar a notificação a uma hora específica.</translation>
+        <translation>允许用户计划日程任务，并在设定时间点显示提醒消息。</translation>
     </message>
     <message>
         <location filename="../schedule.cpp" line="128"/>
         <location filename="../schedule.cpp" line="135"/>
         <location filename="../schedule.cpp" line="141"/>
         <source>Scheduled task</source>
-        <translation>Tarefa agendada</translation>
+        <translation>计划任务</translation>
     </message>
 </context>
 <context>
@@ -26,22 +26,22 @@
     <message>
         <location filename="../gui/schedule_dialog.ui" line="14"/>
         <source>Schedule</source>
-        <translation>Agendamento</translation>
+        <translation>计划</translation>
     </message>
     <message>
         <location filename="../gui/schedule_dialog.ui" line="23"/>
         <source>Add</source>
-        <translation>Adicionar</translation>
+        <translation>添加</translation>
     </message>
     <message>
         <location filename="../gui/schedule_dialog.ui" line="33"/>
         <source>Edit</source>
-        <translation>Editar</translation>
+        <translation>编辑</translation>
     </message>
     <message>
         <location filename="../gui/schedule_dialog.ui" line="43"/>
         <source>Delete</source>
-        <translation>Eliminar</translation>
+        <translation>删除</translation>
     </message>
 </context>
 <context>
@@ -49,65 +49,65 @@
     <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="14"/>
         <source>Notification Settings</source>
-        <translation>Configurações de Notificação</translation>
+        <translation>通知设置</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="20"/>
         <source>&amp;Timeout:</source>
-        <translation>&amp;Tempo final:</translation>
+        <translation>&amp;超时：</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="43"/>
         <source>Message &amp;dialog</source>
-        <translation>&amp;Janela da mensagem</translation>
+        <translation>消息 &amp;对话框</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="63"/>
         <source>Preview</source>
-        <translation>Prever</translation>
+        <translation>预览</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="70"/>
         <source>&amp;Balloon message</source>
-        <translation>Mensagem &amp;Balão</translation>
+        <translation>&amp;气泡消息</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="80"/>
         <source> sec</source>
         <extracomment>seconds</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>秒</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="87"/>
         <source>&amp;Play sound</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;播放音效</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.ui" line="94"/>
         <source>Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>浏览</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.cpp" line="64"/>
         <source>This is sample task text. Just to test how notification looks.</source>
-        <translation>Isto é um texto de uma tarefa de exemplo. Apenas para testar como a notificação aparece.</translation>
+        <translation>这是一个任务文本的示例，用以展示通知消息的外观。</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.cpp" line="77"/>
         <location filename="../gui/task_advanced_settings_dialog.cpp" line="82"/>
         <location filename="../gui/task_advanced_settings_dialog.cpp" line="88"/>
         <source>Task preview</source>
-        <translation>Prever tarefa</translation>
+        <translation>任务预览</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.cpp" line="96"/>
         <source>Select sound</source>
-        <translation>Selecionar som</translation>
+        <translation>选择铃声</translation>
     </message>
     <message>
         <location filename="../gui/task_advanced_settings_dialog.cpp" line="97"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a);;All files (*.*)</source>
-        <translation>Sons (*.wav *.mp3 *.ogg *.oga *.m4a);;Todos os ficheiros (*.*)</translation>
+        <translation>声音文件 (*.wav *.mp3 *.ogg *.oga *.m4a);;所有文件 (*.*)</translation>
     </message>
 </context>
 <context>
@@ -115,12 +115,12 @@
     <message>
         <location filename="../gui/task_edit_dialog.ui" line="14"/>
         <source>Task Editing</source>
-        <translation>Edição de Tarefa</translation>
+        <translation>任务编辑</translation>
     </message>
     <message>
         <location filename="../gui/task_edit_dialog.ui" line="62"/>
         <source>Advanced task settings</source>
-        <translation>Configurações da tarefa avançada</translation>
+        <translation>高级任务设置</translation>
     </message>
 </context>
 </TS>

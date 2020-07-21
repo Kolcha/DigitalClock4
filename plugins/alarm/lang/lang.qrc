@@ -3,5 +3,6 @@
         <file>alarm_en.qm</file>
         <file>alarm_pt_PT.qm</file>
         <file>alarm_ru.qm</file>
+        <file>alarm_zh_CN.qm</file>
     </qresource>
 </RCC>

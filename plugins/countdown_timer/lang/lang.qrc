@@ -3,5 +3,6 @@
         <file>countdown_timer_en.qm</file>
         <file>countdown_timer_pt_PT.qm</file>
         <file>countdown_timer_ru.qm</file>
+        <file>countdown_timer_zh_CN.qm</file>
     </qresource>
 </RCC>

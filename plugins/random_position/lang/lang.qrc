@@ -2,5 +2,6 @@
     <qresource prefix="/random_position/lang">
         <file>random_position_en.qm</file>
         <file>random_position_ru.qm</file>
+        <file>random_position_zh_CN.qm</file>
     </qresource>
 </RCC>

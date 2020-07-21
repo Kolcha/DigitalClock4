@@ -4,5 +4,6 @@
         <file>digital_clock_nl.qm</file>
         <file>digital_clock_pt_PT.qm</file>
         <file>digital_clock_ru.qm</file>
+        <file>digital_clock_zh_CN.qm</file>
     </qresource>
 </RCC>

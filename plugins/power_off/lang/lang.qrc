@@ -3,5 +3,6 @@
         <file>power_off_en.qm</file>
         <file>power_off_pt_PT.qm</file>
         <file>power_off_ru.qm</file>
+        <file>power_off_zh_CN.qm</file>
     </qresource>
 </RCC>
