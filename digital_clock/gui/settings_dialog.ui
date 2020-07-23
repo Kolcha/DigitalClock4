@@ -911,7 +911,7 @@
        <item>
         <widget class="QCheckBox" name="only_one_instance">
          <property name="text">
-          <string>allow only one clock instance at time</string>
+          <string>allow only one clock instance at a time</string>
          </property>
         </widget>
        </item>
@@ -1023,7 +1023,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Please restart clock after changing any of theese options!</string>
+          <string>Please restart clock after changing any of these options!</string>
          </property>
         </widget>
        </item>

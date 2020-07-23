@@ -487,8 +487,13 @@
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="914"/>
-        <source>allow only one clock instance at time</source>
+        <source>allow only one clock instance at a time</source>
         <translation>не запускать более одной копии приложения</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="1026"/>
+        <source>Please restart clock after changing any of these options!</source>
+        <translation>Пожалуйста перезапустите часы после изменения любой из данных опций!</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="921"/>
@@ -514,11 +519,6 @@
         <location filename="../gui/settings_dialog.ui" line="979"/>
         <source>window refresh interval</source>
         <translation>интервал обновления окна</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="1026"/>
-        <source>Please restart clock after changing any of theese options!</source>
-        <translation>Пожалуйста перезапустите часы после изменения любой из данных опций!</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="1046"/>

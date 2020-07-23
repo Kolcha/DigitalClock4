@@ -487,8 +487,13 @@
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="914"/>
-        <source>allow only one clock instance at time</source>
+        <source>allow only one clock instance at a time</source>
         <translation>同时仅允许一个时钟实例存在</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="1026"/>
+        <source>Please restart clock after changing any of these options!</source>
+        <translation>请在更改以上任意选项后重启本程序！</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="921"/>
@@ -514,11 +519,6 @@
         <location filename="../gui/settings_dialog.ui" line="979"/>
         <source>window refresh interval</source>
         <translation>窗口刷新间隔</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="1026"/>
-        <source>Please restart clock after changing any of theese options!</source>
-        <translation>请在更改以上任意选项后重启本程序！</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="1046"/>
