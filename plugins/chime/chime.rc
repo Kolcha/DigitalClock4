@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	1,2,1,129
+FILEVERSION	1,2,1,130
 PRODUCTVERSION	4,7,7,0
 FILEFLAGSMASK	0x3F
 FILEFLAGS	0x0
@@ -14,7 +14,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Chime"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "1.2.1.129"
+		VALUE "FileVersion", "1.2.1.130"
 		VALUE "InternalName", "chime.dll"
 		VALUE "LegalCopyright", "© 2016-2020 Nick Korotysh"
 		VALUE "OriginalFilename", "chime.dll"
