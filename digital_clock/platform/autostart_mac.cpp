@@ -23,6 +23,16 @@
 #include <QFile>
 #include <QRegularExpression>
 
+static QString GetInstanceSuffix()
+{
+#ifdef PORTABLE_VERSION
+  QByteArray path = QCoreApplication::applicationFilePath().toUtf8();
+  quint16 checksum = qChecksum(path.data(), path.size());
+  return QStringLiteral("-") + QString::number(checksum);
+#else
+  return QString();
+}
+
 static QString GetAutoStartDir()
 {
   return QDir::home().absoluteFilePath("Library/LaunchAgents");
@@ -38,7 +48,7 @@ static QString GetPackageName()
 static QString GetPlistFile()
 {
   QDir auto_start_dir(GetAutoStartDir());
-  return auto_start_dir.absoluteFilePath(GetPackageName() + ".plist");
+  return auto_start_dir.absoluteFilePath(GetPackageName() + GetInstanceSuffix() + ".plist");
 }
 
 static QString GetAutoStartCmd()

@@ -22,18 +22,32 @@
 #include <QDir>
 #include <QSettings>
 
+static const char* const REG_RUN_KEY = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run";
+
+static QString GetAppKey()
+{
+  QString key = QCoreApplication::applicationName();
+#ifdef PORTABLE_VERSION
+  QByteArray path = QCoreApplication::applicationFilePath().toUtf8();
+  quint16 checksum = qChecksum(path.data(), path.size());
+  key.remove(QLatin1Char(' '));
+  key += QStringLiteral("-") + QString::number(checksum);
+#endif
+  return key;
+}
+
 bool IsAutoStartEnabled()
 {
-  QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
-  return settings.value(QCoreApplication::applicationName()).toString() == QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
+  QSettings settings(REG_RUN_KEY, QSettings::NativeFormat);
+  return settings.value(GetAppKey()).toString() == QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
 }
 
 void SetAutoStart(bool enable)
 {
-  QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
+  QSettings settings(REG_RUN_KEY, QSettings::NativeFormat);
   if (enable) {
-    settings.setValue(QCoreApplication::applicationName(), QDir::toNativeSeparators(QCoreApplication::applicationFilePath()));
+    settings.setValue(GetAppKey(), QDir::toNativeSeparators(QCoreApplication::applicationFilePath()));
   } else {
-    settings.remove(QCoreApplication::applicationName());
+    settings.remove(GetAppKey());
   }
 }

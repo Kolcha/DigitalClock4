@@ -24,6 +24,16 @@
 #include <QFileInfo>
 #include <QRegularExpression>
 
+static QString GetInstanceSuffix()
+{
+#ifdef PORTABLE_VERSION
+  QByteArray path = QCoreApplication::applicationFilePath().toUtf8();
+  quint16 checksum = qChecksum(path.data(), path.size());
+  return QStringLiteral("-") + QString::number(checksum);
+#else
+  return QString();
+}
+
 static QString GetAppFileName()
 {
   QFileInfo fi(QCoreApplication::applicationFilePath());
@@ -38,7 +48,7 @@ static QString GetAutoStartDir()
 static QString GetDesktopFile()
 {
   QDir auto_start_dir(GetAutoStartDir());
-  return auto_start_dir.absoluteFilePath(GetAppFileName() + ".desktop");
+  return auto_start_dir.absoluteFilePath(GetAppFileName() + GetInstanceSuffix() + ".desktop");
 }
 
 static QString GetAutoStartCmd()
