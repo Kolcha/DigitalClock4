@@ -29,7 +29,7 @@ static QString GetInstanceSuffix()
   QByteArray path = QCoreApplication::applicationFilePath().toUtf8();
   quint16 checksum = qChecksum(path.data(), path.size());
   return QStringLiteral("-") + QString::number(checksum);
-#else
+#endif
   return QString();
 }
 
