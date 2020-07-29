@@ -22,7 +22,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += core gui widgets multimedia
 
 include(../common.pri)
 

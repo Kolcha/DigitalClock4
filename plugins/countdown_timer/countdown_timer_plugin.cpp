@@ -19,6 +19,7 @@
 #include "countdown_timer_plugin.h"
 
 #include <QDateTime>
+#include <QMediaPlayer>
 #include <QMessageBox>
 
 #include "plugin_settings.h"
@@ -45,6 +46,8 @@ void CountdownTimerPlugin::Start()
   connect(cd_timer_, &CountdownTimer::timeLeftChanged, this, &CountdownTimerPlugin::TimeUpdateListener);
   connect(cd_timer_, &CountdownTimer::timeout, this, &CountdownTimerPlugin::HandleTimeout);
 
+  player_ = new QMediaPlayer();
+
   ::plugin::WidgetPluginBase::Start();
   InitTimer();
 }
@@ -54,6 +57,9 @@ void CountdownTimerPlugin::Stop()
   if (cd_timer_->isActive()) cd_timer_->stop();
   delete cd_timer_;
   cd_timer_ = nullptr;
+
+  delete player_;
+  player_ = nullptr;
 
   ::plugin::WidgetPluginBase::Stop();
 }
@@ -132,6 +138,11 @@ void CountdownTimerPlugin::InitTimer()
 
 void CountdownTimerPlugin::HandleTimeout()
 {
+  if (settings_->GetOption(OPT_CHIME_ON_TIMEOUT).toBool()) {
+    player_->setMedia(QUrl::fromLocalFile(settings_->GetOption(OPT_CHIME_SOUND_FILE).toString()));
+    player_->play();
+  }
+
   if (settings_->GetOption(OPT_SHOW_MESSAGE).toBool()) {
     QMessageBox::warning(nullptr,
                          info_.display_name,

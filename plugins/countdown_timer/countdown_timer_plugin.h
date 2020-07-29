@@ -21,6 +21,8 @@
 
 #include "widget_plugin_base.h"
 
+class QMediaPlayer;
+
 namespace countdown_timer {
 
 class CountdownTimer;
@@ -52,6 +54,7 @@ private slots:
 
 private:
   CountdownTimer* cd_timer_;
+  QMediaPlayer* player_;
 };
 
 } // namespace countdown_timer
