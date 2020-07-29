@@ -136,6 +136,11 @@ void CountdownTimerPlugin::HandleTimeout()
                          settings_->GetOption(OPT_MESSAGE_TEXT).toString(),
                          QMessageBox::Ok);
   }
+
+  if (settings_->GetOption(OPT_RESTART_ON_TIMEOUT).toBool()) {
+    InitTimer();
+    cd_timer_->start();
+  }
 }
 
 } // namespace countdown_timer
