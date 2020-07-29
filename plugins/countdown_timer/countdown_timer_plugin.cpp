@@ -18,8 +18,8 @@
 
 #include "countdown_timer_plugin.h"
 
-#include <QLabel>
 #include <QDateTime>
+#include <QMediaPlayer>
 #include <QMessageBox>
 
 #include "plugin_settings.h"
@@ -27,6 +27,7 @@
 #include "core/countdown_timer.h"
 #include "core/settings.h"
 #include "core/utilities.h"
+#include "gui/clickable_label.h"
 #include "gui/settings_dialog.h"
 
 namespace countdown_timer {
@@ -45,6 +46,8 @@ void CountdownTimerPlugin::Start()
   connect(cd_timer_, &CountdownTimer::timeLeftChanged, this, &CountdownTimerPlugin::TimeUpdateListener);
   connect(cd_timer_, &CountdownTimer::timeout, this, &CountdownTimerPlugin::HandleTimeout);
 
+  player_ = new QMediaPlayer();
+
   ::plugin::WidgetPluginBase::Start();
   InitTimer();
 }
@@ -54,6 +57,9 @@ void CountdownTimerPlugin::Stop()
   if (cd_timer_->isActive()) cd_timer_->stop();
   delete cd_timer_;
   cd_timer_ = nullptr;
+
+  delete player_;
+  player_ = nullptr;
 
   ::plugin::WidgetPluginBase::Stop();
 }
@@ -93,12 +99,14 @@ void CountdownTimerPlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults
 QWidget* CountdownTimerPlugin::InitWidget(QGridLayout* layout)
 {
   Q_UNUSED(layout);
-  return new QLabel();
+  ClickableLabel* w = new ClickableLabel();
+  connect(w, &ClickableLabel::clicked, this, &CountdownTimerPlugin::RestartTimer);
+  return w;
 }
 
 void CountdownTimerPlugin::DisplayImage(QWidget* widget, const QImage& image)
 {
-  static_cast<QLabel*>(widget)->setPixmap(QPixmap::fromImage(image));
+  static_cast<ClickableLabel*>(widget)->setPixmap(QPixmap::fromImage(image));
 }
 
 QString CountdownTimerPlugin::GetWidgetText()
@@ -130,11 +138,30 @@ void CountdownTimerPlugin::InitTimer()
 
 void CountdownTimerPlugin::HandleTimeout()
 {
+  if (settings_->GetOption(OPT_CHIME_ON_TIMEOUT).toBool()) {
+    player_->setMedia(QUrl::fromLocalFile(settings_->GetOption(OPT_CHIME_SOUND_FILE).toString()));
+    player_->play();
+  }
+
   if (settings_->GetOption(OPT_SHOW_MESSAGE).toBool()) {
     QMessageBox::warning(nullptr,
                          info_.display_name,
                          settings_->GetOption(OPT_MESSAGE_TEXT).toString(),
                          QMessageBox::Ok);
+  }
+
+  if (settings_->GetOption(OPT_RESTART_ON_TIMEOUT).toBool()) {
+    InitTimer();
+    cd_timer_->start();
+  }
+}
+
+void CountdownTimerPlugin::RestartTimer()
+{
+  if (settings_->GetOption(OPT_RESTART_ON_DBLCLIK).toBool()) {
+    cd_timer_->stop();
+    InitTimer();
+    cd_timer_->start();
   }
 }
 

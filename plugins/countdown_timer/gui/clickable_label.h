@@ -16,36 +16,45 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "core/settings.h"
+#ifndef COUNTDOWN_TIMER_GUI_CLICKABLE_LABEL_H
+#define COUNTDOWN_TIMER_GUI_CLICKABLE_LABEL_H
 
-#include <QDateTime>
+#include <QLabel>
 
 namespace countdown_timer {
 
-QDateTime GetDefaultDate()
+class ClickableLabel : public QLabel
 {
-  return QDateTime(QDate(QDate::currentDate().year() + 1, 1, 1));
-}
+  Q_OBJECT
 
-void InitDefaults(QSettings::SettingsMap* defaults)
-{
-  defaults->insert(OPT_INTERVAL_HOURS, 0);
-  defaults->insert(OPT_INTERVAL_MINUTES, 0);
-  defaults->insert(OPT_INTERVAL_SECONDS, 0);
+  Q_PROPERTY(int requiredClicksCount READ requiredClicksCount WRITE setRequiredClicksCount)
+  Q_PROPERTY(int clickTimeout READ clickTimeout WRITE setClickTimeout)
 
-  defaults->insert(OPT_USE_TARGET_TIME, true);
-  defaults->insert(OPT_TARGET_DATETIME, GetDefaultDate());
+public:
+  explicit ClickableLabel(QWidget* parent = nullptr);
 
-  defaults->insert(OPT_CHIME_ON_TIMEOUT, false);
-  defaults->insert(OPT_CHIME_SOUND_FILE, QString());
+  int requiredClicksCount() const;
+  int clickTimeout() const;
 
-  defaults->insert(OPT_SHOW_MESSAGE, false);
-  defaults->insert(OPT_MESSAGE_TEXT, QString());
+signals:
+  void clicked();
 
-  defaults->insert(OPT_HIDE_DAYS_THRESHOLD, 0);
+public slots:
+  void setRequiredClicksCount(int req_clicks);
+  void setClickTimeout(int timeout);
 
-  defaults->insert(OPT_RESTART_ON_DBLCLIK, false);
-  defaults->insert(OPT_RESTART_ON_TIMEOUT, false);
-}
+protected:
+  void mouseReleaseEvent(QMouseEvent* event) override;
+
+private slots:
+  void onTimer();
+
+private:
+  QTimer* timer_;
+  int req_clicks_;
+  int cur_clicks_;
+};
 
 } // namespace countdown_timer
+
+#endif // COUNTDOWN_TIMER_GUI_CLICKABLE_LABEL_H

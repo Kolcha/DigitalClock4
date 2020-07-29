@@ -22,7 +22,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += core gui widgets multimedia
 
 include(../common.pri)
 
@@ -33,6 +33,7 @@ SOURCES += \
     core/countdown_timer.cpp \
     core/settings.cpp \
     core/utilities.cpp \
+    gui/clickable_label.cpp \
     gui/settings_dialog.cpp
 
 HEADERS += \
@@ -40,6 +41,7 @@ HEADERS += \
     core/countdown_timer.h \
     core/settings.h \
     core/utilities.h \
+    gui/clickable_label.h \
     gui/settings_dialog.h
 
 FORMS += \

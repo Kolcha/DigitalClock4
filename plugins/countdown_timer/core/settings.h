@@ -30,10 +30,16 @@ const char* const OPT_INTERVAL_SECONDS  = "seconds";
 const char* const OPT_USE_TARGET_TIME   = "use_target_time";
 const char* const OPT_TARGET_DATETIME   = "target_datetime";
 
+const char* const OPT_CHIME_ON_TIMEOUT  = "chime_on_timeout";
+const char* const OPT_CHIME_SOUND_FILE  = "chime_sound_file";
+
 const char* const OPT_SHOW_MESSAGE      = "show_message";
 const char* const OPT_MESSAGE_TEXT      = "message_text";
 
 const char* const OPT_HIDE_DAYS_THRESHOLD = "hide_days_threshold";
+
+const char* const OPT_RESTART_ON_DBLCLIK  = "restart_on_dblclik";
+const char* const OPT_RESTART_ON_TIMEOUT  = "restart_on_timeout";
 
 QDateTime GetDefaultDate();
 
