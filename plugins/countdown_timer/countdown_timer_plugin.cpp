@@ -93,7 +93,9 @@ void CountdownTimerPlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults
 QWidget* CountdownTimerPlugin::InitWidget(QGridLayout* layout)
 {
   Q_UNUSED(layout);
-  return new ClickableLabel();
+  ClickableLabel* w = new ClickableLabel();
+  connect(w, &ClickableLabel::clicked, this, &CountdownTimerPlugin::RestartTimer);
+  return w;
 }
 
 void CountdownTimerPlugin::DisplayImage(QWidget* widget, const QImage& image)
@@ -138,6 +140,15 @@ void CountdownTimerPlugin::HandleTimeout()
   }
 
   if (settings_->GetOption(OPT_RESTART_ON_TIMEOUT).toBool()) {
+    InitTimer();
+    cd_timer_->start();
+  }
+}
+
+void CountdownTimerPlugin::RestartTimer()
+{
+  if (settings_->GetOption(OPT_RESTART_ON_DBLCLIK).toBool()) {
+    cd_timer_->stop();
     InitTimer();
     cd_timer_->start();
   }

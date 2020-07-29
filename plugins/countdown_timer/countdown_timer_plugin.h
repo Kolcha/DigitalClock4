@@ -48,6 +48,7 @@ protected:
 private slots:
   void InitTimer();
   void HandleTimeout();
+  void RestartTimer();
 
 private:
   CountdownTimer* cd_timer_;
