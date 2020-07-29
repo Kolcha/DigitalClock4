@@ -133,7 +133,7 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
        <item row="7" column="1">
         <widget class="QCheckBox" name="restart_on_timeout">
          <property name="text">
-          <string>restart on timeout</string>
+          <string>auto-restart countdown</string>
          </property>
         </widget>
        </item>
