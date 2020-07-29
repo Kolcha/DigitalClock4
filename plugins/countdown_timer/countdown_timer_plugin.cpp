@@ -18,7 +18,6 @@
 
 #include "countdown_timer_plugin.h"
 
-#include <QLabel>
 #include <QDateTime>
 #include <QMessageBox>
 
@@ -27,6 +26,7 @@
 #include "core/countdown_timer.h"
 #include "core/settings.h"
 #include "core/utilities.h"
+#include "gui/clickable_label.h"
 #include "gui/settings_dialog.h"
 
 namespace countdown_timer {
@@ -93,12 +93,12 @@ void CountdownTimerPlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults
 QWidget* CountdownTimerPlugin::InitWidget(QGridLayout* layout)
 {
   Q_UNUSED(layout);
-  return new QLabel();
+  return new ClickableLabel();
 }
 
 void CountdownTimerPlugin::DisplayImage(QWidget* widget, const QImage& image)
 {
-  static_cast<QLabel*>(widget)->setPixmap(QPixmap::fromImage(image));
+  static_cast<ClickableLabel*>(widget)->setPixmap(QPixmap::fromImage(image));
 }
 
 QString CountdownTimerPlugin::GetWidgetText()
