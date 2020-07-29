@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>384</width>
-    <height>339</height>
+    <height>369</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,6 +27,52 @@
        <string>Timer</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
+       <item row="10" column="0" colspan="2">
+        <widget class="QTextEdit" name="msg_text_edit">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QCheckBox" name="restart_on_dblclik">
+         <property name="text">
+          <string>restart on double click</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
+         <item>
+          <widget class="QLabel" name="min_days_label">
+           <property name="text">
+            <string>minimum days count to show</string>
+           </property>
+           <property name="buddy">
+            <cstring>min_days_edit</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="min_days_edit">
+           <property name="toolTip">
+            <string>If remaining days count less than this value, days will not be shown.
+Set this to -1 to never show days count, or to 0 to always show.</string>
+           </property>
+           <property name="minimum">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="7" column="1">
+        <widget class="QCheckBox" name="restart_on_timeout">
+         <property name="text">
+          <string>auto-restart countdown</string>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0" colspan="2">
         <widget class="QFrame" name="timeout_frame">
          <property name="frameShape">
@@ -91,51 +137,26 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
+       <item row="8" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QLabel" name="min_days_label">
+          <widget class="QCheckBox" name="chime_on_timeout">
            <property name="text">
-            <string>minimum days count to show</string>
-           </property>
-           <property name="buddy">
-            <cstring>min_days_edit</cstring>
+            <string>chime when countdown finishes</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="min_days_edit">
-           <property name="toolTip">
-            <string>If remaining days count less than this value, days will not be shown.
-Set this to -1 to never show days count, or to 0 to always show.</string>
+          <widget class="QToolButton" name="browse_sound_btn">
+           <property name="enabled">
+            <bool>false</bool>
            </property>
-           <property name="minimum">
-            <number>-1</number>
+           <property name="text">
+            <string notr="true">...</string>
            </property>
           </widget>
          </item>
         </layout>
-       </item>
-       <item row="10" column="0" colspan="2">
-        <widget class="QTextEdit" name="msg_text_edit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QCheckBox" name="restart_on_dblclik">
-         <property name="text">
-          <string>restart on double click</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QCheckBox" name="restart_on_timeout">
-         <property name="text">
-          <string>auto-restart countdown</string>
-         </property>
-        </widget>
        </item>
       </layout>
      </widget>
@@ -162,8 +183,8 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>191</x>
-     <y>329</y>
+     <x>200</x>
+     <y>359</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -178,8 +199,8 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>191</x>
-     <y>329</y>
+     <x>200</x>
+     <y>359</y>
     </hint>
     <hint type="destinationlabel">
      <x>173</x>
@@ -258,8 +279,8 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>217</x>
-     <y>210</y>
+     <x>228</x>
+     <y>240</y>
     </hint>
     <hint type="destinationlabel">
      <x>204</x>
@@ -296,6 +317,22 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
     <hint type="destinationlabel">
      <x>276</x>
      <y>171</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>chime_on_timeout</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>browse_sound_btn</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>314</x>
+     <y>203</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>200</y>
     </hint>
    </hints>
   </connection>

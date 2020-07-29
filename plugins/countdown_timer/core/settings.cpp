@@ -36,6 +36,9 @@ void InitDefaults(QSettings::SettingsMap* defaults)
   defaults->insert(OPT_USE_TARGET_TIME, true);
   defaults->insert(OPT_TARGET_DATETIME, GetDefaultDate());
 
+  defaults->insert(OPT_CHIME_ON_TIMEOUT, false);
+  defaults->insert(OPT_CHIME_SOUND_FILE, QString());
+
   defaults->insert(OPT_SHOW_MESSAGE, false);
   defaults->insert(OPT_MESSAGE_TEXT, QString());
 

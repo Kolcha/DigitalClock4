@@ -19,6 +19,8 @@
 #include "settings_dialog.h"
 #include "ui_settings_dialog.h"
 
+#include <QFileDialog>
+
 #include "core/settings.h"
 
 namespace countdown_timer {
@@ -53,6 +55,7 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
   ui->min_days_edit->setValue(settings.value(OPT_HIDE_DAYS_THRESHOLD).toInt());
   ui->restart_on_dblclik->setChecked(settings.value(OPT_RESTART_ON_DBLCLIK).toBool());
   ui->restart_on_timeout->setChecked(settings.value(OPT_RESTART_ON_TIMEOUT).toBool());
+  ui->chime_on_timeout->setChecked(settings.value(OPT_CHIME_ON_TIMEOUT).toBool());
   ui->show_msg->setChecked(settings.value(OPT_SHOW_MESSAGE).toBool());
   ui->msg_text_edit->setPlainText(settings.value(OPT_MESSAGE_TEXT).toString());
 }
@@ -95,6 +98,19 @@ void SettingsDialog::on_restart_on_dblclik_clicked(bool checked)
 void SettingsDialog::on_restart_on_timeout_clicked(bool checked)
 {
   emit OptionChanged(OPT_RESTART_ON_TIMEOUT, checked);
+}
+
+void SettingsDialog::on_chime_on_timeout_clicked(bool checked)
+{
+  emit OptionChanged(OPT_CHIME_ON_TIMEOUT, checked);
+}
+
+void SettingsDialog::on_browse_sound_btn_clicked()
+{
+  QString filename = QFileDialog::getOpenFileName(this, tr("Open File"),
+                                                   QDir::homePath(),
+                                                   tr("Sounds (*.wav *.mp3 *.ogg *.oga *.m4a)"));
+  if (!filename.isEmpty()) emit OptionChanged(OPT_CHIME_SOUND_FILE, filename);
 }
 
 void SettingsDialog::on_show_msg_clicked(bool checked)
