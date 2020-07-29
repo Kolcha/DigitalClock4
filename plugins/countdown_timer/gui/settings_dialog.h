@@ -53,6 +53,9 @@ private slots:
   void on_m_edit_valueChanged(int arg1);
   void on_s_edit_valueChanged(int arg1);
 
+  void on_restart_on_dblclik_clicked(bool checked);
+  void on_restart_on_timeout_clicked(bool checked);
+
   void on_show_msg_clicked(bool checked);
   void on_msg_text_edit_textChanged();
 

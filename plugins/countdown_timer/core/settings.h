@@ -35,6 +35,9 @@ const char* const OPT_MESSAGE_TEXT      = "message_text";
 
 const char* const OPT_HIDE_DAYS_THRESHOLD = "hide_days_threshold";
 
+const char* const OPT_RESTART_ON_DBLCLIK  = "restart_on_dblclik";
+const char* const OPT_RESTART_ON_TIMEOUT  = "restart_on_timeout";
+
 QDateTime GetDefaultDate();
 
 void InitDefaults(QSettings::SettingsMap* defaults);

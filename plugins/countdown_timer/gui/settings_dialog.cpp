@@ -51,6 +51,8 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
   ui->m_edit->setValue(settings.value(OPT_INTERVAL_MINUTES).toInt());
   ui->s_edit->setValue(settings.value(OPT_INTERVAL_SECONDS).toInt());
   ui->min_days_edit->setValue(settings.value(OPT_HIDE_DAYS_THRESHOLD).toInt());
+  ui->restart_on_dblclik->setChecked(settings.value(OPT_RESTART_ON_DBLCLIK).toBool());
+  ui->restart_on_timeout->setChecked(settings.value(OPT_RESTART_ON_TIMEOUT).toBool());
   ui->show_msg->setChecked(settings.value(OPT_SHOW_MESSAGE).toBool());
   ui->msg_text_edit->setPlainText(settings.value(OPT_MESSAGE_TEXT).toString());
 }
@@ -83,6 +85,16 @@ void SettingsDialog::on_m_edit_valueChanged(int arg1)
 void SettingsDialog::on_s_edit_valueChanged(int arg1)
 {
   emit OptionChanged(OPT_INTERVAL_SECONDS, arg1);
+}
+
+void SettingsDialog::on_restart_on_dblclik_clicked(bool checked)
+{
+  emit OptionChanged(OPT_RESTART_ON_DBLCLIK, checked);
+}
+
+void SettingsDialog::on_restart_on_timeout_clicked(bool checked)
+{
+  emit OptionChanged(OPT_RESTART_ON_TIMEOUT, checked);
 }
 
 void SettingsDialog::on_show_msg_clicked(bool checked)
