@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
+    <name>QHotkey</name>
+    <message>
+        <location filename="../../../../3rdparty/QHotkey/QHotkey/qhotkey.cpp" line="283"/>
+        <source>Failed to register %1. Error: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../3rdparty/QHotkey/QHotkey/qhotkey.cpp" line="303"/>
+        <source>Failed to unregister %1. Error: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>alarm_plugin::AdvancedSettingsDialog</name>
     <message>
         <location filename="../gui/advanced_settings_dialog.ui" line="14"/>

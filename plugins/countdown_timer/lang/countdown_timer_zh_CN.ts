@@ -4,12 +4,12 @@
 <context>
     <name>countdown_timer::CountdownTimerPlugin</name>
     <message>
-        <location filename="../countdown_timer_plugin.cpp" line="37"/>
+        <location filename="../countdown_timer_plugin.cpp" line="38"/>
         <source>Countdown timer</source>
         <translation>倒计时</translation>
     </message>
     <message>
-        <location filename="../countdown_timer_plugin.cpp" line="38"/>
+        <location filename="../countdown_timer_plugin.cpp" line="39"/>
         <source>Just a countdown timer.</source>
         <translation>倒计时功能。</translation>
     </message>
@@ -27,51 +27,76 @@
         <translation>计时器</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="33"/>
+        <location filename="../gui/settings_dialog.ui" line="136"/>
         <source>show custom message on timeout</source>
         <translation>到达设定时间后显示自定义消息</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="56"/>
+        <location filename="../gui/settings_dialog.ui" line="88"/>
         <source>target time</source>
         <translation>目标时间</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="70"/>
+        <location filename="../gui/settings_dialog.ui" line="40"/>
+        <source>restart on double click</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="72"/>
+        <source>auto-restart countdown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="102"/>
         <source>interval</source>
         <translation>间隔</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="80"/>
+        <location filename="../gui/settings_dialog.ui" line="112"/>
         <source>hours</source>
         <translation>小时</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="87"/>
+        <location filename="../gui/settings_dialog.ui" line="119"/>
         <source>minutes</source>
         <translation>分</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="94"/>
+        <location filename="../gui/settings_dialog.ui" line="126"/>
         <source>seconds</source>
         <translation>秒</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="106"/>
+        <location filename="../gui/settings_dialog.ui" line="145"/>
+        <source>chime when countdown finishes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="49"/>
         <source>minimum days count to show</source>
         <translation>倒计时显示的最小天数</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="116"/>
+        <location filename="../gui/settings_dialog.ui" line="59"/>
         <source>If remaining days count less than this value, days will not be shown.
 Set this to -1 to never show days count, or to 0 to always show.</source>
         <translation>如果剩余天数小于此值，将不会再显示。
 设定为-1将从不显示天数，设定为0则总是显示天数。</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="42"/>
+        <location filename="../gui/settings_dialog.cpp" line="44"/>
         <source>Appearance</source>
         <translation>外观</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="110"/>
+        <source>Open File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="112"/>
+        <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
