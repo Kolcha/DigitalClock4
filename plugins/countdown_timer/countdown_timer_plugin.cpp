@@ -144,10 +144,11 @@ void CountdownTimerPlugin::HandleTimeout()
   }
 
   if (settings_->GetOption(OPT_SHOW_MESSAGE).toBool()) {
-    QMessageBox::warning(nullptr,
-                         info_.display_name,
-                         settings_->GetOption(OPT_MESSAGE_TEXT).toString(),
-                         QMessageBox::Ok);
+    QMessageBox mb(QMessageBox::Warning,
+                   info_.display_name,
+                   settings_->GetOption(OPT_MESSAGE_TEXT).toString(),
+                   QMessageBox::Ok);
+    mb.exec();
   }
 
   if (settings_->GetOption(OPT_RESTART_ON_TIMEOUT).toBool()) {
