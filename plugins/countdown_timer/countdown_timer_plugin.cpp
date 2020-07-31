@@ -21,6 +21,7 @@
 #include <QDateTime>
 #include <QMediaPlayer>
 #include <QMessageBox>
+#include <QPushButton>
 
 #include "plugin_settings.h"
 
@@ -146,8 +147,8 @@ void CountdownTimerPlugin::HandleTimeout()
   if (settings_->GetOption(OPT_SHOW_MESSAGE).toBool()) {
     QMessageBox mb(QMessageBox::Warning,
                    info_.display_name,
-                   settings_->GetOption(OPT_MESSAGE_TEXT).toString(),
-                   QMessageBox::Ok);
+                   settings_->GetOption(OPT_MESSAGE_TEXT).toString());
+    mb.addButton(QMessageBox::Ok)->setFocusPolicy(Qt::ClickFocus);
     mb.exec();
   }
 
