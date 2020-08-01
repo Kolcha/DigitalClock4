@@ -15,22 +15,26 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-#ifndef PALETTE_ICON_ENGINE_PLUGIN_H
-#define PALETTE_ICON_ENGINE_PLUGIN_H
-
 #include <QIconEnginePlugin>
 
+#include "palette_icon_engine.h"
 
-class PaletteIconEnginePlugin : public QIconEnginePlugin
+class PaletteIconPlugin : public QIconEnginePlugin
 {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QIconEngineFactoryInterface" FILE "paletteicon.json")
 
 public:
-  explicit PaletteIconEnginePlugin(QObject* parent = Q_NULLPTR);
-
   QIconEngine* create(const QString& filename = QString()) Q_DECL_OVERRIDE;
 };
 
-#endif // PALETTE_ICON_ENGINE_PLUGIN_H
+QIconEngine* PaletteIconPlugin::create(const QString& filename)
+{
+  PaletteIconEngine* engine = new PaletteIconEngine();
+  if (!filename.isNull()) {
+    engine->addFile(filename, QSize(), QIcon::Normal, QIcon::Off);
+  }
+  return engine;
+}
+
+#include "plugin.moc"

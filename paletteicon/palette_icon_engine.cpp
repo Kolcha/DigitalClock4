@@ -32,23 +32,36 @@ static QColor getIconColor(QIcon::Mode mode, QIcon::State state)
   return QPalette().color(color_group, QPalette::WindowText);
 }
 
+static QPixmap renderIcon(QSvgRenderer* renderer, const QSize& size, const QBrush& brush)
+{
+  QPixmap output(size);
+  output.fill(Qt::transparent);
+
+  QPainter p(&output);
+  renderer->render(&p);
+
+  p.setCompositionMode(QPainter::CompositionMode_SourceIn);
+
+  p.setPen(Qt::NoPen);
+  p.setBrush(brush);
+
+  p.drawRect(output.rect());
+
+  return output;
+}
+
 
 PaletteIconEngine::PaletteIconEngine()
 {
-  renderer_ = new QSvgRenderer();
+  renderer_.reset(new QSvgRenderer());
 }
 
 PaletteIconEngine::PaletteIconEngine(const PaletteIconEngine& other) : QIconEngine(other)
 {
   src_file_ = other.src_file_;
-  renderer_ = new QSvgRenderer();
+  renderer_.reset(new QSvgRenderer());
   if (other.renderer_->isValid())
     renderer_->load(other.src_file_);
-}
-
-PaletteIconEngine::~PaletteIconEngine()
-{
-  delete renderer_;
 }
 
 void PaletteIconEngine::addFile(const QString& fileName, const QSize& size, QIcon::Mode mode, QIcon::State state)
@@ -67,7 +80,13 @@ QIconEngine* PaletteIconEngine::clone() const
 
 void PaletteIconEngine::paint(QPainter* painter, const QRect& rect, QIcon::Mode mode, QIcon::State state)
 {
-  paintIcon(painter, rect, getIconColor(mode, state));
+  // "direct rendereng" using given painter is not possible
+  // because colorization logic modifies already painted area
+  // such behavior is not acceptable, so render icon to pixmap first
+  QColor color = getIconColor(mode, state);
+  QPixmap out = renderIcon(renderer_.data(), rect.size() * painter->device()->devicePixelRatioF(), color);
+  out.setDevicePixelRatio(painter->device()->devicePixelRatioF());
+  painter->drawPixmap(rect, out);
 }
 
 QPixmap PaletteIconEngine::pixmap(const QSize& size, QIcon::Mode mode, QIcon::State state)
@@ -81,15 +100,11 @@ QPixmap PaletteIconEngine::pixmap(const QSize& size, QIcon::Mode mode, QIcon::St
                    .arg(state)
                    .arg(color.name(QColor::HexArgb));
 
-  QPixmap pxm(size);
-  if (QPixmapCache::find(pmckey, &pxm)) return pxm;
-
-  pxm.fill(Qt::transparent);
-  {
-    QPainter p(&pxm);
-    paintIcon(&p, pxm.rect(), color);
+  QPixmap pxm;
+  if (!QPixmapCache::find(pmckey, &pxm)) {
+    pxm = renderIcon(renderer_.data(), size, color);
+    QPixmapCache::insert(pmckey, pxm);
   }
-  QPixmapCache::insert(pmckey, pxm);
   return pxm;
 }
 
@@ -109,24 +124,4 @@ void PaletteIconEngine::virtual_hook(int id, void* data)
     default:
       QIconEngine::virtual_hook(id, data);
   }
-}
-
-void PaletteIconEngine::paintIcon(QPainter* painter, const QRect& rect, const QColor& color)
-{
-  if (!renderer_ || !renderer_->isValid()) return;
-
-  QPixmap glyph(rect.size());
-  glyph.fill(Qt::transparent);
-  {
-    QPainter svg_painter(&glyph);
-    renderer_->render(&svg_painter);
-
-    QPixmap texture(4, 4);
-    texture.fill(color);
-
-    svg_painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-    svg_painter.drawTiledPixmap(rect, texture);
-  }
-
-  painter->drawPixmap(rect, glyph);
 }

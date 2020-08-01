@@ -31,11 +31,10 @@ CONFIG += plugin
 DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
-    palette_icon_engine_plugin.cpp \
-    palette_icon_engine.cpp
+    palette_icon_engine.cpp \
+    plugin.cpp
 
 HEADERS += \
-    palette_icon_engine_plugin.h \
     palette_icon_engine.h
 
 DISTFILES += paletteicon.json
