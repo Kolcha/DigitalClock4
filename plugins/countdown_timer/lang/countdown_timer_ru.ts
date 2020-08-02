@@ -4,12 +4,12 @@
 <context>
     <name>countdown_timer::CountdownTimerPlugin</name>
     <message>
-        <location filename="../countdown_timer_plugin.cpp" line="38"/>
+        <location filename="../countdown_timer_plugin.cpp" line="39"/>
         <source>Countdown timer</source>
         <translation>Таймер обратного отсчёта</translation>
     </message>
     <message>
-        <location filename="../countdown_timer_plugin.cpp" line="39"/>
+        <location filename="../countdown_timer_plugin.cpp" line="40"/>
         <source>Just a countdown timer.</source>
         <translation>Простой таймер обратного отсчёта.</translation>
     </message>
