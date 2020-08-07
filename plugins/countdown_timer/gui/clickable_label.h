@@ -38,6 +38,7 @@ public:
 
 signals:
   void clicked();
+  void singleClicked();
 
 public slots:
   void setRequiredClicksCount(int req_clicks);

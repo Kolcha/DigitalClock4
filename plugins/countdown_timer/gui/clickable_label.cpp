@@ -58,6 +58,7 @@ void ClickableLabel::mouseReleaseEvent(QMouseEvent* event)
 {
   if (event->button() == Qt::LeftButton) {
     if (++cur_clicks_ == requiredClicksCount()) emit clicked();
+    if (cur_clicks_ == 1) emit singleClicked();
     timer_->start();
     event->accept();
     return;

@@ -102,6 +102,7 @@ QWidget* CountdownTimerPlugin::InitWidget(QGridLayout* layout)
   Q_UNUSED(layout);
   ClickableLabel* w = new ClickableLabel();
   connect(w, &ClickableLabel::clicked, this, &CountdownTimerPlugin::RestartTimer);
+  connect(w, &ClickableLabel::singleClicked, this, &CountdownTimerPlugin::PauseTimer);
   return w;
 }
 
@@ -165,6 +166,14 @@ void CountdownTimerPlugin::RestartTimer()
     InitTimer();
     cd_timer_->start();
   }
+}
+
+void CountdownTimerPlugin::PauseTimer()
+{
+  if (cd_timer_->isActive())
+    cd_timer_->stop();
+  else
+    cd_timer_->start();
 }
 
 } // namespace countdown_timer

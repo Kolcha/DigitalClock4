@@ -51,6 +51,7 @@ private slots:
   void InitTimer();
   void HandleTimeout();
   void RestartTimer();
+  void PauseTimer();
 
 private:
   CountdownTimer* cd_timer_;
