@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	2,2,2,95
+FILEVERSION	2,2,2,96
 PRODUCTVERSION	4,7,7,0
 FILEFLAGSMASK	0x3F
 FILEFLAGS	0x0
@@ -14,7 +14,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Auto power off"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "2.2.2.95"
+		VALUE "FileVersion", "2.2.2.96"
 		VALUE "InternalName", "power_off.dll"
 		VALUE "LegalCopyright", "© 2013-2020 Nick Korotysh"
 		VALUE "OriginalFilename", "power_off.dll"

@@ -1,5 +1,5 @@
 1	VERSIONINFO
-FILEVERSION	2,0,1,121
+FILEVERSION	2,0,1,122
 PRODUCTVERSION	4,7,7,0
 FILEFLAGSMASK	0x3F
 FILEFLAGS	0x0
@@ -14,7 +14,7 @@ BLOCK "StringFileInfo"
 		VALUE "Comments", "Any zoom"
 		VALUE "CompanyName", "Nick Korotysh"
 		VALUE "FileDescription", "Digital Clock Plugin"
-		VALUE "FileVersion", "2.0.1.121"
+		VALUE "FileVersion", "2.0.1.122"
 		VALUE "InternalName", "any_zoom.dll"
 		VALUE "LegalCopyright", "© 2013-2020 Nick Korotysh"
 		VALUE "OriginalFilename", "any_zoom.dll"
