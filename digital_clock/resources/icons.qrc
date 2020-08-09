@@ -9,6 +9,7 @@
     <qresource prefix="/clock/about">
         <file alias="about-1.png">images/if_clock-c_750020.png</file>
         <file alias="about-2.png">images/if_favorite_c_750016.png</file>
+        <file alias="donate.png">images/qr-code-512.png</file>
     </qresource>
     <qresource prefix="/clock/icons/tray">
         <file alias="clock.svg">images/time-24.svg</file>

@@ -50,6 +50,7 @@ AboutDialog::AboutDialog(QWidget* parent) :
   setAttribute(Qt::WA_DeleteOnClose);
 
   ui->logo_lbl->setPixmap(QApplication::windowIcon().pixmap(logoSize()));
+  ui->btc_adress_qr->setPixmap(QIcon(":/clock/about/donate.png").pixmap(2*logoSize()));
 
   QString version = QCoreApplication::applicationVersion();
   QString build_type = version[version.length() - 1].isDigit() ? "stable" : "testing";

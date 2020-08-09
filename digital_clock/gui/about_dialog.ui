@@ -161,6 +161,36 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="donate_tab">
+      <attribute name="title">
+       <string>Donate</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="btc_adress_qr">
+         <property name="text">
+          <string notr="true">&lt;BTC QR&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="btc_address_label">
+         <property name="text">
+          <string notr="true">1DLdUCqxXrkufqVqXU18tgsmtvxErHiMQS</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="links_tab">
       <attribute name="title">
        <string>Links</string>
