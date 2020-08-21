@@ -24,11 +24,11 @@ Also there is [mini wiki](https://sourceforge.net/p/digitalclock4/wiki/) (really
 
 Any bug reports, notes, suggestions and anything else can be sent through the [tickets](https://sourceforge.net/p/digitalclock4/tickets/) or directly to me. My contact information can be be found in "About" dialog.
 
-If you like my software, now you can "say thanks" by donating some bits to this Bitcoin address [1DLdUCqxXrkufqVqXU18tgsmtvxErHiMQS](bitcoin:1DLdUCqxXrkufqVqXU18tgsmtvxErHiMQS)
+If you like my software, now you can "say thanks" by donating some bits to this Bitcoin address **[1DLdUCqxXrkufqVqXU18tgsmtvxErHiMQS](bitcoin:1DLdUCqxXrkufqVqXU18tgsmtvxErHiMQS)**
 
 <img src="https://digitalclock4.sourceforge.io/images/qr-code.svg" width=256/>
 
-Donating will also support the [next clock version][clock-next] (created completely from scratch!) development. Thanks!
+Donation will also support the [next clock version][clock-next] (created completely from scratch!) development. Thanks!
 
 Important Note
 --------------
