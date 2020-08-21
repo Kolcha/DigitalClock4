@@ -32,7 +32,7 @@ public:
   LRESULT HandleMouseEvent(int nCode, WPARAM wParam, LPARAM lParam);
 
 signals:
-  void mousePosChanged(const QPoint& pos);
+  void mousePosChanged(const QPoint& pos, MouseTracker::Modifiers m);
 
 private:
   HHOOK hHook = NULL;
@@ -66,7 +66,14 @@ LRESULT MouseTrackerPrivate::HandleMouseEvent(int nCode, WPARAM wParam, LPARAM l
 {
   if (wParam == WM_MOUSEMOVE) {
     MSLLHOOKSTRUCT* s = (MSLLHOOKSTRUCT*)lParam;
-    emit mousePosChanged(QPoint(s->pt.x, s->pt.y));
+    MouseTracker::Modifiers m = MouseTracker::NoModifiers;
+    if (GetAsyncKeyState(VK_SHIFT) != 0)
+      m |= MouseTracker::ShiftModifier;
+    if (GetAsyncKeyState(VK_CONTROL) != 0)
+      m |= MouseTracker::CtrlModifier;
+    if (GetAsyncKeyState(VK_MENU) != 0)
+      m |= MouseTracker::AltModifier;
+    emit mousePosChanged(QPoint(s->pt.x, s->pt.y), m);
   }
   return CallNextHookEx(hHook, nCode, wParam, lParam);
 }
