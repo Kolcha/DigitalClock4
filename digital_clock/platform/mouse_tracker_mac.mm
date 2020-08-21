@@ -61,7 +61,17 @@ void MouseTracker::start()
   void (^mouse_even_handler)(NSEvent*) = ^(NSEvent* event) {
     if ([event type] == NSEventTypeMouseMoved) {
       NSPoint p = point_from_top_left([NSEvent mouseLocation]);
-      emit mousePositionChanged(QPoint(p.x, p.y));
+      NSEventModifierFlags mod_flags = [NSEvent modifierFlags];
+      Modifiers m = NoModifiers;
+      if (mod_flags & NSEventModifierFlagShift)
+        m |= ShiftModifier;
+      if (mod_flags & NSEventModifierFlagControl)
+        m |= CtrlModifier;
+      if (mod_flags & NSEventModifierFlagOption)
+        m |= AltModifier;
+      if (mod_flags & NSEventModifierFlagCommand)
+        m |= CtrlModifier;
+      emit mousePositionChanged(QPoint(p.x, p.y), m);
     }
   };
 
