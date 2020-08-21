@@ -94,7 +94,7 @@ enum Option {
   OPT_TRANSPARENT_ON_HOVER,     /*!< become almost transparent on mouse hover, bool, true/false */
   OPT_OPACITY_ON_HOVER,         /*!< window opacity on mouse hover, qreal, 0..1 */
   OPT_USE_HOVER_BUTTONS,        /*!< enable/disable navigation buttons on mouse hover, bool, true/false */
-  OPT_WINDOW_MOVE_STEP          /*!< movement distance when hover button is clicked, int, 5..100 */
+  OPT_WINDOW_MOVE_STEP,         /*!< movement distance when hover button is clicked, int, 5..100 */
 };
 
 #endif // SETTINGS_KEYS_H
