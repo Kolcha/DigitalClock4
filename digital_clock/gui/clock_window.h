@@ -104,6 +104,7 @@ private:
 
   void globalMouseEnter(MouseTracker::Modifiers m);
   void globalMouseLeave(MouseTracker::Modifiers m);
+  void globalMouseMove(const QPoint& pos, MouseTracker::Modifiers m);
 
   core::ClockSettings* app_config_;
   core::ClockState* state_;

@@ -281,6 +281,7 @@ void SettingsDialog::InitControls()
   ui->transparent_on_hover->setEnabled(QX11Info::isPlatformX11());
   ui->hide_on_mouse_hover->setEnabled(QX11Info::isPlatformX11());
 #endif
+  ui->handle_input_on_ctrl->setChecked(config_->GetValue(OPT_HANDLE_INPUT_ON_CTRL).toBool());
   ui->snap_to_edges->setChecked(config_->GetValue(OPT_SNAP_TO_EDGES).toBool());
   ui->snap_threshold->setValue(config_->GetValue(OPT_SNAP_THRESHOLD).toInt());
   ui->refresh_interval->setValue(config_->GetValue(OPT_REFRESH_INTERVAL).toInt());
@@ -610,6 +611,11 @@ void digital_clock::gui::SettingsDialog::on_transparent_on_hover_clicked(bool ch
 void digital_clock::gui::SettingsDialog::on_hide_on_mouse_hover_clicked(bool checked)
 {
   emit OptionChanged(OPT_OPACITY_ON_HOVER, checked ? 0.0 : 0.15);
+}
+
+void digital_clock::gui::SettingsDialog::on_handle_input_on_ctrl_clicked(bool checked)
+{
+  emit OptionChanged(OPT_HANDLE_INPUT_ON_CTRL, checked);
 }
 
 void digital_clock::gui::SettingsDialog::on_snap_to_edges_clicked(bool checked)

@@ -491,6 +491,8 @@ void ClockWindow::HandleMouseMove(const QPoint& global_pos, MouseTracker::Modifi
 {
   bool entered = property("dc_mouse_entered").toBool();
 
+  globalMouseMove(global_pos, m);
+
   QRect rect = frameGeometry();
 #ifndef Q_OS_MACOS
   QTransform t;
@@ -585,6 +587,17 @@ void ClockWindow::globalMouseLeave(MouseTracker::Modifiers m)
   Q_UNUSED(m);
   if (app_config_->GetValue(OPT_TRANSPARENT_ON_HOVER).toBool())
     setWindowOpacity(app_config_->GetValue(OPT_OPACITY).toReal());
+}
+
+void ClockWindow::globalMouseMove(const QPoint& pos, MouseTracker::Modifiers m)
+{
+  Q_UNUSED(pos);
+  if (app_config_->GetValue(OPT_HANDLE_INPUT_ON_CTRL).toBool()) {
+    if (m & MouseTracker::CtrlModifier)
+      SetWindowFlag(Qt::WindowTransparentForInput, false);
+    else
+      setWindowFlag(Qt::WindowTransparentForInput, app_config_->GetValue(OPT_TRANSP_FOR_INPUT).toBool());
+  }
 }
 
 } // namespace gui

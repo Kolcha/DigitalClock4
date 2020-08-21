@@ -127,6 +127,7 @@ private slots:
   void on_hover_buttons_enabled_clicked(bool checked);
   void on_transparent_on_hover_clicked(bool checked);
   void on_hide_on_mouse_hover_clicked(bool checked);
+  void on_handle_input_on_ctrl_clicked(bool checked);
   void on_snap_to_edges_clicked(bool checked);
   void on_snap_threshold_valueChanged(int value);
   void on_refresh_interval_valueChanged(int value);
