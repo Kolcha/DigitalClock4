@@ -28,7 +28,6 @@
 #include "iskin.h"
 
 #include "gui/hover_buttons.h"
-#include "platform/mouse_tracker.h"
 
 namespace digital_clock {
 
@@ -86,7 +85,7 @@ public slots:
 
   void MoveWindow(Qt::Alignment align);
 
-  void HandleMouseMove(const QPoint& global_pos, MouseTracker::Modifiers m);
+  void HandleMouseMove(const QPoint& global_pos, Qt::KeyboardModifiers m);
 
 private slots:
   void onHoverButtonClicked(HoverButtons::Direction direction);
@@ -102,9 +101,9 @@ private:
 
   void SetVisibleOnAllDesktops(bool set);
 
-  void globalMouseEnter(MouseTracker::Modifiers m);
-  void globalMouseLeave(MouseTracker::Modifiers m);
-  void globalMouseMove(const QPoint& pos, MouseTracker::Modifiers m);
+  void globalMouseEnter(Qt::KeyboardModifiers m);
+  void globalMouseLeave(Qt::KeyboardModifiers m);
+  void globalMouseMove(const QPoint& pos, Qt::KeyboardModifiers m);
 
   core::ClockSettings* app_config_;
   core::ClockState* state_;

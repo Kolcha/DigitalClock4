@@ -38,7 +38,7 @@ public:
   explicit MouseTrackerPrivate(QObject* parent = nullptr);
 
 signals:
-  void mousePosChanged(const QPoint& p, MouseTracker::Modifiers m);
+  void mousePosChanged(const QPoint& p, Qt::KeyboardModifiers m);
 
 public slots:
   void start();
@@ -152,13 +152,13 @@ void MouseTrackerPrivate::run()
       case XI_RawMotion:
         XQueryPointer(dpy, DefaultRootWindow(dpy),
                       &root_ret, &child_ret, &root_x, &root_y, &win_x, &win_y, &mask);
-        MouseTracker::Modifiers m = MouseTracker::NoModifiers;
+        Qt::KeyboardModifiers m = Qt::NoModifier;
         if (mask & ShiftMask)
-          m |= MouseTracker::ShiftModifier;
+          m |= Qt::ShiftModifier;
         if (mask & ControlMask)
-          m |= MouseTracker::CtrlModifier;
+          m |= Qt::ControlModifier;
         if (mask & Mod1Mask)
-          m |= MouseTracker::AltModifier;
+          m |= Qt::AltModifier;
         emit mousePosChanged(QPoint(root_x, root_y), m);
         break;
     }

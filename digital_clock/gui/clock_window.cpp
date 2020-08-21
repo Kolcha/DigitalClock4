@@ -487,7 +487,7 @@ void ClockWindow::MoveWindow(Qt::Alignment align)
   SaveState();
 }
 
-void ClockWindow::HandleMouseMove(const QPoint& global_pos, MouseTracker::Modifiers m)
+void ClockWindow::HandleMouseMove(const QPoint& global_pos, Qt::KeyboardModifiers m)
 {
   bool entered = property("dc_mouse_entered").toBool();
 
@@ -575,25 +575,25 @@ void ClockWindow::SetVisibleOnAllDesktops(bool set)
   Q_UNUSED(set)
 }
 #endif
-void ClockWindow::globalMouseEnter(MouseTracker::Modifiers m)
+void ClockWindow::globalMouseEnter(Qt::KeyboardModifiers m)
 {
   Q_UNUSED(m);
   if (app_config_->GetValue(OPT_TRANSPARENT_ON_HOVER).toBool())
     setWindowOpacity(app_config_->GetValue(OPT_OPACITY_ON_HOVER).toReal());
 }
 
-void ClockWindow::globalMouseLeave(MouseTracker::Modifiers m)
+void ClockWindow::globalMouseLeave(Qt::KeyboardModifiers m)
 {
   Q_UNUSED(m);
   if (app_config_->GetValue(OPT_TRANSPARENT_ON_HOVER).toBool())
     setWindowOpacity(app_config_->GetValue(OPT_OPACITY).toReal());
 }
 
-void ClockWindow::globalMouseMove(const QPoint& pos, MouseTracker::Modifiers m)
+void ClockWindow::globalMouseMove(const QPoint& pos, Qt::KeyboardModifiers m)
 {
   Q_UNUSED(pos);
   if (app_config_->GetValue(OPT_HANDLE_INPUT_ON_CTRL).toBool()) {
-    if (m & MouseTracker::CtrlModifier)
+    if (m & Qt::ControlModifier)
       SetWindowFlag(Qt::WindowTransparentForInput, false);
     else
       setWindowFlag(Qt::WindowTransparentForInput, app_config_->GetValue(OPT_TRANSP_FOR_INPUT).toBool());
