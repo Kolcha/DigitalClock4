@@ -34,8 +34,17 @@ public:
   explicit MouseTracker(QObject* parent = nullptr);
   ~MouseTracker();
 
+  enum Modifier {
+    NoModifiers   = 0x0,
+    ShiftModifier = 0x1,
+    CtrlModifier  = 0x2,
+    AltModifier   = 0x4,
+  };
+  Q_ENUM(Modifier)
+  Q_DECLARE_FLAGS(Modifiers, Modifier)
+
 signals:
-  void mousePositionChanged(const QPoint& p);
+  void mousePositionChanged(const QPoint& p, Modifiers m);
 
 public slots:
   void start();
@@ -44,6 +53,8 @@ public slots:
 private:
   MouseTrackerPrivate* impl_;
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(MouseTracker::Modifiers)
 
 } // namespace digital_clock
 
