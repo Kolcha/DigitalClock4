@@ -46,6 +46,9 @@ void InitDefaults(QSettings::SettingsMap* defaults)
 
   defaults->insert(OPT_RESTART_ON_DBLCLIK, false);
   defaults->insert(OPT_RESTART_ON_TIMEOUT, false);
+
+  defaults->insert(OPT_PAUSE_HOTKEY, QString());
+  defaults->insert(OPT_RESTART_HOTKEY, QString());
 }
 
 } // namespace countdown_timer
