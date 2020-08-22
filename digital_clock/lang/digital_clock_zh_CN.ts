@@ -58,46 +58,51 @@
     </message>
     <message>
         <location filename="../gui/about_dialog.ui" line="166"/>
+        <source>Donate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/about_dialog.ui" line="196"/>
         <source>Links</source>
         <translation>链接</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="172"/>
+        <location filename="../gui/about_dialog.ui" line="202"/>
         <source>Useful links</source>
         <translation>有用的链接</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="178"/>
+        <location filename="../gui/about_dialog.ui" line="208"/>
         <source>&lt;a href=&quot;https://digitalclock4.sourceforge.io/&quot;&gt;project home page&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://digitalclock4.sourceforge.io/&quot;&gt;项目主页&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="191"/>
+        <location filename="../gui/about_dialog.ui" line="221"/>
         <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;bug report/feature request&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;提交BUG/功能建议&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="204"/>
+        <location filename="../gui/about_dialog.ui" line="234"/>
         <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;view full changelog&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;查看完整更新日志&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="217"/>
+        <location filename="../gui/about_dialog.ui" line="247"/>
         <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/&quot;&gt;project Wiki home page&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/&quot;&gt;项目维基主页&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="233"/>
+        <location filename="../gui/about_dialog.ui" line="263"/>
         <source>More info</source>
         <translation>更多信息</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="57"/>
+        <location filename="../gui/about_dialog.cpp" line="58"/>
         <source>version: %1 (%2)</source>
         <translation>版本：%1 (%2)</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="60"/>
+        <location filename="../gui/about_dialog.cpp" line="61"/>
         <source>build date: %1</source>
         <translation>创建日期：%1</translation>
     </message>
@@ -461,67 +466,77 @@
         <translation>实验性选项</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="879"/>
+        <location filename="../gui/settings_dialog.ui" line="920"/>
         <source>show clock in fullscreen mode (may not work for some apps)</source>
         <translation>以全屏模式显示时钟（对某些程序可能不生效）</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="886"/>
+        <location filename="../gui/settings_dialog.ui" line="1069"/>
+        <source>disable &quot;transparent for mouse&quot; on Ctrl (or Mac&apos; Command) key press</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="906"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation>在所有工作空间/虚拟桌面上都显示时钟</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="893"/>
+        <location filename="../gui/settings_dialog.ui" line="913"/>
         <source>better &apos;stay on top&apos; for Linux</source>
         <translation>针对Linux优化的“始终置顶”功能</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="900"/>
+        <location filename="../gui/settings_dialog.ui" line="892"/>
         <source>always keep clock visible on screen, prevent out of screen postion</source>
         <translation>保持时钟在屏幕中可见，防止时钟出现在屏幕内容以外的位置</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="907"/>
+        <location filename="../gui/settings_dialog.ui" line="941"/>
         <source>show clock on all available monitors</source>
         <translation>在所有可用的显示屏上显示时钟</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="914"/>
+        <location filename="../gui/settings_dialog.ui" line="927"/>
         <source>allow only one clock instance at a time</source>
         <translation>同时仅允许一个时钟实例存在</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1026"/>
+        <location filename="../gui/settings_dialog.ui" line="951"/>
+        <source>hide completely</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="885"/>
         <source>Please restart clock after changing any of these options!</source>
         <translation>请在更改以上任意选项后重启本程序！</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="921"/>
+        <location filename="../gui/settings_dialog.ui" line="934"/>
         <source>move clock on click on it (has no effect if &quot;transparent for mouse&quot; is enabled)</source>
         <translation>点击时钟时移动其位置（开启“不响应鼠标操作”时此选项无效）</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="928"/>
+        <location filename="../gui/settings_dialog.ui" line="899"/>
         <source>become almost transparent on mouse hover</source>
         <translation>鼠标经过时透明化</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="940"/>
+        <location filename="../gui/settings_dialog.ui" line="963"/>
         <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
         <translation>注意！过高的刷新率将导致CPU占用升高。默认值为500ms。</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="947"/>
+        <location filename="../gui/settings_dialog.ui" line="970"/>
         <source>snap to edges, threshold</source>
         <translation>靠近边缘时自动吸附；阈值</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="979"/>
+        <location filename="../gui/settings_dialog.ui" line="1002"/>
         <source>window refresh interval</source>
         <translation>窗口刷新间隔</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1046"/>
+        <location filename="../gui/settings_dialog.ui" line="1056"/>
         <source>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in &apos;About&apos; dialog.</source>
         <translation>本页面内容为实验性选项。所有选项默认关闭，启用这些选项并不会对电脑本身造成危害，但有可能导致本程序产生异常。请尽情尝试这些选项，欢迎对它们进行任何形式的测试。如果您发现在启用了某一实验性选项后导致了程序异常，都请告诉我。在菜单的“关于”一栏中可以找到我的联系方式。</translation>
     </message>
@@ -551,28 +566,28 @@
         <translation>2周</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="361"/>
+        <location filename="../gui/settings_dialog.cpp" line="364"/>
         <source>Open texture file</source>
         <translation>打开贴图文件</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="363"/>
+        <location filename="../gui/settings_dialog.cpp" line="366"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>图片文件(*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="451"/>
+        <location filename="../gui/settings_dialog.cpp" line="454"/>
         <source>Export settings to ...</source>
         <translation>将设置导出到...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="453"/>
-        <location filename="../gui/settings_dialog.cpp" line="461"/>
+        <location filename="../gui/settings_dialog.cpp" line="456"/>
+        <location filename="../gui/settings_dialog.cpp" line="464"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>Digital Clock设置文件(*.dcs)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="459"/>
+        <location filename="../gui/settings_dialog.cpp" line="462"/>
         <source>Import settings from ...</source>
         <translation>导入设置文件...</translation>
     </message>

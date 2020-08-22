@@ -58,46 +58,51 @@
     </message>
     <message>
         <location filename="../gui/about_dialog.ui" line="166"/>
+        <source>Donate</source>
+        <translation>Поддержать</translation>
+    </message>
+    <message>
+        <location filename="../gui/about_dialog.ui" line="196"/>
         <source>Links</source>
         <translation>Ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="172"/>
+        <location filename="../gui/about_dialog.ui" line="202"/>
         <source>Useful links</source>
         <translation>Полезные ссылки</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="178"/>
+        <location filename="../gui/about_dialog.ui" line="208"/>
         <source>&lt;a href=&quot;https://digitalclock4.sourceforge.io/&quot;&gt;project home page&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://digitalclock4.sourceforge.io/&quot;&gt;домашняя страница проекта&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="191"/>
+        <location filename="../gui/about_dialog.ui" line="221"/>
         <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;bug report/feature request&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/tickets/&quot;&gt;сообщить об ошибке/предложить функцию&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="204"/>
+        <location filename="../gui/about_dialog.ui" line="234"/>
         <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;view full changelog&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/code/ci/default/tree/changelog.txt&quot;&gt;полный список изменений&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="217"/>
+        <location filename="../gui/about_dialog.ui" line="247"/>
         <source>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/&quot;&gt;project Wiki home page&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://sourceforge.net/p/digitalclock4/wiki/&quot;&gt;Wiki проекта&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.ui" line="233"/>
+        <location filename="../gui/about_dialog.ui" line="263"/>
         <source>More info</source>
         <translation>Информация на других сайтах</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="57"/>
+        <location filename="../gui/about_dialog.cpp" line="58"/>
         <source>version: %1 (%2)</source>
         <translation>версия: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../gui/about_dialog.cpp" line="60"/>
+        <location filename="../gui/about_dialog.cpp" line="61"/>
         <source>build date: %1</source>
         <translation>дата сборки: %1</translation>
     </message>
@@ -461,67 +466,77 @@
         <translation>Экспериментальные</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="879"/>
+        <location filename="../gui/settings_dialog.ui" line="920"/>
         <source>show clock in fullscreen mode (may not work for some apps)</source>
         <translation>показывать часы в полноэкранном режиме (может не работать для некоторых приложений)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="886"/>
+        <location filename="../gui/settings_dialog.ui" line="1069"/>
+        <source>disable &quot;transparent for mouse&quot; on Ctrl (or Mac&apos; Command) key press</source>
+        <translation>отключать &quot;прозрачность для мыши&quot; при нажатом Ctrl (или Command на Mac)</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="906"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation>показывать часы на всех рабочих столах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="893"/>
+        <location filename="../gui/settings_dialog.ui" line="913"/>
         <source>better &apos;stay on top&apos; for Linux</source>
         <translation>альтернативный режим &apos;поверх всех окон&apos;</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="900"/>
+        <location filename="../gui/settings_dialog.ui" line="892"/>
         <source>always keep clock visible on screen, prevent out of screen postion</source>
         <translation>всегда держать часы видимыми на экране, избегать положения вне экрана</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="907"/>
+        <location filename="../gui/settings_dialog.ui" line="941"/>
         <source>show clock on all available monitors</source>
         <translation>показывать часы на всех мониторах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="914"/>
+        <location filename="../gui/settings_dialog.ui" line="927"/>
         <source>allow only one clock instance at a time</source>
         <translation>не запускать более одной копии приложения</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1026"/>
+        <location filename="../gui/settings_dialog.ui" line="951"/>
+        <source>hide completely</source>
+        <translation>полностью скрыть</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="885"/>
         <source>Please restart clock after changing any of these options!</source>
         <translation>Пожалуйста перезапустите часы после изменения любой из данных опций!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="921"/>
+        <location filename="../gui/settings_dialog.ui" line="934"/>
         <source>move clock on click on it (has no effect if &quot;transparent for mouse&quot; is enabled)</source>
         <translation>перемещать часы по клику по ним (не работает когда включено &quot;прозрачность для мыши&quot;)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="928"/>
+        <location filename="../gui/settings_dialog.ui" line="899"/>
         <source>become almost transparent on mouse hover</source>
         <translation>изменять прозрачность при наведении мыши</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="940"/>
+        <location filename="../gui/settings_dialog.ui" line="963"/>
         <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
         <translation>ВНИМАНИЕ! Очень частое обновление может привести к повышенной нагрузке CPU. По умолчанию 500мс.</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="947"/>
+        <location filename="../gui/settings_dialog.ui" line="970"/>
         <source>snap to edges, threshold</source>
         <translation>привязывать к краям, порог</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="979"/>
+        <location filename="../gui/settings_dialog.ui" line="1002"/>
         <source>window refresh interval</source>
         <translation>интервал обновления окна</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1046"/>
+        <location filename="../gui/settings_dialog.ui" line="1056"/>
         <source>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in &apos;About&apos; dialog.</source>
         <translation>На этой вкладке представлены экспериментальные опции. По умолчанию они отключены. Их включение и использование полностью безопасно для Вашего компьютера, но они могут привести к непредсказуемому поведению часов. Пробуйте их если хотите, но любое тестирование только приветствуется. Если после включения любой из данных опций Вы заметите некорректное поведение часов, пожалуйста сообщите мне об этом. Контактную информацию можно найти в окошке &apos;О программе&apos;.</translation>
     </message>
@@ -551,28 +566,28 @@
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="361"/>
+        <location filename="../gui/settings_dialog.cpp" line="364"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="363"/>
+        <location filename="../gui/settings_dialog.cpp" line="366"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="451"/>
+        <location filename="../gui/settings_dialog.cpp" line="454"/>
         <source>Export settings to ...</source>
         <translation>Экспортировать настройки в ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="453"/>
-        <location filename="../gui/settings_dialog.cpp" line="461"/>
+        <location filename="../gui/settings_dialog.cpp" line="456"/>
+        <location filename="../gui/settings_dialog.cpp" line="464"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>файлы конфигурации Digital Clock</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="459"/>
+        <location filename="../gui/settings_dialog.cpp" line="462"/>
         <source>Import settings from ...</source>
         <translation>Импортировать настройки из ...</translation>
     </message>

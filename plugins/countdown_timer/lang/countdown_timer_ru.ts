@@ -39,12 +39,12 @@
     <message>
         <location filename="../gui/settings_dialog.ui" line="40"/>
         <source>restart on double click</source>
-        <translation type="unfinished"></translation>
+        <translation>перезапуск по двойному клику</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="72"/>
         <source>auto-restart countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>перезапуск таймера</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="102"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../gui/settings_dialog.ui" line="145"/>
         <source>chime when countdown finishes</source>
-        <translation type="unfinished"></translation>
+        <translation>сигнал по истечению таймера</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="49"/>
@@ -91,12 +91,12 @@ Set this to -1 to never show days count, or to 0 to always show.</source>
     <message>
         <location filename="../gui/settings_dialog.cpp" line="110"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбор файла</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.cpp" line="112"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a)</source>
-        <translation type="unfinished"></translation>
+        <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a)</translation>
     </message>
 </context>
 </TS>
