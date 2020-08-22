@@ -193,7 +193,7 @@ void CountdownTimerPlugin::PauseTimer()
 
 void CountdownTimerPlugin::onPluginOptionChanged(const QString& key, const QVariant& value)
 {
-  auto init_hotkey = [](auto key_seq, auto receiver, auto method) -> QHotkey* {
+  auto init_hotkey = [=](auto key_seq, auto receiver, auto method) -> QHotkey* {
     QHotkey* hotkey = nullptr;
 #ifdef HAVE_QHOTKEY
     if (!key_seq.isEmpty()) {
