@@ -23,6 +23,12 @@
 #include <QMessageBox>
 #include <QPushButton>
 
+#ifdef HAVE_QHOTKEY
+#include <QHotkey>
+#else
+class QHotkey {};   // just a stub to suppress compiler warnings
+#endif
+
 #include "plugin_settings.h"
 
 #include "core/countdown_timer.h"
@@ -33,7 +39,11 @@
 
 namespace countdown_timer {
 
-CountdownTimerPlugin::CountdownTimerPlugin() : cd_timer_(nullptr)
+CountdownTimerPlugin::CountdownTimerPlugin()
+  : cd_timer_(nullptr)
+  , player_(nullptr)
+  , pause_hotkey_(nullptr)
+  , restart_hotkey_(nullptr)
 {
   InitTranslator(QLatin1String(":/countdown_timer/lang/countdown_timer_"));
   info_.display_name = tr("Countdown timer");
@@ -49,6 +59,8 @@ void CountdownTimerPlugin::Start()
 
   player_ = new QMediaPlayer();
 
+  connect(settings_, &PluginSettings::OptionChanged, this, &CountdownTimerPlugin::onPluginOptionChanged);
+
   ::plugin::WidgetPluginBase::Start();
   InitTimer();
 }
@@ -61,6 +73,9 @@ void CountdownTimerPlugin::Stop()
 
   delete player_;
   player_ = nullptr;
+
+  delete pause_hotkey_;
+  delete restart_hotkey_;
 
   ::plugin::WidgetPluginBase::Stop();
 }
@@ -174,6 +189,34 @@ void CountdownTimerPlugin::PauseTimer()
     cd_timer_->stop();
   else
     cd_timer_->start();
+}
+
+void CountdownTimerPlugin::onPluginOptionChanged(const QString& key, const QVariant& value)
+{
+  auto init_hotkey = [](auto key_seq, auto receiver, auto method) -> QHotkey* {
+    QHotkey* hotkey = nullptr;
+#ifdef HAVE_QHOTKEY
+    if (!key_seq.isEmpty()) {
+      hotkey = new QHotkey(QKeySequence(key_seq), true);
+      connect(hotkey, &QHotkey::activated, receiver, method);
+    }
+#else
+    Q_UNUSED(key_seq);
+    Q_UNUSED(receiver);
+    Q_UNUSED(method);
+#endif
+    return hotkey;
+  };
+
+  if (key == OPT_PAUSE_HOTKEY) {
+    delete pause_hotkey_;
+    pause_hotkey_ = init_hotkey(value.toString(), this, &CountdownTimerPlugin::PauseTimer);
+  }
+
+  if (key == OPT_RESTART_HOTKEY) {
+    delete restart_hotkey_;
+    restart_hotkey_ = init_hotkey(value.toString(), this, &CountdownTimerPlugin::RestartTimer);
+  }
 }
 
 } // namespace countdown_timer

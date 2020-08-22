@@ -25,6 +25,7 @@
 QT       += core gui widgets multimedia
 
 include(../common.pri)
+include(../../3rdparty/qhotkey.pri)
 
 TARGET = countdown_timer
 
