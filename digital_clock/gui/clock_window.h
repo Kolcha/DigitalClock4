@@ -103,7 +103,6 @@ private:
 
   void globalMouseEnter(Qt::KeyboardModifiers m);
   void globalMouseLeave(Qt::KeyboardModifiers m);
-  void globalMouseMove(const QPoint& pos, Qt::KeyboardModifiers m);
 
   core::ClockSettings* app_config_;
   core::ClockState* state_;

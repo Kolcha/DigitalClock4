@@ -873,30 +873,10 @@
        <string>Experimental</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="10" column="0" colspan="2">
-        <widget class="QLabel" name="restart_warning_label">
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
+       <item row="0" column="0" colspan="2">
+        <widget class="QCheckBox" name="show_in_fullscreen">
          <property name="text">
-          <string>Please restart clock after changing any of these options!</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QCheckBox" name="keep_always_visible">
-         <property name="text">
-          <string>always keep clock visible on screen, prevent out of screen postion</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QCheckBox" name="transparent_on_hover">
-         <property name="text">
-          <string>become almost transparent on mouse hover</string>
+          <string>show clock in fullscreen mode (may not work for some apps)</string>
          </property>
         </widget>
        </item>
@@ -914,10 +894,17 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="0" colspan="2">
-        <widget class="QCheckBox" name="show_in_fullscreen">
+       <item row="3" column="0" colspan="2">
+        <widget class="QCheckBox" name="keep_always_visible">
          <property name="text">
-          <string>show clock in fullscreen mode (may not work for some apps)</string>
+          <string>always keep clock visible on screen, prevent out of screen postion</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QCheckBox" name="show_on_all_monitors">
+         <property name="text">
+          <string>show clock on all available monitors</string>
          </property>
         </widget>
        </item>
@@ -935,10 +922,10 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="2">
-        <widget class="QCheckBox" name="show_on_all_monitors">
+       <item row="7" column="0">
+        <widget class="QCheckBox" name="transparent_on_hover">
          <property name="text">
-          <string>show clock on all available monitors</string>
+          <string>become almost transparent on mouse hover</string>
          </property>
         </widget>
        </item>
@@ -952,7 +939,7 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="0" colspan="2">
+       <item row="8" column="0" colspan="2">
         <layout class="QGridLayout" name="gridLayout_2">
          <property name="verticalSpacing">
           <number>2</number>
@@ -1037,7 +1024,20 @@
          </item>
         </layout>
        </item>
-       <item row="11" column="0">
+       <item row="9" column="0" colspan="2">
+        <widget class="QLabel" name="restart_warning_label">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Please restart clock after changing any of these options!</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -1050,23 +1050,13 @@
          </property>
         </spacer>
        </item>
-       <item row="12" column="0" colspan="2">
+       <item row="11" column="0" colspan="2">
         <widget class="QLabel" name="experimental_note_label">
          <property name="text">
           <string>There are experimental features on this tab. They are disabled by default. Enabling and using them is totally safe for computer, but it can lead to undefined clock behaviour. Try them as you want, but any testing is welcome. If you will notice strange behaviour after enabling any of theese options, please let me know about it. Contact information can be found in 'About' dialog.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0" colspan="2">
-        <widget class="QCheckBox" name="handle_input_on_ctrl">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>disable &quot;transparent for mouse&quot; on Ctrl (or Mac' Command) key press</string>
          </property>
         </widget>
        </item>
@@ -1468,22 +1458,6 @@
     <hint type="destinationlabel">
      <x>348</x>
      <y>252</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>transp_for_input</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>handle_input_on_ctrl</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>115</x>
-     <y>85</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>306</x>
-     <y>280</y>
     </hint>
    </hints>
   </connection>

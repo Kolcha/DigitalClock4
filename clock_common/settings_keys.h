@@ -95,7 +95,6 @@ enum Option {
   OPT_OPACITY_ON_HOVER,         /*!< window opacity on mouse hover, qreal, 0..1 */
   OPT_USE_HOVER_BUTTONS,        /*!< enable/disable navigation buttons on mouse hover, bool, true/false */
   OPT_WINDOW_MOVE_STEP,         /*!< movement distance when hover button is clicked, int, 5..100 */
-  OPT_HANDLE_INPUT_ON_CTRL,     /*!< disable "transparent for input" effect on Ctrl key, bool, true/false */
 };
 
 #endif // SETTINGS_KEYS_H
