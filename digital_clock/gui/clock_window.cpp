@@ -487,8 +487,11 @@ void ClockWindow::MoveWindow(Qt::Alignment align)
   SaveState();
 }
 
-void ClockWindow::HandleMouseMove(const QPoint& global_pos, Qt::KeyboardModifiers m)
+void ClockWindow::HandleMouseMove(const QPoint& global_pos)
 {
+  if (!app_config_->GetValue(OPT_TRANSPARENT_ON_HOVER).toBool())
+    return;
+
   bool entered = property("dc_mouse_entered").toBool();
 
   QRect rect = frameGeometry();
@@ -499,12 +502,12 @@ void ClockWindow::HandleMouseMove(const QPoint& global_pos, Qt::KeyboardModifier
 #endif
   if (rect.contains(global_pos) && !entered) {
     entered = true;
-    globalMouseEnter(m);
+    setWindowOpacity(app_config_->GetValue(OPT_OPACITY_ON_HOVER).toReal());
   }
 
   if (!rect.contains(global_pos) && entered) {
     entered = false;
-    globalMouseLeave(m);
+    setWindowOpacity(app_config_->GetValue(OPT_OPACITY).toReal());
   }
 
   setProperty("dc_mouse_entered", entered);
@@ -573,19 +576,5 @@ void ClockWindow::SetVisibleOnAllDesktops(bool set)
   Q_UNUSED(set)
 }
 #endif
-void ClockWindow::globalMouseEnter(Qt::KeyboardModifiers m)
-{
-  Q_UNUSED(m);
-  if (app_config_->GetValue(OPT_TRANSPARENT_ON_HOVER).toBool())
-    setWindowOpacity(app_config_->GetValue(OPT_OPACITY_ON_HOVER).toReal());
-}
-
-void ClockWindow::globalMouseLeave(Qt::KeyboardModifiers m)
-{
-  Q_UNUSED(m);
-  if (app_config_->GetValue(OPT_TRANSPARENT_ON_HOVER).toBool())
-    setWindowOpacity(app_config_->GetValue(OPT_OPACITY).toReal());
-}
-
 } // namespace gui
 } // namespace digital_clock

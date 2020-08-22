@@ -85,7 +85,7 @@ public slots:
 
   void MoveWindow(Qt::Alignment align);
 
-  void HandleMouseMove(const QPoint& global_pos, Qt::KeyboardModifiers m);
+  void HandleMouseMove(const QPoint& global_pos);
 
 private slots:
   void onHoverButtonClicked(HoverButtons::Direction direction);
@@ -100,9 +100,6 @@ private:
   void SetWindowFlag(Qt::WindowType flag, bool set);
 
   void SetVisibleOnAllDesktops(bool set);
-
-  void globalMouseEnter(Qt::KeyboardModifiers m);
-  void globalMouseLeave(Qt::KeyboardModifiers m);
 
   core::ClockSettings* app_config_;
   core::ClockState* state_;
