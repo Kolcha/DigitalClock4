@@ -41,6 +41,9 @@ const char* const OPT_HIDE_DAYS_THRESHOLD = "hide_days_threshold";
 const char* const OPT_RESTART_ON_DBLCLIK  = "restart_on_dblclik";
 const char* const OPT_RESTART_ON_TIMEOUT  = "restart_on_timeout";
 
+const char* const OPT_PAUSE_HOTKEY      = "pause_hotkey";
+const char* const OPT_RESTART_HOTKEY    = "restart_hotkey";
+
 QDateTime GetDefaultDate();
 
 void InitDefaults(QSettings::SettingsMap* defaults);

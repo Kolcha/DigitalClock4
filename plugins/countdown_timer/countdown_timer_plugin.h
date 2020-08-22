@@ -21,6 +21,7 @@
 
 #include "widget_plugin_base.h"
 
+class QHotkey;
 class QMediaPlayer;
 
 namespace countdown_timer {
@@ -53,9 +54,14 @@ private slots:
   void RestartTimer();
   void PauseTimer();
 
+  void onPluginOptionChanged(const QString& key, const QVariant& value);
+
 private:
   CountdownTimer* cd_timer_;
   QMediaPlayer* player_;
+
+  QHotkey* pause_hotkey_;
+  QHotkey* restart_hotkey_;
 };
 
 } // namespace countdown_timer
