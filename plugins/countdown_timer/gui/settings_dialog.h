@@ -64,6 +64,9 @@ private slots:
 
   void on_min_days_edit_valueChanged(int arg1);
 
+  void on_pause_seq_edit_editingFinished();
+  void on_restart_seq_edit_editingFinished();
+
 private:
   Ui::SettingsDialog* ui;
 };

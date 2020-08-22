@@ -58,6 +58,11 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
   ui->chime_on_timeout->setChecked(settings.value(OPT_CHIME_ON_TIMEOUT).toBool());
   ui->show_msg->setChecked(settings.value(OPT_SHOW_MESSAGE).toBool());
   ui->msg_text_edit->setPlainText(settings.value(OPT_MESSAGE_TEXT).toString());
+  ui->pause_seq_edit->setKeySequence(QKeySequence(settings.value(OPT_PAUSE_HOTKEY).toString()));
+  ui->restart_seq_edit->setKeySequence(QKeySequence(settings.value(OPT_RESTART_HOTKEY).toString()));
+#ifndef HAVE_QHOTKEY
+  ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->hotkeys_tab));
+#endif
 }
 
 void SettingsDialog::on_target_time_rbtn_clicked()
@@ -126,6 +131,16 @@ void SettingsDialog::on_msg_text_edit_textChanged()
 void SettingsDialog::on_min_days_edit_valueChanged(int arg1)
 {
   emit OptionChanged(OPT_HIDE_DAYS_THRESHOLD, arg1);
+}
+
+void SettingsDialog::on_pause_seq_edit_editingFinished()
+{
+  emit OptionChanged(OPT_PAUSE_HOTKEY, ui->pause_seq_edit->keySequence().toString());
+}
+
+void SettingsDialog::on_restart_seq_edit_editingFinished()
+{
+  emit OptionChanged(OPT_RESTART_HOTKEY, ui->restart_seq_edit->keySequence().toString());
 }
 
 } // namespace countdown_timer
