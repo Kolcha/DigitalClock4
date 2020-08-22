@@ -26,7 +26,7 @@ Any bug reports, notes, suggestions and anything else can be sent through the [t
 
 If you like my software, now you can "say thanks" by donating some bits to this Bitcoin address **[1DLdUCqxXrkufqVqXU18tgsmtvxErHiMQS](bitcoin:1DLdUCqxXrkufqVqXU18tgsmtvxErHiMQS)**
 
-<img src="https://digitalclock4.sourceforge.io/images/qr-code.svg" width=256/>
+![donate](https://digitalclock4.sourceforge.io/qr/qr-code-259.svg)
 
 Donation will also support the [next clock version][clock-next] (created completely from scratch!) development. Thanks!
 
