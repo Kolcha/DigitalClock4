@@ -65,6 +65,7 @@ protected:
   void paintEvent(QPaintEvent* event) override;
   void resizeEvent(QResizeEvent* event) override;
   void contextMenuEvent(QContextMenuEvent* event) override;
+  bool event(QEvent* event) override;
 
 public slots:
   void ApplyOption(const Option opt, const QVariant& value);

@@ -266,6 +266,15 @@ void ClockWindow::contextMenuEvent(QContextMenuEvent* event)
   event->accept();
 }
 
+bool ClockWindow::event(QEvent* event)
+{
+  if (event->type() == QEvent::WindowDeactivate &&
+      !previewMode() &&
+      !(windowFlags() & Qt::WindowStaysOnTopHint))
+    window()->lower();
+  return QWidget::event(event);
+}
+
 void ClockWindow::ApplyOption(const Option opt, const QVariant& value)
 {
   switch (opt) {
