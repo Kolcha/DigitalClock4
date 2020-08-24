@@ -134,7 +134,8 @@ void BaseSettingsWidget::on_clock_font_button_toggled(bool checked)
 void BaseSettingsWidget::on_choose_font_button_clicked()
 {
   bool ok = false;
-  QFont font = QFontDialog::getFont(&ok, last_font_, this);
+  QFont font = QFontDialog::getFont(&ok, last_font_, this,
+               tr("Select Font"), QFontDialog::DontUseNativeDialog);
   if (ok) {
     emit OptionChanged(OPT_CUSTOM_FONT, font);
     last_font_ = font;

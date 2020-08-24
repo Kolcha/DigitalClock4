@@ -400,7 +400,8 @@ void SettingsDialog::on_use_font_clicked()
 void SettingsDialog::on_sel_font_btn_clicked()
 {
   bool ok = false;
-  QFont font = QFontDialog::getFont(&ok, last_font_, this);
+  QFont font = QFontDialog::getFont(&ok, last_font_, this,
+               tr("Select Font"), QFontDialog::DontUseNativeDialog);
   if (ok) {
     emit OptionChanged(OPT_FONT, font);
     last_font_ = font;
