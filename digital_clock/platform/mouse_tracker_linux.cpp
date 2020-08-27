@@ -98,6 +98,7 @@ MouseTrackerPrivate::MouseTrackerPrivate(QObject* parent)
   : QThread(parent)
   , should_stop_(false)
 {
+  qRegisterMetaType<Qt::KeyboardModifiers>();
 }
 
 void MouseTrackerPrivate::start()
