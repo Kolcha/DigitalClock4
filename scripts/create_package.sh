@@ -4,8 +4,8 @@
 
 CLOCK_APP_NAME="Digital Clock 4"
 
-CLOCK_SRC_PATH="$HOME/Documents/Qt/digital_clock_4"
-CLOCK_DATA_PATH="$HOME/Documents/Qt/digital_clock_data"
+CLOCK_SRC_PATH=$(dirname $(readlink -e -n "${0%/*}"))
+CLOCK_DATA_PATH=$(readlink -e -n "$CLOCK_SRC_PATH/../digital_clock_data")
 
 # some validation
 failed=0
