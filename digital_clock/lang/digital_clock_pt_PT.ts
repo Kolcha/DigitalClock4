@@ -466,72 +466,67 @@
         <translation>Experimental</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="920"/>
+        <location filename="../gui/settings_dialog.ui" line="879"/>
         <source>show clock in fullscreen mode (may not work for some apps)</source>
         <translation>mostrar relógio no modo ecrã total (pode não funcionar para algumas aplicações)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1069"/>
-        <source>disable &quot;transparent for mouse&quot; on Ctrl (or Mac&apos; Command) key press</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="906"/>
+        <location filename="../gui/settings_dialog.ui" line="886"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation>mostrar relógio em todos os espaços de trabalho/espaços de trabalho virtuais</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="913"/>
+        <location filename="../gui/settings_dialog.ui" line="893"/>
         <source>better &apos;stay on top&apos; for Linux</source>
         <translation>melhor &apos;manter por cima de tudo&apos; em Linux</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="892"/>
+        <location filename="../gui/settings_dialog.ui" line="900"/>
         <source>always keep clock visible on screen, prevent out of screen postion</source>
         <translation>manter o relógio sempre visível no ecrã, previne que saia da área do ecrã</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="941"/>
+        <location filename="../gui/settings_dialog.ui" line="907"/>
         <source>show clock on all available monitors</source>
         <translation>mostrar relógio em todos os monitores disponíveis</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="927"/>
+        <location filename="../gui/settings_dialog.ui" line="914"/>
         <source>allow only one clock instance at a time</source>
         <translation>permitir apenas 1 relógio de cada vez</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="951"/>
+        <location filename="../gui/settings_dialog.ui" line="938"/>
         <source>hide completely</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="885"/>
+        <location filename="../gui/settings_dialog.ui" line="1036"/>
         <source>Please restart clock after changing any of these options!</source>
         <translation>Por favor reinicie o relógio após alterar qualquer uma destas opções!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="934"/>
+        <location filename="../gui/settings_dialog.ui" line="921"/>
         <source>move clock on click on it (has no effect if &quot;transparent for mouse&quot; is enabled)</source>
         <translation>mover o relógio ao clicar nele (não tem efeito se estiver ativa a opção &quot;transparente para o rato&quot;)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="899"/>
+        <location filename="../gui/settings_dialog.ui" line="928"/>
         <source>become almost transparent on mouse hover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="963"/>
+        <location filename="../gui/settings_dialog.ui" line="950"/>
         <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
         <translation>ATENÇÃO! Refrescar a uma taxa rápida pode sobrecarregar o processador. O padrão é 500ms.</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="970"/>
+        <location filename="../gui/settings_dialog.ui" line="957"/>
         <source>snap to edges, threshold</source>
         <translation>atrair às bordas, limiar</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1002"/>
+        <location filename="../gui/settings_dialog.ui" line="989"/>
         <source>window refresh interval</source>
         <translation>intervalo de refrescamento da janela</translation>
     </message>
@@ -566,14 +561,19 @@
         <translation>2 semanas</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="364"/>
+        <location filename="../gui/settings_dialog.cpp" line="363"/>
         <source>Open texture file</source>
         <translation>Abrir ficheiro de textura</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="366"/>
+        <location filename="../gui/settings_dialog.cpp" line="365"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Imagens (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="404"/>
+        <source>Select Font</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.cpp" line="454"/>

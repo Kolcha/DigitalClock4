@@ -113,5 +113,10 @@
         <source>use current clock skin instead of customized font</source>
         <translation>使用当前时钟的皮肤设置</translation>
     </message>
+    <message>
+        <location filename="../base_settings_widget.cpp" line="138"/>
+        <source>Select Font</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

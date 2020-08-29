@@ -2,14 +2,27 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru">
 <context>
+    <name>QHotkey</name>
+    <message>
+        <location filename="../../../../3rdparty/QHotkey/QHotkey/qhotkey.cpp" line="283"/>
+        <source>Failed to register %1. Error: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../3rdparty/QHotkey/QHotkey/qhotkey.cpp" line="303"/>
+        <source>Failed to unregister %1. Error: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>countdown_timer::CountdownTimerPlugin</name>
     <message>
-        <location filename="../countdown_timer_plugin.cpp" line="39"/>
+        <location filename="../countdown_timer_plugin.cpp" line="49"/>
         <source>Countdown timer</source>
         <translation>Таймер обратного отсчёта</translation>
     </message>
     <message>
-        <location filename="../countdown_timer_plugin.cpp" line="40"/>
+        <location filename="../countdown_timer_plugin.cpp" line="50"/>
         <source>Just a countdown timer.</source>
         <translation>Простой таймер обратного отсчёта.</translation>
     </message>
@@ -72,6 +85,21 @@
         <translation>сигнал по истечению таймера</translation>
     </message>
     <message>
+        <location filename="../gui/settings_dialog.ui" line="165"/>
+        <source>Hotkeys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="177"/>
+        <source>pause timer</source>
+        <translation>приостановить таймер</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="203"/>
+        <source>restart timer</source>
+        <translation>перезапустить таймер</translation>
+    </message>
+    <message>
         <location filename="../gui/settings_dialog.ui" line="49"/>
         <source>minimum days count to show</source>
         <translation>минимальное количество дней для отображения</translation>
@@ -89,12 +117,12 @@ Set this to -1 to never show days count, or to 0 to always show.</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="110"/>
+        <location filename="../gui/settings_dialog.cpp" line="115"/>
         <source>Open File</source>
         <translation>Выбор файла</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="112"/>
+        <location filename="../gui/settings_dialog.cpp" line="117"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a)</source>
         <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a)</translation>
     </message>

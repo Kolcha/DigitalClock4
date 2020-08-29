@@ -466,72 +466,67 @@
         <translation>实验性选项</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="920"/>
+        <location filename="../gui/settings_dialog.ui" line="879"/>
         <source>show clock in fullscreen mode (may not work for some apps)</source>
         <translation>以全屏模式显示时钟（对某些程序可能不生效）</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1069"/>
-        <source>disable &quot;transparent for mouse&quot; on Ctrl (or Mac&apos; Command) key press</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="906"/>
+        <location filename="../gui/settings_dialog.ui" line="886"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation>在所有工作空间/虚拟桌面上都显示时钟</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="913"/>
+        <location filename="../gui/settings_dialog.ui" line="893"/>
         <source>better &apos;stay on top&apos; for Linux</source>
         <translation>针对Linux优化的“始终置顶”功能</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="892"/>
+        <location filename="../gui/settings_dialog.ui" line="900"/>
         <source>always keep clock visible on screen, prevent out of screen postion</source>
         <translation>保持时钟在屏幕中可见，防止时钟出现在屏幕内容以外的位置</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="941"/>
+        <location filename="../gui/settings_dialog.ui" line="907"/>
         <source>show clock on all available monitors</source>
         <translation>在所有可用的显示屏上显示时钟</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="927"/>
+        <location filename="../gui/settings_dialog.ui" line="914"/>
         <source>allow only one clock instance at a time</source>
         <translation>同时仅允许一个时钟实例存在</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="951"/>
+        <location filename="../gui/settings_dialog.ui" line="938"/>
         <source>hide completely</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="885"/>
+        <location filename="../gui/settings_dialog.ui" line="1036"/>
         <source>Please restart clock after changing any of these options!</source>
         <translation>请在更改以上任意选项后重启本程序！</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="934"/>
+        <location filename="../gui/settings_dialog.ui" line="921"/>
         <source>move clock on click on it (has no effect if &quot;transparent for mouse&quot; is enabled)</source>
         <translation>点击时钟时移动其位置（开启“不响应鼠标操作”时此选项无效）</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="899"/>
+        <location filename="../gui/settings_dialog.ui" line="928"/>
         <source>become almost transparent on mouse hover</source>
         <translation>鼠标经过时透明化</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="963"/>
+        <location filename="../gui/settings_dialog.ui" line="950"/>
         <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
         <translation>注意！过高的刷新率将导致CPU占用升高。默认值为500ms。</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="970"/>
+        <location filename="../gui/settings_dialog.ui" line="957"/>
         <source>snap to edges, threshold</source>
         <translation>靠近边缘时自动吸附；阈值</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1002"/>
+        <location filename="../gui/settings_dialog.ui" line="989"/>
         <source>window refresh interval</source>
         <translation>窗口刷新间隔</translation>
     </message>
@@ -566,14 +561,19 @@
         <translation>2周</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="364"/>
+        <location filename="../gui/settings_dialog.cpp" line="363"/>
         <source>Open texture file</source>
         <translation>打开贴图文件</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="366"/>
+        <location filename="../gui/settings_dialog.cpp" line="365"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>图片文件(*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="404"/>
+        <source>Select Font</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.cpp" line="454"/>

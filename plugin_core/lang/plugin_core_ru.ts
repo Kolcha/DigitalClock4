@@ -113,5 +113,10 @@
         <source>use current clock skin instead of customized font</source>
         <translation>использовать стиль часов вместо шрифта</translation>
     </message>
+    <message>
+        <location filename="../base_settings_widget.cpp" line="138"/>
+        <source>Select Font</source>
+        <translation>Выбор шрифта</translation>
+    </message>
 </context>
 </TS>

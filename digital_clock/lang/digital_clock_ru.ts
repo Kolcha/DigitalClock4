@@ -466,72 +466,67 @@
         <translation>Экспериментальные</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="920"/>
+        <location filename="../gui/settings_dialog.ui" line="879"/>
         <source>show clock in fullscreen mode (may not work for some apps)</source>
         <translation>показывать часы в полноэкранном режиме (может не работать для некоторых приложений)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1069"/>
-        <source>disable &quot;transparent for mouse&quot; on Ctrl (or Mac&apos; Command) key press</source>
-        <translation>отключать &quot;прозрачность для мыши&quot; при нажатом Ctrl (или Command на Mac)</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="906"/>
+        <location filename="../gui/settings_dialog.ui" line="886"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation>показывать часы на всех рабочих столах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="913"/>
+        <location filename="../gui/settings_dialog.ui" line="893"/>
         <source>better &apos;stay on top&apos; for Linux</source>
         <translation>альтернативный режим &apos;поверх всех окон&apos;</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="892"/>
+        <location filename="../gui/settings_dialog.ui" line="900"/>
         <source>always keep clock visible on screen, prevent out of screen postion</source>
         <translation>всегда держать часы видимыми на экране, избегать положения вне экрана</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="941"/>
+        <location filename="../gui/settings_dialog.ui" line="907"/>
         <source>show clock on all available monitors</source>
         <translation>показывать часы на всех мониторах</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="927"/>
+        <location filename="../gui/settings_dialog.ui" line="914"/>
         <source>allow only one clock instance at a time</source>
         <translation>не запускать более одной копии приложения</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="951"/>
+        <location filename="../gui/settings_dialog.ui" line="938"/>
         <source>hide completely</source>
         <translation>полностью скрыть</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="885"/>
+        <location filename="../gui/settings_dialog.ui" line="1036"/>
         <source>Please restart clock after changing any of these options!</source>
         <translation>Пожалуйста перезапустите часы после изменения любой из данных опций!</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="934"/>
+        <location filename="../gui/settings_dialog.ui" line="921"/>
         <source>move clock on click on it (has no effect if &quot;transparent for mouse&quot; is enabled)</source>
         <translation>перемещать часы по клику по ним (не работает когда включено &quot;прозрачность для мыши&quot;)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="899"/>
+        <location filename="../gui/settings_dialog.ui" line="928"/>
         <source>become almost transparent on mouse hover</source>
         <translation>изменять прозрачность при наведении мыши</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="963"/>
+        <location filename="../gui/settings_dialog.ui" line="950"/>
         <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
         <translation>ВНИМАНИЕ! Очень частое обновление может привести к повышенной нагрузке CPU. По умолчанию 500мс.</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="970"/>
+        <location filename="../gui/settings_dialog.ui" line="957"/>
         <source>snap to edges, threshold</source>
         <translation>привязывать к краям, порог</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="1002"/>
+        <location filename="../gui/settings_dialog.ui" line="989"/>
         <source>window refresh interval</source>
         <translation>интервал обновления окна</translation>
     </message>
@@ -566,14 +561,19 @@
         <translation>2 недели</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="364"/>
+        <location filename="../gui/settings_dialog.cpp" line="363"/>
         <source>Open texture file</source>
         <translation>Открыть файл текстуры</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="366"/>
+        <location filename="../gui/settings_dialog.cpp" line="365"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Картинки (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.cpp" line="404"/>
+        <source>Select Font</source>
+        <translation>Выбор шрифта</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.cpp" line="454"/>

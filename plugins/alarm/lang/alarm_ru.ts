@@ -157,7 +157,7 @@
     <message>
         <location filename="../gui/edit_alarm_dialog.cpp" line="155"/>
         <source>Select sound</source>
-        <translation>Выберите звук</translation>
+        <translation>Выбор звука</translation>
     </message>
     <message>
         <location filename="../gui/edit_alarm_dialog.cpp" line="157"/>
