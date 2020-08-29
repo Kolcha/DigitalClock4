@@ -1,3 +1,31 @@
+Whats new in 4.7.8:
+-------------------
+Features:
+ - autostart for multiple instances (Windows portable version only)
+ - option to completely hide clock on mouse hover
+
+Core:
+ - Qt 5.12.9 for all supported platforms
+ - added few workarounds for Wayland-based Linux systems
+ - change updater User-Agent to latest Firefox ESR release
+
+GUI:
+ - added Chinese (China) (zh-CN) translation
+ - fixed few translation typo
+ - updated palette icon engine
+ - added donation link into About dialog
+ - keep inactive clock window behind all other windows
+ - fixed issue with light fonts selection
+
+Plugins:
+ - countdown_timer: double-click on the countdown timer restarts it
+ - countdown_timer: added "Auto-restart countdown" option
+ - countdown_timer: chime when countdown finishes
+ - countdown_timer: don't set focus to existing message box button
+ - countdown_timer: pause timer on click on it
+ - countdown_timer: hotkeys support
+
+
 Whats new in 4.7.7:
 -------------------
 Features:
