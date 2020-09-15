@@ -56,6 +56,8 @@ private slots:
   void on_restart_on_dblclik_clicked(bool checked);
   void on_restart_on_timeout_clicked(bool checked);
 
+  void on_hide_if_inactive_clicked(bool checked);
+
   void on_chime_on_timeout_clicked(bool checked);
   void on_browse_sound_btn_clicked();
 

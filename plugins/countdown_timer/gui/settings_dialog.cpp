@@ -55,6 +55,7 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
   ui->min_days_edit->setValue(settings.value(OPT_HIDE_DAYS_THRESHOLD).toInt());
   ui->restart_on_dblclik->setChecked(settings.value(OPT_RESTART_ON_DBLCLIK).toBool());
   ui->restart_on_timeout->setChecked(settings.value(OPT_RESTART_ON_TIMEOUT).toBool());
+  ui->hide_if_inactive->setChecked(settings.value(OPT_HIDE_INACTIVE).toBool());
   ui->chime_on_timeout->setChecked(settings.value(OPT_CHIME_ON_TIMEOUT).toBool());
   ui->show_msg->setChecked(settings.value(OPT_SHOW_MESSAGE).toBool());
   ui->msg_text_edit->setPlainText(settings.value(OPT_MESSAGE_TEXT).toString());
@@ -103,6 +104,11 @@ void SettingsDialog::on_restart_on_dblclik_clicked(bool checked)
 void SettingsDialog::on_restart_on_timeout_clicked(bool checked)
 {
   emit OptionChanged(OPT_RESTART_ON_TIMEOUT, checked);
+}
+
+void SettingsDialog::on_hide_if_inactive_clicked(bool checked)
+{
+  emit OptionChanged(OPT_HIDE_INACTIVE, checked);
 }
 
 void SettingsDialog::on_chime_on_timeout_clicked(bool checked)

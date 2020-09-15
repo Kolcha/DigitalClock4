@@ -54,6 +54,8 @@ private slots:
   void RestartTimer();
   void PauseTimer();
 
+  void setWidgetsVisible(bool visible);
+
   void onPluginOptionChanged(const QString& key, const QVariant& value);
 
 private:
@@ -62,6 +64,8 @@ private:
 
   QHotkey* pause_hotkey_;
   QHotkey* restart_hotkey_;
+
+  QVector<QPointer<QWidget>> timer_widgets_;
 };
 
 } // namespace countdown_timer

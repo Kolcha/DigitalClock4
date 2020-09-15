@@ -77,6 +77,8 @@ void CountdownTimerPlugin::Stop()
   delete pause_hotkey_;
   delete restart_hotkey_;
 
+  timer_widgets_.clear();
+
   ::plugin::WidgetPluginBase::Stop();
 }
 
@@ -118,6 +120,7 @@ QWidget* CountdownTimerPlugin::InitWidget(QGridLayout* layout)
   ClickableLabel* w = new ClickableLabel();
   connect(w, &ClickableLabel::clicked, this, &CountdownTimerPlugin::RestartTimer);
   connect(w, &ClickableLabel::singleClicked, this, &CountdownTimerPlugin::PauseTimer);
+  timer_widgets_.append(w);
   return w;
 }
 
@@ -191,6 +194,13 @@ void CountdownTimerPlugin::PauseTimer()
     cd_timer_->start();
 }
 
+void CountdownTimerPlugin::setWidgetsVisible(bool visible)
+{
+  for (auto w : timer_widgets_)
+    if (w)
+      w->setVisible(visible);
+}
+
 void CountdownTimerPlugin::onPluginOptionChanged(const QString& key, const QVariant& value)
 {
   auto init_hotkey = [=](auto key_seq, auto receiver, auto method) -> QHotkey* {
@@ -216,6 +226,16 @@ void CountdownTimerPlugin::onPluginOptionChanged(const QString& key, const QVari
   if (key == OPT_RESTART_HOTKEY) {
     delete restart_hotkey_;
     restart_hotkey_ = init_hotkey(value.toString(), this, &CountdownTimerPlugin::RestartTimer);
+  }
+
+  if (key == OPT_HIDE_INACTIVE && cd_timer_) {
+    if (value.toBool()) {
+      connect(cd_timer_, &CountdownTimer::activityChanged, this, &CountdownTimerPlugin::setWidgetsVisible);
+      setWidgetsVisible(cd_timer_->isActive());
+    } else {
+      disconnect(cd_timer_, &CountdownTimer::activityChanged, this, &CountdownTimerPlugin::setWidgetsVisible);
+      setWidgetsVisible(true);
+    }
   }
 }
 
