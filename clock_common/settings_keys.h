@@ -95,6 +95,7 @@ enum Option {
   OPT_OPACITY_ON_HOVER,         /*!< window opacity on mouse hover, qreal, 0..1 */
   OPT_USE_HOVER_BUTTONS,        /*!< enable/disable navigation buttons on mouse hover, bool, true/false */
   OPT_WINDOW_MOVE_STEP,         /*!< movement distance when hover button is clicked, int, 5..100 */
+  OPT_SHOW_TASKBAR_ICON,        /*!< show app icon in Windows TaskBar, bool, true/false */
 };
 
 #endif // SETTINGS_KEYS_H

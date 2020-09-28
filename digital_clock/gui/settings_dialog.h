@@ -125,6 +125,7 @@ private slots:
   void on_show_on_all_monitors_clicked(bool checked);
   void on_only_one_instance_clicked(bool checked);
   void on_hover_buttons_enabled_clicked(bool checked);
+  void on_taskbar_icon_enable_clicked(bool checked);
   void on_transparent_on_hover_clicked(bool checked);
   void on_hide_on_mouse_hover_clicked(bool checked);
   void on_snap_to_edges_clicked(bool checked);

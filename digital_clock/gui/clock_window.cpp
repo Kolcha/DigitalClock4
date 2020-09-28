@@ -89,7 +89,7 @@ ClockWindow::ClockWindow(core::ClockSettings* app_config, int id, QWidget* paren
 #ifdef Q_OS_MACOS
   setWindowFlag(Qt::NoDropShadowWindowHint);
 #else
-  setWindowFlag(Qt::Tool);
+  if (!app_config->GetValue(OPT_SHOW_TASKBAR_ICON).toBool()) setWindowFlag(Qt::Tool);
 #endif
   setAttribute(Qt::WA_TranslucentBackground);
 
@@ -454,7 +454,7 @@ void ClockWindow::LoadState()
   this->setVisible(state_->GetVariable(S_OPT_VISIBLE, true).toBool());
   last_visibility_ = this->isVisible();
 #ifdef Q_OS_WIN
-  if (this->isVisible()) KeepOnDesktop();
+  if (this->isVisible() && ((windowFlags() & Qt::Tool) == Qt::Tool)) KeepOnDesktop();
 #endif
 }
 

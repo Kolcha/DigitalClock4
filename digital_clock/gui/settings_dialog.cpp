@@ -88,6 +88,7 @@ SettingsDialog::SettingsDialog(core::ClockSettings* config, core::ClockState* st
   ui->defaults_bth->setVisible(false);   // temporary, not implemented
 #ifndef Q_OS_WIN
   ui->show_in_fullscreen->setVisible(false);   // supported only on Windows
+  ui->taskbar_icon_enable->setVisible(false);  // supported only on Windows
 #endif
 #ifndef Q_OS_LINUX
   ui->better_stay_on_top->setVisible(false);  // supported only on Linux
@@ -275,6 +276,7 @@ void SettingsDialog::InitControls()
   ui->show_on_all_monitors->setChecked(config_->GetValue(OPT_SHOW_ON_ALL_MONITORS).toBool());
   ui->only_one_instance->setChecked(config_->GetValue(OPT_ONLY_ONE_INSTANCE).toBool());
   ui->hover_buttons_enabled->setChecked(config_->GetValue(OPT_USE_HOVER_BUTTONS).toBool());
+  ui->taskbar_icon_enable->setChecked(config_->GetValue(OPT_SHOW_TASKBAR_ICON).toBool());
   ui->transparent_on_hover->setChecked(config_->GetValue(OPT_TRANSPARENT_ON_HOVER).toBool());
   ui->hide_on_mouse_hover->setChecked(config_->GetValue(OPT_OPACITY_ON_HOVER).toReal() < 0.02);
 #ifdef Q_OS_LINUX
@@ -601,6 +603,11 @@ void digital_clock::gui::SettingsDialog::on_only_one_instance_clicked(bool check
 void digital_clock::gui::SettingsDialog::on_hover_buttons_enabled_clicked(bool checked)
 {
   emit OptionChanged(OPT_USE_HOVER_BUTTONS, checked);
+}
+
+void digital_clock::gui::SettingsDialog::on_taskbar_icon_enable_clicked(bool checked)
+{
+  emit OptionChanged(OPT_SHOW_TASKBAR_ICON, checked);
 }
 
 void digital_clock::gui::SettingsDialog::on_transparent_on_hover_clicked(bool checked)

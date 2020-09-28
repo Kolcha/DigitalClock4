@@ -81,6 +81,7 @@ QMap<Option, QVariant> ClockSettings::GetSettings() const
   all_settings[OPT_OPACITY_ON_HOVER]      = GetValue(OPT_OPACITY_ON_HOVER);
   all_settings[OPT_USE_HOVER_BUTTONS]     = GetValue(OPT_USE_HOVER_BUTTONS);
   all_settings[OPT_WINDOW_MOVE_STEP]      = GetValue(OPT_WINDOW_MOVE_STEP);
+  all_settings[OPT_SHOW_TASKBAR_ICON]     = GetValue(OPT_SHOW_TASKBAR_ICON);
   return all_settings;
 }
 
@@ -137,6 +138,7 @@ QString ClockSettings::GetKey(const int id) const
     case OPT_OPACITY_ON_HOVER:      return "window/opacity_on_hover";
     case OPT_USE_HOVER_BUTTONS:     return "window/hover_buttons";
     case OPT_WINDOW_MOVE_STEP:      return "window/move_step";
+    case OPT_SHOW_TASKBAR_ICON:     return "window/show_taskbar_icon";
   }
   Q_ASSERT(false);
   return QString();
@@ -201,6 +203,7 @@ QVariant ClockSettings::GetDefaultValue(const int id) const
     case OPT_OPACITY_ON_HOVER:      return 0.15;
     case OPT_USE_HOVER_BUTTONS:     return false;
     case OPT_WINDOW_MOVE_STEP:      return 20;
+    case OPT_SHOW_TASKBAR_ICON:     return false;
   }
   return QVariant();
 }
