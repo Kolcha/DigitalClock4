@@ -42,6 +42,7 @@ void Timetracker::start()
     return;
 
   timer_.start();
+  emit activityChanged(timer_.isValid());
 }
 
 void Timetracker::stop()
@@ -51,6 +52,7 @@ void Timetracker::stop()
 
   last_elapsed_ = timer_.elapsed() / 1000;
   timer_.invalidate();
+  emit activityChanged(timer_.isValid());
 }
 
 void Timetracker::reset()
@@ -58,6 +60,7 @@ void Timetracker::reset()
   last_elapsed_ = 0;
   if (timer_.isValid())
     timer_.restart();
+  emit activityChanged(timer_.isValid());
 }
 
 void Timetracker::setElapsed(int elapsed_secs)

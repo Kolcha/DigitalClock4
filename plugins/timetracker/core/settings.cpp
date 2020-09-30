@@ -1,6 +1,6 @@
 /*
     Digital Clock: timetracker plugin
-    Copyright (C) 2018-2020  Nick Korotysh <nick.korotysh@gmail.com>
+    Copyright (C) 2020  Nick Korotysh <nick.korotysh@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -13,41 +13,19 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-#ifndef TIMETRACKER_TIMETRACKER_H
-#define TIMETRACKER_TIMETRACKER_H
 
-#include <QObject>
-#include <QElapsedTimer>
+#include "core/settings.h"
 
 namespace timetracker {
 
-class Timetracker : public QObject
+void InitDefaults(QSettings::SettingsMap* defaults)
 {
-  Q_OBJECT
+  defaults->insert(OPT_PAUSE_HOTKEY, QString());
+  defaults->insert(OPT_RESTART_HOTKEY, QString());
 
-public:
-  explicit Timetracker(QObject* parent = nullptr);
-
-  int elapsed() const;
-  bool isActive() const;
-
-public slots:
-  void start();
-  void stop();
-  void reset();
-
-  void setElapsed(int elapsed_secs);
-
-signals:
-  void activityChanged(bool active);
-
-private:
-  QElapsedTimer timer_;
-  int last_elapsed_ = 0;
-};
+  defaults->insert(OPT_HIDE_INACTIVE, false);
+}
 
 } // namespace timetracker
-
-#endif // TIMETRACKER_TIMETRACKER_H

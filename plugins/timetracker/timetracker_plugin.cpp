@@ -20,11 +20,20 @@
 #include <QCoreApplication>
 #include <QGridLayout>
 
+#ifdef HAVE_QHOTKEY
+#include <QHotkey>
+#else
+class QHotkey {};   // just a stub to suppress compiler warnings
+#endif
+
 #include "plugin_settings.h"
 #include "widget_plugin_settings.h"
 
 #include "timetracker.h"
 #include "tracker_widget.h"
+
+#include "core/settings.h"
+#include "gui/settings_dialog.h"
 
 namespace timetracker {
 
@@ -36,6 +45,8 @@ static const char* const PROP_STATE_ELAPSED = "dcp_timetracker_state_last_elapse
 static const char* const PROP_STATE_ACTIVE = "dcp_timetracker_state_last_active";
 
 TimetrackerPlugin::TimetrackerPlugin() : tracker_(nullptr)
+  , pause_hotkey_(nullptr)
+  , restart_hotkey_(nullptr)
 {
 //  InitTranslator(QLatin1String(":/timetracker/timetracker_"));
   info_.display_name = tr("Timetracker");
@@ -54,6 +65,7 @@ void TimetrackerPlugin::Start()
   if (prop_var.isValid()) tracker_->setElapsed(prop_var.toInt());
   prop_var = QCoreApplication::instance()->property(PROP_STATE_ACTIVE);
   if (prop_var.isValid() && prop_var.toBool()) tracker_->start();
+  connect(settings_, &PluginSettings::OptionChanged, this, &TimetrackerPlugin::onPluginOptionChanged);
   // state is restored before widget initialization to prevent flickering
   ::plugin::WidgetPluginBase::Start();
   settings_->SetOption(::plugin::OptionKey(::plugin::OPT_USE_CLOCK_SKIN), true);
@@ -70,14 +82,47 @@ void TimetrackerPlugin::Stop()
   }
   delete tracker_;
   tracker_ = nullptr;
+
+  delete pause_hotkey_;
+  delete restart_hotkey_;
+
+  timer_widgets_.clear();
+}
+
+void TimetrackerPlugin::Configure()
+{
+  SettingsDialog* dialog = new SettingsDialog();
+  connect(dialog, &SettingsDialog::destroyed, this, &TimetrackerPlugin::configured);
+  // load current settings to dialog
+  QSettings::SettingsMap curr_settings;
+  InitDefaults(&curr_settings);
+  for (auto iter = curr_settings.begin(); iter != curr_settings.end(); ++iter) {
+    *iter = settings_->GetOption(iter.key());
+  }
+  dialog->Init(curr_settings);
+  // add widget with common settings configuration controls
+  dialog->AddCommonWidget(InitConfigWidget(dialog));
+  // connect main signals/slots
+  connect(dialog, SIGNAL(OptionChanged(QString,QVariant)),
+          settings_, SLOT(SetOption(QString,QVariant)));
+  connect(dialog, SIGNAL(accepted()), settings_, SLOT(Save()));
+  connect(dialog, SIGNAL(rejected()), settings_, SLOT(Load()));
+
+  dialog->show();
+}
+
+void TimetrackerPlugin::InitSettingsDefaults(QSettings::SettingsMap* defaults)
+{
+  InitDefaults(defaults);
 }
 
 QWidget* TimetrackerPlugin::InitWidget(QGridLayout* layout)
 {
+  Q_UNUSED(layout);
   TrackerWidget* w = new TrackerWidget();
-  layout->addWidget(w, layout->rowCount(), 0);
   connect(w, &TrackerWidget::clicked, this, &TimetrackerPlugin::onWidgetClicked);
   connect(w, &TrackerWidget::doubleClicked, tracker_, &Timetracker::reset);
+  timer_widgets_.append(w);
   return w;
 }
 
@@ -105,6 +150,51 @@ void TimetrackerPlugin::onWidgetClicked()
   } else {
     tracker_->start();
 //    settings_->SetOption(OptionKey(OPT_USE_CUSTOM_COLOR), false);
+  }
+}
+
+void TimetrackerPlugin::setWidgetsVisible(bool visible)
+{
+  for (auto w : timer_widgets_)
+    if (w)
+      w->setVisible(visible);
+}
+
+void TimetrackerPlugin::onPluginOptionChanged(const QString& key, const QVariant& value)
+{
+  auto init_hotkey = [=](auto key_seq, auto receiver, auto method) -> QHotkey* {
+    QHotkey* hotkey = nullptr;
+#ifdef HAVE_QHOTKEY
+    if (!key_seq.isEmpty()) {
+      hotkey = new QHotkey(QKeySequence(key_seq), true);
+      connect(hotkey, &QHotkey::activated, receiver, method);
+    }
+#else
+    Q_UNUSED(key_seq);
+    Q_UNUSED(receiver);
+    Q_UNUSED(method);
+#endif
+    return hotkey;
+  };
+
+  if (key == OPT_PAUSE_HOTKEY) {
+    delete pause_hotkey_;
+    pause_hotkey_ = init_hotkey(value.toString(), this, &TimetrackerPlugin::onWidgetClicked);
+  }
+
+  if (key == OPT_RESTART_HOTKEY) {
+    delete restart_hotkey_;
+    restart_hotkey_ = init_hotkey(value.toString(), tracker_, &Timetracker::reset);
+  }
+
+  if (key == OPT_HIDE_INACTIVE && tracker_) {
+    if (value.toBool()) {
+      connect(tracker_, &Timetracker::activityChanged, this, &TimetrackerPlugin::setWidgetsVisible);
+      setWidgetsVisible(tracker_->isActive());
+    } else {
+      disconnect(tracker_, &Timetracker::activityChanged, this, &TimetrackerPlugin::setWidgetsVisible);
+      setWidgetsVisible(true);
+    }
   }
 }
 

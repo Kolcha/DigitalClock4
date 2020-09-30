@@ -25,18 +25,26 @@
 QT       += core gui widgets
 
 include(../common.pri)
+include(../../3rdparty/qhotkey.pri)
 
 TARGET = timetracker
 
 SOURCES += \
+    core/settings.cpp \
+    gui/settings_dialog.cpp \
     timetracker_plugin.cpp \
     timetracker.cpp \
     tracker_widget.cpp
 
 HEADERS += \
+    core/settings.h \
+    gui/settings_dialog.h \
     timetracker_plugin.h \
     timetracker.h \
     tracker_widget.h
+
+FORMS += \
+    gui/settings_dialog.ui
 
 DISTFILES += timetracker.json
 

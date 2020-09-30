@@ -20,6 +20,8 @@
 
 #include "widget_plugin_base.h"
 
+class QHotkey;
+
 namespace timetracker {
 
 class Timetracker;
@@ -36,16 +38,26 @@ public slots:
   void Start() override;
   void Stop() override;
 
+  void Configure() override;
+
 protected:
+  void InitSettingsDefaults(QSettings::SettingsMap* defaults) override;
   QWidget* InitWidget(QGridLayout* layout) override;
   void DisplayImage(QWidget* widget, const QImage& image) override;
   QString GetWidgetText() override;
 
 private slots:
   void onWidgetClicked();
+  void setWidgetsVisible(bool visible);
+  void onPluginOptionChanged(const QString& key, const QVariant& value);
 
 private:
   Timetracker* tracker_;
+
+  QHotkey* pause_hotkey_;
+  QHotkey* restart_hotkey_;
+
+  QVector<QPointer<QWidget>> timer_widgets_;
 };
 
 } // namespace timetracker

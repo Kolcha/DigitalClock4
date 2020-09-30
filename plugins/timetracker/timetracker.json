@@ -1,9 +1,9 @@
 {
     "name" : "timetracker",
-    "version" : "1.0.1",
+    "version" : "1.1.0",
     "author" : "Nick Korotysh",
     "email" : "nick.korotysh@gmail.com",
-    "configurable" : false,
+    "configurable" : true,
     "settings_listener" : true,
     "needs_in_timer" : false,
     "needs_in_drawer" : true
