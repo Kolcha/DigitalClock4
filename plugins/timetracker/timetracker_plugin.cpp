@@ -49,8 +49,8 @@ TimetrackerPlugin::TimetrackerPlugin() : tracker_(nullptr)
   , restart_hotkey_(nullptr)
 {
 //  InitTranslator(QLatin1String(":/timetracker/timetracker_"));
-  info_.display_name = tr("Timetracker");
-  info_.description = tr("Very simple timetracker.\n"
+  info_.display_name = tr("Stopwatch");
+  info_.description = tr("Very simple stopwatch.\n"
                          "Single click to start/pause.\n"
                          "Double click to reset/restart.");
 //  InitIcon(":/timetracker/icon.svg.p");
