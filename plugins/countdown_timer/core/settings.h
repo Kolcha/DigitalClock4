@@ -46,6 +46,7 @@ const char* const OPT_PAUSE_HOTKEY      = "pause_hotkey";
 const char* const OPT_RESTART_HOTKEY    = "restart_hotkey";
 
 const char* const OPT_HIDE_INACTIVE     = "hide_inactive";
+const char* const OPT_REVERSE_COUNTING  = "reverse_counting";
 
 QDateTime GetDefaultDate();
 

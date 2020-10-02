@@ -133,7 +133,9 @@ QString CountdownTimerPlugin::GetWidgetText()
 {
   int hide_days_threshold = settings_->GetOption(OPT_HIDE_DAYS_ALWAYS).toBool() ?
         -1 : settings_->GetOption(OPT_HIDE_DAYS_THRESHOLD).toInt();
-  return format_time(cd_timer_->timeLeft(), hide_days_threshold);
+  qint64 counter = settings_->GetOption(OPT_REVERSE_COUNTING).toBool() ?
+        cd_timer_->interval() - cd_timer_->timeLeft() : cd_timer_->timeLeft();
+  return format_time(counter, hide_days_threshold);
 }
 
 void CountdownTimerPlugin::InitTimer()

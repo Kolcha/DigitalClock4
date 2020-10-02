@@ -52,6 +52,7 @@ void InitDefaults(QSettings::SettingsMap* defaults)
   defaults->insert(OPT_RESTART_HOTKEY, QString());
 
   defaults->insert(OPT_HIDE_INACTIVE, false);
+  defaults->insert(OPT_REVERSE_COUNTING, false);
 }
 
 } // namespace countdown_timer
