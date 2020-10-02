@@ -57,6 +57,7 @@ private slots:
   void on_restart_on_timeout_clicked(bool checked);
 
   void on_hide_if_inactive_clicked(bool checked);
+  void on_reverse_counting_clicked(bool checked);
 
   void on_chime_on_timeout_clicked(bool checked);
   void on_browse_sound_btn_clicked();
@@ -65,6 +66,7 @@ private slots:
   void on_msg_text_edit_textChanged();
 
   void on_min_days_edit_valueChanged(int arg1);
+  void on_hide_days_always_clicked(bool checked);
 
   void on_pause_seq_edit_editingFinished();
   void on_restart_seq_edit_editingFinished();
