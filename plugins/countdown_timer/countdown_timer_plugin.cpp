@@ -131,7 +131,9 @@ void CountdownTimerPlugin::DisplayImage(QWidget* widget, const QImage& image)
 
 QString CountdownTimerPlugin::GetWidgetText()
 {
-  return format_time(cd_timer_->timeLeft(), settings_->GetOption(OPT_HIDE_DAYS_THRESHOLD).toInt());
+  int hide_days_threshold = settings_->GetOption(OPT_HIDE_DAYS_ALWAYS).toBool() ?
+        -1 : settings_->GetOption(OPT_HIDE_DAYS_THRESHOLD).toInt();
+  return format_time(cd_timer_->timeLeft(), hide_days_threshold);
 }
 
 void CountdownTimerPlugin::InitTimer()
