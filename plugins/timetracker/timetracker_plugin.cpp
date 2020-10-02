@@ -48,7 +48,7 @@ TimetrackerPlugin::TimetrackerPlugin() : tracker_(nullptr)
   , pause_hotkey_(nullptr)
   , restart_hotkey_(nullptr)
 {
-//  InitTranslator(QLatin1String(":/timetracker/timetracker_"));
+  InitTranslator(QLatin1String(":/timetracker/timetracker_"));
   info_.display_name = tr("Stopwatch");
   info_.description = tr("Very simple stopwatch.\n"
                          "Single click to start/pause.\n"

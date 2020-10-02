@@ -46,6 +46,9 @@ HEADERS += \
 FORMS += \
     gui/settings_dialog.ui
 
+include(lang/lang.pri)
+include(../../qm_gen.pri)
+
 DISTFILES += timetracker.json
 
 win32:RC_FILE = timetracker.rc
