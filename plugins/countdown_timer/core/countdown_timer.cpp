@@ -22,7 +22,7 @@ namespace countdown_timer {
 
 CountdownTimer::CountdownTimer(QObject* parent) :
   QObject(parent),
-  timer_id_(-1), time_left_(-1),
+  timer_id_(-1), interval_(-1), time_left_(-1),
   is_active_(false)
 {
   connect(this, &CountdownTimer::timeout, this, &CountdownTimer::stop);
@@ -49,9 +49,10 @@ void CountdownTimer::stop()
   emit activityChanged(is_active_);
 }
 
-void CountdownTimer::setTimeout(int seconds)
+void CountdownTimer::setInterval(int seconds)
 {
   setTimeLeft(seconds);
+  interval_ = seconds;
 }
 
 void CountdownTimer::timerEvent(QTimerEvent* event)

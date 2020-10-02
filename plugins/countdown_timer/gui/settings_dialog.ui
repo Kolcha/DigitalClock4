@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>384</width>
+    <width>421</width>
     <height>397</height>
    </rect>
   </property>
@@ -127,7 +127,7 @@
         </widget>
        </item>
        <item row="2" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
+        <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="min_days_label">
            <property name="text">
@@ -144,8 +144,25 @@
             <string>If remaining days count less than this value, days will not be shown.
 Set this to -1 to never show days count, or to 0 to always show.</string>
            </property>
-           <property name="minimum">
-            <number>-1</number>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="hide_days_always">
+           <property name="text">
+            <string>always hide days</string>
            </property>
           </widget>
          </item>
@@ -158,10 +175,17 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="0" colspan="2">
+       <item row="8" column="0">
         <widget class="QCheckBox" name="hide_if_inactive">
          <property name="text">
           <string>hide timer when it is not active</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QCheckBox" name="reverse_counting">
+         <property name="text">
+          <string>reverse counting</string>
          </property>
         </widget>
        </item>
@@ -262,8 +286,8 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>200</x>
-     <y>359</y>
+     <x>209</x>
+     <y>387</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -278,8 +302,8 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>200</x>
-     <y>359</y>
+     <x>209</x>
+     <y>387</y>
     </hint>
     <hint type="destinationlabel">
      <x>173</x>
@@ -298,8 +322,8 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
      <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>235</x>
-     <y>70</y>
+     <x>390</x>
+     <y>80</y>
     </hint>
    </hints>
   </connection>
@@ -330,8 +354,8 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
      <y>100</y>
     </hint>
     <hint type="destinationlabel">
-     <x>265</x>
-     <y>103</y>
+     <x>340</x>
+     <y>111</y>
     </hint>
    </hints>
   </connection>
@@ -346,8 +370,8 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
      <y>107</y>
     </hint>
     <hint type="destinationlabel">
-     <x>333</x>
-     <y>109</y>
+     <x>390</x>
+     <y>111</y>
     </hint>
    </hints>
   </connection>
@@ -358,8 +382,8 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>228</x>
-     <y>240</y>
+     <x>239</x>
+     <y>268</y>
     </hint>
     <hint type="destinationlabel">
      <x>204</x>
@@ -406,12 +430,44 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>314</x>
-     <y>203</y>
+     <x>326</x>
+     <y>239</y>
     </hint>
     <hint type="destinationlabel">
-     <x>349</x>
-     <y>200</y>
+     <x>399</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hide_days_always</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>min_days_label</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>306</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>172</x>
+     <y>136</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hide_days_always</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>min_days_edit</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>374</x>
+     <y>141</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>225</x>
+     <y>144</y>
     </hint>
    </hints>
   </connection>

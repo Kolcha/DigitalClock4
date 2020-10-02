@@ -91,6 +91,12 @@ source_file = plugins/talking_clock/lang/talking_clock_en.ts
 source_lang = en
 type = QT
 
+[digitalclock4.timetracker]
+file_filter = plugins/timetracker/lang/timetracker_<lang>.ts
+source_file = plugins/timetracker/lang/timetracker_en.ts
+source_lang = en
+type = QT
+
 [digitalclock4.plugin_tray_color]
 file_filter = plugins/tray_color/lang/tray_color_<lang>.ts
 source_file = plugins/tray_color/lang/tray_color_en.ts

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/timetracker">
+        <file alias="icon.svg.p">iconfinder_icon-ios7-stopwatch-outline_211825.svg</file>
+    </qresource>
+</RCC>

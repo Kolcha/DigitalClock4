@@ -131,7 +131,11 @@ void CountdownTimerPlugin::DisplayImage(QWidget* widget, const QImage& image)
 
 QString CountdownTimerPlugin::GetWidgetText()
 {
-  return format_time(cd_timer_->timeLeft(), settings_->GetOption(OPT_HIDE_DAYS_THRESHOLD).toInt());
+  int hide_days_threshold = settings_->GetOption(OPT_HIDE_DAYS_ALWAYS).toBool() ?
+        -1 : settings_->GetOption(OPT_HIDE_DAYS_THRESHOLD).toInt();
+  qint64 counter = settings_->GetOption(OPT_REVERSE_COUNTING).toBool() ?
+        cd_timer_->interval() - cd_timer_->timeLeft() : cd_timer_->timeLeft();
+  return format_time(counter, hide_days_threshold);
 }
 
 void CountdownTimerPlugin::InitTimer()
@@ -145,14 +149,14 @@ void CountdownTimerPlugin::InitTimer()
       settings_->SetOption(OPT_TARGET_DATETIME, target);
     }
     if (target > now) {
-      cd_timer_->setTimeout(now.secsTo(target));
+      cd_timer_->setInterval(now.secsTo(target));
       cd_timer_->start();
     }
   } else {
     qint64 timeout = settings_->GetOption(OPT_INTERVAL_SECONDS).toLongLong();
     timeout += 60 * settings_->GetOption(OPT_INTERVAL_MINUTES).toLongLong();
     timeout += 3600 * settings_->GetOption(OPT_INTERVAL_HOURS).toLongLong();
-    cd_timer_->setTimeout(timeout);
+    cd_timer_->setInterval(timeout);
   }
 }
 
