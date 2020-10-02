@@ -26,13 +26,15 @@ namespace countdown_timer {
 class CountdownTimer : public QObject
 {
   Q_OBJECT
-  Q_PROPERTY(qint64 timeLeft READ timeLeft WRITE setTimeout NOTIFY timeLeftChanged)
+  Q_PROPERTY(qint64 interval READ interval WRITE setInterval)
+  Q_PROPERTY(qint64 timeLeft READ timeLeft NOTIFY timeLeftChanged)
   Q_PROPERTY(bool isActive READ isActive NOTIFY activityChanged)
 
 public:
   explicit CountdownTimer(QObject* parent = nullptr);
   ~CountdownTimer();
 
+  qint64 interval() const { return interval_; }
   qint64 timeLeft() const { return time_left_; }
   bool isActive() const { return is_active_; }
 
@@ -45,7 +47,7 @@ public slots:
   void start();
   void stop();
 
-  void setTimeout(int seconds);
+  void setInterval(int seconds);
 
 protected:
   void timerEvent(QTimerEvent* event) override;
@@ -55,6 +57,7 @@ private:
 
 private:
   int timer_id_;
+  qint64 interval_;
   qint64 time_left_;
   bool is_active_;
 };

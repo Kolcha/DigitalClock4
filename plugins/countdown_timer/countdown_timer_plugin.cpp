@@ -145,14 +145,14 @@ void CountdownTimerPlugin::InitTimer()
       settings_->SetOption(OPT_TARGET_DATETIME, target);
     }
     if (target > now) {
-      cd_timer_->setTimeout(now.secsTo(target));
+      cd_timer_->setInterval(now.secsTo(target));
       cd_timer_->start();
     }
   } else {
     qint64 timeout = settings_->GetOption(OPT_INTERVAL_SECONDS).toLongLong();
     timeout += 60 * settings_->GetOption(OPT_INTERVAL_MINUTES).toLongLong();
     timeout += 3600 * settings_->GetOption(OPT_INTERVAL_HOURS).toLongLong();
-    cd_timer_->setTimeout(timeout);
+    cd_timer_->setInterval(timeout);
   }
 }
 
