@@ -53,7 +53,7 @@ TimetrackerPlugin::TimetrackerPlugin() : tracker_(nullptr)
   info_.description = tr("Very simple stopwatch.\n"
                          "Single click to start/pause.\n"
                          "Double click to reset/restart.");
-//  InitIcon(":/timetracker/icon.svg.p");
+  InitIcon(":/timetracker/icon.svg.p");
 }
 
 void TimetrackerPlugin::Start()
