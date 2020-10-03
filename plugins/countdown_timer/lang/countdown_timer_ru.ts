@@ -92,37 +92,37 @@ Set this to -1 to never show days count, or to 0 to always show.</source>
 Установите данное значение в -1 чтобы никогда не отображать дни, или в 0 чтобы отображать всегда.</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="165"/>
-        <source>always hide days</source>
-        <translation>скрывать дни</translation>
+        <location filename="../gui/settings_dialog.ui" line="171"/>
+        <source>also hide hours</source>
+        <translation>также скрывать часы</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="174"/>
+        <location filename="../gui/settings_dialog.ui" line="180"/>
         <source>auto-restart countdown</source>
         <translation>перезапуск таймера</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="181"/>
+        <location filename="../gui/settings_dialog.ui" line="187"/>
         <source>hide timer when it is not active</source>
         <translation>скрывать неактивный таймер</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="188"/>
+        <location filename="../gui/settings_dialog.ui" line="194"/>
         <source>reverse counting</source>
         <translation>обратный счет</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="196"/>
+        <location filename="../gui/settings_dialog.ui" line="202"/>
         <source>Hotkeys</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="208"/>
+        <location filename="../gui/settings_dialog.ui" line="214"/>
         <source>pause timer</source>
         <translation>приостановить таймер</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="234"/>
+        <location filename="../gui/settings_dialog.ui" line="240"/>
         <source>restart timer</source>
         <translation>перезапустить таймер</translation>
     </message>

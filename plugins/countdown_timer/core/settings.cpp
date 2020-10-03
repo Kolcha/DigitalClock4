@@ -43,7 +43,7 @@ void InitDefaults(QSettings::SettingsMap* defaults)
   defaults->insert(OPT_MESSAGE_TEXT, QString());
 
   defaults->insert(OPT_HIDE_DAYS_THRESHOLD, 0);
-  defaults->insert(OPT_HIDE_DAYS_ALWAYS, false);
+  defaults->insert(OPT_ALSO_HIDE_HOURS, false);
 
   defaults->insert(OPT_RESTART_ON_DBLCLIK, false);
   defaults->insert(OPT_RESTART_ON_TIMEOUT, false);

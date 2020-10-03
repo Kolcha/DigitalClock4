@@ -86,12 +86,6 @@ void CountdownTimerPlugin::Configure()
 {
   SettingsDialog* dialog = new SettingsDialog();
   connect(dialog, &SettingsDialog::destroyed, this, &CountdownTimerPlugin::configured);
-
-  if (settings_->GetOption(OPT_HIDE_DAYS_THRESHOLD).toInt() == -1) {
-    settings_->SetOption(OPT_HIDE_DAYS_ALWAYS, true);
-    settings_->SetOption(OPT_HIDE_DAYS_THRESHOLD, 0);
-  }
-
   // load current settings to dialog
   QSettings::SettingsMap curr_settings;
   InitDefaults(&curr_settings);
@@ -137,11 +131,11 @@ void CountdownTimerPlugin::DisplayImage(QWidget* widget, const QImage& image)
 
 QString CountdownTimerPlugin::GetWidgetText()
 {
-  int hide_days_threshold = settings_->GetOption(OPT_HIDE_DAYS_ALWAYS).toBool() ?
-        -1 : settings_->GetOption(OPT_HIDE_DAYS_THRESHOLD).toInt();
+  int hide_days_threshold = settings_->GetOption(OPT_HIDE_DAYS_THRESHOLD).toInt();
   qint64 counter = settings_->GetOption(OPT_REVERSE_COUNTING).toBool() ?
         cd_timer_->interval() - cd_timer_->timeLeft() : cd_timer_->timeLeft();
-  return format_time(counter, hide_days_threshold);
+  bool hide_hours = settings_->GetOption(OPT_ALSO_HIDE_HOURS).toBool();
+  return format_time(counter, hide_days_threshold, hide_hours);
 }
 
 void CountdownTimerPlugin::InitTimer()

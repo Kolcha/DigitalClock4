@@ -20,7 +20,7 @@
 
 namespace countdown_timer {
 
-QString format_time(qint64 time_left, int days_threshold)
+QString format_time(qint64 time_left, int days_threshold, bool hide_hours)
 {
   qint64 h = time_left / 3600;
   qint64 m = (time_left - h * 3600) / 60;
@@ -32,8 +32,12 @@ QString format_time(qint64 time_left, int days_threshold)
   int b = 10;             // base
   QLatin1Char ch('0');    // filler
 
-  if (days_left < days_threshold || days_threshold == -1)
-    return QString("%1:%2:%3").arg(h).arg(m, fw, b, ch).arg(s, fw, b, ch);
+  if (days_left < days_threshold || days_threshold == -1) {
+    if (hide_hours)
+      return QString("%1:%2").arg(m + h * 60).arg(s, fw, b, ch);
+    else
+      return QString("%1:%2:%3").arg(h).arg(m, fw, b, ch).arg(s, fw, b, ch);
+  }
 
   return QString("%1:%2:%3:%4")
          .arg(days_left)

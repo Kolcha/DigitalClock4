@@ -66,7 +66,7 @@ private slots:
   void on_msg_text_edit_textChanged();
 
   void on_min_days_edit_valueChanged(int arg1);
-  void on_hide_days_always_clicked(bool checked);
+  void on_also_hide_hours_clicked(bool checked);
 
   void on_pause_seq_edit_editingFinished();
   void on_restart_seq_edit_editingFinished();

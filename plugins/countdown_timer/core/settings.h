@@ -37,7 +37,7 @@ const char* const OPT_SHOW_MESSAGE      = "show_message";
 const char* const OPT_MESSAGE_TEXT      = "message_text";
 
 const char* const OPT_HIDE_DAYS_THRESHOLD = "hide_days_threshold";
-const char* const OPT_HIDE_DAYS_ALWAYS    = "always_hide_days";
+const char* const OPT_ALSO_HIDE_HOURS     = "also_hide_hours";
 
 const char* const OPT_RESTART_ON_DBLCLIK  = "restart_on_dblclik";
 const char* const OPT_RESTART_ON_TIMEOUT  = "restart_on_timeout";

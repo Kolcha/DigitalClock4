@@ -23,7 +23,7 @@
 
 namespace countdown_timer {
 
-QString format_time(qint64 time_left, int days_threshold = -1);
+QString format_time(qint64 time_left, int days_threshold = -1, bool hide_hours = false);
 
 } // namespace countdown_timer
 

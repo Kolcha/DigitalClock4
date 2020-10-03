@@ -144,6 +144,9 @@
             <string>If remaining days count less than this value, days will not be shown.
 Set this to -1 to never show days count, or to 0 to always show.</string>
            </property>
+           <property name="minimum">
+            <number>-1</number>
+           </property>
           </widget>
          </item>
          <item>
@@ -160,9 +163,12 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
           </spacer>
          </item>
          <item>
-          <widget class="QCheckBox" name="hide_days_always">
+          <widget class="QCheckBox" name="also_hide_hours">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
-            <string>always hide days</string>
+            <string>also hide hours</string>
            </property>
           </widget>
          </item>
@@ -436,38 +442,6 @@ Set this to -1 to never show days count, or to 0 to always show.</string>
     <hint type="destinationlabel">
      <x>399</x>
      <y>237</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>hide_days_always</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>min_days_label</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>306</x>
-     <y>145</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>172</x>
-     <y>136</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>hide_days_always</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>min_days_edit</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>374</x>
-     <y>141</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>225</x>
-     <y>144</y>
     </hint>
    </hints>
   </connection>

@@ -53,7 +53,7 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
   ui->m_edit->setValue(settings.value(OPT_INTERVAL_MINUTES).toInt());
   ui->s_edit->setValue(settings.value(OPT_INTERVAL_SECONDS).toInt());
   ui->min_days_edit->setValue(settings.value(OPT_HIDE_DAYS_THRESHOLD).toInt());
-  ui->hide_days_always->setChecked(settings.value(OPT_HIDE_DAYS_ALWAYS).toBool());
+  ui->also_hide_hours->setChecked(settings.value(OPT_ALSO_HIDE_HOURS).toBool());
   ui->restart_on_dblclik->setChecked(settings.value(OPT_RESTART_ON_DBLCLIK).toBool());
   ui->restart_on_timeout->setChecked(settings.value(OPT_RESTART_ON_TIMEOUT).toBool());
   ui->hide_if_inactive->setChecked(settings.value(OPT_HIDE_INACTIVE).toBool());
@@ -143,12 +143,13 @@ void SettingsDialog::on_msg_text_edit_textChanged()
 
 void SettingsDialog::on_min_days_edit_valueChanged(int arg1)
 {
+  ui->also_hide_hours->setEnabled(arg1 == -1);
   emit OptionChanged(OPT_HIDE_DAYS_THRESHOLD, arg1);
 }
 
-void SettingsDialog::on_hide_days_always_clicked(bool checked)
+void SettingsDialog::on_also_hide_hours_clicked(bool checked)
 {
-  emit OptionChanged(OPT_HIDE_DAYS_ALWAYS, checked);
+  emit OptionChanged(OPT_ALSO_HIDE_HOURS, checked);
 }
 
 void SettingsDialog::on_pause_seq_edit_editingFinished()
