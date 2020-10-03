@@ -466,69 +466,74 @@
         <translation>Experimental</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="879"/>
+        <location filename="../gui/settings_dialog.ui" line="899"/>
         <source>show clock in fullscreen mode (may not work for some apps)</source>
         <translation>mostrar relógio no modo ecrã total (pode não funcionar para algumas aplicações)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="886"/>
+        <location filename="../gui/settings_dialog.ui" line="930"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation>mostrar relógio em todos os espaços de trabalho/espaços de trabalho virtuais</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="893"/>
+        <location filename="../gui/settings_dialog.ui" line="1066"/>
+        <source>show app icon in Windows TaskBar (also in Alt+Tab dialog), can be useful for screen recording software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="906"/>
         <source>better &apos;stay on top&apos; for Linux</source>
         <translation>melhor &apos;manter por cima de tudo&apos; em Linux</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="900"/>
+        <location filename="../gui/settings_dialog.ui" line="879"/>
         <source>always keep clock visible on screen, prevent out of screen postion</source>
         <translation>manter o relógio sempre visível no ecrã, previne que saia da área do ecrã</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="907"/>
+        <location filename="../gui/settings_dialog.ui" line="937"/>
         <source>show clock on all available monitors</source>
         <translation>mostrar relógio em todos os monitores disponíveis</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="914"/>
+        <location filename="../gui/settings_dialog.ui" line="944"/>
         <source>allow only one clock instance at a time</source>
         <translation>permitir apenas 1 relógio de cada vez</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="938"/>
-        <source>hide completely</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="1036"/>
-        <source>Please restart clock after changing any of these options!</source>
-        <translation>Por favor reinicie o relógio após alterar qualquer uma destas opções!</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="921"/>
+        <location filename="../gui/settings_dialog.ui" line="913"/>
         <source>move clock on click on it (has no effect if &quot;transparent for mouse&quot; is enabled)</source>
         <translation>mover o relógio ao clicar nele (não tem efeito se estiver ativa a opção &quot;transparente para o rato&quot;)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="928"/>
+        <location filename="../gui/settings_dialog.ui" line="951"/>
         <source>become almost transparent on mouse hover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="950"/>
+        <location filename="../gui/settings_dialog.ui" line="923"/>
+        <source>hide completely</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="976"/>
         <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
         <translation>ATENÇÃO! Refrescar a uma taxa rápida pode sobrecarregar o processador. O padrão é 500ms.</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="957"/>
+        <location filename="../gui/settings_dialog.ui" line="983"/>
         <source>snap to edges, threshold</source>
         <translation>atrair às bordas, limiar</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="989"/>
+        <location filename="../gui/settings_dialog.ui" line="1015"/>
         <source>window refresh interval</source>
         <translation>intervalo de refrescamento da janela</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="892"/>
+        <source>Please restart clock after changing any of these options!</source>
+        <translation>Por favor reinicie o relógio após alterar qualquer uma destas opções!</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="1056"/>
@@ -536,58 +541,58 @@
         <translation>Existem funcionalidades experimentais neste separador. Estas estão desativadas por padrão. Ativar e usá-las é completamente seguro para o computador, mas pode levar a comportamentos do relógio inesperados. Teste-as conforme quiser. Se notar algum comportamento estranho após ativar qualquer uma destas opções, por favor indique-me. Pode encontrar a informação de contacto na janela &apos;Sobre&apos;.</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="136"/>
+        <location filename="../gui/settings_dialog.cpp" line="137"/>
         <source>unknown</source>
         <translation>desconhecido</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="237"/>
+        <location filename="../gui/settings_dialog.cpp" line="238"/>
         <source>1 day</source>
         <translation>1 dia</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="238"/>
+        <location filename="../gui/settings_dialog.cpp" line="239"/>
         <source>3 days</source>
         <translation>3 dias</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="239"/>
+        <location filename="../gui/settings_dialog.cpp" line="240"/>
         <source>1 week</source>
         <translation>1 semana</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="240"/>
+        <location filename="../gui/settings_dialog.cpp" line="241"/>
         <source>2 weeks</source>
         <translation>2 semanas</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="363"/>
+        <location filename="../gui/settings_dialog.cpp" line="365"/>
         <source>Open texture file</source>
         <translation>Abrir ficheiro de textura</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="365"/>
+        <location filename="../gui/settings_dialog.cpp" line="367"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Imagens (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="404"/>
+        <location filename="../gui/settings_dialog.cpp" line="406"/>
         <source>Select Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="454"/>
+        <location filename="../gui/settings_dialog.cpp" line="456"/>
         <source>Export settings to ...</source>
         <translation>Exportar configurações para...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="456"/>
-        <location filename="../gui/settings_dialog.cpp" line="464"/>
+        <location filename="../gui/settings_dialog.cpp" line="458"/>
+        <location filename="../gui/settings_dialog.cpp" line="466"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>Ficheiros de configuração do Relógio Digital (*.dcs)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="462"/>
+        <location filename="../gui/settings_dialog.cpp" line="464"/>
         <source>Import settings from ...</source>
         <translation>Importar configuração de...</translation>
     </message>

@@ -466,69 +466,74 @@
         <translation>Experimenteel</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="879"/>
+        <location filename="../gui/settings_dialog.ui" line="899"/>
         <source>show clock in fullscreen mode (may not work for some apps)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="886"/>
+        <location filename="../gui/settings_dialog.ui" line="930"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="893"/>
+        <location filename="../gui/settings_dialog.ui" line="1066"/>
+        <source>show app icon in Windows TaskBar (also in Alt+Tab dialog), can be useful for screen recording software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="906"/>
         <source>better &apos;stay on top&apos; for Linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="900"/>
+        <location filename="../gui/settings_dialog.ui" line="879"/>
         <source>always keep clock visible on screen, prevent out of screen postion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="907"/>
+        <location filename="../gui/settings_dialog.ui" line="937"/>
         <source>show clock on all available monitors</source>
         <translation>klok weergeven op alle beschikbare monitoren</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="914"/>
+        <location filename="../gui/settings_dialog.ui" line="944"/>
         <source>allow only one clock instance at a time</source>
         <translation>sta slechts één klok start tegelijk toe</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="938"/>
-        <source>hide completely</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="1036"/>
-        <source>Please restart clock after changing any of these options!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="921"/>
+        <location filename="../gui/settings_dialog.ui" line="913"/>
         <source>move clock on click on it (has no effect if &quot;transparent for mouse&quot; is enabled)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="928"/>
+        <location filename="../gui/settings_dialog.ui" line="951"/>
         <source>become almost transparent on mouse hover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="950"/>
+        <location filename="../gui/settings_dialog.ui" line="923"/>
+        <source>hide completely</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="976"/>
         <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="957"/>
+        <location filename="../gui/settings_dialog.ui" line="983"/>
         <source>snap to edges, threshold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="989"/>
+        <location filename="../gui/settings_dialog.ui" line="1015"/>
         <source>window refresh interval</source>
         <translation>venster vernieuwingsinterval</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="892"/>
+        <source>Please restart clock after changing any of these options!</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="1056"/>
@@ -536,58 +541,58 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="136"/>
+        <location filename="../gui/settings_dialog.cpp" line="137"/>
         <source>unknown</source>
         <translation>onbekend</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="237"/>
+        <location filename="../gui/settings_dialog.cpp" line="238"/>
         <source>1 day</source>
         <translation>1 dag</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="238"/>
+        <location filename="../gui/settings_dialog.cpp" line="239"/>
         <source>3 days</source>
         <translation>3 dagen</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="239"/>
+        <location filename="../gui/settings_dialog.cpp" line="240"/>
         <source>1 week</source>
         <translation>1 week</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="240"/>
+        <location filename="../gui/settings_dialog.cpp" line="241"/>
         <source>2 weeks</source>
         <translation>2 weken</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="363"/>
+        <location filename="../gui/settings_dialog.cpp" line="365"/>
         <source>Open texture file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="365"/>
+        <location filename="../gui/settings_dialog.cpp" line="367"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="404"/>
+        <location filename="../gui/settings_dialog.cpp" line="406"/>
         <source>Select Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="454"/>
+        <location filename="../gui/settings_dialog.cpp" line="456"/>
         <source>Export settings to ...</source>
         <translation>Exporteer instellingen naar ...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="456"/>
-        <location filename="../gui/settings_dialog.cpp" line="464"/>
+        <location filename="../gui/settings_dialog.cpp" line="458"/>
+        <location filename="../gui/settings_dialog.cpp" line="466"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>Digital Clock instelling bestanden (*.dcs)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="462"/>
+        <location filename="../gui/settings_dialog.cpp" line="464"/>
         <source>Import settings from ...</source>
         <translation>Importeer instellingen van ...</translation>
     </message>

@@ -40,76 +40,91 @@
         <translation>Таймер</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="136"/>
+        <location filename="../gui/settings_dialog.ui" line="40"/>
         <source>show custom message on timeout</source>
         <translation>показывать сообщение по истечении времени</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="88"/>
+        <location filename="../gui/settings_dialog.ui" line="56"/>
         <source>target time</source>
         <translation>конкретное время</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="40"/>
-        <source>restart on double click</source>
-        <translation>перезапуск по двойному клику</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="72"/>
-        <source>auto-restart countdown</source>
-        <translation>перезапуск таймера</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="102"/>
+        <location filename="../gui/settings_dialog.ui" line="70"/>
         <source>interval</source>
         <translation>интервал</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="112"/>
+        <location filename="../gui/settings_dialog.ui" line="80"/>
         <source>hours</source>
         <translation>часы</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="119"/>
+        <location filename="../gui/settings_dialog.ui" line="87"/>
         <source>minutes</source>
         <translation>минуты</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="126"/>
+        <location filename="../gui/settings_dialog.ui" line="94"/>
         <source>seconds</source>
         <translation>секунды</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="145"/>
+        <location filename="../gui/settings_dialog.ui" line="106"/>
         <source>chime when countdown finishes</source>
         <translation>сигнал по истечению таймера</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="165"/>
-        <source>Hotkeys</source>
-        <translation type="unfinished"></translation>
+        <location filename="../gui/settings_dialog.ui" line="125"/>
+        <source>restart on double click</source>
+        <translation>перезапуск по двойному клику</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="177"/>
-        <source>pause timer</source>
-        <translation>приостановить таймер</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="203"/>
-        <source>restart timer</source>
-        <translation>перезапустить таймер</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="49"/>
+        <location filename="../gui/settings_dialog.ui" line="134"/>
         <source>minimum days count to show</source>
         <translation>минимальное количество дней для отображения</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="59"/>
+        <location filename="../gui/settings_dialog.ui" line="144"/>
         <source>If remaining days count less than this value, days will not be shown.
 Set this to -1 to never show days count, or to 0 to always show.</source>
         <translation>Если количество оставшихся дней меньше данного значения, дни не будут отображаться.
 Установите данное значение в -1 чтобы никогда не отображать дни, или в 0 чтобы отображать всегда.</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="165"/>
+        <source>always hide days</source>
+        <translation>скрывать дни</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="174"/>
+        <source>auto-restart countdown</source>
+        <translation>перезапуск таймера</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="181"/>
+        <source>hide timer when it is not active</source>
+        <translation>скрывать неактивный таймер</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="188"/>
+        <source>reverse counting</source>
+        <translation>обратный счет</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="196"/>
+        <source>Hotkeys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="208"/>
+        <source>pause timer</source>
+        <translation>приостановить таймер</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="234"/>
+        <source>restart timer</source>
+        <translation>перезапустить таймер</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.cpp" line="44"/>
@@ -117,12 +132,12 @@ Set this to -1 to never show days count, or to 0 to always show.</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="115"/>
+        <location filename="../gui/settings_dialog.cpp" line="128"/>
         <source>Open File</source>
         <translation>Выбор файла</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="117"/>
+        <location filename="../gui/settings_dialog.cpp" line="130"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a)</source>
         <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a)</translation>
     </message>

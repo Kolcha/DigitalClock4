@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU">
+<TS version="2.1" language="ru">
 <context>
     <name>QHotkey</name>
     <message>
@@ -18,18 +18,18 @@
     <name>timetracker::SettingsDialog</name>
     <message>
         <location filename="../gui/settings_dialog.ui" line="14"/>
-        <source>Timetracker plugin settings</source>
-        <translation type="unfinished"></translation>
+        <source>Stopwatch plugin settings</source>
+        <translation>Насройки плагина &quot;Секундомер&quot;</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="27"/>
         <source>Timer</source>
-        <translation type="unfinished"></translation>
+        <translation>Таймер</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="33"/>
         <source>hide timer when it is not active</source>
-        <translation type="unfinished"></translation>
+        <translation>скрывать неактивный таймер</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="54"/>
@@ -39,17 +39,17 @@
     <message>
         <location filename="../gui/settings_dialog.ui" line="66"/>
         <source>pause timer</source>
-        <translation type="unfinished"></translation>
+        <translation>приостановить таймер</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="92"/>
         <source>restart timer</source>
-        <translation type="unfinished"></translation>
+        <translation>перезапустить таймер</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.cpp" line="42"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Вид</translation>
     </message>
 </context>
 <context>
@@ -57,14 +57,16 @@
     <message>
         <location filename="../timetracker_plugin.cpp" line="52"/>
         <source>Stopwatch</source>
-        <translation type="unfinished"></translation>
+        <translation>Секундомер</translation>
     </message>
     <message>
         <location filename="../timetracker_plugin.cpp" line="53"/>
         <source>Very simple stopwatch.
 Single click to start/pause.
 Double click to reset/restart.</source>
-        <translation type="unfinished"></translation>
+        <translation>Очень простой секундомер.
+Один клик для запуска/остановки.
+Двойной клик для сброса/перезапуска.</translation>
     </message>
 </context>
 </TS>

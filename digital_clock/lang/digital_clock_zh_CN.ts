@@ -466,69 +466,74 @@
         <translation>实验性选项</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="879"/>
+        <location filename="../gui/settings_dialog.ui" line="899"/>
         <source>show clock in fullscreen mode (may not work for some apps)</source>
         <translation>以全屏模式显示时钟（对某些程序可能不生效）</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="886"/>
+        <location filename="../gui/settings_dialog.ui" line="930"/>
         <source>show clock on all workspaces/virtual desktops</source>
         <translation>在所有工作空间/虚拟桌面上都显示时钟</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="893"/>
+        <location filename="../gui/settings_dialog.ui" line="1066"/>
+        <source>show app icon in Windows TaskBar (also in Alt+Tab dialog), can be useful for screen recording software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="906"/>
         <source>better &apos;stay on top&apos; for Linux</source>
         <translation>针对Linux优化的“始终置顶”功能</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="900"/>
+        <location filename="../gui/settings_dialog.ui" line="879"/>
         <source>always keep clock visible on screen, prevent out of screen postion</source>
         <translation>保持时钟在屏幕中可见，防止时钟出现在屏幕内容以外的位置</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="907"/>
+        <location filename="../gui/settings_dialog.ui" line="937"/>
         <source>show clock on all available monitors</source>
         <translation>在所有可用的显示屏上显示时钟</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="914"/>
+        <location filename="../gui/settings_dialog.ui" line="944"/>
         <source>allow only one clock instance at a time</source>
         <translation>同时仅允许一个时钟实例存在</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="938"/>
-        <source>hide completely</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="1036"/>
-        <source>Please restart clock after changing any of these options!</source>
-        <translation>请在更改以上任意选项后重启本程序！</translation>
-    </message>
-    <message>
-        <location filename="../gui/settings_dialog.ui" line="921"/>
+        <location filename="../gui/settings_dialog.ui" line="913"/>
         <source>move clock on click on it (has no effect if &quot;transparent for mouse&quot; is enabled)</source>
         <translation>点击时钟时移动其位置（开启“不响应鼠标操作”时此选项无效）</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="928"/>
+        <location filename="../gui/settings_dialog.ui" line="951"/>
         <source>become almost transparent on mouse hover</source>
         <translation>鼠标经过时透明化</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="950"/>
+        <location filename="../gui/settings_dialog.ui" line="923"/>
+        <source>hide completely</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="976"/>
         <source>ATTENTION! Refreshing at a quick rate can cause a high CPU load. Default is 500ms.</source>
         <translation>注意！过高的刷新率将导致CPU占用升高。默认值为500ms。</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="957"/>
+        <location filename="../gui/settings_dialog.ui" line="983"/>
         <source>snap to edges, threshold</source>
         <translation>靠近边缘时自动吸附；阈值</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="989"/>
+        <location filename="../gui/settings_dialog.ui" line="1015"/>
         <source>window refresh interval</source>
         <translation>窗口刷新间隔</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="892"/>
+        <source>Please restart clock after changing any of these options!</source>
+        <translation>请在更改以上任意选项后重启本程序！</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="1056"/>
@@ -536,58 +541,58 @@
         <translation>本页面内容为实验性选项。所有选项默认关闭，启用这些选项并不会对电脑本身造成危害，但有可能导致本程序产生异常。请尽情尝试这些选项，欢迎对它们进行任何形式的测试。如果您发现在启用了某一实验性选项后导致了程序异常，都请告诉我。在菜单的“关于”一栏中可以找到我的联系方式。</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="136"/>
+        <location filename="../gui/settings_dialog.cpp" line="137"/>
         <source>unknown</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="237"/>
+        <location filename="../gui/settings_dialog.cpp" line="238"/>
         <source>1 day</source>
         <translation>1天</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="238"/>
+        <location filename="../gui/settings_dialog.cpp" line="239"/>
         <source>3 days</source>
         <translation>3天</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="239"/>
+        <location filename="../gui/settings_dialog.cpp" line="240"/>
         <source>1 week</source>
         <translation>1周</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="240"/>
+        <location filename="../gui/settings_dialog.cpp" line="241"/>
         <source>2 weeks</source>
         <translation>2周</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="363"/>
+        <location filename="../gui/settings_dialog.cpp" line="365"/>
         <source>Open texture file</source>
         <translation>打开贴图文件</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="365"/>
+        <location filename="../gui/settings_dialog.cpp" line="367"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</source>
         <translation>图片文件(*.bmp *.jpg *.jpeg *.png *.tiff *.xbm *.xpm)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="404"/>
+        <location filename="../gui/settings_dialog.cpp" line="406"/>
         <source>Select Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="454"/>
+        <location filename="../gui/settings_dialog.cpp" line="456"/>
         <source>Export settings to ...</source>
         <translation>将设置导出到...</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="456"/>
-        <location filename="../gui/settings_dialog.cpp" line="464"/>
+        <location filename="../gui/settings_dialog.cpp" line="458"/>
+        <location filename="../gui/settings_dialog.cpp" line="466"/>
         <source>Digital Clock settings files (*.dcs)</source>
         <translation>Digital Clock设置文件(*.dcs)</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="462"/>
+        <location filename="../gui/settings_dialog.cpp" line="464"/>
         <source>Import settings from ...</source>
         <translation>导入设置文件...</translation>
     </message>
