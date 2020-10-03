@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/countdown_timer/lang">
+    <qresource prefix="/timetracker/lang">
         <file>timetracker_en.qm</file>
         <file>timetracker_ru.qm</file>
     </qresource>
