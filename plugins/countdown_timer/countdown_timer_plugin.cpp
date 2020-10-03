@@ -86,6 +86,12 @@ void CountdownTimerPlugin::Configure()
 {
   SettingsDialog* dialog = new SettingsDialog();
   connect(dialog, &SettingsDialog::destroyed, this, &CountdownTimerPlugin::configured);
+
+  if (settings_->GetOption(OPT_HIDE_DAYS_THRESHOLD).toInt() == -1) {
+    settings_->SetOption(OPT_HIDE_DAYS_ALWAYS, true);
+    settings_->SetOption(OPT_HIDE_DAYS_THRESHOLD, 0);
+  }
+
   // load current settings to dialog
   QSettings::SettingsMap curr_settings;
   InitDefaults(&curr_settings);
