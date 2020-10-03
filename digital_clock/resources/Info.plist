@@ -21,7 +21,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>4.7.8</string>
 	<key>CFBundleVersion</key>
-	<string>1398</string>
+	<string>1399</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}.0</string>
 	<key>LSUIElement</key>
