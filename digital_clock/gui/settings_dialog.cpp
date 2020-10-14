@@ -531,7 +531,8 @@ void digital_clock::gui::SettingsDialog::on_background_enabled_clicked(bool chec
 
 void digital_clock::gui::SettingsDialog::on_background_color_btn_clicked()
 {
-  QColor color = QColorDialog::getColor(last_background_color_, this);
+  QColor color = QColorDialog::getColor(last_background_color_, this,
+                                        QString(), QColorDialog::ShowAlphaChannel);
   if (color.isValid()) {
     ui->background_color_btn->setColor(color);
     emit OptionChanged(OPT_BACKGROUND_COLOR, color);
