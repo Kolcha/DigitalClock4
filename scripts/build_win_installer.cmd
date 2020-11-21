@@ -3,7 +3,7 @@ setlocal
 
 set src_root=%~dp0..
 
-call C:\Qt\5.12.9\msvc2017_64\bin\qtenv2.bat
+call C:\Qt\5.12.10\msvc2017_64\bin\qtenv2.bat
 call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
 set PATH=%PATH%;C:\Qt\Tools\QtCreator\bin
 set PATH=%PATH%;C:\Program Files (x86)\WiX Toolset v3.11\bin
