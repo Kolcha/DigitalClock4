@@ -6,24 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>321</width>
-    <height>72</height>
+    <width>317</width>
+    <height>102</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Advanced Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="shortcut_label">
-     <property name="text">
-      <string>Shortcut to stop alarm:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QKeySequenceEdit" name="shortcut_edit"/>
-   </item>
    <item row="0" column="2">
     <widget class="QToolButton" name="shortcut_clear_btn">
      <property name="icon">
@@ -32,13 +22,41 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="3">
+   <item row="0" column="1">
+    <widget class="QKeySequenceEdit" name="shortcut_edit"/>
+   </item>
+   <item row="2" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="shortcut_label">
+     <property name="text">
+      <string>Shortcut to stop alarm:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="cfg_hk_label">
+     <property name="text">
+      <string>Open plugin settings:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QKeySequenceEdit" name="cfg_hk_edit"/>
+   </item>
+   <item row="1" column="2">
+    <widget class="QToolButton" name="cfg_hk_clear_btn">
+     <property name="icon">
+      <iconset resource="../alarm.qrc">
+       <normaloff>:/alarm/remove_all.svg.p</normaloff>:/alarm/remove_all.svg.p</iconset>
      </property>
     </widget>
    </item>
@@ -55,8 +73,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>227</x>
-     <y>53</y>
+     <x>236</x>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -71,8 +89,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>295</x>
-     <y>59</y>
+     <x>304</x>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -93,6 +111,22 @@
     <hint type="destinationlabel">
      <x>252</x>
      <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cfg_hk_clear_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>cfg_hk_edit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>294</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>263</x>
+     <y>50</y>
     </hint>
    </hints>
   </connection>

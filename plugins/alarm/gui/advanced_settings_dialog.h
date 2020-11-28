@@ -44,6 +44,7 @@ signals:
 
 private slots:
   void on_shortcut_edit_editingFinished();
+  void on_cfg_hk_edit_editingFinished();
 
 private:
   Ui::AdvancedSettingsDialog* ui;

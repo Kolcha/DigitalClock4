@@ -54,6 +54,22 @@
        <string>Hotkeys</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
+       <item row="1" column="0">
+        <widget class="QLabel" name="restart_label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>restart timer</string>
+         </property>
+         <property name="buddy">
+          <cstring>restart_seq_edit</cstring>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="pause_label">
          <property name="sizePolicy">
@@ -80,22 +96,6 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="restart_label">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>restart timer</string>
-         </property>
-         <property name="buddy">
-          <cstring>restart_seq_edit</cstring>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="1">
         <widget class="QKeySequenceEdit" name="restart_seq_edit">
          <property name="sizePolicy">
@@ -106,7 +106,7 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="3" column="0">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -118,6 +118,16 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="settings_label">
+         <property name="text">
+          <string>open plugin settings</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QKeySequenceEdit" name="settings_seq_edit"/>
        </item>
       </layout>
      </widget>

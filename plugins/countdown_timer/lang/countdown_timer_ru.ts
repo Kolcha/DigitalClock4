@@ -17,12 +17,12 @@
 <context>
     <name>countdown_timer::CountdownTimerPlugin</name>
     <message>
-        <location filename="../countdown_timer_plugin.cpp" line="49"/>
+        <location filename="../countdown_timer_plugin.cpp" line="50"/>
         <source>Countdown timer</source>
         <translation>Таймер обратного отсчёта</translation>
     </message>
     <message>
-        <location filename="../countdown_timer_plugin.cpp" line="50"/>
+        <location filename="../countdown_timer_plugin.cpp" line="51"/>
         <source>Just a countdown timer.</source>
         <translation>Простой таймер обратного отсчёта.</translation>
     </message>
@@ -114,7 +114,7 @@ Set this to -1 to never show days count, or to 0 to always show.</source>
     <message>
         <location filename="../gui/settings_dialog.ui" line="202"/>
         <source>Hotkeys</source>
-        <translation type="unfinished"></translation>
+        <translation>Горячие клавиши</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.ui" line="214"/>
@@ -122,9 +122,14 @@ Set this to -1 to never show days count, or to 0 to always show.</source>
         <translation>приостановить таймер</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="240"/>
+        <location filename="../gui/settings_dialog.ui" line="263"/>
         <source>restart timer</source>
         <translation>перезапустить таймер</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="273"/>
+        <source>open plugin settings</source>
+        <translation>открыть настройки плагина</translation>
     </message>
     <message>
         <location filename="../gui/settings_dialog.cpp" line="44"/>
@@ -132,12 +137,12 @@ Set this to -1 to never show days count, or to 0 to always show.</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="128"/>
+        <location filename="../gui/settings_dialog.cpp" line="129"/>
         <source>Open File</source>
         <translation>Выбор файла</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="130"/>
+        <location filename="../gui/settings_dialog.cpp" line="131"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a)</source>
         <translation>Звуки (*.wav *.mp3 *.ogg *.oga *.m4a)</translation>
     </message>

@@ -22,9 +22,14 @@
         <translation>高级设置</translation>
     </message>
     <message>
-        <location filename="../gui/advanced_settings_dialog.ui" line="20"/>
+        <location filename="../gui/advanced_settings_dialog.ui" line="41"/>
         <source>Shortcut to stop alarm:</source>
         <translation>停止闹钟的快捷键：</translation>
+    </message>
+    <message>
+        <location filename="../gui/advanced_settings_dialog.ui" line="48"/>
+        <source>Open plugin settings:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -53,9 +58,9 @@
     <message>
         <location filename="../alarm.cpp" line="100"/>
         <location filename="../alarm.cpp" line="114"/>
-        <location filename="../alarm.cpp" line="193"/>
-        <location filename="../alarm.cpp" line="208"/>
-        <location filename="../alarm.cpp" line="218"/>
+        <location filename="../alarm.cpp" line="194"/>
+        <location filename="../alarm.cpp" line="209"/>
+        <location filename="../alarm.cpp" line="219"/>
         <source>Digital Clock Alarm</source>
         <translation>Digital Clock 闹钟</translation>
     </message>
@@ -72,14 +77,14 @@
 %1</translation>
     </message>
     <message>
-        <location filename="../alarm.cpp" line="194"/>
+        <location filename="../alarm.cpp" line="195"/>
         <source>File not found:
 %1</source>
         <translation>未找到文件：
 %1</translation>
     </message>
     <message>
-        <location filename="../alarm.cpp" line="209"/>
+        <location filename="../alarm.cpp" line="210"/>
         <source>Alarm at %1</source>
         <translation>闹钟时间 %1</translation>
     </message>

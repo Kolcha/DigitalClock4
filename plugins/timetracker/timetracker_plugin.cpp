@@ -47,6 +47,7 @@ static const char* const PROP_STATE_ACTIVE = "dcp_timetracker_state_last_active"
 TimetrackerPlugin::TimetrackerPlugin() : tracker_(nullptr)
   , pause_hotkey_(nullptr)
   , restart_hotkey_(nullptr)
+  , settings_hotkey_(nullptr)
 {
   InitTranslator(QLatin1String(":/timetracker/timetracker_"));
   info_.display_name = tr("Stopwatch");
@@ -85,6 +86,7 @@ void TimetrackerPlugin::Stop()
 
   delete pause_hotkey_;
   delete restart_hotkey_;
+  delete settings_hotkey_;
 
   timer_widgets_.clear();
 }
@@ -185,6 +187,11 @@ void TimetrackerPlugin::onPluginOptionChanged(const QString& key, const QVariant
   if (key == OPT_RESTART_HOTKEY) {
     delete restart_hotkey_;
     restart_hotkey_ = init_hotkey(value.toString(), tracker_, &Timetracker::reset);
+  }
+
+  if (key == OPT_SETTINGS_HOTKEY) {
+    delete settings_hotkey_;
+    settings_hotkey_ = init_hotkey(value.toString(), this, &TimetrackerPlugin::Configure);
   }
 
   if (key == OPT_HIDE_INACTIVE && tracker_) {

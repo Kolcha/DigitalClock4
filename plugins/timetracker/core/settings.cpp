@@ -24,6 +24,7 @@ void InitDefaults(QSettings::SettingsMap* defaults)
 {
   defaults->insert(OPT_PAUSE_HOTKEY, QString());
   defaults->insert(OPT_RESTART_HOTKEY, QString());
+  defaults->insert(OPT_SETTINGS_HOTKEY, QString());
 
   defaults->insert(OPT_HIDE_INACTIVE, false);
 }

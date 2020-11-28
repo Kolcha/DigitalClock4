@@ -48,6 +48,7 @@ private slots:
 
   void on_pause_seq_edit_editingFinished();
   void on_restart_seq_edit_editingFinished();
+  void on_settings_seq_edit_editingFinished();
 
 private:
   Ui::SettingsDialog* ui;

@@ -34,15 +34,20 @@
     <message>
         <location filename="../gui/settings_dialog.ui" line="54"/>
         <source>Hotkeys</source>
-        <translation type="unfinished"></translation>
+        <translation>Горячие клавиши</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="66"/>
+        <location filename="../gui/settings_dialog.ui" line="82"/>
         <source>pause timer</source>
         <translation>приостановить таймер</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="92"/>
+        <location filename="../gui/settings_dialog.ui" line="125"/>
+        <source>open plugin settings</source>
+        <translation>открыть настройки плагина</translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="66"/>
         <source>restart timer</source>
         <translation>перезапустить таймер</translation>
     </message>
@@ -55,12 +60,12 @@
 <context>
     <name>timetracker::TimetrackerPlugin</name>
     <message>
-        <location filename="../timetracker_plugin.cpp" line="52"/>
+        <location filename="../timetracker_plugin.cpp" line="53"/>
         <source>Stopwatch</source>
         <translation>Секундомер</translation>
     </message>
     <message>
-        <location filename="../timetracker_plugin.cpp" line="53"/>
+        <location filename="../timetracker_plugin.cpp" line="54"/>
         <source>Very simple stopwatch.
 Single click to start/pause.
 Double click to reset/restart.</source>

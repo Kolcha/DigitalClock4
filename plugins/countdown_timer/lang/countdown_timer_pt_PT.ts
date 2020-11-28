@@ -17,12 +17,12 @@
 <context>
     <name>countdown_timer::CountdownTimerPlugin</name>
     <message>
-        <location filename="../countdown_timer_plugin.cpp" line="49"/>
+        <location filename="../countdown_timer_plugin.cpp" line="50"/>
         <source>Countdown timer</source>
         <translation>Contador decrescente</translation>
     </message>
     <message>
-        <location filename="../countdown_timer_plugin.cpp" line="50"/>
+        <location filename="../countdown_timer_plugin.cpp" line="51"/>
         <source>Just a countdown timer.</source>
         <translation>Apenas um contador decrescente.</translation>
     </message>
@@ -121,8 +121,13 @@ Set this to -1 to never show days count, or to 0 to always show.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.ui" line="240"/>
+        <location filename="../gui/settings_dialog.ui" line="263"/>
         <source>restart timer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/settings_dialog.ui" line="273"/>
+        <source>open plugin settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -131,12 +136,12 @@ Set this to -1 to never show days count, or to 0 to always show.</source>
         <translation>Aparência</translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="128"/>
+        <location filename="../gui/settings_dialog.cpp" line="129"/>
         <source>Open File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/settings_dialog.cpp" line="130"/>
+        <location filename="../gui/settings_dialog.cpp" line="131"/>
         <source>Sounds (*.wav *.mp3 *.ogg *.oga *.m4a)</source>
         <translation type="unfinished"></translation>
     </message>
