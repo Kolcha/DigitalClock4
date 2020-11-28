@@ -22,9 +22,14 @@
         <translation>Configurações Avançadas</translation>
     </message>
     <message>
-        <location filename="../gui/advanced_settings_dialog.ui" line="20"/>
+        <location filename="../gui/advanced_settings_dialog.ui" line="41"/>
         <source>Shortcut to stop alarm:</source>
         <translation>Atalho para parar o alarme:</translation>
+    </message>
+    <message>
+        <location filename="../gui/advanced_settings_dialog.ui" line="48"/>
+        <source>Open plugin settings:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -53,9 +58,9 @@
     <message>
         <location filename="../alarm.cpp" line="100"/>
         <location filename="../alarm.cpp" line="114"/>
-        <location filename="../alarm.cpp" line="193"/>
-        <location filename="../alarm.cpp" line="208"/>
-        <location filename="../alarm.cpp" line="218"/>
+        <location filename="../alarm.cpp" line="194"/>
+        <location filename="../alarm.cpp" line="209"/>
+        <location filename="../alarm.cpp" line="219"/>
         <source>Digital Clock Alarm</source>
         <translation>Alarme de Relógio Digital</translation>
     </message>
@@ -72,14 +77,14 @@
 %1</translation>
     </message>
     <message>
-        <location filename="../alarm.cpp" line="194"/>
+        <location filename="../alarm.cpp" line="195"/>
         <source>File not found:
 %1</source>
         <translation>Ficheiro não encontrado:
 %1</translation>
     </message>
     <message>
-        <location filename="../alarm.cpp" line="209"/>
+        <location filename="../alarm.cpp" line="210"/>
         <source>Alarm at %1</source>
         <translation>Alarme às %1</translation>
     </message>
