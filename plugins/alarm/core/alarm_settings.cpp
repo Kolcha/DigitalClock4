@@ -25,6 +25,7 @@ namespace alarm_plugin {
 void InitDefaults(QSettings::SettingsMap* defaults)
 {
   defaults->insert(OPT_STOP_ALARM_SHORTCUT, QString());
+  defaults->insert(OPT_SETTINGS_SHORTCUT, QString());
   defaults->insert(OPT_LAST_MEDIA_PATH, QDir::homePath());
 }
 

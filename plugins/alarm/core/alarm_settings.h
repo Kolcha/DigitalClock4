@@ -24,6 +24,7 @@
 namespace alarm_plugin {
 
 const char* const OPT_STOP_ALARM_SHORTCUT = "stop_shortcut";
+const char* const OPT_SETTINGS_SHORTCUT   = "settings_shortcut";
 const char* const OPT_LAST_MEDIA_PATH     = "last_media_path";
 
 void InitDefaults(QSettings::SettingsMap* defaults);

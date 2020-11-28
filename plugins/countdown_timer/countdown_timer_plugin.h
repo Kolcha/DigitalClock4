@@ -64,6 +64,7 @@ private:
 
   QHotkey* pause_hotkey_;
   QHotkey* restart_hotkey_;
+  QHotkey* settings_hotkey_;
 
   QVector<QPointer<QWidget>> timer_widgets_;
 };

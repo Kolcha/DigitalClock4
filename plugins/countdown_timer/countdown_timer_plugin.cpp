@@ -44,6 +44,7 @@ CountdownTimerPlugin::CountdownTimerPlugin()
   , player_(nullptr)
   , pause_hotkey_(nullptr)
   , restart_hotkey_(nullptr)
+  , settings_hotkey_(nullptr)
 {
   InitTranslator(QLatin1String(":/countdown_timer/lang/countdown_timer_"));
   info_.display_name = tr("Countdown timer");
@@ -76,6 +77,7 @@ void CountdownTimerPlugin::Stop()
 
   delete pause_hotkey_;
   delete restart_hotkey_;
+  delete settings_hotkey_;
 
   timer_widgets_.clear();
 
@@ -230,6 +232,11 @@ void CountdownTimerPlugin::onPluginOptionChanged(const QString& key, const QVari
   if (key == OPT_RESTART_HOTKEY) {
     delete restart_hotkey_;
     restart_hotkey_ = init_hotkey(value.toString(), this, &CountdownTimerPlugin::RestartTimer);
+  }
+
+  if (key == OPT_SETTINGS_HOTKEY) {
+    delete settings_hotkey_;
+    settings_hotkey_ = init_hotkey(value.toString(), this, &CountdownTimerPlugin::Configure);
   }
 
   if (key == OPT_HIDE_INACTIVE && cd_timer_) {

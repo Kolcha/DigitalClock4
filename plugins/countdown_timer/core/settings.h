@@ -44,6 +44,7 @@ const char* const OPT_RESTART_ON_TIMEOUT  = "restart_on_timeout";
 
 const char* const OPT_PAUSE_HOTKEY      = "pause_hotkey";
 const char* const OPT_RESTART_HOTKEY    = "restart_hotkey";
+const char* const OPT_SETTINGS_HOTKEY   = "settings_hotkey";
 
 const char* const OPT_HIDE_INACTIVE     = "hide_inactive";
 const char* const OPT_REVERSE_COUNTING  = "reverse_counting";

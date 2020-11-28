@@ -139,6 +139,7 @@ void Alarm::Stop()
   tray_icon_->contextMenu()->removeAction(alarm_menu_);
   delete alarm_menu_->menu();
   delete stop_hotkey_;
+  delete settings_hotkey_;
 }
 
 void Alarm::Configure()
@@ -248,6 +249,15 @@ void Alarm::onPluginOptionChanged(const QString& key, const QVariant& value)
 #ifdef HAVE_QHOTKEY
     stop_hotkey_ = new QHotkey(QKeySequence(key_seq_str), true);
     connect(stop_hotkey_, &QHotkey::activated, player_.data(), &QMediaPlayer::stop);
+#endif
+  }
+  if (key == OPT_SETTINGS_SHORTCUT) {
+    delete settings_hotkey_;
+    QString key_seq_str = value.toString();
+    if (key_seq_str.isEmpty()) return;
+#ifdef HAVE_QHOTKEY
+    settings_hotkey_ = new QHotkey(QKeySequence(key_seq_str), true);
+    connect(settings_hotkey_, &QHotkey::activated, this, &Alarm::Configure);
 #endif
   }
 }

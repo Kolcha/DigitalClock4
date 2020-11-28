@@ -64,6 +64,7 @@ private:
   AlarmsStorage* storage_;
   QAction* alarm_menu_;
   QHotkey* stop_hotkey_;
+  QHotkey* settings_hotkey_ = nullptr;
 };
 
 } // namespace alarm_plugin

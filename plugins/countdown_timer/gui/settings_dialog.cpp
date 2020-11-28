@@ -63,6 +63,7 @@ void SettingsDialog::Init(const QSettings::SettingsMap& settings)
   ui->msg_text_edit->setPlainText(settings.value(OPT_MESSAGE_TEXT).toString());
   ui->pause_seq_edit->setKeySequence(QKeySequence(settings.value(OPT_PAUSE_HOTKEY).toString()));
   ui->restart_seq_edit->setKeySequence(QKeySequence(settings.value(OPT_RESTART_HOTKEY).toString()));
+  ui->settings_seq_edit->setKeySequence(QKeySequence(settings.value(OPT_SETTINGS_HOTKEY).toString()));
 #ifndef HAVE_QHOTKEY
   ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->hotkeys_tab));
 #endif
@@ -160,6 +161,11 @@ void SettingsDialog::on_pause_seq_edit_editingFinished()
 void SettingsDialog::on_restart_seq_edit_editingFinished()
 {
   emit OptionChanged(OPT_RESTART_HOTKEY, ui->restart_seq_edit->keySequence().toString());
+}
+
+void SettingsDialog::on_settings_seq_edit_editingFinished()
+{
+  emit OptionChanged(OPT_SETTINGS_HOTKEY, ui->settings_seq_edit->keySequence().toString());
 }
 
 } // namespace countdown_timer
