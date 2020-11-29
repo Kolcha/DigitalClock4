@@ -33,6 +33,8 @@ TaskEditDialog::TaskEditDialog(QWidget* parent) :
 
   ui->dateEdit->setDisplayFormat(QLocale::system().dateFormat(QLocale::LongFormat));
   ui->timeEdit->setDisplayFormat(QLocale::system().timeFormat(QLocale::ShortFormat));
+
+  ui->timeEdit->setFocus();
 }
 
 TaskEditDialog::~TaskEditDialog()
