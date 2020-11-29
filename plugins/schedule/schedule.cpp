@@ -23,16 +23,26 @@
 #include <QTimer>
 #include <QMediaPlayer>
 
-#include "message_box.h"
+#ifdef HAVE_QHOTKEY
+#include <QHotkey>
+#else
+class QHotkey {};   // just a stub to suppress compiler warnings
+#endif
 
+#include "message_box.h"
+#include "plugin_settings.h"
+
+#include "core/schedule_settings.h"
 #include "core/tasks_storage.h"
 #include "core/tasks_invoker.h"
 
+#include "gui/advanced_settings_dialog.h"
 #include "gui/schedule_dialog.h"
+#include "gui/task_edit_dialog.h"
 
 namespace schedule {
 
-Schedule::Schedule() : tray_menu_(nullptr), backend_(nullptr), invoker_(nullptr)
+Schedule::Schedule() : tray_menu_(nullptr), backend_(nullptr), invoker_(nullptr), player_(nullptr)
 {
   InitTranslator(QLatin1String(":/schedule/lang/schedule_"));
   info_.display_name = tr("Scheduler");
@@ -42,8 +52,8 @@ Schedule::Schedule() : tray_menu_(nullptr), backend_(nullptr), invoker_(nullptr)
 
 void Schedule::InitSettings(SettingsStorage* backend, const QString& name)
 {
-  Q_UNUSED(name);
   backend_ = new TasksStorage(backend, this);
+  IClockPlugin::InitSettings(backend, name);
 }
 
 void Schedule::Start()
@@ -68,6 +78,13 @@ void Schedule::Start()
   connect(invoker_, &TasksInvoker::done, backend_, &TasksStorage::Accept);
 
   invoker_->start();
+
+  QSettings::SettingsMap defaults;
+  InitDefaults(&defaults);
+  settings_->SetDefaultValues(defaults);
+  settings_->TrackChanges(true);
+  connect(settings_, &PluginSettings::OptionChanged, this, &Schedule::onPluginOptionChanged);
+  settings_->Load();
 }
 
 void Schedule::Stop()
@@ -80,6 +97,8 @@ void Schedule::Stop()
 
   player_->stop();
   delete player_;
+
+  delete add_task_hotkey_;
 }
 
 void Schedule::Configure()
@@ -97,6 +116,16 @@ void Schedule::Configure()
 
   connect(dlg, &ScheduleDialog::accepted, dlg, &ScheduleDialog::deleteLater);
   connect(dlg, &ScheduleDialog::rejected, dlg, &ScheduleDialog::deleteLater);
+
+  connect(this, &Schedule::defaultNotificationChanged, dlg, &ScheduleDialog::setDefaultNotification);
+  connect(dlg, &ScheduleDialog::settingsButtonClicked, this, &Schedule::ShowSettingsDialog);
+
+  Notification nt;
+  nt.setType(settings_->GetOption(OPT_NOTIFICATION_TYPE).value<Notification::Type>());
+  nt.setTimeout(settings_->GetOption(OPT_NOTIFICATION_TIME).toInt());
+  nt.setPlaySound(settings_->GetOption(OPT_PLAY_SOUND).toBool());
+  nt.setSoundFile(settings_->GetOption(OPT_SOUND_FILE).toString());
+  dlg->setDefaultNotification(nt);
 
   if (invoker_) {
     invoker_->stop();
@@ -142,6 +171,9 @@ void Schedule::TaskCompleted(const TaskPtr& task)
       }
       player_->stop();
       break;
+
+    default:
+      break;
   }
 
   if (player_->state() == QMediaPlayer::PlayingState && task->notification().timeout() > 0) {
@@ -151,6 +183,99 @@ void Schedule::TaskCompleted(const TaskPtr& task)
     connect(timer, &QTimer::timeout, player_, &QMediaPlayer::stop);
     connect(timer, &QTimer::timeout, timer, &QTimer::deleteLater);
     timer->start();
+  }
+}
+
+void Schedule::ShowSettingsDialog()
+{
+  AdvancedSettingsDialog* dlg = new AdvancedSettingsDialog(qobject_cast<QWidget*>(sender()));
+  dlg->setWindowModality(Qt::ApplicationModal);
+  // load current settings to dialog
+  QSettings::SettingsMap curr_settings;
+  InitDefaults(&curr_settings);
+  if (!player_) settings_->SetDefaultValues(curr_settings);
+  for (auto iter = curr_settings.begin(); iter != curr_settings.end(); ++iter) {
+    *iter = settings_->GetOption(iter.key());
+  }
+  dlg->Init(curr_settings);
+  // connect main signals/slots
+  connect(dlg, &AdvancedSettingsDialog::accepted, settings_, &PluginSettings::Save);
+  connect(dlg, &AdvancedSettingsDialog::rejected, settings_, &PluginSettings::Load);
+  connect(dlg, &AdvancedSettingsDialog::OptionChanged, settings_, &PluginSettings::SetOption);
+  connect(dlg, &AdvancedSettingsDialog::accepted, dlg, &AdvancedSettingsDialog::deleteLater);
+  connect(dlg, &AdvancedSettingsDialog::rejected, dlg, &AdvancedSettingsDialog::deleteLater);
+  dlg->show();
+}
+
+void Schedule::onPluginOptionChanged(const QString& key, const QVariant& value)
+{
+  if (key == OPT_NOTIFICATION_TYPE) {
+    default_notification_.setType(value.value<Notification::Type>());
+    emit defaultNotificationChanged(default_notification_);
+  }
+
+  if (key == OPT_NOTIFICATION_TIME) {
+    default_notification_.setTimeout(value.toInt());
+    emit defaultNotificationChanged(default_notification_);
+  }
+
+  if (key == OPT_PLAY_SOUND) {
+    default_notification_.setPlaySound(value.toBool());
+    emit defaultNotificationChanged(default_notification_);
+  }
+
+  if (key == OPT_SOUND_FILE) {
+    default_notification_.setSoundFile(value.toString());
+    emit defaultNotificationChanged(default_notification_);
+  }
+
+  if (key == OPT_SHOW_TRAY_ICON)
+    tray_icon_->setVisible(value.toBool());
+
+  auto init_hotkey = [=](auto key_seq, auto receiver, auto method) -> QHotkey* {
+    QHotkey* hotkey = nullptr;
+#ifdef HAVE_QHOTKEY
+    if (!key_seq.isEmpty()) {
+      hotkey = new QHotkey(QKeySequence(key_seq), true);
+      connect(hotkey, &QHotkey::activated, receiver, method);
+    }
+#else
+    Q_UNUSED(key_seq);
+    Q_UNUSED(receiver);
+    Q_UNUSED(method);
+#endif
+    return hotkey;
+  };
+
+  if (key == OPT_ADD_TASK_SHORTCUT_E) {
+    delete add_task_hotkey_;
+    add_task_hotkey_ = nullptr;
+    if (value.toBool())
+      add_task_hotkey_ = init_hotkey(settings_->GetOption(OPT_ADD_TASK_SHORTCUT).toString(), this, &Schedule::AddTask);
+  }
+
+  if (key == OPT_ADD_TASK_SHORTCUT) {
+    delete add_task_hotkey_;
+    add_task_hotkey_ = nullptr;
+    if (settings_->GetOption(OPT_ADD_TASK_SHORTCUT_E).toBool())
+      add_task_hotkey_ = init_hotkey(value.toString(), this, &Schedule::AddTask);
+  }
+}
+
+void Schedule::AddTask()
+{
+  TaskEditDialog dlg;
+  dlg.setDate(QDate::currentDate());
+  dlg.setNotification(default_notification_);
+  dlg.setWindowModality(Qt::ApplicationModal);
+  if (dlg.exec() == QDialog::Accepted) {
+    TaskPtr task(new Task());
+    task->setDate(dlg.date());
+    task->setTime(dlg.time());
+    task->setNote(dlg.note());
+    task->setNotification(dlg.notification());
+    backend_->addTask(task);
+    backend_->LoadTasks(QDate::currentDate());
   }
 }
 

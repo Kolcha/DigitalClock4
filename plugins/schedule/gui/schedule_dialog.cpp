@@ -45,6 +45,8 @@ ScheduleDialog::ScheduleDialog(QWidget* parent) :
 
   ui->tasks_view->horizontalHeader()->setSortIndicator(0, Qt::AscendingOrder);
   ui->tasks_view->sortByColumn(0, Qt::AscendingOrder);
+
+  connect(ui->settings_btn, &QToolButton::clicked, this, &ScheduleDialog::settingsButtonClicked);
 }
 
 ScheduleDialog::~ScheduleDialog()
@@ -72,6 +74,11 @@ void ScheduleDialog::setDates(const QList<QDate>& dates)
 void ScheduleDialog::setTasks(const QList<TaskPtr>& tasks)
 {
   tasks_model_->setTasks(tasks);
+}
+
+void ScheduleDialog::setDefaultNotification(const Notification& n)
+{
+  default_notification_ = n;
 }
 
 void ScheduleDialog::onTaskDetailsChanged(const QModelIndex& tl, const QModelIndex& br)
@@ -102,6 +109,7 @@ void ScheduleDialog::on_add_btn_clicked()
     dlg.setDate(ui->dates_box->currentData().toDate());
   else
     dlg.setDate(QDate::currentDate());
+  dlg.setNotification(default_notification_);
   dlg.setWindowModality(Qt::WindowModal);
   if (dlg.exec() == QDialog::Accepted) {
     TaskPtr task(new Task());
