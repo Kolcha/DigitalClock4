@@ -77,7 +77,7 @@ void Task::setNotification(const Notification& n)
 
 bool Task::isValid() const
 {
-  return id() > 0 && date().isValid() && time().isValid() && !note().isEmpty();
+  return id() > 0 && date().isValid() && time().isValid();
 }
 
 } // namespace schedule
