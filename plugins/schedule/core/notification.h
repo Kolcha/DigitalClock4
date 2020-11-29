@@ -31,7 +31,7 @@ class Notification
   Q_PROPERTY(int timeout READ timeout WRITE setTimeout)
 
 public:
-  enum Type { TrayMessage, MessageBox };
+  enum Type { TrayMessage, MessageBox, None };
   Q_ENUM(Type)
 
   Notification();

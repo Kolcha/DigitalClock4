@@ -50,9 +50,12 @@ signals:
   void taskDeleted(const TaskPtr& tsk);
   void taskEdited(const TaskPtr& tsk);
 
+  void settingsButtonClicked();
+
 public slots:
   void setDates(const QList<QDate>& dates);
   void setTasks(const QList<TaskPtr>& tasks);
+  void setDefaultNotification(const Notification& n);
 
 private slots:
   void onTaskDetailsChanged(const QModelIndex& tl, const QModelIndex& br);
@@ -68,6 +71,7 @@ private:
   Ui::ScheduleDialog* ui;
   DailyTasksProvider* tasks_model_;
   QSortFilterProxyModel* sort_model_;
+  Notification default_notification_;
 };
 
 } // namespace schedule

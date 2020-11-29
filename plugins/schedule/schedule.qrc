@@ -2,8 +2,9 @@
     <qresource prefix="/schedule">
         <file alias="settings.svg.p">res/settings-24.svg</file>
         <file alias="schedule.svg">res/1464839943_calendar.svg</file>
-        <file alias="remove.svg">res/minus-24.svg</file>
-        <file alias="add.svg">res/plus-24.svg</file>
+        <file alias="remove.svg.p">res/minus-24.svg</file>
+        <file alias="add.svg.p">res/plus-24.svg</file>
         <file alias="notification.svg.p">res/if_notification-bell-ring-alarm_2203538.svg</file>
+        <file alias="edit.svg.p">res/1438812438_pen-15.svg</file>
     </qresource>
 </RCC>

@@ -44,6 +44,7 @@ Notification TaskAdvancedSettingsDialog::notification() const
   Notification nt;
   if (ui->msg_balloon_rbtn->isChecked()) nt.setType(Notification::TrayMessage);
   if (ui->msg_dialog_rbtn->isChecked()) nt.setType(Notification::MessageBox);
+  if (ui->msg_not_show_rbtn->isChecked()) nt.setType(Notification::None);
   nt.setTimeout(ui->timeout_edit->value());
   nt.setPlaySound(ui->play_sound_enabled->isChecked());
   nt.setSoundFile(curr_sound_file_);
@@ -54,6 +55,7 @@ void TaskAdvancedSettingsDialog::setNotification(const Notification& nt)
 {
   ui->msg_balloon_rbtn->setChecked(nt.type() == Notification::TrayMessage);
   ui->msg_dialog_rbtn->setChecked(nt.type() == Notification::MessageBox);
+  ui->msg_not_show_rbtn->setChecked(nt.type() == Notification::None);
   ui->timeout_edit->setValue(nt.timeout());
   ui->play_sound_enabled->setChecked(nt.playSound());
   curr_sound_file_ = nt.soundFile();

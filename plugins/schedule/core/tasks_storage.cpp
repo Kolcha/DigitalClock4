@@ -59,8 +59,6 @@ void TasksStorage::LoadTasks(const QDate& dt)
 
 void TasksStorage::addTask(const TaskPtr& task)
 {
-  if (task->note().isEmpty()) return;
-
   QString date_key = QString("plugins/schedule/tasks/%1").arg(task->date().toString("dd-MM-yyyy"));
   QStringList items = this->GetBackend()->ListChildren(date_key);
   std::sort(items.begin(), items.end());
@@ -92,8 +90,6 @@ void TasksStorage::delTask(const TaskPtr& task)
 
 void TasksStorage::updateTask(const TaskPtr& task)
 {
-  if (task->note().isEmpty()) return;
-
   QString date_key = QString("plugins/schedule/tasks/%1").arg(task->date().toString("dd-MM-yyyy"));
   QString task_key = QString("%1/%2").arg(date_key).arg(task->id());
 

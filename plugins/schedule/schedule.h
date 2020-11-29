@@ -26,6 +26,7 @@
 
 #include "core/task.h"
 
+class QHotkey;
 class QMediaPlayer;
 
 namespace schedule {
@@ -50,9 +51,15 @@ public slots:
 
   void Configure() override;
 
+signals:
+  void defaultNotificationChanged(const Notification& n);
+
 private slots:
   void TrayActivated(QSystemTrayIcon::ActivationReason reason);
   void TaskCompleted(const TaskPtr& task);
+  void ShowSettingsDialog();
+  void onPluginOptionChanged(const QString& key, const QVariant& value);
+  void AddTask();
 
 private:
   QPointer<QSystemTrayIcon> tray_icon_;
@@ -62,6 +69,9 @@ private:
   TasksInvoker* invoker_;
 
   QMediaPlayer* player_;
+
+  Notification default_notification_;
+  QHotkey* add_task_hotkey_ = nullptr;
 };
 
 } // namespace schedule

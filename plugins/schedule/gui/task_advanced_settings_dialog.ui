@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>328</width>
-    <height>133</height>
+    <width>326</width>
+    <height>161</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,20 +27,65 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="3">
+   <item row="1" column="0">
+    <widget class="QRadioButton" name="msg_dialog_rbtn">
+     <property name="text">
+      <string>Message &amp;dialog</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="preview_btn">
+     <property name="text">
+      <string>Preview</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QPushButton" name="browse_btn">
+     <property name="text">
+      <string>Browse</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="play_sound_enabled">
+     <property name="text">
+      <string>&amp;Play sound</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QSpinBox" name="timeout_edit">
+     <property name="suffix">
+      <string extracomment="seconds"> sec</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QRadioButton" name="msg_balloon_rbtn">
+     <property name="text">
+      <string>&amp;Balloon message</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QRadioButton" name="msg_not_show_rbtn">
+     <property name="text">
+      <string>Do not show notification</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QRadioButton" name="msg_dialog_rbtn">
-     <property name="text">
-      <string>Message &amp;dialog</string>
      </property>
     </widget>
    </item>
@@ -56,44 +101,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="preview_btn">
-     <property name="text">
-      <string>Preview</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QRadioButton" name="msg_balloon_rbtn">
-     <property name="text">
-      <string>&amp;Balloon message</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QSpinBox" name="timeout_edit">
-     <property name="suffix">
-      <string extracomment="seconds"> sec</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="QCheckBox" name="play_sound_enabled">
-     <property name="text">
-      <string>&amp;Play sound</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QPushButton" name="browse_btn">
-     <property name="text">
-      <string>Browse</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
