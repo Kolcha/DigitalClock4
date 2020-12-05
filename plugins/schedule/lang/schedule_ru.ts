@@ -108,9 +108,9 @@
         <translation>Позволяет запланировать задание и отображает уведомление в указанное время.</translation>
     </message>
     <message>
-        <location filename="../schedule.cpp" line="157"/>
-        <location filename="../schedule.cpp" line="164"/>
         <location filename="../schedule.cpp" line="170"/>
+        <location filename="../schedule.cpp" line="178"/>
+        <location filename="../schedule.cpp" line="184"/>
         <source>Scheduled task</source>
         <translation>Запланированое задание</translation>
     </message>
