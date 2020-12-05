@@ -20,6 +20,7 @@
 #define SCHEDULE_SCHEDULE_H
 
 #include "iclock_plugin.h"
+#include "iplugin_init.h"
 
 #include <QPointer>
 #include <QSystemTrayIcon>
@@ -34,14 +35,16 @@ namespace schedule {
 class TasksStorage;
 class TasksInvoker;
 
-class Schedule : public IClockPlugin
+class Schedule : public IClockPlugin, public ITrayPluginInit
 {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID CLOCK_PLUGIN_INTERFACE_IID FILE "schedule.json")
-  Q_INTERFACES(IClockPlugin)
+  Q_INTERFACES(IClockPlugin ITrayPluginInit)
 
 public:
   Schedule();
+
+  void Init(QSystemTrayIcon* tray_icon) override;
 
   void InitSettings(SettingsStorage* backend, const QString& name) override;
 
@@ -65,6 +68,7 @@ private slots:
 
 private:
   QPointer<QSystemTrayIcon> tray_icon_;
+  QSystemTrayIcon* clock_icon_ = nullptr;
   QMenu* tray_menu_;
 
   TasksStorage* backend_;
