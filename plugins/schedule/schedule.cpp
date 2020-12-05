@@ -50,6 +50,11 @@ Schedule::Schedule() : tray_menu_(nullptr), backend_(nullptr), invoker_(nullptr)
   InitIcon(":/schedule/schedule.svg");
 }
 
+void Schedule::Init(QSystemTrayIcon* tray_icon)
+{
+  clock_icon_ = tray_icon;
+}
+
 void Schedule::InitSettings(SettingsStorage* backend, const QString& name)
 {
   backend_ = new TasksStorage(backend, this);
@@ -70,6 +75,7 @@ void Schedule::Start()
   connect(tray_icon_, &QSystemTrayIcon::messageClicked, player_, &QMediaPlayer::stop);
 
   invoker_ = new TasksInvoker(this);
+  invoker_->useExternalTimer(true);
 
   connect(backend_, &TasksStorage::tasksLoaded, invoker_, &TasksInvoker::setDailyTasks);
   connect(invoker_, &TasksInvoker::dateChanged, backend_, &TasksStorage::LoadTasks);
@@ -137,6 +143,11 @@ void Schedule::Configure()
   dlg->show();
 }
 
+void Schedule::TimeUpdateListener()
+{
+  if (invoker_) invoker_->externalTimerHandler();
+}
+
 void Schedule::TrayActivated(QSystemTrayIcon::ActivationReason reason)
 {
   if (reason == QSystemTrayIcon::DoubleClick) {
@@ -152,12 +163,15 @@ void Schedule::TaskCompleted(const TaskPtr& task)
   }
 
   switch (task->notification().type()) {
-    case Notification::TrayMessage:
+    case Notification::TrayMessage: {
       if (!tray_icon_) return;
-      tray_icon_->showMessage(tr("Scheduled task"), task->note(),
+      auto tray_icon = tray_icon_->isVisible() ? tray_icon_.data() : clock_icon_;
+      if (!tray_icon) return;
+      tray_icon->showMessage(tr("Scheduled task"), task->note(),
                               QSystemTrayIcon::Information,
                               task->notification().timeout() * 1000);
       break;
+    }
 
     case Notification::MessageBox:
       if (task->notification().timeout() > 0) {
