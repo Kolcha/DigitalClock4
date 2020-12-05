@@ -33,7 +33,6 @@ TasksInvoker::TasksInvoker(QObject* parent) : QObject(parent)
 
 void TasksInvoker::setDailyTasks(const QList<TaskPtr>& tasks)
 {
-  if (!timer_->isActive()) return;
   tasks_.clear();
   for (auto& tsk : qAsConst(tasks)) {
     tasks_.insert(tsk->time(), tsk);
@@ -44,16 +43,28 @@ void TasksInvoker::setDailyTasks(const QList<TaskPtr>& tasks)
 
 void TasksInvoker::start()
 {
-  Q_ASSERT(!timer_->isActive());
-  timer_->start();
+  if (!use_external_timer_ && !timer_->isActive())
+    timer_->start();
   emit dateChanged(today_);
 }
 
 void TasksInvoker::stop()
 {
-  Q_ASSERT(timer_->isActive());
-  timer_->stop();
+  if (!use_external_timer_ && timer_->isActive())
+    timer_->stop();
   tasks_.clear();
+}
+
+void TasksInvoker::useExternalTimer(bool use)
+{
+  Q_ASSERT(!timer_->isActive());
+  use_external_timer_ = use;
+}
+
+void TasksInvoker::externalTimerHandler()
+{
+  if (use_external_timer_)
+    timeoutHandler();
 }
 
 void TasksInvoker::timeoutHandler()

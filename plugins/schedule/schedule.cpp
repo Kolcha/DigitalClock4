@@ -70,6 +70,7 @@ void Schedule::Start()
   connect(tray_icon_, &QSystemTrayIcon::messageClicked, player_, &QMediaPlayer::stop);
 
   invoker_ = new TasksInvoker(this);
+  invoker_->useExternalTimer(true);
 
   connect(backend_, &TasksStorage::tasksLoaded, invoker_, &TasksInvoker::setDailyTasks);
   connect(invoker_, &TasksInvoker::dateChanged, backend_, &TasksStorage::LoadTasks);
@@ -135,6 +136,11 @@ void Schedule::Configure()
   backend_->loadDates();
   dlg->setModal(true);
   dlg->show();
+}
+
+void Schedule::TimeUpdateListener()
+{
+  if (invoker_) invoker_->externalTimerHandler();
 }
 
 void Schedule::TrayActivated(QSystemTrayIcon::ActivationReason reason)

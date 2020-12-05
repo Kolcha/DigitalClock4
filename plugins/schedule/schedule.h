@@ -51,6 +51,8 @@ public slots:
 
   void Configure() override;
 
+  void TimeUpdateListener() override;
+
 signals:
   void defaultNotificationChanged(const Notification& n);
 

@@ -48,6 +48,9 @@ public slots:
   void start();
   void stop();
 
+  void useExternalTimer(bool use);
+  void externalTimerHandler();
+
 private slots:
   void timeoutHandler();
 
@@ -55,6 +58,7 @@ private:
   QTimer* timer_;
   QDate today_;
   QMultiMap<QTime, TaskPtr> tasks_;
+  bool use_external_timer_ = false;
 };
 
 } // namespace schedule
