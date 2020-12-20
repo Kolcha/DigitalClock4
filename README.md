@@ -20,13 +20,9 @@ Few screenshots, latest news, system requirements can be found at [project home 
 
 Also there is [mini wiki](https://sourceforge.net/p/digitalclock4/wiki/) (really mini :) ) exists, where you can find [how to create your own skin](https://sourceforge.net/p/digitalclock4/wiki/How%20to%20create%20skin/) for this clock (it is really very easy, no any special skills are required), [how to translate into your language](https://sourceforge.net/p/digitalclock4/wiki/How%20to%20translate/) or even how to build sources.
 
-Any bug reports, notes, suggestions and anything else can be sent through the [tickets](https://sourceforge.net/p/digitalclock4/tickets/) or directly to me. My contact information can be be found in "About" dialog.
-
 If you like my software, now you can "say thanks" by donating some bits to this Bitcoin address **[1DLdUCqxXrkufqVqXU18tgsmtvxErHiMQS](bitcoin:1DLdUCqxXrkufqVqXU18tgsmtvxErHiMQS)**
 
 ![donate](https://digitalclock4.sourceforge.io/qr/qr-code-259.svg)
-
-Donation will also support the [next clock version][clock-next] (created completely from scratch!) development. Thanks!
 
 Important Note
 --------------
@@ -40,6 +36,3 @@ External Links
 * [www.softpedia.com](https://www.softpedia.com/get/Desktop-Enhancements/Clocks-Time-Management/Korotysh-Digital-Clock.shtml) - good review, screenshots, Windows downloads (including portable version)
 * [mac.softpedia.com](https://mac.softpedia.com/get/Utilities/Digital-Clock-Nick-Korotysh.shtml) - good review, screenshots, macOS downloads
 * [softx64.com](https://www.softx64.com/windows/digital-clock.html) - more screenshots from [Windows](https://www.softx64.com/windows/digital-clock.html) / [Linux](https://www.softx64.com/linux/digital-clock-for-linux.html) / [macOS](https://www.softx64.com/mac/digital-clock-for-mac.html), downloads from their website
-
-[transifex-link]: https://www.transifex.com/nick-korotysh/digitalclock4/
-[clock-next]: https://github.com/Kolcha/DigitalClockNext
