@@ -53,7 +53,7 @@ AboutDialog::AboutDialog(QWidget* parent) :
   ui->btc_adress_qr->setPixmap(QIcon(":/clock/about/donate.png").pixmap(2*logoSize()));
 
   QString version = QCoreApplication::applicationVersion();
-  QString build_type = version[version.length() - 1].isDigit() ? "stable" : "testing";
+  QString build_type = version[version.length() - 1].isDigit() ? "final" : "testing";
   ui->app_name_lbl->setText(QCoreApplication::applicationName());
   ui->app_ver_lbl->setText(tr("version: %1 (%2)").arg(version).arg(build_type));
   ui->build_qt_lbl->setText(QString("Qt %1 (%2, %3 bit)").arg(qVersion(), compilerString()).arg(QSysInfo::WordSize));

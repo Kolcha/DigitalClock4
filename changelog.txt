@@ -1,3 +1,28 @@
+Whats new in 4.7.9:
+-------------------
+Features:
+ - show app icon in Windows TaskBar (also in Alt+Tab dialog), can be useful for screen recording software
+ - possibility to use semitransparent color as background
+
+Core:
+ - Qt 5.12.10 for all supported platforms
+
+Plugins:
+ - alarm: call plugin settings dialog using hotkey
+ - countdown_timer: option to hide when it is not active
+ - countdown_timer: option to hide days
+ - countdown_timer: reverse counting option
+ - countdown_timer: call plugin dialog using hotkey
+ - schedule: added advanced settings
+ - schedule: support tasks without notes
+ - schedule: support sound-only notifications
+ - timetracker: added settings dialog similar to countdown timer
+ - timetracker: renamed to stopwatch
+ - timetracker: translation support
+ - timetracker: added plugin icon
+ - timetracker: call plugin dialog using hotkey
+
+
 Whats new in 4.7.8:
 -------------------
 Features:
